@@ -1,0 +1,67 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: plainnat.bst
+Database file #1: bib/DT.bib.bib
+Database file #2: bib/pomdp.bib.bib
+I was expecting a `,' or a `}'---line 362 of file bib/pomdp.bib.bib
+ : 
+ : year={2014},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #3: bib/spatial_navigation.bib.bib
+I was expecting a `,' or a `}'---line 127 of file bib/spatial_navigation.bib.bib
+ :  
+ :  journal = {Cognitive Psychology},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #4: bib/imitation_learning.bib.bib
+Database file #5: bib/citations.bib.bib
+Database file #6: bib/ToM.bib.bib
+Repeated entry---line 31 of file bib/ToM.bib.bib
+ : @article{Bake_Saxe_Tene_2011
+ :                             ,
+I'm skipping whatever remains of this entry
+Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
+You've used 8 entries,
+            2773 wiz_defined-function locations,
+            658 strings with 6598 characters,
+and the built_in function-call counts, 4493 in all, are:
+= -- 407
+> -- 237
+< -- 7
++ -- 79
+- -- 71
+* -- 359
+:= -- 651
+add.period$ -- 27
+call.type$ -- 8
+change.case$ -- 46
+chr.to.int$ -- 8
+cite$ -- 17
+duplicate$ -- 219
+empty$ -- 374
+format.name$ -- 81
+if$ -- 981
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 10
+newline$ -- 49
+num.names$ -- 34
+pop$ -- 103
+preamble$ -- 1
+purify$ -- 39
+quote$ -- 0
+skip$ -- 175
+stack$ -- 0
+substring$ -- 214
+swap$ -- 54
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 78
+warning$ -- 1
+while$ -- 39
+width$ -- 0
+write$ -- 117
+(There were 3 error messages)

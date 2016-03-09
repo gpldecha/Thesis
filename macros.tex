@@ -1,0 +1,126 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% Math Macros
+
+\newcommand{\ud}{\,\mathrm{d}}
+
+\def\mat#1{\mathchoice{\mbox{\boldmath$\displaystyle#1$}}
+{\mbox{\boldmath$\textstyle#1$}}
+{\mbox{\boldmath$\scriptstyle#1$}}
+{\mbox{\boldmath$\scriptscriptstyle#1$}}}
+
+\newcommand{\acos}{\mathrm{acos}}
+
+% \widebar math accent
+\newlength{\widebarargwidth}
+\newlength{\widebarargheight}
+\DeclareRobustCommand{\widebar}[1]{%
+	\settowidth{\widebarargwidth}{#1}%
+	\settoheight{\widebarargheight}{#1}%
+	\addtolength{\widebarargheight}{0.3ex}
+	\makebox[0pt][l]{\hspace{0.15\widebarargwidth}%
+		\rule[\widebarargheight]{0.7\widebarargwidth}{0.1ex}}%
+	{#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Misc Macros
+
+%\newcounter{deft}
+%\renewcommand{\thedeft}{Theorem \thechapter.\arabic{deft}}
+%\newenvironment{theorem}[1]
+%{\refstepcounter{deft} \begin{trivlist} \item[\hskip \labelsep {\bfseries \thedeft}] {\em #1}}
+%{\end{trivlist}}
+%
+%
+%\newcounter{defd}
+%\renewcommand{\thedefd}{Definition \thechapter.\arabic{defd}}
+%\newenvironment{definition}[1]
+%{\refstepcounter{defd} \begin{trivlist} \item[\hskip \labelsep {\bfseries \thedefd}] {\em #1}}
+%{\end{trivlist}}
+
+\newenvironment{challenge}[2][Challenge:]
+{\begin{trivlist}
+\item \vskip \baselineskip \noindent $\square$
+\item \textbf{\textsc{#1}} {#2}
+\item \hfill $\blacksquare$
+\end{trivlist}
+}
+
+
+\newcommand{\tbc}{\highlight{[To be completed...]}}
+\newcommand{\keyword}[1]{\textsc{\textbf{Keyword(s): #1}}}
+\newcommand{\tbr}[1]{\highlight{[To be rewritten: }\emph{#1}\highlight{]}}
+\newcommand{\highlight}[1]{\textsf{#1}}
+\newcommand{\bhighlight}[1]{\textbf{\textsf{#1}}}
+\newcommand{\khighlight}[1]{\textsc{#1}}
+\newcommand{\bfid}[1]{\textbf{#1}}
+
+\renewcommand{\paragraph}[1]{\vspace{0.4cm}\noindent\bhighlight{#1}\vspace{0.15cm}}
+
+\newcommand{\subsubsubsection}{\paragraph}
+
+\newcommand{\mylineskip}{\vspace{0.4cm}}
+
+\newcommand{\comment}[1]{}
+\newcommand{\commentary}[1]{\bhighlight{[Comment:} \highlight{#1}\bhighlight{]}}
+
+\newcommand{\FigureFrom}[1]{{\it (Adapted from \protect\citeA{#1})}}
+\newcommand{\FiguresFrom}[1]{{\it (Adapted from \protect\citeA{#1})}}
+\newcommand{\FigureNoFrom}[2]{{\it (Figure} \bfid{#1)} {\it is adapted from \protect\citeA{#2})}}
+%%%% debut macro %%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The \todo command
+\newcounter{nbdrafts}
+\setcounter{nbdrafts}{0}
+\makeatletter
+\newcommand{\checknbdrafts}{
+\ifnum \thenbdrafts > 0
+\@latex@warning@no@line{**********************************************************************}
+\@latex@warning@no@line{* The document contains \thenbdrafts \space draft note(s)}
+\@latex@warning@no@line{**********************************************************************}
+\fi}
+\newcommand{\todo}[1]{\addtocounter{nbdrafts}{1}{\color{red} #1}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\argmax{\operatornamewithlimits{argmax}}
+\def\argmin{\operatornamewithlimits{argmin}}
+
+%\newcommand{\corrected}[1]{{\color{red} \uwave{#1}}}
+\definecolor{myCorrectionColor}{RGB}{34,139,34}
+\newcommand{\corrected}[1]{{\color{myCorrectionColor} #1}}
+
+
+\newcommand{\fvspace}{-1.0cm}
+
+\newcommand{\eqspacedab}{a)\hspace{0.45\textwidth}b)}
+\newcommand{\eqspacedabc}{a)\hspace{0.30\textwidth}b)\hspace{0.30\textwidth}c)}
+\newcommand{\eqspacedabcd}{a)\hspace{0.22\textwidth}b)\hspace{0.22\textwidth}c)\hspace{0.22\textwidth}d)}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\newcommand{\MarginTop}{\rule{0pt}{2.4ex}}
+\newcommand{\MarginBottom}{\rule[-1.1ex]{0pt}{0pt}}
+
+
+\newcommand{\mycitation}[4]{{\highlight{#1}, #2, \textit{#3}, #4.}}
+
+%\setcounter{tocdepth}{5}%
+%\setcounter{secnumdepth}{5}
+
+\newcommand{\emptynewpage}{\thispagestyle{empty}\phantom{a}\newpage}
+\newcommand{\forcenewpage}{\phantom{a}\newpage}
+
+%%%% For highlighting parts edited according to review comments %%%%%%
+%\newcommand{\edit}[1]{\textbf{\textcolor{red}{#1}}}
+
+%%%%%%% Making full text links from strings like "Chapter x" and "Figure x" etc. %%%%%%%%%
+\newcommand{\chapterref}[1]{\hyperref[#1]{Chapter \ref*{#1}}}
+\newcommand{\sectionref}[1]{\hyperref[#1]{Section \ref*{#1}}}
+\newcommand{\figureref}[1]{\hyperref[#1]{Figure \ref*{#1}}}
+\newcommand{\tableref}[1]{\hyperref[#1]{Table \ref*{#1}}}
+\newcommand{\algoref}[1]{\hyperref[#1]{Algorithm \ref*{#1}}}
+\newcommand{\equationref}[1]{\hyperref[#1]{Equation \ref*{#1}}}
+
+%%%% fin macro %%%% 
