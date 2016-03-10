@@ -2,7 +2,7 @@
 
 % Introduce what is planning under uncertainty
 Planning and reasoning under uncertainty is central to robotic and artificial intelligence research and has 
-been an active area of research for decades. Acting under uncertainty is an umbrella term which touches a
+been an active area of research for decades. It is an umbrella term which touches a
 wide spectrum of fields: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
 \textit{robotics} and \textit{artificial intelligence}. The work in this thesis relies on results  and assumptions 
 made in cognitive and neuroscience with respect to our beliefs and how we act given them. We complement 
@@ -21,6 +21,46 @@ This chapter unfolds as follows:
 % What are all the assumptions which can be made regading the belief
 
 \subsection{The problem}
+
+Planning, control and decision theory are concerned with finding a set of actions which will lead to the 
+successful outcome of a problem being considered; this the most generic definition. There are two 
+key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
+actions, when applied in the same state will not always lead to the same outcome. This type of uncertainty 
+can arise from many sources; the outcome of chaotic actions are impossible to predict with certainty, 
+think of throwing a die or flipping a coin; In outdoor robotics the terrain might lead to slippage, causing 
+the robot to skid or underwater currents might drastically offset the position of an UAV; In articulated 
+robots the friction between joints can accumulate to a large error in the end-effector position (especially true 
+for cable driven robots). 
+The second source of uncertainty is when the underlying state is partially known, in the sense that we do not 
+have all the necessary information to reliably determine the state beyond reasonable doubt. In robotics this 
+uncertainty can arise from inadequate or noisy sensors. If the environmental conditions in which the robot 
+is located is humid, misty or dark. It can make it difficult for the robot ascertain its position and 
+makes it difficult to plan how to achieve a given objective.
+
+The uncertainty of the state and actions have to be quantified. The predominant approach 
+is to  represent them by probabilities. For instance the application of a forward action (for a wheeled robot) 
+will result in a new position further ahead and a position to the right (due to slippage) with some probability.
+An observation through the robots sensors will result in probability distribution over the robots probable location.
+Given this quantification of action and observation uncertainty in terms of a probability distribution over the state, 
+the agent must now take actions towards accomplishing its goal. To take a decision the agent must assign a utility 
+to the outcome of his actions. The utility is to indicate a preference over the outcomes and when combined with 
+probabilities leads to decision theory. 
+
+
+%How is the uncertainty quantified ? Answer: probability theory
+%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
+%Utility theory and combined with probability lead to decision theory.
+
+% Speak about the historical context of plannig un
+% Uncertainty and rational actions
+
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=0.8\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
+ \caption{ad}
+\end{figure}
+
 
 % 1) POMDP
 %	Based on Markove Decision Process
@@ -104,11 +144,6 @@ Optimal control methods represent the belief by a Gaussian function
 %
 
 
-\begin{figure}[h]
- \centering
- \includegraphics[width=0.8\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
- \caption{ad}
-\end{figure}
 
 \begin{figure}[h]
  \centering
