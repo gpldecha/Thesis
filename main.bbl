@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -23,6 +23,16 @@ A.~Billard, S.~Calinon, R.~Dillmann, and S.~Schaal.
 \newblock In B.~Siciliano and O.~Khatib, editors, \emph{Handbook of Robotics},
   pages 1371--1394. Springer, Secaucus, NJ, USA, 2008.
 
+\bibitem[Brooks and Williams(2011)]{mc_update_ppomdps}
+Alex Brooks and Stefan Williams.
+\newblock A monte carlo update for parametric pomdps.
+\newblock In Makoto Kaneko and Yoshihiko Nakamura, editors, \emph{Robotics
+  Research}, volume~66 of \emph{Springer Tracts in Advanced Robotics}, pages
+  213--223. Springer Berlin Heidelberg, 2011.
+\newblock ISBN 978-3-642-14742-5.
+\newblock \doi{10.1007/978-3-642-14743-2_19}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-14743-2_19}.
+
 \bibitem[Cassandra et~al.(1996)Cassandra, Kaelbling, and
   Kurien]{ActingUncertainty_1996}
 A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
@@ -33,11 +43,88 @@ A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
   vol.2, Nov 1996.
 \newblock \doi{10.1109/IROS.1996.571080}.
 
+\bibitem[Erez and Smart(2010)]{Erez10ascalable}
+Tom Erez and William~D. Smart.
+\newblock A scalable method for solving high-dimensional continuous pomdps
+  using local approximation.
+\newblock In \emph{Conf. on Uncertainty in Artificial Intelligence}, 2010.
+
+\bibitem[Hansen(1998)]{Sol_POMDP_Policy_space_1998}
+Eric~A. Hansen.
+\newblock Solving pomdps by searching in policy space.
+\newblock In \emph{Proceedings of the Fourteenth Conference on Uncertainty in
+  Artificial Intelligence}, UAI'98, pages 211--219, San Francisco, CA, USA,
+  1998. Morgan Kaufmann Publishers Inc.
+\newblock ISBN 1-55860-555-X.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=2074094.2074119}.
+
+\bibitem[Hauser(2010)]{Rand_belief_space_replanning}
+Kris Hauser.
+\newblock Randomized belief-space replanning in partially-observable continuous
+  spaces.
+\newblock In David Hsu, Volkan Isler, Jean-Claude Latombe, and Ming~C. Lin,
+  editors, \emph{WAFR}, volume~68 of \emph{Springer Tracts in Advanced
+  Robotics}, pages 193--209. Springer, 2010.
+
+\bibitem[He et~al.(2008)He, Prentice, and Roy]{Quadrator_2008}
+Ruijie He, S.~Prentice, and N.~Roy.
+\newblock Planning in information space for a quadrotor helicopter in a
+  gps-denied environment.
+\newblock In \emph{Robotics and Automation, 2008. ICRA 2008. IEEE International
+  Conference on}, pages 1814--1820, May 2008.
+\newblock \doi{10.1109/ROBOT.2008.4543471}.
+
+\bibitem[He et~al.(2011)He, Brunskill, and Roy]{Macro_uncertainty_2011}
+Ruijie He, Emma Brunskill, and Nicholas Roy.
+\newblock Efficient planning under uncertainty with macro-actions.
+\newblock \emph{J. Artif. Int. Res.}, 40\penalty0 (1):\penalty0 523--570,
+  January 2011.
+\newblock ISSN 1076-9757.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=2016945.2016959}.
+
+\bibitem[Martinez-Cantin et~al.(2009)Martinez-Cantin, de~Freitas, Brochu,
+  Castellanos, and Doucet]{Bayesian_explor_exploit_2009}
+Ruben Martinez-Cantin, Nando de~Freitas, Eric Brochu, José Castellanos, and
+  Arnaud Doucet.
+\newblock A bayesian exploration-exploitation approach for optimal online
+  sensing and planning with a visually guided mobile robot.
+\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103, 2009.
+\newblock ISSN 0929-5593.
+\newblock \doi{10.1007/s10514-009-9130-2}.
+\newblock URL \url{http://dx.doi.org/10.1007/s10514-009-9130-2}.
+
+\bibitem[Platt et~al.(2010)Platt, Tedrake, Kaelbling, and
+  Lozano-Perez]{Platt-RSS-10}
+R.~Platt, R.~Tedrake, L.~Kaelbling, and T.~Lozano-Perez.
+\newblock Belief space planning assuming maximum likelihood observations.
+\newblock In \emph{Proceedings of Robotics: Science and Systems}, Zaragoza,
+  Spain, June 2010.
+
+\bibitem[Prentice and Roy(2009)]{BelRoadMap_2009}
+S.~Prentice and N.~Roy.
+\newblock The belief roadmap: Efficient planning in belief space by factoring
+  the covariance.
+\newblock \emph{International Journal of Robotics Research}, 8\penalty0
+  (11-12):\penalty0 1448--1465, December 2009.
+
 \bibitem[Rai et~al.(2013)Rai, De~Chambrier, and Billard]{rai2013learning}
 Akshara Rai, Guillaume De~Chambrier, and Aude Billard.
 \newblock Learning from failed demonstrations in unreliable systems.
 \newblock In \emph{Humanoid Robots (Humanoids), 2013 13th IEEE-RAS
   International Conference on}, pages 410--416. IEEE, 2013.
+
+\bibitem[Ross et~al.(2008)Ross, Pineau, Paquet, and
+  Chaib-draa]{Ross08onlineplanning}
+Stéphane Ross, Joelle Pineau, Sébastien Paquet, and Brahim Chaib-draa.
+\newblock Online planning algorithms for pomdps.
+\newblock \emph{Journal of Artificial Intelligence Research}, 2008.
+
+\bibitem[Spaan and Vlassis(2005)]{Spaan05icra}
+Matthijs T.~J. Spaan and Nikos Vlassis.
+\newblock Planning with continuous actions in partially observable
+  environments.
+\newblock In \emph{Proceedings of the IEEE International Conference on Robotics
+  and Automation}, pages 3469--3474, Barcelona, Spain, 2005.
 
 \bibitem[Stankiewicz et~al.(2006)Stankiewicz, Legge, Mansfield, and
   Schlicht]{stankiewicz2006lost}
@@ -46,11 +133,19 @@ B.J. Stankiewicz, G.E. Legge, J.S. Mansfield, and E.J. Schlicht.
 \newblock \emph{Journal of Experimental Psychology: Human Perception and
   Performance.(under review)}, 32\penalty0 (3):\penalty0 688--704, 2006.
 
-\bibitem[Thrun et~al.(2005)Thrun, Burgard, and Fox]{Thrun_Burgard_Fox_2005}
+\bibitem[Thrun et~al.(2005{\natexlab{a}})Thrun, Burgard, and Fox]{Thrun_2005}
 Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
 \newblock \emph{Probabilistic Robotics (Intelligent Robotics and Autonomous
   Agents)}.
-\newblock The MIT Press, Cambridge, MA, 2005.
+\newblock The MIT Press, 2005{\natexlab{a}}.
+\newblock ISBN 0262201623.
+
+\bibitem[Thrun et~al.(2005{\natexlab{b}})Thrun, Burgard, and
+  Fox]{Thrun_Burgard_Fox_2005}
+Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
+\newblock \emph{Probabilistic Robotics (Intelligent Robotics and Autonomous
+  Agents)}.
+\newblock The MIT Press, 2005{\natexlab{b}}.
 
 \bibitem[Von~Neumann and Morgenstern(1990)]{VonNeumann1944}
 John Von~Neumann and O.~Morgenstern.

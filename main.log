@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  9 MAR 2016 15:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  10 MAR 2016 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -904,87 +904,134 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 (./ch2-Background/ch2-Background.tex [4]
 Chapter 2.
 
+Underfull \hbox (badness 10000) in paragraph at lines 19--22
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+[5
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+
+ []
+
+
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_
-concept1.pdf, id=100, 497.71924pt x 497.49272pt>
+concept1.pdf, id=151, 497.71924pt x 497.49272pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncerta
 inty_concept1.pdf Graphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertai
 nty_concept1.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/reasoning_uncertainty_concept1.pdf used on input line 7.
+s/reasoning_uncertainty_concept1.pdf used on input line 109.
 (pdftex.def)             Requested size: 276.00105pt x 275.89159pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=10
-1, 246.9225pt x 306.14375pt>
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=15
+2, 246.9225pt x 306.14375pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf G
 raphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/belief_tree.pdf used on input line 13.
+s/belief_tree.pdf used on input line 115.
 (pdftex.def)             Requested size: 276.00105pt x 342.21532pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [5
+) [6 </home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncerta
+inty_concept1.pdf>] [7 </home/guillaume/Documents/Thesis/ch2-Background/Figures
+/belief_tree.pdf>] [8
 
- </home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty
-_concept1.pdf>] [6 </home/guillaume/Documents/Thesis/ch2-Background/Figures/bel
-ief_tree.pdf>] (./main.bbl (./main.brf)
+] (./main.bbl (./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
+LaTeX Font Info:    Try loading font information for T1+aett on input line 35.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
+Underfull \hbox (badness 1990) in paragraph at lines 35--35
+\T1/aer/m/n/10 ric pomdps.  In Makoto Kaneko and Yoshi-hiko Naka-mura, ed-i-tor
+s,
+ []
+
+[9
+
+])
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 31.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
-[7
-
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A646C2EDA764E22F23BD28E42F6F162B;596.
-Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 989BADC9818E34065CD804590802924A;449.
+(rerunfilecheck)             Checksum: 153347C429751339ED309C9B3A61E24E;927.
 
+
+Package rerunfilecheck Warning: File `main.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `main.brf':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  35E2DA2DA2FD7B2844D752EDC9B194C8;1118.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
  )
 (\end occurred when \ifdefined on line 112 was incomplete)
 (\end occurred when \ifdefined on line 103 was incomplete)
 (\end occurred when \ifdefined on line 102 was incomplete) 
 Here is how much of TeX's memory you used:
- 17943 strings out of 493304
- 305088 string characters out of 6139872
- 383419 words of memory out of 5000000
- 20934 multiletter control sequences out of 15000+600000
- 42757 words of font info for 90 fonts, out of 8000000 for 9000
+ 18082 strings out of 493304
+ 308015 string characters out of 6139872
+ 388072 words of memory out of 5000000
+ 21044 multiletter control sequences out of 15000+600000
+ 45207 words of font info for 94 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,6n,55p,394b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,6n,55p,394b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-
-Output written on main.pdf (9 pages, 1944873 bytes).
+lic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (12 pages, 1978605 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 306 PDF objects out of 1000 (max. 8388607)
+ 257 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 
