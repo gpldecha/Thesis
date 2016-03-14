@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  13 MAR 2016 18:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  14 MAR 2016 22:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
+**main.tex -shell-escape
 (./main.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
@@ -767,20 +767,20 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 51.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
 \chapternumberheight=\dimen208
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -816,8 +816,8 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box46
-Package backref Info: ** backref set up for natbib ** on input line 71.
-Package hyperref Info: Link coloring ON on input line 71.
+Package backref Info: ** backref set up for natbib ** on input line 73.
+Package hyperref Info: Link coloring ON on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -827,9 +827,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count163
 )
-LaTeX Info: Redefining \ref on input line 71.
-LaTeX Info: Redefining \pageref on input line 71.
-LaTeX Info: Redefining \nameref on input line 71.
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -841,7 +841,7 @@ LaTeX Info: Redefining \nameref on input line 71.
 \c@nbdrafts=\count164
 )
 \thesis@dim=\dimen211
-LaTeX Font Info:    Try loading font information for T1+aess on input line 85.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 87.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
@@ -908,15 +908,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--22
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
 [5
 
 ]
-Overfull \hbox (21.19998pt too wide) in paragraph at lines 114--115
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+
+LaTeX Warning: Reference `sec:prospect_theory' on page 6 undefined on input lin
+e 87.
+
+
+Package natbib Warning: Citation `Kahneman79prospecttheory' on page 6 undefined
+ on input line 87.
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Overfull \hbox (21.19998pt too wide) in paragraph at lines 170--171
  [][] 
  []
 
@@ -924,62 +937,64 @@ Overfull \hbox (21.19998pt too wide) in paragraph at lines 114--115
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
 
  []
 
-[6]
-Overfull \hbox (21.20477pt too wide) in paragraph at lines 135--140
+
+Overfull \hbox (21.20477pt too wide) in paragraph at lines 194--199
 []\T1/aer/m/n/10 The new de-scrip-tion of the prob-lem is now in terms of be-li
 ef space $\OML/cmm/m/it/10 < \OMS/cmsy/m/n/10 B\OML/cmm/m/it/10 ; U; ^^\; R; ^^
 M >$
  []
 
+[7]
 
-LaTeX Warning: Reference `fig:pomdp_bel_tree' on page 7 undefined on input line
- 146.
+LaTeX Warning: Reference `fig:pomdp_bel_tree' on page 8 undefined on input line
+ 205.
 
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=14
-6, 686.565pt x 347.2975pt>
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=15
+8, 686.565pt x 347.2975pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf G
 raphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/belief_tree.pdf used on input line 154.
+s/belief_tree.pdf used on input line 213.
 (pdftex.def)             Requested size: 345.0pt x 174.51741pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 200--204
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
-) [8 </home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>]
-(./main.bbl (./main.brf)
+) [9 </home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>]
+[10
+
+] (./main.bbl (./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
 LaTeX Font Info:    Try loading font information for T1+aett on input line 35.
- (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 Underfull \hbox (badness 1990) in paragraph at lines 35--35
@@ -987,24 +1002,26 @@ Underfull \hbox (badness 1990) in paragraph at lines 35--35
 s,
  []
 
-[9
-
+[11
 
 ])
+
+Package natbib Warning: There were undefined citations.
+
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 31.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
-[10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
+[12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DC84C334BD5E789F41A551007BF1319A;1028.
+(rerunfilecheck)             Checksum: 1800D758B9F92B06A3CD76D0D45F8B68;1021.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 7DF0D3A57C4994F498F89615EF40D1B1;1118.
+(rerunfilecheck)             Checksum: 7F9B3B4F510352296EE347215F346380;1200.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1012,19 +1029,19 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
  )
-(\end occurred when \ifdefined on line 112 was incomplete)
-(\end occurred when \ifdefined on line 103 was incomplete)
-(\end occurred when \ifdefined on line 102 was incomplete) 
+(\end occurred when \ifdefined on line 114 was incomplete)
+(\end occurred when \ifdefined on line 105 was incomplete)
+(\end occurred when \ifdefined on line 104 was incomplete) 
 Here is how much of TeX's memory you used:
- 18133 strings out of 493304
- 308740 string characters out of 6139872
- 390337 words of memory out of 5000000
- 21088 multiletter control sequences out of 15000+600000
- 49562 words of font info for 99 fonts, out of 8000000 for 9000
+ 18175 strings out of 493304
+ 309140 string characters out of 6139871
+ 391329 words of memory out of 5000000
+ 21112 multiletter control sequences out of 15000+600000
+ 57927 words of font info for 121 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,12n,60p,394b,701s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,12n,60p,408b,701s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
@@ -1037,20 +1054,21 @@ i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (12 pages, 316049 bytes).
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (14 pages, 330259 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 302 compressed objects within 4 object streams
- 55 named destinations out of 1000 (max. 500000)
+ 368 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 58 named destinations out of 1000 (max. 500000)
  138 words of extra memory for PDF output out of 10000 (max. 10000000)
 

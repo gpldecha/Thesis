@@ -16,16 +16,16 @@ This chapter unfolds as follows:
 
 
 
-\section{Planning and Uncertainty}
+\section{Decisions under Uncertainty}
 % What is the the reasoning under uncertainty planning problem
 % What are all the assumptions which can be made regading the belief
 
-\subsection{The problem}
+In this section we introduce and frame the problem we seek to solve in generic 
+terms. We are concerned with finding a sequence of actions which will lead to the successful 
+outcome of a problem being considered; this is the most generic definition. 
 
-Planning, control and decision theory are concerned with finding a set of actions which will lead to the 
-successful outcome of a problem being considered; this the most generic definition. There are two 
-key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
-actions, when applied in the same state will not always lead to the same outcome. This type of uncertainty 
+There are two key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
+actions, when applied in the same state will not always result int the same outcome. This type of uncertainty 
 can arise from many sources; the outcome of chaotic actions are impossible to predict with certainty, 
 think of throwing a die or flipping a coin; In outdoor robotics the terrain might lead to slippage, causing 
 the robot to skid or underwater currents might drastically offset the position of an UAV; In articulated 
@@ -34,8 +34,8 @@ for cable driven robots).
 The second source of uncertainty is when the underlying state is partially known, in the sense that we do not 
 have all the necessary information to reliably determine the state beyond reasonable doubt. In robotics this 
 uncertainty can arise from inadequate or noisy sensors. If the environmental conditions in which the robot 
-is located is humid, misty or dark. It can make it difficult for the robot ascertain its position and 
-makes it difficult to plan how to achieve a given objective.
+is located is humid, misty or dark. It can make it difficult for the robot to ascertain its position and 
+to plan how to achieve a given objective.
 
 The uncertainty of the state and actions have to be quantified. The predominant approach 
 is to  represent them by probabilities. For instance the application of a forward action (for a wheeled robot) 
@@ -44,8 +44,59 @@ An observation through the robots sensors will result in probability distributio
 Given this quantification of action and observation uncertainty in terms of a probability distribution over the state, 
 the agent must now take actions towards accomplishing its goal. To take a decision the agent must assign a utility 
 to the outcome of his actions. The utility is to indicate a preference over the outcomes and when combined with 
-probabilities leads to decision theory.  Decision theory is concerned with the study of uncertainty in decision 
-making 
+probabilities leads to decision theory. 
+
+\subsection{Decision theory}
+
+The central question of decision theory is; \textit{how do people take decisions when faced with uncertain outcomes ?} Interest 
+in such questions were typically centred around economical questions such as deciding what should be an appropriate 
+investment or wager for a particular gamble. It was noted that the expected monitory outcome of a gamble as a mean of basing a decision, 
+would often lead to a course of action which contradicts common sense. A famous example is the St. Petersburg paradox. Daniel Bernoulli 
+proposed a solution to the problem by introducing the notion of a \textit{utility} function in which he claimed that people should base 
+their decision on the expected utility instead of solely the monetary outcomes of the gamble.
+
+\begin{quote}
+  \onehalfspacing% <--- Local line spacing
+  ``...the value of an item must not be based on its price, but rather on the utility it yields."\par\raggedleft--- \textup{Daniel Bernoulli},\cite{Bernoulli1954}
+\end{quote}
+
+The introduction of a utility function takes into account that the net worth of a person will influence their decision since they weigh
+the gain differently. The utility function introduced by Bernoulli was the logarithm of the monetary 
+outcome $x\in \{5\$,10\$,25\$\}$ weighted by their probability $p(x)$ which results in an expected utility, Equation \ref{eq:exp_utility}.
+\begin{equation}\label{eq:exp_utility}
+  U(x) = \displaystyle \mathop{\mathbb{E}}_{x \sim p(x)} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
+\end{equation}
+
+Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
+the person will be \textbf{risk-averse}. Risk-averse means that a gambler would prefer the utility of a sure outcome instead of 
+taking a gamble who's expected utility is the same as the one of the sure outcome. 
+This was the first introduction of a utility function.
+It is later in 1944 that von Neumann and Morgenstern (\cite{VonNeumann1944}) axiomised Bernoulli's utility function 
+and proved that if a decision maker has a preference over a set of lotteries\footnote{the term lottery refers 
+to a probability distribution in the original text.} which satisfy four axioms
+(completeness, transitivity, continuity, independence) then there exists a utility function who's expectation 
+preserves this preference.
+An agent whose decisions can be shown to maximise the vNM expected utility are said to be \textbf{rational} 
+and otherwise \textbf{irrational}. This is the theoretical basis of most economic theory, it is
+a \textbf{normative} model of how people should behave given uncertainty. 
+A drawback to the vNM theory of rationality is that it lacks the descriptive power to model peoples actual 
+decisions. It predicts that when we are presented with a choice with two different lotteries we will chose 
+the lottery which yields the maximum expected utility. There notable human studies ([citation]) which consistently 
+demonstrate that we do not always act as a vNM agent.  
+Decision Theory models which try to describe how we behave and not how we should behave are known as prescriptive 
+models, (see (\ref{sec:prospect_theory}) and the prospect model (\cite{Kahneman79prospecttheory})).
+
+
+
+% vNM theorem is limited to evaluation options that come with an 
+% objective probability distribution over outcomes.
+% a situation decision theoriests and economists often describe 
+% as ''choice under risk``
+
+% The utility function represents the agents desires.
+% so the probability function represents her beliefs.
+% The theories are referred to collectively as subjective expected utility (SEU).
+% 
 
 % POMDPs provide a rich framework for sequential decision-making under uncertainty in stochastic domains.
 % Solving a POMDP is often intractable.
@@ -59,15 +110,20 @@ making
 %\end{enumerate}
 
 
-
-\begin{center}
-\begin{tabular}{ l|l} 
-\hline
-    \textbf{Notation} 	& 	\textbf{Definition} \\ \hline\hline
-    x_t			& Cartesian state space position of the agent.
-\end{tabular}
-\end{center}
-
+%\begin{table}
+%\begin{center}
+%\renewcommand{\arraystretch}{1.5}
+%\begin{tabular}{ l|l} 
+%\hline
+%    \textbf{Notation} 		& \textbf{Definition} \\ \hline\hline
+%    $x_t \in \mathbb{R}^3$ 	& Cartesian state space position of the agent.\\
+%    $y_t \in \mathbb{R}^{M}$	& Observation measurement from the agents sensors.\\
+%    $u_t \in \mathbb{R}^3$	& Cartesian velocity, typically of the end-effector of the agent .\\
+%\end{tabular}
+%\end{center}
+%\caption{Definition of common variables used.}
+%\label{tab:notation}
+%\end{table}
 
 % Define box and box title style
 \tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
@@ -77,57 +133,39 @@ making
 \centering
 \begin{tikzpicture}
 \node [pomdp_box] (box){%
-    \begin{minipage}{0.9\textwidth}
-    A partially observable markov decision process is defined by the tuple:
+    \begin{minipage}{\textwidth}
       \begin{itemize}
-       \item[] \textbf{States} $x_t \in X$. 
-       \item[] \textbf{Actions} $u_t \in U$.
-       \item[] \textbf{Observations} $y_t \in Y$.
-       \item[] \textbf{Transition function}\\ The state transition function models the uncertainty originating from motion noise and is 
+       \item[] \textbf{States, Actions, Observations} 
+      
+      \item[] \textbf{Transition function:} $\mathbf{p(x_{t+1}|x_t,u_t)}$\\ The state transition function models the uncertainty originating from motion noise and is 
        represented by the conditional probability distribution (or likelihood) function, $p(x_{t+1}|x_t,u_t) \in \mathbb{R}$,
        which gives the probability of moving to state $x_{t+1}$ given that action $u_t$ was applied in state $x_t$. 
-       \item[] \textbf{Observation function}\\ The measurement function returns the probability 
+      
+      \item[] \textbf{Observation function}: $\mathbf{p(y_t|x_t)}$\\ The observation function returns the probability 
        or likelihood of the current observing $y_t$ given a known state $x_t$. It is modelled 
        by the conditional distribution $p(y_t|x_t) \in \mathbb{R}$.
-       \item[] \textbf{Reward function} $R(x_t,u_t) \in \mathbb{R}$.
+      
+      \item[] \textbf{Belief:} $\mathbf{b_t(x)}$ \\
+       A belief is probability distributions, $b_t(x)$, over the state space $X$ and quantifies both 
+       motion and observation uncertainty. 
+      
+      \item[] \textbf{State space estimator:} $\mathbf{b_t(x) = \tau(b_{t-1}(x),u_{t-1},y_t)}$\\ 
+       Updates a belief given a motion and observation, it makes use of both the motion and observation functions 
+       defined in the POMDP. The state space estimation function, $\tau$, can be any kind of state space filter such as 
+       an Extended Kalman Filter (EKF) or a Particle Filter (PF).
+    
+       \item[] \textbf{Reward function:} $\mathbf{R(x_t,u_t)}$\\
+        The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
+	function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$.
        \item[] \textbf{Discount factor} $\gamma \in [0,1]$;
       \end{itemize}
     \end{minipage}
 };
-\node[fancytitle, right=10pt] at (box.north west) {POMDP};
+\node[fancytitle, right=10pt] at (box.north west) {POMDP \& \textit{belief}-MDP};
 \end{tikzpicture}%
-\caption{Description of the individual elements necessary to formalise a POMDP.}
+\caption{Description of the individual elements necessary to formalise a POMDP and a \textit{belief}-MDP.}
 \label{fig:pomdp_tik}
 \end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-\node [pomdp_box] (box){%
-    \begin{minipage}{0.9\textwidth}
-      \begin{itemize}
-       \item[] \textbf{Belief}\\
-       A belief is probability distributions, $b_t(x)$, over the state space $X$ and quantifies both 
-       motion and observation uncertainty. 
-       \item[] \textbf{Actions} $u_t \in U$.
-       \item[] \textbf{State space estimation} $b_t(x) = \tau(b_{t-1}(x),u_{t-1},y_t)$\\ 
-       Updates a belief given a motion and observation, it makes use of both the motion and observation functions 
-       defined in the POMDP. The state space estimation function, $\tau$, can be any kind of state space filter such as 
-       an Extended Kalman Filter (EKF) or a Particle Filter (PF).
-       \item[] \textbf{Reward function} $R(b_t,u_t) \in \mathbb{R}$.\\
-       The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
-function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$.
-       \item[] \textbf{Discount factor} $\gamma \in [0,1]$.
-      \end{itemize}
-    \end{minipage}
-};
-\node[fancytitle, right=10pt] at (box.north west) {\textit{belief}-MDP};
-\end{tikzpicture}%
-\caption{a}
-\label{fig:bmdp_tik}
-\end{figure}
-
-
 
 \subsection{Partially Observable Markov Decision Process}
 
@@ -164,7 +202,7 @@ belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$.
 
 \begin{figure}[h]
  \centering
- \includegraphics[width=0.8\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf}
+ \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf}
   \caption{ad}
 \end{figure}
 

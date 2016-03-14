@@ -20,12 +20,12 @@ This chapter unfolds as follows:
 % What is the the reasoning under uncertainty planning problem
 % What are all the assumptions which can be made regading the belief
 
-\subsection{The problem}
+In this section we introduce and frame the problem we seek to solve in generic 
+terms. We are concerned with finding a sequence of actions which will lead to the successful 
+outcome of a problem being considered; this is the most generic definition. 
 
-Planning, control and decision theory are concerned with finding a set of actions which will lead to the 
-successful outcome of a problem being considered; this the most generic definition. There are two 
-key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
-actions, when applied in the same state will not always lead to the same outcome. This type of uncertainty 
+There are two key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
+actions, when applied in the same state will not always result int the same outcome. This type of uncertainty 
 can arise from many sources; the outcome of chaotic actions are impossible to predict with certainty, 
 think of throwing a die or flipping a coin; In outdoor robotics the terrain might lead to slippage, causing 
 the robot to skid or underwater currents might drastically offset the position of an UAV; In articulated 
@@ -34,8 +34,8 @@ for cable driven robots).
 The second source of uncertainty is when the underlying state is partially known, in the sense that we do not 
 have all the necessary information to reliably determine the state beyond reasonable doubt. In robotics this 
 uncertainty can arise from inadequate or noisy sensors. If the environmental conditions in which the robot 
-is located is humid, misty or dark. It can make it difficult for the robot ascertain its position and 
-makes it difficult to plan how to achieve a given objective.
+is located is humid, misty or dark. It can make it difficult for the robot to ascertain its position and 
+to plan how to achieve a given objective.
 
 The uncertainty of the state and actions have to be quantified. The predominant approach 
 is to  represent them by probabilities. For instance the application of a forward action (for a wheeled robot) 
@@ -44,13 +44,72 @@ An observation through the robots sensors will result in probability distributio
 Given this quantification of action and observation uncertainty in terms of a probability distribution over the state, 
 the agent must now take actions towards accomplishing its goal. To take a decision the agent must assign a utility 
 to the outcome of his actions. The utility is to indicate a preference over the outcomes and when combined with 
-probabilities leads to decision theory.  Decision theory is concerned with the study of uncertainty in decision 
-making 
+probabilities leads to decision theory. 
+
+\subsection{Decision theory}
+
+The central question of decision theory is; \textit{how do people take decisions when faced with uncertain outcomes ?} Interest 
+in such questions were typically centred around economical questions such as deciding what should be an appropriate 
+investment or wager for a particular gamble. It was noted that the expected monitory outcome of a gamble as a mean of basing a decision, 
+would often lead to a course of action which contradicts common sense. A famous example is the St. Petersburg paradox. Daniel Bernoulli 
+proposed a solution to the problem by introducing the notion of a \textit{utility} function in which he claimed that people should base 
+their decision on the expected utility instead of solely the monetary outcomes of the gamble.
+
+\begin{quote}
+  \onehalfspacing% <--- Local line spacing
+  ``...the value of an item must not be based on its price, but rather on the utility it yields."\par\raggedleft--- \textup{Daniel Bernoulli},\cite{Bernoulli1954}
+\end{quote}
+
+The introduction of a utility function takes into account that the net worth of a person will influence their decision since they weigh
+the gain differently. The utility function introduced by Bernoulli was the logarithm of the monetary 
+outcome $x\in \{5\$,10\$,25\$\}$ weighted by their probability $p(x)$ which results in an expected utility, Equation \ref{eq:exp_utility}.
+\begin{equation}\label{eq:exp_utility}
+  U(x) = \displaystyle \mathop{\mathbb{E}}_{x \sim p(x)} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
+\end{equation}
+
+Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
+the person will be \textbf{risk-averse}. Risk-averse means that a gambler would prefer the utility of a sure outcome instead of 
+taking a gamble who's expected utility is the same as the one of the sure outcome. 
+This was the first introduction of a utility function.
+It is later in 1944 that von Neumann and Morgenstern (\cite{VonNeumann1944}) axiomised Bernoulli's utility function 
+and proved that if a decision maker has a preference over a set of lotteries\footnote{the term lottery refers 
+to a probability distribution in the original text.} which satisfy four axioms
+(completeness, transitivity, continuity, independence) then there exists a utility function who's expectation 
+preserves this preference.
+An agent whose decisions can be shown to maximise the vNM expected utility are said to be \textbf{rational} 
+and otherwise \textbf{irrational}. This is the theoretical basis of most economic theory, it is
+a \textbf{normative} model of how people should behave given uncertainty. 
+A drawback to the vNM theory of rationality is that it lacks the descriptive power to model peoples actual 
+decisions. It predicts that when we are presented with a choice with two different lotteries we will chose 
+the lottery which yields the maximum expected utility. There notable human studies ([citation]) which consistently 
+demonstrate that we do not always act as a vNM agent.  
+Decision Theory models which try to describe how we behave and not how we should behave are known as prescriptive 
+models, (see (\ref{sec:prospect_theory}) and the prospect model (\cite{Kahneman79prospecttheory})).
+
+%How is the uncertainty quantified ? Answer: probability theory
+%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
+%Utility theory and combined with probability lead to decision theory.
+
+% Speak about the historical context of plannig un
+% Uncertainty and rational actions
+
+
+% vNM theorem is limited to evaluation options that come with an 
+% objective probability distribution over outcomes.
+% a situation decision theoriests and economists often describe 
+% as ''choice under risk``
+
+% The utility function represents the agents desires.
+% so the probability function represents her beliefs.
+% The theories are referred to collectively as subjective expected utility (SEU).
+
+% How is decision theory used in robotics ?
+
+
+\subsection{Beliefs \& desires}
 
 % POMDPs provide a rich framework for sequential decision-making under uncertainty in stochastic domains.
 % Solving a POMDP is often intractable.
-
-% Online policies consider of a lookahead search to find the best actions to apply
 
 %\begin{enumerate}
 % \item Decision theory
@@ -58,21 +117,20 @@ making
 % \item Partially Observable Markov Decision Process
 %\end{enumerate}
 
-
-\begin{table}
-\begin{center}
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{ l|l} 
-\hline
-    \textbf{Notation} 		& \textbf{Definition} \\ \hline\hline
-    $x_t \in \mathbb{R}^3$ 	& Cartesian state space position of the agent.\\
-    $y_t \in \mathbb{R}^{M}$	& Observation measurement from the agents sensors.\\
-    $u_t \in \mathbb{R}^3$	& Cartesian velocity, typically of the end-effector of the agent .\\
-\end{tabular}
-\end{center}
-\caption{Definition of common variables used.}
-\label{tab:notation}
-\end{table}
+%\begin{table}
+%\begin{center}
+%\renewcommand{\arraystretch}{1.5}
+%\begin{tabular}{ l|l} 
+%\hline
+%    \textbf{Notation} 		& \textbf{Definition} \\ \hline\hline
+%    $x_t \in \mathbb{R}^3$ 	& Cartesian state space position of the agent.\\
+%    $y_t \in \mathbb{R}^{M}$	& Observation measurement from the agents sensors.\\
+%    $u_t \in \mathbb{R}^3$	& Cartesian velocity, typically of the end-effector of the agent .\\
+%\end{tabular}
+%\end{center}
+%\caption{Definition of common variables used.}
+%\label{tab:notation}
+%\end{table}
 
 % Define box and box title style
 \tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
@@ -116,7 +174,11 @@ making
 \label{fig:pomdp_tik}
 \end{figure}
 
-\subsection{Partially Observable Markov Decision Process}
+\section{Partially Observable Markov Decision Process}
+
+%An important aspect of the POMDP approach is taht thre is no distinction drawn between actions taken to change 
+%the state of the world and actions taken to gain information! 
+%(\cite{Kaelbling98planningand})
 
 A POMDP is a popular approach for formulating a decision making process under both motion and measurement uncertainty;
 In Figure \ref{fig:pomdp_tik} we describe all of the components necessary for a POMDP.
@@ -125,7 +187,6 @@ Since the states are not observable, the agent cannot choose its actions based o
 representation of the past events is typically memory expensive. Instead it is possible to summarize all relevant 
 information from previous actions and observations in a probability distribution over the state space, known as the
 belief state. 
-
 
 Because the state space is partially observable the expected reward has to be computed for each possible history of states, actions and observations.
 All approaches in the literature instead encapsulate all these possible histories into a belief state $b_t(x_t)$ which is a 
@@ -156,29 +217,16 @@ belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$.
 \end{figure}
 
 
+\section{State of the art}
+
 %\begin{figure}[h]
 % \centering
 % \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
 % \caption{ad}
 %\end{figure}
 
-
 % Standard decision theory, (no temporal aspect taken into consideration)
 % Markov decision process (MDP).
-
-
-%How is the uncertainty quantified ? Answer: probability theory
-%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
-%Utility theory and combined with probability lead to decision theory.
-
-% Speak about the historical context of plannig un
-% Uncertainty and rational actions
-
-%An important aspect of the POMDP approach is taht thre is no distinction drawn between actions taken to change 
-%the state of the world and actions taken to gain information! 
-%(\cite{Kaelbling98planningand})
-
-
 
 
 % 1) POMDP
@@ -189,15 +237,12 @@ belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$.
 %	 1.2) MC-POMDP
 
 
-\subsection{Belief space}
-
 % 2) Belief space (planning)
 %	belief roadmap (assumption on the noise)
 %
 % 3)  Belief space (optimal control)
 %
 %
-\subsection{Summary}
 % 4) Assumptions about motion noise and observation 
 %
 %
@@ -238,29 +283,7 @@ Optimal control methods represent the belief by a Gaussian function
  % Macro-Actions
  \cite{Macro_uncertainty_2011}
 
-
-\section{Human and uncertainty}
-
-%	Decision Theory & optimal research
-%	Theory of Mind
-
-
-
-
-% What did we start off with and where are we now. What are the current achievements or reasonin under uncertainty and 
-% what are still the open problem.
-
-% It is a very broad area of research since we borrow elements from the human belief system and theory of mind. 
-% 
-%	1) Acting under uncertainty is not an easy problem. 
-%
-%	
-%
-%
-%	--- We are all about how to reason and act given uncertainty. 
-%	Decision theory and operational research (historical context)
-%	Bayesian Theory of Mind (Cognitive side of things). We are risk averse etc..
-%
+\section{Summary}
 
 
 

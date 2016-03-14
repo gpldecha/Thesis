@@ -7,9 +7,9 @@
 \BOOKMARK [1][-]{section.1.3}{Thesis outline}{chapter.1}% 7
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 8
 \BOOKMARK [1][-]{section.2.1}{Decisions under Uncertainty}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.1.1}{The problem}{section.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.1.2}{Partially Observable Markov Decision Process}{section.2.1}% 11
-\BOOKMARK [2][-]{subsection.2.1.3}{Belief space}{section.2.1}% 12
-\BOOKMARK [2][-]{subsection.2.1.4}{Summary}{section.2.1}% 13
-\BOOKMARK [1][-]{section.2.2}{Human and uncertainty}{chapter.2}% 14
-\BOOKMARK [0][-]{chapter*.7}{References}{}% 15
+\BOOKMARK [2][-]{subsection.2.1.1}{Decision theory}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.2}{Beliefs \046 desires}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Partially Observable Markov Decision Process}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.3}{State of the art}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter*.6}{References}{}% 15
