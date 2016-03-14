@@ -21,6 +21,16 @@ keywords={Bayes methods;Markov processes;decision theory;learning (artificial in
 doi={10.1109/CIRA.1999.810011},
 month={},}
 
+
+@ARTICLE{Kaelbling98planningand,
+    author = {Leslie Pack Kaelbling and Michael L. Littman and Anthony R. Cassandra},
+    title = {Planning and acting in partially observable stochastic domains},
+    journal = {ARTIFICIAL INTELLIGENCE},
+    year = {1998},
+    volume = {101},
+    pages = {99--134}
+}
+
 % Point Based Value Iteration
 
 @inproceedings{PBVI,
@@ -448,6 +458,26 @@ abstract ={Proposed in the 18th century by Cramer and Bernoulli and formally axi
 URL = {http://www.sciencemag.org/content/236/4801/537.abstract}, 
 eprint = {http://www.sciencemag.org/content/236/4801/537.full.pdf}, 
 journal = {Science} 
+}
+
+@incollection{Billard08chapter,
+author="A. Billard and S. Calinon and R. Dillmann and S. Schaal",
+title="Robot Programming by Demonstration",
+booktitle="Handbook of Robotics",
+editor="B. Siciliano and O. Khatib",
+publisher="Springer",
+address="Secaucus, NJ, USA",
+year="2008",
+pages="1371--1394"
+}
+
+@inproceedings{rai2013learning,
+  title={Learning from failed demonstrations in unreliable systems},
+  author={Rai, Akshara and De Chambrier, Guillaume and Billard, Aude},
+  booktitle={Humanoid Robots (Humanoids), 2013 13th IEEE-RAS International Conference on},
+  pages={410--416},
+  year={2013},
+  organization={IEEE}
 }
 
 

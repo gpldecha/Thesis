@@ -37,28 +37,161 @@ uncertainty can arise from inadequate or noisy sensors. If the environmental con
 is located is humid, misty or dark. It can make it difficult for the robot ascertain its position and 
 makes it difficult to plan how to achieve a given objective.
 
-
 The uncertainty of the state and actions have to be quantified. The predominant approach 
 is to  represent them by probabilities. For instance the application of a forward action (for a wheeled robot) 
-will result in a new position further ahead and a position to the right with some probability.
-An observation through the robots sensors of the environment will result in position 
-probability of the robot. Given this quantification of action and observation uncertainty in terms 
-of a probability distribution over the state, the agent must now take an action which will 
+will result in a new position further ahead and a position to the right (due to slippage) with some probability.
+An observation through the robots sensors will result in probability distribution over the robots probable location.
+Given this quantification of action and observation uncertainty in terms of a probability distribution over the state, 
+the agent must now take actions towards accomplishing its goal. To take a decision the agent must assign a utility 
+to the outcome of his actions. The utility is to indicate a preference over the outcomes and when combined with 
+probabilities leads to decision theory.  Decision theory is concerned with the study of uncertainty in decision 
+making 
+
+% POMDPs provide a rich framework for sequential decision-making under uncertainty in stochastic domains.
+% Solving a POMDP is often intractable.
+
+% Online policies consider of a lookahead search to find the best actions to apply
+
+%\begin{enumerate}
+% \item Decision theory
+% \item Markov Decision Process
+% \item Partially Observable Markov Decision Process
+%\end{enumerate}
 
 
-How is the uncertainty quantified ? Answer: probability theory
-How does the agent make a decision ? He must assigned a preference to the outcome of various actions
-Utility theory and combined with probability lead to decision theory.
 
-% Speak about the historical context of plannig un
-% Uncertainty and rational actions
+\begin{center}
+\begin{tabular}{ l|l} 
+\hline
+    \textbf{Notation} 	& 	\textbf{Definition} \\ \hline\hline
+    x_t			& Cartesian state space position of the agent.
+\end{tabular}
+\end{center}
+
+
+% Define box and box title style
+\tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} = [fill=white,draw= black, text=white,rounded corners=1mm,text=black]
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\node [pomdp_box] (box){%
+    \begin{minipage}{0.9\textwidth}
+    A partially observable markov decision process is defined by the tuple:
+      \begin{itemize}
+       \item[] \textbf{States} $x_t \in X$. 
+       \item[] \textbf{Actions} $u_t \in U$.
+       \item[] \textbf{Observations} $y_t \in Y$.
+       \item[] \textbf{Transition function}\\ The state transition function models the uncertainty originating from motion noise and is 
+       represented by the conditional probability distribution (or likelihood) function, $p(x_{t+1}|x_t,u_t) \in \mathbb{R}$,
+       which gives the probability of moving to state $x_{t+1}$ given that action $u_t$ was applied in state $x_t$. 
+       \item[] \textbf{Observation function}\\ The measurement function returns the probability 
+       or likelihood of the current observing $y_t$ given a known state $x_t$. It is modelled 
+       by the conditional distribution $p(y_t|x_t) \in \mathbb{R}$.
+       \item[] \textbf{Reward function} $R(x_t,u_t) \in \mathbb{R}$.
+       \item[] \textbf{Discount factor} $\gamma \in [0,1]$;
+      \end{itemize}
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {POMDP};
+\end{tikzpicture}%
+\caption{Description of the individual elements necessary to formalise a POMDP.}
+\label{fig:pomdp_tik}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\node [pomdp_box] (box){%
+    \begin{minipage}{0.9\textwidth}
+      \begin{itemize}
+       \item[] \textbf{Belief}\\
+       A belief is probability distributions, $b_t(x)$, over the state space $X$ and quantifies both 
+       motion and observation uncertainty. 
+       \item[] \textbf{Actions} $u_t \in U$.
+       \item[] \textbf{State space estimation} $b_t(x) = \tau(b_{t-1}(x),u_{t-1},y_t)$\\ 
+       Updates a belief given a motion and observation, it makes use of both the motion and observation functions 
+       defined in the POMDP. The state space estimation function, $\tau$, can be any kind of state space filter such as 
+       an Extended Kalman Filter (EKF) or a Particle Filter (PF).
+       \item[] \textbf{Reward function} $R(b_t,u_t) \in \mathbb{R}$.\\
+       The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
+function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$.
+       \item[] \textbf{Discount factor} $\gamma \in [0,1]$.
+      \end{itemize}
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {\textit{belief}-MDP};
+\end{tikzpicture}%
+\caption{a}
+\label{fig:bmdp_tik}
+\end{figure}
+
+
+
+\subsection{Partially Observable Markov Decision Process}
+
+A POMDP is a popular approach for formulating a decision making process under both motion and measurement uncertainty;
+In Figure \ref{fig:pomdp_tik} we describe all of the components necessary for a POMDP.
+
+Since the states are not observable, the agent cannot choose its actions based on the state. The explicit 
+representation of the past events is typically memory expensive. Instead it is possible to summarize all relevant 
+information from previous actions and observations in a probability distribution over the state space, known as the
+belief state. 
+
+
+Because the state space is partially observable the expected reward has to be computed for each possible history of states, actions and observations.
+All approaches in the literature instead encapsulate all these possible histories into a belief state $b_t(x_t)$ which is a 
+probability distribution (referred to in the POMDP literature as an information state, \textit{I}-state) over the state space $x_t$ and use this 
+new state description to cast the POMDP into a \textit{belief}-MDP (states are probability distributions, beliefs). 
+
+The new description of the problem is now in terms of belief space $<\mathcal{B},U,\tau,R,\gamma>$ where $\mathcal{B}$ is the set of 
+all possible beliefs and 
+The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
+function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$, The goal is to find an optimal action for each belief such that 
+the policy $\pi(b_t,u_t)$ maximises the expected reward, Equation \ref{eq:optimal_value_f}.
+
+\begin{align}\label{eq:optimal_value_f}
+% V^{\pi^*}(b_{t-1}) &= \mathbb{E}\left[\sum\limits_{t=0}^{\infty} \gamma^{t} R(x_t,u_t) \bigg| \pi,b_{t-1}\right]\\
+ V^{\pi^*}(b_{t-1}) &= \max_{u_{t-1}} \bigg[ R(b_{t-1},u_{t-1}) + \gamma \cdot \mathbb{E}_{y_t}\left[ V^{\pi}(b_t)  \right] \bigg]
+\end{align}
+
+From considering the decision belief tree of the POMDP, Figure \ref{fig:pomdp_bel_tree}, we can appreciate the complexity of the problem
+of finding an optimal policy. Given a discrete set of actions and observations to update the belief $b_1$ we have to consider a time 
+complexity of $\mathcal{O}(|U||Y|^T)$ where $T$ is the depth of the tree (the planning horizon). Given that we have a finite set of 
+belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$. 
 
 
 \begin{figure}[h]
  \centering
- \includegraphics[width=0.8\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
- \caption{ad}
+ \includegraphics[width=0.8\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf}
+  \caption{ad}
 \end{figure}
+
+
+%\begin{figure}[h]
+% \centering
+% \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
+% \caption{ad}
+%\end{figure}
+
+
+% Standard decision theory, (no temporal aspect taken into consideration)
+% Markov decision process (MDP).
+
+
+%How is the uncertainty quantified ? Answer: probability theory
+%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
+%Utility theory and combined with probability lead to decision theory.
+
+% Speak about the historical context of plannig un
+% Uncertainty and rational actions
+
+%An important aspect of the POMDP approach is taht thre is no distinction drawn between actions taken to change 
+%the state of the world and actions taken to gain information! 
+%(\cite{Kaelbling98planningand})
+
+
 
 
 % 1) POMDP
@@ -144,9 +277,4 @@ Optimal control methods represent the belief by a Gaussian function
 
 
 
-\begin{figure}[h]
- \centering
- \includegraphics[width=0.8\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf}
-  \caption{ad}
-\end{figure}
 
