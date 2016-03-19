@@ -2,45 +2,108 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
+I couldn't open database file bib/ProspectTheory.bib.bib
+---line 94 of file main.aux
+ : \bibdata{bib/all_citations.bib,bib/pomdp.bib,bib/ProspectTheory.bib
+ :                                                                    }
+I'm skipping whatever remains of this command
 Database file #1: bib/all_citations.bib.bib
-You've used 20 entries,
+Database file #2: bib/pomdp.bib.bib
+Repeated entry---line 3 of file bib/pomdp.bib.bib
+ : @inproceedings{ActingUncertainty_1996
+ :                                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 59 of file bib/pomdp.bib.bib
+ : @article{Ross08onlineplanning
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 94 of file bib/pomdp.bib.bib
+ : @article{Macro_uncertainty_2011
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 213 of file bib/pomdp.bib.bib
+ : @book{Thrun_2005
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 224 of file bib/pomdp.bib.bib
+ : @inproceedings{Platt-RSS-10
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 237 of file bib/pomdp.bib.bib
+ : @inproceedings{Quadrator_2008
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 249 of file bib/pomdp.bib.bib
+ : @article{BelRoadMap_2009
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 265 of file bib/pomdp.bib.bib
+ : @article{Bayesian_explor_exploit_2009
+ :                                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 284 of file bib/pomdp.bib.bib
+ : @inproceedings{Sol_POMDP_Policy_space_1998
+ :                                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 328 of file bib/pomdp.bib.bib
+ : @inproceedings{Rand_belief_space_replanning
+ :                                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 408 of file bib/pomdp.bib.bib
+ : @book{VonNeumann1944
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 416 of file bib/pomdp.bib.bib
+ : @article{Bernoulli1954
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 454 of file bib/pomdp.bib.bib
+ : @incollection{Billard08chapter
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 465 of file bib/pomdp.bib.bib
+ : @inproceedings{rai2013learning
+ :                               ,
+I'm skipping whatever remains of this entry
+You've used 21 entries,
             2773 wiz_defined-function locations,
-            750 strings with 9340 characters,
-and the built_in function-call counts, 10996 in all, are:
-= -- 1013
-> -- 579
-< -- 20
-+ -- 194
-- -- 173
-* -- 876
-:= -- 1609
-add.period$ -- 78
-call.type$ -- 20
-change.case$ -- 113
-chr.to.int$ -- 19
-cite$ -- 40
-duplicate$ -- 537
-empty$ -- 912
-format.name$ -- 203
-if$ -- 2411
+            758 strings with 9519 characters,
+and the built_in function-call counts, 11543 in all, are:
+= -- 1069
+> -- 600
+< -- 22
++ -- 201
+- -- 179
+* -- 910
+:= -- 1683
+add.period$ -- 81
+call.type$ -- 21
+change.case$ -- 118
+chr.to.int$ -- 20
+cite$ -- 42
+duplicate$ -- 566
+empty$ -- 957
+format.name$ -- 212
+if$ -- 2536
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 23
-newline$ -- 121
-num.names$ -- 86
-pop$ -- 245
+missing$ -- 24
+newline$ -- 126
+num.names$ -- 90
+pop$ -- 255
 preamble$ -- 1
-purify$ -- 95
+purify$ -- 99
 quote$ -- 0
-skip$ -- 415
+skip$ -- 443
 stack$ -- 0
-substring$ -- 472
-swap$ -- 127
-text.length$ -- 12
+substring$ -- 506
+swap$ -- 137
+text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 205
+type$ -- 216
 warning$ -- 0
-while$ -- 93
+while$ -- 99
 width$ -- 0
-write$ -- 301
+write$ -- 314
+(There were 15 error messages)

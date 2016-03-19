@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -81,6 +81,11 @@ Ruijie He, Emma Brunskill, and Nicholas Roy.
   January 2011.
 \newblock ISSN 1076-9757.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=2016945.2016959}.
+
+\bibitem[Kahneman and Tversky(1979)]{Kahneman79prospecttheory}
+Daniel Kahneman and Amos Tversky.
+\newblock Prospect theory: An analysis of decisions under risk.
+\newblock \emph{Econometrica}, pages 263--291, 1979.
 
 \bibitem[Martinez-Cantin et~al.(2009)Martinez-Cantin, de~Freitas, Brochu,
   Castellanos, and Doucet]{Bayesian_explor_exploit_2009}

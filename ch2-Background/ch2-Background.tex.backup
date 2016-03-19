@@ -48,44 +48,99 @@ probabilities leads to decision theory.
 
 \subsection{Decision theory}
 
-The central question of decision theory is; \textit{how do people take decisions when faced with uncertain outcomes ?} Interest 
-in such questions were typically centred around economical questions such as deciding what should be an appropriate 
-investment or wager for a particular gamble. It was noted that the expected monitory outcome of a gamble as a mean of basing a decision, 
-would often lead to a course of action which contradicts common sense. A famous example is the St. Petersburg paradox. Daniel Bernoulli 
-proposed a solution to the problem by introducing the notion of a \textit{utility} function in which he claimed that people should base 
-their decision on the expected utility instead of solely the monetary outcomes of the gamble.
+The central question of decision theory is; \textit{how do we take decisions when faced with uncertain outcomes ?} To answer
+such a question we need to ground the attributes which are involved when we take a decision, namely our \textbf{beliefs} and 
+\textbf{desires}. Beliefs reflect a degree of knowledge we have about the world in which the degree is ascertained by 
+the amount of evidence we have in support of our beliefs. Epistemology studies in great detail the relationship between 
+truth, beliefs and knowledge. We will not go into a philosophical discussion of their interplay, but make use of the following; 
+if we have sufficient evidence in support of our beliefs and they represent the truth then we consider them to 
+be a \textbf{rational belief}. As for desires they are linked to our disposition to take action to achieve them; for 
+example if I want to switch of my alarm clock I have to look for it in the last area I believed it to be. 
+These two attributes, beliefs and desires, are used to frame a decision problem. Early work in decision theory assumed 
+that the problem was well grounded and focused on finding what are the \textbf{rational choices} to take given our beliefs 
+to achieve our desires. 
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=0.5\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf}
+  \caption{ad}
+\end{figure}
+
+Early interest in such questions were typically centred around economics such as deciding what should be an appropriate 
+investment or wager for a particular gamble. It was noted that the expected monitory outcome of a gamble as a mean of basing a 
+decision, would often lead to a course of action which contradicts common sense; a famous example is the St. Petersburg paradox.
+In this paradox a bookmaker proposes you the following gamble. An initial pot starts with a content of 2\pounds, the bookmaker proceeds 
+to flip a fair coin until the first appearance of a tails which ends the game. Until the occurrence of the first tails 
+the money in the pot doubles after every toss. Once the game ends you leave with the content of the pot. As an avid gambler 
+and expected value maximiser how much would you be willing to pay to enter this gamble ? A value maximiser would computed 
+the expected monetary outcome. The amount of money increases by $2^{n}\pounds$, where $n$ is the number of non-final tosses and 
+and the probability of reaching $n$ is $1/2^{n}$. In this case the expected monitory outcome is an infinite number,
+
+\begin{equation*}
+\displaystyle \mathop{\mathbb{E}}_{p(n)}\{\pounds\} = \underbrace{\frac{1}{2} 2 \pounds}_{\textrm{first toss}} + \frac{1}{4} 4 \pounds + \dots = \sum\limits_{n=1}^{\infty} 
+\frac{2^{n}}{2^{n}}\pounds = \infty \pounds 
+\end{equation*}
+
+So your expected gain or return for paying to enter such game is an infinite amount of money, so in principal if you were
+seeking to maximise your expected return value you would be willing to pay an amount close to infinity. This does not 
+seem a good decision rule; no person in the world would be willing to pay more than $1\pounds$ to enter such game.
+
+Nicola Bernoulli proposed a solution to the problem (later published by his brother Daniel  (\cite{Bernoulli1954})) by introducing the notion 
+of a \textbf{utility function}, and he claimed that people should base their decision on the expected utility instead 
+of solely the monetary outcomes of a gamble.
 
 \begin{quote}
   \onehalfspacing% <--- Local line spacing
-  ``...the value of an item must not be based on its price, but rather on the utility it yields."\par\raggedleft--- \textup{Daniel Bernoulli},\cite{Bernoulli1954}
+  ``...the value of an item must not be based on its price, but rather on the utility it yields."\par\raggedleft--- \textup{Daniel Bernoulli}
 \end{quote}
 
-The introduction of a utility function takes into account that the net worth of a person will influence their decision since they weigh
-the gain differently. The utility function introduced by Bernoulli was the logarithm of the monetary 
-outcome $x\in \{5\$,10\$,25\$\}$ weighted by their probability $p(x)$ which results in an expected utility, Equation \ref{eq:exp_utility}.
-\begin{equation}\label{eq:exp_utility}
-  U(x) = \displaystyle \mathop{\mathbb{E}}_{x \sim p(x)} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
-\end{equation}
+The introduction of a utility function takes into account that the net worth of a person will influence their decision since 
+different people (in terms of their monetary worth) will weigh the gain differently. The utility function introduced by Bernoulli 
+was the logarithm of the monetary outcome $x \in X$ weighted by their probability $p(x)$ which results in an expected utility, 
+
+\begin{equation*}\label{eq:exp_utility}
+  U(X) = \displaystyle \mathop{\mathbb{E}}_{p(x=X)} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
+\end{equation*}
 
 Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
-the person will be \textbf{risk-averse}. Risk-averse means that a gambler would prefer the utility of a sure outcome instead of 
-taking a gamble who's expected utility is the same as the one of the sure outcome. 
+the person will be \textbf{risk-averse}, when linear \textbf{risk-neural} and convex \textbf{risk-seeking}. 
 This was the first introduction of a utility function.
+
 It is later in 1944 that von Neumann and Morgenstern (\cite{VonNeumann1944}) axiomised Bernoulli's utility function 
 and proved that if a decision maker has a preference over a set of lotteries\footnote{the term lottery refers 
 to a probability distribution in the original text.} which satisfy four axioms
 (completeness, transitivity, continuity, independence) then there exists a utility function who's expectation 
-preserves this preference.
-An agent whose decisions can be shown to maximise the vNM expected utility are said to be \textbf{rational} 
-and otherwise \textbf{irrational}. This is the theoretical basis of most economic theory, it is
-a \textbf{normative} model of how people should behave given uncertainty. 
-A drawback to the vNM theory of rationality is that it lacks the descriptive power to model peoples actual 
-decisions. It predicts that when we are presented with a choice with two different lotteries we will chose 
-the lottery which yields the maximum expected utility. There notable human studies ([citation]) which consistently 
-demonstrate that we do not always act as a vNM agent.  
-Decision Theory models which try to describe how we behave and not how we should behave are known as prescriptive 
-models, (see (\ref{sec:prospect_theory}) and the prospect model (\cite{Kahneman79prospecttheory})).
+preserves this preference. An agent whose decisions can be shown to maximise the vNM expected utility are said 
+to be \textbf{rational} and otherwise \textbf{irrational}.  This is the theoretical basis of most economic theory,
+it is a \textbf{normative} model of how people should behave given uncertainty. It is also the basis of most 
+if not all decision making, cogitative architectures and control policies in AI and robotics 
+(to the best of the authors knowledge).
 
+An aspect to keep in mind regarding the vNM model is that it is normative; it states what should be a rational decision 
+or behaviour. As a result it is not always consistent with human behaviour. There is great debate regarding 
+the predictions made by vNM models with respect to ours. There have been many studies both demonstrating divergence 
+between the models predictions and our observed behaviour but also supporting evidence that it does reflect 
+the output of our decision making process. Reasons for divergence have been attributed to the way we 
+weigh probabilities and how the decision problem is framed. But probably the most important aspect is that 
+in most decisions we are faced with the quantification and rationality of our beliefs might not be adequate
+and limitations of our working memory will come into play in the final decision.
+
+Nevertheless vNM agents are predominantly used in AI and robotics as a means of implementing 
+a decision making process or a control policy. In psychology and cogitative science vNM agents
+are a used for comparing human behaviour against an optimal strategy (by optimal we mean it is rational in 
+the vNM sense). 
+
+%(see prescriptive models(\cite{Kahneman79prospecttheory}). 
+
+% vNM is concerned with a one shot only decision, but what if we have to take a sequence of decisions ? What 
+% happens then ?
+
+%How is the uncertainty quantified ? Answer: probability theory
+%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
+%Utility theory and combined with probability lead to decision theory.
+
+% Speak about the historical context of plannig un
+% Uncertainty and rational actions
 
 
 % vNM theorem is limited to evaluation options that come with an 
@@ -96,12 +151,14 @@ models, (see (\ref{sec:prospect_theory}) and the prospect model (\cite{Kahneman7
 % The utility function represents the agents desires.
 % so the probability function represents her beliefs.
 % The theories are referred to collectively as subjective expected utility (SEU).
-% 
+
+% How is decision theory used in robotics ?
+
+
+\subsection{Beliefs \& desires}
 
 % POMDPs provide a rich framework for sequential decision-making under uncertainty in stochastic domains.
 % Solving a POMDP is often intractable.
-
-% Online policies consider of a lookahead search to find the best actions to apply
 
 %\begin{enumerate}
 % \item Decision theory
@@ -109,21 +166,109 @@ models, (see (\ref{sec:prospect_theory}) and the prospect model (\cite{Kahneman7
 % \item Partially Observable Markov Decision Process
 %\end{enumerate}
 
+\begin{table}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|p{9cm}|} 
+\hline
+    \textbf{Notation} 			 	& \textbf{Definitions} \\ \hline\hline
+    $x_t \in \mathbb{R}^3$ 		 	& Cartesian state space position of the agent.\\
+    $y_t \in \mathbb{R}^{M}$		 	& Observation/measurement from the agents sensors.\\
+    $a_t \in \mathbb{R}^3$		 	& Action, usually the Cartesian velocity of the end-effector of the agent.\\
+    $X,Y,A$				 	& State, observation and action random variables where $x$, $y$ and $a$ are realisation.\\
+    $p(x_t)$ 					& Short hand notation for a probability density function, $p_{X}(x_t)$.\\
+    $x_{0:t}$					& $\{x_0,x_1,\cdots,x_{t-1},x_t\}$, history up to time $t$.\\
+    $p(x_t|y_{0:t},a_{0:t})$	 		& Filtered probability distribution over the state space given the action and observation history.\\
+    $b_t \in \mathbb{R}^{L}$			& Belief state, a function of the filtered distribution 
+						 $b(p(x_t|y_{0:t},a_{0:t}))$ which will be written as $b_t$ for simplicity.\\
+    $\policy(a_t,b_t)$ 				& Probabilistic policy, $a_t \sim \pi_{\boldsymbol{\theta}}(a_t,b_t)$ \\
+    $r(x,a) \in \mathbb{R}$			& Reward function, returns the utility of taking action $a$ in state $x$. It can also be independent of the action.
+\\ \hline
+\end{tabular}
+\end{center}
+\caption{Definition of common variables used.}
+\label{tab:notation}
+\end{table}
 
-%\begin{table}
-%\begin{center}
-%\renewcommand{\arraystretch}{1.5}
-%\begin{tabular}{ l|l} 
-%\hline
-%    \textbf{Notation} 		& \textbf{Definition} \\ \hline\hline
-%    $x_t \in \mathbb{R}^3$ 	& Cartesian state space position of the agent.\\
-%    $y_t \in \mathbb{R}^{M}$	& Observation measurement from the agents sensors.\\
-%    $u_t \in \mathbb{R}^3$	& Cartesian velocity, typically of the end-effector of the agent .\\
-%\end{tabular}
-%\end{center}
-%\caption{Definition of common variables used.}
-%\label{tab:notation}
-%\end{table}
+
+\section{Sequential decision process}
+
+When referring outright to Decision theory with no extensions, we usually are talking about a one shot
+non temporal decision. However many interesting decision problems are sequential by nature.
+In such a situation we must consider the effect our current decisions will have on our later future decisions. Expected utility 
+theory (part of decision theory) is extendable to a temporal decision problem. The traditional way of 
+representing a temporal decision problem is by an \textbf{influence diagram} or a \textbf{Dynamic Bayesian Network (DBN)}. 
+In an influence diagram and a DBNs random variables are represented by nodes, the utility by diamonds and the arrows represent 
+relations. From the graphical representation it is easy to write down the joint distribution over the random variables and 
+conditional independence and dependence relations can be read. Influence diagrams are used to model a finite temporal decision 
+process (also called finite-horizon) whilst DBNs are for infinite continuously recurring sequential decisions 
+which is tailored to model infinite-horizon stationary decision process. By stationarity we imply that the 
+decisions are independent of time. 
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp.pdf}
+  \caption{ad}
+\end{figure}
+
+\subsection{Solving a sequential decision process}
+
+Lets consider a decision problem of length $T$ in a world which has $N$ states. 
+Given an utility function we first want to find the initial action, $a_0$ which will
+be optimal. This means that the action maximises the expected utility 
+given all resulting future states and actions. 
+%,a_{1:T},x_{1:T}
+\begin{equation}\label{eq:utility_one}
+	a^*_0 = \argmax_{a_0}  \overbrace{\displaystyle \mathop{\mathbb{E}}_{p(x_{0:T},a_{0:T-1})} \{ u(x_{0:T}) \}}^{U(a_0,x_0=x^{[i]})} \\
+\end{equation}
+Equation \ref{eq:utility_one}, is the maximisation of the expected utility at time step $0$ given that we are 
+starting in state $i$ and that every following action is optimal (also maximise the expected 
+utility). The utility and associated probability of this utility are given by Equation  \ref{eq:utility_one_var}
+\begin{align}\label{eq:utility_one_var}
+  u(x_{0:T}) 	     &= r(x_0) + \gamma r(x_1) + \gamma^2 r(x_2) + \cdots + \gamma^{T} r(x_T)\\
+  p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t)
+\end{align}
+
+To find the first optimal action we have to consider the expected utility for all $N$ states and take the action which has the highest value,
+\begin{equation}\label{eq:max_util}
+  U(a_0,x_0 = x^{[i]}) =  \cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} \max_{a_{T-1}} \ \sum\limits_{x_T} p(x_{0:T},a_{0:T-1})  u(x_{0:T})
+\end{equation}
+
+Solving the above directly in its current form would have an exponential time complexity, $\BigO(N^T)$. By making use of the first order 
+markov assumption and that current rewards do not dependent future rewards, the sums in Equation \label{eq:max_util} can be re-arranged.
+
+% Solving the above is known as the most probable explentation. 
+
+\begin{align}
+ &U(a_0,x_0=x^{[i]}) =\cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}}  \nonumber\\
+ &p(x_{0:T-1},a_{0:T-2})  \left( u(x_{0:T-2}) +  + \max_{a_{T-1}} \gamma^{T} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) r(x_{T}) \right)
+\end{align}
+
+
+
+
+
+
+% applying the method on a finite-horizon Markov Decision processes is equivalent to Value Iteration where the argmax in each iteration is solved be means of an inference query.
+%The first change is to the 
+%utility function itself. 
+
+%To be consistent with the literature regarding sequential decision processes, namely 
+%work in operational research, AI, optimal control theory and 
+
+%There are two main forms 
+%of representing such as decision problem:  in, markov decision processes, partially observable 
+%marov decision process. 
+
+% Summary of Bayesian decision Tree CPT table etc..
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf}
+  \caption{ad}
+\end{figure}
+
+\subsection{POMDP}
 
 % Define box and box title style
 \tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
@@ -167,7 +312,8 @@ models, (see (\ref{sec:prospect_theory}) and the prospect model (\cite{Kahneman7
 \label{fig:pomdp_tik}
 \end{figure}
 
-\subsection{Partially Observable Markov Decision Process}
+
+
 
 A POMDP is a popular approach for formulating a decision making process under both motion and measurement uncertainty;
 In Figure \ref{fig:pomdp_tik} we describe all of the components necessary for a POMDP.
@@ -176,7 +322,6 @@ Since the states are not observable, the agent cannot choose its actions based o
 representation of the past events is typically memory expensive. Instead it is possible to summarize all relevant 
 information from previous actions and observations in a probability distribution over the state space, known as the
 belief state. 
-
 
 Because the state space is partially observable the expected reward has to be computed for each possible history of states, actions and observations.
 All approaches in the literature instead encapsulate all these possible histories into a belief state $b_t(x_t)$ which is a 
@@ -207,29 +352,16 @@ belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$.
 \end{figure}
 
 
+\section{State of the art}
+
 %\begin{figure}[h]
 % \centering
 % \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
 % \caption{ad}
 %\end{figure}
 
-
 % Standard decision theory, (no temporal aspect taken into consideration)
 % Markov decision process (MDP).
-
-
-%How is the uncertainty quantified ? Answer: probability theory
-%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
-%Utility theory and combined with probability lead to decision theory.
-
-% Speak about the historical context of plannig un
-% Uncertainty and rational actions
-
-%An important aspect of the POMDP approach is taht thre is no distinction drawn between actions taken to change 
-%the state of the world and actions taken to gain information! 
-%(\cite{Kaelbling98planningand})
-
-
 
 
 % 1) POMDP
@@ -240,15 +372,12 @@ belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$.
 %	 1.2) MC-POMDP
 
 
-\subsection{Belief space}
-
 % 2) Belief space (planning)
 %	belief roadmap (assumption on the noise)
 %
 % 3)  Belief space (optimal control)
 %
 %
-\subsection{Summary}
 % 4) Assumptions about motion noise and observation 
 %
 %
@@ -289,29 +418,7 @@ Optimal control methods represent the belief by a Gaussian function
  % Macro-Actions
  \cite{Macro_uncertainty_2011}
 
-
-\section{Human and uncertainty}
-
-%	Decision Theory & optimal research
-%	Theory of Mind
-
-
-
-
-% What did we start off with and where are we now. What are the current achievements or reasonin under uncertainty and 
-% what are still the open problem.
-
-% It is a very broad area of research since we borrow elements from the human belief system and theory of mind. 
-% 
-%	1) Acting under uncertainty is not an easy problem. 
-%
-%	
-%
-%
-%	--- We are all about how to reason and act given uncertainty. 
-%	Decision theory and operational research (historical context)
-%	Bayesian Theory of Mind (Cognitive side of things). We are risk averse etc..
-%
+\section{Summary}
 
 
 
