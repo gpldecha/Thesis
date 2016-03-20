@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  19 MAR 2016 18:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  20 MAR 2016 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex -shell-escape
+**main.tex
 (./main.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
@@ -359,7 +359,22 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@top=\skip74
 \subfig@bottom=\skip75
 )
-(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+
+
+! Package subcaption Error: This package can't be used in cooperation
+(subcaption)                with the subfigure package.
+
+See the subcaption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48   \endinput}{}
+                   %
+RTFM
+
+) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen148
 \lightrulewidth=\dimen149
@@ -763,7 +778,7 @@ File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 hs.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
 )))
-Package hyperref Info: Option `colorlinks' set `true' on input line 51.
+Package hyperref Info: Option `colorlinks' set `true' on input line 53.
  (./main.aux
 
 LaTeX Warning: Label `eq:max_util' multiply defined.
@@ -771,20 +786,20 @@ LaTeX Warning: Label `eq:max_util' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 \chapternumberheight=\dimen208
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -819,8 +834,8 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box46
-Package backref Info: ** backref set up for natbib ** on input line 77.
-Package hyperref Info: Link coloring ON on input line 77.
+Package backref Info: ** backref set up for natbib ** on input line 79.
+Package hyperref Info: Link coloring ON on input line 79.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -830,9 +845,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count163
 )
-LaTeX Info: Redefining \ref on input line 77.
-LaTeX Info: Redefining \pageref on input line 77.
-LaTeX Info: Redefining \nameref on input line 77.
+LaTeX Info: Redefining \ref on input line 79.
+LaTeX Info: Redefining \pageref on input line 79.
+LaTeX Info: Redefining \nameref on input line 79.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -844,7 +859,7 @@ LaTeX Info: Redefining \nameref on input line 77.
 \c@nbdrafts=\count164
 )
 \thesis@dim=\dimen211
-LaTeX Font Info:    Try loading font information for T1+aess on input line 91.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 93.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
@@ -920,7 +935,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf, id
-=137, 181.67876pt x 223.83624pt>
+=133, 181.67876pt x 223.83624pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pd
 f Graphic file (type pdf)
 
@@ -945,102 +960,121 @@ Underfull \hbox (badness 3646) in paragraph at lines 182--184
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 7415) in paragraph at lines 189--190
+[]|\T1/aer/m/n/10 Observation/measurement model, re-turns the like-li-
+ []
+
+
+Overfull \hbox (17.89183pt too wide) in paragraph at lines 172--193
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
-[8]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp.pdf, id=192, 543.0
-2875pt x 255.95625pt>
-File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp.pdf Graphic f
-ile (type pdf)
+[8] [9]
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf, id=195, 261.
+97874pt x 255.95625pt>
+File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf Graphic 
+file (type pdf)
 
-<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp.pdf>
+<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/mdp.pdf used on input line 210.
-(pdftex.def)             Requested size: 345.0pt x 162.62022pt.
+s/mdp3.pdf used on input line 233.
+(pdftex.def)             Requested size: 155.24895pt x 151.68463pt.
+
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf, id=196, 261.
+97874pt x 255.95625pt>
+File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf Graphic 
+file (type pdf)
+
+<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf>
+Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
+s/mdp2.pdf used on input line 234.
+(pdftex.def)             Requested size: 155.24895pt x 151.68463pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[10]
+Underfull \vbox (badness 7362) has occurred while \output is active []
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+ [11 </home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf> </home/
+guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf
 
- []
-
-[9]
-Overfull \hbox (20.72559pt too wide) in paragraph at lines 245--245
+pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
+ckground/Figures/mdp2.pdf): PDF inclusion: multiple pdfs with page group includ
+ed in a single page
+>]
+Overfull \hbox (21.45703pt too wide) in paragraph at lines 312--312
 [] 
  []
 
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf, id=201, 110
+Overfull \hbox (1.37296pt too wide) detected at line 316
+[]\OML/cmm/m/it/10 U\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[]; x[] \OT1/cmr/m/n/10 
+= \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) = [] [] [] \OML/cmm/m/it/10 p\OT1/cmr/m
+/n/10 (\OML/cmm/m/it/10 x[]; a[]\OT1/cmr/m/n/10 ) []
+ []
+
+
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf, id=329, 110
 3.12125pt x 509.905pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf Graphic
  file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp.pdf used on input line 267.
+s/pomdp.pdf used on input line 342.
 (pdftex.def)             Requested size: 345.0pt x 159.4694pt.
 
-[10 </home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 
  []
 
 
-Overfull \hbox (21.19998pt too wide) in paragraph at lines 310--311
- [][] 
- []
+LaTeX Warning: Reference `fig:pomdp_tik' on page 12 undefined on input line 391
+.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (21.20477pt too wide) in paragraph at lines 331--336
+[12 </home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf>]
+Overfull \hbox (21.20477pt too wide) in paragraph at lines 403--408
 []\T1/aer/m/n/10 The new de-scrip-tion of the prob-lem is now in terms of be-li
 ef space $\OML/cmm/m/it/10 < \OMS/cmsy/m/n/10 B\OML/cmm/m/it/10 ; U; ^^\; R; ^^
 M >$
  []
 
 
-LaTeX Warning: Reference `fig:pomdp_bel_tree' on page 11 undefined on input lin
-e 342.
+LaTeX Warning: Reference `fig:pomdp_bel_tree' on page 13 undefined on input lin
+e 414.
 
-[11 </home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf>]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=40
-1, 691.58376pt x 347.2975pt>
+
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=46
+0, 691.58376pt x 347.2975pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf G
 raphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/belief_tree.pdf used on input line 350.
+s/belief_tree.pdf used on input line 422.
 (pdftex.def)             Requested size: 345.0pt x 173.25087pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+[13 </home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--389
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
 
  []
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
-
- []
-
-) [13 </home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>
-] [14
-
-] (./main.bbl (./main.brf)
+) [14] (./main.bbl (./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
@@ -1056,21 +1090,22 @@ s,
 
 [15
 
+
 ])
 
-Package caption Warning: Unused \captionsetup[algorithm] on input line 31.
+Package caption Warning: Unused \captionsetup[algorithm] on input line 33.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
 [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DAF5432875D9EF5DF98D9024C734CEE1;1155.
+(rerunfilecheck)             Checksum: CA5065CCCACFFE3E781AF5AA57BF0A7C;1063.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 4DDCA874C7701ECCC9F76D1B48CAE087;1214.
+(rerunfilecheck)             Checksum: 9BAE419C8526F9E67AE19834BDBFCDB1;1214.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1081,48 +1116,46 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  )
-(\end occurred when \ifdefined on line 118 was incomplete)
-(\end occurred when \ifdefined on line 109 was incomplete)
-(\end occurred when \ifdefined on line 108 was incomplete) 
+(\end occurred when \ifdefined on line 120 was incomplete)
+(\end occurred when \ifdefined on line 111 was incomplete)
+(\end occurred when \ifdefined on line 110 was incomplete) 
 Here is how much of TeX's memory you used:
- 18231 strings out of 493304
- 310655 string characters out of 6139871
- 392848 words of memory out of 5000000
- 21148 multiletter control sequences out of 15000+600000
- 60465 words of font info for 125 fonts, out of 8000000 for 9000
+ 18205 strings out of 493304
+ 310276 string characters out of 6139872
+ 394539 words of memory out of 5000000
+ 21118 multiletter control sequences out of 15000+600000
+ 58327 words of font info for 123 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,13n,60p,408b,701s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,17n,55p,616b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (18 pages, 471590 bytes).
+nts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (18 pages, 461820 bytes).
 PDF statistics:
- 628 PDF objects out of 1000 (max. 8388607)
- 534 compressed objects within 6 object streams
- 73 named destinations out of 1000 (max. 500000)
- 169 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 675 PDF objects out of 1000 (max. 8388607)
+ 574 compressed objects within 6 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 

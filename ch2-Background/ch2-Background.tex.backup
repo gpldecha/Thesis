@@ -181,9 +181,14 @@ the vNM sense).
     $p(x_t|y_{0:t},a_{0:t})$	 		& Filtered probability distribution over the state space given the action and observation history.\\
     $b_t \in \mathbb{R}^{L}$			& Belief state, a function of the filtered distribution 
 						 $b(p(x_t|y_{0:t},a_{0:t}))$ which will be written as $b_t$ for simplicity.\\
-    $\policy(a_t,b_t)$ 				& Probabilistic policy, $a_t \sim \pi_{\boldsymbol{\theta}}(a_t,b_t)$ \\
-    $r(x,a) \in \mathbb{R}$			& Reward function, returns the utility of taking action $a$ in state $x$. It can also be independent of the action.
-\\ \hline
+    $\policy(a_t|\cdot)$ 				& Probabilistic policy, $a_t \sim \pi_{\boldsymbol{\theta}}(a_t|\cdot)$ \\
+    $r(x) \in \mathbb{R}$			& Reward function, returns the utility of being in state $x$. It can also be dependent on the action, $r(x,a)$.\\
+    $\gamma \in [0,1)$				& Discount factor, the closer to one the more later utilities/rewards are considered. When set to zero, only immediate rewards are 
+						  considered which would result in a myopic greedy agent.\\
+    $p(x_{t+1}|x_t,a_t)$			& State transition function, returns the likelihood/probability of reaching state $x_{t+1}$ given that action $a_t$ is applied in state $x_t$.\\	
+    $p(y_t|x_t)$				& Observation/measurement model, returns the likelihood/probability of observing $y_t$ given that the agent is in state $x_t$.\\
+    $\tau(b_{t-1}(x),u_{t-1},y_t)$		& Updates a belief given a motion and observation, it makes use of both the motion and observation functions. The state space estimation function, $\tau$, can be any kind of state space filter such as an Extended Kalman Filter (EKF) or a Particle Filter (PF).
+    \\ \hline
 \end{tabular}
 \end{center}
 \caption{Definition of common variables used.}
@@ -193,23 +198,84 @@ the vNM sense).
 
 \section{Sequential decision process}
 
-When referring outright to Decision theory with no extensions, we usually are talking about a one shot
-non temporal decision. However many interesting decision problems are sequential by nature.
-In such a situation we must consider the effect our current decisions will have on our later future decisions. Expected utility 
-theory (part of decision theory) is extendable to a temporal decision problem. The traditional way of 
-representing a temporal decision problem is by an \textbf{influence diagram} or a \textbf{Dynamic Bayesian Network (DBN)}. 
-In an influence diagram and a DBNs random variables are represented by nodes, the utility by diamonds and the arrows represent 
-relations. From the graphical representation it is easy to write down the joint distribution over the random variables and 
-conditional independence and dependence relations can be read. Influence diagrams are used to model a finite temporal decision 
-process (also called finite-horizon) whilst DBNs are for infinite continuously recurring sequential decisions 
-which is tailored to model infinite-horizon stationary decision process. By stationarity we imply that the 
-decisions are independent of time. 
+When referring outright to decision theory with no extensions, we usually are talking about a one-shot
+non-temporal decision. However many interesting decision problems are sequential.
+In such a situation we must consider the effect current decisions will have on future decisions. Expected utility 
+theory (part of decision theory) is extendible to a temporal decision problem. There are however a two subtle but important 
+differences between the temporal and non-temporal decision problems. The first is the utility, in the one time step problem 
+an outcome has one utility assigned to it, $u(x)$. Now a utility has to be assigned to a sequence of outcomes, $u(x_{0:T})$, 
+where $T$ is the number of sequential decisions taken. The utility of a sequence is the sum of the individual outcomes 
+themselves. However if the decision problem is non terminating this will lead to an unbounded utility. To bound the utility a 
+discount factor $\gamma \in [0,1)$ is introduced and the new utility function becomes:
+
+\begin{equation}
+    u(x_{0:T}) 	   = \sum\limits_{t=0}^{T} \gamma^{t} u(x_t) \label{eq:joint_state_actions_util}
+\end{equation}
+The discount factor allows to control the importance later utilities have on the final utility. If the discount factor is set to
+zero we recover the original one-shot utility function and if we were to take actions which maximised the expected utility 
+we would not be considering at all the effect later decisions have on our overall utility. An agent reasoning in such a way is 
+called myopic.
+The second is the way in which probabilities are assigned to outcomes, this was $p(x)$ in the decision theory utility function formulation.
+Now because of the sequential nature of the problem we consider a conditional state transfer probability distribution $p(x_{t+1}|x_t,a_t)$
+which models the probability of going from state $x_t$ to $x_{t+1}$ given that action $a_t$ is taken. This particular representation of a
+sequential decision problem is called a \textbf{Markov Decision Process (MDP)} and to be more exact a first order MDP.
+The necessary models are the state transition and utility functions. The assumption of such a model is that all necessary information to 
+take a decision is encoded in the current state and there is no need to consider the history of state transitions when taking a current decision.
+In Figure \ref{fig:mdp} we illustrate two graphical representations of a MDP, which are known as \textbf{Dynamic Bayesian Networks (DBN)}.
+A DBN represents the the temporal relationship and conditional dependence between random variables, decisions and utilities, which are 
+represented by circles, squares and diamonds. For the MDP to the left the actions are not stochastic, whilst for the MDP on the right 
+the actions taken are governed by a stochastic \textbf{policy}, $\pi(a_t|x_t)$. A policy represents the decision process of an agent,
+given a state it will output an action. A stochastic policy means that given the same input they will produce
+different outputs. A policy is considered optimal when it maximises the expected utility function, it is optimal in the vNM sense.
 
 \begin{figure}[h]
- \centering
- \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp.pdf}
-  \caption{ad}
+  \centering
+  \subfigure[off-policy]{\label{fig:mdp_off}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf}}
+  \subfigure[on-policy]{\label{fig:mdp_on}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf}} 
+  \caption{Dynamical Bayesian Network of a Markov Decision Process; it encodes the temporal relation between the random variables (circles),
+  utilities (diamond) and decisions (squares). The arrows specify conditional distributions. In \textbf{(a)} the decision nodes are not considered 
+  random variables whilst in \textbf{(b)} they are. From these two DBN  we can read off two conditional distributions, the state transition distribution (in red) and the action distribution (in purple). }
+    \label{fig:mdp}
 \end{figure}
+
+Solving a MDP means that we have found a policy whose actions in any given state will always maximise the expected utility. Such 
+a policy is usually denoted as $\pi^*$. As in decision theory the expected utility is the utility of a sequence of state transitions
+$u(x_{0:T})$ weighted its probability of occurrence. The graphical representation allows to read off directly the probability 
+of 
+
+From the above DBN it is straight forward to write down the joint probability of a sequence of actions and states and 
+the utility it returns, Equation \ref{eq:joint_state_actions}-\ref{eq:joint_state_actions_util}.
+\begin{align}\label{eq:joint_state_actions}
+  p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t) \policy(a_t|x_t)  \\ 
+    r(x_{0:T}) 	       &= \sum\limits_{t=0}^{T} \gamma^{t} r(x_t) \label{eq:joint_state_actions_util}
+\end{align}
+
+The discount factor, $\lambda$
+
+
+%Before going into how to solve a temporal decision problem, we have to introduce a way of representing it. 
+%A typical representation is done with a graphical model. Graphical models allow to represent . There are many different types of graphical models and we will be considering Directed Acyclic Graphs (DAC) and 
+%when considering an continuous reoccurring decision process DACs are referred to as \textbf{Dynamic Bayesian Networks (DBN)}.
+%We are manly interested in DBNs because they are predominantly used in robotics and AI for solving infinite-horizon decision problems.
+%In Figure \ref{fig:mdp} we illustrate a DBN of a sequential decision problem where the arrows encode conditional distributions. For instance the state 
+%space random variable node, $X$, has two children $A$ and itself $X$ at a previous time step, this connection reads as $p(x_{t+1}|x_t,a_t)$. 
+%The decision and utility nodes are not considered random variables in the left subfigure.
+
+
+% which allow to illustrate infinite-horizon stationary decision processes among others. These types of DAC graphs are also called 
+% If the decision problem had a fixed horizon it could be illustrated by an \textbf{influence diagrams}. 
+% Influence diagrams are for finite temporal decision process (also called finite-horizon) whilst DBNs are for infinite continuously recurring sequential decisions.
+% In Figure \ref{fig:mdp} we illustrate the DBN of a temporal decision problem. 
+
+
+%Figure \ref{fig:mdp} illustrates the DBN of a first order \textbf{Markov Decision Process (MDP)}.
+%An MDP is a \textbf{model} of a temporal decision process which is characterised by the tuple, $(X,A,p(x_{t+1}|x_t,a_t),r(x),\gamma)$, where the models are 
+%the state transition function $p(x_{t+1}|x_t,a_t)$ and utility function $r(x)$.
+
+
+
+
+
 
 \subsection{Solving a sequential decision process}
 
@@ -225,24 +291,33 @@ Equation \ref{eq:utility_one}, is the maximisation of the expected utility at ti
 starting in state $i$ and that every following action is optimal (also maximise the expected 
 utility). The utility and associated probability of this utility are given by Equation  \ref{eq:utility_one_var}
 \begin{align}\label{eq:utility_one_var}
-  u(x_{0:T}) 	     &= r(x_0) + \gamma r(x_1) + \gamma^2 r(x_2) + \cdots + \gamma^{T} r(x_T)\\
+  r(x_{0:T}) 	     &= r(x_0) + \gamma r(x_1) + \gamma^2 r(x_2) + \cdots + \gamma^{T} r(x_T)\\
   p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t)
 \end{align}
 
 To find the first optimal action we have to consider the expected utility for all $N$ states and take the action which has the highest value,
 \begin{equation}\label{eq:max_util}
-  U(a_0,x_0 = x^{[i]}) =  \cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} \max_{a_{T-1}} \ \sum\limits_{x_T} p(x_{0:T},a_{0:T-1})  u(x_{0:T})
+  U(a_0,x_0 = x^{[i]}) =  \cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} \max_{a_{T-1}} \ \sum\limits_{x_T} p(x_{0:T},a_{0:T-1}) r(x_{0:T})
 \end{equation}
 
 Solving the above directly in its current form would have an exponential time complexity, $\BigO(N^T)$. By making use of the first order 
-markov assumption and that current rewards do not dependent future rewards, the sums in Equation \label{eq:max_util} can be re-arranged.
+markov assumption and that current rewards do not dependent future rewards, the sums in Equation \label{eq:max_util} can be re-arranged and 
+recursive structure appears. 
 
 % Solving the above is known as the most probable explentation. 
 
 \begin{align}
  &U(a_0,x_0=x^{[i]}) =\cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}}  \nonumber\\
- &p(x_{0:T-1},a_{0:T-2})  \left( u(x_{0:T-2}) +  + \max_{a_{T-1}} \gamma^{T} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) r(x_{T}) \right)
+ &p(x_{0:T-1},a_{0:T-2})  \left( r(x_{0:T-2}) + \gamma^{T-1} \underbrace{r(x_{T-1}) +  \max_{a_{T-1}} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) \gamma^{T} r(x_{T})}_{V_{T-1}(x_{T-1})} \right)
 \end{align}
+
+\begin{equation}
+ U(a_0,x_0=x^{[i]}) =\cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} p(x_{0:T-1},a_{0:T-2})  \left[ r(x_{0:T-2}) + \gamma^{T-1} V_{T-1}(x_{T-1}) \right]
+\end{equation}
+
+\begin{equation}
+ V_{t-1}(x_{t-1}) = r(x_{t-1}) + \max_{a_{t-1}} \sum\limits_{t} p(x_t|x_{t-1},a_{t-1}) V_{t}(x_t)
+\end{equation}
 
 
 
@@ -271,49 +346,46 @@ markov assumption and that current rewards do not dependent future rewards, the 
 \subsection{POMDP}
 
 % Define box and box title style
-\tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
-\tikzstyle{fancytitle} = [fill=white,draw= black, text=white,rounded corners=1mm,text=black]
+%\tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+%\tikzstyle{fancytitle} = [fill=white,draw= black, text=white,rounded corners=1mm,text=black]
 
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-\node [pomdp_box] (box){%
-    \begin{minipage}{\textwidth}
-      \begin{itemize}
-       \item[] \textbf{States, Actions, Observations} 
+%\begin{figure}[h]
+%\centering
+%\begin{tikzpicture}
+%\node [pomdp_box] (box){%
+%    \begin{minipage}{\textwidth}
+%      \begin{itemize}
+%       \item[] \textbf{States, Actions, Observations} 
       
-      \item[] \textbf{Transition function:} $\mathbf{p(x_{t+1}|x_t,u_t)}$\\ The state transition function models the uncertainty originating from motion noise and is 
-       represented by the conditional probability distribution (or likelihood) function, $p(x_{t+1}|x_t,u_t) \in \mathbb{R}$,
-       which gives the probability of moving to state $x_{t+1}$ given that action $u_t$ was applied in state $x_t$. 
+%      \item[] \textbf{State transition function:} $\mathbf{p(x_{t+1}|x_t,a_t)}$\\ The state transition function models the uncertainty originating from motion noise and is 
+%       represented by the conditional probability distribution (or likelihood) function, $p(x_{t+1}|x_t,a_t) \in \mathbb{R}$,
+%       which gives the probability of moving to state $x_{t+1}$ given that action $a_t$ was applied in state $x_t$. 
       
-      \item[] \textbf{Observation function}: $\mathbf{p(y_t|x_t)}$\\ The observation function returns the probability 
-       or likelihood of the current observing $y_t$ given a known state $x_t$. It is modelled 
-       by the conditional distribution $p(y_t|x_t) \in \mathbb{R}$.
+%      \item[] \textbf{Observation function}: $\mathbf{p(y_t|x_t)}$\\ The observation function returns the probability 
+%       or likelihood of the current observing $y_t$ given a known state $x_t$. It is modelled 
+%       by the conditional distribution $p(y_t|x_t) \in \mathbb{R}$.
       
-      \item[] \textbf{Belief:} $\mathbf{b_t(x)}$ \\
-       A belief is probability distributions, $b_t(x)$, over the state space $X$ and quantifies both 
-       motion and observation uncertainty. 
+%      \item[] \textbf{Belief:} $\mathbf{b_t(x)}$ \\
+%       A belief is probability distributions, $b_t(x)$, over the state space $X$ and quantifies both 
+%       motion and observation uncertainty. 
       
-      \item[] \textbf{State space estimator:} $\mathbf{b_t(x) = \tau(b_{t-1}(x),u_{t-1},y_t)}$\\ 
-       Updates a belief given a motion and observation, it makes use of both the motion and observation functions 
-       defined in the POMDP. The state space estimation function, $\tau$, can be any kind of state space filter such as 
-       an Extended Kalman Filter (EKF) or a Particle Filter (PF).
+%      \item[] \textbf{State space estimator:} $\mathbf{b_t(x) = \tau(b_{t-1}(x),u_{t-1},y_t)}$\\ 
+%       Updates a belief given a motion and observation, it makes use of both the motion and observation functions 
+%       defined in the POMDP. The state space estimation function, $\tau$, can be any kind of state space filter such as 
+%       an Extended Kalman Filter (EKF) or a Particle Filter (PF).
     
-       \item[] \textbf{Reward function:} $\mathbf{R(x_t,u_t)}$\\
-        The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
-	function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$.
-       \item[] \textbf{Discount factor} $\gamma \in [0,1]$;
-      \end{itemize}
-    \end{minipage}
-};
-\node[fancytitle, right=10pt] at (box.north west) {POMDP \& \textit{belief}-MDP};
-\end{tikzpicture}%
-\caption{Description of the individual elements necessary to formalise a POMDP and a \textit{belief}-MDP.}
-\label{fig:pomdp_tik}
-\end{figure}
-
-
-
+%       \item[] \textbf{Reward function:} $\mathbf{R(x_t,u_t)}$\\
+%        The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
+%	function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$.
+%       \item[] \textbf{Discount factor} $\gamma \in [0,1]$;
+%      \end{itemize}
+%    \end{minipage}
+%};
+%\node[fancytitle, right=10pt] at (box.north west) {(PO)MDP \& \textit{belief}-MDP};
+%\end{tikzpicture}%
+%\caption{Description of the individual elements necessary to formalise a POMDP and a \textit{belief}-MDP.}
+%\label{fig:pomdp_tik}
+%\end{figure}
 
 A POMDP is a popular approach for formulating a decision making process under both motion and measurement uncertainty;
 In Figure \ref{fig:pomdp_tik} we describe all of the components necessary for a POMDP.
