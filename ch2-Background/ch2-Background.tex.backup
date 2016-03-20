@@ -224,7 +224,7 @@ take a decision is encoded in the current state and there is no need to consider
 In Figure \ref{fig:mdp} we illustrate two graphical representations of a MDP, which are known as \textbf{Dynamic Bayesian Networks (DBN)}.
 A DBN represents the the temporal relationship and conditional dependence between random variables, decisions and utilities, which are 
 represented by circles, squares and diamonds. For the MDP to the left the actions are not stochastic, whilst for the MDP on the right 
-the actions taken are governed by a stochastic \textbf{policy}, $\pi(a_t|x_t)$. A policy represents the decision process of an agent,
+the actions taken are governed by a stochastic \textbf{policy}, $\policy(a_t|x_t)$. A policy represents the decision process of an agent,
 given a state it will output an action. A stochastic policy means that given the same input they will produce
 different outputs. A policy is considered optimal when it maximises the expected utility function, it is optimal in the vNM sense.
 
@@ -238,21 +238,46 @@ different outputs. A policy is considered optimal when it maximises the expected
     \label{fig:mdp}
 \end{figure}
 
-Solving a MDP means that we have found a policy whose actions in any given state will always maximise the expected utility. Such 
-a policy is usually denoted as $\pi^*$. As in decision theory the expected utility is the utility of a sequence of state transitions
-$u(x_{0:T})$ weighted its probability of occurrence. The graphical representation allows to read off directly the probability 
-of 
-
-From the above DBN it is straight forward to write down the joint probability of a sequence of actions and states and 
-the utility it returns, Equation \ref{eq:joint_state_actions}-\ref{eq:joint_state_actions_util}.
+Solving a MDP means finding a policy whose actions in any given state will always maximise the expected utility. Such 
+a policy is usually denoted as $\pi^*$, the optimal policy. As in decision theory, the expected utility is the utility 
+of  a sequence of states $u(x_{0:T})$ weighted by its probability . The graphical representation allows to read off directly the probability 
+of a sequence of state transitions and actions $(x_{0:T},a_{0:T-1})$, Equation \ref{eq:joint_state_actions}.
 \begin{align}\label{eq:joint_state_actions}
-  p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t) \policy(a_t|x_t)  \\ 
-    r(x_{0:T}) 	       &= \sum\limits_{t=0}^{T} \gamma^{t} r(x_t) \label{eq:joint_state_actions_util}
+  p(x_{0:T},a_{0:T-1}) &= p(x_{0}) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t) \\
+  u(x_{0:T}) 	       &= r(x_0) + \gamma r(x_1) + \dots + \gamma^{T-1} r(x_{T-1})  + \gamma^T r(x_T)
 \end{align}
-
-The discount factor, $\lambda$
-
-
+We are interested in finding the sequence of action, $a_{0:T}$, which will maximise the expected utility function:
+\begin{equation}\label{eq:temporal_expected_utility}
+ \argmax_{a_{0:T-1}} U(x_{0:T},a_{0:T-1}) = \max_{a_0} \sum\limits_{x_1}   \cdots  \max_{a_{T-1}} \sum\limits_{x_T} \Bigg( p(x_{0:T},a_{0:T-1}) u(x_{0:T}) \Bigg)
+\end{equation}
+Solving the above directly in its current form would have an exponential complexity. By making use of the first order 
+markov assumption and that current rewards do not dependent future rewards, the sums in Equation \label{eq:max_util} can be re-arranged and 
+and recursive patter will emerge which we can take advantage off. Lets start from the last time step and move out of the sum all elements 
+which do not depend on $T$ and $T-1$, which results in Equation \ref{eq:expansion}
+\begin{align}\label{eq:expansion}
+ &\argmax_{a_{0:T-1}} U(x_{0:T},a_{0:T-1}) =\max_{a_0} \sum\limits_{x_1}   \cdots  \max_{a_{T-2}} \sum\limits_{x_{T-1}}  \nonumber\\
+ &p(x_{0:T-1},a_{0:T-2})  \left( u(x_{0:T-2}) + \gamma^{T-1} \left( r(x_{T-1}) +  \gamma \max_{a_{T-1}} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) r(x_{T}) \right) \right)
+\end{align}
+From the rearrangement we notice that Equation \ref{eq:expansion} has the same functional form as Equation \ref{eq:temporal_expected_utility}, 
+except that the recursive component can be summarised by Equation \ref{eq:bellman}, which is known as 
+the \textbf{Bellman} optimal equation.
+\begin{equation}\label{eq:bellman}
+ V^*(x_t) := r(x_t) + \gamma \max_{a_t} \sum\limits_{x_{t+1}} p(x_{t+1}|x_t,a_t) V(x_{t+1})
+\end{equation}
+For the terminal state $V_T(x_T) = r(x_T)$. The bellman equation is a means of solving a sequential decision problem 
+through use of dynamic programming. It says the the utility of the current state is based on the immediate reward and 
+the discounted maximum utility of the next state. Making use of this recursion reduced the computation complexity is 
+quadratic in the number of states, $\BigO(T\, |A|\, |X|^2)$. To find the optimal value and subsequent policy an approach 
+would be to repeatedly apply the bellman equation to each state until the value function converges. What makes the problem 
+hard to solve is maximisation over the actions. This induces two problems, the first is that the optimisation is nonlinear 
+and the second is that if the action space is continuous the maximisation will be expensive to compute.
+This brings use to the two main approaches to solving a the MDP process: \textbf{off-policy} and \textbf{on-policy}.
+Off-policy methods solve directly for the optimal value function $V^*(x)$ and perform the maximisation over the actions, Value-Iteration 
+is an off-policy method. On-policy approaches 
+%To find the first optimal action we have to consider the expected utility for all $N$ states and take the action which has the highest value,
+%\begin{equation}\label{eq:max_util}
+%  U(a_0|x_0) =  \cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} \max_{a_{T-1}}  \sum\limits_{x_T}  \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t) u(x_{1:T})
+%end{equation}
 %Before going into how to solve a temporal decision problem, we have to introduce a way of representing it. 
 %A typical representation is done with a graphical model. Graphical models allow to represent . There are many different types of graphical models and we will be considering Directed Acyclic Graphs (DAC) and 
 %when considering an continuous reoccurring decision process DACs are referred to as \textbf{Dynamic Bayesian Networks (DBN)}.
@@ -274,50 +299,26 @@ The discount factor, $\lambda$
 
 
 
+%\subsection{Solving a sequential decision process}
 
+%Lets consider a decision problem of length $T$ in a world which has $N$ states. 
+%Given an utility function we first want to find the initial action, $a_0$ which will
+%be optimal. 
 
+%This means that the action $a_0$ must maximises the expected utility given all resulting future states and actions. 
+%\begin{equation}\label{eq:utility_one}
+%  a^*_0 =  \argmax_{a_0}  U(a_0|x_0)
+%\end{equation}
+%Equation \ref{eq:utility_one}, is the maximisation of the expected utility at time step $0$ given that we are 
+%starting in state $i$ and that every following action is optimal (also maximise the expected 
+%utility). 
 
-\subsection{Solving a sequential decision process}
+%The utility and associated probability of this utility are given by Equation  \ref{eq:utility_one_var}
+%\begin{align}\label{eq:utility_one_var}
+%  r(x_{0:T}) 	     &= r(x_0) + \gamma r(x_1) + \gamma^2 r(x_2) + \cdots + \gamma^{T} r(x_T)\\
+%  p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t)
+%\end{align}
 
-Lets consider a decision problem of length $T$ in a world which has $N$ states. 
-Given an utility function we first want to find the initial action, $a_0$ which will
-be optimal. This means that the action maximises the expected utility 
-given all resulting future states and actions. 
-%,a_{1:T},x_{1:T}
-\begin{equation}\label{eq:utility_one}
-	a^*_0 = \argmax_{a_0}  \overbrace{\displaystyle \mathop{\mathbb{E}}_{p(x_{0:T},a_{0:T-1})} \{ u(x_{0:T}) \}}^{U(a_0,x_0=x^{[i]})} \\
-\end{equation}
-Equation \ref{eq:utility_one}, is the maximisation of the expected utility at time step $0$ given that we are 
-starting in state $i$ and that every following action is optimal (also maximise the expected 
-utility). The utility and associated probability of this utility are given by Equation  \ref{eq:utility_one_var}
-\begin{align}\label{eq:utility_one_var}
-  r(x_{0:T}) 	     &= r(x_0) + \gamma r(x_1) + \gamma^2 r(x_2) + \cdots + \gamma^{T} r(x_T)\\
-  p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t)
-\end{align}
-
-To find the first optimal action we have to consider the expected utility for all $N$ states and take the action which has the highest value,
-\begin{equation}\label{eq:max_util}
-  U(a_0,x_0 = x^{[i]}) =  \cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} \max_{a_{T-1}} \ \sum\limits_{x_T} p(x_{0:T},a_{0:T-1}) r(x_{0:T})
-\end{equation}
-
-Solving the above directly in its current form would have an exponential time complexity, $\BigO(N^T)$. By making use of the first order 
-markov assumption and that current rewards do not dependent future rewards, the sums in Equation \label{eq:max_util} can be re-arranged and 
-recursive structure appears. 
-
-% Solving the above is known as the most probable explentation. 
-
-\begin{align}
- &U(a_0,x_0=x^{[i]}) =\cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}}  \nonumber\\
- &p(x_{0:T-1},a_{0:T-2})  \left( r(x_{0:T-2}) + \gamma^{T-1} \underbrace{r(x_{T-1}) +  \max_{a_{T-1}} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) \gamma^{T} r(x_{T})}_{V_{T-1}(x_{T-1})} \right)
-\end{align}
-
-\begin{equation}
- U(a_0,x_0=x^{[i]}) =\cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} p(x_{0:T-1},a_{0:T-2})  \left[ r(x_{0:T-2}) + \gamma^{T-1} V_{T-1}(x_{T-1}) \right]
-\end{equation}
-
-\begin{equation}
- V_{t-1}(x_{t-1}) = r(x_{t-1}) + \max_{a_{t-1}} \sum\limits_{t} p(x_t|x_{t-1},a_{t-1}) V_{t}(x_t)
-\end{equation}
 
 
 
