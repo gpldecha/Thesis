@@ -296,94 +296,125 @@ of the state. The MDP assumes that the state space is always fully observable, w
 on bored sensors return an estimate of the state with a certain amount of uncertainty associated with it. To take this additional
 uncertainty into consideration the MDP has to accommodate it. This leads to a Partially Observable Markov Decision Process (POMDP).
 
+%The problems in robotics are solved with \textbf{Reinforcement Learning (RL)} which is set of sample based 
+%methods for solving both Equation \ref{eq:bellman} and \ref{eq:on_policy_bellman}, instead of using dynamic programming methods like VI.
+%The reason is that the state transition function (dynamic model) is not known a priori.
+% a two step approach, first an initial policy is assumed at disposition and the 
+% value function of this policy is evaluated, a step known as .
+% To find the first optimal action we have to consider the expected utility for all $N$ states and take the action which has the highest value,
+%\begin{equation}\label{eq:max_util}
+%  U(a_0|x_0) =  \cdots \max_{a_{T-2}} \sum\limits_{x_{T-1}} \max_{a_{T-1}}  \sum\limits_{x_T}  \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t) u(x_{1:T})
+%end{equation}
+%Before going into how to solve a temporal decision problem, we have to introduce a way of representing it. 
+%A typical representation is done with a graphical model. Graphical models allow to represent . There are many different types of graphical models and we will be considering Directed Acyclic Graphs (DAC) and 
+%when considering an continuous reoccurring decision process DACs are referred to as \textbf{Dynamic Bayesian Networks (DBN)}.
+%We are manly interested in DBNs because they are predominantly used in robotics and AI for solving infinite-horizon decision problems.
+%In Figure \ref{fig:mdp} we illustrate a DBN of a sequential decision problem where the arrows encode conditional distributions. For instance the state 
+%space random variable node, $X$, has two children $A$ and itself $X$ at a previous time step, this connection reads as $p(x_{t+1}|x_t,a_t)$. 
+%The decision and utility nodes are not considered random variables in the left subfigure.
+
+
+% which allow to illustrate infinite-horizon stationary decision processes among others. These types of DAC graphs are also called 
+% If the decision problem had a fixed horizon it could be illustrated by an \textbf{influence diagrams}. 
+% Influence diagrams are for finite temporal decision process (also called finite-horizon) whilst DBNs are for infinite continuously recurring sequential decisions.
+% In Figure \ref{fig:mdp} we illustrate the DBN of a temporal decision problem. 
+
+
+%Figure \ref{fig:mdp} illustrates the DBN of a first order \textbf{Markov Decision Process (MDP)}.
+%An MDP is a \textbf{model} of a temporal decision process which is characterised by the tuple, $(X,A,p(x_{t+1}|x_t,a_t),r(x),\gamma)$, where the models are 
+%the state transition function $p(x_{t+1}|x_t,a_t)$ and utility function $r(x)$.
+
+
+
+%\subsection{Solving a sequential decision process}
+
+%Lets consider a decision problem of length $T$ in a world which has $N$ states. 
+%Given an utility function we first want to find the initial action, $a_0$ which will
+%be optimal. 
+
+%This means that the action $a_0$ must maximises the expected utility given all resulting future states and actions. 
+%\begin{equation}\label{eq:utility_one}
+%  a^*_0 =  \argmax_{a_0}  U(a_0|x_0)
+%\end{equation}
+%Equation \ref{eq:utility_one}, is the maximisation of the expected utility at time step $0$ given that we are 
+%starting in state $i$ and that every following action is optimal (also maximise the expected 
+%utility). 
+
+%The utility and associated probability of this utility are given by Equation  \ref{eq:utility_one_var}
+%\begin{align}\label{eq:utility_one_var}
+%  r(x_{0:T}) 	     &= r(x_0) + \gamma r(x_1) + \gamma^2 r(x_2) + \cdots + \gamma^{T} r(x_T)\\
+%  p(x_{0:T},a_{0:T-1}) &= p(x_0) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t)
+%\end{align}
+
+% applying the method on a finite-horizon Markov Decision processes is equivalent to Value Iteration where the argmax in each iteration is solved be means of an inference query.
+%The first change is to the 
+%utility function itself. 
+%To be consistent with the literature regarding sequential decision processes, namely 
+%work in operational research, AI, optimal control theory and 
+%There are two main forms 
+%of representing such as decision problem:  in, markov decision processes, partially observable 
+%marov decision process. 
+% Summary of Bayesian decision Tree CPT table etc..
+
+
 \subsection{POMDP}
 
-A POMDP is a popular approach for formulating a sequential decision process in which there is both motion and observation 
-uncertainty. In this partially observable setting the agent does not know with exactitude the state of the environment,
-but is able to observe it through his \textbf{sensors}. We formally define a sensor as function of the 
-state space, Equation \ref{eq:sensor}.
+% Define box and box title style
+%\tikzstyle{pomdp_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+%\tikzstyle{fancytitle} = [fill=white,draw= black, text=white,rounded corners=1mm,text=black]
 
-\begin{equation}\label{eq:sensor}
-  y_t = h(x_t) + \epsilon_t
-\end{equation}
+%\begin{figure}[h]
+%\centering
+%\begin{tikzpicture}
+%\node [pomdp_box] (box){%
+%    \begin{minipage}{\textwidth}
+%      \begin{itemize}
+%       \item[] \textbf{States, Actions, Observations} 
+      
+%      \item[] \textbf{State transition function:} $\mathbf{p(x_{t+1}|x_t,a_t)}$\\ The state transition function models the uncertainty originating from motion noise and is 
+%       represented by the conditional probability distribution (or likelihood) function, $p(x_{t+1}|x_t,a_t) \in \mathbb{R}$,
+%       which gives the probability of moving to state $x_{t+1}$ given that action $a_t$ was applied in state $x_t$. 
+      
+%      \item[] \textbf{Observation function}: $\mathbf{p(y_t|x_t)}$\\ The observation function returns the probability 
+%       or likelihood of the current observing $y_t$ given a known state $x_t$. It is modelled 
+%       by the conditional distribution $p(y_t|x_t) \in \mathbb{R}$.
+      
+%      \item[] \textbf{Belief:} $\mathbf{b_t(x)}$ \\
+%       A belief is probability distributions, $b_t(x)$, over the state space $X$ and quantifies both 
+%       motion and observation uncertainty. 
+      
+%      \item[] \textbf{State space estimator:} $\mathbf{b_t(x) = \tau(b_{t-1}(x),u_{t-1},y_t)}$\\ 
+%       Updates a belief given a motion and observation, it makes use of both the motion and observation functions 
+%       defined in the POMDP. The state space estimation function, $\tau$, can be any kind of state space filter such as 
+%       an Extended Kalman Filter (EKF) or a Particle Filter (PF).
+    
+%       \item[] \textbf{Reward function:} $\mathbf{R(x_t,u_t)}$\\
+%        The reward becomes a function of the belief $R(b_t,u_t)$ which is the expected value of the original reward 
+%	function $\mathbb{E}_{x_t \sim b_t}[R(x_t,u_t)]$.
+%       \item[] \textbf{Discount factor} $\gamma \in [0,1]$;
+%      \end{itemize}
+%    \end{minipage}
+%};
+%\node[fancytitle, right=10pt] at (box.north west) {(PO)MDP \& \textit{belief}-MDP};
+%\end{tikzpicture}%
+%\caption{Description of the individual elements necessary to formalise a POMDP and a \textit{belief}-MDP.}
+%\label{fig:pomdp_tik}
+%\end{figure}
 
-The sensor function $h(\cdot)$ can be linear or non-linear and the additive noise term $\epsilon_t$ can 
-be Gaussian (usually the case), non-Gaussian, state dependent or not. In this setting the
-state $x$ is a latent hidden variable and we can only get information about it via the observations, $y$. 
-The uncertainty of the latent state is quantified in a probability distribution over the state space, $p(x)$. 
-This probability distribution represents all the hypothetical positions in the world in which the agent can be. 
-In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a environment in which his sensors
-provide range, $r$, and bearing, $\phi$, information to neighbouring objects.
+A POMDP is a popular approach for formulating a decision making process under both motion and measurement uncertainty;
+In Figure \ref{fig:pomdp_tik} we describe all of the components necessary for a POMDP.
 
-\begin{equation}
- y_t =  \begin{bmatrix}
-       r    \\
-       \phi \\
-     \end{bmatrix} \in \mathbb{R}^2
-\end{equation}
-
-
-Initially the agent has a poor prior knowledge regarding his true position. To reduce his state uncertainty the agent 
-takes an initial measurement, $y_0$ of his position with respect to the wall. The agent uses the model of his 
-sensor, which he obtained a prior,to deduce all possible locations in the world, $x$, where the current 
-measurement could have originated from. This model is known as the measurement 
-likelihood function, Equation \ref{eq:likelihood}
-
-\begin{equation}\label{eq:likelihood}
- p(y_t|x_t) = \mathcal{N}(y_t - h(x_t);0,\Sigma)
-\end{equation}
-
-In this case the measurement noise, $\epsilon_t$, is Gaussian with mean zero and covariance $\Sigma$.
-In Figure \ref{fig:belief_update_example} \textbf{(b)}  we can see its result, the dark regions indicate areas of high 
-likelihood; these areas are possible locations from which the sensor measurement could have originated from.
-
-\begin{figure}[h]
-  \centering
-  \subfigure[]{\label{fig:init_belief}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/init_belief.pdf}}
-  \subfigure[]{\label{fig:likelihood}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf}} 
-  \subfigure[]{\label{fig:likelihood}\includegraphics[width=0.3\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/updated_belief.pdf}} 
-  \caption{Observation integration: \textbf{(a)} An agent is located to the left of a brick wall, it is equipped with a 
-  range sensor and is initially very uncertain about its location. This uncertainty is represented by a probability density function 
-  $p(x_0)$ over the state space. \textbf{(b)} On the first time step, $t=0$, the agent takes an initial measurement, $y_0$; its range and bearing 
-  to the wall (red line). Because his sensor is slightly noisy his estimate is off. The agent uses his current measurement with his 
-  measurement model to evaluate the plausibility of all locations in the world which would result in a similar measurement; this 
-  is illustrated by the likelihood function $p(y_0|x_0)$. \textbf{(c)} The evidence of the likelihood is integrated into the probability 
-  density function; $p(x_0|y_0) \propto p(y_0|x)p(x_0)$.}
-  \label{fig:belief_update_example}
-\end{figure}
-
-The evidence of the measurement can then be integrated into the belief. 
-\begin{equation}
- p(x_0|y_{0:t}) = \frac{p(y_t|x_t)\,p(x_{0:t-1})}{p(y_t|y_{0:t})}
-\end{equation}
-
-
-
-Depending on the type of sensors: stereo cameras, infra red sensors, Kinect, 
-omnidirectional camera, etc.., there is uncertainty associated with it. It is thus important 
-
-In Figure \ref{fig:pomdp} (\textit{left}) we illustrate the graphical model of a POMDP. It has the same markov chain structure 
-present in MDP, introduced in the previous section, but the state space $X$ is hidden (also called latent) and 
-a new layer of observation variables $Y$ is present.
-
-The directed connection between the state and observation variables 
-define the conditional distribution $p(y_t|x_t)$. This conditional distribution returns the probability/likelihood of
-an observation given the agent is in state $x_t$. 
-
-\begin{figure}[h]
- \centering
-  \centering
-  \subfigure[off-policy]{\label{fig:sub_pomdp}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf}}
-  \subfigure[on-policy]{\label{fig:sub_bmdp}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf}} 
-  \caption{}
-  \label{fig:pomdp}
-\end{figure}
-
-We will see that because the state space is hidden it will cause complications to the maximisation of the expected utility.
 Since the states are not observable, the agent cannot choose its actions based on the state. The explicit 
 representation of the past events is typically memory expensive. Instead it is possible to summarize all relevant 
 information from previous actions and observations in a probability distribution over the state space, known as the
 belief state. 
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp.pdf}
+  \caption{ad}
+\end{figure}
+
 
 Because the state space is partially observable the expected reward has to be computed for each possible history of states, actions and observations.
 All approaches in the literature instead encapsulate all these possible histories into a belief state $b_t(x_t)$ which is a 
