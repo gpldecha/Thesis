@@ -297,10 +297,16 @@ on bored sensors return an estimate of the state with a certain amount of uncert
 uncertainty into consideration the MDP has to accommodate it. This leads to a Partially Observable Markov Decision Process (POMDP).
 
 \subsection{POMDP}
+%\begin{equation}
+% y_t =  \begin{bmatrix}
+%       r    \\
+%       \phi \\
+%     \end{bmatrix} \in \mathbb{R}^2
+%\end{equation}
 
-A POMDP is a popular approach for formulating a sequential decision process in which there is both motion and observation 
-uncertainty. In this partially observable setting the agent does not know with exactitude the state of the environment,
-but is able to observe it through his \textbf{sensors}. We formally define a sensor as function of the 
+A POMDP is a popular approach for formulating a sequential decision process in which both motion and observation 
+uncertainty is considered. In this partially observable setting the agent does not know with exactitude the state of the environment,
+but is able to observe it through his \textbf{sensors}. We mathematically define a sensor as being a function of the 
 state space, Equation \ref{eq:sensor}.
 
 \begin{equation}\label{eq:sensor}
@@ -312,51 +318,53 @@ be Gaussian (usually the case), non-Gaussian, state dependent or not. In this se
 state $x$ is a latent hidden variable and we can only get information about it via the observations, $y$. 
 The uncertainty of the latent state is quantified in a probability distribution over the state space, $p(x)$. 
 This probability distribution represents all the hypothetical positions in the world in which the agent can be. 
-In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a environment in which his sensors
-provide range, $r$, and bearing, $\phi$, information to neighbouring objects.
-
-\begin{equation}
- y_t =  \begin{bmatrix}
-       r    \\
-       \phi \\
-     \end{bmatrix} \in \mathbb{R}^2
-\end{equation}
-
-
-Initially the agent has a poor prior knowledge regarding his true position. To reduce his state uncertainty the agent 
-takes an initial measurement, $y_0$ of his position with respect to the wall. The agent uses the model of his 
-sensor, which he obtained a prior,to deduce all possible locations in the world, $x$, where the current 
+In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a environment a in a yard 
+containing a wall. Initially the agent is confident regarding his position; his state uncertainty $p(x_0)$ is low, represented 
+by the blue probability density. However during a circular displacement the agent skids and the state uncertainty is increased 
+by the state transition function, $p(x_{t+1}|x_t,a_t)$. To reduce the uncertainty, the agent takes a measurement, $y$, with 
+his sensors which provide range, $r$, and bearing, $\phi$, information of the wall, see Figure \ref{fig:belief_update_example} \textbf{(b)}.
+The agent uses the model of his sensor, known a priori, to deduce all possible locations in the world, $x$, where the current 
 measurement could have originated from. This model is known as the measurement 
 likelihood function, Equation \ref{eq:likelihood}
 
 \begin{equation}\label{eq:likelihood}
  p(y_t|x_t) = \mathcal{N}(y_t - h(x_t);0,\Sigma)
 \end{equation}
-
-In this case the measurement noise, $\epsilon_t$, is Gaussian with mean zero and covariance $\Sigma$.
-In Figure \ref{fig:belief_update_example} \textbf{(b)}  we can see its result, the dark regions indicate areas of high 
-likelihood; these areas are possible locations from which the sensor measurement could have originated from.
+The measurement likelihood function makes use of the measurement function $h(x)$ and it models the noise 
+in the sensor. In this case the parameters of the noise model, $\epsilon_t$, is Gaussian with mean zero and covariance $\Sigma$.
+Typically the parameters of the measurement likelihood function are learned a priori.
 
 \begin{figure}[h]
   \centering
-  \subfigure[]{\label{fig:init_belief}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/init_belief.pdf}}
+  \subfigure[]{\label{fig:motion_update}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf}}
+  \subfigure[]{\label{fig:measurement}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf}} 
   \subfigure[]{\label{fig:likelihood}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf}} 
-  \subfigure[]{\label{fig:likelihood}\includegraphics[width=0.3\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/updated_belief.pdf}} 
-  \caption{Observation integration: \textbf{(a)} An agent is located to the left of a brick wall, it is equipped with a 
-  range sensor and is initially very uncertain about its location. This uncertainty is represented by a probability density function 
-  $p(x_0)$ over the state space. \textbf{(b)} On the first time step, $t=0$, the agent takes an initial measurement, $y_0$; its range and bearing 
-  to the wall (red line). Because his sensor is slightly noisy his estimate is off. The agent uses his current measurement with his 
-  measurement model to evaluate the plausibility of all locations in the world which would result in a similar measurement; this 
-  is illustrated by the likelihood function $p(y_0|x_0)$. \textbf{(c)} The evidence of the likelihood is integrated into the probability 
+  \subfigure[]{\label{fig:measurement_update}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.pdf}} 
+ \caption{\textbf{(a)} An agent is located to the south west of a brick wall, it is equipped with a 
+  range sensor. The agent takes a forward action, but skids which results in a high increase of the uncertainty.\textbf{(b)} 
+  The agent takes a measurement, $y_0$, of this distance to the wall; because his sensor is noisy his estimate is off. 
+  \textbf{(c)} The agent uses with his measurement model to evaluate the plausibility of all locations in the world which would result in a similar
+  measurement; illustrated by the likelihood function $p(y_0|x_0)$. \textbf{(d)} The likelihood is integrated into the probability 
   density function; $p(x_0|y_0) \propto p(y_0|x)p(x_0)$.}
   \label{fig:belief_update_example}
 \end{figure}
 
-The evidence of the measurement can then be integrated into the belief. 
-\begin{equation}
- p(x_0|y_{0:t}) = \frac{p(y_t|x_t)\,p(x_{0:t-1})}{p(y_t|y_{0:t})}
-\end{equation}
+In Figure \ref{fig:belief_update_example} \textbf{(c)} the likelihood is illustrated; the dark regions indicate areas of high 
+likelihood, which are possible locations from which the sensor measurement could have originated from. The value of the measurement
+likelihood function is then integrated into the state space probability density function.
 
+These two steps: motion update and measurement integration are part of a state estimation process called a \textbf{Bayesian state space filter}, 
+which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_update}.
+\begin{equation}\label{eq:motion_update}
+ p(x_t|y_{0:t-1},a_{0:t}) = \int p(x_t|x_{t-1},a_{t-1}) p(x_t|y_{0:t-1},a_{0:t-1})\;da_t
+\end{equation}
+\begin{equation}\label{eq:measurement_update}
+ p(x_t|y_{0:t},a_{0:t}) = \frac{p(y_t|x_t)\,p(x_t|y_{0:t-1},a_{0:t})}{p(y_t|y_{0:t})}
+\end{equation}
+The motion model, Equation \ref{eq:motion_update}, updates the position of the probability distribution according to 
+action the applied action, $a_t$, and adds uncertainty by increasing the spread of the distribution.
+
+The state space filter is an essential component to a POMDP, we summarise formally the two steps of the Bayesian state space filter belo
 
 
 Depending on the type of sensors: stereo cameras, infra red sensors, Kinect, 

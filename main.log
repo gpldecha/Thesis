@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  21 MAR 2016 16:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  21 MAR 2016 22:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
+**main.tex -shell-escape
 (./main.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
@@ -779,14 +779,7 @@ hs.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
 )))
 Package hyperref Info: Option `colorlinks' set `true' on input line 53.
- (./main.aux
-
-LaTeX Warning: Label `fig:likelihood' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:likelihood' multiply defined.
-
-)
+ (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
@@ -804,7 +797,8 @@ LaTeX Font Info:    ... okay on input line 79.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
 LaTeX Font Info:    ... okay on input line 79.
 \chapternumberheight=\dimen208
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count157
 \scratchdimen=\dimen209
@@ -1019,78 +1013,88 @@ ed in a single page
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 299--306
 
  []
 
 [13]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/init_belief.pdf, id=34
-9, 340.27126pt x 353.32pt>
-File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/init_belief.pdf G
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf, id=
+349, 340.27126pt x 346.29375pt>
+File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf
+ Graphic file (type pdf)
+
+<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf>
+Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
+s/motion_update.pdf used on input line 339.
+(pdftex.def)             Requested size: 155.24895pt x 157.99718pt.
+
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf, id=35
+0, 340.27126pt x 353.32pt>
+File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf G
 raphic file (type pdf)
 
-<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/init_belief.pdf>
+<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/init_belief.pdf used on input line 342.
+s/measurement.pdf used on input line 340.
 (pdftex.def)             Requested size: 155.24895pt x 161.20293pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=350
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=351
 , 340.27126pt x 356.33125pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf Gr
 aphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/likelihood.pdf used on input line 343.
+s/likelihood.pdf used on input line 341.
 (pdftex.def)             Requested size: 155.24895pt x 162.57681pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/updated_belief.pdf, id
-=351, 340.27126pt x 351.3125pt>
-File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/updated_belief.pd
-f Graphic file (type pdf)
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.pdf
+, id=352, 340.27126pt x 352.31625pt>
+File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_updat
+e.pdf Graphic file (type pdf)
 
-<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/updated_belief.pdf
->
+<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update
+.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/updated_belief.pdf used on input line 344.
-(pdftex.def)             Requested size: 103.50105pt x 106.858pt.
- [14 </home/guillaume/Documents/Thesis/ch2-Background/Figures/init_belief.pdf> 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf
+s/measurement_update.pdf used on input line 342.
+(pdftex.def)             Requested size: 155.24895pt x 160.74496pt.
+ [14 </home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf
+> </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
+ckground/Figures/measurement.pdf): PDF inclusion: multiple pdfs with page group
+ included in a single page
+> </home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/likelihood.pdf): PDF inclusion: multiple pdfs with page group 
 included in a single page
-> </home/guillaume/Documents/Thesis/ch2-Background/Figures/updated_belief.pdf
+> </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.p
+df
 
 pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
-ckground/Figures/updated_belief.pdf): PDF inclusion: multiple pdfs with page gr
-oup included in a single page
+ckground/Figures/measurement_update.pdf): PDF inclusion: multiple pdfs with pag
+e group included in a single page
 >]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf, id=785, 54
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf, id=446, 54
 4.0325pt x 509.905pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf Graphi
 c file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp2.pdf used on input line 379.
+s/pomdp2.pdf used on input line 383.
 (pdftex.def)             Requested size: 155.24895pt x 145.51115pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=786, 54
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=447, 54
 4.0325pt x 509.905pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf Graphi
 c file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp3.pdf used on input line 380.
+s/pomdp3.pdf used on input line 384.
 (pdftex.def)             Requested size: 155.24895pt x 145.51115pt.
-
-Overfull \hbox (21.20477pt too wide) in paragraph at lines 396--401
-[]\T1/aer/m/n/10 The new de-scrip-tion of the prob-lem is now in terms of be-li
-ef space $\OML/cmm/m/it/10 < \OMS/cmsy/m/n/10 B\OML/cmm/m/it/10 ; U; ^^\; R; ^^
-M >$
- []
 
 [15 </home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf> </home
 /guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf
@@ -1099,32 +1103,38 @@ pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/pomdp3.pdf): PDF inclusion: multiple pdfs with page group incl
 uded in a single page
 >]
+Overfull \hbox (21.20477pt too wide) in paragraph at lines 400--405
+[]\T1/aer/m/n/10 The new de-scrip-tion of the prob-lem is now in terms of be-li
+ef space $\OML/cmm/m/it/10 < \OMS/cmsy/m/n/10 B\OML/cmm/m/it/10 ; U; ^^\; R; ^^
+M >$
+ []
+
 
 LaTeX Warning: Reference `fig:pomdp_bel_tree' on page 16 undefined on input lin
-e 407.
+e 411.
 
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=92
-2, 691.58376pt x 347.2975pt>
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=58
+4, 691.58376pt x 347.2975pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf G
 raphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/belief_tree.pdf used on input line 415.
+s/belief_tree.pdf used on input line 419.
 (pdftex.def)             Requested size: 345.0pt x 173.25087pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 420--421
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 453--454
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
 
 [16 </home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 486--487
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
 
  []
 
@@ -1160,7 +1170,7 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 910958BD6D269F8EA75742DC45C40069;1064.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 65E9D6C921120250E7A5FCF0A9947CD2;1214.
+(rerunfilecheck)             Checksum: 1D9BA7E120A10E9679053E1DDC7F77D1;1214.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1168,22 +1178,19 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  )
 (\end occurred when \ifdefined on line 120 was incomplete)
 (\end occurred when \ifdefined on line 111 was incomplete)
 (\end occurred when \ifdefined on line 110 was incomplete) 
 Here is how much of TeX's memory you used:
- 18253 strings out of 493304
- 311970 string characters out of 6139872
- 396078 words of memory out of 5000000
- 21148 multiletter control sequences out of 15000+600000
+ 18264 strings out of 493304
+ 312453 string characters out of 6139871
+ 396144 words of memory out of 5000000
+ 21158 multiletter control sequences out of 15000+600000
  58327 words of font info for 123 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,13n,55p,973b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,13n,55p,818b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
@@ -1210,10 +1217,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/ty
 pe1/public/tex-gyre/qhvr.pfb>
-Output written on main.pdf (22 pages, 2619444 bytes).
+Output written on main.pdf (22 pages, 3548033 bytes).
 PDF statistics:
- 1151 PDF objects out of 1200 (max. 8388607)
- 836 compressed objects within 9 object streams
+ 813 PDF objects out of 1000 (max. 8388607)
+ 673 compressed objects within 7 object streams
  90 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

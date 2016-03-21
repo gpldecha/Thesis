@@ -74,18 +74,23 @@
 \newlabel{eq:on_policy_bellman}{{2.7}{12}{Sequential decision process}{equation.2.2.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}POMDP}{13}{subsection.2.2.1}}
 \newlabel{eq:sensor}{{2.8}{13}{POMDP}{equation.2.2.8}{}}
-\newlabel{eq:likelihood}{{2.10}{14}{POMDP}{equation.2.2.10}{}}
-\newlabel{fig:init_belief}{{2.3(a)}{14}{Subfigure 2 2.3(a)}{subfigure.2.3.1}{}}
-\newlabel{sub@fig:init_belief}{{(a)}{14}{Subfigure 2 2.3(a)\relax }{subfigure.2.3.1}{}}
-\newlabel{fig:likelihood}{{2.3(b)}{14}{Subfigure 2 2.3(b)}{subfigure.2.3.2}{}}
-\newlabel{sub@fig:likelihood}{{(b)}{14}{Subfigure 2 2.3(b)\relax }{subfigure.2.3.2}{}}
+\newlabel{eq:likelihood}{{2.9}{14}{POMDP}{equation.2.2.9}{}}
+\newlabel{fig:motion_update}{{2.3(a)}{14}{Subfigure 2 2.3(a)}{subfigure.2.3.1}{}}
+\newlabel{sub@fig:motion_update}{{(a)}{14}{Subfigure 2 2.3(a)\relax }{subfigure.2.3.1}{}}
+\newlabel{fig:measurement}{{2.3(b)}{14}{Subfigure 2 2.3(b)}{subfigure.2.3.2}{}}
+\newlabel{sub@fig:measurement}{{(b)}{14}{Subfigure 2 2.3(b)\relax }{subfigure.2.3.2}{}}
 \newlabel{fig:likelihood}{{2.3(c)}{14}{Subfigure 2 2.3(c)}{subfigure.2.3.3}{}}
 \newlabel{sub@fig:likelihood}{{(c)}{14}{Subfigure 2 2.3(c)\relax }{subfigure.2.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Observation integration: \textbf  {(a)} An agent is located to the left of a brick wall, it is equipped with a range sensor and is initially very uncertain about its location. This uncertainty is represented by a probability density function $p(x_0)$ over the state space. \textbf  {(b)} On the first time step, $t=0$, the agent takes an initial measurement, $y_0$; its range and bearing to the wall (red line). Because his sensor is slightly noisy his estimate is off. The agent uses his current measurement with his measurement model to evaluate the plausibility of all locations in the world which would result in a similar measurement; this is illustrated by the likelihood function $p(y_0|x_0)$. \textbf  {(c)} The evidence of the likelihood is integrated into the probability density function; $p(x_0|y_0) \propto p(y_0|x)p(x_0)$.\relax }}{14}{figure.caption.4}}
-\newlabel{fig:belief_update_example}{{2.3}{14}{Observation integration: \textbf {(a)} An agent is located to the left of a brick wall, it is equipped with a range sensor and is initially very uncertain about its location. This uncertainty is represented by a probability density function $p(x_0)$ over the state space. \textbf {(b)} On the first time step, $t=0$, the agent takes an initial measurement, $y_0$; its range and bearing to the wall (red line). Because his sensor is slightly noisy his estimate is off. The agent uses his current measurement with his measurement model to evaluate the plausibility of all locations in the world which would result in a similar measurement; this is illustrated by the likelihood function $p(y_0|x_0)$. \textbf {(c)} The evidence of the likelihood is integrated into the probability density function; $p(x_0|y_0) \propto p(y_0|x)p(x_0)$.\relax }{figure.caption.4}{}}
+\newlabel{fig:measurement_update}{{2.3(d)}{14}{Subfigure 2 2.3(d)}{subfigure.2.3.4}{}}
+\newlabel{sub@fig:measurement_update}{{(d)}{14}{Subfigure 2 2.3(d)\relax }{subfigure.2.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces \textbf  {(a)} An agent is located to the south west of a brick wall, it is equipped with a range sensor. The agent takes a forward action, but skids which results in a high increase of the uncertainty.\textbf  {(b)} The agent takes a measurement, $y_0$, of this distance to the wall; because his sensor is noisy his estimate is off. \textbf  {(c)} The agent uses with his measurement model to evaluate the plausibility of all locations in the world which would result in a similar measurement; illustrated by the likelihood function $p(y_0|x_0)$. \textbf  {(d)} The likelihood is integrated into the probability density function; $p(x_0|y_0) \propto p(y_0|x)p(x_0)$.\relax }}{14}{figure.caption.4}}
+\newlabel{fig:belief_update_example}{{2.3}{14}{\textbf {(a)} An agent is located to the south west of a brick wall, it is equipped with a range sensor. The agent takes a forward action, but skids which results in a high increase of the uncertainty.\textbf {(b)} The agent takes a measurement, $y_0$, of this distance to the wall; because his sensor is noisy his estimate is off. \textbf {(c)} The agent uses with his measurement model to evaluate the plausibility of all locations in the world which would result in a similar measurement; illustrated by the likelihood function $p(y_0|x_0)$. \textbf {(d)} The likelihood is integrated into the probability density function; $p(x_0|y_0) \propto p(y_0|x)p(x_0)$.\relax }{figure.caption.4}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{14}{figure.caption.4}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{14}{figure.caption.4}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{14}{figure.caption.4}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{14}{figure.caption.4}}
+\newlabel{eq:motion_update}{{2.10}{15}{POMDP}{equation.2.2.10}{}}
+\newlabel{eq:measurement_update}{{2.11}{15}{POMDP}{equation.2.2.11}{}}
 \newlabel{fig:sub_pomdp}{{2.4(a)}{15}{Subfigure 2 2.4(a)}{subfigure.2.4.1}{}}
 \newlabel{sub@fig:sub_pomdp}{{(a)}{15}{Subfigure 2 2.4(a)\relax }{subfigure.2.4.1}{}}
 \newlabel{fig:sub_bmdp}{{2.4(b)}{15}{Subfigure 2 2.4(b)}{subfigure.2.4.2}{}}
@@ -95,6 +100,11 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {off-policy}}}{15}{figure.caption.5}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {on-policy}}}{15}{figure.caption.5}}
 \citation{Sol_POMDP_Policy_space_1998}
+\newlabel{eq:optimal_value_f}{{2.12}{16}{POMDP}{equation.2.2.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces ad\relax }}{16}{figure.caption.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}State of the art}{16}{section.2.3}}
+\@writefile{brf}{\backcite{Sol_POMDP_Policy_space_1998}{{16}{2.3}{section.2.3}}}
+\@writefile{toc}{\contentsline {subsubsection}{Tree search}{16}{section*.7}}
 \citation{Quadrator_2008}
 \citation{BelRoadMap_2009}
 \citation{Erez10ascalable}
@@ -106,23 +116,18 @@
 \citation{Rand_belief_space_replanning}
 \citation{Ross08onlineplanning}
 \citation{Macro_uncertainty_2011}
-\newlabel{eq:optimal_value_f}{{2.13}{16}{POMDP}{equation.2.2.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces ad\relax }}{16}{figure.caption.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}State of the art}{16}{section.2.3}}
-\@writefile{brf}{\backcite{Sol_POMDP_Policy_space_1998}{{16}{2.3}{section.2.3}}}
-\@writefile{toc}{\contentsline {subsubsection}{Tree search}{16}{section*.7}}
-\@writefile{toc}{\contentsline {subsubsection}{Planning}{16}{section*.8}}
-\@writefile{brf}{\backcite{Quadrator_2008}{{16}{2.3}{section*.8}}}
-\@writefile{brf}{\backcite{BelRoadMap_2009}{{16}{2.3}{section*.8}}}
-\@writefile{toc}{\contentsline {subsubsection}{Optimal control}{16}{section*.9}}
-\@writefile{brf}{\backcite{Erez10ascalable}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{mc_update_ppomdps}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Platt-RSS-10}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Bayesian_explor_exploit_2009}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Spaan05icra}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Thrun_2005}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Rand_belief_space_replanning}{{16}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Ross08onlineplanning}{{16}{2.3}{section*.9}}}
+\@writefile{toc}{\contentsline {subsubsection}{Planning}{17}{section*.8}}
+\@writefile{brf}{\backcite{Quadrator_2008}{{17}{2.3}{section*.8}}}
+\@writefile{brf}{\backcite{BelRoadMap_2009}{{17}{2.3}{section*.8}}}
+\@writefile{toc}{\contentsline {subsubsection}{Optimal control}{17}{section*.9}}
+\@writefile{brf}{\backcite{Erez10ascalable}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{mc_update_ppomdps}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Platt-RSS-10}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Bayesian_explor_exploit_2009}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Spaan05icra}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Thrun_2005}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Rand_belief_space_replanning}{{17}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Ross08onlineplanning}{{17}{2.3}{section*.9}}}
 \@writefile{brf}{\backcite{Macro_uncertainty_2011}{{17}{2.3}{section*.9}}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Summary}{17}{section.2.4}}
 \bibstyle{plainnat}
