@@ -28,6 +28,8 @@
 
 \usepackage{multirow}
 \usepackage[footnotesize,bf,hang]{caption,subfigure}
+\usepackage{subcaption}
+
 \captionsetup[algorithm]{font=small}
 \usepackage{booktabs} %Publication quality tables in LaTeX
 
@@ -68,8 +70,11 @@
 
 \newcommand{\tagMainFile}
 
-\DeclareMathOperator{\E}{\mathbb{E}}
-\DeclareMathOperator*{\argminC}{\arg\min}   % rbp
+\DeclareMathOperator{\E}{\displaystyle \mathop{\mathbb{E}}}
+\DeclareMathOperator*{\argmin}{\arg\min}   % rbp
+\DeclareMathOperator*{\argmax}{\arg\max}   % rbp
+\DeclareMathOperator{\policy}{\pi_{\boldsymbol{\theta}}}
+\DeclareMathOperator{\BigO}{\mathcal{O}}
 
 \begin{document}
 
@@ -114,9 +119,7 @@
 
 \ifdefined \gDisplayBibliography
 	\bibliographystyle{plainnat}
-	\bibliography{bib/all_citations.bib,bib/pomdp.bib,bib/ProspectTheory.bib}
-
-	%\bibliography{bib/DT.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/spatial_navigation.bib,bib/imitation_learning.bib,bib/citations.bib,bib/ToM.bib,bib/PropsectTheory.bib}
+	\bibliography{bib/pomdp.bib,bib/ProspectTheory.bib}
 \fi
 
 \end{document}

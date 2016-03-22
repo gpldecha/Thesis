@@ -1,15 +1,9 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Bake et~al.(2011)Bake, Tenenbaum, and Saxe]{Bake_Saxe_Tene_2011}
-Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
-\newblock Bayesian theory of mind: Modeling joint belief-desire attribution.
-\newblock In \emph{Thirty-Third Annual Conference of the Cognitive Science
-  Society}, pages 2469--2474, 2011.
 
 \bibitem[Bernoulli(1954)]{Bernoulli1954}
 D.~Bernoulli.
@@ -23,16 +17,6 @@ A.~Billard, S.~Calinon, R.~Dillmann, and S.~Schaal.
 \newblock In B.~Siciliano and O.~Khatib, editors, \emph{Handbook of Robotics},
   pages 1371--1394. Springer, Secaucus, NJ, USA, 2008.
 
-\bibitem[Brooks and Williams(2011)]{mc_update_ppomdps}
-Alex Brooks and Stefan Williams.
-\newblock A monte carlo update for parametric pomdps.
-\newblock In Makoto Kaneko and Yoshihiko Nakamura, editors, \emph{Robotics
-  Research}, volume~66 of \emph{Springer Tracts in Advanced Robotics}, pages
-  213--223. Springer Berlin Heidelberg, 2011.
-\newblock ISBN 978-3-642-14742-5.
-\newblock \doi{10.1007/978-3-642-14743-2_19}.
-\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-14743-2_19}.
-
 \bibitem[Cassandra et~al.(1996)Cassandra, Kaelbling, and
   Kurien]{ActingUncertainty_1996}
 A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
@@ -41,13 +25,6 @@ A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
 \newblock In \emph{Intelligent Robots and Systems '96, IROS 96, Proceedings of
   the 1996 IEEE/RSJ International Conference on}, volume~2, pages 963--972
   vol.2, Nov 1996.
-\newblock \doi{10.1109/IROS.1996.571080}.
-
-\bibitem[Erez and Smart(2010)]{Erez10ascalable}
-Tom Erez and William~D. Smart.
-\newblock A scalable method for solving high-dimensional continuous pomdps
-  using local approximation.
-\newblock In \emph{Conf. on Uncertainty in Artificial Intelligence}, 2010.
 
 \bibitem[Hansen(1998)]{Sol_POMDP_Policy_space_1998}
 Eric~A. Hansen.
@@ -65,6 +42,7 @@ Kris Hauser.
 \newblock In David Hsu, Volkan Isler, Jean-Claude Latombe, and Ming~C. Lin,
   editors, \emph{WAFR}, volume~68 of \emph{Springer Tracts in Advanced
   Robotics}, pages 193--209. Springer, 2010.
+\newblock ISBN 978-3-642-17451-3.
 
 \bibitem[He et~al.(2008)He, Prentice, and Roy]{Quadrator_2008}
 Ruijie He, S.~Prentice, and N.~Roy.
@@ -82,10 +60,15 @@ Ruijie He, Emma Brunskill, and Nicholas Roy.
 \newblock ISSN 1076-9757.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=2016945.2016959}.
 
-\bibitem[Kahneman and Tversky(1979)]{Kahneman79prospecttheory}
-Daniel Kahneman and Amos Tversky.
-\newblock Prospect theory: An analysis of decisions under risk.
-\newblock \emph{Econometrica}, pages 263--291, 1979.
+\bibitem[Kaelbling et~al.(1998)Kaelbling, Littman, and
+  Cassandra]{Kaelbling_1998}
+Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
+\newblock Planning and acting in partially observable stochastic domains.
+\newblock \emph{Artif. Intell.}, 101\penalty0 (1-2):\penalty0 99--134, May
+  1998.
+\newblock ISSN 0004-3702.
+\newblock \doi{10.1016/S0004-3702(98)00023-X}.
+\newblock URL \url{http://dx.doi.org/10.1016/S0004-3702(98)00023-X}.
 
 \bibitem[Martinez-Cantin et~al.(2009)Martinez-Cantin, de~Freitas, Brochu,
   Castellanos, and Doucet]{Bayesian_explor_exploit_2009}
@@ -118,39 +101,28 @@ Akshara Rai, Guillaume De~Chambrier, and Aude Billard.
 \newblock In \emph{Humanoid Robots (Humanoids), 2013 13th IEEE-RAS
   International Conference on}, pages 410--416. IEEE, 2013.
 
+\bibitem[Richard D.~Smallwood(1973)]{Sondik_1973}
+Edward J.~Sondik Richard D.~Smallwood.
+\newblock The optimal control of partially observable markov processes over a
+  finite horizon.
+\newblock \emph{Oper. Res.}, 21\penalty0 (5):\penalty0 1071--1088, October
+  1973.
+\newblock ISSN 0030-364X.
+\newblock \doi{10.1287/opre.21.5.1071}.
+\newblock URL \url{http://dx.doi.org/10.1287/opre.21.5.1071}.
+
 \bibitem[Ross et~al.(2008)Ross, Pineau, Paquet, and
   Chaib-draa]{Ross08onlineplanning}
 Stéphane Ross, Joelle Pineau, Sébastien Paquet, and Brahim Chaib-draa.
 \newblock Online planning algorithms for pomdps.
 \newblock \emph{Journal of Artificial Intelligence Research}, 2008.
 
-\bibitem[Spaan and Vlassis(2005)]{Spaan05icra}
-Matthijs T.~J. Spaan and Nikos Vlassis.
-\newblock Planning with continuous actions in partially observable
-  environments.
-\newblock In \emph{Proceedings of the IEEE International Conference on Robotics
-  and Automation}, pages 3469--3474, Barcelona, Spain, 2005.
-
-\bibitem[Stankiewicz et~al.(2006)Stankiewicz, Legge, Mansfield, and
-  Schlicht]{stankiewicz2006lost}
-B.J. Stankiewicz, G.E. Legge, J.S. Mansfield, and E.J. Schlicht.
-\newblock Lost in virtual space: Studies in human and ideal spatial navigation.
-\newblock \emph{Journal of Experimental Psychology: Human Perception and
-  Performance.(under review)}, 32\penalty0 (3):\penalty0 688--704, 2006.
-
-\bibitem[Thrun et~al.(2005{\natexlab{a}})Thrun, Burgard, and Fox]{Thrun_2005}
+\bibitem[Thrun et~al.(2005)Thrun, Burgard, and Fox]{Thrun_2005}
 Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
 \newblock \emph{Probabilistic Robotics (Intelligent Robotics and Autonomous
   Agents)}.
-\newblock The MIT Press, 2005{\natexlab{a}}.
+\newblock The MIT Press, 2005.
 \newblock ISBN 0262201623.
-
-\bibitem[Thrun et~al.(2005{\natexlab{b}})Thrun, Burgard, and
-  Fox]{Thrun_Burgard_Fox_2005}
-Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
-\newblock \emph{Probabilistic Robotics (Intelligent Robotics and Autonomous
-  Agents)}.
-\newblock The MIT Press, 2005{\natexlab{b}}.
 
 \bibitem[Von~Neumann and Morgenstern(1990)]{VonNeumann1944}
 John Von~Neumann and O.~Morgenstern.

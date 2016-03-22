@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  21 MAR 2016 22:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  22 MAR 2016 15:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex -shell-escape
+**main.tex
 (./main.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
@@ -878,6 +878,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--18
 
 
 ]
+
+Package natbib Warning: Citation `stankiewicz2006lost' on page 2 undefined on i
+nput line 93.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
@@ -887,7 +892,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
+
+Package natbib Warning: Citation `Thrun_Burgard_Fox_2005' on page 2 undefined o
+n input line 119.
+
 [2]
+
+Package natbib Warning: Citation `Bake_Saxe_Tene_2011' on page 3 undefined on i
+nput line 127.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
@@ -932,7 +946,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf, id
-=133, 181.67876pt x 223.83624pt>
+=125, 181.67876pt x 223.83624pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pd
 f Graphic file (type pdf)
 
@@ -941,12 +955,8 @@ f Graphic file (type pdf)
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
 s/cognitive_loop.pdf used on input line 65.
 (pdftex.def)             Requested size: 172.5pt x 212.53392pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[6] [7 </home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.
-pdf>]
+ [6] [7 </home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop
+.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
@@ -972,39 +982,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 199--200
  []
 
 [8] [9]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf, id=195, 261.
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf, id=186, 261.
 97874pt x 255.95625pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf Graphic 
 file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/mdp3.pdf used on input line 233.
+s/mdp3.pdf used on input line 234.
 (pdftex.def)             Requested size: 155.24895pt x 151.68463pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf, id=196, 261.
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf, id=187, 261.
 97874pt x 255.95625pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf Graphic 
 file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/mdp2.pdf used on input line 234.
+s/mdp2.pdf used on input line 235.
 (pdftex.def)             Requested size: 155.24895pt x 151.68463pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10]
-Overfull \hbox (31.92593pt too wide) in paragraph at lines 260--260
-[] 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 </home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf> </home/
-guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf
+[10] [11 </home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf> </h
+ome/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/mdp2.pdf): PDF inclusion: multiple pdfs with page group includ
@@ -1013,53 +1015,54 @@ ed in a single page
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
-Underfull \hbox (badness 10000) in paragraph at lines 299--306
+Underfull \hbox (badness 10000) in paragraph at lines 309--316
 
  []
 
-[13]
+
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf, id=
-349, 340.27126pt x 346.29375pt>
+333, 340.27126pt x 346.29375pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf
  Graphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/motion_update.pdf used on input line 339.
+s/motion_update.pdf used on input line 349.
 (pdftex.def)             Requested size: 155.24895pt x 157.99718pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf, id=35
-0, 340.27126pt x 353.32pt>
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf, id=33
+4, 340.27126pt x 353.32pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf G
 raphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/measurement.pdf used on input line 340.
+s/measurement.pdf used on input line 350.
 (pdftex.def)             Requested size: 155.24895pt x 161.20293pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=351
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=335
 , 340.27126pt x 356.33125pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf Gr
 aphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/likelihood.pdf used on input line 341.
+s/likelihood.pdf used on input line 351.
 (pdftex.def)             Requested size: 155.24895pt x 162.57681pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.pdf
-, id=352, 340.27126pt x 352.31625pt>
+, id=336, 340.27126pt x 352.31625pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_updat
 e.pdf Graphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update
 .pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/measurement_update.pdf used on input line 342.
+s/measurement_update.pdf used on input line 352.
 (pdftex.def)             Requested size: 155.24895pt x 160.74496pt.
- [14 </home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf
-> </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf
+ [13] [14 </home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_updat
+e.pdf> </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf
+
 
 pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/measurement.pdf): PDF inclusion: multiple pdfs with page group
@@ -1076,121 +1079,137 @@ pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/measurement_update.pdf): PDF inclusion: multiple pdfs with pag
 e group included in a single page
 >]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf, id=446, 54
+Underfull \hbox (badness 10000) in paragraph at lines 373--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--389
+
+ []
+
+
+Underfull \vbox (badness 1521) has occurred while \output is active []
+
+ [15]
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf, id=447, 54
 4.0325pt x 509.905pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf Graphi
 c file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp2.pdf used on input line 383.
+s/pomdp2.pdf used on input line 417.
 (pdftex.def)             Requested size: 155.24895pt x 145.51115pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=447, 54
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=448, 54
 4.0325pt x 509.905pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf Graphi
 c file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp3.pdf used on input line 384.
+s/pomdp3.pdf used on input line 418.
 (pdftex.def)             Requested size: 155.24895pt x 145.51115pt.
 
-[15 </home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf> </home
-/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf
+Underfull \vbox (badness 1173) has occurred while \output is active []
+
+ [16 </home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf> </hom
+e/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/pomdp3.pdf): PDF inclusion: multiple pdfs with page group incl
 uded in a single page
 >]
-Overfull \hbox (21.20477pt too wide) in paragraph at lines 400--405
-[]\T1/aer/m/n/10 The new de-scrip-tion of the prob-lem is now in terms of be-li
-ef space $\OML/cmm/m/it/10 < \OMS/cmsy/m/n/10 B\OML/cmm/m/it/10 ; U; ^^\; R; ^^
-M >$
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-LaTeX Warning: Reference `fig:pomdp_bel_tree' on page 16 undefined on input lin
-e 411.
-
-
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf, id=58
-4, 691.58376pt x 347.2975pt>
-File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf G
-raphic file (type pdf)
-
-<use /home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>
-Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/belief_tree.pdf used on input line 419.
-(pdftex.def)             Requested size: 345.0pt x 173.25087pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 424--425
+ [17]
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
+Underfull \hbox (badness 10000) in paragraph at lines 533--534
 
  []
 
-[16 </home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 490--491
+
+Package natbib Warning: Citation `Erez10ascalable' on page 18 undefined on inpu
+t line 543.
+
+
+Package natbib Warning: Citation `mc_update_ppomdps' on page 18 undefined on in
+put line 544.
+
+
+Package natbib Warning: Citation `Spaan05icra' on page 18 undefined on input li
+ne 553.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
 
  []
 
-) [17] [18
-
-] (./main.bbl (./main.brf)
+) [18] (./main.bbl (./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 35.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 37.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Underfull \hbox (badness 1990) in paragraph at lines 35--35
-\T1/aer/m/n/10 ric pomdps.  In Makoto Kaneko and Yoshi-hiko Naka-mura, ed-i-tor
-s,
+Underfull \hbox (badness 1688) in paragraph at lines 72--72
+\T1/aer/m/n/10 00023-[]X$.  URL [][]$\T1/aett/m/n/10 http : / / dx . doi . org 
+/ 10 . 1016 / S0004-[]3702(98 ) 00023-[]X$[][]\T1/aer/m/n/10 .
  []
 
 [19
 
+
 ])
+
+Package natbib Warning: There were undefined citations.
+
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 33.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
 [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 910958BD6D269F8EA75742DC45C40069;1064.
-Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 1D9BA7E120A10E9679053E1DDC7F77D1;1214.
 
+
+Package rerunfilecheck Warning: File `main.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `main.brf':
+(rerunfilecheck)             Before: 9DB8C4269769D4D935FCB0F7C74A64D4;1045
+(rerunfilecheck)             After:  147AAB5FCE79379F1188663B34EB5F42;1045.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  )
 (\end occurred when \ifdefined on line 120 was incomplete)
 (\end occurred when \ifdefined on line 111 was incomplete)
 (\end occurred when \ifdefined on line 110 was incomplete) 
 Here is how much of TeX's memory you used:
- 18264 strings out of 493304
- 312453 string characters out of 6139871
- 396144 words of memory out of 5000000
- 21158 multiletter control sequences out of 15000+600000
+ 18276 strings out of 493304
+ 312305 string characters out of 6139872
+ 395512 words of memory out of 5000000
+ 21168 multiletter control sequences out of 15000+600000
  58327 words of font info for 123 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,13n,55p,818b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,16n,60p,804b,773s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
@@ -1199,28 +1218,29 @@ e1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-mi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/ty
-pe1/public/tex-gyre/qhvr.pfb>
-Output written on main.pdf (22 pages, 3548033 bytes).
+mi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/pub
+lic/tex-gyre/qhvr.pfb>
+Output written on main.pdf (22 pages, 3519236 bytes).
 PDF statistics:
- 813 PDF objects out of 1000 (max. 8388607)
- 673 compressed objects within 7 object streams
- 90 named destinations out of 1000 (max. 500000)
- 191 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 786 PDF objects out of 1000 (max. 8388607)
+ 650 compressed objects within 7 object streams
+ 91 named destinations out of 1000 (max. 500000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

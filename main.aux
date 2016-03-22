@@ -30,12 +30,9 @@
 \citation{stankiewicz2006lost}
 \citation{Thrun_Burgard_Fox_2005}
 \@writefile{brf}{\backcite{Billard08chapter}{{2}{1.1}{section.1.1}}}
-\@writefile{brf}{\backcite{stankiewicz2006lost}{{2}{1.1}{section.1.1}}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Contribution}{2}{section.1.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Learning to reason with uncertainty as humans}{2}{subsection.1.2.1}}
 \citation{Bake_Saxe_Tene_2011}
-\@writefile{brf}{\backcite{Thrun_Burgard_Fox_2005}{{3}{1.2.1}{subsection.1.2.1}}}
-\@writefile{brf}{\backcite{Bake_Saxe_Tene_2011}{{3}{1.2.1}{subsection.1.2.1}}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Non-parametric Bayesian state space filter}{3}{subsection.1.2.2}}
 \citation{rai2013learning}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Reinforcement learning in belief space}{4}{subsection.1.2.3}}
@@ -69,12 +66,12 @@
 \newlabel{eq:joint_state_actions}{{2.2}{11}{Sequential decision process}{equation.2.2.2}{}}
 \newlabel{eq:temporal_expected_utility}{{2.4}{11}{Sequential decision process}{equation.2.2.4}{}}
 \newlabel{eq:max_util}{{2.2}{11}{Sequential decision process}{equation.2.2.4}{}}
-\newlabel{eq:expansion}{{2.5}{12}{Sequential decision process}{equation.2.2.5}{}}
+\newlabel{eq:expansion}{{2.5}{11}{Sequential decision process}{equation.2.2.5}{}}
 \newlabel{eq:bellman}{{2.6}{12}{Sequential decision process}{equation.2.2.6}{}}
 \newlabel{eq:on_policy_bellman}{{2.7}{12}{Sequential decision process}{equation.2.2.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}POMDP}{13}{subsection.2.2.1}}
 \newlabel{eq:sensor}{{2.8}{13}{POMDP}{equation.2.2.8}{}}
-\newlabel{eq:likelihood}{{2.9}{14}{POMDP}{equation.2.2.9}{}}
+\newlabel{eq:likelihood}{{2.9}{13}{POMDP}{equation.2.2.9}{}}
 \newlabel{fig:motion_update}{{2.3(a)}{14}{Subfigure 2 2.3(a)}{subfigure.2.3.1}{}}
 \newlabel{sub@fig:motion_update}{{(a)}{14}{Subfigure 2 2.3(a)\relax }{subfigure.2.3.1}{}}
 \newlabel{fig:measurement}{{2.3(b)}{14}{Subfigure 2 2.3(b)}{subfigure.2.3.2}{}}
@@ -91,20 +88,25 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{14}{figure.caption.4}}
 \newlabel{eq:motion_update}{{2.10}{15}{POMDP}{equation.2.2.10}{}}
 \newlabel{eq:measurement_update}{{2.11}{15}{POMDP}{equation.2.2.11}{}}
-\newlabel{fig:sub_pomdp}{{2.4(a)}{15}{Subfigure 2 2.4(a)}{subfigure.2.4.1}{}}
-\newlabel{sub@fig:sub_pomdp}{{(a)}{15}{Subfigure 2 2.4(a)\relax }{subfigure.2.4.1}{}}
-\newlabel{fig:sub_bmdp}{{2.4(b)}{15}{Subfigure 2 2.4(b)}{subfigure.2.4.2}{}}
-\newlabel{sub@fig:sub_bmdp}{{(b)}{15}{Subfigure 2 2.4(b)\relax }{subfigure.2.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces \relax }}{15}{figure.caption.5}}
-\newlabel{fig:pomdp}{{2.4}{15}{\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {off-policy}}}{15}{figure.caption.5}}
-\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {on-policy}}}{15}{figure.caption.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Bayesian state space filter.\relax }}{15}{figure.caption.5}}
+\newlabel{fig:sub_pomdp}{{2.5(a)}{16}{Subfigure 2 2.5(a)}{subfigure.2.5.1}{}}
+\newlabel{sub@fig:sub_pomdp}{{(a)}{16}{Subfigure 2 2.5(a)\relax }{subfigure.2.5.1}{}}
+\newlabel{fig:sub_bmdp}{{2.5(b)}{16}{Subfigure 2 2.5(b)}{subfigure.2.5.2}{}}
+\newlabel{sub@fig:sub_bmdp}{{(b)}{16}{Subfigure 2 2.5(b)\relax }{subfigure.2.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces \textbf  {(a)} POMDP graphical model. The state space, $X$, is hidden, but is still partially observable through a measurement, $Y$. \textbf  {(b)} belief-MDP, the POMDP is cast into a belief Markov Decision Process. The state space is a probability distribution, $b(x_t) = p(x_t)$, (known as a belief state) and is no longer considered a latent state. The original state transition function $p(x_{t+1}|x_t,a_t)$ is replaced by a belief state transition, $p(b_{t+1}|b_t,a_t)$. The reward is now a function of the belief.\relax }}{16}{figure.caption.6}}
+\newlabel{fig:pomdp}{{2.5}{16}{\textbf {(a)} POMDP graphical model. The state space, $X$, is hidden, but is still partially observable through a measurement, $Y$. \textbf {(b)} belief-MDP, the POMDP is cast into a belief Markov Decision Process. The state space is a probability distribution, $b(x_t) = p(x_t)$, (known as a belief state) and is no longer considered a latent state. The original state transition function $p(x_{t+1}|x_t,a_t)$ is replaced by a belief state transition, $p(b_{t+1}|b_t,a_t)$. The reward is now a function of the belief.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{16}{figure.caption.6}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{16}{figure.caption.6}}
+\newlabel{eq:belief_bellman}{{2.15}{16}{POMDP}{equation.2.2.15}{}}
+\citation{Sondik_1973}
+\citation{Thrun_2005}
+\citation{Kaelbling_1998}
+\newlabel{eq:belief_state_transformation}{{2.16}{17}{POMDP}{equation.2.2.16}{}}
+\newlabel{eq:max_component}{{2.17}{17}{POMDP}{equation.2.2.17}{}}
+\newlabel{eq:final_belief_bellman}{{2.18}{17}{POMDP}{equation.2.2.18}{}}
+\@writefile{brf}{\backcite{Sondik_1973}{{17}{2.2.1}{equation.2.2.18}}}
+\@writefile{brf}{\backcite{Thrun_2005}{{17}{2.2.1}{equation.2.2.18}}}
 \citation{Sol_POMDP_Policy_space_1998}
-\newlabel{eq:optimal_value_f}{{2.12}{16}{POMDP}{equation.2.2.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces ad\relax }}{16}{figure.caption.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}State of the art}{16}{section.2.3}}
-\@writefile{brf}{\backcite{Sol_POMDP_Policy_space_1998}{{16}{2.3}{section.2.3}}}
-\@writefile{toc}{\contentsline {subsubsection}{Tree search}{16}{section*.7}}
 \citation{Quadrator_2008}
 \citation{BelRoadMap_2009}
 \citation{Erez10ascalable}
@@ -116,43 +118,39 @@
 \citation{Rand_belief_space_replanning}
 \citation{Ross08onlineplanning}
 \citation{Macro_uncertainty_2011}
-\@writefile{toc}{\contentsline {subsubsection}{Planning}{17}{section*.8}}
-\@writefile{brf}{\backcite{Quadrator_2008}{{17}{2.3}{section*.8}}}
-\@writefile{brf}{\backcite{BelRoadMap_2009}{{17}{2.3}{section*.8}}}
-\@writefile{toc}{\contentsline {subsubsection}{Optimal control}{17}{section*.9}}
-\@writefile{brf}{\backcite{Erez10ascalable}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{mc_update_ppomdps}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Platt-RSS-10}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Bayesian_explor_exploit_2009}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Spaan05icra}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Thrun_2005}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Rand_belief_space_replanning}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Ross08onlineplanning}{{17}{2.3}{section*.9}}}
-\@writefile{brf}{\backcite{Macro_uncertainty_2011}{{17}{2.3}{section*.9}}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Summary}{17}{section.2.4}}
+\@writefile{brf}{\backcite{Kaelbling_1998}{{18}{2.2.1}{equation.2.2.18}}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}State of the art}{18}{section.2.3}}
+\@writefile{brf}{\backcite{Sol_POMDP_Policy_space_1998}{{18}{2.3}{section.2.3}}}
+\@writefile{toc}{\contentsline {subsubsection}{Tree search}{18}{section*.7}}
+\@writefile{toc}{\contentsline {subsubsection}{Planning}{18}{section*.8}}
+\@writefile{brf}{\backcite{Quadrator_2008}{{18}{2.3}{section*.8}}}
+\@writefile{brf}{\backcite{BelRoadMap_2009}{{18}{2.3}{section*.8}}}
+\@writefile{toc}{\contentsline {subsubsection}{Optimal control}{18}{section*.9}}
+\@writefile{brf}{\backcite{Platt-RSS-10}{{18}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Bayesian_explor_exploit_2009}{{18}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Thrun_2005}{{18}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Rand_belief_space_replanning}{{18}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Ross08onlineplanning}{{18}{2.3}{section*.9}}}
+\@writefile{brf}{\backcite{Macro_uncertainty_2011}{{18}{2.3}{section*.9}}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Summary}{18}{section.2.4}}
 \bibstyle{plainnat}
-\bibdata{bib/all_citations.bib,bib/pomdp.bib,bib/ProspectTheory.bib}
-\bibcite{Bake_Saxe_Tene_2011}{{1}{2011}{{Bake et~al.}}{{Bake, Tenenbaum, and Saxe}}}
-\bibcite{Bernoulli1954}{{2}{1954}{{Bernoulli}}{{}}}
-\bibcite{Billard08chapter}{{3}{2008}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
-\bibcite{mc_update_ppomdps}{{4}{2011}{{Brooks and Williams}}{{}}}
-\bibcite{ActingUncertainty_1996}{{5}{1996}{{Cassandra et~al.}}{{Cassandra, Kaelbling, and Kurien}}}
-\bibcite{Erez10ascalable}{{6}{2010}{{Erez and Smart}}{{}}}
-\bibcite{Sol_POMDP_Policy_space_1998}{{7}{1998}{{Hansen}}{{}}}
-\bibcite{Rand_belief_space_replanning}{{8}{2010}{{Hauser}}{{}}}
-\bibcite{Quadrator_2008}{{9}{2008}{{He et~al.}}{{He, Prentice, and Roy}}}
-\bibcite{Macro_uncertainty_2011}{{10}{2011}{{He et~al.}}{{He, Brunskill, and Roy}}}
+\bibdata{bib/pomdp.bib,bib/ProspectTheory.bib,bib/DT.bib,bib/ToM.bib,bib/citations.bib,bib/cpomdp.bib}
+\bibcite{Bernoulli1954}{{1}{1954}{{Bernoulli}}{{}}}
+\bibcite{Billard08chapter}{{2}{2008}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
+\bibcite{ActingUncertainty_1996}{{3}{1996}{{Cassandra et~al.}}{{Cassandra, Kaelbling, and Kurien}}}
+\bibcite{Sol_POMDP_Policy_space_1998}{{4}{1998}{{Hansen}}{{}}}
+\bibcite{Rand_belief_space_replanning}{{5}{2010}{{Hauser}}{{}}}
+\bibcite{Quadrator_2008}{{6}{2008}{{He et~al.}}{{He, Prentice, and Roy}}}
+\bibcite{Macro_uncertainty_2011}{{7}{2011}{{He et~al.}}{{He, Brunskill, and Roy}}}
+\bibcite{Kaelbling_1998}{{8}{1998}{{Kaelbling et~al.}}{{Kaelbling, Littman, and Cassandra}}}
+\bibcite{Bayesian_explor_exploit_2009}{{9}{2009}{{Martinez-Cantin et~al.}}{{Martinez-Cantin, de~Freitas, Brochu, Castellanos, and Doucet}}}
+\bibcite{Platt-RSS-10}{{10}{2010}{{Platt et~al.}}{{Platt, Tedrake, Kaelbling, and Lozano-Perez}}}
 \@writefile{toc}{\contentsline {chapter}{References}{19}{chapter*.10}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\bibcite{Kahneman79prospecttheory}{{11}{1979}{{Kahneman and Tversky}}{{}}}
-\bibcite{Bayesian_explor_exploit_2009}{{12}{2009}{{Martinez-Cantin et~al.}}{{Martinez-Cantin, de~Freitas, Brochu, Castellanos, and Doucet}}}
-\bibcite{Platt-RSS-10}{{13}{2010}{{Platt et~al.}}{{Platt, Tedrake, Kaelbling, and Lozano-Perez}}}
-\bibcite{BelRoadMap_2009}{{14}{2009}{{Prentice and Roy}}{{}}}
-\bibcite{rai2013learning}{{15}{2013}{{Rai et~al.}}{{Rai, De~Chambrier, and Billard}}}
-\bibcite{Ross08onlineplanning}{{16}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
-\bibcite{Spaan05icra}{{17}{2005}{{Spaan and Vlassis}}{{}}}
-\bibcite{stankiewicz2006lost}{{18}{2006}{{Stankiewicz et~al.}}{{Stankiewicz, Legge, Mansfield, and Schlicht}}}
-\bibcite{Thrun_2005}{{19}{2005{a}}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{Thrun_Burgard_Fox_2005}{{20}{2005{b}}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{VonNeumann1944}{{21}{1990}{{Von~Neumann and Morgenstern}}{{}}}
+\bibcite{BelRoadMap_2009}{{11}{2009}{{Prentice and Roy}}{{}}}
+\bibcite{rai2013learning}{{12}{2013}{{Rai et~al.}}{{Rai, De~Chambrier, and Billard}}}
+\bibcite{Sondik_1973}{{13}{1973}{{Richard D.~Smallwood}}{{}}}
+\bibcite{Ross08onlineplanning}{{14}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
+\bibcite{Thrun_2005}{{15}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
+\bibcite{VonNeumann1944}{{16}{1990}{{Von~Neumann and Morgenstern}}{{}}}
