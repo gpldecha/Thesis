@@ -1,4 +1,4 @@
-\begin{thebibliography}{54}
+\begin{thebibliography}{57}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -84,6 +84,13 @@ Tom Erez and William~D. Smart.
   using local approximation.
 \newblock In \emph{Conf. on Uncertainty in Artificial Intelligence}, 2010.
 
+\bibitem[Ernst et~al.(2005)Ernst, Geurts, and Wehenkel]{Tree_batch_2005}
+Damien Ernst, Pierre Geurts, and Louis Wehenkel.
+\newblock Tree-based batch mode reinforcement learning.
+\newblock \emph{J. Mach. Learn. Res.}, 6:\penalty0 503--556, December 2005.
+\newblock ISSN 1532-4435.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=1046920.1088690}.
+
 \bibitem[Hansen(1998)]{Sol_POMDP_Policy_space_1998}
 Eric~A. Hansen.
 \newblock Solving pomdps by searching in policy space.
@@ -92,6 +99,13 @@ Eric~A. Hansen.
   1998. Morgan Kaufmann Publishers Inc.
 \newblock ISBN 1-55860-555-X.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=2074094.2074119}.
+
+\bibitem[Hausknecht and Stone(2015)]{DRQ_AAAI_2015}
+Matthew Hausknecht and Peter Stone.
+\newblock Deep recurrent q-learning for partially observable mdps.
+\newblock 2015.
+\newblock URL
+  \url{https://www.aaai.org/ocs/index.php/FSS/FSS15/paper/view/11673}.
 
 \bibitem[He et~al.(2008)He, Prentice, and Roy]{Quadrator_2008}
 Ruijie He, S.~Prentice, and N.~Roy.
@@ -160,13 +174,6 @@ Hanna Kurniawati, David Hsu, and Wee~Sun Lee.
   optimally reachable belief spaces.
 \newblock In \emph{In Proc. Robotics: Science and Systems}, 2008.
 
-\bibitem[Kurniawati et~al.(2009)Kurniawati, Du, Hsu, and
-  Lee]{Kurniawati2009MotionPU}
-Hanna Kurniawati, Yanzhu Du, David Hsu, and Wee~Sun Lee.
-\newblock Motion planning under uncertainty for robotic tasks with long time
-  horizons.
-\newblock In \emph{ISRR}, 2009.
-
 \bibitem[Lee et~al.(2013)Lee, Duan, Patil, Schulman, McCarthy, van~den Berg,
   Goldberg, and Abbeel]{sigma_hull_iros_2013}
 A.~Lee, Y.~Duan, S.~Patil, J.~Schulman, Z.~McCarthy, J.~van~den Berg,
@@ -216,6 +223,18 @@ Ruben Martinez-Cantin, Nando de~Freitas, Eric Brochu, José Castellanos, and
 \newblock \doi{10.1007/s10514-009-9130-2}.
 \newblock URL \url{http://dx.doi.org/10.1007/s10514-009-9130-2}.
 
+\bibitem[Mnih et~al.(2015)Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare,
+  Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik,
+  Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis]{mnih-dqn-2015}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A. Rusu, Joel Veness,
+  Marc~G. Bellemare, Alex Graves, Martin Riedmiller, Andreas~K. Fidjeland,
+  Georg Ostrovski, Stig Petersen, Charles Beattie, Amir Sadik, Ioannis
+  Antonoglou, Helen King, Dharshan Kumaran, Daan Wierstra, Shane Legg, and
+  Demis Hassabis.
+\newblock Human-level control through deep reinforcement learning.
+\newblock \emph{Nature}, 518\penalty0 (7540):\penalty0 529--533, 02 2015.
+\newblock URL \url{http://dx.doi.org/10.1038/nature14236}.
+
 \bibitem[Ng and Jordan(2000)]{Pegasus_2000}
 Andrew~Y. Ng and Michael Jordan.
 \newblock Pegasus: A policy search method for large mdps and pomdps.
@@ -256,6 +275,12 @@ Robert Platt, Russell Tedrake, Leslie Kaelbling, and Tom\'{a}s
 \newblock URL
   \url{http://groups.csail.mit.edu/robotics-center/public_papers/Platt10.pdf}.
 
+\bibitem[Porta et~al.(2006)Porta, Vlassis, Spaan, and Poupart]{PBVI_C_2006}
+Josep~M. Porta, Nikos Vlassis, Matthijs T.~J. Spaan, and Pascal Poupart.
+\newblock Point-based value iteration for continuous pomdps.
+\newblock \emph{JOURNAL OF MACHINE LEARNING RESEARCH}, 7:\penalty0 2329--2367,
+  2006.
+
 \bibitem[Prentice and Roy(2009{\natexlab{a}})]{BelRoadMap_2009}
 S.~Prentice and N.~Roy.
 \newblock The belief roadmap: Efficient planning in belief space by factoring
@@ -287,6 +312,13 @@ Edward J.~Sondik Richard D.~Smallwood.
 \newblock ISSN 0030-364X.
 \newblock \doi{10.1287/opre.21.5.1071}.
 \newblock URL \url{http://dx.doi.org/10.1287/opre.21.5.1071}.
+
+\bibitem[Riedmiller(2005)]{neura_fqi_2005}
+Martin Riedmiller.
+\newblock Neural fitted q iteration – first experiences with a data efficient
+  neural reinforcement learning method.
+\newblock In \emph{In 16th European Conference on Machine Learning}, pages
+  317--328. Springer, 2005.
 
 \bibitem[Ross et~al.(2008)Ross, Pineau, Paquet, and
   Chaib-draa]{Ross08onlineplanning}
@@ -401,13 +433,6 @@ Jur van~den Berg, Sachin Patil, and Ron Alterovitz.
   (11):\penalty0 1263--1278, 2012.
 \newblock \doi{10.1177/0278364912456319}.
 \newblock URL \url{http://ijr.sagepub.com/content/31/11/1263.abstract}.
-
-\bibitem[Veiga et~al.(2014)Veiga, Spaan, and Lima]{Veiga14aaai}
-Tiago~S. Veiga, Matthijs T.~J. Spaan, and Pedro~U. Lima.
-\newblock Point-based {POMDP} solving with factored value function
-  approximation.
-\newblock In \emph{Proceedings of the Twenty-Eighth AAAI Conference on
-  Artificial Intelligence}, pages 2512--2518, 2014.
 
 \bibitem[Veloso(2007)]{FSVI}
 Manuela~M. Veloso, editor.

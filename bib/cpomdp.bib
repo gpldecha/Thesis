@@ -388,4 +388,47 @@ month={Sept}
 } 
 
 
+% Fitted Q-Iteration in POMDP
+
+@article{DRQ_AAAI_2015,
+	author = {Matthew Hausknecht and Peter Stone},
+	title = {Deep Recurrent Q-Learning for Partially Observable MDPs},
+	conference = {AAAI Fall Symposium Series},
+	year = {2015},
+	keywords = {Deep Reinforcement Learning; LSTM; Deep Networks; Reinforcement Learning; Atari; Deep Q-Learning},
+	abstract = {Deep Reinforcement Learning has yielded proficient controllers for complex tasks. However, these controllers have limited memory and rely on being able to perceive the complete game screen at each decision point. To address these shortcomings, this article investigates the effects of adding recurrency to a Deep Q-Network (DQN) by replacing the first post-convolutional fully-connected layer with a recurrent LSTM. The resulting Deep Recurrent Q-Network (DRQN), although capable of seeing only a single frame at each timestep, successfully integrates information through time and replicates DQN's performance on standard Atari games and partially observed equivalents featuring flickering game screens. Additionally, when trained with partial observations and evaluated with incrementally more complete observations, DRQN's performance scales as a function of observability. Conversely, when trained with full observations and evaluated with partial observations, DRQN's performance degrades less than DQN's. Thus, given the same length of history, recurrency is a viable alternative to stacking a history of frames in the DQN's input layer and while recurrency confers no systematic advantage when learning to play the game, the recurrent net can better adapt at evaluation time if the quality of observations changes.},
+	url = {https://www.aaai.org/ocs/index.php/FSS/FSS15/paper/view/11673}
+}
+
+
+
+@article{mnih-dqn-2015,
+	Author = {Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and Rusu, Andrei A. and Veness, Joel and Bellemare, Marc G. and Graves, Alex and Riedmiller, Martin and Fidjeland, Andreas K. and 	Ostrovski, Georg and Petersen, Stig and Beattie, Charles and Sadik, Amir and Antonoglou, Ioannis and King, Helen and Kumaran, Dharshan and Wierstra, Daan and Legg, Shane and Hassabis, Demis},
+	Date = {2015/02/26/print},
+	Date-Added = {2015-03-03 15:43:42 +0000},
+	Date-Modified = {2015-03-03 15:43:42 +0000},
+	Day = {26},
+	Isbn = {0028-0836},
+	Journal = {Nature},
+	L3 = {10.1038/nature14236; http://www.nature.com/nature/journal/v518/n7540/abs/nature14236.html#supplementary-information},
+	M3 = {Letter},
+	Month = {02},
+	Number = {7540},
+	Pages = {529--533},
+	Publisher = {Nature Publishing Group, a division of Macmillan Publishers Limited. All Rights Reserved.},
+	Title = {Human-level control through deep reinforcement learning},
+	Ty = {JOUR},
+	Url = {http://dx.doi.org/10.1038/nature14236},
+	Volume = {518},
+	Year = {2015}
+}
+
+@INPROCEEDINGS{neura_fqi_2005,
+    author = {Martin Riedmiller},
+    title = {Neural fitted Q iteration – first experiences with a data efficient neural reinforcement learning method},
+    booktitle = {In 16th European Conference on Machine Learning},
+    year = {2005},
+    pages = {317--328},
+    publisher = {Springer}
+}
 

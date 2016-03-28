@@ -496,6 +496,7 @@ and here \cite{Kaelbling_1998}.
 %  \caption{ad}
 %\end{figure}
 
+Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
 
 \section{State of the art}
 
@@ -506,7 +507,7 @@ adequately, the control policy risks being suboptimal or lead to drastic failure
 
 
 
-\subsection{Approximate Value function}
+\subsection{Point-based Value Iteration}
 
 The POMDP formulation introduced previously is the main theoretical starting point of policies which
 consider uncertainty. However solving an exact POMDP, problem through dynamic programming (value iteration) is 
@@ -531,38 +532,60 @@ to sample belief points which will contain the optimal set of samples necessary 
 state of the art in PBVI value approximation techniques. (See \cite{POMDP_approach_2010}) for a review and comparison of both techniques on problems 
 with thousands of states including simulation examples in grasping, tracking and UAV navigation. 
 
-These methods are well suited to address problems which are easily expressed in a discrete state space. All examples problems are simulation and 
-no physical interactive problems are considers. One of the main reasons for that all variables are discrete. Besides the belief set generation problem,
-interest has also been poised on porting the PBVI to a continuous state space.
+These methods are well suited to address problems which are easily expressed in a discrete state space. All considered problems are simulation based and 
+no physical interaction problems are considers. Besides the belief set generation problem, interest has also been poised on porting the PBVI to a continuous state space.
+A example of a continuous action space PBVI method is Perseus \cite{Spaan05icra}, in which the authors replace the maximisation over the action by instead sampling them from a 
+parametric continuous representation. In \cite{PBVI_C_2006} the state space, transition and observation model are represented by Gaussian Mixtures and the authors consider a particle 
+set or Gaussian mixture representation of the belief. The authors show that a continuous representation of the state space preserves the PWLC property of the value function. They extend 
+there method to continuous action and observations through a sampling instead of discretising. Results are shown in 1D continuous corridor setting. In a 
+more recent approach \cite{solving_continous_pomdps_2013} a discrete state presentation of a continuous state space is learned and is combined with sampling
+techniques to solve the continuous integrals present in the bellman equation. The explicit learning of the state representation lead to an increased performance
+when compared to the other continuous state PBVI methods and the others considered both continuous state and observation space. 
 
+PBVI techniques have come fare since their first application to robotics navigation back in 2003 and have lead to a rapid increase of interest. 
+Initially only a few hundred states could be considered and now problems with over ten thousand states are being solved in seconds. 
+Most of the research has focused on how to gather efficiently a good set of sample beliefs. Later there have been efforts to expand PBVI 
+to continuous state spaces such to be more suited to robotic applications. The main approach consists of using sampling techniques to overcome 
+the maximisation over the actions (when considering continuous actions) or to choose a suitable parametric representation of the transition, observation 
+and reward model such that the bellman equation can be solved in closed form. Most evaluation of have focused on simulated and simplified robotic 
+navigation problems in 1D and 2D. We have not discussed online POMDP-solvers since there also based on VI and sampling techniques and thus share 
+a lot of similarities with PBVI, we refer the reader to \cite{Ross08onlineplanning} for a detailed review.
 
-Resent advances in PBVI methods: \cite{Veiga14aaai} 	   % Pedro Lima Point-Based method for Factor value 
+%\cite{MCVI_CS_POMDPs}	% sampling techniques 
+
+%Resent advances in PBVI methods: \cite{Veiga14aaai} 	   % Pedro Lima Point-Based method for Factor value 
 
 % Point-based Value Iteration for Continuous POMDPs
 
-A example of a continuous action space PBVI method is Ca-Perseus \cite{Spaan05icra}, in which the authors replace the 
-maximisation over the action by instead sampling them from a parametric continuous representation. In \cite{PBVI_C_2006}
-the state space, transition and observation model are represented by Gaussian Mixtures and the authors consider a particle 
-set or Gaussian mixture representation of the belief. The authors show that a continuous representation of the state space
-preserves the PWLC property of the value function. They extend there method to continuous action and observations through 
-a sampling instead of discretising. Results are shown in 1D continuous corridor setting.
+\subsection{Parametric Value Iteration}
 
+Point-based Value Iteration techniques tried to preserve the PWLC property of the value function. This directly 
+leads to a discretization of the state space which if continuous by nature leads use prone to the curse of dimensionality.
+An alternative approach is to represent the belief space by a parametric representation, for instance as a Gaussian function. 
+The value function is then defined as a function of the parameters of the Gaussian. This approach in effect greatly 
+diminishes the dimensionality problem but does away with the PWLC property of the value function. Instead to generalise 
+the value of particular parameter a regressor function is needed and to learn it approximate dynamic programming techniques 
+are used.
 
-\cite{MCVI_CS_POMDPs}
+A very first successful example of this approach is \cite{MC-POMDP} were a POMDP problem in a continuous 
+state, action and observation space was solved; with a working implementation on a physical mobile base.  
+The belief was represented by a particle filter and the policy by a Q-value function, whose functional form was 
+a non-parametric regressor (k-nearest neighbour) of the particle filter. The distance metric was the sample KL divergence
+between two particle sets. The POMDP was solved through Reinforcement Learning (interaction with the environment) and 
+approximated dynamic programming also known as experience replay, batch RL or Fitted Q-Iteration (FQI)\cite{Tree_batch_2005}. 
+Although highly computationally demanding the method was successful. 
 
-% Continuous VI
-\cite{mc_update_ppomdps}
-\cite{MC-POMDP}		  % first real usage of continuous action, observation, real-time dynamic programming
-\cite{solving_continous_pomdps_2013} % Efficient state space representation
+This lead to many similar approaches such as \cite{mc_update_ppomdps} where the belief state filter was an 
+Extended Kalman Filter (EKF), the value function was also non-parametric and the POMDP was solved via FQI. 
+When compared with Perseus in a discretized 2D localisation task both approaches reached equivalent 
+policies but the authors method achieved it much faster than Perseus, a PBVI method.
 
-% Historical implementation of PBVI
-% A POMDP Approach to Robot Motion Planning under Uncertainty
-% Popular approach
-   
-\cite{Kurniawati2009MotionPU}
-\cite{Ross08onlineplanning} % Online planning algorithms
+\cite{DRQ_AAAI_2015}
+\cite{mnih-dqn-2015}
+\cite{neura_fqi_2005}
 
-
+\cite{belief_compression_2005}
+\cite{bs_compression_2010}
 
 
 % Generic planning under uncertainty (not directly using a policy representation)
@@ -576,7 +599,6 @@ a sampling instead of discretising. Results are shown in 1D continuous corridor 
 \cite{dmp_seq_2012}
 \cite{dmp_iros_2011}
 
-
 % Non pomdp method %Heurisitc: Information Gain
 \cite{dense_entropy_icra_2014}
 % Policy search
@@ -586,8 +608,6 @@ a sampling instead of discretising. Results are shown in 1D continuous corridor 
 
 \cite{sigma_hull_iros_2013}
 \cite{int_motion_planning_2013}  % belief space planning
-\cite{belief_compression_2005}
-\cite{bs_compression_2010}
 
 \subsubsection{Planning}
 $b = (\mu,\Sigma)$
