@@ -19,7 +19,6 @@ author={Richard D. Smallwood, Edward J. Sondik},
  address = {Institute for Operations Research and the Management Sciences (INFORMS), Linthicum, Maryland, USA}
 }
 
-
 @article{Kaelbling_1998,
  author = {Kaelbling, Leslie Pack and Littman, Michael L. and Cassandra, Anthony R.},
  title = {Planning and Acting in Partially Observable Stochastic Domains},
@@ -71,6 +70,74 @@ month={},}
     pages = {99--134}
 }
 
+
+@INPROCEEDINGS{Roy99coastalnavigation,
+    author = {Nicholas Roy and Sebastian Thrun},
+    title = {Coastal Navigation with Mobile Robots},
+    booktitle = {In Advances in Neural Processing Systems 12},
+    year = {1999},
+    pages = {1043--1049}
+}
+
+% Online belief space planning
+
+@article{Ross08onlineplanning,
+ author = {Ross, St{\'e}phane and Pineau, Joelle and Paquet, S{\'e}bastien and Chaib-draa, Brahim},
+ title = {Online Planning Algorithms for POMDPs},
+ journal = {J. Artif. Int. Res.},
+ issue_date = {May 2008},
+ volume = {32},
+ number = {1},
+ month = jul,
+ year = {2008},
+ issn = {1076-9757},
+ pages = {663--704},
+ numpages = {42},
+ url = {http://dl.acm.org/citation.cfm?id=1622673.1622690},
+ acmid = {1622690},
+ publisher = {AI Access Foundation},
+ address = {USA},
+} 
+
+
+% Belief space compression
+
+@article{belief_compression_2005,
+    abstract = {{Human beings take for granted their ability to move around and interact with each other in a wide range of environments.  These same environments are tremendous sources of uncertainty for mobile robots. Not only does navigation introduce positional  uncertainty, but systems that try to interact with human beings are faced with the tremendously noisy and ambiguous  behaviours that humans exhibit. More recent planners have been developed that to handle the non-deterministic and unexpected  outcomes of actions. For example, a number of probabilistic planners model the real world as a Markov process.  However, most such planners assume that the true state of the world can always be determined accurately, an assumption that  is . In an world without enough structure, tracking the current position of a robot is hard; the sensors cannot reliably track the  environment as the robot moves.  The Partially Observable Markov Decision Process (POMDP) constitutes a particular planning methodology th...}},
+    author = {Roy, Nicholas},
+    citeulike-article-id = {7081914},
+    citeulike-linkout-0 = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180},
+    journal = {Journal of Artificial Intelligence Research},
+    posted-at = {2011-12-18 04:09:06},
+    priority = {2},
+    title = {{Finding Approximate POMDP solutions Through Belief Compression}},
+    url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180},
+    volume = {23},
+    year = {2000}
+}
+
+@article{bs_compression_2010,
+    abstract = {{Partially observable Markov decision process (POMDP) is a commonly adopted mathematical framework for solving planning problems in stochastic environments. However, computing the optimal policy of POMDP for large-scale problems is known to be intractable, where the high dimensionality of the underlying belief space is one of the major causes. In this paper, we propose a hybrid approach that integrates two different approaches for reducing the dimensionality of the belief space: 1) belief compression and 2) value-directed compression. In particular, a novel orthogonal nonnegative matrix factorization is derived for the belief compression, which is then integrated in a value-directed framework for computing the policy. In addition, with the conjecture that a properly partitioned belief space can have its per-cluster intrinsic dimension further reduced, we propose to apply a  k -means-like clustering technique to partition the belief space to form a set of sub-POMDPs before applying the dimension reduction techniques to each of them. We have evaluated the proposed belief compression and clustering approaches based on a set of benchmark problems and demonstrated their effectiveness in reducing the cost for computing policies, with the quality of the policies being retained.}},
+    author = {Li, Xin and Cheung, William K. and Liu, Jiming},
+    citeulike-article-id = {7081915},
+    citeulike-linkout-0 = {http://dx.doi.org/10.1109/tsmcb.2009.2021573},
+    citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5184876},
+    doi = {10.1109/tsmcb.2009.2021573},
+    issn = {1083-4419},
+    journal = {IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)},
+    keywords = {mdp, pca, statistics},
+    month = feb,
+    number = {1},
+    pages = {125--136},
+    posted-at = {2010-04-26 01:17:53},
+    priority = {2},
+    title = {{Improving POMDP Tractability via Belief Compression and Clustering}},
+    url = {http://dx.doi.org/10.1109/tsmcb.2009.2021573},
+    volume = {40},
+    year = {2010}
+}
+
+
 % Point Based Value Iteration
 
 @inproceedings{PBVI,
@@ -82,12 +149,59 @@ month={},}
    year = "2003"
 } 
 
+@InProceedings{Veiga14aaai,
+  author =       {Tiago S. Veiga and Matthijs T. J. Spaan and Pedro
+                  U. Lima},
+  title =        {Point-based {POMDP} Solving with Factored Value
+                  Function Approximation},
+  booktitle =    {Proceedings of the Twenty-Eighth AAAI Conference on
+                  Artificial Intelligence},
+  year =         2014,
+  pages =        {2512--2518}
+}
+
+@INPROCEEDINGS{HSV,
+ author = {Smith, Trey and Simmons, Reid},
+ title = {Heuristic Search Value Iteration for POMDPs},
+ booktitle = {Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence},
+ series = {UAI '04},
+ year = {2004},
+ pages = {520--527},
+ publisher = {AUAI Press},
+ address = {Arlington, Virginia, United States},
+} 
+
+@proceedings{FSVI,
+  editor    = {Manuela M. Veloso},
+  title     = {{IJCAI} 2007, Proceedings of the 20th International Joint Conference
+               on Artificial Intelligence, Hyderabad, India, January 6-12, 2007},
+  year      = {2007},
+  timestamp = {Fri, 19 Dec 2008 17:01:54 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/ijcai/2007},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+
 @INPROCEEDINGS{SARSOP,
     author = {Hanna Kurniawati and David Hsu and Wee Sun Lee},
     title = {SARSOP: Efficient point-based POMDP planning by approximating optimally reachable belief spaces},
     booktitle = {In Proc. Robotics: Science and Systems},
     year = {2008}
 }
+
+@article{DBLP:journals/corr/abs-1207-1412,
+  author    = {Trey Smith and
+               Reid G. Simmons},
+  title     = {Point-Based {POMDP} Algorithms: Improved Analysis and Implementation},
+  journal   = {CoRR},
+  volume    = {abs/1207.1412},
+  year      = {2012},
+  url       = {http://arxiv.org/abs/1207.1412},
+  timestamp = {Wed, 10 Oct 2012 21:28:54 +0200},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/abs-1207-1412},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+
+
 
 @INPROCEEDINGS{POMDP_approach_2010,
 AUTHOR = "Y.Z. Du and D. Hsu and H. Kurniawati and W.S. Lee and S.C.W. Ong and S.W. Png",
@@ -97,12 +211,7 @@ URL = "papers/icaps10_pomdpApsInRobotics.pdf",
 YEAR = "2010"
 }
 
-@ARTICLE{Ross08onlineplanning,
-    author = {Stéphane Ross and Joelle Pineau and Sébastien Paquet and Brahim Chaib-draa},
-    title = {Online planning algorithms for POMDPs},
-    journal = {Journal of Artificial Intelligence Research},
-    year = {2008}
-}
+
 
 @ARTICLE{continusou_PBVI,
     author = {Josep M. Porta and Nikos Vlassis and Matthijs T. J. Spaan and Pascal Poupart},
@@ -322,37 +431,12 @@ language={English}
 
 % Policy search
 
-@inproceedings{Sol_POMDP_Policy_space_1998,
- author = {Hansen, Eric A.},
- title = {Solving POMDPs by Searching in Policy Space},
- booktitle = {Proceedings of the Fourteenth Conference on Uncertainty in Artificial Intelligence},
- series = {UAI'98},
- year = {1998},
- isbn = {1-55860-555-X},
- location = {Madison, Wisconsin},
- pages = {211--219},
- numpages = {9},
- url = {http://dl.acm.org/citation.cfm?id=2074094.2074119},
- acmid = {2074119},
- publisher = {Morgan Kaufmann Publishers Inc.},
- address = {San Francisco, CA, USA},
-} 
-
-@inproceedings{Pegasus_2000,
- author = {Ng, Andrew Y. and Jordan, Michael},
- title = {PEGASUS: A Policy Search Method for Large MDPs and POMDPs},
- booktitle = {Proceedings of the Sixteenth Conference on Uncertainty in Artificial Intelligence},
- series = {UAI'00},
- year = {2000},
- isbn = {1-55860-709-9},
- location = {Stanford, California},
- pages = {406--415},
- numpages = {10},
- url = {http://dl.acm.org/citation.cfm?id=2073946.2073994},
- acmid = {2073994},
- publisher = {Morgan Kaufmann Publishers Inc.},
- address = {San Francisco, CA, USA},
-} 
+@inproceedings{Kurniawati2009MotionPU,
+  title={Motion Planning under Uncertainty for Robotic Tasks with Long Time Horizons},
+  author={Hanna Kurniawati and Yanzhu Du and David Hsu and Wee Sun Lee},
+  booktitle={ISRR},
+  year={2009}
+}
 
 
 @INPROCEEDINGS{MCVI,
@@ -510,6 +594,19 @@ pages="1371--1394"
   pages={410--416},
   year={2013},
   organization={IEEE}
+}
+
+
+% Active Exploration and planning 
+
+@INPROCEEDINGS{active_RSS_07,
+    AUTHOR    = {R. Martinez-Cantin and N. de Freitas and A. Doucet and J. Castellanos},
+    TITLE     = {Active Policy Learning for Robot Planning and Exploration under Uncertainty},
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems},
+    YEAR      = {2007},
+    ADDRESS   = {Atlanta, GA, USA},
+    MONTH     = {June},
+    DOI       = {10.15607/RSS.2007.III.041} 
 }
 
 

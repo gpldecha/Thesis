@@ -60,7 +60,7 @@ These two attributes, beliefs and desires, are used to frame a decision problem.
 that the problem was well grounded and focused on finding what are the \textbf{rational choices} to take given our beliefs 
 to achieve our desires. 
 
-\begin{figure}[h]
+\begin{figure}
  \centering
  \includegraphics[width=0.5\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf}
   \caption{ad}
@@ -344,7 +344,7 @@ The measurement likelihood function makes use of the measurement function $h(x)$
 in the sensor. In this case the parameters of the noise model, $\epsilon_t$, is Gaussian with mean zero and covariance $\Sigma$.
 Typically the parameters of the measurement likelihood function are learned a priori.
 
-\begin{figure}[h]
+\begin{figure}
   \centering
   \subfigure[]{\label{fig:motion_update}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf}}
   \subfigure[]{\label{fig:measurement}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf}} 
@@ -411,7 +411,7 @@ in Figure \ref{fig:pomdp} (\textit{left}). It has the same markov chain structur
 present in MDP, introduced in the previous section, but the state space $X$ is latent and 
 a new layer of observation variables $Y$ is present. 
 
-\begin{figure}[h]
+\begin{figure}
  \centering
   \centering
   \subfigure[]{\label{fig:sub_pomdp}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf}}
@@ -481,7 +481,8 @@ that because the reward function uses a linear operator (the expectation) and th
 (applying the bellman equation to the current value function) preservers the linearity, the value function after each 
 updates is piece wise linear and continuous (PWLC). The intractability comes from the successive applications 
 of the bellman backup operation which result in an exponential time and space complexity with respect to the planning horizon.
-A good introductory textbook for the \cite[Chap. 15]{Thrun_2005}
+A good text on the implementation of exact value iteration for POMDPs can be found \cite[Chap. 15]{Thrun_2005}
+and here \cite{Kaelbling_1998}.
 
 %From considering the decision belief tree of the POMDP, Figure \ref{fig:pomdp_bel_tree}, we can appreciate the complexity of the problem
 %of finding an optimal policy. Given a discrete set of actions and observations to update the belief $b_1$ we have to consider a time 
@@ -498,69 +499,129 @@ A good introductory textbook for the \cite[Chap. 15]{Thrun_2005}
 
 \section{State of the art}
 
-%\begin{figure}[h]
-% \centering
-% \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
-% \caption{ad}
-%\end{figure}
-
-% Standard decision theory, (no temporal aspect taken into consideration)
-% Markov decision process (MDP).
+We review the latest methods of solving sequential decision problems under uncertainty. This is an extremely dense and spread out 
+area of research, no doubt because of its importance and the fact that it cannot be ignored. If uncertainty is not considered 
+adequately, the control policy risks being suboptimal or lead to drastic failure. 
 
 
-% 1) POMDP
-%	Based on Markove Decision Process
-%	Talk about background in Optimal control and decision theor
-%	Assume convex cost function, can be in feature space
-%	 1.1) Approximatee POMDP
-%	 1.2) MC-POMDP
 
 
-% 2) Belief space (planning)
-%	belief roadmap (assumption on the noise)
-%
-% 3)  Belief space (optimal control)
-%
-%
-% 4) Assumptions about motion noise and observation 
-%
-%
+\subsection{Approximate Value function}
 
+The POMDP formulation introduced previously is the main theoretical starting point of policies which
+consider uncertainty. However solving an exact POMDP, problem through dynamic programming (value iteration) is 
+computationally intractable and an exact solution only exists for discrete state, action and observation space \cite[Chap. 15]{Thrun_2005}.
+This intractability, in which only problems with a few states could be solved, inhibited the application of the POMDP framework to robotics. 
+The first breakthrough, Point-Base Value Iteration (PBVI) \cite{PBVI}, allowed to apply VI to a robotic navigation problems (626 states). The key insight 
+which allowed VI to scale was to only consider a subset of the belief states which were reachable and relevant to the problem. This is achieved by smart sampling techniques
+and only perform VI backups on beliefs states which are relevant. Before this point and before only value iteration on this subset instead of considering all beliefs.  If you 
+have a $10 \times 10$ gird, this results in a total of a $100$ states and a belief state of a $100$ dimensions! The PBVI approach initiated a renewed effort in 
+porting VI to POMDPs with larger and larger state spaces. From this point most research as focused on determining efficient strategies to sample belief points and
+which to backup via VI. Heuristic Search Value Iteration (HSVI1) (\cite{HSV}) and HSVI2 (\cite{HSVI2}) uses forward search heuristic to find relevant beliefs by keeping a lower and upper 
+bound on the current estimated value function. The belief tree gets expanded by choosing the action and observation whilst considering there potential future effect
+on the value of the bounds, which thy try to minimise. It has equivalent results than classical PBVI with an exception to game of tag problem in which it fairs 
+significantly better.  Later, Forward Search Value Iteration (FSVI) (\cite{FSVI}) takes an alternative approach than keepings an upper and lower bound on 
+the value function, because doing so results in a drastically increases in the computation time necessary to find a solution. Instead they assume that the 
+state space is fully observable, solve the the MDP problem and use this policy in the POMDP setting to generate a set of beliefs. It is orders of 
+magnitude faster than HSVI and results in comparable polices. FSVI fairs badly however when information gathering actions are necessary. Since it is 
+essentially using a myopic policy to generate it samples, these will be insufficient to find the global optimal policy when the solution requires 
+information gathering actions. One of the very last sampling generation techniques which is considered to be the most efficient is SARSOP (\cite{SARSOP}),
+it uses aspects present in both upper and lower bounds on the value function and the equivalent uncertainty free MDP solution to the problem. It tries
+to sample belief points which will contain the optimal set of samples necessary to achieve an optimal policy.  Both SARSOP and HSVI2 are considered 
+state of the art in PBVI value approximation techniques. (See \cite{POMDP_approach_2010}) for a review and comparison of both techniques on problems 
+with thousands of states including simulation examples in grasping, tracking and UAV navigation. 
+
+These methods are well suited to address problems which are easily expressed in a discrete state space. All examples problems are simulation and 
+no physical interactive problems are considers. One of the main reasons for that all variables are discrete. Besides the belief set generation problem,
+interest has also been poised on porting the PBVI to a continuous state space.
+
+
+
+Resent advances in PBVI methods: \cite{Veiga14aaai} 	   % Pedro Lima Point-Based method for Factor value 
+
+\cite{PBVI_C_2006} % Point-based Value Iteration for Continuous POMDPs
+
+A example of a continuous action space PBVI method is Ca-Perseus \cite{Spaan05icra} in which the authors replace the 
+maximisation over the action by instead sampling them from a parametric continuous representation. 
+% Continuous VI
+\cite{mc_update_ppomdps}
+\cite{MC-POMDP}		  % first real usage of continuous action, observation, 
+\cite{solving_continous_pomdps_2013} % Efficient state space representation
+
+% Historical implementation of PBVI
+% A POMDP Approach to Robot Motion Planning under Uncertainty
+% Popular approach
+   
+\cite{Kurniawati2009MotionPU}
+\cite{Ross08onlineplanning} % Online planning algorithms
+
+
+
+
+% Generic planning under uncertainty (not directly using a policy representation)
+\cite{next_best_touch}
+\cite{CostalNavigation1999}
+\cite{Roy99coastalnavigation}
+
+\subsection{Policy search}
+
+\cite{Pegasus_2000}
+\cite{dmp_seq_2012}
+\cite{dmp_iros_2011}
+
+
+% Non pomdp method %Heurisitc: Information Gain
+\cite{dense_entropy_icra_2014}
 % Policy search
+\cite{Uncer_reduction_heuristic_2015}
 \cite{Sol_POMDP_Policy_space_1998}
 
-\subsubsection{Tree search}
+
+\cite{sigma_hull_iros_2013}
+\cite{int_motion_planning_2013}  % belief space planning
+\cite{belief_compression_2005}
+\cite{bs_compression_2010}
 
 \subsubsection{Planning}
 $b = (\mu,\Sigma)$
-\cite{Quadrator_2008},\cite{BelRoadMap_2009}
+\cite{Quadrator_2008},
+\cite{BelRoadMap_2009}
+
+\cite{non_gauss_bel_plan_2012}	% Non-Gaussian belief space planning
+\cite{active_RSS_07} 	% Active Policy Learning for robot planning and exploration under uncertainty
+\cite{plan_cont_bel_space_2015}
+\cite{rob_online_bs_icra_2014}
+\cite{bel_roadmap_2009}
 
 
 \subsubsection{Optimal control}
 $b = (\mu,\Sigma)$
  
+\cite{plattRSS10} 	% Belief space planning
 \cite{Erez10ascalable},
-\cite{mc_update_ppomdps}, 
+\cite{van_den_Berg_2012}, 
 \cite{Platt-RSS-10}
 
  
+% Grasping examples 
+Grasping
+\cite{u_aware_grasp_ICRA_2015}
+\cite{learn_grasp_un_icra_2011}
+\cite{seq_traj_replan_iros_2013}
+\cite{Li_2015}
+
+% Under water navigation examples
+
+\cite{un_water_inspection_icra_2012}
+
 % Continous
 
 Optimal control methods represent the belief by a Gaussian function 
 
-
-\cite{Bayesian_explor_exploit_2009},\cite{Spaan05icra},\cite{Thrun_2005}
- 
+\cite{Bayesian_explor_exploit_2009}
 % Sample based replanning
-
-\cite{Rand_belief_space_replanning}
- 
- 
- % Online vs Offline methods
- \cite{Ross08onlineplanning}
- 
- % Macro-Actions
- \cite{Macro_uncertainty_2011}
+%\cite{Rand_belief_space_replanning} reference does not seem to exist
+\cite{Macro_uncertainty_2011}
 
 \section{Summary}
 

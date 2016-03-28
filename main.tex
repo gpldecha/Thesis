@@ -28,7 +28,6 @@
 
 \usepackage{multirow}
 \usepackage[footnotesize,bf,hang]{caption,subfigure}
-\usepackage{subcaption}
 
 \captionsetup[algorithm]{font=small}
 \usepackage{booktabs} %Publication quality tables in LaTeX
@@ -37,7 +36,7 @@
 \usepackage[table]{xcolor}
 \usepackage[titletoc,toc,page]{appendix}
 
-\usepackage[dvips, backref,bookmarks=true, breaklinks]{hyperref} % clickable back-references from the bibliography list to citing sections
+\usepackage[backref,bookmarks=true, breaklinks]{hyperref} % clickable back-references from the bibliography list to citing sections
 
 \usepackage{soul}
 
@@ -119,7 +118,7 @@
 
 \ifdefined \gDisplayBibliography
 	\bibliographystyle{plainnat}
-	\bibliography{bib/pomdp.bib,bib/ProspectTheory.bib,bib/DT.bib,bib/ToM.bib,bib/citations.bib,bib/cpomdp.bib}
+	\bibliography{bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/ProspectTheory.bib,bib/DT.bib,bib/ToM.bib}
 \fi
 
 \end{document}
