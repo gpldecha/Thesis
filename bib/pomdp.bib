@@ -113,8 +113,20 @@ month={},}
     title = {{Finding Approximate POMDP solutions Through Belief Compression}},
     url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180},
     volume = {23},
-    year = {2000}
+    year = {2005}
 }
+
+@incollection{EPCA_2003,
+title = {Exponential Family PCA for Belief Compression in POMDPs},
+author = {Nicholas Roy and Gordon, Geoffrey J},
+booktitle = {Advances in Neural Information Processing Systems 15},
+editor = {S. Becker and S. Thrun and K. Obermayer},
+pages = {1667--1674},
+year = {2003},
+publisher = {MIT Press},
+url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}
+}
+
 
 @article{bs_compression_2010,
     abstract = {{Partially observable Markov decision process (POMDP) is a commonly adopted mathematical framework for solving planning problems in stochastic environments. However, computing the optimal policy of POMDP for large-scale problems is known to be intractable, where the high dimensionality of the underlying belief space is one of the major causes. In this paper, we propose a hybrid approach that integrates two different approaches for reducing the dimensionality of the belief space: 1) belief compression and 2) value-directed compression. In particular, a novel orthogonal nonnegative matrix factorization is derived for the belief compression, which is then integrated in a value-directed framework for computing the policy. In addition, with the conjecture that a properly partitioned belief space can have its per-cluster intrinsic dimension further reduced, we propose to apply a  k -means-like clustering technique to partition the belief space to form a set of sub-POMDPs before applying the dimension reduction techniques to each of them. We have evaluated the proposed belief compression and clustering approaches based on a set of benchmark problems and demonstrated their effectiveness in reducing the cost for computing policies, with the quality of the policies being retained.}},
@@ -410,7 +422,7 @@ ISSN={1050-4729}
 
 
 
-% Active Policy search
+% Policy search
 
 @article{Bayesian_explor_exploit_2009,
 year={2009},
@@ -429,7 +441,22 @@ language={English}
 }
 
 
-% Policy search
+@inproceedings{p_search_pomdp_1998,
+ author = {Hansen, Eric A.},
+ title = {Solving POMDPs by Searching in Policy Space},
+ booktitle = {Proceedings of the Fourteenth Conference on Uncertainty in Artificial Intelligence},
+ series = {UAI'98},
+ year = {1998},
+ isbn = {1-55860-555-X},
+ location = {Madison, Wisconsin},
+ pages = {211--219},
+ numpages = {9},
+ url = {http://dl.acm.org/citation.cfm?id=2074094.2074119},
+ acmid = {2074119},
+ publisher = {Morgan Kaufmann Publishers Inc.},
+ address = {San Francisco, CA, USA},
+} 
+
 
 @inproceedings{Kurniawati2009MotionPU,
   title={Motion Planning under Uncertainty for Robotic Tasks with Long Time Horizons},

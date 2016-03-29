@@ -49,7 +49,7 @@ doi="10.1007/BF00992696",
 url="http://dx.doi.org/10.1007/BF00992696"
 }
 
-@INPROCEEDINGS{gpomdp_2000,
+@INPROCEEDINGS{Baxter00reinforcementlearning,
     author = {Jonathan Baxter and Peter L. Bartlett},
     title = {Reinforcement Learning in POMDP's via Direct Gradient Ascent},
     booktitle = {In Proc. 17th International Conf. on Machine Learning},

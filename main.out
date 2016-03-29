@@ -15,5 +15,8 @@
 \BOOKMARK [2][-]{subsection.2.3.1}{Point-based Value Iteration}{section.2.3}% 15
 \BOOKMARK [2][-]{subsection.2.3.2}{Parametric Value Iteration}{section.2.3}% 16
 \BOOKMARK [2][-]{subsection.2.3.3}{Policy search}{section.2.3}% 17
-\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 18
-\BOOKMARK [0][-]{chapter*.9}{References}{}% 19
+\BOOKMARK [2][-]{subsection.2.3.4}{Heuristics}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.5}{Planning}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.6}{Optimal control}{section.2.3}% 20
+\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 21
+\BOOKMARK [0][-]{chapter*.7}{References}{}% 22

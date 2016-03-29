@@ -572,32 +572,94 @@ state, action and observation space was solved; with a working implementation on
 The belief was represented by a particle filter and the policy by a Q-value function, whose functional form was 
 a non-parametric regressor (k-nearest neighbour) of the particle filter. The distance metric was the sample KL divergence
 between two particle sets. The POMDP was solved through Reinforcement Learning (interaction with the environment) and 
-approximated dynamic programming also known as experience replay, batch RL or Fitted Q-Iteration (FQI)\cite{Tree_batch_2005}. 
+approximated dynamic programming also known as experience replay, batch RL or Fitted Q-Iteration (FQI) \cite{Tree_batch_2005}. 
 Although highly computationally demanding the method was successful. 
 
 This lead to many similar approaches such as \cite{mc_update_ppomdps} where the belief state filter was an 
 Extended Kalman Filter (EKF), the value function was also non-parametric and the POMDP was solved via FQI. 
 When compared with Perseus in a discretized 2D localisation task both approaches reached equivalent 
-policies but the authors method achieved it much faster than Perseus, a PBVI method.
+policies but the authors method achieved it much faster than Perseus, a PBVI method. 
 
-\cite{DRQ_AAAI_2015}
-\cite{mnih-dqn-2015}
-\cite{neura_fqi_2005}
+% 1) Belief space compression and value iteratrion
+Another similar approach to parametrising the belief is to compress it to sufficient statistics and treat 
+the decision problem as a fully observable augmented MDP (AMDP) in this new state representation. In \cite{Roy99coastalnavigation}
+the authors compress the filtered belief to its mean and entropy and performed VI on this augmented state space
+in a navigation task in which the goal was to reach a location with a minimum amount of uncertainty. This approach
+brings a great simplification to solving the POMDP by at the cost of a lossy belief compression. In further developments
+\cite{belief_compression_2005} compared both PCA and exponential-PCA (E-PCA, \cite{EPCA_2003}) as a means of belief compression techniques to find a low
+dimensional belief space. This approach showed to be superior than the AMDP, it however requires transitioning back and forth 
+between the low and high dimensional belief states. A step necessary for the the application of VI. The latest work in this 
+area is \cite{bs_compression_2010} which investigates the use of nonnegative matrix factorisation in combination of k-means 
+clustering as a means of compressing the belief which showed some improvement over the E-PCA approach but was only evaluated 
+on discrete benchmark problems. Belief compression as mean of reducing the complexity of the belief state is interesting. The 
+down side is that it requires discretising the belief to a fixed non-dynamic grid, collected many samples and learn an 
+appropriate set of belief-basis eigenvectors. As such the larger the state space, the larger the dimensionality and thus more
+samples are required to find a suitable set of basis.
 
-\cite{belief_compression_2005}
-\cite{bs_compression_2010}
+% 2) A very large state space and do away with 
+Recent developments lean more to the idea of very large state space representation and treat the problem as a MDP. In contrast to 
+POMDPs there has been fare more research focused on MDPs and a lot of work has been done on the application of non-linear function 
+approximators for representing the value function in combination with reinforcement learning optimisation techniques to solving them.
+A successful example was the the usage of a multi-layer perceptron as a Q-value function approximator, Neural Fitted Q-Iteration (NFQ) \cite{neura_fqi_2005}.
+This approach was successfully applied to the standard RL benchmarking problems (carte pole, acrobat, mountain care), but no partially observable
+setting was considered. It is later in \cite{DRQ_AAAI_2015} that authors applied a Deep Recurrent Q-Network (DRQN) (extension to the work in \cite{mnih-dqn-2015})
+to capture the history of states in a game of Pong where the state space was occluded half the time. By introducing a long term memory component 
+the POMDP in effect is turned into a MDP and the authors apply an optimisation approach similar to FQI. 
 
-
-% Generic planning under uncertainty (not directly using a policy representation)
-\cite{next_best_touch}
-\cite{CostalNavigation1999}
-\cite{Roy99coastalnavigation}
+Parameterization of the belief is a way of reducing the curse of dimensionality. By doing so the VI solution is no longer closed form and
+function approximators are need to represent the value function. The value function is then optimised via approximate dynamic programming 
+or reinforcement learning. These approaches are considerably more simple to implement than PBVI solvers which require heuristic pruning 
+techniques and are difficult to port to continuous state spaces in general. There is a tendency to represent the POMDP has an augmented state MDP 
+which then allows to apply well developed RL techniques. By using advanced non-linear function approximators the large state spaces can be 
+handled in an efficient way and optimal policies can be found. However most of the applications seen so fare do no consider continuous actions
+at all. Even for standard MDP the application of continuous action is problematic, which is due to need to maximise over the actions. We next
+review a third approach of dealing with POMDPs which is more adapted to continuous actions. 
 
 \subsection{Policy search}
 
+The approaches seen so fare use a vale function to encode the problem which when solved a policy can be derived from it.
+This requires learning a high dimensional value function over the belief space and the resulting policies are not necessarily 
+smooth. This is because small changes in the value function can lead to drastic changes in the policy [cite]. There is no 
+doubt that deriving a policy from a generic value function for highly continuous policy such in the case of controlling an
+articulated robotic arm is no easy task. 
+This has lead to development of an alternate approach in which a policy is learned directly without a value function. Instead
+an initial policy is defined in terms of a parametrised function, $\policy$, and the utility is a function of the parameters, 
+$u(\boldsymbol{\theta})$. The optimal policy is found by searching for the parameters $\boldsymbol{\theta}$ which will maximise 
+the utility function. This is can be accomplished through various optimisation methods: gradient descent, expectation-maximisation, etc...
+
+% Policy Iteration
+%Early work include the application of policy iteration to a finite state controller \cite{p_search_pomdp_1998}. A finite state controller
+%is iteratively evaluated (VI) and then subsequently improved until an optimal policy is found. Evaluation of the policy is much faster 
+%than solving the optimal bellman equation, since the maximisation over the actions is absent. 
+
+% Reinforce (gradient based methods)
+
+% Actor-critic methods (combine both value function and policy)
+
+% REINFORCE - PoWER - PI2 - 
+One of the very first applied class of policy search algorithms were the REINFORCE (likelihood ratio) algorithms
+first introduced by Williams \cite{reinforce_1992}. From a set of example episodes, also called roll-outs, the gradient
+is estimated. The key aspect to this approach is that the derivative of the cost function is independent of the state
+transition model and as a result the gradient is easier to estimate from samples. Application of this methodology 
+to a partially observable setting lead to Gradient POMDP, GPOMDP \cite{gpomdp_2000} in which the authors developed 
+a conjugate stochastic gradient ascent algorithm to optimise a policy with respect to the average reward. 
+
+\cite{sis_pomdp_2002}
+
+
+\cite{PoWER_2009}
+\cite{NAC_2008}
+
+%  Basically do gradient descent on parameters
 \cite{Pegasus_2000}
-\cite{dmp_seq_2012}
+\cite{heli_2004}
+
+\cite{RL_robots_surv_2013}
+\cite{p_search_surv_2011}
+
+\cite{dmp_seq_2012} % PI2
 \cite{dmp_iros_2011}
+
 
 % Non pomdp method %Heurisitc: Information Gain
 \cite{dense_entropy_icra_2014}
@@ -605,11 +667,17 @@ policies but the authors method achieved it much faster than Perseus, a PBVI met
 \cite{Uncer_reduction_heuristic_2015}
 \cite{Sol_POMDP_Policy_space_1998}
 
-
 \cite{sigma_hull_iros_2013}
 \cite{int_motion_planning_2013}  % belief space planning
 
-\subsubsection{Planning}
+
+\subsection{Heuristics}
+
+% Generic planning under uncertainty (not directly using a policy representation)
+\cite{next_best_touch}
+\cite{CostalNavigation1999}
+
+\subsection{Planning}
 $b = (\mu,\Sigma)$
 \cite{Quadrator_2008},
 \cite{BelRoadMap_2009}
@@ -621,7 +689,7 @@ $b = (\mu,\Sigma)$
 \cite{bel_roadmap_2009}
 
 
-\subsubsection{Optimal control}
+\subsection{Optimal control}
 $b = (\mu,\Sigma)$
  
 \cite{plattRSS10} 	% Belief space planning

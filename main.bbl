@@ -1,4 +1,4 @@
-\begin{thebibliography}{57}
+\begin{thebibliography}{66}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,10 +15,26 @@ A.~a.~Agha-mohammadi, S.~Agarwal, A.~Mahadevan, S.~Chakravorty, D.~Tomkins,
   Conference on}, pages 149--156, May 2014.
 \newblock \doi{10.1109/ICRA.2014.6906602}.
 
+\bibitem[Aberdeen and Baxter(2002)]{sis_pomdp_2002}
+Douglas Aberdeen and Jonathan Baxter.
+\newblock Scaling internal-state policy-gradient methods for pomdps.
+\newblock In Claude Sammut and Achim Hoffman, editors, \emph{Proceedings of the
+  Nineteenth International Conference on Machine Learning (ICML 2002)}, pages
+  3--10, San Francisco, CA, USA, 2002. Morgan Kauffman.
+\newblock ISBN 1-55860-873-7.
+\newblock URL
+  \url{http://users.rsise.anu.edu.au/~daa/files/papers/gradIstate-icml.pdf}.
+
 \bibitem[Bake et~al.(2011)Bake, Tenenbaum, and Saxe]{Bake_Saxe_Tene_2011}
 Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
 \newblock Bayesian theory of mind: Modeling joint belief-desire attribution.
 \newblock \emph{Journal of Cognitive Science}, 2011.
+
+\bibitem[Baxter and Bartlett(2000)]{gpomdp_2000}
+Jonathan Baxter and Peter~L. Bartlett.
+\newblock Reinforcement learning in pomdp's via direct gradient ascent.
+\newblock In \emph{In Proc. 17th International Conf. on Machine Learning},
+  pages 41--48. Morgan Kaufmann, 2000.
 
 \bibitem[Bernoulli(1954)]{Bernoulli1954}
 D.~Bernoulli.
@@ -69,6 +85,16 @@ D.~Chen and G.~von Wichert.
 \newblock In \emph{Robotics and Automation (ICRA), 2015 IEEE International
   Conference on}, pages 4312--4317, May 2015.
 \newblock \doi{10.1109/ICRA.2015.7139794}.
+
+\bibitem[Deisenroth et~al.(2011)Deisenroth, Neumann, and
+  Peters]{p_search_surv_2011}
+Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
+\newblock A survey on policy search for robotics.
+\newblock \emph{Foundations and Trends® in Robotics}, 2\penalty0
+  (1–2):\penalty0 1--142, 2011.
+\newblock ISSN 1935-8253.
+\newblock \doi{10.1561/2300000021}.
+\newblock URL \url{http://dx.doi.org/10.1561/2300000021}.
 
 \bibitem[Du et~al.(2010)Du, Hsu, Kurniawati, Lee, Ong, and
   Png]{POMDP_approach_2010}
@@ -168,6 +194,27 @@ Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
 \newblock \doi{10.1016/S0004-3702(98)00023-X}.
 \newblock URL \url{http://dx.doi.org/10.1016/S0004-3702(98)00023-X}.
 
+\bibitem[Kim et~al.(2004)Kim, Jordan, Sastry, and Ng]{heli_2004}
+H.~J. Kim, Michael~I. Jordan, Shankar Sastry, and Andrew~Y. Ng.
+\newblock Autonomous helicopter flight via reinforcement learning.
+\newblock In S.~Thrun, L.~K. Saul, and B.~Sch\"{o}lkopf, editors,
+  \emph{Advances in Neural Information Processing Systems 16}, pages 799--806.
+  MIT Press, 2004.
+\newblock URL
+  \url{http://papers.nips.cc/paper/2455-autonomous-helicopter-flight-via-reinforcement-learning.pdf}.
+
+\bibitem[Kober and Peters(2009)]{PoWER_2009}
+J.~Kober and J.~Peters.
+\newblock Learning motor primitives for robotics.
+\newblock In \emph{Robotics and Automation, 2009. ICRA '09. IEEE International
+  Conference on}, pages 2112--2118, May 2009.
+\newblock \doi{10.1109/ROBOT.2009.5152577}.
+
+\bibitem[Kober et~al.(2013)Kober, Bagnell, and Peters]{RL_robots_surv_2013}
+J.~Kober, J.~Andrew~(Drew) Bagnell, and J.~Peters.
+\newblock Reinforcement learning in robotics: A survey.
+\newblock \emph{International Journal of Robotics Research}, July 2013.
+
 \bibitem[Kurniawati et~al.(2008)Kurniawati, Hsu, and Lee]{SARSOP}
 Hanna Kurniawati, David Hsu, and Wee~Sun Lee.
 \newblock Sarsop: Efficient point-based pomdp planning by approximating
@@ -243,6 +290,19 @@ Andrew~Y. Ng and Michael Jordan.
   2000. Morgan Kaufmann Publishers Inc.
 \newblock ISBN 1-55860-709-9.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=2073946.2073994}.
+
+\bibitem[Peters and Schaal(2008)]{NAC_2008}
+Jan Peters and Stefan Schaal.
+\newblock Natural actor-critic.
+\newblock \emph{Neurocomputing}, 71\penalty0 (7–9):\penalty0 1180 -- 1190,
+  2008.
+\newblock ISSN 0925-2312.
+\newblock \doi{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0925231208000532}.
+\newblock Progress in Modeling, Theory, and Application of Computational
+  Intelligenc15th European Symposium on Artificial Neural Networks 200715th
+  European Symposium on Artificial Neural Networks 2007.
 
 \bibitem[Pineau et~al.(2003)Pineau, Gordon, and Thrun]{PBVI}
 Joelle Pineau, Geoffrey Gordon, and Sebastian Thrun.
@@ -336,12 +396,20 @@ N.~Roy, W.~Burgard, D.~Fox, and S.~Thrun.
 \newblock In \emph{IEEE International Conference on Robotics and Automation},
   pages 35--40, 1999.
 
-\bibitem[Roy(2000)]{belief_compression_2005}
+\bibitem[Roy(2005)]{belief_compression_2005}
 Nicholas Roy.
 \newblock {Finding Approximate POMDP solutions Through Belief Compression}.
-\newblock \emph{Journal of Artificial Intelligence Research}, 23, 2000.
+\newblock \emph{Journal of Artificial Intelligence Research}, 23, 2005.
 \newblock URL
   \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180}.
+
+\bibitem[Roy and Gordon(2003)]{EPCA_2003}
+Nicholas Roy and Geoffrey~J Gordon.
+\newblock Exponential family pca for belief compression in pomdps.
+\newblock In S.~Becker, S.~Thrun, and K.~Obermayer, editors, \emph{Advances in
+  Neural Information Processing Systems 15}, pages 1667--1674. MIT Press, 2003.
+\newblock URL
+  \url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}.
 
 \bibitem[Roy and Thrun(1999)]{Roy99coastalnavigation}
 Nicholas Roy and Sebastian Thrun.
@@ -444,6 +512,14 @@ Manuela~M. Veloso, editor.
 John Von~Neumann and O.~Morgenstern.
 \newblock \emph{The theory of games and economic behavior}.
 \newblock Princeton, 3 edition, 1990.
+
+\bibitem[Williams(1992)]{reinforce_1992}
+Ronald~J. Williams.
+\newblock Simple statistical gradient-following algorithms for connectionist
+  reinforcement learning.
+\newblock \emph{Machine Learning}, 8\penalty0 (3):\penalty0 229--256, 1992.
+\newblock \doi{10.1007/BF00992696}.
+\newblock URL \url{http://dx.doi.org/10.1007/BF00992696}.
 
 \bibitem[Zhang et~al.(2015)Zhang, Rekleitis, and
   Dudek]{Uncer_reduction_heuristic_2015}
