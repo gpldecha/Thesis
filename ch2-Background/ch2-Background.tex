@@ -642,33 +642,44 @@ first introduced by Williams \cite{reinforce_1992}. From a set of example episod
 is estimated. The key aspect to this approach is that the derivative of the cost function is independent of the state
 transition model and as a result the gradient is easier to estimate from samples. Application of this methodology 
 to a partially observable setting lead to Gradient POMDP, GPOMDP \cite{gpomdp_2000} in which the authors developed 
-a conjugate stochastic gradient ascent algorithm to optimise a policy with respect to the average reward. 
+a conjugate stochastic gradient ascent algorithm to optimise a policy with respect to the average reward. The policy 
+is a function of observations. To be optimal the hole history should be considered or some sort of memory (compressed 
+history) should be introduced. In an extension \cite{sis_pomdp_2002} the authors use a HMM has a state 
+estimator which they learn the parameters in conjunction with those of the policy which depends on the state estimate 
+of the HMM. These are early examples of policy search approaches which are able to fair well on the early POMDP 
+benchmark problems (heaven \& hell). 
+The main difficulty which preoccupies most gradient based approaches is the bias and variance of the gradient. 
+As a result of optimising the stochastic problem via stochastic gradient ascent, typically thousands of gradient estimates are necessary such that in 
+expectation terms the parameters are maximising the cost function. An approach which mitigates this problem, coined 
+Pegasus \cite{Pegasus_2000} removes the stochasticity from the optimisation by fixing the random number generator.
+A policy evaluation becomes deterministic and by repeating this process many times (different random seeds) the stochasticity
+is present between the different evaluations and not within them. The end result would be the same as stochastic gradient ascent 
+(if repeated sufficient times) but is fare more easier to optimise individual non-stochastic problems. This policy search 
+method was used to learn a set of controllers for a radio controlled helicopter \cite{heli_2004}, which is considered to 
+be one of the very first successful applications of RL to a MDP/POMDP problem. 
+It is not until Natural-Actor Critic (NAC) (\cite{eNAC_2003}, \cite{NAC_2008}), a policy gradient method which uses the \textit{natural 
+gradient} to update the parameters of a policy. The advantage the natural gradient is that it guarantees small changes in 
+the distance between the successive roll-out trajectory distributions. Previous policy gradient methods did not have such guarantees,
+since small parameter changes of the policy could lead to large changes in the roll-out distributions, which is undesirable. In
+terms of performance NAC converges faster than GPOMDP and has been applied to learn Dynamic Motor Primitives (DMPs) to control a 
+humanoid robot. 
+A drawback of gradient based optimisation is that the learning rate  plays a significant important on the time to convergences. 
+Alternative approach consists of using Expectation-Maximisation (EM) methods \cite{PoWER_2009} which do not require a learning rate.
+Successful applications include: ball-in-a-cup, humanoid learning the skill of archery \cite{archery_2010}, learning how to 
+flip a pancake \cite{pancake_2010} and keeping balance on a two-wheeled robot \cite{Wang2016}. These are just some examples 
+of the application of RL to continuous action and state space problems. When uncertainty is present typically the maximum likelihood
+state estimate is taken.
 
-\cite{sis_pomdp_2002}
+Good survey on policy gradient search methods can be found here, \cite{p_search_surv_2011}, \cite{RL_robots_surv_2013}.
+
+PI2 stuff just mention it and wrap it up: \cite{dmp_seq_2012} \cite{dmp_iros_2011} % Ok can do grasping use PI2 
 
 
-\cite{PoWER_2009}
-\cite{NAC_2008}
 
-%  Basically do gradient descent on parameters
-\cite{Pegasus_2000}
-\cite{heli_2004}
-
-\cite{RL_robots_surv_2013}
-\cite{p_search_surv_2011}
-
-\cite{dmp_seq_2012} % PI2
-\cite{dmp_iros_2011}
-
-
-% Non pomdp method %Heurisitc: Information Gain
-\cite{dense_entropy_icra_2014}
 % Policy search
-\cite{Uncer_reduction_heuristic_2015}
-\cite{Sol_POMDP_Policy_space_1998}
 
-\cite{sigma_hull_iros_2013}
-\cite{int_motion_planning_2013}  % belief space planning
+%\cite{Sol_POMDP_Policy_space_1998}
+
 
 
 \subsection{Heuristics}
@@ -676,26 +687,41 @@ a conjugate stochastic gradient ascent algorithm to optimise a policy with respe
 % Generic planning under uncertainty (not directly using a policy representation)
 \cite{next_best_touch}
 \cite{CostalNavigation1999}
+% Non pomdp method %Heurisitc: Information Gain
+\cite{dense_entropy_icra_2014}
+\cite{Uncer_reduction_heuristic_2015} % uncertainty reduction via heuristic search
+\subsection{Belief space planning}
 
-\subsection{Planning}
-$b = (\mu,\Sigma)$
-\cite{Quadrator_2008},
-\cite{BelRoadMap_2009}
+Belief space planning leverage's the power of traditional fully observable state space 
+planning and optimal control techniques such as: A*, D*,  Dijkstra and LQR to the belief belief state space. 
+The fundamental assumption made in most of the following techniques (with a few exceptions) is that the 
+motion and measurement modes are Gaussian and as a result a point in the belief space can be represented by 
+a mean and covariance function.
+An example is the application of Probabilist Road Maps (PMR) to a belief state space, \cite{BelRoadMap_2009}, 
+referred to as Belief Road Maps (BRM). By taking advantage of the linear structure of the Kalman Filter the 
+the authors show that the covariance matrix can be factorised such that a set of  motion and measurement updates between two belief 
+points in the BRM can be computed by a single linear operation parametrised by the current belief. They key advantage of this 
+approach is that it allows for rapid replanning and is able to scale to large state spaces; the authors evaluated their planner 
+in the MIT campus (simulated). Applications of this methodology include the control of an indoor quadrotor helicopter \cite{Quadrator_2008},
+and [another one].
 
-\cite{non_gauss_bel_plan_2012}	% Non-Gaussian belief space planning
-\cite{active_RSS_07} 	% Active Policy Learning for robot planning and exploration under uncertainty
-\cite{plan_cont_bel_space_2015}
-\cite{rob_online_bs_icra_2014}
-\cite{bel_roadmap_2009}
+
+\cite{bsp_rss_2010} 			% Optimal control Belief space planning assuming maximum likelihood observation (optimal control)
+\cite{int_motion_planning_2013}  	% tree search planning
+\cite{non_gauss_bel_plan_2012}		% Non-Gaussian belief space planning (optimisation)
+\cite{Erez10ascalable},
+\cite{van_den_Berg_2012}		% Optimal control in belief space planning 
+
+\cite{active_RSS_07} 			% Active Policy Learning for robot planning and exploration under uncertainty coste function optimsation
+\cite{plan_cont_bel_space_2015}		% Belief space approach to autonomous navigation
+\cite{rob_online_bs_icra_2014}		% average
+\cite{sigma_hull_iros_2013}
 
 
 \subsection{Optimal control}
 $b = (\mu,\Sigma)$
- 
-\cite{plattRSS10} 	% Belief space planning
-\cite{Erez10ascalable},
-\cite{van_den_Berg_2012}, 
-\cite{Platt-RSS-10}
+
+
 
  
 % Grasping examples 
@@ -708,15 +734,9 @@ Grasping
 % Under water navigation examples
 
 \cite{un_water_inspection_icra_2012}
-
-% Continous
-
-Optimal control methods represent the belief by a Gaussian function 
-
 \cite{Bayesian_explor_exploit_2009}
-% Sample based replanning
-%\cite{Rand_belief_space_replanning} reference does not seem to exist
 \cite{Macro_uncertainty_2011}
+
 
 \section{Summary}
 

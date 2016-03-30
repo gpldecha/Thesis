@@ -1,0 +1,183 @@
+
+% Point based value iteration methods
+
+@inproceedings{PBVI,
+   author = "Joelle Pineau and Geoffrey Gordon and Sebastian Thrun",
+   title = "Point-based value iteration: An anytime algorithm for POMDPs",
+   booktitle = "International Joint Conference on Artificial Intelligence (IJCAI)",
+   pages = "1025 - 1032",
+   month = "August",
+   year = "2003"
+} 
+
+% 
+
+@INPROCEEDINGS{SARSOP,
+    author = {Hanna Kurniawati and David Hsu and Wee Sun Lee},
+    title = {SARSOP: Efficient point-based POMDP planning by approximating optimally reachable belief spaces},
+    booktitle = {In Proc. Robotics: Science and Systems},
+    year = {2008}
+}
+
+
+@ARTICLE{Ross08onlineplanning,
+    author = {Stéphane Ross and Joelle Pineau and Sébastien Paquet and Brahim Chaib-draa},
+    title = {Online planning algorithms for POMDPs},
+    journal = {Journal of Artificial Intelligence Research},
+    year = {2008}
+}
+
+
+
+@article{Macro_uncertainty_2011,
+ author = {He, Ruijie and Brunskill, Emma and Roy, Nicholas},
+ title = {Efficient Planning Under Uncertainty with Macro-actions},
+ journal = {J. Artif. Int. Res.},
+ issue_date = {January 2011},
+ volume = {40},
+ number = {1},
+ month = jan,
+ year = {2011},
+ issn = {1076-9757},
+ pages = {523--570},
+ numpages = {48},
+ url = {http://dl.acm.org/citation.cfm?id=2016945.2016959},
+ acmid = {2016959},
+ publisher = {AI Access Foundation},
+ address = {USA}
+} 
+
+
+@ARTICLE{Hausk_value_functionapproximations,
+    author = {Milos Hauskrecht},
+    title = {Value-function approximations for partially observable Markov decision processes},
+    journal = {Journal of Artificial Intelligence Research},
+    year = {2000},
+    volume = {13},
+    pages = {33--94}
+}
+
+@inproceedings{hsu:what,
+    author = {Hsu, David and Lee, Wee S. and Rong, Nan},
+    booktitle = {NIPS'07},
+    citeulike-article-id = {9709602},
+    keywords = {pomdp, reinforcement\_learning},
+    posted-at = {2011-08-26 10:08:35},
+    priority = {2},
+    title = {{What makes some POMDP problems easy to approximate?}},
+    year = {2007}
+}
+
+
+% Gradient 
+%Particle POMDP
+
+@incollection{NIPS2008_0628,
+    Title = {Particle Filter-based Policy Gradient in POMDPs},
+    Url = {http://books.nips.cc/papers/files/nips21/NIPS2008_0628.pdf},
+    Booktitle = {Advances in Neural Information Processing Systems 21},
+    Author = {Pierre-arnaud Coquelin and Romain Deguest and Rémi Munos},
+    Editor = {D. Koller and D. Schuurmans and Y. Bengio and L. Bottou},
+    Year = {2008},
+    Pages = {337--344}
+} 
+
+@INPROCEEDINGS{Baxter00reinforcementlearning,
+    author = {Jonathan Baxter and Peter L. Bartlett},
+    title = {Reinforcement Learning in POMDP's via Direct Gradient Ascent},
+    booktitle = {In Proc. 17th International Conf. on Machine Learning},
+    year = {2000},
+    pages = {41--48},
+    publisher = {Morgan Kaufmann}
+}
+
+% Next best touch
+
+@INPROCEEDINGS{next_best_touch,
+author={Hebert, P. and Howard, T. and Hudson, N. and Ma, J. and Burdick, J.W.},
+booktitle={Robotics and Automation (ICRA), 2013 IEEE International Conference on},
+title={The next best touch for model-based localization},
+year={2013},
+month={May},
+pages={99-106},
+keywords={dexterous manipulators;image sensors;mobile robots;parameter estimation;pose estimation;robot vision;touch (physiological);ARM-S;DARPA autonomous robotic manipulation software robot;autonomous robot;contact method;information gain metric;model class estimation;model parameter estimation;model-based localization;next best touch;next sensing action;object localization;object pose uncertainty;tactile method;Computational modeling;Entropy;Equations;Gain measurement;Mathematical model;Robots;Trajectory},
+doi={10.1109/ICRA.2013.6630562},
+ISSN={1050-4729}
+}
+
+% Probabilistic Robotics (BOOK)
+
+@book{Thrun_2005,
+ author = {Thrun, Sebastian and Burgard, Wolfram and Fox, Dieter},
+ title = {Probabilistic Robotics (Intelligent Robotics and Autonomous Agents)},
+ year = {2005},
+ isbn = {0262201623},
+ publisher = {The MIT Press},
+} 
+
+
+% 		Optimal control methods
+
+@INPROCEEDINGS{Platt-RSS-10,
+    AUTHOR    = {R. Platt AND R. Tedrake AND L. Kaelbling AND T. Lozano-Perez},
+    TITLE     = {Belief space planning assuming maximum likelihood observations},
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems},
+    YEAR      = {2010},
+    ADDRESS   = {Zaragoza, Spain},
+    MONTH     = {June}
+}
+
+
+@INPROCEEDINGS{Quadrator_2008,
+author={Ruijie He and Prentice, S. and Roy, N.},
+booktitle={Robotics and Automation, 2008. ICRA 2008. IEEE International Conference on},
+title={Planning in information space for a quadrotor helicopter in a GPS-denied environment},
+year={2008},
+month={May},
+pages={1814-1820},
+keywords={Kalman filters;helicopters;path planning;GPS-denied environment;belief roadmap algorithm;global positioning;information space;localization degree;motion planning;probabilistic roadmap algorithm;quadrotor helicopter;unscented Kalman filter;Global Positioning System;Helicopters;Helium;Intelligent sensors;Land vehicles;Motion planning;Remotely operated vehicles;Space vehicles;Trajectory;Unmanned aerial vehicles},
+doi={10.1109/ROBOT.2008.4543471},
+ISSN={1050-4729}
+}
+
+% Active Policy search
+
+@article{Bayesian_explor_exploit_2009,
+year={2009},
+issn={0929-5593},
+journal={Autonomous Robots},
+volume={27},
+number={2},
+doi={10.1007/s10514-009-9130-2},
+title={A Bayesian exploration-exploitation approach for optimal online sensing and planning with a visually guided mobile robot},
+url={http://dx.doi.org/10.1007/s10514-009-9130-2},
+publisher={Springer US},
+keywords={Bayesian optimization; Online path planning; Sequential experimental design; Attention and gaze planning; Active vision; Dynamic sensor networks; Active learning; Policy search; Active SLAM; Model predictive control; Reinforcement learning},
+author={Martinez-Cantin, Ruben and de Freitas, Nando and Brochu, Eric and Castellanos, José and Doucet, Arnaud},
+pages={93-103},
+language={English}
+}
+
+% Sample based POMDP policy
+
+@inproceedings{Rand_belief_space_replanning,
+  added-at = {2011-09-11T00:00:00.000+0200},
+  author = {Hauser, Kris},
+  booktitle = {WAFR},
+  crossref = {conf/wafr/2010},
+  editor = {Hsu, David and Isler, Volkan and Latombe, Jean-Claude and Lin, Ming C.},
+  ee = {http://dx.doi.org/10.1007/978-3-642-17452-0_12},
+  isbn = {978-3-642-17451-3},
+  pages = {193-209},
+  publisher = {Springer},
+  series = {Springer Tracts in Advanced Robotics},
+  title = {Randomized Belief-Space Replanning in Partially-Observable Continuous Spaces.},
+  volume = 68,
+  year = 2010
+}
+
+
+
+
+
+

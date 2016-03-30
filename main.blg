@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 235 of file main.aux
+---line 237 of file main.aux
  : \bibdata{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/ProspectTheory.bib
  :                                                                                                                 }
 I'm skipping whatever remains of this command
@@ -28,45 +28,45 @@ I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "stankiewicz2006lost"
 Warning--empty journal in DRQ_AAAI_2015
 Warning--empty journal in Thrun_Burgard_Fox_2005
-You've used 66 entries,
+You've used 67 entries,
             2773 wiz_defined-function locations,
-            1109 strings with 21188 characters,
-and the built_in function-call counts, 38570 in all, are:
-= -- 3591
-> -- 2183
+            1116 strings with 21551 characters,
+and the built_in function-call counts, 39445 in all, are:
+= -- 3665
+> -- 2242
 < -- 61
-+ -- 732
-- -- 662
-* -- 3154
-:= -- 5671
-add.period$ -- 286
-call.type$ -- 66
-change.case$ -- 411
-chr.to.int$ -- 62
-cite$ -- 134
-duplicate$ -- 1772
-empty$ -- 3045
-format.name$ -- 766
-if$ -- 8419
-int.to.chr$ -- 5
++ -- 750
+- -- 680
+* -- 3227
+:= -- 5781
+add.period$ -- 287
+call.type$ -- 67
+change.case$ -- 420
+chr.to.int$ -- 64
+cite$ -- 136
+duplicate$ -- 1818
+empty$ -- 3109
+format.name$ -- 783
+if$ -- 8618
+int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 67
-newline$ -- 413
-num.names$ -- 279
-pop$ -- 826
+missing$ -- 68
+newline$ -- 417
+num.names$ -- 283
+pop$ -- 850
 preamble$ -- 1
-purify$ -- 347
+purify$ -- 355
 quote$ -- 0
-skip$ -- 1421
+skip$ -- 1468
 stack$ -- 0
-substring$ -- 1674
-swap$ -- 431
-text.length$ -- 34
+substring$ -- 1718
+swap$ -- 453
+text.length$ -- 36
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 714
+type$ -- 725
 warning$ -- 2
-while$ -- 312
+while$ -- 319
 width$ -- 0
-write$ -- 1028
+write$ -- 1037
 (There were 4 error messages)

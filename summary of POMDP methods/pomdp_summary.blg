@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: pomdp_summary.aux
+The style file: plainnat.bst
+Database file #1: citations/pomdp.bib.bib
+Warning--I didn't find a database entry for "MCVI"
+Warning--empty publisher in NIPS2008_0628
+You've used 3 entries,
+            2773 wiz_defined-function locations,
+            615 strings with 5564 characters,
+and the built_in function-call counts, 1886 in all, are:
+= -- 165
+> -- 104
+< -- 2
++ -- 34
+- -- 31
+* -- 149
+:= -- 270
+add.period$ -- 11
+call.type$ -- 3
+change.case$ -- 18
+chr.to.int$ -- 3
+cite$ -- 7
+duplicate$ -- 95
+empty$ -- 157
+format.name$ -- 34
+if$ -- 415
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 3
+newline$ -- 24
+num.names$ -- 14
+pop$ -- 46
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 75
+stack$ -- 0
+substring$ -- 82
+swap$ -- 28
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 33
+warning$ -- 1
+while$ -- 15
+width$ -- 0
+write$ -- 47
+(There were 2 warnings)
