@@ -1,0 +1,171 @@
+\documentclass[review]{elsarticle}
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage{setspace}% http://ctan.org/pkg/setspace
+\usepackage{multirow}
+%opening
+\title{Summary of POMDP methods}
+
+
+\begin{document}
+
+
+
+
+\begin{tabular}{ l|l|c|c|c|c|c|c|c|c| }
+\cline{2-9}
+				  & name 	    			& state & action & observation & belief	 & online	 & offline	& optimisation\\ \hline
+POMDP 			      	  & PBVI\cite{PBVI} 			&  d    &   d    & 	d      & d  	 & \checkmark    &              &  \\ \cline{2-9}
+				  & SARSOP\cite{SARSOP}   		&  d 	&   d 	 & 	d      & c       & \checkmark    &		&  \\ \cline{2-9} 
+				  & MCVI\cite{MCVI}	   		&  c 	&   d 	 & 	d      & c       &     		 & \checkmark	&  \\ \cline{2-9} 
+				  & PF-POMDP\cite{NIPS2008_0628}	&  c 	&   c 	 & 	c      & c       & \checkmark    &		&  \\ \hline 
+Tree search		  	  & 					&   	&    	 & 	       &         &     	         &		&  \\ \hline  
+Planning		          & 					&   	&    	 & 	       &         &     	         &		&  \\ \hline  
+Optimal control			  & 					&   	&    	 & 	       &         &     	         &		&  \\ \hline   
+\end{tabular}
+
+\paragraph{POMDP}: characterised by a belief state of dimension $|S|$. The belief state grows in exponentially in size, in a $10 \times 10$
+state space the belief space has a dimension of $100!$. If reward function is convex the value function can be represented by a set of piece
+wise linear and convex functions. This is basically a set of hyperplanes $\Gamm$, each of which must dominate the rest at some sampled point.
+
+
+Two problems: curse of dimensionality, for a state space of size $100$ the belief state simplex is of dimension $100$. The second obstacle
+is the curse of history. If task requires many actions, the planning problem complexity grows exponentially with the time horizon.
+If we need a long planning horizon, The optimal belief tree may have O(AO^T) worst case.
+
+
+The value function is represented by a set of $\alpha$-vectors $ \in \Gamma$. The value function has been proven to be piece-wise 
+linear and convex (PWLC) for finite horizon. For infinite horizon case it can be approximated to any precision using PWLC function.
+
+In an infinite-horizon POMDP th value function can be approximated arbitrarily well by a finite set of $\alpha$-vectors.
+
+The problems considers Tag, Hallway, Rock Sample consider discretised state and actions spaces bellow a 100 values.
+(Hallway: 93 states, 5 actions, 17 observations)
+
+\paragraph{PBVI}
+Keeps growing a set of belief points, but makes sure that these are reachable beliefs. Assumption is that the approximate value function
+would generalise well 
+
+\paragraph{HSVI}
+HSVI (heuristic search value iteration). Uses a forward search heuristic to find relevant beliefs and keeps lower and upper bounds on the 
+optimal value function. The search heuristic makes use of the bounds on the current value function to decide which nodes of the belief tree to 
+expand. To expand a node, an action and observation have to be chosen. The action is chosen which has the greatest upper bound. This
+guarantees to find the optimal action. If the action is suboptimal the upper bound will decrease, making another action preferable.
+Evaluated on the \textbf{rock sample} problem: Only some of the rocks have scientific value. The status of the rock is known since
+we don't know what kind of observation we will get. Sampling a rock is costly. Map is $n \times n$ discrete regions. Full state space
+is cross product with the binary feature type {good,bad}. The algorithm has a smilar performance than (classical) PBVI and in one 
+case (Tag problem did significantly better).
+
+\paragraph{FSVI}
+Forward search value iteration. Says HSVI is based but the keeping the upper bounds drastically reduces the speed of the algorithm. 
+Suggests a new method for belief point selection and for the ordering of the backups. Use the solution of an MDP as an initial 
+guess. Actions are selected both on the optimal policy for the MDP. Generate sample trajectories were simulations trials are executed.
+Only the states in the trajectory are updated. Need good heuristic to explore the state space. An important drawback of using the underlying
+MDP is the inability of the MDP to assess actions taht gather information. The heuristic of FSVI to traverse the belief space is based on 
+the optimal solution to the underlying MDP. Sometimes FSVI needs another heuristic to allow for action gather actions to be tried.
+Basically it is much faster than HSVI. It is however not able to deal with long information gathering sequences.
+
+\paragraph{SARSOP}: Efficient Point-Based POMDP Planning by Approximating Optimal reachable belief space. Compute successive approximations
+of the reachable belief set $\mathcal^*{R}(b_0)$. Considering an initial belief starting point. Improves sampling over time through 
+simple on-line learning techniques. Tries to sample directly the optimal reachable space through learning-enhances exploration and bounding 
+techniques. Keeps lower and upper bound on the value function. Set the initial belief point $b_0$ as the root and sample trees. SARSOP
+uses the sawtooth approximation. The upper bound can be initialised in various ways [MDP or the Fast Informed Bound technique].
+Use upper and lower bound to bias the sampling toward $R^*$. Shows significant speed improvement on some problems, but the achieved reward
+is very similar. Can do state space in $10'000$, $8$ actions, $1000$ observations (Integrated Exploration).
+
+\paragraph{Factored Value Function Approximation}
+Our work focuses on optimising a basic operation -the backup of a single belief point-. Consider a factored POMDP model.
+It is represented by a two-stage dynamic Bayesian network (DBN). Say that the value function of the MDP is linear. When 
+the value function is linear, it is compact to do a bellman backup operation (Only for on policy).
+
+
+\subsection{Continuous PBVI}
+
+\paragraph{Ca-Perseus} 
+
+\cite{Spaan05icra} % 
+Consider continuous actions in a PBVI setting, the task is active localisation. Robot with omnidirectional vision.
+The back up operation $HV_n$ requires linear programming and is there for costly in high dimensions [Planning and acting in a 
+partially observable stochastic domain]. Exploit the sparsity of the belief simplex, then only a few points are relevant.
+The key idea is that, in each value iteration step, we can improve the value of all points in the belief set by only updating
+the value and its gradient. Action is parametrised by problem-specific parameters.  
+Replace the maximisation in the bellman backup operator by sampling. Do an approximate bellman backup. We used a belief set of 
+$10'000$.
+\begin{enumerate}
+ \item Robot randomly explores the environment collecting samples
+ \item do random backups 
+\end{enumerate}
+
+
+\paragraph{Point-based Value Iteration for Continuous POMDPs}
+
+\cite{PBVI_C_2006}
+
+observation, transition and reward are modelled using Gaussian mixtures. The belief is 
+represented by using Gaussian mixtures or particle sets. Show that the bellman backup
+operator is represented in closed form. Extend Perseus to deal with continuous action 
+and observations through using appropriate sampling techniques. Show that the PWLC
+property of POMDP holds for the continuous state, discrete action,observation case.
+Prove that value function for continuous-state pomdp is convex, and then PWLC.
+Have $\alpha$-functions instead of $\alpha$-vectors. Experiment: simulated robotic domain.
+space is continuous in 1D, for doors. 
+
+\paragraph{MCVI}
+
+\cite{MCVI_CS_POMDPs}
+
+\paragraph{MC-PPOMDP}
+
+\cite{mc_update_ppomdps}
+
+
+\section{Belief space planning}
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+$
+
+
+%\begin{table}[!ht]
+%  \centering
+%  \begin{tabular}{l|l|c|c|c|c|c|c|c|}%
+%	& name 				 	& S & A & O & B & online & offline	 	\\ \hline
+%\multirow{3}{4em}{Multiple row}	PBVI\cite{PBVI}     		 	& d & d & d & d & \checkmark  &         	\\ \hline%
+%	SARSOP\cite{SARSOP} 		 	      	\\ \hline
+%		& c & c & c & c (pf) & 	       &  \checkmark	\\ \hline 
+%			 	& c & d & d & c (pf) & \checkmark     &  \\ \hline 	
+%  
+%  \end{tabular}
+%  \caption{Summary of all POMDP methods}
+%\end{table}
+
+
+\bibliographystyle{plainnat} 
+\bibliography{citations/pomdp.bib}
+
+
+\end{document}

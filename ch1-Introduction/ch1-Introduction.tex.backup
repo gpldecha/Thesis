@@ -163,37 +163,34 @@ Learning setup with a very simple cost function we can have a significant improv
 
 \section{Thesis outline}
 
-We cover 
+The thesis is structured accordingly to the three main contributions outlined in the previous section, 
+and three will have their individual chapter. We first provide and background chapter situating our work 
+in the scientific community and give a conclude with a discussion of the contributions and impact of 
+our work.
 
-
-\paragraph{Chapter 2 Background \& related work}\\
-\begin{minipage}[c]{0.86\textwidth}
-In this chapter we review the background literature related to \textit{Decision Theory},
-\textit{Theory of Mind} and \textit{Reasoning under uncertainty}. This three topics are 
-the root of there own fields spanning a hole graph of subsequent 
-
-
+\begin{minipage}[c]{0.9\textwidth}
+%\paragraph{Chapter 2 Background}\\
+In this chapter we review the background literature which are the pillars of this 
+thesis, namely: \textit{Decision Theory}, \textit{Theory of Mind} and \textit{Reasoning under uncertainty}. 
+These three topics are the root nodes of their own respective fields and we do not seek to do all of them justice 
+individually, but highlight their relevance and contribution to our work.
 \end{minipage}
 
-\paragraph{Chapter 3 Learning to reason with uncertainty as humans}\\
-\begin{minipage}[c]{0.86\textwidth}
- asdfasd 
+\begin{minipage}[c]{0.9\textwidth}
+%\paragraph{Chapter 3 Learning to reason with uncertainty as humans}\\
 \end{minipage}
 
 
-\paragraph{Chapter 4 Non-parametric Bayesian state space filter}\\
-\begin{minipage}[c]{0.86\textwidth}
- asdfasd 
+\begin{minipage}[c]{0.9\textwidth}
+%\paragraph{Chapter 4 Non-parametric Bayesian state space filter}\\
 \end{minipage}
 
-\paragraph{Chapter 5 Reinforcement learning in belief space}\\
-\begin{minipage}[c]{0.86\textwidth}
- asdfasd 
+\begin{minipage}[c]{0.9\textwidth}
+%\paragraph{Chapter 5 Reinforcement learning in belief space}\\
 \end{minipage}
 
-\paragraph{Chapter 6 Conclusion}\\
-\begin{minipage}[c]{0.86\textwidth}
- asdfasd 
+\begin{minipage}[c]{0.9\textwidth}
+%s\paragraph{Chapter 6 Conclusion}\\
 \end{minipage}
 
 

@@ -1,9 +1,18 @@
-\begin{thebibliography}{66}
+\begin{thebibliography}{64}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[a.~Agha-mohammadi et~al.(2011)a.~Agha-mohammadi, Chakravorty, and
+  Amato]{FIRM_2011}
+A.~a.~Agha-mohammadi, S.~Chakravorty, and N.~M. Amato.
+\newblock Firm: Feedback controller-based information-state roadmap - a
+  framework for motion planning under uncertainty.
+\newblock In \emph{Intelligent Robots and Systems (IROS), 2011 IEEE/RSJ
+  International Conference on}, pages 4284--4291, Sept 2011.
+\newblock \doi{10.1109/IROS.2011.6095010}.
 
 \bibitem[a.~Agha-mohammadi et~al.(2014)a.~Agha-mohammadi, Agarwal, Mahadevan,
   Chakravorty, Tomkins, Denny, and Amato]{rob_online_bs_icra_2014}
@@ -117,15 +126,6 @@ Damien Ernst, Pierre Geurts, and Louis Wehenkel.
 \newblock ISSN 1532-4435.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=1046920.1088690}.
 
-\bibitem[Hansen(1998)]{Sol_POMDP_Policy_space_1998}
-Eric~A. Hansen.
-\newblock Solving pomdps by searching in policy space.
-\newblock In \emph{Proceedings of the Fourteenth Conference on Uncertainty in
-  Artificial Intelligence}, UAI'98, pages 211--219, San Francisco, CA, USA,
-  1998. Morgan Kaufmann Publishers Inc.
-\newblock ISBN 1-55860-555-X.
-\newblock URL \url{http://dl.acm.org/citation.cfm?id=2074094.2074119}.
-
 \bibitem[Hausknecht and Stone(2015)]{DRQ_AAAI_2015}
 Matthew Hausknecht and Peter Stone.
 \newblock Deep recurrent q-learning for partially observable mdps.
@@ -165,25 +165,6 @@ G.~A. Hollinger, B.~Englot, F.~Hover, U.~Mitra, and G.~S. Sukhatme.
   Conference on}, pages 4884--4891, May 2012.
 \newblock \doi{10.1109/ICRA.2012.6224726}.
 
-\bibitem[Indelman et~al.(2015)Indelman, Carlone, and
-  Dellaert]{plan_cont_bel_space_2015}
-Vadim Indelman, Luca Carlone, and Frank Dellaert.
-\newblock Planning in the continuous domain: A generalized belief space
-  approach for autonomous navigation in unknown environments.
-\newblock \emph{The International Journal of Robotics Research}, 34\penalty0
-  (7):\penalty0 849--882, 2015.
-\newblock \doi{10.1177/0278364914561102}.
-\newblock URL \url{http://ijr.sagepub.com/content/34/7/849.abstract}.
-
-\bibitem[Kaelbling and Lozano-P{\'e}rez(2013)]{int_motion_planning_2013}
-Leslie~Pack Kaelbling and Tom\'{a}s Lozano-P{\'e}rez.
-\newblock Integrated task and motion planning in belief space.
-\newblock \emph{Int. J. Rob. Res.}, 32\penalty0 (9-10):\penalty0 1194--1227,
-  August 2013.
-\newblock ISSN 0278-3649.
-\newblock \doi{10.1177/0278364913484072}.
-\newblock URL \url{http://dx.doi.org/10.1177/0278364913484072}.
-
 \bibitem[Kaelbling et~al.(1998)Kaelbling, Littman, and
   Cassandra]{Kaelbling_1998}
 Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
@@ -214,6 +195,23 @@ J.~Kober and J.~Peters.
 J.~Kober, J.~Andrew~(Drew) Bagnell, and J.~Peters.
 \newblock Reinforcement learning in robotics: A survey.
 \newblock \emph{International Journal of Robotics Research}, July 2013.
+
+\bibitem[Kormushev et~al.(2010{\natexlab{a}})Kormushev, Calinon, and
+  Caldwell]{pancake_2010}
+P.~Kormushev, S.~Calinon, and D.~G. Caldwell.
+\newblock Robot motor skill coordination with {EM}-based reinforcement
+  learning.
+\newblock In \emph{Proc. {IEEE/RSJ} Intl Conf. on Intelligent Robots and
+  Systems ({IROS})}, pages 3232--3237, Taipei, Taiwan, October
+  2010{\natexlab{a}}.
+
+\bibitem[Kormushev et~al.(2010{\natexlab{b}})Kormushev, Calinon, Saegusa, and
+  Metta]{archery_2010}
+P.~Kormushev, S.~Calinon, R.~Saegusa, and G.~Metta.
+\newblock Learning the skill of archery by a humanoid robot icub.
+\newblock In \emph{Humanoid Robots (Humanoids), 2010 10th IEEE-RAS
+  International Conference on}, pages 417--423, Dec 2010{\natexlab{b}}.
+\newblock \doi{10.1109/ICHR.2010.5686841}.
 
 \bibitem[Kurniawati et~al.(2008)Kurniawati, Hsu, and Lee]{SARSOP}
 Hanna Kurniawati, David Hsu, and Wee~Sun Lee.
@@ -250,23 +248,27 @@ Xin Li, William~K. Cheung, and Jiming Liu.
 \newblock \doi{10.1109/tsmcb.2009.2021573}.
 \newblock URL \url{http://dx.doi.org/10.1109/tsmcb.2009.2021573}.
 
-\bibitem[Martinez-Cantin et~al.(2007)Martinez-Cantin, de~Freitas, Doucet, and
-  Castellanos]{active_RSS_07}
-R.~Martinez-Cantin, N.~de~Freitas, A.~Doucet, and J.~Castellanos.
-\newblock Active policy learning for robot planning and exploration under
-  uncertainty.
-\newblock In \emph{Proceedings of Robotics: Science and Systems}, Atlanta, GA,
-  USA, June 2007.
-\newblock \doi{10.15607/RSS.2007.III.041}.
-
-\bibitem[Martinez-Cantin et~al.(2009)Martinez-Cantin, de~Freitas, Brochu,
-  Castellanos, and Doucet]{Bayesian_explor_exploit_2009}
+\bibitem[Martinez-Cantin et~al.(2009{\natexlab{a}})Martinez-Cantin, de~Freitas,
+  Brochu, Castellanos, and Doucet]{Bayesian_explor_exploit_2009}
 Ruben Martinez-Cantin, Nando de~Freitas, Eric Brochu, José Castellanos, and
   Arnaud Doucet.
 \newblock A bayesian exploration-exploitation approach for optimal online
   sensing and planning with a visually guided mobile robot.
-\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103, 2009.
+\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103,
+  2009{\natexlab{a}}.
 \newblock ISSN 0929-5593.
+\newblock \doi{10.1007/s10514-009-9130-2}.
+\newblock URL \url{http://dx.doi.org/10.1007/s10514-009-9130-2}.
+
+\bibitem[Martinez-Cantin et~al.(2009{\natexlab{b}})Martinez-Cantin, Freitas,
+  Brochu, Castellanos, and Doucet]{Martinez-Cantin2009}
+Ruben Martinez-Cantin, Nando Freitas, Eric Brochu, Jos{\'e} Castellanos, and
+  Arnaud Doucet.
+\newblock A bayesian exploration-exploitation approach for optimal online
+  sensing and planning with a visually guided mobile robot.
+\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103,
+  2009{\natexlab{b}}.
+\newblock ISSN 1573-7527.
 \newblock \doi{10.1007/s10514-009-9130-2}.
 \newblock URL \url{http://dx.doi.org/10.1007/s10514-009-9130-2}.
 
@@ -310,13 +312,6 @@ Joelle Pineau, Geoffrey Gordon, and Sebastian Thrun.
 \newblock In \emph{International Joint Conference on Artificial Intelligence
   (IJCAI)}, pages 1025 -- 1032, August 2003.
 
-\bibitem[Platt et~al.(2010{\natexlab{a}})Platt, Tedrake, Kaelbling, and
-  Lozano-Perez]{Platt-RSS-10}
-R.~Platt, R.~Tedrake, L.~Kaelbling, and T.~Lozano-Perez.
-\newblock Belief space planning assuming maximum likelihood observations.
-\newblock In \emph{Proceedings of Robotics: Science and Systems}, Zaragoza,
-  Spain, June 2010{\natexlab{a}}.
-
 \bibitem[Platt et~al.(2012)Platt, Kaelbling, Lozano-Perez, and
   Tedrake]{non_gauss_bel_plan_2012}
 R.~Platt, L.~Kaelbling, T.~Lozano-Perez, and R.~Tedrake.
@@ -325,13 +320,12 @@ R.~Platt, L.~Kaelbling, T.~Lozano-Perez, and R.~Tedrake.
   Conference on}, pages 4711--4717, May 2012.
 \newblock \doi{10.1109/ICRA.2012.6225223}.
 
-\bibitem[Platt et~al.(2010{\natexlab{b}})Platt, Tedrake, Kaelbling, and
-  Lozano-P\'{e}rez]{plattRSS10}
+\bibitem[Platt et~al.(2010)Platt, Tedrake, Kaelbling, and
+  Lozano-P\'{e}rez]{bsp_rss_2010a}
 Robert Platt, Russell Tedrake, Leslie Kaelbling, and Tom\'{a}s
   Lozano-P\'{e}rez.
 \newblock Belief space planning assuming maximum likelihood observations.
-\newblock In \emph{Robotics Science and Systems Conference (RSS)},
-  2010{\natexlab{b}}.
+\newblock In \emph{Robotics Science and Systems Conference (RSS)}, 2010.
 \newblock URL
   \url{http://groups.csail.mit.edu/robotics-center/public_papers/Platt10.pdf}.
 
@@ -341,21 +335,12 @@ Josep~M. Porta, Nikos Vlassis, Matthijs T.~J. Spaan, and Pascal Poupart.
 \newblock \emph{JOURNAL OF MACHINE LEARNING RESEARCH}, 7:\penalty0 2329--2367,
   2006.
 
-\bibitem[Prentice and Roy(2009{\natexlab{a}})]{BelRoadMap_2009}
+\bibitem[Prentice and Roy(2009)]{BelRoadMap_2009}
 S.~Prentice and N.~Roy.
 \newblock The belief roadmap: Efficient planning in belief space by factoring
   the covariance.
 \newblock \emph{International Journal of Robotics Research}, 8\penalty0
-  (11-12):\penalty0 1448--1465, December 2009{\natexlab{a}}.
-
-\bibitem[Prentice and Roy(2009{\natexlab{b}})]{bel_roadmap_2009}
-Samuel Prentice and Nicholas Roy.
-\newblock The belief roadmap: Efficient planning in belief space by factoring
-  the covariance.
-\newblock \emph{The International Journal of Robotics Research}, 28\penalty0
-  (11-12):\penalty0 1448--1465, 2009{\natexlab{b}}.
-\newblock \doi{10.1177/0278364909341659}.
-\newblock URL \url{http://ijr.sagepub.com/content/28/11-12/1448.abstract}.
+  (11-12):\penalty0 1448--1465, December 2009.
 
 \bibitem[Rai et~al.(2013)Rai, De~Chambrier, and Billard]{rai2013learning}
 Akshara Rai, Guillaume De~Chambrier, and Aude Billard.
@@ -437,20 +422,12 @@ Matthijs T.~J. Spaan and Nikos Vlassis.
 \newblock In \emph{Proceedings of the IEEE International Conference on Robotics
   and Automation}, pages 3469--3474, Barcelona, Spain, 2005.
 
-\bibitem[Stulp et~al.(2011{\natexlab{a}})Stulp, Theodorou, Buchli, and
-  Schaal]{learn_grasp_un_icra_2011}
-F.~Stulp, E.~Theodorou, J.~Buchli, and S.~Schaal.
-\newblock Learning to grasp under uncertainty.
-\newblock In \emph{Robotics and Automation (ICRA), 2011 IEEE International
-  Conference on}, pages 5703--5708, May 2011{\natexlab{a}}.
-\newblock \doi{10.1109/ICRA.2011.5979644}.
-
-\bibitem[Stulp et~al.(2011{\natexlab{b}})Stulp, Theodorou, Kalakrishnan,
-  Pastor, Righetti, and Schaal]{dmp_iros_2011}
+\bibitem[Stulp et~al.(2011)Stulp, Theodorou, Kalakrishnan, Pastor, Righetti,
+  and Schaal]{dmp_iros_2011}
 F.~Stulp, E.~Theodorou, M.~Kalakrishnan, P.~Pastor, L.~Righetti, and S.~Schaal.
 \newblock Learning motion primitive goals for robust manipulation.
 \newblock In \emph{Intelligent Robots and Systems (IROS), 2011 IEEE/RSJ
-  International Conference on}, pages 325--331, Sept 2011{\natexlab{b}}.
+  International Conference on}, pages 325--331, Sept 2011.
 \newblock \doi{10.1109/IROS.2011.6094877}.
 
 \bibitem[Stulp et~al.(2012)Stulp, Theodorou, and Schaal]{dmp_seq_2012}
@@ -508,10 +485,24 @@ Manuela~M. Veloso, editor.
   Conference on Artificial Intelligence, Hyderabad, India, January 6-12, 2007},
   2007.
 
+\bibitem[Vijayakumar et~al.(2003)Vijayakumar, Shibata, and Schaal]{eNAC_2003}
+Sethu Vijayakumar, Tomohiro Shibata, and Stefan Schaal.
+\newblock Reinforcement learning for humanoid robotics.
+\newblock In \emph{Autonomous Robot}, page 2002, 2003.
+
 \bibitem[Von~Neumann and Morgenstern(1990)]{VonNeumann1944}
 John Von~Neumann and O.~Morgenstern.
 \newblock \emph{The theory of games and economic behavior}.
 \newblock Princeton, 3 edition, 1990.
+
+\bibitem[Wang et~al.(2016)Wang, Uchibe, and Doya]{Wang2016}
+Jiexin Wang, Eiji Uchibe, and Kenji Doya.
+\newblock Em-based policy hyper parameter exploration: application to standing
+  and balancing of a two-wheeled smartphone robot.
+\newblock \emph{Artificial Life and Robotics}, 21\penalty0 (1):\penalty0
+  125--131, 2016.
+\newblock \doi{10.1007/s10015-015-0260-7}.
+\newblock URL \url{http://dx.doi.org/10.1007/s10015-015-0260-7}.
 
 \bibitem[Williams(1992)]{reinforce_1992}
 Ronald~J. Williams.
@@ -529,15 +520,5 @@ Q.~Zhang, I.~Rekleitis, and G.~Dudek.
 \newblock In \emph{Computer and Robot Vision (CRV), 2015 12th Conference on},
   pages 222--229, June 2015.
 \newblock \doi{10.1109/CRV.2015.36}.
-
-\bibitem[Zito et~al.(2013)Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and
-  Wyatt]{seq_traj_replan_iros_2013}
-C.~Zito, M.~S. Kopicki, R.~Stolkin, C.~Borst, F.~Schmidt, M.~A. Roa, and J.~L.
-  Wyatt.
-\newblock Sequential trajectory re-planning with tactile information gain for
-  dexterous grasping under object-pose uncertainty.
-\newblock In \emph{Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ
-  International Conference on}, pages 4013--4020, Nov 2013.
-\newblock \doi{10.1109/IROS.2013.6696930}.
 
 \end{thebibliography}
