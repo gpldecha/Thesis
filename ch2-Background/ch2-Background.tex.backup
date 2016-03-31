@@ -698,21 +698,64 @@ The fundamental assumption made in most of the following techniques (with a few 
 motion and measurement modes are Gaussian and as a result a point in the belief space can be represented by 
 a mean and covariance function.
 An example is the application of Probabilist Road Maps (PMR) to a belief state space, \cite{BelRoadMap_2009}, 
-referred to as Belief Road Maps (BRM).
+referred to as Belief Road Maps (BRM). By taking advantage of the linear structure of the Kalman Filter the 
+the authors show that the covariance matrix can be factorised such that a set of  motion and measurement updates between two belief 
+points in the BRM can be computed by a single linear operation parametrised by the current belief. They key advantage of this 
+approach is that it allows for rapid replanning and is able to scale to large state spaces; the authors evaluated their planner 
+in the MIT campus (simulated). Applications of this methodology include the control of an indoor quadrotor helicopter \cite{Quadrator_2008},
+and [another one].
 
-\cite{Quadrator_2008},			% Belief Roadmap (1)
-			% Belief Roadmap (2)
+Another approach ports the methods of optimal control theory, namely Linear Quadratic Control (LQG) to belief space planning. In this 
+setting the dynamics are considered linear and the motion and measurement processes are Gaussian. The main difficulty of applying
+LQG planning to a belief space is that future observations are unknown, which implies that an expensive marginalisation over the observations
+would have to be carried out. In \cite{bsp_rss_2010} the authors assume instead that at each time step the measurement obtained is the 
+\textit{maximum-likelihood observation}. This assumption removes the stochastic from the belief update (since the observation is considered known)
+and a multiple shooting optimisation methods can be employed. To apply this method a nominal trajectory is first created, assuming that 
+the state space is fully observable, and subsequently refined by dynamical programming methods until a local optimal solution in attained.
+When the planned belief trajectory deviates from the observed belief, replanning takes place. In recent improvements, \cite{van_den_Berg_2012},  the assumption of 
+maximum-likelihood observation was removed successfully and the cost function is quadratic and the authors imploy iterative LQG. 
 
-\cite{bsp_rss_2010} 			% Optimal control Belief space planning assuming maximum likelihood observation (optimal control)
-\cite{int_motion_planning_2013}  	% tree search planning
-\cite{non_gauss_bel_plan_2012}		% Non-Gaussian belief space planning (optimisation)
-\cite{Erez10ascalable},
-\cite{van_den_Berg_2012}		% Optimal control in belief space planning 
+In \cite{Erez10ascalable}, the authors consider a 16 dimensional continuous state, action, etc. 6 continuous actions. Use Differential Dynamic Programming (DDP) and maximum likelihood 
+of observations. Use a mixture of two Gaussians to represent the state space to tackle unilateral constraints. DDP gives a sequence of linear feedback gain matrices.	
 
-\cite{active_RSS_07} 			% Active Policy Learning for robot planning and exploration under uncertainty coste function optimsation
+% Direct policy search method
+In \cite{Martinez-Cantin2009}, finite horizon planning problem, belief dependent utility function. non-Gaussian, trades off exploration vs exploitation. The pomdp
+policy is represented by a parameterised path. Use PID controller to follow the planned path. Dynamic model is non-differentiable, cannot use gradient based optimisation methods.
+Use bayesian technique to approximate the cost function with a surrogate function that is cheaper to evaluate.
+sample parameters wit expected cost, learn a function relating parameter choice to cost. The parameterised policy trades off exploration vs exploitation. Aim to 
+minimise the number of cost function evaluations. Minimise uncertainty about its pose (location and heading). Policy is parameterised by a finite set of way points.	
+Same cost function as RL, but cost is with respect to the map (doing SLAM). Cannot use LQG to solve this problem 
+
+%Typical binary reward present used so fare is replaced by a cost-to-go objective function. In which the final uncertainty is explicitly
+%penalized and a cost is incurred at every step.
+%Based on linear quadratic controller LQG-MP with Gaussian models of uncertainty, linear dynamics and quadratic cost function.
+
+% talk about the type of uncertainty which is considered and dyanmics; 
+
+%A nominal path is first generated assuming full observability using for instance RRT methods.
+%The dynamic function should be at least locally linear.
+%linear control policy over the belief space that is valid in the vicinity of the nominal trajectory.
+%find locally optimal feedback policies.
+%Assume maximum-likelihood observations to make the belief propagation deterministic.
+%Can solve via differential dynamic programming (DDP).
+%First approximate the belief dynamics using an extended Kalman Filter (EKF), the value function is approximated using a 
+%a quadratic function that is locally valid in the vicinity of the nominal trajectory.
+%Since the measurement term is unknown in advance the belief dynamics are stochastic.
+% Do value iteration backwards in time to find a locally optimal control policy
+
+\cite{non_gauss_bel_plan_2012} Non-gaussian belief and non-linear optimisation problems. The computational complexity
+of the algorithm is dominated by the number of samples used. Receding horizon control approach. Given belief, first 
+find most likely state. Generate a set of plausible locations (very likely). Choose u such that set of observations 
+generated by paths from state point x are as different as possible.
+
+
+
+			% Active Policy Learning for robot planning and exploration under uncertainty coste function optimsation
 \cite{plan_cont_bel_space_2015}		% Belief space approach to autonomous navigation
 \cite{rob_online_bs_icra_2014}		% average
+
 \cite{sigma_hull_iros_2013}
+\cite{int_motion_planning_2013}  	% tree search planning
 
 
 \subsection{Optimal control}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  30 MAR 2016 15:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  31 MAR 2016 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1123,12 +1123,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 693--694
 
  []
 
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 742--743
+[23] [24]
+Underfull \hbox (badness 10000) in paragraph at lines 782--783
 
  []
 
-) [24] (./main.bbl (./main.brf)
+) [25] [26
+
+] (./main.bbl (./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
@@ -1147,10 +1149,9 @@ Underfull \hbox (badness 1990) in paragraph at lines 71--71
 s,
  []
 
-[25
+[27
 
-
-] [26]
+] [28]
 Underfull \hbox (badness 1688) in paragraph at lines 187--187
 \T1/aer/m/n/10 00023-[]X$.  URL [][]$\T1/aett/m/n/10 http : / / dx . doi . org 
 / 10 . 1016 / S0004-[]3702(98 ) 00023-[]X$[][]\T1/aer/m/n/10 .
@@ -1162,25 +1163,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--196
 ]learning .
  []
 
-[27]
-Underfull \hbox (badness 1694) in paragraph at lines 314--314
+
+Underfull \hbox (badness 1406) in paragraph at lines 272--272
+[]\T1/aer/m/n/10 Ruben Martinez-Cantin, Nando de Fre-itas, Eric Brochu, JosÃ© C
+astel-
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 272--272
+\T1/aer/m/n/10 lanos, and Ar-naud Doucet.  A bayesian exploration-exploitation 
+ap-
+ []
+
+[29]
+Underfull \hbox (badness 1888) in paragraph at lines 284--284
+[]\T1/aer/m/n/10 Ruben Martinez-Cantin, Nando Fre-itas, Eric Brochu, José Caste
+l-lanos,
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 284--284
+\T1/aer/m/n/10 and Ar-naud Doucet.  A bayesian exploration-exploitation ap-proa
+ch
+ []
+
+
+Underfull \hbox (badness 1622) in paragraph at lines 284--284
+\T1/aer/m/n/10 for op-ti-mal on-line sens-ing and plan-ning with a vi-su-ally g
+uided mo-
+ []
+
+
+Underfull \hbox (badness 1789) in paragraph at lines 284--284
+\T1/aer/m/n/10 bile robot.  \T1/aer/m/it/10 Au-tonomous Robots\T1/aer/m/n/10 , 
+27(2):93--103, 2009b.  ISSN 1573-
+ []
+
+
+Underfull \hbox (badness 1694) in paragraph at lines 318--318
 \T1/aer/m/n/10 2007 . 11 . 026$.  URL [][]$\T1/aett/m/n/10 http : / / www . sci
 encedirect . com / science / article /
  []
 
-[28]
-Underfull \hbox (badness 2088) in paragraph at lines 404--404
+[30]
+Underfull \hbox (badness 2088) in paragraph at lines 408--408
 \T1/aer/m/n/10 1667--1674. MIT Press, 2003.  URL [][]$\T1/aett/m/n/10 http : / 
 / papers . nips . cc / paper /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--404
+Underfull \hbox (badness 10000) in paragraph at lines 408--408
 \T1/aett/m/n/10 2319-[]exponential-[]family-[]pca-[]for-[]belief-[]compression-
 []in-[]pomdps .
  []
 
-[29])
+[31] [32])
 
 Package natbib Warning: There were undefined citations.
 
@@ -1189,16 +1226,21 @@ Package caption Warning: Unused \captionsetup[algorithm] on input line 32.
 See the caption package documentation for explanation.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 124.
-[30]
+[33]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 124.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 124.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 124.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E85F2FFB5A936E0A6F2FB3B1D04796E3;1499.
-Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 554B0A6FFE7BD70B427DF376F9DCE232;4125.
 
+
+Package rerunfilecheck Warning: File `main.brf' has changed.
+(rerunfilecheck)                Rerun to get bibliographical references right.
+
+Package rerunfilecheck Info: Checksums for `main.brf':
+(rerunfilecheck)             Before: 5132EF8FD3B665CEC7FCEFFE7BF66ADB;4132
+(rerunfilecheck)             After:  7770036EC9F9D330B6FA3E9CFDA4A082;4064.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1208,9 +1250,9 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 124.
 (\end occurred when \ifdefined on line 110 was incomplete)
 (\end occurred when \ifdefined on line 109 was incomplete) 
 Here is how much of TeX's memory you used:
- 18691 strings out of 493304
- 320735 string characters out of 6139872
- 412387 words of memory out of 5000000
+ 18694 strings out of 493304
+ 320812 string characters out of 6139872
+ 412518 words of memory out of 5000000
  21522 multiletter control sequences out of 15000+600000
  56366 words of font info for 121 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1243,10 +1285,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmu10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/t
 ex-gyre/qhvr.pfb>
-Output written on main.pdf (32 pages, 3582467 bytes).
+Output written on main.pdf (35 pages, 3586374 bytes).
 PDF statistics:
- 1120 PDF objects out of 1200 (max. 8388607)
- 970 compressed objects within 10 object streams
- 155 named destinations out of 1000 (max. 500000)
+ 1134 PDF objects out of 1200 (max. 8388607)
+ 981 compressed objects within 10 object streams
+ 158 named destinations out of 1000 (max. 500000)
  234 words of extra memory for PDF output out of 10000 (max. 10000000)
 

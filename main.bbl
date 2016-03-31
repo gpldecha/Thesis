@@ -258,23 +258,27 @@ Xin Li, William~K. Cheung, and Jiming Liu.
 \newblock \doi{10.1109/tsmcb.2009.2021573}.
 \newblock URL \url{http://dx.doi.org/10.1109/tsmcb.2009.2021573}.
 
-\bibitem[Martinez-Cantin et~al.(2007)Martinez-Cantin, de~Freitas, Doucet, and
-  Castellanos]{active_RSS_07}
-R.~Martinez-Cantin, N.~de~Freitas, A.~Doucet, and J.~Castellanos.
-\newblock Active policy learning for robot planning and exploration under
-  uncertainty.
-\newblock In \emph{Proceedings of Robotics: Science and Systems}, Atlanta, GA,
-  USA, June 2007.
-\newblock \doi{10.15607/RSS.2007.III.041}.
-
-\bibitem[Martinez-Cantin et~al.(2009)Martinez-Cantin, de~Freitas, Brochu,
-  Castellanos, and Doucet]{Bayesian_explor_exploit_2009}
+\bibitem[Martinez-Cantin et~al.(2009{\natexlab{a}})Martinez-Cantin, de~Freitas,
+  Brochu, Castellanos, and Doucet]{Bayesian_explor_exploit_2009}
 Ruben Martinez-Cantin, Nando de~Freitas, Eric Brochu, José Castellanos, and
   Arnaud Doucet.
 \newblock A bayesian exploration-exploitation approach for optimal online
   sensing and planning with a visually guided mobile robot.
-\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103, 2009.
+\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103,
+  2009{\natexlab{a}}.
 \newblock ISSN 0929-5593.
+\newblock \doi{10.1007/s10514-009-9130-2}.
+\newblock URL \url{http://dx.doi.org/10.1007/s10514-009-9130-2}.
+
+\bibitem[Martinez-Cantin et~al.(2009{\natexlab{b}})Martinez-Cantin, Freitas,
+  Brochu, Castellanos, and Doucet]{Martinez-Cantin2009}
+Ruben Martinez-Cantin, Nando Freitas, Eric Brochu, Jos{\'e} Castellanos, and
+  Arnaud Doucet.
+\newblock A bayesian exploration-exploitation approach for optimal online
+  sensing and planning with a visually guided mobile robot.
+\newblock \emph{Autonomous Robots}, 27\penalty0 (2):\penalty0 93--103,
+  2009{\natexlab{b}}.
+\newblock ISSN 1573-7527.
 \newblock \doi{10.1007/s10514-009-9130-2}.
 \newblock URL \url{http://dx.doi.org/10.1007/s10514-009-9130-2}.
 
@@ -327,7 +331,7 @@ R.~Platt, L.~Kaelbling, T.~Lozano-Perez, and R.~Tedrake.
 \newblock \doi{10.1109/ICRA.2012.6225223}.
 
 \bibitem[Platt et~al.(2010)Platt, Tedrake, Kaelbling, and
-  Lozano-P\'{e}rez]{bsp_rss_2010}
+  Lozano-P\'{e}rez]{bsp_rss_2010a}
 Robert Platt, Russell Tedrake, Leslie Kaelbling, and Tom\'{a}s
   Lozano-P\'{e}rez.
 \newblock Belief space planning assuming maximum likelihood observations.

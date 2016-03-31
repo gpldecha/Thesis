@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 237 of file main.aux
+---line 236 of file main.aux
  : \bibdata{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/ProspectTheory.bib
  :                                                                                                                 }
 I'm skipping whatever remains of this command
@@ -30,43 +30,43 @@ Warning--empty journal in DRQ_AAAI_2015
 Warning--empty journal in Thrun_Burgard_Fox_2005
 You've used 67 entries,
             2773 wiz_defined-function locations,
-            1116 strings with 21551 characters,
-and the built_in function-call counts, 39445 in all, are:
-= -- 3665
-> -- 2242
+            1114 strings with 21454 characters,
+and the built_in function-call counts, 39575 in all, are:
+= -- 3682
+> -- 2251
 < -- 61
-+ -- 750
-- -- 680
-* -- 3227
-:= -- 5781
-add.period$ -- 287
++ -- 754
+- -- 683
+* -- 3249
+:= -- 5803
+add.period$ -- 289
 call.type$ -- 67
-change.case$ -- 420
-chr.to.int$ -- 64
+change.case$ -- 421
+chr.to.int$ -- 63
 cite$ -- 136
-duplicate$ -- 1818
-empty$ -- 3109
-format.name$ -- 783
-if$ -- 8618
-int.to.chr$ -- 4
+duplicate$ -- 1815
+empty$ -- 3110
+format.name$ -- 786
+if$ -- 8640
+int.to.chr$ -- 5
 int.to.str$ -- 1
 missing$ -- 68
-newline$ -- 417
+newline$ -- 419
 num.names$ -- 283
-pop$ -- 850
+pop$ -- 844
 preamble$ -- 1
-purify$ -- 355
+purify$ -- 356
 quote$ -- 0
-skip$ -- 1468
+skip$ -- 1469
 stack$ -- 0
-substring$ -- 1718
-swap$ -- 453
+substring$ -- 1740
+swap$ -- 454
 text.length$ -- 36
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 725
 warning$ -- 2
-while$ -- 319
+while$ -- 321
 width$ -- 0
-write$ -- 1037
+write$ -- 1041
 (There were 4 error messages)

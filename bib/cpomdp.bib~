@@ -121,7 +121,7 @@ author = "Alex Brooks and Alexei Makarenko and Stefan Williams and Hugh Durrant-
 
 %% Belief space planning
 
-@inproceedings{bsp_rss_2010,
+@inproceedings{bsp_rss_201a,
     author = {Robert Platt and Russell Tedrake and Leslie Kaelbling and Tom\'{a}s Lozano-P\'{e}rez},
     title = {Belief space planning assuming maximum likelihood observations}, 
     booktitle = {Robotics Science and Systems Conference (RSS)},
