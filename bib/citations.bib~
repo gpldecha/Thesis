@@ -1,0 +1,900 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: UTF-8
+
+@ARTICLE{Arul_Mask_Clap_2002,
+  author = {Arulampalam, M.S. and Maskell, S. and Gordon, N. and Clapp, T.},
+  title = {A tutorial on particle filters for online nonlinear/non-Gaussian Bayesian tracking},
+  journal = {IEEE Transactions on Signal Processing},
+  year = {2002},
+  month = {February},
+  volume = {50},
+  number = {2},
+  pages = {174-188}
+}
+
+@ARTICLE{Nicolescu01learningand,
+  author = {Monica N. Nicolescu and Maja J. Mataric},
+  title = {Learning and Interacting in Human-Robot Domains},
+  journal = {IEEE Transactions on Systems, Man, and Cybernetics, Part A: Systems and Humans},
+  year = {2001},
+  month = {September},
+  volume = {31},
+  number = {5},
+  pages = {419-430}
+}
+%[doi>10.1109/3468.952716]
+
+
+@ARTICLE{Kaelbling98planningand,
+  author = {Leslie Pack Kaelbling and Michael L. Littman and Anthony R. Cassandra},
+  title = {Planning and acting in partially observable stochastic domains},
+  journal = {Artificial intelligence},
+  year = {1998},
+  month = {May},
+  volume = {101},
+  number = {1},
+  pages = {99-134}
+}
+
+@ARTICLE{Kasper2001153,
+  author = {Michael Kasper and Gernot Fricke and Katja Steuernagel and Ewald von Puttkamer},
+  title = {A behavior-based mobile robot architecture for Learning from Demonstration},
+  journal = {Robotics and Autonomous Systems},
+  year = {2001},
+  month = {February},
+  volume = {34},
+  number = {2},
+  pages = {153-164}
+}
+
+@ARTICLE{ShaniPK13,
+  author = {Shani, Guy and Pineau, Joelle and Kaplow, Robert},
+  title = {A survey of point-based POMDP solvers.},
+  journal = {Autonomous Agents and Multi-Agent Systems},
+  year = {2013},
+  month = {July},
+  volume = {27},
+  number = {1},
+  pages = {1-51}
+}
+
+@ARTICLE{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain,
+  author = {Silver, David and Bagnell, J. Andrew and Stentz, Anthony},
+  title = {Learning from Demonstration for Autonomous Navigation in Complex Unstructured Terrain},
+  journal = {IJRR},
+  year = {2010},
+  month = {October},
+  volume = {29},
+  number = {12},
+  pages = {1565-1592}
+}
+
+
+@ARTICLE{Hamner_2006_5810,
+  author = {Bradley Hamner and Sanjiv Singh and Sebastian Scherer},
+  title = {Learning Obstacle Avoidance Parameters from Operator Behavior},
+  journal = {Field Robotics},
+  year = {2006},
+  month = {December},
+  volume = {23},
+  number = {11/12},
+  pages = {1037-1058}
+}
+% doi = {10.1002/rob.20171},
+
+
+%
+% Article within conference proceedings
+%
+@Inproceedings{xjon,
+	author    = {X Jones}, 
+	title     = {Zeolites and synthetic mechanisms},
+	booktitle = {Proceedings of the First National Conference on 
+		     Porous Sieves: 27-30 June 1996; Baltimore},
+	year      = {1996},
+	  editor  = {Y Smith}, 
+	  pages   = {16-27},
+	  organization  = {Stoneham: Butterworth-Heinemann}
+}	
+
+@INPROCEEDINGS{Bake_Tene_Saxe_2006,
+  author = {Chris L. Baker and Joshua B. Tenenbaum and Rebecca R. Saxe},
+  title = {Bayesian models of human action understanding},
+  booktitle = {Advances in Neural Information Processing Systems 18},
+  year = {2006},
+  editor = {},
+  pages = {99-106},
+  organization = {}
+}
+
+@INPROCEEDINGS{deChambrierBillard2013,
+  author = {de Chambrier, G. and Billard, A.},
+  title = {Learning search behaviour from humans},
+  booktitle = {IEEE International Conference on Robotics and Biomimetics (ROBIO)},
+  year = {2013},
+  editor = {},
+  pages = {573-580},
+  organization = {}
+}
+
+
+@INPROCEEDINGS{PBVI_2003,
+  author = {Pineau, Joelle and Gordon, Geoff and Thrun, Sebastian},
+  title = {Point-based value iteration: an anytime algorithm for POMDPs},
+  booktitle = {IJCAI},
+  year = {2003},
+  editor = {},
+  pages = {1025-1030},
+  organization = {}
+}
+
+
+@INPROCEEDINGS{Herb_Burd_Huds_Jet_2012,
+  author = {Hebert, P. and Howard, T. and Hudson, N. and Ma, J. and Burdick, J.W.},
+  title = {The next best touch for model-based localization},
+  booktitle = {International Conference Robotics and Automation (ICRA)},
+  year = {2013},
+  month = {May},
+  editor = {},
+  pages = {99-106},
+  organization = {}
+}
+
+@INPROCEEDINGS{Hsiao-RSS-10,
+  author = {K. Hsiao AND L. Kaelbling AND T. Lozano-Perez},
+  title = {Task-Driven Tactile Exploration},
+  booktitle = {Proceedings of Robotics: Science and Systems (RSS)},
+  year = {2010},
+  month = {June},
+  editor = {Yoky Matsuoka, Hugh Durrant-Whyte and José Neira},
+  pages = {},
+  organization = {}
+}
+
+@INPROCEEDINGS{DiffEntropyHuber2008,
+  author = {Huber, M.F. and Bailey, Tim and Durrant-Whyte, H. and Hanebeck, U.D.},
+  title = {On entropy approximation for Gaussian mixture random vectors},
+  booktitle = {Multisensor Fusion and Integration},
+  year = {2008},
+  editor = {},
+  pages = {181-188},
+  organization = {}
+}
+
+@INPROCEEDINGS{Kurniawati08sarsop,
+  author = {Hanna Kurniawati and David Hsu and Wee Sun Lee},
+  title = {SARSOP: Efficient point-based POMDP planning by approximating optimally reachable belief spaces},
+  booktitle = {Proceedings of Robotics: Science and Systems (RSS)},
+  year = {2008},
+  editor = {Oliver Brock, Jeff Trinkle and Fabio Ramos},
+  pages = {},
+  organization = {}
+}
+
+@INPROCEEDINGS{CostalNavigation1999,
+  author = {Roy, N. and Burgard, W. and Fox, D. and Thrun, S.},
+  title = {Coastal navigation-mobile robot navigation with uncertainty in dynamic environments},
+  booktitle = {IEEE International Conference on Robotics and Automation},
+  year = {1999},
+  editor = {},
+  pages = {35-40},
+  organization = {}
+}
+
+@INPROCEEDINGS{Shani_2007,
+  author = {Shani, Guy and Brafman, Ronen I. and Shimony, Solomon E.},
+  title = {Forward Search Value Iteration for POMDPs},
+  booktitle = {International Joint Conference on Artificial Intelligence (IJCAI)},
+  year = {2007},
+  editor = {},
+  pages = {},
+  organization = {}
+}
+
+@INPROCEEDINGS{HSV_2004,
+  author = {Smith, Trey and Simmons, Reid},
+  title = {Heuristic Search Value Iteration for POMDPs},
+  booktitle = {Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence},
+  year = {2004},
+  editor = {},
+  pages = {520-527},
+  organization = {}
+}
+
+@INPROCEEDINGS{Roy_Pineau_Thrun_2000,
+  author = {Nicholas Roy and Joelle Pineau and Sebastian Thrun},
+  title = {Spoken Dialogue Management Using Probabilistic Reasoning},
+  booktitle = {Proceedings of the 38th Annual Meeting of the Association for Computational Linguistics},
+  year = {2000},
+  editor =  {Hitoshi Iida},
+  pages = {93-100},
+  organization = {}
+}
+%doi>10.3115/1075218.1075231
+
+@INPROCEEDINGS{Richardson1_Baker1_Tenenbaum1_Saxe1_2012,
+  author = {Hilary Richardson and Bake, Chris and Tenenbaum, Joshua. and Saxe, Rebecca},
+  title = {The Development of Joint Belief-Desire Inferences},
+  booktitle = {Proceedings of the 34th Annual Meeting of the Cognitive Science Society (COGSCI)},
+  year = {2012},
+  month = {August},
+  editor = {},
+  pages = {},
+  organization = {}
+}
+
+@InProceedings{Thrun_1999,
+  author         = {S. Thrun},
+  title          = {Monte Carlo {POMDP}s},
+  booktitle      = {Advances in Neural Information Processing Systems 12},
+  pages          = {1064--1070},
+  year           = {2000},
+  editor         = {S.A.~Solla and T.K.~Leen and K.-R.~M{\"u}ller},
+  publisher      = {MIT Press},
+  address 	 = {Massachusetts Ave, Cambridge, MA}
+}
+
+@incollection{BillardCDS08,
+  author = {Aude Billard and Sylvain Calinon and R{\"u}diger Dillmann and Stefan Schaal},
+  title = {Robot Programming by Demonstration},
+  booktitle = {Springer Handbook of Robotics},
+  editor = {Bruno Siciliano Prof., Oussama Khatib Prof.},
+  publisher = {Springer},
+  pages = {1371-1394},
+  year = {2008},
+  address = {Springer},
+  volume={},
+  edition={}
+}
+
+@BOOK{GeorgiosLidoris,
+  author = {Lidoris, Georgios},
+  title = {State Estimation, Planning, and Behavior Selection Under Uncertainty for Autonomous Robotic Exploration in Dynamic Environments},
+  publisher = {kassel university press GmbH},
+  year = {2011},
+  editor = {kassel university press},
+  address = {Kassel University}
+}
+
+
+@BOOK{sutton98reinforcement,
+  author = {Richard S. Sutton and Andrew G. Barto},
+  title = {Reinforcement Learning: An Introduction},
+  publisher = {MIT Press},
+  year = {1998},
+  address = {Cambridge, MA}
+}
+
+@PHDTHESIS{Smith_2007_5970,
+  author = {Trey Smith},
+  title = {Probabilistic Planning for Robotic Exploration},
+  school = {Robotics Institute, Carnegie Mellon University},
+  year = {2007},
+  address = {Pittsburgh, PA},
+  month = {July}
+}
+
+% This file was created with JabRef 2.7b.
+% Encoding: UTF-8
+
+@INCOLLECTION{BillardCDS08,
+  author = {Aude Billard and Sylvain Calinon and R{\"u}diger Dillmann and Stefan
+	Schaal},
+  title = {Robot Programming by Demonstration},
+  booktitle = {Springer Handbook of Robotics},
+  year = {2008},
+  pages = {1371-1394},
+  bibsource = {DBLP, http://dblp.uni-trier.de},
+  crossref = {DBLP:reference/robo/2008},
+  ee = {http://dx.doi.org/10.1007/978-3-540-30301-5_60}
+}
+
+@INPROCEEDINGS{Stulp_IICIRS_2011,
+  author = {Stulp, F. and Theodorou, E. and Kalakrishnan, M. and Pastor, P. and
+	Righetti, L. and Schaal, S.},
+  title = {learning motion primitive goals for robust manipulation},
+  booktitle = {ieee/rsj international conference on intelligent robots and systems
+	(iros 2011)},
+  year = {2011},
+  crossref = {p10478},
+  key = {movement primitives, reinforcement learning, pi2, skill learning},
+  url = {http://www-clmc.usc.edu/publications/S/stulp-IROS2011}
+}
+
+@ARTICLE{Hoffmann_2009,
+  author = {Hoffmann et. al},
+  title = {Learning and Generalization of Motor Skills by Learning from Demonstration},
+  journal = {ICRA},
+  year = {2009},
+  pages = {763-768},
+  owner = {guillaume},
+  timestamp = {2013.03.13}
+}
+
+@ARTICLE{Shon_Grim_Bake_Rao_2004,
+  author = {Aaron P. Shon, David B. Grimes, Chris L. Baker, and Rajesh P.N. Rao},
+  title = {A Probabilistic Framework for Model-Based Imitation Learning},
+  journal = {Journal of Cognitive Science},
+  year = {2004},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{Arul_Mask_Clap_2002,
+  author = {Arulampalam, M.S. and Maskell, S. and Gordon, N. and Clapp, T.},
+  title = {A tutorial on particle filters for online nonlinear/non-Gaussian
+	Bayesian tracking},
+  journal = {Signal Processing, IEEE Transactions on},
+  year = {2002},
+  volume = {50},
+  pages = {174-188},
+  number = {2},
+  month = {Feb},
+  doi = {10.1109/78.978374}
+}
+
+@INPROCEEDINGS{Bai10montecarlo,
+  author = {Haoyu Bai and David Hsu and Wee Sun Lee and Vien A. Ngo},
+  title = {Monte Carlo Value Iteration for Continuous-State POMDPs},
+  booktitle = {WORKSHOP ON THE ALGORITHMIC FOUNDATIONS OF ROBOTICS},
+  year = {2010}
+}
+
+@ARTICLE{Bake_Saxe_Tene_2011,
+  author = {Bake, Chris and Tenenbaum, Joshua. and Saxe, Rebecca},
+  title = {Bayesian Theory of Mind: Modeling Joint Belief-Desire Attribution},
+  journal = {Journal of Cognitive Science},
+  year = {2011},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{Bake_Tene_Saxe_2006,
+    author = {Chris L. Baker and Joshua B. Tenenbaum and Rebecca R. Saxe},
+    title = {Bayesian models of human action understanding},
+    journal = {Advances in Neural Information Processing Systems (NIPS) 18},
+    year = {2006},
+}
+
+@ARTICLE{billard99experimentsIn,
+  author = {A. Billard and K. Dautenhahn},
+  title = {Experiments in learning by imitation - grounding and use of communication
+	in robotic agents},
+  journal = {Adaptive Behavior},
+  year = {1999},
+  volume = {7},
+  pages = {415-438},
+  number = {3/4},
+  url = {http://groups.lis.illinois.edu/amag/langev/paper/billard99experimentsIn.html}
+}
+
+@BOOK{Sylvain_book,
+  title = {Robot Programming by Demonstration: A Probabilistic Approach},
+  publisher = {EPFL Press},
+  author = {Sylvain Calinon},
+  owner = {guillaume},
+  timestamp = {2013.01.28}
+}
+
+@ARTICLE{Grol_Bill_2012,
+  author = {Daniel H. Grollman, Aude G. Billard},
+  title = {Robot Learning from Failed Demonstrations},
+  journal = {International Journal of Social Robotics},
+  year = {2012},
+  volume = {4},
+  pages = {331-342},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@INPROCEEDINGS{Dellaert_1999_533,
+  author = {Frank Dellaert and Dieter Fox and Wolfram Burgard and Sebastian Thrun},
+  title = {Monte Carlo Localization for Mobile Robots},
+  booktitle = {IEEE International Conference on Robotics and Automation (ICRA99)},
+  year = {1999},
+  month = {May}
+}
+
+@ARTICLE{Gallese_Goldman_1998,
+  author = {Vittorio Gallese and Alvin Goldman},
+  title = {Mirror neurons and the simulation theory of mind-reading},
+  journal = {Trends in Cognitive Science},
+  year = {1998},
+  volume = {2},
+  pages = {493-501},
+  owner = {guillaume},
+  timestamp = {2013.01.10}
+}
+
+@INPROCEEDINGS{Herb_Burd_Huds_Jet_2012,
+  author = {Hebert, P. and Howard, T. and Hudson, N. and Ma, J. and Burdick,
+	J.W.},
+  title = {The next best touch for model-based localization},
+  booktitle = {IEEE International Conference Robotics and Automation (ICRA)},
+  year = {2013},
+  pages = {99-106},
+  month = {May}
+}
+
+@INPROCEEDINGS{Hsiao-RSS-10,
+  author = {K. Hsiao AND L. Kaelbling AND T. Lozano-Perez},
+  title = {Task-Driven Tactile Exploration},
+  booktitle = {Proceedings of Robotics: Science and Systems},
+  year = {2010},
+  address = {Zaragoza, Spain},
+  month = {June}
+}
+
+@INPROCEEDINGS{DiffEntropyHuber2008,
+  author = {Huber, M.F. and Bailey, Tim and Durrant-Whyte, H. and Hanebeck, U.D.},
+  title = {On entropy approximation for Gaussian mixture random vectors},
+  booktitle = {Multisensor Fusion and Integration},
+  year = {2008},
+  pages = {181-188},
+  doi = {10.1109/MFI.2008.4648062},
+  keywords = {Gaussian processes;approximation theory;entropy;series (mathematics);Gaussian
+	mixture random vectors;component-wise Taylor-series expansion;entropy
+	approximation;probability density representations;Approximation methods;Density
+	functional theory;Entropy;Intelligent systems;Measurement uncertainty;Mutual
+	information;Parameter estimation;Probability;Random variables;Upper
+	bound}
+}
+
+@INPROCEEDINGS{Ijspeert02movementimitation,
+  author = {Auke Jan Ijspeert and Jun Nakanishi and Stefan Schaal},
+  title = {Movement Imitation with Nonlinear Dynamical Systems in Humanoid Robots},
+  booktitle = {ICRA},
+  year = {2002},
+  pages = {1398-1403}
+}
+
+@MISC{Inamura_proto-symboldevelopment,
+  author = {Tetsunari Inamura and Hiroaki Tanie and Yoshihiko Nakamura},
+  title = {Proto-Symbol Development and Manipulation in the Geometry of Stochastic
+	Model for Motion Generation and Recognition},
+  year = {2003}
+}
+
+@ARTICLE{Yang_Xu_Chen_1994,
+  author = {Jie Yang, Yangsheng Xu, Chiou S. Chen},
+  title = {Hidden Markov Model Approach to Skill Learning and Its Application
+	to Telerobotics},
+  journal = {IEEE Transactions on Robotics and Automation},
+  year = {1994},
+  volume = {10},
+  pages = {621-631},
+  owner = {guillaume},
+  timestamp = {2013.01.04}
+}
+
+@ARTICLE{Kaelbling98planningand,
+  author = {Leslie Pack Kaelbling and Michael L. Littman and Anthony R. Cassandra},
+  title = {Planning and acting in partially observable stochastic domains},
+  journal = {Artificial intelligence},
+  year = {1998},
+  volume = {101},
+  pages = {99--134}
+}
+
+@ARTICLE{Khansari_Billard_TRO11,
+  author = {Khansari-Zadeh, S. M. and Billard, Aude},
+  title = {Learning Stable Non-Linear Dynamical Systems with Gaussian Mixture
+	Models},
+  journal = {IEEE Transaction on Robotics},
+  year = {2011}
+}
+
+@ARTICLE{Howa_Mitr_Seth_2010,
+  author = {Matthew Howard, Djordje Mitrovic and Sethu Vijayakumar},
+  title = {Transferring Impedance Control Strategies Between Heterogeneous Systems
+	via Apprenticeship Learning},
+  journal = {IEEE-RAS International Conference on Humanoid Robots},
+  year = {2010},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@INPROCEEDINGS{Ng00algorithmsfor,
+  author = {Andrew Y. Ng and Stuart Russell},
+  title = {Algorithms for Inverse Reinforcement Learning},
+  booktitle = {in Proc. 17th International Conf. on Machine Learning},
+  year = {2000},
+  pages = {663-670},
+  publisher = {Morgan Kaufmann}
+}
+
+@ARTICLE{Peters_Kober_2009,
+  author = {Jan Peters and Jens Kober},
+  title = {Using reward-weighted imitation for robot Reinforcement Learning},
+  journal = {Adaptive Dynamic Programming and Reinforcement Learning},
+  year = {2009},
+  pages = {226-232},
+  owner = {guillaume},
+  timestamp = {2013.02.02}
+}
+
+@ARTICLE{PolicyGradientForRobitcs_2006,
+  author = {Jan Peters and Stefan Schaal},
+  title = {Policy Gradient Methods for Robotics},
+  journal = {Intelligent Robots and Systems},
+  year = {2006},
+  pages = {2219-2225},
+  owner = {guillaume},
+  timestamp = {2013.02.02}
+}
+
+@INPROCEEDINGS{Petrovskaya06bayesianestimation,
+  author = {Anna Petrovskaya and Oussama Khatib and Sebastian Thrun and Andrew
+	Y. Ng},
+  title = {Bayesian estimation for autonomous object manipulation based on tactile
+	sensors},
+  booktitle = {In Proc. of ICRA},
+  year = {2006}
+}
+
+@INPROCEEDINGS{PBVI_2003,
+  author = {Pineau, Joelle and Gordon, Geoff and Thrun, Sebastian},
+  title = {Point-based value iteration: an anytime algorithm for POMDPs},
+  booktitle = {IJCAI},
+  year = {2003},
+  pages = {1025-1030}
+}
+
+@INPROCEEDINGS{Ratliff06maximummargin,
+  author = {Nathan D. Ratliff and J. Andrew Bagnell and Martin A. Zinkevich},
+  title = {Maximum margin planning},
+  booktitle = {In Proceedings of the 23rd International Conference on Machine Learning
+	(ICML’06},
+  year = {2006}
+}
+
+@ARTICLE{Richardson1_Baker1_Tenenbaum1_Saxe1_2012,
+  author = {Hilary Richardson and Bake, Chris and Tenenbaum, Joshua. and Saxe,
+	Rebecca},
+  title = {The Development of Joint Belief-Desire Inferences},
+  journal = {Cognitive Science Socitety},
+  year = {2012},
+  owner = {guillaume},
+  timestamp = {2013.01.13}
+}
+
+@ARTICLE{Rizzolatti_2008,
+  author = {Rizzolatti, G. and Destro, M. Fabbri},
+  title = {Mirror neurons},
+  journal = {Scholarpedia},
+  year = {2008},
+  volume = {3},
+  pages = {2055},
+  number = {1}
+}
+
+@ARTICLE{Roy_Pineau_Thrun_2000,
+  author = {Nicholas Roy and Joelle Pineau and Sebastian Thrun},
+  title = {Spoken Dialogue Management Using Probabilistic Reasoning},
+  journal = {Proceedings of the 38th Annual Meeting of the Association for Computational
+	Linguistics},
+  year = {2000},
+  owner = {guillaume},
+  timestamp = {2013.01.12}
+}
+
+@ARTICLE{Thrun_Fox_Burg_Della_2001,
+  author = {Sebastian Thrun, Dieter Fox, Wolfram Burgard and Frank Dellaert},
+  title = {Robust Monte Carlo Localization for Mobile Robots},
+  journal = {Artificiel Intelligence},
+  year = {2001},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{ShaniPK13,
+  author = {Shani, Guy and Pineau, Joelle and Kaplow, Robert},
+  title = {A survey of point-based POMDP solvers.},
+  journal = {Autonomous Agents and Multi-Agent Systems},
+  year = {2013},
+  volume = {27},
+  pages = {1-51},
+  number = {1}
+}
+
+@INPROCEEDINGS{Shon05roboticimitation,
+  author = {Aaron P. Shon and Keith Grochow and Rajesh P. N. Rao},
+  title = {Robotic imitation from human motion capture using gaussian processes},
+  booktitle = {Humanoids},
+  year = {2005}
+}
+
+@ARTICLE{Shukla_Billard_CDS2012,
+  author = {Ashwini Shukla and Aude Billard},
+  title = {Coupled dynamical system based arm–hand grasping model for learning
+	fast adaptation strategies},
+  journal = {Robotics and Autonomous Systems},
+  year = {2012},
+  volume = {60},
+  pages = {424-440},
+  number = {3},
+  doi = {10.1016/j.robot.2011.07.023},
+  issn = {0921-8890},
+  url = {http://www.sciencedirect.com/science/article/pii/S0921889011001576}
+}
+
+@PHDTHESIS{Smith_2007_5970,
+  author = {Trey Smith},
+  title = {Probabilistic Planning for Robotic Exploration},
+  school = {Robotics Institute, Carnegie Mellon University},
+  year = {2007},
+  address = {Pittsburgh, PA},
+  month = {July},
+  number = {CMU-RI-TR-07-26}
+}
+
+@INPROCEEDINGS{stachniss05robotics,
+  author = {Stachniss, C. and Grisetti, G. and Burgard, W.},
+  title = {Information Gain-based Exploration Using Rao-Blackwellized Particle
+	Filters},
+  booktitle = {Proc.~of Robotics: Science and Systems (RSS)},
+  year = {2005},
+  address = {Cambridge, MA, USA}
+}
+
+@ARTICLE{Shcaal_Peters_Nakanishi_Ijspeert_2003,
+  author = {Stefan Schaal, Jan Peters, Jun Nakanishi, Auke Ijspeert},
+  title = {Learning Movement Primitives},
+  journal = {International Symposium on Robotics Research},
+  year = {2003},
+  owner = {guillaume},
+  timestamp = {2013.02.02}
+}
+
+@BOOK{sutton98reinforcement,
+  title = {Reinforcement Learning: An Introduction},
+  publisher = {MIT Press},
+  year = {1998},
+  author = {Richard S. Sutton and Andrew G. Barto},
+  address = {Cambridge, MA},
+  note = {A Bradford Book},
+  keywords = {RL},
+  readdate = {2002/06/04}
+}
+
+@CONFERENCE{Sylin&Aude2005,
+  author = {Sylvain Calinon,Aude Billard},
+  title = {Recognition and reproduction of gestures using a probabilistic framework
+	combining PCA, ICA and HMM},
+  year = {2005},
+  volume = {22},
+  pages = {105-112},
+  organization = {ICML},
+  abstract = {This paper explores the issue of recognizing, generalizing and reproducing
+	arbitrary gestures. We aim at extracting a representation that encapsulates
+	only the key aspects of the gesture and discards the variability
+	intrinsic to each person's motion. We compare a decomposition into
+	principal components (PCA) and independent components (ICA) as a
+	first step of preprocessing in order to decorrelate and denoise the
+	data, as well as to reduce the dimensionality of the dataset to make
+	this one tractable. In a second stage of processing, we explore the
+	use of a probabilistic encoding through continuous Hidden Markov
+	Models (HMMs), as a way to encapsulate the sequential nature and
+	intrinsic variability of the motions in stochastic finite state automata.
+	Finally, the method is validated in a humanoid robot to reproduce
+	a variety of gestures performed by a human demonstrator.},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{SylvainFlorentAude2007,
+  author = {Sylvain Calinon, Florent Guenter, Aude Billard},
+  title = {On Learning, Representing and Generalizing a Task in a Humanoid Robot},
+  journal = {IEEE Transactions on Systems, Man and Cybernetics},
+  year = {2007},
+  volume = {37},
+  pages = {286-298},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{Mori_Howa_Vija_2011,
+  author = {Takeshi Mori, Matthew Howard and Sethu Vijayakumar},
+  title = {Model-Free Apprenticeship Learning for Transfer of Human Impedance
+	Behaviour},
+  journal = {IEEE-RAS International Conference on Humanoid Robots},
+  year = {2011},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{Inamura_Tanie_Nakamura_2003,
+  author = {Tetsunari Inamura, Hiroaki Tanie, Yoshihiko Nakamura},
+  title = {Keyframe Compression and Decompression for Time Series Data based
+	on the Continuous Hidden Markov Model},
+  journal = {Intelligent Robots and Systems},
+  year = {2003},
+  volume = {2},
+  pages = {1487-1492},
+  owner = {guillaume},
+  timestamp = {2013.01.12}
+}
+
+@ARTICLE{Inamura_Toshima_Nakamura_2002,
+  author = {Tetsunari Inamura, Iwaki Toshima, Yoshihiko Nakamura},
+  title = {Acquisition and Embodiment of Motion Elements in Closed Mimesis Loop},
+  journal = {ICRA},
+  year = {2002},
+  pages = {1539-1544},
+  owner = {guillaume},
+  timestamp = {2013.01.12}
+}
+
+@ARTICLE{Inamura_Nakamura_Toshima_Ezaki_2001,
+  author = {Tetsunari Inamura, Yoshihiko Nakamura, Iwaki Toshima, Hideaki Ezaki},
+  title = {Mimesis Embodiment and Proto-symbol Acquisition for Humanoids},
+  journal = {In proceeding of: Advanced Intelligent Mechatronics},
+  year = {2001},
+  volume = {1},
+  owner = {guillaume},
+  timestamp = {2013.01.10}
+}
+
+@ARTICLE{Thrun_2002,
+  author = {Sebastian Thrun},
+  title = {Particle Filters in Robotics},
+  journal = {Proceedings of Uncertainty in AI},
+  year = {2002},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@TECHREPORT{Thrun_1999,
+  author = {Sebastian Thrun},
+  title = {Monte Carlo POMDPs},
+  institution = {Carnegie Mellon University},
+  year = {1999},
+  owner = {guillaume},
+  timestamp = {2013.01.08}
+}
+
+@ARTICLE{Thrun_Burgard_Fox_2005,
+  author = {Thrun, Sebastian and Burgard, Wolfram and Fox, Dieter},
+  title = {Probabilistic Robotics (Intelligent Robotics and Autonomous Agents)},
+  publisher = {The MIT Press},
+  editor = {Cambridge, MA},
+  year = {2005},
+}
+
+@BOOK{VonNeumann+Morgenstern:1947,
+  title = {Theory of games and economic behavior},
+  publisher = princeton,
+  year = {1947},
+  author = {Von Neumann, John and Morgenstern, Oskar},
+  address = princeton-ad,
+  edition = {second}
+}
+
+@ARTICLE{Takano_Nakamura_2006,
+  author = {Wataru Takano, Yoshihiko Nakamura},
+  title = {Humanoid Robot’s Autonomous Acquisition of Proto-Symbols through
+	Motion Segmentation},
+  journal = {Humanoid Robots},
+  year = {2006},
+  pages = {425-431},
+  owner = {guillaume},
+  timestamp = {2013.01.04}
+}
+
+@INPROCEEDINGS{MC_VI_2011,
+  author = {Zhan Wei Lim, David Hsu and Wee Sun Lee},
+  title = {Monte Carlo Value Iteration with Macro-Actions},
+  year = {2011},
+  journal = {NIPS}
+}
+
+@inproceedings{deChambrierBillard2013, 
+	author={de Chambrier, G. and Billard, A.}, 
+	title={Learning search behaviour from humans}, 
+	booktitle={IEEE International Conference on Robotics and Biomimetics (ROBIO)}, 
+	year={2013}, 
+	month={Dec}, 
+	pages={573-580}
+}
+
+﻿@Article{Chambrier2014,
+author="Chambrier, Guillaume de
+and Billard, Aude",
+title="Learning search policies from humans in a partially observable context",
+journal="Robotics and Biomimetics",
+year="2014",
+volume="1",
+number="1",
+pages="1--16",
+issn="2197-3768",
+doi="10.1186/s40638-014-0008-1",
+url="http://dx.doi.org/10.1186/s40638-014-0008-1"
+}
+
+
+@INPROCEEDINGS{Kurniawati08sarsop,
+    author = {Hanna Kurniawati and David Hsu and Wee Sun Lee},
+    title = {SARSOP: Efficient point-based POMDP planning by approximating optimally reachable belief spaces},
+    booktitle = {In Proc. Robotics: Science and Systems},
+    year = {2008}
+}
+
+
+
+
+
+@incollection{Motion_planning_under_uncertainty_for_robotic_tasks_with_long_time_horizons,
+year={2011},
+isbn={978-3-642-19456-6},
+booktitle={Robotics Research},
+volume={70},
+series={Springer Tracts in Advanced Robotics},
+editor={Pradalier, Cédric and Siegwart, Roland and Hirzinger, Gerhard},
+doi={10.1007/978-3-642-19457-3_10},
+title={Motion Planning under Uncertainty for Robotic Tasks with Long Time Horizons},
+publisher={Springer Berlin Heidelberg},
+author={Kurniawati, Hanna and Du, Yanzhu and Hsu, David and Lee, WeeSun},
+pages={151-168}
+}
+
+@inproceedings{Shani:2007,
+ author = {Shani, Guy and Brafman, Ronen I. and Shimony, Solomon E.},
+ title = {Forward Search Value Iteration for POMDPs},
+ series = {Proceedings of the 20th International Joint Conference on Artifical Intelligence}},
+ year = {2007},
+ pages = {2619-2624}
+} 
+
+@article{Hamner_2006_5810,
+   author = "Bradley Hamner and Sanjiv Singh and Sebastian Scherer",
+   editor = "Jane Mulligan and Greg Grudic",
+   title = "Learning Obstacle Avoidance Parameters from Operator Behavior",
+   journal = "Special Issue on Machine Learning Based Robotics in Unstructured Environments, Journal of Field Robotics",
+   pages = "1037-1058",
+   publisher = "Wiley InterScience",
+   month = "December",
+   year = "2006",
+   volume = "23"
+}
+
+@book{GeorgiosLidoris,
+	author = "Lidoris, Georgios",
+	title = "State Estimation, Planning, and Behavior Selection Under Uncertainty for Autonomous Robotic Exploration in Dynamic Environments",
+	editor = "kassel university press",
+	year ="2011"
+}
+
+@article{Kasper2001153,
+title = "A behavior-based mobile robot architecture for Learning from Demonstration ",
+journal = "Journal of Robotics and Autonomous Systems",
+volume = "34",
+number = "2–3",
+pages = "153 - 164",
+year = "2001",
+author = "Michael Kasper and Gernot Fricke and Katja Steuernagel and Ewald von Puttkamer",
+}
+
+@ARTICLE{Nicolescu01learningand,
+    author = {Monica N. Nicolescu and Maja J. Mataric},
+    title = {Learning and Interacting in Human-Robot Domains},
+    journal = {IEEE Transactions on Systems, Man, and Cybernetics, Part A},
+    year = {2001},
+    volume = {31},
+    pages = {419--430}
+}
+
+
+@article{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain,
+ author = {Silver, David and Bagnell, J. Andrew and Stentz, Anthony},
+ title = {Learning from Demonstration for Autonomous Navigation in Complex Unstructured Terrain},
+ journal = {IJRR},
+ volume = {29},
+ number = {12},
+ month = oct,
+ year = {2010},
+ pages = {1565--1592},
+ keywords = {Field robotics, autonomous navigation, imitation learning, inverse reinforcement learning, learning from demonstration, mobile robotics}
+} 
+
+
+

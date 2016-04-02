@@ -121,7 +121,11 @@ author = "Alex Brooks and Alexei Makarenko and Stefan Williams and Hugh Durrant-
 
 %% Belief space planning
 
+<<<<<<< HEAD
 @inproceedings{bsp_rss_201a,
+=======
+@inproceedings{bsp_rss_2010a,
+>>>>>>> 1e3c078b39c7d0e538488772e2212b63c3708f8d
     author = {Robert Platt and Russell Tedrake and Leslie Kaelbling and Tom\'{a}s Lozano-P\'{e}rez},
     title = {Belief space planning assuming maximum likelihood observations}, 
     booktitle = {Robotics Science and Systems Conference (RSS)},
@@ -169,7 +173,17 @@ eprint = {http://ijr.sagepub.com/content/28/11-12/1448.full.pdf+html},
 journal = {The International Journal of Robotics Research} 
 }
 
-
+@INPROCEEDINGS{FIRM_2011,
+author={A. a. Agha-mohammadi and S. Chakravorty and N. M. Amato},
+booktitle={Intelligent Robots and Systems (IROS), 2011 IEEE/RSJ International Conference on},
+title={FIRM: Feedback controller-based information-state roadmap - A framework for motion planning under uncertainty},
+year={2011},
+pages={4284-4291},
+keywords={Adaptive control;Aerospace electronics;Bismuth;History;Markov processes;Planning;Uncertainty},
+doi={10.1109/IROS.2011.6095010},
+ISSN={2153-0858},
+month={Sept}
+}
 
 
 @INPROCEEDINGS{non_gauss_bel_plan_2012,

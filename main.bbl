@@ -1,9 +1,18 @@
-\begin{thebibliography}{67}
+\begin{thebibliography}{66}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[a.~Agha-mohammadi et~al.(2011)a.~Agha-mohammadi, Chakravorty, and
+  Amato]{FIRM_2011}
+A.~a.~Agha-mohammadi, S.~Chakravorty, and N.~M. Amato.
+\newblock Firm: Feedback controller-based information-state roadmap - a
+  framework for motion planning under uncertainty.
+\newblock In \emph{Intelligent Robots and Systems (IROS), 2011 IEEE/RSJ
+  International Conference on}, pages 4284--4291, Sept 2011.
+\newblock \doi{10.1109/IROS.2011.6095010}.
 
 \bibitem[a.~Agha-mohammadi et~al.(2014)a.~Agha-mohammadi, Agarwal, Mahadevan,
   Chakravorty, Tomkins, Denny, and Amato]{rob_online_bs_icra_2014}
@@ -86,6 +95,16 @@ D.~Chen and G.~von Wichert.
   Conference on}, pages 4312--4317, May 2015.
 \newblock \doi{10.1109/ICRA.2015.7139794}.
 
+\bibitem[de~Chambrier and Billard(2014)]{Chambrier2014}
+Guillaume de~Chambrier and Aude Billard.
+\newblock Learning search policies from humans in a partially observable
+  context.
+\newblock \emph{Robotics and Biomimetics}, 1\penalty0 (1):\penalty0 1--16,
+  2014.
+\newblock ISSN 2197-3768.
+\newblock \doi{10.1186/s40638-014-0008-1}.
+\newblock URL \url{http://dx.doi.org/10.1186/s40638-014-0008-1}.
+
 \bibitem[Deisenroth et~al.(2011)Deisenroth, Neumann, and
   Peters]{p_search_surv_2011}
 Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
@@ -155,25 +174,6 @@ G.~A. Hollinger, B.~Englot, F.~Hover, U.~Mitra, and G.~S. Sukhatme.
 \newblock In \emph{Robotics and Automation (ICRA), 2012 IEEE International
   Conference on}, pages 4884--4891, May 2012.
 \newblock \doi{10.1109/ICRA.2012.6224726}.
-
-\bibitem[Indelman et~al.(2015)Indelman, Carlone, and
-  Dellaert]{plan_cont_bel_space_2015}
-Vadim Indelman, Luca Carlone, and Frank Dellaert.
-\newblock Planning in the continuous domain: A generalized belief space
-  approach for autonomous navigation in unknown environments.
-\newblock \emph{The International Journal of Robotics Research}, 34\penalty0
-  (7):\penalty0 849--882, 2015.
-\newblock \doi{10.1177/0278364914561102}.
-\newblock URL \url{http://ijr.sagepub.com/content/34/7/849.abstract}.
-
-\bibitem[Kaelbling and Lozano-P{\'e}rez(2013)]{int_motion_planning_2013}
-Leslie~Pack Kaelbling and Tom\'{a}s Lozano-P{\'e}rez.
-\newblock Integrated task and motion planning in belief space.
-\newblock \emph{Int. J. Rob. Res.}, 32\penalty0 (9-10):\penalty0 1194--1227,
-  August 2013.
-\newblock ISSN 0278-3649.
-\newblock \doi{10.1177/0278364913484072}.
-\newblock URL \url{http://dx.doi.org/10.1177/0278364913484072}.
 
 \bibitem[Kaelbling et~al.(1998)Kaelbling, Littman, and
   Cassandra]{Kaelbling_1998}
@@ -352,6 +352,15 @@ S.~Prentice and N.~Roy.
 \newblock \emph{International Journal of Robotics Research}, 8\penalty0
   (11-12):\penalty0 1448--1465, December 2009.
 
+\bibitem[Preuschoff et~al.(2013)Preuschoff, Mohr, and Hsu]{decision_un_2013}
+Kerstin Preuschoff, Peter~NC Mohr, and Ming Hsu.
+\newblock Decision making under uncertainty.
+\newblock \emph{Frontiers in Neuroscience}, 7\penalty0 (218), 2013.
+\newblock ISSN 1662-453X.
+\newblock \doi{10.3389/fnins.2013.00218}.
+\newblock URL
+  \url{http://www.frontiersin.org/decision_neuroscience/10.3389/fnins.2013.00218/full}.
+
 \bibitem[Rai et~al.(2013)Rai, De~Chambrier, and Billard]{rai2013learning}
 Akshara Rai, Guillaume De~Chambrier, and Aude Billard.
 \newblock Learning from failed demonstrations in unreliable systems.
@@ -432,20 +441,19 @@ Matthijs T.~J. Spaan and Nikos Vlassis.
 \newblock In \emph{Proceedings of the IEEE International Conference on Robotics
   and Automation}, pages 3469--3474, Barcelona, Spain, 2005.
 
-\bibitem[Stulp et~al.(2011{\natexlab{a}})Stulp, Theodorou, Buchli, and
-  Schaal]{learn_grasp_un_icra_2011}
-F.~Stulp, E.~Theodorou, J.~Buchli, and S.~Schaal.
-\newblock Learning to grasp under uncertainty.
-\newblock In \emph{Robotics and Automation (ICRA), 2011 IEEE International
-  Conference on}, pages 5703--5708, May 2011{\natexlab{a}}.
-\newblock \doi{10.1109/ICRA.2011.5979644}.
+\bibitem[Stankiewicz et~al.(2006)Stankiewicz, Legge, Mansfield, and
+  Schlicht]{stankiewicz2006lost}
+B.J. Stankiewicz, G.E. Legge, J.S. Mansfield, and E.J. Schlicht.
+\newblock Lost in virtual space: Studies in human and ideal spatial navigation.
+\newblock \emph{Journal of Experimental Psychology: Human Perception and
+  Performance.(under review)}, 32\penalty0 (3):\penalty0 688--704, 2006.
 
-\bibitem[Stulp et~al.(2011{\natexlab{b}})Stulp, Theodorou, Kalakrishnan,
-  Pastor, Righetti, and Schaal]{dmp_iros_2011}
+\bibitem[Stulp et~al.(2011)Stulp, Theodorou, Kalakrishnan, Pastor, Righetti,
+  and Schaal]{dmp_iros_2011}
 F.~Stulp, E.~Theodorou, M.~Kalakrishnan, P.~Pastor, L.~Righetti, and S.~Schaal.
 \newblock Learning motion primitive goals for robust manipulation.
 \newblock In \emph{Intelligent Robots and Systems (IROS), 2011 IEEE/RSJ
-  International Conference on}, pages 325--331, Sept 2011{\natexlab{b}}.
+  International Conference on}, pages 325--331, Sept 2011.
 \newblock \doi{10.1109/IROS.2011.6094877}.
 
 \bibitem[Stulp et~al.(2012)Stulp, Theodorou, and Schaal]{dmp_seq_2012}
@@ -466,18 +474,12 @@ Sebastian Thrun.
 \newblock ISBN 0-262-19450-3.
 \newblock URL \url{http://robots.stanford.edu/papers/thrun.mcpomdp.pdf}.
 
-\bibitem[Thrun et~al.(2005{\natexlab{a}})Thrun, Burgard, and Fox]{Thrun_2005}
+\bibitem[Thrun et~al.(2005)Thrun, Burgard, and Fox]{Thrun_2005}
 Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
 \newblock \emph{Probabilistic Robotics (Intelligent Robotics and Autonomous
   Agents)}.
-\newblock The MIT Press, 2005{\natexlab{a}}.
+\newblock The MIT Press, 2005.
 \newblock ISBN 0262201623.
-
-\bibitem[Thrun et~al.(2005{\natexlab{b}})Thrun, Burgard, and
-  Fox]{Thrun_Burgard_Fox_2005}
-Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
-\newblock Probabilistic robotics (intelligent robotics and autonomous agents).
-\newblock 2005{\natexlab{b}}.
 
 \bibitem[Vallve and Andrade{-}Cetto(2014)]{dense_entropy_icra_2014}
 Joan Vallve and Juan Andrade{-}Cetto.
@@ -538,15 +540,5 @@ Q.~Zhang, I.~Rekleitis, and G.~Dudek.
 \newblock In \emph{Computer and Robot Vision (CRV), 2015 12th Conference on},
   pages 222--229, June 2015.
 \newblock \doi{10.1109/CRV.2015.36}.
-
-\bibitem[Zito et~al.(2013)Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and
-  Wyatt]{seq_traj_replan_iros_2013}
-C.~Zito, M.~S. Kopicki, R.~Stolkin, C.~Borst, F.~Schmidt, M.~A. Roa, and J.~L.
-  Wyatt.
-\newblock Sequential trajectory re-planning with tactile information gain for
-  dexterous grasping under object-pose uncertainty.
-\newblock In \emph{Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ
-  International Conference on}, pages 4013--4020, Nov 2013.
-\newblock \doi{10.1109/IROS.2013.6696930}.
 
 \end{thebibliography}

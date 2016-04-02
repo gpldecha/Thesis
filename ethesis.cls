@@ -83,7 +83,7 @@
 \def\author#1{\gdef\@author{#1}\MakeUppercase{\protect\@mkupauthor{#1}}}
 \def\phdthesis{\def\@degree{Doctor of Philosophy}
 		\def\degree{Ph.D.}
-		\def\@thesisname{Dissertation (2014)}
+		\def\@thesisname{Dissertation (2016)}
 		}
 \def\msthesis{\def\@degree{Master of Science}
 		\def\degree{M.S.}
@@ -187,11 +187,11 @@
 				\vfil}%
         \vbox to 1.8in{%
                 \textsc{Thesis Committee:}\\[1mm]
-   				\textsf{Prof. Alireza Karimi, president of the jury}\\
+   		%		\textsf{Prof. Alireza Karimi, president of the jury}\\
                 \textsf{\@advisor, thesis advisor}\\
-                \textsf{Prof. Hannes Bleuler, examiner}\\
-				\textsf{Prof. Jochen Steil, examiner}\\
-				\textsf{Prof. Ron Alterovitz, examiner}\\
+             %   \textsf{Prof. Hannes Bleuler, examiner}\\
+	%			\textsf{Prof. Jochen Steil, examiner}\\
+	%			\textsf{Prof. Ron Alterovitz, examiner}\\
                 \vfil}%
 		%\vbox to 0.5in{\thesis@volume\vfil}
 		\textsf{Lausanne, Switzerland\\

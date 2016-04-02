@@ -1,22 +1,36 @@
 \chapter{Background}
 
 % Introduce what is planning under uncertainty
-Planning and reasoning under uncertainty is central to robotic and artificial intelligence research and has 
-been an active area of research for decades. It is an umbrella term which touches a
+Planning and reasoning under uncertainty is central to robotic and AI research and has 
+been an active area of research for decades. It is an umbrella term which encompass a
 wide spectrum of fields: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
-\textit{robotics} and \textit{artificial intelligence}. The work in this thesis relies on results  and assumptions 
-made in cognitive and neuroscience with respect to our beliefs and how we act given them. We complement 
-these results by introducing them in a new light to the field of robotics and demonstrate how the human reasoning and belief system 
-can be used in situations where the state space is partially observable. The second main theme our work builds on is 
-state space estimation. The third component acting given uncertainty in robotics. We make use of results from all 
-three fields. We provide a background overview of acting under uncertainty and situate our work within the state of the 
-art.
+\textit{robotics} and \textit{artificial intelligence}. 
+The work in this thesis relies on results from all of the aforementioned fields. Cognitive and neuroscience 
+bring justification and insight into the way we represent our beliefs and how we act accordingly. Robotics and
+AI provide computational models and optimisation methods which take into account insights attained in the sciences.
+Because of the vast spectrum of topics we cannot do justice to all them and we will focus on works are directly 
+relevant to the problems we are addressing in this thesis.
 
-This chapter unfolds as follows: 
+%these results by introducing them in a new light to the field of robotics and demonstrate how the human reasoning and belief system 
+%can be used in situations where the state space is partially observable. The second main theme our work builds on is 
+%state space estimation. The third component acting given uncertainty in robotics. We make use of results from all 
+%three fields. We provide a background overview of acting under uncertainty and situate our work within the state of the 
+%art.
 
 
+This chapter unfolds as follows: In section \ref{sec:deci_un} we introduce what is meant by taking decisions under uncertainty
+and what are the different sources. We take a historical look at Decision Theory since it is the root node of all subsequent
+research reasoning and acting under uncertainty and provided for a good introduction to the following topic. 
+In section \ref{sec:sqp}, we mathematically formalise the sequential decision problem under uncertainty and make the link 
+with decision theory. We derive from first principal the Bellman optimal equation which is probably the most important result
+of this date in the field of reasoning under uncertainty.
+In section \ref{sec:lit_rev}, we provide an in depth literature review with the latest results in AI \& robotics in the subject 
+of planning and acting under uncertainty. We draw attention to the different approaches to solving this problem whilst pointing out
+their advantages and weaknesses. 
+In section \ref{sec:back_summ} we provide a summary of what has been achieved so fare and how this thesis contributes and complements 
+the field. 
 
-\section{Decisions under Uncertainty}
+\section{Decisions under Uncertainty}\label{sec:deci_un}
 % What is the the reasoning under uncertainty planning problem
 % What are all the assumptions which can be made regading the belief
 
@@ -130,41 +144,24 @@ a decision making process or a control policy. In psychology and cogitative scie
 are a used for comparing human behaviour against an optimal strategy (by optimal we mean it is rational in 
 the vNM sense). 
 
-%(see prescriptive models(\cite{Kahneman79prospecttheory}). 
-
+% (see prescriptive models(\cite{Kahneman79prospecttheory}). 
 % vNM is concerned with a one shot only decision, but what if we have to take a sequence of decisions ? What 
 % happens then ?
-
-%How is the uncertainty quantified ? Answer: probability theory
-%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
-%Utility theory and combined with probability lead to decision theory.
-
+% How is the uncertainty quantified ? Answer: probability theory
+% How does the agent make a decision ? He must assigned a preference to the outcome of various actions
+% Utility theory and combined with probability lead to decision theory.
 % Speak about the historical context of plannig un
 % Uncertainty and rational actions
-
-
 % vNM theorem is limited to evaluation options that come with an 
 % objective probability distribution over outcomes.
 % a situation decision theoriests and economists often describe 
 % as ''choice under risk``
-
 % The utility function represents the agents desires.
 % so the probability function represents her beliefs.
 % The theories are referred to collectively as subjective expected utility (SEU).
-
 % How is decision theory used in robotics ?
-
-
-\subsection{Beliefs \& desires}
-
 % POMDPs provide a rich framework for sequential decision-making under uncertainty in stochastic domains.
 % Solving a POMDP is often intractable.
-
-%\begin{enumerate}
-% \item Decision theory
-% \item Markov Decision Process
-% \item Partially Observable Markov Decision Process
-%\end{enumerate}
 
 \begin{table}
 \begin{center}
@@ -196,7 +193,7 @@ the vNM sense).
 \end{table}
 
 
-\section{Sequential decision process}
+\section{Sequential decision process}\label{sec:sqp}
 
 When referring outright to decision theory with no extensions, we usually are talking about a one-shot
 non-temporal decision. However many interesting decision problems are sequential.
@@ -498,7 +495,7 @@ and here \cite{Kaelbling_1998}.
 
 Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
 
-\section{State of the art}
+\section{Literature review}\label{sec:lit_rev}
 
 We review the latest methods of solving sequential decision problems under uncertainty. This is an extremely dense and spread out 
 area of research, no doubt because of its importance and the fact that it cannot be ignored. If uncertainty is not considered 
@@ -674,22 +671,6 @@ Good survey on policy gradient search methods can be found here, \cite{p_search_
 
 PI2 stuff just mention it and wrap it up: \cite{dmp_seq_2012} \cite{dmp_iros_2011} % Ok can do grasping use PI2 
 
-
-
-% Policy search
-
-%\cite{Sol_POMDP_Policy_space_1998}
-
-
-
-\subsection{Heuristics}
-
-% Generic planning under uncertainty (not directly using a policy representation)
-\cite{next_best_touch}
-\cite{CostalNavigation1999}
-% Non pomdp method %Heurisitc: Information Gain
-\cite{dense_entropy_icra_2014}
-\cite{Uncer_reduction_heuristic_2015} % uncertainty reduction via heuristic search
 \subsection{Belief space planning}
 
 Belief space planning leverage's the power of traditional fully observable state space 
@@ -702,18 +683,21 @@ referred to as Belief Road Maps (BRM). By taking advantage of the linear structu
 the authors show that the covariance matrix can be factorised such that a set of  motion and measurement updates between two belief 
 points in the BRM can be computed by a single linear operation parametrised by the current belief. They key advantage of this 
 approach is that it allows for rapid replanning and is able to scale to large state spaces; the authors evaluated their planner 
-in the MIT campus (simulated). Applications of this methodology include the control of an indoor quadrotor helicopter \cite{Quadrator_2008},
-and [another one].
+in the MIT campus (simulated). Applications of this methodology include the control of an indoor quadrotor helicopter \cite{Quadrator_2008} 
+and indoor navigation (\cite{FIRM_2011}, \cite{rob_online_bs_icra_2014}) (based on Feedback-based Information Road Maps FIRM , a similar approach in 
+spirit to BRM).
 
 Another approach ports the methods of optimal control theory, namely Linear Quadratic Control (LQG) to belief space planning. In this 
 setting the dynamics are considered linear and the motion and measurement processes are Gaussian. The main difficulty of applying
 LQG planning to a belief space is that future observations are unknown, which implies that an expensive marginalisation over the observations
-would have to be carried out. In \cite{bsp_rss_2010} the authors assume instead that at each time step the measurement obtained is the 
+would have to be carried out. In \cite{bsp_rss_2010a} the authors assume instead that at each time step the measurement obtained is the 
 \textit{maximum-likelihood observation}. This assumption removes the stochastic from the belief update (since the observation is considered known)
 and a multiple shooting optimisation methods can be employed. To apply this method a nominal trajectory is first created, assuming that 
 the state space is fully observable, and subsequently refined by dynamical programming methods until a local optimal solution in attained.
 When the planned belief trajectory deviates from the observed belief, replanning takes place. In recent improvements, \cite{van_den_Berg_2012},  the assumption of 
-maximum-likelihood observation was removed successfully and the cost function is quadratic and the authors imploy iterative LQG. 
+maximum-likelihood observation was removed successfully and the cost function is quadratic and the authors imploy iterative LQG. Other related methods 
+for instance transform the Gaussian state uncertainty into a convex hull \cite{sigma_hull_iros_2013}, which also use the normative trajectory with sequential convex programming 
+to achieve a local solution.
 
 In \cite{Erez10ascalable}, the authors consider a 16 dimensional continuous state, action, etc. 6 continuous actions. Use Differential Dynamic Programming (DDP) and maximum likelihood 
 of observations. Use a mixture of two Gaussians to represent the state space to tackle unilateral constraints. DDP gives a sequence of linear feedback gain matrices.	
@@ -746,29 +730,26 @@ Same cost function as RL, but cost is with respect to the map (doing SLAM). Cann
 \cite{non_gauss_bel_plan_2012} Non-gaussian belief and non-linear optimisation problems. The computational complexity
 of the algorithm is dominated by the number of samples used. Receding horizon control approach. Given belief, first 
 find most likely state. Generate a set of plausible locations (very likely). Choose u such that set of observations 
-generated by paths from state point x are as different as possible.
+generated by paths from state point x are as different as possible. Confirm or disprove as many of the hyopthesis states 
+or not.
 
+\subsection{Heuristics}
 
+% Generic planning under uncertainty (not directly using a policy representation)
+\cite{next_best_touch}
+\cite{CostalNavigation1999}
+% Non pomdp method %Heurisitc: Information Gain
+\cite{dense_entropy_icra_2014}
+\cite{Uncer_reduction_heuristic_2015} % uncertainty reduction via heuristic search
 
 			% Active Policy Learning for robot planning and exploration under uncertainty coste function optimsation
-\cite{plan_cont_bel_space_2015}		% Belief space approach to autonomous navigation
-\cite{rob_online_bs_icra_2014}		% average
-
-\cite{sigma_hull_iros_2013}
-\cite{int_motion_planning_2013}  	% tree search planning
-
-
-\subsection{Optimal control}
-$b = (\mu,\Sigma)$
-
-
-
+%\cite{plan_cont_bel_space_2015}		% Belief space approach to autonomous navigation
  
 % Grasping examples 
-Grasping
+%Grasping
 \cite{u_aware_grasp_ICRA_2015}
-\cite{learn_grasp_un_icra_2011}
-\cite{seq_traj_replan_iros_2013}
+%\cite{learn_grasp_un_icra_2011}
+%\cite{seq_traj_replan_iros_2013}
 \cite{Li_2015}
 
 % Under water navigation examples
@@ -778,7 +759,7 @@ Grasping
 \cite{Macro_uncertainty_2011}
 
 
-\section{Summary}
+\section{Summary} \label{sec:back_summ}
 
 
 

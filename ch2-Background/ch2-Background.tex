@@ -1,54 +1,72 @@
 \chapter{Background}
 
 % Introduce what is planning under uncertainty
-Planning and reasoning under uncertainty is central to robotic and artificial intelligence research and has 
-been an active area of research for decades. It is an umbrella term which touches a
-wide spectrum of fields: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
-\textit{robotics} and \textit{artificial intelligence}. The work in this thesis relies on results  and assumptions 
-made in cognitive and neuroscience with respect to our beliefs and how we act given them. We complement 
-these results by introducing them in a new light to the field of robotics and demonstrate how the human reasoning and belief system 
-can be used in situations where the state space is partially observable. The second main theme our work builds on is 
-state space estimation. The third component acting given uncertainty in robotics. We make use of results from all 
-three fields. We provide a background overview of acting under uncertainty and situate our work within the state of the 
-art.
+Planning and reasoning under uncertainty is central to AI and robotics and has 
+been an active area of research for decades. Planning and reasoning under uncertainty is an umbrella term in which a
+wide spectrum of fields study its aspect: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
+\textit{robotics} and \textit{artificial intelligence}. 
+The work in this thesis relies on results from all of the aforementioned fields. Cognitive and neuroscience 
+bring justification and insight into the way we represent our beliefs and how we act accordingly. AI and
+robotics provide computational models and optimisation methods which take into account insights attained in the sciences.
+Because of the vast spectrum of topics we cannot do justice to all them and we will focus on works which are directly 
+relevant to the problems we are addressing in this thesis.
 
-This chapter unfolds as follows: 
+%these results by introducing them in a new light to the field of robotics and demonstrate how the human reasoning and belief system 
+%can be used in situations where the state space is partially observable. The second main theme our work builds on is 
+%state space estimation. The third component acting given uncertainty in robotics. We make use of results from all 
+%three fields. We provide a background overview of acting under uncertainty and situate our work within the state of the 
+%art.
 
 
+This chapter unfolds as follows: In section \ref{sec:deci_un} we introduce what is meant by taking decisions under uncertainty
+and what are the different sources of uncertainty. We take a historical look at Decision Theory since it is the root node of all subsequent
+research in reasoning and acting under uncertainty and provides for a good introduction to the topics which will follow. 
+In section \ref{sec:sqp}, we mathematically formalise the sequential decision problem under uncertainty and make the link 
+with Decision Theory. We derive from first principal the Bellman optimal equation which is probably the most important result to 
+date in the field.
+In section \ref{sec:lit_rev}, we provide an in depth literature review with the latest results in AI \& robotics in the subject 
+of planning and acting under uncertainty. We draw attention to the different approaches to solving this problem whilst pointing out
+their advantages and weaknesses. 
+In the final section \ref{sec:back_summ}, we provide a summary of what has been achieved so fare and how this thesis contributes and complements 
+the field. 
 
-\section{Decisions under Uncertainty}
+\section{Decisions under uncertainty}\label{sec:deci_un}
 % What is the the reasoning under uncertainty planning problem
 % What are all the assumptions which can be made regading the belief
 
-In this section we introduce and frame the problem we seek to solve in generic 
-terms. We are concerned with finding a sequence of actions which will lead to the successful 
-outcome of a problem being considered; this is the most generic definition. 
+%In this section we introduce and frame the problem we seek to solve in generic 
+%terms. 
+The main objective is of reasoning under uncertainty is to find an action or sequence of
+actions which will result in the most preferable outcome; this is the most generic definition.
 
-There are two key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
-actions, when applied in the same state will not always result int the same outcome. This type of uncertainty 
-can arise from many sources; the outcome of chaotic actions are impossible to predict with certainty, 
-think of throwing a die or flipping a coin; In outdoor robotics the terrain might lead to slippage, causing 
-the robot to skid or underwater currents might drastically offset the position of an UAV; In articulated 
+There are two key attributes which can render this problem difficult: \textbf{stochastic actions} and \textbf{latent states}. 
+
+Stochastic actions when applied in the same state will not always result in the same outcome. This type of uncertainty 
+can arise from many sources, for instance the outcome of chaotic systems will always lead to different results when the same action is applied
+to the same initial conditions; think of throwing a die or flipping a coin. In outdoor robotics the terrain might lead to slippage, 
+causing the robot to skid or in an underwater environment currents might drastically offset the position of an UAV; in articulated 
 robots the friction between joints can accumulate to a large error in the end-effector position (especially true 
-for cable driven robots). 
+for cable driven robots).
+
 The second source of uncertainty is when the underlying state is partially known, in the sense that we do not 
-have all the necessary information to reliably determine the state beyond reasonable doubt. In robotics this 
+have all the necessary information to reliably determine the state. In robotics this 
 uncertainty can arise from inadequate or noisy sensors. If the environmental conditions in which the robot 
-is located is humid, misty or dark. It can make it difficult for the robot to ascertain its position and 
+is located is humid, misty or dark, for instance. It can make it difficult for the robot to ascertain its position and 
 to plan how to achieve a given objective.
 
-The uncertainty of the state and actions have to be quantified. The predominant approach 
-is to  represent them by probabilities. For instance the application of a forward action (for a wheeled robot) 
-will result in a new position further ahead and a position to the right (due to slippage) with some probability.
+Next is the question of how to represent the uncertainty of the state and actions. The predominant approach 
+is to quantify the uncertainty in terms of probabilities. For instance the application of a forward action to wheeled robot 
+will result in some probability in a new position further ahead and with a remaining probability in a position to the right, due to slippage.
 An observation through the robots sensors will result in probability distribution over the robots probable location.
 Given this quantification of action and observation uncertainty in terms of a probability distribution over the state, 
 the agent must now take actions towards accomplishing its goal. To take a decision the agent must assign a utility 
-to the outcome of his actions. The utility is to indicate a preference over the outcomes and when combined with 
-probabilities leads to decision theory. 
+to the outcome of his actions whilst taking into account the probability of the outcome. 
+The utility is to indicate a preference over the outcomes and when combined with probabilities leads to Decision Theory, which 
+is the topic of the next section. 
 
 \subsection{Decision theory}
 
-The central question of decision theory is; \textit{how do we take decisions when faced with uncertain outcomes ?} To answer
+The central question of Decision Theory is; \textit{how do we take decisions when faced with uncertain outcomes ?} To answer
 such a question we need to ground the attributes which are involved when we take a decision, namely our \textbf{beliefs} and 
 \textbf{desires}. Beliefs reflect a degree of knowledge we have about the world in which the degree is ascertained by 
 the amount of evidence we have in support of our beliefs. Epistemology studies in great detail the relationship between 
@@ -57,13 +75,13 @@ if we have sufficient evidence in support of our beliefs and they represent the 
 be a \textbf{rational belief}. As for desires they are linked to our disposition to take action to achieve them; for 
 example if I want to switch of my alarm clock I have to look for it in the last area I believed it to be. 
 These two attributes, beliefs and desires, are used to frame a decision problem. Early work in decision theory assumed 
-that the problem was well grounded and focused on finding what are the \textbf{rational choices} to take given our beliefs 
+that the problem was well grounded and focused on finding what are the \textbf{rational actions} to take given our beliefs 
 to achieve our desires. 
 
 \begin{figure}
  \centering
  \includegraphics[width=0.5\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf}
-  \caption{ad}
+  \caption{Relation between beliefs, desires and actions and are all considered to be rational.}
 \end{figure}
 
 Early interest in such questions were typically centred around economics such as deciding what should be an appropriate 
@@ -72,12 +90,12 @@ decision, would often lead to a course of action which contradicts common sense;
 In this paradox a bookmaker proposes you the following gamble. An initial pot starts with a content of 2\pounds, the bookmaker proceeds 
 to flip a fair coin until the first appearance of a tails which ends the game. Until the occurrence of the first tails 
 the money in the pot doubles after every toss. Once the game ends you leave with the content of the pot. As an avid gambler 
-and expected value maximiser how much would you be willing to pay to enter this gamble ? A value maximiser would computed 
+and \textbf{expected value} maximiser how much would you be willing to pay to enter this gamble ? A value maximiser would computed 
 the expected monetary outcome. The amount of money increases by $2^{n}\pounds$, where $n$ is the number of non-final tosses and 
-and the probability of reaching $n$ is $1/2^{n}$. In this case the expected monitory outcome is an infinite number,
+and the probability of reaching $n$ is $1/2^{n}$. In this case the expected monitory outcome is an infinite number:
 
 \begin{equation*}
-\displaystyle \mathop{\mathbb{E}}_{p(n)}\{\pounds\} = \underbrace{\frac{1}{2} 2 \pounds}_{\textrm{first toss}} + \frac{1}{4} 4 \pounds + \dots = \sum\limits_{n=1}^{\infty} 
+\displaystyle \mathop{\mathbb{E}}_{p(\pounds)}\{\pounds\} = \underbrace{\frac{1}{2} 2 \pounds}_{\textrm{first toss}} + \frac{1}{4} 4 \pounds + \dots = \sum\limits_{n=1}^{\infty} 
 \frac{2^{n}}{2^{n}}\pounds = \infty \pounds 
 \end{equation*}
 
@@ -85,7 +103,7 @@ So your expected gain or return for paying to enter such game is an infinite amo
 seeking to maximise your expected return value you would be willing to pay an amount close to infinity. This does not 
 seem a good decision rule; no person in the world would be willing to pay more than $1\pounds$ to enter such game.
 
-Nicola Bernoulli proposed a solution to the problem (later published by his brother Daniel  (\cite{Bernoulli1954})) by introducing the notion 
+Nicola Bernoulli proposed a solution to the problem (later published by his brother Daniel, \cite{Bernoulli1954} by introducing the notion 
 of a \textbf{utility function}, and he claimed that people should base their decision on the expected utility instead 
 of solely the monetary outcomes of a gamble.
 
@@ -96,28 +114,35 @@ of solely the monetary outcomes of a gamble.
 
 The introduction of a utility function takes into account that the net worth of a person will influence their decision since 
 different people (in terms of their monetary worth) will weigh the gain differently. The utility function introduced by Bernoulli 
-was the logarithm of the monetary outcome $x \in X$ weighted by their probability $p(x)$ which results in an expected utility, 
+was the logarithm of the monetary outcome $x \in X$ weighted by their probability $p(x)$ which results in an expected utility: 
 
 \begin{equation*}\label{eq:exp_utility}
-  U(x) = \displaystyle \mathop{\mathbb{E}}_{p(x)} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
+  U(x|a) = \displaystyle \mathop{\mathbb{E}} \{ u(x) \} = \sum_{x\in X} p(x|a) \underbrace{\log(x)}_{u(x)}
 \end{equation*}
 
-Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
-the person will be \textbf{risk-averse}, when linear \textbf{risk-neural} and convex \textbf{risk-seeking}. 
-This was the first introduction of a utility function.
+%Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
+%the person will be \textbf{risk-averse}, when linear \textbf{risk-neural} and convex \textbf{risk-seeking}. 
+%This was the first introduction of a utility function. 
 
 It is later in 1944 that von Neumann and Morgenstern (\cite{VonNeumann1944}) axiomised Bernoulli's utility function 
 and proved that if a decision maker has a preference over a set of lotteries\footnote{the term lottery refers 
 to a probability distribution in the original text.} which satisfy four axioms
 (completeness, transitivity, continuity, independence) then there exists a utility function who's expectation 
 preserves this preference. An agent whose decisions can be shown to maximise the vNM expected utility are said 
-to be \textbf{rational} and otherwise \textbf{irrational}.  This is the theoretical basis of most economic theory,
+to be \textbf{rational} and otherwise \textbf{irrational}.
+
+\begin{equation*}
+ a^* = \max_a U(x|a)
+\end{equation*}
+
+
+This is the theoretical basis of most economic theory,
 it is a \textbf{normative} model of how people should behave given uncertainty. It is also the basis of most 
 if not all decision making, cogitative architectures and control policies in AI and robotics 
 (to the best of the authors knowledge).
 
-An aspect to keep in mind regarding the vNM model is that it is normative; it states what should be a rational decision 
-or behaviour. As a result it is not always consistent with human behaviour. There is great debate regarding 
+An aspect to keep in mind regarding the vNM model is that it is normative; it states what should be a rational decision. 
+As a result it is not always consistent with human behaviour. There is great debate regarding 
 the predictions made by vNM models with respect to ours. There have been many studies both demonstrating divergence 
 between the models predictions and our observed behaviour but also supporting evidence that it does reflect 
 the output of our decision making process. Reasons for divergence have been attributed to the way we 
@@ -130,41 +155,24 @@ a decision making process or a control policy. In psychology and cogitative scie
 are a used for comparing human behaviour against an optimal strategy (by optimal we mean it is rational in 
 the vNM sense). 
 
-%(see prescriptive models(\cite{Kahneman79prospecttheory}). 
-
+% (see prescriptive models(\cite{Kahneman79prospecttheory}). 
 % vNM is concerned with a one shot only decision, but what if we have to take a sequence of decisions ? What 
 % happens then ?
-
-%How is the uncertainty quantified ? Answer: probability theory
-%How does the agent make a decision ? He must assigned a preference to the outcome of various actions
-%Utility theory and combined with probability lead to decision theory.
-
+% How is the uncertainty quantified ? Answer: probability theory
+% How does the agent make a decision ? He must assigned a preference to the outcome of various actions
+% Utility theory and combined with probability lead to decision theory.
 % Speak about the historical context of plannig un
 % Uncertainty and rational actions
-
-
 % vNM theorem is limited to evaluation options that come with an 
 % objective probability distribution over outcomes.
 % a situation decision theoriests and economists often describe 
 % as ''choice under risk``
-
 % The utility function represents the agents desires.
 % so the probability function represents her beliefs.
 % The theories are referred to collectively as subjective expected utility (SEU).
-
 % How is decision theory used in robotics ?
-
-
-\subsection{Beliefs \& desires}
-
 % POMDPs provide a rich framework for sequential decision-making under uncertainty in stochastic domains.
 % Solving a POMDP is often intractable.
-
-%\begin{enumerate}
-% \item Decision theory
-% \item Markov Decision Process
-% \item Partially Observable Markov Decision Process
-%\end{enumerate}
 
 \begin{table}
 \begin{center}
@@ -196,7 +204,7 @@ the vNM sense).
 \end{table}
 
 
-\section{Sequential decision process}
+\section{Sequential decision process}\label{sec:sqp}
 
 When referring outright to decision theory with no extensions, we usually are talking about a one-shot
 non-temporal decision. However many interesting decision problems are sequential.
@@ -206,17 +214,17 @@ differences between the temporal and non-temporal decision problems. The first i
 an outcome has one utility assigned to it, $u(x)$. Now a utility has to be assigned to a sequence of outcomes, $u(x_{0:T})$, 
 where $T$ is the number of sequential decisions taken. The utility of a sequence is the sum of the individual outcomes 
 themselves. However if the decision problem is non terminating this will lead to an unbounded utility. To bound the utility a 
-discount factor $\gamma \in [0,1)$ is introduced and the new utility function becomes:
+discount factor $\gamma \in [0,1)$ is introduced and the new temporal utility function becomes:
 
 \begin{equation}
-    u(x_{0:T}) 	   = \sum\limits_{t=0}^{T} \gamma^{t} u(x_t) \label{eq:joint_state_actions_util}
+    u(x_{0:T}) 	   := \sum\limits_{t=0}^{T} \gamma^{t} u(x_t) \label{eq:joint_state_actions_util}
 \end{equation}
 
 The discount factor allows to control the importance later utilities have on the final utility. If the discount factor is set to
 zero we recover the original one-shot utility function and if we were to take actions which maximised the expected utility 
 we would not be considering at all the effect later decisions have on our overall utility. An agent reasoning in such a way is 
 called myopic.
-The second is the way in which probabilities are assigned to outcomes, this was $p(x)$ in the decision theory utility function formulation.
+The second is the way in which probabilities are assigned to outcomes, this was $p(x|a)$ in the decision theory utility function formulation.
 Now because of the sequential nature of the problem we consider a conditional state transfer probability distribution $p(x_{t+1}|x_t,a_t)$
 which models the probability of going from state $x_t$ to $x_{t+1}$ given that action $a_t$ is taken. This particular representation of a
 sequential decision problem is called a \textbf{Markov Decision Process (MDP)} and to be more exact a first order MDP.
@@ -498,7 +506,7 @@ and here \cite{Kaelbling_1998}.
 
 Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
 
-\section{State of the art}
+\section{Literature review}\label{sec:lit_rev}
 
 We review the latest methods of solving sequential decision problems under uncertainty. This is an extremely dense and spread out 
 area of research, no doubt because of its importance and the fact that it cannot be ignored. If uncertainty is not considered 
@@ -674,22 +682,6 @@ Good survey on policy gradient search methods can be found here, \cite{p_search_
 
 PI2 stuff just mention it and wrap it up: \cite{dmp_seq_2012} \cite{dmp_iros_2011} % Ok can do grasping use PI2 
 
-
-
-% Policy search
-
-%\cite{Sol_POMDP_Policy_space_1998}
-
-
-
-\subsection{Heuristics}
-
-% Generic planning under uncertainty (not directly using a policy representation)
-\cite{next_best_touch}
-\cite{CostalNavigation1999}
-% Non pomdp method %Heurisitc: Information Gain
-\cite{dense_entropy_icra_2014}
-\cite{Uncer_reduction_heuristic_2015} % uncertainty reduction via heuristic search
 \subsection{Belief space planning}
 
 Belief space planning leverage's the power of traditional fully observable state space 
@@ -702,8 +694,9 @@ referred to as Belief Road Maps (BRM). By taking advantage of the linear structu
 the authors show that the covariance matrix can be factorised such that a set of  motion and measurement updates between two belief 
 points in the BRM can be computed by a single linear operation parametrised by the current belief. They key advantage of this 
 approach is that it allows for rapid replanning and is able to scale to large state spaces; the authors evaluated their planner 
-in the MIT campus (simulated). Applications of this methodology include the control of an indoor quadrotor helicopter \cite{Quadrator_2008},
-and [another one].
+in the MIT campus (simulated). Applications of this methodology include the control of an indoor quadrotor helicopter \cite{Quadrator_2008} 
+and indoor navigation (\cite{FIRM_2011}, \cite{rob_online_bs_icra_2014}) (based on Feedback-based Information Road Maps FIRM , a similar approach in 
+spirit to BRM).
 
 Another approach ports the methods of optimal control theory, namely Linear Quadratic Control (LQG) to belief space planning. In this 
 setting the dynamics are considered linear and the motion and measurement processes are Gaussian. The main difficulty of applying
@@ -713,7 +706,9 @@ would have to be carried out. In \cite{bsp_rss_2010a} the authors assume instead
 and a multiple shooting optimisation methods can be employed. To apply this method a nominal trajectory is first created, assuming that 
 the state space is fully observable, and subsequently refined by dynamical programming methods until a local optimal solution in attained.
 When the planned belief trajectory deviates from the observed belief, replanning takes place. In recent improvements, \cite{van_den_Berg_2012},  the assumption of 
-maximum-likelihood observation was removed successfully and the cost function is quadratic and the authors imploy iterative LQG. 
+maximum-likelihood observation was removed successfully and the cost function is quadratic and the authors imploy iterative LQG. Other related methods 
+for instance transform the Gaussian state uncertainty into a convex hull \cite{sigma_hull_iros_2013}, which also use the normative trajectory with sequential convex programming 
+to achieve a local solution.
 
 In \cite{Erez10ascalable}, the authors consider a 16 dimensional continuous state, action, etc. 6 continuous actions. Use Differential Dynamic Programming (DDP) and maximum likelihood 
 of observations. Use a mixture of two Gaussians to represent the state space to tackle unilateral constraints. DDP gives a sequence of linear feedback gain matrices.	
@@ -749,27 +744,23 @@ find most likely state. Generate a set of plausible locations (very likely). Cho
 generated by paths from state point x are as different as possible. Confirm or disprove as many of the hyopthesis states 
 or not.
 
+\subsection{Heuristics}
 
+% Generic planning under uncertainty (not directly using a policy representation)
+\cite{next_best_touch}
+\cite{CostalNavigation1999}
+% Non pomdp method %Heurisitc: Information Gain
+\cite{dense_entropy_icra_2014}
+\cite{Uncer_reduction_heuristic_2015} % uncertainty reduction via heuristic search
 
 			% Active Policy Learning for robot planning and exploration under uncertainty coste function optimsation
 %\cite{plan_cont_bel_space_2015}		% Belief space approach to autonomous navigation
-\cite{rob_online_bs_icra_2014}		% average
-
-\cite{sigma_hull_iros_2013}
-\cite{int_motion_planning_2013}  	% tree search planning
-
-
-\subsection{Optimal control}
-$b = (\mu,\Sigma)$
-
-
-
  
 % Grasping examples 
-Grasping
+%Grasping
 \cite{u_aware_grasp_ICRA_2015}
-\cite{learn_grasp_un_icra_2011}
-\cite{seq_traj_replan_iros_2013}
+%\cite{learn_grasp_un_icra_2011}
+%\cite{seq_traj_replan_iros_2013}
 \cite{Li_2015}
 
 % Under water navigation examples
@@ -779,7 +770,7 @@ Grasping
 \cite{Macro_uncertainty_2011}
 
 
-\section{Summary}
+\section{Summary} \label{sec:back_summ}
 
 
 
