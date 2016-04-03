@@ -1,0 +1,30 @@
+
+\begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40, 
+    level 1/.append style={level distance=5cm,sibling angle=90},
+    level 2/.append style={level distance=3cm,sibling angle=45},]
+
+\node{\textbf{Acting under uncertainty}}
+    child [concept color=blue!30] { node {Value Iteration}
+	child { node {Latent\\ VI}}
+        child { node {Approx. VI}}
+        child { node {Point-base\\ VI}}
+    }
+ child [concept color=yellow!30] { node {Heuristics}
+        child { node {Tree search}}
+        child { node {QMDP}}
+        child { node {Myopic}}
+    }
+    child [concept color=teal!40] { node {Belief space planning}
+        child { node {Belief\\ road maps}}
+        child { node {Optimal control}}
+    }
+    child [concept color=purple!50]  { node {Policy search}
+        child { node {Expectation-Maximization}}
+        child { node {Gradient}}
+        child { node {Gradient free}}
+        child { node {Circuit Diagrams}}
+        child [concept color=green!40] { node {Mind Maps}}
+    };
+
+\end{tikzpicture}
+

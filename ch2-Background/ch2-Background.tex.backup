@@ -1,14 +1,14 @@
 \chapter{Background}
 
 % Introduce what is planning under uncertainty
-Planning and reasoning under uncertainty is central to robotic and AI research and has 
-been an active area of research for decades. It is an umbrella term which encompass a
-wide spectrum of fields: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
+Planning and reasoning under uncertainty is central to AI and robotics and has 
+been an active area of research for decades. Planning and reasoning under uncertainty is an umbrella term in which a
+wide spectrum of fields study its aspect: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
 \textit{robotics} and \textit{artificial intelligence}. 
 The work in this thesis relies on results from all of the aforementioned fields. Cognitive and neuroscience 
-bring justification and insight into the way we represent our beliefs and how we act accordingly. Robotics and
-AI provide computational models and optimisation methods which take into account insights attained in the sciences.
-Because of the vast spectrum of topics we cannot do justice to all them and we will focus on works are directly 
+bring justification and insight into the way we represent our beliefs and how we act accordingly. AI and
+robotics provide computational models and optimisation methods which take into account insights attained in the sciences.
+Because of the vast spectrum of topics we cannot do justice to all them and we will focus on works which are directly 
 relevant to the problems we are addressing in this thesis.
 
 %these results by introducing them in a new light to the field of robotics and demonstrate how the human reasoning and belief system 
@@ -19,79 +19,82 @@ relevant to the problems we are addressing in this thesis.
 
 
 This chapter unfolds as follows: In section \ref{sec:deci_un} we introduce what is meant by taking decisions under uncertainty
-and what are the different sources. We take a historical look at Decision Theory since it is the root node of all subsequent
-research reasoning and acting under uncertainty and provided for a good introduction to the following topic. 
+and what are the different sources of uncertainty. We take a historical look at Decision Theory since it is the root node of all subsequent
+research in reasoning and acting under uncertainty and provides for a good introduction to the topics which will follow. 
 In section \ref{sec:sqp}, we mathematically formalise the sequential decision problem under uncertainty and make the link 
-with decision theory. We derive from first principal the Bellman optimal equation which is probably the most important result
-of this date in the field of reasoning under uncertainty.
+with Decision Theory. We derive from first principal the Bellman optimal equation which is probably the most important result to 
+date in the field.
 In section \ref{sec:lit_rev}, we provide an in depth literature review with the latest results in AI \& robotics in the subject 
 of planning and acting under uncertainty. We draw attention to the different approaches to solving this problem whilst pointing out
 their advantages and weaknesses. 
-In section \ref{sec:back_summ} we provide a summary of what has been achieved so fare and how this thesis contributes and complements 
+In the final section \ref{sec:back_summ}, we provide a summary of what has been achieved so fare and how this thesis contributes and complements 
 the field. 
 
-\section{Decisions under Uncertainty}\label{sec:deci_un}
+\section{Decisions under uncertainty}\label{sec:deci_un}
 % What is the the reasoning under uncertainty planning problem
 % What are all the assumptions which can be made regading the belief
 
-In this section we introduce and frame the problem we seek to solve in generic 
-terms. We are concerned with finding a sequence of actions which will lead to the successful 
-outcome of a problem being considered; this is the most generic definition. 
+%In this section we introduce and frame the problem we seek to solve in generic 
+%terms. 
+The main objective of reasoning under uncertainty is to find an action or sequence of
+actions which will result in the most preferable outcome. There are two key attributes which can render this 
+problem difficult: \textbf{stochastic actions} and \textbf{latent states}. 
 
-There are two key attributes which can make this problem difficult: stochastic actions and latent states. Stochastic 
-actions, when applied in the same state will not always result int the same outcome. This type of uncertainty 
-can arise from many sources; the outcome of chaotic actions are impossible to predict with certainty, 
-think of throwing a die or flipping a coin; In outdoor robotics the terrain might lead to slippage, causing 
-the robot to skid or underwater currents might drastically offset the position of an UAV; In articulated 
+Stochastic actions when applied in the same state will not always result in the same outcome. This type of uncertainty 
+can arise from many sources, for instance the outcome of chaotic systems will always lead to different results when the same action is applied
+to the same initial conditions; think of throwing a die or flipping a coin. In outdoor robotics the terrain might lead to slippage, 
+causing the robot to skid or in an underwater environment currents might drastically offset the position of an UAV. In articulated 
 robots the friction between joints can accumulate to a large error in the end-effector position (especially true 
-for cable driven robots). 
+for cable driven robots).
+
 The second source of uncertainty is when the underlying state is partially known, in the sense that we do not 
-have all the necessary information to reliably determine the state beyond reasonable doubt. In robotics this 
+have all the necessary information to reliably determine the state. In robotics this 
 uncertainty can arise from inadequate or noisy sensors. If the environmental conditions in which the robot 
-is located is humid, misty or dark. It can make it difficult for the robot to ascertain its position and 
+is located are humid, misty or dark, for instance, it can make it difficult for the robot to ascertain its position and 
 to plan how to achieve a given objective.
 
-The uncertainty of the state and actions have to be quantified. The predominant approach 
-is to  represent them by probabilities. For instance the application of a forward action (for a wheeled robot) 
-will result in a new position further ahead and a position to the right (due to slippage) with some probability.
+Given these two types of uncertainty, the question is on how to represent it. The predominant approach 
+is to quantify the uncertainty in terms of probabilities. For instance the application of a forward action to wheeled robot 
+will result in some probability in a new position further ahead and with a remaining probability in a position to the right, due to slippage.
 An observation through the robots sensors will result in probability distribution over the robots probable location.
-Given this quantification of action and observation uncertainty in terms of a probability distribution over the state, 
-the agent must now take actions towards accomplishing its goal. To take a decision the agent must assign a utility 
-to the outcome of his actions. The utility is to indicate a preference over the outcomes and when combined with 
-probabilities leads to decision theory. 
+This quantification of action and observation uncertainty in terms of a probability distribution over the state must
+be utilised by the agent to plan actions towards accomplishing its goal. To take a decision the agent must assign a utility 
+to the outcome of his actions whilst taking into account the probability of the outcome. 
+The utility is to indicate a preference over the outcomes and when combined with probabilities leads to Decision Theory, which 
+is the topic of the next section. 
 
 \subsection{Decision theory}
 
-The central question of decision theory is; \textit{how do we take decisions when faced with uncertain outcomes ?} To answer
+The central question that Decision Theory asks is: \textit{how do we take decisions when faced with uncertain outcomes ?} To answer
 such a question we need to ground the attributes which are involved when we take a decision, namely our \textbf{beliefs} and 
 \textbf{desires}. Beliefs reflect a degree of knowledge we have about the world in which the degree is ascertained by 
 the amount of evidence we have in support of our beliefs. Epistemology studies in great detail the relationship between 
-truth, beliefs and knowledge. We will not go into a philosophical discussion of their interplay, but make use of the following; 
+truth, beliefs and knowledge. We will not go into a philosophical discussion of their interplay, but make use of the following: 
 if we have sufficient evidence in support of our beliefs and they represent the truth then we consider them to 
-be a \textbf{rational belief}. As for desires they are linked to our disposition to take action to achieve them; for 
+be a \textbf{rational belief}. As for desires they are linked to our disposition to take action to achieve them. For 
 example if I want to switch of my alarm clock I have to look for it in the last area I believed it to be. 
 These two attributes, beliefs and desires, are used to frame a decision problem. Early work in decision theory assumed 
-that the problem was well grounded and focused on finding what are the \textbf{rational choices} to take given our beliefs 
+that the problem was well grounded and focused on finding what are the \textbf{rational actions} to take given our beliefs 
 to achieve our desires. 
 
 \begin{figure}
  \centering
  \includegraphics[width=0.5\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf}
-  \caption{ad}
+  \caption{Relation between beliefs, desires and actions and are all considered to be rational.}
 \end{figure}
 
-Early interest in such questions were typically centred around economics such as deciding what should be an appropriate 
+Early interest in such questions were typically centred around economics which included deciding an appropriate 
 investment or wager for a particular gamble. It was noted that the expected monitory outcome of a gamble as a mean of basing a 
 decision, would often lead to a course of action which contradicts common sense; a famous example is the St. Petersburg paradox.
 In this paradox a bookmaker proposes you the following gamble. An initial pot starts with a content of 2\pounds, the bookmaker proceeds 
 to flip a fair coin until the first appearance of a tails which ends the game. Until the occurrence of the first tails 
 the money in the pot doubles after every toss. Once the game ends you leave with the content of the pot. As an avid gambler 
-and expected value maximiser how much would you be willing to pay to enter this gamble ? A value maximiser would computed 
+and \textbf{expected value} maximiser how much would you be willing to pay to enter this gamble ? A value maximiser would computed 
 the expected monetary outcome. The amount of money increases by $2^{n}\pounds$, where $n$ is the number of non-final tosses and 
-and the probability of reaching $n$ is $1/2^{n}$. In this case the expected monitory outcome is an infinite number,
+and the probability of reaching $n$ is $1/2^{n}$. In this case the expected monitory outcome is an infinite number:
 
 \begin{equation*}
-\displaystyle \mathop{\mathbb{E}}_{p(n)}\{\pounds\} = \underbrace{\frac{1}{2} 2 \pounds}_{\textrm{first toss}} + \frac{1}{4} 4 \pounds + \dots = \sum\limits_{n=1}^{\infty} 
+\displaystyle \mathop{\mathbb{E}}_{p(\pounds)}\{\pounds\} = \underbrace{\frac{1}{2} 2 \pounds}_{\textrm{first toss}} + \frac{1}{4} 4 \pounds + \dots = \sum\limits_{n=1}^{\infty} 
 \frac{2^{n}}{2^{n}}\pounds = \infty \pounds 
 \end{equation*}
 
@@ -99,7 +102,7 @@ So your expected gain or return for paying to enter such game is an infinite amo
 seeking to maximise your expected return value you would be willing to pay an amount close to infinity. This does not 
 seem a good decision rule; no person in the world would be willing to pay more than $1\pounds$ to enter such game.
 
-Nicola Bernoulli proposed a solution to the problem (later published by his brother Daniel  (\cite{Bernoulli1954})) by introducing the notion 
+Nicola Bernoulli proposed a solution to the problem (later published by his brother Daniel, \cite{Bernoulli1954} by introducing the notion 
 of a \textbf{utility function}, and he claimed that people should base their decision on the expected utility instead 
 of solely the monetary outcomes of a gamble.
 
@@ -110,28 +113,35 @@ of solely the monetary outcomes of a gamble.
 
 The introduction of a utility function takes into account that the net worth of a person will influence their decision since 
 different people (in terms of their monetary worth) will weigh the gain differently. The utility function introduced by Bernoulli 
-was the logarithm of the monetary outcome $x \in X$ weighted by their probability $p(x)$ which results in an expected utility, 
+was the logarithm of the monetary outcome $x \in X$ weighted by their probability $p(x)$ which results in an expected utility: 
 
 \begin{equation*}\label{eq:exp_utility}
-  U(x) = \displaystyle \mathop{\mathbb{E}}_{p(x)} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
+  U(x) = \displaystyle \mathop{\mathbb{E}} \{ u(x) \} = \sum_{x\in X} p(x) \underbrace{\log(x)}_{u(x)}
 \end{equation*}
 
-Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
-the person will be \textbf{risk-averse}, when linear \textbf{risk-neural} and convex \textbf{risk-seeking}. 
-This was the first introduction of a utility function.
+%Different utility functions characterise different levels of risk. When the it is concave as it for Bernoulli's utility function
+%the person will be \textbf{risk-averse}, when linear \textbf{risk-neural} and convex \textbf{risk-seeking}. 
+%This was the first introduction of a utility function. 
 
 It is later in 1944 that von Neumann and Morgenstern (\cite{VonNeumann1944}) axiomised Bernoulli's utility function 
 and proved that if a decision maker has a preference over a set of lotteries\footnote{the term lottery refers 
 to a probability distribution in the original text.} which satisfy four axioms
 (completeness, transitivity, continuity, independence) then there exists a utility function who's expectation 
 preserves this preference. An agent whose decisions can be shown to maximise the vNM expected utility are said 
-to be \textbf{rational} and otherwise \textbf{irrational}.  This is the theoretical basis of most economic theory,
+to be \textbf{rational} and otherwise \textbf{irrational}.
+
+%\begin{equation*}
+% a^* = \max_a U(x|a)
+%\end{equation*}
+
+
+This is the theoretical basis of most economic theory,
 it is a \textbf{normative} model of how people should behave given uncertainty. It is also the basis of most 
 if not all decision making, cogitative architectures and control policies in AI and robotics 
 (to the best of the authors knowledge).
 
-An aspect to keep in mind regarding the vNM model is that it is normative; it states what should be a rational decision 
-or behaviour. As a result it is not always consistent with human behaviour. There is great debate regarding 
+An aspect to keep in mind regarding the vNM model is that it is normative; it states what should be a rational decision. 
+As a result it is not always consistent with human behaviour. There is great debate regarding 
 the predictions made by vNM models with respect to ours. There have been many studies both demonstrating divergence 
 between the models predictions and our observed behaviour but also supporting evidence that it does reflect 
 the output of our decision making process. Reasons for divergence have been attributed to the way we 
@@ -142,7 +152,9 @@ and limitations of our working memory will come into play in the final decision.
 Nevertheless vNM agents are predominantly used in AI and robotics as a means of implementing 
 a decision making process or a control policy. In psychology and cogitative science vNM agents
 are a used for comparing human behaviour against an optimal strategy (by optimal we mean it is rational in 
-the vNM sense). 
+the vNM sense). It is important to remember the origins and assumptions underlying the models that 
+are used to represent control policies or cognitive architectures implemented into robotic systems or 
+software agents.
 
 % (see prescriptive models(\cite{Kahneman79prospecttheory}). 
 % vNM is concerned with a one shot only decision, but what if we have to take a sequence of decisions ? What 
@@ -193,9 +205,9 @@ the vNM sense).
 \end{table}
 
 
-\section{Sequential decision process}\label{sec:sqp}
+\section{Sequential decision making}\label{sec:sqp}
 
-When referring outright to decision theory with no extensions, we usually are talking about a one-shot
+When referring outright to decision theory with no extensions, we are usually referring to a one shot
 non-temporal decision. However many interesting decision problems are sequential.
 In such a situation we must consider the effect current decisions will have on future decisions. Expected utility 
 theory (part of decision theory) is extendible to a temporal decision problem. There are however a two subtle but important 
@@ -203,15 +215,15 @@ differences between the temporal and non-temporal decision problems. The first i
 an outcome has one utility assigned to it, $u(x)$. Now a utility has to be assigned to a sequence of outcomes, $u(x_{0:T})$, 
 where $T$ is the number of sequential decisions taken. The utility of a sequence is the sum of the individual outcomes 
 themselves. However if the decision problem is non terminating this will lead to an unbounded utility. To bound the utility a 
-discount factor $\gamma \in [0,1)$ is introduced and the new utility function becomes:
+discount factor $\gamma \in [0,1)$ is introduced and the new temporal utility function becomes:
 
 \begin{equation}
-    u(x_{0:T}) 	   = \sum\limits_{t=0}^{T} \gamma^{t} u(x_t) \label{eq:joint_state_actions_util}
+    u(x_{0:T}) 	   := \sum\limits_{t=0}^{T} \gamma^{t} u(x_t) \label{eq:joint_state_actions_util}
 \end{equation}
 
 The discount factor allows to control the importance later utilities have on the final utility. If the discount factor is set to
-zero we recover the original one-shot utility function and if we were to take actions which maximised the expected utility 
-we would not be considering at all the effect later decisions have on our overall utility. An agent reasoning in such a way is 
+zero we recover the original one shot utility function and if we were to take actions which maximised the expected utility 
+we would not be considering at all the effect current decisions have at future decision points. An agent reasoning in such a way is 
 called myopic.
 The second is the way in which probabilities are assigned to outcomes, this was $p(x)$ in the decision theory utility function formulation.
 Now because of the sequential nature of the problem we consider a conditional state transfer probability distribution $p(x_{t+1}|x_t,a_t)$
@@ -222,9 +234,8 @@ take a decision is encoded in the current state and there is no need to consider
 In Figure \ref{fig:mdp} we illustrate two graphical representations of a MDP, which are known as \textbf{Dynamic Bayesian Networks (DBN)}.
 A DBN represents the the temporal relationship and conditional dependence between random variables, decisions and utilities, which are 
 represented by circles, squares and diamonds. For the MDP to the left the actions are not stochastic, whilst for the MDP on the right 
-the actions taken are governed by a stochastic \textbf{policy}, $\policy(a_t|x_t)$. A policy represents the decision process of an agent,
-given a state it will output an action. A stochastic policy means that given the same input they will produce
-different outputs. A policy is considered optimal when it maximises the expected utility function, it is optimal in the vNM sense.
+the actions taken are governed by a stochastic \textbf{policy}, $\policy(a_t|x_t)$. A policy represents the plan of an agent for each state,
+given a state it will output an action. A policy is considered optimal when it maximises the expected utility function, it is optimal in the vNM sense.
 
 \begin{figure}[h]
   \centering
@@ -237,32 +248,31 @@ different outputs. A policy is considered optimal when it maximises the expected
 \end{figure}
 
 Solving a MDP means finding a policy whose actions in any given state will always maximise the expected utility. Such 
-a policy is usually denoted as $\pi^*$, the optimal policy. As in decision theory, the expected utility is the utility 
-of  a sequence of states $u(x_{0:T})$ weighted by its probability . The graphical representation allows to read off directly the probability 
-of a sequence of state transitions and actions $(x_{0:T},a_{0:T-1})$, Equation \ref{eq:joint_state_actions}.
+a policy is usually denoted as $\pi^*$, the \textbf{optimal policy}. As in decision theory, the expected utility is the utility 
+of  a sequence of states $u(x_{0:T})$ weighted by its probability. The graphical representation (Figure \ref{fig:mdp} (a)) allows to read 
+off directly the probability of a sequence of states and actions,
 \begin{align}\label{eq:joint_state_actions}
   p(x_{0:T},a_{0:T-1}) &= p(x_{0}) \prod_{t=0}^{T-1} p(x_{t+1}|x_t,a_t) \\
-  u(x_{0:T}) 	       &= r(x_0) + \gamma r(x_1) + \dots + \gamma^{T-1} r(x_{T-1})  + \gamma^T r(x_T)
+  u(x_{0:T}) 	       &= u(x_0) + \gamma u(x_1) + \dots + \gamma^{T-1} u(x_{T-1})  + \gamma^T u(x_T)
 \end{align}
 We are interested in finding the sequence of action, $a_{0:T}$, which will maximise the expected utility function:
 \begin{equation}\label{eq:temporal_expected_utility}
  \argmax_{a_{0:T-1}} U(x_{0:T},a_{0:T-1}) = \max_{a_0} \sum\limits_{x_1}   \cdots  \max_{a_{T-1}} \sum\limits_{x_T} \Bigg( p(x_{0:T},a_{0:T-1}) u(x_{0:T}) \Bigg)
 \end{equation}
 Solving the above directly in its current form would have an exponential complexity. By making use of the first order 
-markov assumption and that current rewards do not dependent future rewards, the sums in Equation \label{eq:max_util} can be re-arranged and 
-and recursive patter will emerge which we can take advantage off. Lets start from the last time step and move out of the sum all elements 
-which do not depend on $T$ and $T-1$, which results in Equation \ref{eq:expansion}
+markov assumption and that current rewards do not dependent future rewards, the sums can be re-arranged and 
+a recursive patter emerges which can be exploited which results in Equation \ref{eq:expansion}
 \begin{align}\label{eq:expansion}
  &\argmax_{a_{0:T-1}} U(x_{0:T},a_{0:T-1}) =\max_{a_0} \sum\limits_{x_1}   \cdots  \max_{a_{T-2}} \sum\limits_{x_{T-1}} p(x_{0:T-1},a_{0:T-2})  \nonumber\\
- &\left( u(x_{0:T-2}) + \gamma^{T-1} \left( r(x_{T-1}) +  \gamma \max_{a_{T-1}} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) r(x_{T}) \right) \right)
+ &\left( u(x_{0:T-2}) + \gamma^{T-1} \left( u(x_{T-1}) +  \gamma \max_{a_{T-1}} \sum\limits_{x_{T}} p(x_{T}|x_{T-1},a_{T-1}) u(x_{T}) \right) \right)
 \end{align}
 From the rearrangement we notice that Equation \ref{eq:expansion} has the same functional form as Equation \ref{eq:temporal_expected_utility}, 
 except that the recursive component can be summarised by Equation \ref{eq:bellman}, which is known as 
 the \textbf{Bellman} optimal equation.
 \begin{equation}\label{eq:bellman}
- V^*(x_t) := r(x_t) + \gamma \max_{a_t} \sum\limits_{x_{t+1}} p(x_{t+1}|x_t,a_t) V(x_{t+1})
+ V^*(x_t) := u(x_t) + \gamma \max_{a_t} \sum\limits_{x_{t+1}} p(x_{t+1}|x_t,a_t) V(x_{t+1})
 \end{equation}
-For the terminal state $V_T(x_T) = r(x_T)$. The bellman equation is a means of solving a sequential decision problem 
+For the terminal state $V_T(x_T) = u(x_T)$. The bellman equation is a means of solving a sequential decision problem 
 through use of dynamic programming. It says the the utility of the current state is based on the immediate reward and 
 the discounted maximum utility of the next state. Making use of this recursion reduced the computation complexity is 
 quadratic in the number of states, $\BigO(T\, |A|\, |X|^2)$. To find the optimal value and subsequent policy an approach 
@@ -275,7 +285,7 @@ is such a method. On-policy approaches find the optimal value and policy through
 \textbf{improvement} steps. In the policy evaluation the value or utility of a policy is found through solving the on-policy version of the Bellman 
 equation:
 \begin{equation}\label{eq:on_policy_bellman}
-  V^{\pi}(x_t) := r(x_t) + \gamma \sum\limits_{a_t} \policy(a_t|x_t) \sum\limits_{x_{t+1}} p(x_{t+1}|x_t,a_t) V(x_{t+1})
+  V^{\pi}(x_t) := u(x_t) + \gamma \sum\limits_{a_t} \policy(a_t|x_t) \sum\limits_{x_{t+1}} p(x_{t+1}|x_t,a_t) V(x_{t+1})
 \end{equation}
 In the policy improvement step the policy is made more greedy by maximising the value function. Through the repetition of these two 
 steps both the value function and policy converge to the optimal. On-policy methods are preferred in settings where the action 
@@ -285,9 +295,9 @@ Instead \textbf{Reinforcement Learning (RL)} methods are used to find an optimal
 in which an agent interacts with the environment gathering examples of state transitions and rewards (the utility) and uses them 
 to gradually solve the bellman equation.
 
-We introduced the formulation of a sequential decision process in the form of a MDP model and showed how an optimal policy 
-and value function are obtained through maximising the expected utility. The re-arrangement of the sums via
-variable elimination allows to take advantage of a recursive structure present in the markov chain. The recursive component 
+We introduced the formulation of a sequential decision process for the MDP model and showed how an optimal policy 
+and value function are obtained through maximising the expected utility. The re-arrangement of the sums, known as
+variable elimination, allows to take advantage of a recursive structure present in the markov chain. The recursive component 
 turns out to be the Bellman optimal equation, which when solved (via dynamic programming or reinforcement learning) results 
 in an optimal value and policy function. A MDP models the uncertainty inherent in the state transition but not the uncertainty 
 of the state. The MDP assumes that the state space is always fully observable, which is a strong assumption. In robotics the 
@@ -312,28 +322,23 @@ uncertainty into consideration the MDP has to accommodate it. This leads to a Pa
 %\end{equation}
 
 A POMDP is a popular approach for formulating a sequential decision process in which both motion and observation 
-uncertainty is considered. In this partially observable setting the agent does not know with exactitude the state of the environment,
+uncertainty are considered. In this partially observable setting the agent does not know with exactitude the state of the environment,
 but is able to observe it through his \textbf{sensors}. We mathematically define a sensor as being a function of the 
-state space, Equation \ref{eq:sensor}.
+state space, $x_t$, relating to an observation, $y_t$, corrupted by some noise, $\epsilon_t$,
 
 \begin{equation}\label{eq:sensor}
   y_t = h(x_t) + \epsilon_t
 \end{equation}
 
 The sensor function $h(\cdot)$ can be linear or non-linear and the additive noise term $\epsilon_t$ can 
-be Gaussian (usually the case), non-Gaussian, state dependent or not. In this setting the
-state $x$ is a latent hidden variable and we can only get information about it via the observations, $y$. 
-The uncertainty of the latent state is quantified in a probability distribution over the state space, $p(x)$. 
-This probability distribution represents all the hypothetical positions in the world in which the agent can be. 
-In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a environment a in a yard 
+be Gaussian (usually the case), non-Gaussian, state dependent or not. The uncertainty of the latent state, $x_t$, is quantified by a probability distribution, $p(x)$. This probability distribution represents all the hypothetical positions in the world in which the agent can be. In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a square yard 
 containing a wall. Initially the agent is confident regarding his position; his state uncertainty $p(x_0)$ is low, represented 
 by the blue probability density. However during a circular displacement the agent skids and the state uncertainty is increased 
-by the state transition function, $p(x_{t+1}|x_t,a_t)$. To reduce the uncertainty, the agent takes a measurement, $y$, with 
-his sensors which provide range, $r$, and bearing, $\phi$, information of the wall, see Figure \ref{fig:belief_update_example} \textbf{(b)}.
-The agent uses the model of his sensor, known a priori, to deduce all possible locations in the world, $x$, where the current 
+by the state transition function, $p(x_{t+1}|x_t,a_t)$; this step is referred to as \textbf{motion update}. To reduce the uncertainty, the agent takes a measurement, $y_t$, with 
+his sensors which provide range, $r$, and bearing, $\phi$, information to the wall, see Figure \ref{fig:belief_update_example} \textbf{(b)}.
+The agent uses the model of his sensor, known a priori, to deduce all possible locations in the world where the current 
 measurement could have originated from. This model is known as the measurement 
-likelihood function, Equation \ref{eq:likelihood}
-
+likelihood function: 
 \begin{equation}\label{eq:likelihood}
  p(y_t|x_t) = \mathcal{N}(y_t - h(x_t);0,\Sigma)
 \end{equation}
@@ -356,11 +361,11 @@ Typically the parameters of the measurement likelihood function are learned a pr
   \label{fig:belief_update_example}
 \end{figure}
 
-In Figure \ref{fig:belief_update_example} \textbf{(c)} the likelihood is illustrated; the dark regions indicate areas of high 
+In Figure \ref{fig:belief_update_example} \textbf{(c)} the likelihood is illustrated. The dark regions indicate areas of high 
 likelihood, which are possible locations from which the sensor measurement could have originated from. The value of the measurement
-likelihood function is then integrated into the state space probability density function.
+likelihood function is then integrated into the state space probability density function; this step is referred to as \textbf{measurement update}.
 
-These two steps: \textbf{motion}  and \textbf{measurement} updates are part of a state estimation process called a \textbf{Bayesian state space filter}, 
+The two update steps, motion and measurement, are part of a recursive state estimation process called a \textbf{Bayesian state space filter}, 
 which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_update}.
 \begin{figure}
 \centering
@@ -399,14 +404,14 @@ the incorporated by Equation \ref{eq:measurement_update}. The measurement likeli
 or leaves it constant. It never results in an increase of uncertainty. The Bayesian state space filter is such an important 
 component to belief space decision making that we define it by the filter function, $\tau(b_t,a_t,y_t)$, which 
 takes as input the current belief, applied action and sensed measurement and returns the resulting belief $b_{t+1}$.
-The state space filter is an essential component to a POMDP as it will become apparent.
+The state space filter is an essential component to a POMDP. which will become apparent later.
 
 %Depending on the type of sensors: stereo cameras, infra red sensors, Kinect, 
 %omnidirectional camera, etc.., there is uncertainty associated with it. It is thus important 
 With the latent state and its relation to the observation variable and the Bayesian filter defined, we can introduce the POMDP model
 in Figure \ref{fig:pomdp} (\textit{left}). It has the same markov chain structure 
-present in MDP, introduced in the previous section, but the state space $X$ is latent and 
-a new layer of observation variables $Y$ is present. 
+as in the MDP, introduced in the previous section, but the state space $X$ is latent and 
+a new layer of observation variables $Y$ is added. 
 
 \begin{figure}
  \centering
@@ -427,73 +432,82 @@ a new layer of observation variables $Y$ is present.
 %information from previous actions and observations in a probability distribution over the state space, known as the
 %belief state. 
 
-Because the state space is partially observable the expected reward has to be computed for each possible history of states, actions and observations.
+Because the state space is partially observable the expected utility has to be computed for each possible history of states, actions and observations.
 All approaches in the literature instead encapsulate all these possible histories into a belief state $b(x_t)$ (for short notation $b_t$)
 which is a probability distribution (also referred to as an information state, \textit{I}-state) over the state 
 space $x_t$ and use this new state description to cast the POMDP into a \textbf{belief-MDP} (states are probability distributions, 
-beliefs). By casting the POMDP to a \textit{belief}-MDP the state space is considered observable and we recover the same structure 
+beliefs). By casting a POMDP into a \textit{belief}-MDP the state space is considered observable and we recover the same structure 
 as in the standard MDP problem.
 
 Because we are working with in a belief-space the reward function has to be adapted to:
 \begin{equation}
-  r(b_t) = \int_{x_t} r(x_t)\, b(x_t)\;dx_t
+  u(b_t) = \sum_{x_t} u(x_t)\, b(x_t) = \mathbb{E}_{b_t}\{u(x_t)\}
 \end{equation}
-which is the expected reward $r(b_t) = \mathbb{E}_{b_t}\{r(x_t)\}$. The goal as before is to find a sequence of actions 
+which is an expectation. The goal as before is to find a sequence of actions 
 which will maximise the expected utility. Since our \textit{belief}-MDP has the same structural form as the MDP the solution 
 to the problem is the same bellman equation equation derived previously. We just substitute the new belief transition function 
 and we get the corresponding belief bellman Equation, \ref{eq:belief_bellman}.
 \begin{equation}\label{eq:belief_bellman}
- V^*(b_t) = r(b_t) + \gamma \max_{a_t} \int_{b_{t+1}} p(b_{t+1}|b_t,a_t)\,V^*(b_{t+1})\;db_{t+1}
+ V^*(b_t) = u(b_t) + \gamma \max_{a_t} \sum_{b_{t+1}} p(b_{t+1}|b_t,a_t)\,V^*(b_{t+1})
 \end{equation}
-Using this equation in this form is problematic, we are integrating over the space of beliefs and the 
+Using this equation in this form is problematic, we are summing over the space of beliefs and the 
 transition function is a probability distribution over beliefs. The key to overcome this problem is to 
-realise that if we know what the current measurement and applied action are there is only one valid possible belief.
-Thus the integration over beliefs vanishes. This can be seen by substituting the belief transition function,
+realise that if we know what the current measurement and applied action are there is only one valid possible belief, $b_{t+1}$, and
+the summation over beliefs vanishes. This can be seen by substituting the belief transition function,
 Equation \ref{eq:belief_state_transformation}, into the bellman equation Equation \ref{eq:belief_bellman}.
 \begin{equation}\label{eq:belief_state_transformation}
- p(b_{t+1}|b_t,a_t) = \int_{y_t} p(b_{t+1}|b_t,a_t,y_t)\,p(y_t|y_{0:t-1},a_{0:t})\; dy_t
+ p(b_{t+1}|b_t,a_t) = \sum_{y_t} p(b_{t+1}|b_t,a_t,y_t)\,p(y_t|y_{0:t-1},a_{0:t})
 \end{equation}
-After the substitution and re-arrangement of the sums we get an integral over all future value 
-functions weighted by there probability, see Equation \ref{eq:max_component} which is the section of the bellman equation 
-after the max. Since the observation is known (because the outer integral is over $y_t$),
-the integral over the beliefs vanishes since there is only one possible future belief which is given by the 
-Bayesian filter function $\tau(b_t,a_t,y_t)$.
+After the substitution and re-arrangement of the sums we get a  over all future value 
+functions weighted by their probability, see Equation \ref{eq:max_component}. 
+Since the observation is known (because the outer integral is over $y_t$), the integral over the beliefs vanishes since there is only one possible future belief which is given by the 
+Bayesian filter function $b_{t+1} = \tau(b_t,a_t,y_t)$,
 \begin{equation}\label{eq:max_component}
- \gamma \max_{a_t} \int_{y_t} \underbrace{\left( \int_{b_{t+1}} p(b_{t+1}|b_t,a_t,y_t)\,V^*(b_{t+1})\; db_{t+1}\right)}_{1 \cdot V^*(\tau(b_t,a_t,y_t))}\, p(y_t|y_{0:t-1},a_{0:t}) \; dy_t
+u(b_t) + \gamma \max_{a_t} \sum_{y_t} \underbrace{\left( \sum_{b_{t+1}} p(b_{t+1}|b_t,a_t,y_t)\,V^*(b_{t+1})\right)}_{1 \cdot V^*(\tau(b_t,a_t,y_t))}\, p(y_t|y_{0:t-1},a_{0:t})
 \end{equation}
-In the final belief state bellman equation, the integral of the belief state is replaced by an integration over observations,
-Equation \ref{eq:final_belief_bellman}.
+which simplifies to:
 \begin{align}\label{eq:final_belief_bellman}
-  V^*(b_t) &= r(b_t) + \gamma \max_{a_t} \int_{y_t}  p(y_t|y_{0:t-1},a_{0:t}) \,V^*(f(b_t,a_t,y_t))\; dy_t \nonumber  \\ 
-	   &= r(b_t) + \gamma \max_{a_t} \E_{y_t}\{V^*(f(b_t,a_t,y_t))\}
+  V^*(b_t) &= u(b_t) + \gamma \max_{a_t} \sum_{y_t}  p(y_t|y_{0:t-1},a_{0:t}) \,V^*(\tau(b_t,a_t,y_t))\nonumber  \\ 
+	   &= u(b_t) + \gamma \max_{a_t} \displaystyle \mathop{\mathbb{E}}_{y_t}\{V^*(b_{t+1})\}
 \end{align}
-The belief bellman equation is intuitive, the value of the current belief is the immediate reward plus the value of the 
+
+The belief bellman equation is intuitive, the value of the current belief is the immediate utility plus the value of the 
 future belief states weighted by the probability of a measurement which would result in these future belief states. 
-It turns out that computing a value function using the above bellman function is not computationally tractable. Solving 
-a POMDP problem as for the MDP case consists of finding the optimal value function from which the optimal policy can 
-be derived. Essentially the same dynamic programming and reinforcement learning techniques can be applied to solve 
-this problem. An exact solution is however only  feasible when considering a finite state, action and observation space and
-a finite planning horizon $T$. Most early techniques for solving POMDPs used value iteration. It has been shown (\cite{Sondik_1973}) 
-that because the reward function uses a linear operator (the expectation) and that the bellman backup operation 
+An exact solution exists only when considering a finite state, action and observation space and a finite planning horizon $T$, \cite{Sondik_1973}.
+It can be solved with value iteration but each backup operation (application of the bellman equation) 
+results in an exponential growth in the number of parameters to represent the value function, which is computationally intractable.
+
+Most early techniques for solving POMDPs used value iteration. The preference for persisting in doing this, given the computational
+burden, is that since the utility function uses a linear operator (the expectation) and that the bellman backup operation 
 (applying the bellman equation to the current value function) preservers the linearity, the value function after each 
-updates is piece wise linear and continuous (PWLC). The intractability comes from the successive applications 
-of the bellman backup operation which result in an exponential time and space complexity with respect to the planning horizon.
-A good text on the implementation of exact value iteration for POMDPs can be found \cite[Chap. 15]{Thrun_2005}
-and here \cite{Kaelbling_1998}.
+updates is Piece Wise Linear and Convex (PWLC). 
+
+In summary there are two problems in solving a POMDP:
+\begin{itemize}
+ \item \textbf{curse of dimensionality}: A discrete state space of size $N$ will result in a belief space of dimension $N-1$. The discretization
+ choice will greatly impact the the computational cost of VI.
+ \item \textbf{curse of history}: The space and computationally complexity, in the worst case, is exponential with respect to the planning 
+ horizon, $T$, \cite{POMDP_approach_2010}.
+\end{itemize}
+
+Given such complexity it is hard to see POMDPs being actually usable for real world scenarios. 
+
+A good text on the implementation of exact value iteration for POMDPs can be found \cite[Chap. 15]{Thrun_2005} and here \cite{Kaelbling_1998}.
+
+%It turns out that computing a value function using the above bellman function is not computationally tractable.
+
+%Solving 
+%a POMDP problem as for the MDP case consists of finding the optimal value function from which the optimal policy can 
+%b%e derived. Essentially the same dynamic programming and reinforcement learning techniques can be applied to solve 
 
 %From considering the decision belief tree of the POMDP, Figure \ref{fig:pomdp_bel_tree}, we can appreciate the complexity of the problem
 %of finding an optimal policy. Given a discrete set of actions and observations to update the belief $b_1$ we have to consider a time 
 %complexity of $\mathcal{O}(|U||Y|^T)$ where $T$ is the depth of the tree (the planning horizon). Given that we have a finite set of 
 %belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$. 
 
+% In the worst cast, the exact value update procedure could require time doubly exponential in the planning horizon, T.
 
-%\begin{figure}[h]
-% \centering
-% \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf}
-%  \caption{ad}
-%\end{figure}
-
-Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
+%Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
 
 \section{Literature review}\label{sec:lit_rev}
 

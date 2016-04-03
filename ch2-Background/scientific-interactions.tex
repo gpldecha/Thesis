@@ -1,0 +1,71 @@
+\begin{figure}
+\centering
+\begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40, 
+    level 1/.append style={level distance=4cm,sibling angle=90},
+    level 2/.append style={level distance=3cm,sibling angle=45},]
+
+\begin{scope}
+\node{\textbf{Acting under uncertainty}}
+    child [concept color=blue!30] { node {Value Iteration}
+	child { node {Latent\\ VI}
+	    child {node {E-PCA}}
+	    child {node {Statistics}}
+	    child {node {NMF}}
+	}
+        child { node {Approx. VI}
+	  child {node {MC-POMDP}}
+        }
+        child { node {Point-base\\ VI}
+	  child { node {SARSOP}}
+	  child { node {HSVI2}}
+        }
+    }
+    child [concept color=yellow!30] { node {Heuristics}
+        child { node {Tree search}}
+        child { node {QMDP}}
+        child { node {Myopic}}
+    }
+    child [concept color=teal!40] { node {Belief space planning}
+        child { node {Belief\\ road maps}}
+        child { node {Optimal control}}
+    }
+    child [concept color=purple!50]  { node {Policy search}
+        child { node {EM} 
+	  child {node {PoWER}}
+        }
+        child { node {Gradient}
+	  child{ node {REINFORCE} }
+        }
+        child { node {Gradient free}
+	  child{ node {Donut}}
+        }
+    };
+\end{scope}
+
+% Value iteration
+\begin{scope}[mindmap, concept color=green!50!black,text=white]
+     \node  [concept] at (0,0) {Value Iteration}
+	child { node {Latent\\ VI}
+	    child {node {E-PCA}}
+	    child {node {Statistics}}
+	    child {node {NMF}}
+	}
+        child { node {Approx. VI}
+	  child {node {MC-POMDP}}
+        }
+        child { node {Point-base\\ VI}
+	  child { node {SARSOP}}
+	  child { node {HSVI2}}
+        };
+\end{scope}
+
+
+% Actor-critic
+\begin{scope}[mindmap, concept color=green!50!black,text=white]
+  \node [concept] at (0,-15) {Actor-critic}; 
+\end{scope}
+
+
+\end{tikzpicture}
+\end{figure}
+

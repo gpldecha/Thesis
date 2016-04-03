@@ -322,28 +322,23 @@ uncertainty into consideration the MDP has to accommodate it. This leads to a Pa
 %\end{equation}
 
 A POMDP is a popular approach for formulating a sequential decision process in which both motion and observation 
-uncertainty is considered. In this partially observable setting the agent does not know with exactitude the state of the environment,
+uncertainty are considered. In this partially observable setting the agent does not know with exactitude the state of the environment,
 but is able to observe it through his \textbf{sensors}. We mathematically define a sensor as being a function of the 
-state space, $x_t$, relating to an observation, $y_t$,
+state space, $x_t$, relating to an observation, $y_t$, corrupted by some noise, $\epsilon_t$,
 
 \begin{equation}\label{eq:sensor}
   y_t = h(x_t) + \epsilon_t
 \end{equation}
 
 The sensor function $h(\cdot)$ can be linear or non-linear and the additive noise term $\epsilon_t$ can 
-be Gaussian (usually the case), non-Gaussian, state dependent or not. In this setting the
-state $x$ is a latent hidden variable and we can only get information about it via the observations, $y$. 
-The uncertainty of the latent state is quantified in a probability distribution over the state space, $p(x)$. 
-This probability distribution represents all the hypothetical positions in the world in which the agent can be. 
-In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a environment a in a yard 
+be Gaussian (usually the case), non-Gaussian, state dependent or not. The uncertainty of the latent state, $x_t$, is quantified by a probability distribution, $p(x)$. This probability distribution represents all the hypothetical positions in the world in which the agent can be. In Figure \ref{fig:belief_update_example} \textbf{(a)} an agent is located in a square yard 
 containing a wall. Initially the agent is confident regarding his position; his state uncertainty $p(x_0)$ is low, represented 
 by the blue probability density. However during a circular displacement the agent skids and the state uncertainty is increased 
-by the state transition function, $p(x_{t+1}|x_t,a_t)$. To reduce the uncertainty, the agent takes a measurement, $y$, with 
-his sensors which provide range, $r$, and bearing, $\phi$, information of the wall, see Figure \ref{fig:belief_update_example} \textbf{(b)}.
-The agent uses the model of his sensor, known a priori, to deduce all possible locations in the world, $x$, where the current 
+by the state transition function, $p(x_{t+1}|x_t,a_t)$; this step is referred to as \textbf{motion update}. To reduce the uncertainty, the agent takes a measurement, $y_t$, with 
+his sensors which provide range, $r$, and bearing, $\phi$, information to the wall, see Figure \ref{fig:belief_update_example} \textbf{(b)}.
+The agent uses the model of his sensor, known a priori, to deduce all possible locations in the world where the current 
 measurement could have originated from. This model is known as the measurement 
-likelihood function, Equation \ref{eq:likelihood}
-
+likelihood function: 
 \begin{equation}\label{eq:likelihood}
  p(y_t|x_t) = \mathcal{N}(y_t - h(x_t);0,\Sigma)
 \end{equation}
@@ -366,11 +361,11 @@ Typically the parameters of the measurement likelihood function are learned a pr
   \label{fig:belief_update_example}
 \end{figure}
 
-In Figure \ref{fig:belief_update_example} \textbf{(c)} the likelihood is illustrated; the dark regions indicate areas of high 
+In Figure \ref{fig:belief_update_example} \textbf{(c)} the likelihood is illustrated. The dark regions indicate areas of high 
 likelihood, which are possible locations from which the sensor measurement could have originated from. The value of the measurement
-likelihood function is then integrated into the state space probability density function.
+likelihood function is then integrated into the state space probability density function; this step is referred to as \textbf{measurement update}.
 
-These two steps: \textbf{motion}  and \textbf{measurement} updates are part of a state estimation process called a \textbf{Bayesian state space filter}, 
+The two update steps, motion and measurement, are part of a recursive state estimation process called a \textbf{Bayesian state space filter}, 
 which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_update}.
 \begin{figure}
 \centering
@@ -409,14 +404,14 @@ the incorporated by Equation \ref{eq:measurement_update}. The measurement likeli
 or leaves it constant. It never results in an increase of uncertainty. The Bayesian state space filter is such an important 
 component to belief space decision making that we define it by the filter function, $\tau(b_t,a_t,y_t)$, which 
 takes as input the current belief, applied action and sensed measurement and returns the resulting belief $b_{t+1}$.
-The state space filter is an essential component to a POMDP as it will become apparent.
+The state space filter is an essential component to a POMDP. which will become apparent later.
 
 %Depending on the type of sensors: stereo cameras, infra red sensors, Kinect, 
 %omnidirectional camera, etc.., there is uncertainty associated with it. It is thus important 
 With the latent state and its relation to the observation variable and the Bayesian filter defined, we can introduce the POMDP model
 in Figure \ref{fig:pomdp} (\textit{left}). It has the same markov chain structure 
-present in MDP, introduced in the previous section, but the state space $X$ is latent and 
-a new layer of observation variables $Y$ is present. 
+as in the MDP, introduced in the previous section, but the state space $X$ is latent and 
+a new layer of observation variables $Y$ is added. 
 
 \begin{figure}
  \centering
@@ -437,73 +432,80 @@ a new layer of observation variables $Y$ is present.
 %information from previous actions and observations in a probability distribution over the state space, known as the
 %belief state. 
 
-Because the state space is partially observable the expected reward has to be computed for each possible history of states, actions and observations.
+Because the state space is partially observable the expected utility has to be computed for each possible history of states, actions and observations.
 All approaches in the literature instead encapsulate all these possible histories into a belief state $b(x_t)$ (for short notation $b_t$)
 which is a probability distribution (also referred to as an information state, \textit{I}-state) over the state 
 space $x_t$ and use this new state description to cast the POMDP into a \textbf{belief-MDP} (states are probability distributions, 
-beliefs). By casting the POMDP to a \textit{belief}-MDP the state space is considered observable and we recover the same structure 
+beliefs). By casting a POMDP into a \textit{belief}-MDP the state space is considered observable and we recover the same structure 
 as in the standard MDP problem.
 
 Because we are working with in a belief-space the reward function has to be adapted to:
 \begin{equation}
-  r(b_t) = \int_{x_t} r(x_t)\, b(x_t)\;dx_t
+  u(b_t) = \sum_{x_t} u(x_t)\, b(x_t) = \mathbb{E}_{b_t}\{u(x_t)\}
 \end{equation}
-which is the expected reward $r(b_t) = \mathbb{E}_{b_t}\{r(x_t)\}$. The goal as before is to find a sequence of actions 
+which is an expectation. The goal as before is to find a sequence of actions 
 which will maximise the expected utility. Since our \textit{belief}-MDP has the same structural form as the MDP the solution 
 to the problem is the same bellman equation equation derived previously. We just substitute the new belief transition function 
 and we get the corresponding belief bellman Equation, \ref{eq:belief_bellman}.
 \begin{equation}\label{eq:belief_bellman}
- V^*(b_t) = r(b_t) + \gamma \max_{a_t} \int_{b_{t+1}} p(b_{t+1}|b_t,a_t)\,V^*(b_{t+1})\;db_{t+1}
+ V^*(b_t) = u(b_t) + \gamma \max_{a_t} \sum_{b_{t+1}} p(b_{t+1}|b_t,a_t)\,V^*(b_{t+1})
 \end{equation}
-Using this equation in this form is problematic, we are integrating over the space of beliefs and the 
+Using this equation in this form is problematic, we are summing over the space of beliefs and the 
 transition function is a probability distribution over beliefs. The key to overcome this problem is to 
-realise that if we know what the current measurement and applied action are there is only one valid possible belief.
-Thus the integration over beliefs vanishes. This can be seen by substituting the belief transition function,
+realise that if we know what the current measurement and applied action are there is only one valid possible belief, $b_{t+1}$, and
+the summation over beliefs vanishes. This can be seen by substituting the belief transition function,
 Equation \ref{eq:belief_state_transformation}, into the bellman equation Equation \ref{eq:belief_bellman}.
 \begin{equation}\label{eq:belief_state_transformation}
- p(b_{t+1}|b_t,a_t) = \int_{y_t} p(b_{t+1}|b_t,a_t,y_t)\,p(y_t|y_{0:t-1},a_{0:t})\; dy_t
+ p(b_{t+1}|b_t,a_t) = \sum_{y_t} p(b_{t+1}|b_t,a_t,y_t)\,p(y_t|y_{0:t-1},a_{0:t})
 \end{equation}
-After the substitution and re-arrangement of the sums we get an integral over all future value 
-functions weighted by there probability, see Equation \ref{eq:max_component} which is the section of the bellman equation 
-after the max. Since the observation is known (because the outer integral is over $y_t$),
-the integral over the beliefs vanishes since there is only one possible future belief which is given by the 
-Bayesian filter function $\tau(b_t,a_t,y_t)$.
+After the substitution and re-arrangement of the sums we get a  over all future value 
+functions weighted by their probability, see Equation \ref{eq:max_component}. 
+Since the observation is known (because the outer integral is over $y_t$), the integral over the beliefs vanishes since there is only one possible future belief which is given by the 
+Bayesian filter function $b_{t+1} = \tau(b_t,a_t,y_t)$,
 \begin{equation}\label{eq:max_component}
- \gamma \max_{a_t} \int_{y_t} \underbrace{\left( \int_{b_{t+1}} p(b_{t+1}|b_t,a_t,y_t)\,V^*(b_{t+1})\; db_{t+1}\right)}_{1 \cdot V^*(\tau(b_t,a_t,y_t))}\, p(y_t|y_{0:t-1},a_{0:t}) \; dy_t
+u(b_t) + \gamma \max_{a_t} \sum_{y_t} \underbrace{\left( \sum_{b_{t+1}} p(b_{t+1}|b_t,a_t,y_t)\,V^*(b_{t+1})\right)}_{1 \cdot V^*(\tau(b_t,a_t,y_t))}\, p(y_t|y_{0:t-1},a_{0:t})
 \end{equation}
-In the final belief state bellman equation, the integral of the belief state is replaced by an integration over observations,
-Equation \ref{eq:final_belief_bellman}.
+which simplifies to:
 \begin{align}\label{eq:final_belief_bellman}
-  V^*(b_t) &= r(b_t) + \gamma \max_{a_t} \int_{y_t}  p(y_t|y_{0:t-1},a_{0:t}) \,V^*(f(b_t,a_t,y_t))\; dy_t \nonumber  \\ 
-	   &= r(b_t) + \gamma \max_{a_t} \E_{y_t}\{V^*(f(b_t,a_t,y_t))\}
+  V^*(b_t) &= u(b_t) + \gamma \max_{a_t} \sum_{y_t}  p(y_t|y_{0:t-1},a_{0:t}) \,V^*(\tau(b_t,a_t,y_t))\nonumber  \\ 
+	   &= u(b_t) + \gamma \max_{a_t} \displaystyle \mathop{\mathbb{E}}_{y_t}\{V^*(b_{t+1})\}
 \end{align}
-The belief bellman equation is intuitive, the value of the current belief is the immediate reward plus the value of the 
+
+The belief bellman equation is intuitive, the value of the current belief is the immediate utility plus the value of the 
 future belief states weighted by the probability of a measurement which would result in these future belief states. 
-It turns out that computing a value function using the above bellman function is not computationally tractable. Solving 
-a POMDP problem as for the MDP case consists of finding the optimal value function from which the optimal policy can 
-be derived. Essentially the same dynamic programming and reinforcement learning techniques can be applied to solve 
-this problem. An exact solution is however only  feasible when considering a finite state, action and observation space and
-a finite planning horizon $T$. Most early techniques for solving POMDPs used value iteration. It has been shown (\cite{Sondik_1973}) 
-that because the reward function uses a linear operator (the expectation) and that the bellman backup operation 
+An exact solution exists only when considering a finite state, action and observation space and a finite planning horizon $T$, \cite{Sondik_1973}.
+It can be solved with value iteration but each backup operation (application of the bellman equation) 
+results in an exponential growth in the number of parameters to represent the value function, which is computationally intractable.
+
+Most early techniques for solving POMDPs used value iteration. The preference for persisting in doing this, given the computational
+burden, is that since the utility function uses a linear operator (the expectation) and that the bellman backup operation 
 (applying the bellman equation to the current value function) preservers the linearity, the value function after each 
-updates is piece wise linear and continuous (PWLC). The intractability comes from the successive applications 
-of the bellman backup operation which result in an exponential time and space complexity with respect to the planning horizon.
-A good text on the implementation of exact value iteration for POMDPs can be found \cite[Chap. 15]{Thrun_2005}
-and here \cite{Kaelbling_1998}.
+updates is Piece Wise Linear and Convex (PWLC). A good text on the implementation of exact value iteration for POMDPs can be found \cite[Chap. 15]{Thrun_2005} and here \cite{Kaelbling_1998}.
+
+In summary there are two problems in solving a POMDP:
+\begin{itemize}
+ \item \textbf{curse of dimensionality}: A discrete state space of size $N$ will result in a belief space of dimension $N-1$. The discretization
+ choice will greatly impact the the computational cost of VI.
+ \item \textbf{curse of history}: The space and computationally complexity, in the worst case, is exponential with respect to the planning 
+ horizon, $T$, \cite{POMDP_approach_2010}.
+\end{itemize}
+
+Given such complexity it is hard to see POMDPs being actually usable for real world scenarios. As a result many approximate 
+techniques have emerged with some being very successful. In the next section, we survey the literature the developments of approximate POMDP
+algorithms and their applications.
+%It turns out that computing a value function using the above bellman function is not computationally tractable.
+
+%Solving 
+%a POMDP problem as for the MDP case consists of finding the optimal value function from which the optimal policy can 
+%b%e derived. Essentially the same dynamic programming and reinforcement learning techniques can be applied to solve 
 
 %From considering the decision belief tree of the POMDP, Figure \ref{fig:pomdp_bel_tree}, we can appreciate the complexity of the problem
 %of finding an optimal policy. Given a discrete set of actions and observations to update the belief $b_1$ we have to consider a time 
 %complexity of $\mathcal{O}(|U||Y|^T)$ where $T$ is the depth of the tree (the planning horizon). Given that we have a finite set of 
 %belief the complexity solving the POMDP is $\mathcal{O}(|\mathcal{B}||U||Y|^T)$. 
 
-
-%\begin{figure}[h]
-% \centering
-% \includegraphics[width=\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/belief_tree.pdf}
-%  \caption{ad}
-%\end{figure}
-
-Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
+% In the worst cast, the exact value update procedure could require time doubly exponential in the planning horizon, T.
+%Why is POMDP so good: combine information gathering and goal directed actions in one. Give taxonomy of planning under uncertainty here.
 
 \section{Literature review}\label{sec:lit_rev}
 
@@ -511,8 +513,7 @@ We review the latest methods of solving sequential decision problems under uncer
 area of research, no doubt because of its importance and the fact that it cannot be ignored. If uncertainty is not considered 
 adequately, the control policy risks being suboptimal or lead to drastic failure. 
 
-
-
+\include{./ch2-Background/scientific-interactions}
 
 \subsection{Point-based Value Iteration}
 
