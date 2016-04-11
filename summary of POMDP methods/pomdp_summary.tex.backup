@@ -113,16 +113,26 @@ operator is represented in closed form. Extend Perseus to deal with continuous a
 and observations through using appropriate sampling techniques. Show that the PWLC
 property of POMDP holds for the continuous state, discrete action,observation case.
 Prove that value function for continuous-state pomdp is convex, and then PWLC.
+Have $\alpha$-functions instead of $\alpha$-vectors. Experiment: simulated robotic domain.
+space is continuous in 1D, for doors. 
+
+\paragraph{MCVI}
+
+\cite{MCVI_CS_POMDPs}
+
+\paragraph{MC-PPOMDP}
+
+\cite{mc_update_ppomdps}
+
+
+\section{Belief space planning}
 
 
 
 
 
 
-
-
-
-
+\paragraph{Sequential Trajectory Re-planning with Tactile IG for Dexterous Grasping under object-pose Uncertainty}
 
 
 

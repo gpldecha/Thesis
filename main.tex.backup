@@ -25,10 +25,9 @@
 \usepackage{bibentry}
 \nobibliography*
 
-
+  
 \usepackage{multirow}
 \usepackage[footnotesize,bf,hang]{caption,subfigure}
-\usepackage{subcaption}
 
 \captionsetup[algorithm]{font=small}
 \usepackage{booktabs} %Publication quality tables in LaTeX
@@ -37,11 +36,26 @@
 \usepackage[table]{xcolor}
 \usepackage[titletoc,toc,page]{appendix}
 
-\usepackage[dvips, backref,bookmarks=true, breaklinks]{hyperref} % clickable back-references from the bibliography list to citing sections
+\usepackage[backref,bookmarks=true, breaklinks]{hyperref} % clickable back-references from the bibliography list to citing sections
 
 \usepackage{soul}
-
+\usepackage{verbatim}
 \usepackage{tikz} % drawing tools in latex
+%\usepackage[paperwidth=25cm,paperheight=22cm,left=1cm,top=1cm]{geometry}
+
+\usetikzlibrary{mindmap,shadows}
+
+% Information boxes
+\newcommand*{\info}[4][16.3]{%
+  \node [ annotation, #3, scale=0.65, text width = #1em,
+          inner sep = 2mm ] at (#2) {%
+  \list{$\bullet$}{\topsep=0pt\itemsep=0pt\parsep=0pt
+    \parskip=0pt\labelwidth=8pt\leftmargin=8pt
+    \itemindent=0pt\labelsep=2pt}%
+    #4
+  \endlist
+  };
+}
 
 \hypersetup{colorlinks={true},
             linkcolor={blue},
@@ -75,6 +89,9 @@
 \DeclareMathOperator*{\argmax}{\arg\max}   % rbp
 \DeclareMathOperator{\policy}{\pi_{\boldsymbol{\theta}}}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
+
+
+\graphicspath{{ch1-Introduction/Figures/}}
 
 \begin{document}
 
@@ -119,7 +136,7 @@
 
 \ifdefined \gDisplayBibliography
 	\bibliographystyle{plainnat}
-	\bibliography{bib/pomdp.bib,bib/ProspectTheory.bib}
+	\bibliography{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib}
 \fi
 
 \end{document}

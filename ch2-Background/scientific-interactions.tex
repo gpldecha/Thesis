@@ -1,71 +1,87 @@
-\begin{figure}
-\centering
-\begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40, 
-    level 1/.append style={level distance=4cm,sibling angle=90},
-    level 2/.append style={level distance=3cm,sibling angle=45},]
 
-\begin{scope}
-\node{\textbf{Acting under uncertainty}}
-    child [concept color=blue!30] { node {Value Iteration}
-	child { node {Latent\\ VI}
-	    child {node {E-PCA}}
-	    child {node {Statistics}}
-	    child {node {NMF}}
-	}
-        child { node {Approx. VI}
-	  child {node {MC-POMDP}}
-        }
-        child { node {Point-base\\ VI}
-	  child { node {SARSOP}}
-	  child { node {HSVI2}}
+\begin{figure} 
+\centering
+\hspace*{-4cm}
+\begin{minipage}{\linewidth}
+\begin{tikzpicture}[every annotation/.style = {draw, fill = white, font = \Large}]
+
+\path[mindmap,concept color=black!40,text=white, every node/.style={concept,circular drop shadow},  
+    root/.style    = {concept color=black!40,font=\Large\bfseries},
+    level 1 concept/.append style={level distance=15em,sibling angle=90,font=\large\bfseries},
+    level 2 concept/.append style={level distance=9em,font=\bfseries},
+  ]
+    node[root] at (0,0)  {Acting under uncertainty}[clockwise from=135]
+    child [concept color=red!90]  { node [concept] (PolicySearch) {Policy search} [clockwise from=180]
+          child { node (EM) {EM} }
+	  child { node (Gradient) {Gradient} }
+	  child { node (GradientFree) {Gradient free}
         }
     }
-    child [concept color=yellow!30] { node {Heuristics}
-        child { node {Tree search}}
+    child [concept color=teal!90] { node {Planning}[clockwise from=50]
+        child { node (BRM) {Belief\\ road maps}}
+        child { node (OptimalControl) {Optimal control}}
+    }
+    child [concept color=orange!90] { node {Heuristics}[clockwise from=-10]
+        child { node {Info.\\Gain}}
         child { node {QMDP}}
         child { node {Myopic}}
     }
-    child [concept color=teal!40] { node {Belief space planning}
-        child { node {Belief\\ road maps}}
-        child { node {Optimal control}}
-    }
-    child [concept color=purple!50]  { node {Policy search}
-        child { node {EM} 
-	  child {node {PoWER}}
-        }
-        child { node {Gradient}
-	  child{ node {REINFORCE} }
-        }
-        child { node {Gradient free}
-	  child{ node {Donut}}
+    child [concept color=blue!90] { node  [concept] (ValueIteration) {Value Iteration}  [clockwise from=-55]
+	child { node (Latent) {Latent\\ VI}}
+        child { node (ApproxVI) {Approx. VI}}
+        child { node (PBVI) {Point-base\\ VI}
         }
     };
-\end{scope}
+    
+    \begin{scope}[mindmap]
+      \node[fill={green!40!black},circle,level 1,color=green!40!black,text=white,font=\large\bfseries] (ActorCritic) at (-5,0) {Actor-critic};
+    \end{scope}
+  
+    \path (ActorCritic) to[circle connection bar switch color=from (green!40!black) to (blue!90)] (ValueIteration) ;
+    \path (ActorCritic) to[circle connection bar switch color=from (green!40!black) to (red!90)] (PolicySearch) ;
+  
+    \info[7]{Latent.south}{below,anchor=north}{
+      \item E-PCA
+    }
+    
+    \info[9]{ApproxVI.south}{below,anchor=north}{
+      \item MC-POMDP
+    }
+    
+    \info[9]{PBVI.south west}{below,anchor=north}{
+      \item SARSOP
+      \item HSVI2
+    }
+  
+    \info[7]{EM.south west}{below,anchor=north}{
+      \item PoWER
+    }
+  
+    \info[10]{Gradient.north west}{above,anchor=north,yshift=1cm}{
+      \item REINFORCE
+    }
 
-% Value iteration
-\begin{scope}[mindmap, concept color=green!50!black,text=white]
-     \node  [concept] at (0,0) {Value Iteration}
-	child { node {Latent\\ VI}
-	    child {node {E-PCA}}
-	    child {node {Statistics}}
-	    child {node {NMF}}
-	}
-        child { node {Approx. VI}
-	  child {node {MC-POMDP}}
-        }
-        child { node {Point-base\\ VI}
-	  child { node {SARSOP}}
-	  child { node {HSVI2}}
-        };
-\end{scope}
-
-
-% Actor-critic
-\begin{scope}[mindmap, concept color=green!50!black,text=white]
-  \node [concept] at (0,-15) {Actor-critic}; 
-\end{scope}
-
+    \info[6]{ActorCritic.south west}{below,anchor=south,xshift=-1.5cm,yshift=0.5cm}{
+      \item eNAC
+    }
+    
+    \info[9]{OptimalControl.south}{below,anchor=north}{
+      \item B-LQR
+      \item LQG-MP
+    }
+    
+    \info[9]{BRM.north}{below,anchor=north,yshift=1.3cm}{
+      \item BRM
+      \item FIRM
+    }
+  
+  %\draw[single arrow, draw=black, fill=gray, -stealth, line width=1pt](0,0) arc(45:-140:.5) (4,2);
+ %  \draw[fill=gray,line width=1pt] (0:1cm) arc (0:-350:1cm) -- (-180:1.25cm) ;
+   
+   
+   % ) -- (-.75,.75) -- (-180:.25cm) -- (-180:.5cm) arc (-180:0:.5cm)--cycle
 
 \end{tikzpicture}
+\end{minipage}
+\caption{Mind-map of AI and robotic methods for acting under uncertainty.}
 \end{figure}
-

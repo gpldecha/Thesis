@@ -1,15 +1,39 @@
 
-\begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40, 
-    level 1/.append style={level distance=5cm,sibling angle=90},
-    level 2/.append style={level distance=3cm,sibling angle=45},]
+\begin{minipage}{\textwidth}
 
-\node{\textbf{Acting under uncertainty}}
-    child [concept color=blue!30] { node {Value Iteration}
-	child { node {Latent\\ VI}}
-        child { node {Approx. VI}}
-        child { node {Point-base\\ VI}}
+%\begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=orange!40, align=flush center,
+%    level 1/.append style={level distance=5cm,sibling angle=90},
+%    level 2/.append style={level distance=3cm,sibling angle=45},
+%    extra concept/.append style={color=green!50,text=black}]
+
+\begin{tikzpicture}[ every annotation/.style = {draw, fill = white, font = \Large}]
+ 
+  
+\begin{scope}[mindmap,concept color=black!40,text=white,
+    every node/.style={concept,circular drop shadow},
+    root/.style    = {concept color=black!40,
+      font=\large\bfseries,text width=10em},
+    level 1 concept/.append style={font=\Large\bfseries,
+      sibling angle=50,text width=7.7em,
+    level distance=15em,inner sep=0pt},
+    level 2 concept/.append style={font=\bfseries,level distance=9em},
+  ]
+\node[draw] at (0,0)  {\textbf{Acting under uncertainty}} 
+    child [concept color=blue!30] { node  [concept] (vi) {Value Iteration}
+	child { node {Latent\\ VI}
+	   % child {node {E-PCA}}
+	  %  child {node {Statistics}}
+	 %   child {node {NMF}}
+	}
+        child { node {Approx. VI}
+	 % child {node {MC-POMDP}}
+        }
+        child { node {Point-base\\ VI}
+	%  child { node {SARSOP}}
+	%  child { node {HSVI2}}
+        }
     }
- child [concept color=yellow!30] { node {Heuristics}
+    child [concept color=yellow!30] { node {Heuristics}
         child { node {Tree search}}
         child { node {QMDP}}
         child { node {Myopic}}
@@ -18,13 +42,38 @@
         child { node {Belief\\ road maps}}
         child { node {Optimal control}}
     }
-    child [concept color=purple!50]  { node {Policy search}
-        child { node {Expectation-Maximization}}
-        child { node {Gradient}}
-        child { node {Gradient free}}
-        child { node {Circuit Diagrams}}
-        child [concept color=green!40] { node {Mind Maps}}
+    child [concept color=purple!50]  { node [concept] (ps) {Policy search}
+          child { node {EM} 
+	  %child {node {PoWER}}
+        }
+        child { node {Gradient}
+	 % child{ node {REINFORCE} }
+        }
+        child { node {Gradient free}
+	 % child{ node {Donut}}
+        }
+       % child { node {Actor-critic}
+	%  child{ node {eNAC} }
+      %  }
     };
+    \end{scope}
+    
+    
+    \begin{scope}[mindmap]
+      \node[circle,level 1, color=green!50!black!30,text=black] (ac) at (-5,0) {Actor-critic};
+    \end{scope}
+  
+    \path (ac) to[circle connection bar switch color=from (green!50!black!30) to (blue!30)] (vi) ;
+    \path (ac) to[circle connection bar switch color=from (green!50!black!30) to (purple!50)] (ps) ;
+  
+  
+    \info[11]{ac.south west}{below,anchor=north}{%
+      \item 240 Meldungen
+    }
 
+  
 \end{tikzpicture}
+
+\end{minipage}
+
 

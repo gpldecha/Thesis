@@ -289,6 +289,18 @@
   ee = {http://dx.doi.org/10.1007/978-3-540-30301-5_60}
 }
 
+@ARTICLE{Billard_schol_2013,
+	AUTHOR = {Billard, A.  and Grollman, D. },
+	TITLE   = {Robot learning by demonstration},
+	YEAR	= 2013,
+	JOURNAL	= Scholarpedia,
+	VOLUME  = 8,
+	NUMBER  = 12,
+	PAGES   = 3824,
+	NOTE   = {{revision #138061}}
+}
+
+
 @INPROCEEDINGS{Stulp_IICIRS_2011,
   author = {Stulp, F. and Theodorou, E. and Kalakrishnan, M. and Pastor, P. and
 	Righetti, L. and Schaal, S.},
@@ -798,8 +810,7 @@
 }
 
 ﻿@Article{Chambrier2014,
-author="Chambrier, Guillaume de
-and Billard, Aude",
+author="de Chambrier, Guillaume and Billard, Aude",
 title="Learning search policies from humans in a partially observable context",
 journal="Robotics and Biomimetics",
 year="2014",

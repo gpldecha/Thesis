@@ -11,10 +11,9 @@
 \BOOKMARK [1][-]{section.2.2}{Sequential decision making}{chapter.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.1}{POMDP}{section.2.2}% 12
 \BOOKMARK [1][-]{section.2.3}{Literature review}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.3.1}{Point-based Value Iteration}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.2}{Parametric Value Iteration}{section.2.3}% 15
-\BOOKMARK [2][-]{subsection.2.3.3}{Policy search}{section.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.3.4}{Belief space planning}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.5}{Heuristics}{section.2.3}% 18
-\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 19
-\BOOKMARK [0][-]{chapter*.9}{References}{}% 20
+\BOOKMARK [2][-]{subsection.2.3.1}{Value Iteration}{section.2.3}% 14
+\BOOKMARK [2][-]{subsection.2.3.2}{Policy search}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.3}{Planning}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.4}{Heuristics}{section.2.3}% 17
+\BOOKMARK [1][-]{section.2.4}{Approach}{chapter.2}% 18
+\BOOKMARK [0][-]{chapter*.25}{References}{}% 19
