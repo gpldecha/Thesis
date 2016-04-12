@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  11 APR 2016 21:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.11.1)  12 APR 2016 22:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -943,28 +943,29 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [5])
 (./ch2-Background/ch2-Background.tex [6]
 Chapter 2.
-<./ch2-Background/Figures/chap_overview.pdf, id=186, 498.9699pt x 43.46237pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--15
+
+ []
+
+<./ch2-Background/Figures/chap_overview.pdf, id=185, 498.9699pt x 43.46237pt>
 File: ./ch2-Background/Figures/chap_overview.pdf Graphic file (type pdf)
 
 <use ./ch2-Background/Figures/chap_overview.pdf>
 Package pdftex.def Info: ./ch2-Background/Figures/chap_overview.pdf used on inp
-ut line 25.
+ut line 18.
 (pdftex.def)             Requested size: 310.4979pt x 27.04718pt.
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 31.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 24.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 31.
-
-
-LaTeX Warning: Reference `sec:back_summ' on page 7 undefined on input line 40.
-
-[7
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
+ [7
 
  <./ch2-Background/Figures/chap_overview.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
@@ -977,24 +978,24 @@ f Graphic file (type pdf)
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf
 >
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/cognitive_loop.pdf used on input line 94.
+s/cognitive_loop.pdf used on input line 86.
 (pdftex.def)             Requested size: 172.5pt x 212.53392pt.
 
 Underfull \vbox (badness 5878) has occurred while \output is active []
 
  [9 </home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf
 >] [10]
-Underfull \hbox (badness 3646) in paragraph at lines 202--204
+Underfull \hbox (badness 3646) in paragraph at lines 194--196
 []|\T1/aer/m/n/10 Belief state, a func-tion of the fil-tered dis-tri-bu-tion
  []
 
 
-Underfull \hbox (badness 7415) in paragraph at lines 209--210
+Underfull \hbox (badness 7415) in paragraph at lines 201--202
 []|\T1/aer/m/n/10 Observation/measurement model, re-turns the like-li-
  []
 
 
-Overfull \hbox (17.89183pt too wide) in paragraph at lines 192--213
+Overfull \hbox (17.89183pt too wide) in paragraph at lines 184--205
  [] 
  []
 
@@ -1006,7 +1007,7 @@ file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/mdp3.pdf used on input line 255.
+s/mdp3.pdf used on input line 247.
 (pdftex.def)             Requested size: 155.24895pt x 151.70941pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf, id=262, 209.
@@ -1016,7 +1017,7 @@ file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/mdp2.pdf used on input line 256.
+s/mdp2.pdf used on input line 248.
 (pdftex.def)             Requested size: 155.24895pt x 144.22606pt.
  [13 </home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf> </home/
 guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf
@@ -1028,7 +1029,7 @@ ed in a single page
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14]
-Underfull \hbox (badness 10000) in paragraph at lines 329--336
+Underfull \hbox (badness 10000) in paragraph at lines 321--328
 
  []
 
@@ -1040,7 +1041,7 @@ File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/motion_update.pdf used on input line 364.
+s/motion_update.pdf used on input line 356.
 (pdftex.def)             Requested size: 155.24895pt x 157.99718pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf, id=40
@@ -1050,7 +1051,7 @@ raphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/measurement.pdf used on input line 365.
+s/measurement.pdf used on input line 357.
 (pdftex.def)             Requested size: 155.24895pt x 161.20293pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=406
@@ -1060,7 +1061,7 @@ aphic file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/likelihood.pdf used on input line 366.
+s/likelihood.pdf used on input line 358.
 (pdftex.def)             Requested size: 155.24895pt x 162.57681pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.pdf
@@ -1071,20 +1072,20 @@ e.pdf Graphic file (type pdf)
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update
 .pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/measurement_update.pdf used on input line 367.
+s/measurement_update.pdf used on input line 359.
 (pdftex.def)             Requested size: 155.24895pt x 160.74496pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--393
+Underfull \hbox (badness 10000) in paragraph at lines 380--385
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--404
+Underfull \hbox (badness 10000) in paragraph at lines 394--396
 
  []
 
 
-Overfull \hbox (1.41708pt too wide) in paragraph at lines 424--427
+Overfull \hbox (1.41708pt too wide) in paragraph at lines 416--419
 []\T1/aer/m/n/10 With the la-tent state, its re-la-tion to the ob-ser-va-tion v
 ari-able and the Bayesian
  []
@@ -1097,7 +1098,7 @@ c file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp2.pdf used on input line 431.
+s/pomdp2.pdf used on input line 423.
 (pdftex.def)             Requested size: 155.24895pt x 145.40063pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=415, 43
@@ -1107,7 +1108,7 @@ c file (type pdf)
 
 <use /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf>
 Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
-s/pomdp3.pdf used on input line 432.
+s/pomdp3.pdf used on input line 424.
 (pdftex.def)             Requested size: 155.24895pt x 145.38272pt.
 
 [16] [17 </home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update
@@ -1157,7 +1158,7 @@ Overfull \hbox (131.25514pt too wide) in paragraph at lines 84--85
  []
 
 ) [22]
-Underfull \hbox (badness 10000) in paragraph at lines 551--552
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
 
  []
 
@@ -1165,42 +1166,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 551--552
 
 
 ] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 596--597
+Underfull \hbox (badness 10000) in paragraph at lines 588--589
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 639--640
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
 
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 667--668
+Underfull \hbox (badness 10000) in paragraph at lines 659--660
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 704--705
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--728
+Underfull \hbox (badness 10000) in paragraph at lines 719--720
 
  []
 
 [28]
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 735--736
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 743--744
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 763--764
 
  []
 
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 771--772
+
+Underfull \hbox (badness 10000) in paragraph at lines 773--774
 
  []
 
@@ -1209,59 +1215,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 781--782
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 789--790
-
- []
-
 [30]
-Overfull \hbox (9.44516pt too wide) in paragraph at lines 806--814
+Overfull \hbox (9.44516pt too wide) in paragraph at lines 798--806
 []\T1/aer/m/n/10 Most op-ti-mal con-trol meth-ods as-sume that the be-lief spac
 e can be parametrized
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 815--816
+Underfull \hbox (badness 10000) in paragraph at lines 807--808
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 846--847
+Underfull \hbox (badness 10000) in paragraph at lines 838--839
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 856--857
+Underfull \hbox (badness 10000) in paragraph at lines 848--849
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 885--886
+Underfull \hbox (badness 10000) in paragraph at lines 877--878
 
  []
 
 [33] [34]
-Underfull \hbox (badness 10000) in paragraph at lines 909--910
+Underfull \hbox (badness 10000) in paragraph at lines 901--902
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 940--941
-
- []
-
-[35]
-<./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf, id=1016, 622.325p
+[35] [36]
+<./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf, id=1020, 622.325p
 t x 622.325pt>
 File: ./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf Graphic file 
 (type pdf)
 
 <use ./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf>
 Package pdftex.def Info: ./ch2-Background/Figures/reasoning_uncertainty_concept
-1.pdf used on input line 966.
+1.pdf used on input line 995.
 (pdftex.def)             Requested size: 241.49895pt x 241.49979pt.
-) [36 <./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf>] (./main.bb
-l (./main.brf)
+) [37 <./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf>] [38
+
+] (./main.bbl
+(./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
@@ -1280,8 +1278,7 @@ Underfull \hbox (badness 1990) in paragraph at lines 85--85
 s,
  []
 
-[37
-
+[39
 
 ]
 Underfull \hbox (badness 2478) in paragraph at lines 173--173
@@ -1313,7 +1310,7 @@ Underfull \hbox (badness 1043) in paragraph at lines 173--173
 -17452-0.
  []
 
-[38]
+[40]
 Underfull \hbox (badness 1688) in paragraph at lines 229--229
 \T1/aer/m/n/10 00023-[]X$.  URL [][]$\T1/aett/m/n/10 http : / / dx . doi . org 
 / 10 . 1016 / S0004-[]3702(98 ) 00023-[]X$[][]\T1/aer/m/n/10 .
@@ -1325,7 +1322,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--238
 ]learning .
  []
 
-[39]
+[41]
 Underfull \hbox (badness 2134) in paragraph at lines 337--337
 []\T1/aer/m/n/10 A. Nowé, P. Vrancx, and Y-M. De Hauwere.  \T1/aer/m/it/10 Re-i
 n-force-ment Learn-
@@ -1348,13 +1345,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 337--337
 nal + intelligence +
  []
 
-[40]
+[42]
 Underfull \hbox (badness 1694) in paragraph at lines 368--368
 \T1/aer/m/n/10 2007 . 11 . 026$.  URL [][]$\T1/aett/m/n/10 http : / / www . sci
 encedirect . com / science / article /
  []
 
-[41]
+[43]
 Underfull \hbox (badness 2088) in paragraph at lines 467--467
 \T1/aer/m/n/10 1667--1674. MIT Press, 2003.  URL [][]$\T1/aett/m/n/10 http : / 
 / papers . nips . cc / paper /
@@ -1366,13 +1363,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 467--467
 []in-[]pomdps .
  []
 
-[42])
+[44])
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 33.
 See the caption package documentation for explanation.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 143.
-[43]
+[45]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 143.
  (./main.aux (./ch2-Background/scientific-interactions.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 143.
@@ -1380,13 +1377,10 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 143.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 09DE217B1A12DF95B933E2D42734DBE4;1253.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 45714E4F6289E5784859C2455A3F26E9;4517.
+(rerunfilecheck)             Checksum: 88F22B261DCA47C6538A0A1A8C156018;4517.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 143.
  )
@@ -1394,9 +1388,9 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 143.
 (\end occurred when \ifdefined on line 129 was incomplete)
 (\end occurred when \ifdefined on line 128 was incomplete) 
 Here is how much of TeX's memory you used:
- 19675 strings out of 493304
- 346561 string characters out of 6139871
- 458830 words of memory out of 5000000
+ 19677 strings out of 493304
+ 346574 string characters out of 6139871
+ 458831 words of memory out of 5000000
  22416 multiletter control sequences out of 15000+600000
  65284 words of font info for 139 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1431,10 +1425,10 @@ s/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmu10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb>
-Output written on main.pdf (45 pages, 10533152 bytes).
+Output written on main.pdf (47 pages, 10536348 bytes).
 PDF statistics:
- 1381 PDF objects out of 1440 (max. 8388607)
- 1152 compressed objects within 12 object streams
- 195 named destinations out of 1000 (max. 500000)
+ 1389 PDF objects out of 1440 (max. 8388607)
+ 1158 compressed objects within 12 object streams
+ 197 named destinations out of 1000 (max. 500000)
  453 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,29 +1,22 @@
 \chapter{Background}
 
 % Introduce what is planning under uncertainty
-Planning and reasoning under uncertainty is central to AI and robotics and has 
-been an active area of research for decades. Planning and reasoning under uncertainty is an umbrella term in which a
-wide spectrum of fields study its aspect: \textit{economics}, \textit{psychology}, \textit{cognitive science}, \textit{neuroscience},
-\textit{robotics} and \textit{artificial intelligence}. 
-The work in this thesis relies on results from all of the aforementioned fields. Cognitive and neuroscience 
-bring justification and insight into the way we represent our beliefs and how we act accordingly. AI and
-robotics provide computational models and optimisation methods which take into account insights attained in the sciences.
+Acting under uncertainty is central to AI and robotics and has been an active area of research for decades. It
+is an umbrella term which encompasses a wide spectrum of fields:  \textit{economics}, \textit{psychology}, 
+\textit{cognitive science}, \textit{neuroscience}, \textit{robotics} and \textit{artificial intelligence}.
+The work in this thesis relies on results from all of the aforementioned fields with varying degree.
+Cognitive and neuroscience bring justification into the way we represent our beliefs and how we act accordingly. 
+AI and robotics provide computational models and optimisation methods some of which are biologically inspired.
 Because of the vast spectrum of topics we cannot do justice to all them and we will focus on works which are directly 
 relevant to the problems we are addressing in this thesis.
-
-%these results by introducing them in a new light to the field of robotics and demonstrate how the human reasoning and belief system 
-%can be used in situations where the state space is partially observable. The second main theme our work builds on is 
-%state space estimation. The third component acting given uncertainty in robotics. We make use of results from all 
-%three fields. We provide a background overview of acting under uncertainty and situate our work within the state of the 
-%art.
-
 In this chapter we cover the following topics in the presented order: Decision Theory (DT), Markov Decision Process (MDP), 
 Partially Observable Markov Decision Process (POMDP), a literature review and the approach taken 
-in this thesis. See Figure \ref{fig:ch2_outline} for an illustration of the outline.
+in this thesis.\\[0.05cm]
+
 \begin{figure}[h]
  \centering
  \includegraphics[width=0.9\textwidth]{./ch2-Background/Figures/chap_overview.pdf}
-  \caption{Chapter outline}
+  \caption{Chapter outline.}
   \label{fig:ch2_outline}
 \end{figure}
 
@@ -31,14 +24,13 @@ in this thesis. See Figure \ref{fig:ch2_outline} for an illustration of the outl
  \item \textbf{Section} \ref{sec:deci_un}, introduces what is meant by taking decisions under uncertainty and what are the different 
  sources of uncertainty. We take a historical look at Decision Theory since it is the root node of all subsequent research in reasoning 
  and acting under uncertainty and provides for a good introduction to the topics which will follow.  
- \item \textbf{Section} \ref{sec:sqp},  mathematically formalises the sequential decision problem under uncertainty and make the link 
-with Decision Theory. We derive from first principal the Bellman optimal equation which is probably the most important result to 
-date in the field.
+ \item \textbf{Section} \ref{sec:sqp},  mathematically formalises the sequential decision problem under uncertainty and is linked with Decision Theory. We derive from first principal 
+ the Bellman optimal equation which is one of the most important result to date in sequential decision processes.
  \item \textbf{Section} \ref{sec:lit_rev}, provides an in depth literature review with the latest results in AI \& robotics in the subject 
 of planning and acting under uncertainty. We draw attention to the different approaches to solving this problem whilst pointing out
 their advantages and weaknesses.
- \item \textbf{Section} \ref{sec:back_summ}, we provide a summary of what has been achieved so fare and how this thesis contributes and complements 
-the field. 
+ \item \textbf{Section} \ref{sec:approach}, summaries what has been achieved so fare, what are the open problems and how this 
+ thesis contributes and complements the field. 
 \end{itemize}
 
 
@@ -937,24 +929,76 @@ DARPA\footnote{https://www.youtube.com/watch?v=9Oav3JajR7Q} teams when faces wit
 % Explicitly incorporate shape uncertainties as constraints in grasp planning.  Takes both shape and contact uncertainty into consideration
 % 
 
-\section{Approach}
+\section{Approach}\label{sec:approach}
 
-In the literature we characterised four approaches of how artificial agents have been programmed to reason under uncertainty. The performance 
-of all the methods mentioned in the literature review crucially depend on the quality of \textbf{exemplary demonstrations}. For instance, PBVI 
-require search heuristics to find an optimal set of belief points, the quality of the optimal policy of policy search methods depend on the exploration-exploitation trade-off
-and optimal control methods strongly depend on the initial nominal trajectory. In a way this is intuitive, if you initialise your search method or algorithm 
-with an initial solution which is of high quality (close to optimality) then which ever optimisation method used PBVI, Policy Search, Planning,... a solution 
-should be obtained with computational ease. The question is then: \textit{how to generate such exemplary demonstrations ?} 
+In the literature we characterised four approaches of how artificial agents have been programmed to reason under uncertainty. 
+
+% What has been achieved so fare in the litterature ?
+When control algorithms were first being applied to mobile robotics uncertainty was handled with heuristics: 
+MLS, Q-MDP and other techniques not fully discussed such as \textit{next best view} methods. Practically speaking 
+the computational resources at the time were too limited and it was unfeasible to solve optimally for a POMDP problem. 
+Also it is not clear at what time the robotic community started to apply results from operational research to robotics
+in the case of partially observability with respect to the state.
+Certainly it is not until the advent of the first point-based value iteration methods that there was a shift of interest 
+towards improving POMDP such that they could be applied to robotic domains (mobile \& manipulation). 
+When evaluated against heuristics methods it was clear that in some scenarios (Heaven \& Hell problem) 
+the POMDP solvers did far better. Value Iteration methods have not be widely used in cases where the action space 
+is continuous. There have been efforts to adapt them to continuous actions space, however there is yet no concrete evidence 
+that these methods scale well. If the robotic domain requires continuous actions then either policy search or optimal control 
+methods should be applied. Policy search methods were first considered since they are part of the markov decision process 
+family which is within the POMDP framework.
+
+Policy search methods consider the uncertainty implicitly. These methods work 
+well when there is relatively few control parameters and behaviour to be learned are either reflexes (like in the case of 
+the autonomous helicopter) or primitive actions such as picking up an object. The uncertainty considered 
+in the reviewed literature on policy search methods is predominantly characterised by a Gaussian function. It is not clear 
+how well policy search methods would scale to situations in which there is a lot of uncertainty and so fare there has not 
+been a lot of emphasis on comparing policy search methods with heuristics. 
+
+Optimal control methods have recently started to gain traction since the addaptation of LQR to the belief state space. As for
+the case of policy search methods, the uncertainty is considered a Gaussian function, although recent research 
+has been addressing this. The advantage of optimal control with respect to policy search methods is that they are more 
+flexible since the objective function is computed online but at the expense of an increased computational cost.
+
+As for heuristics they are still actively being used in research and most successful applications in the DARPA robotic 
+challenge for instance use heuristics approaches. The probable reason is the volume of sensory information 
+and the size of the control architecture in robotic platforms competing does not leave room for anything else.  
+
+
+
+
+
+
+
+The performance of all the methods mentioned in the literature review crucially depend on the quality of 
+\textbf{exemplary demonstrations}. For instance, PBVI require search heuristics to find an optimal set of belief points, 
+the quality of the optimal policy of policy search methods depend on the exploration-exploitation trade-off
+and optimal control methods strongly depend on the initial nominal trajectory. In a way this is intuitive, 
+if you initialise your search method or algorithm with an initial solution which is of high quality (close to optimality) 
+then which ever optimisation method used PBVI, Policy Search, Planning,... a solution should be obtained with 
+computational ease. The question is then: \textit{how to generate such exemplary demonstrations ?} 
 
 Programming by Demonstration (PbD) is a methodology whose aim is to achieve the transfer of knowledge and behaviour from a teacher to an apprentice. The teacher 
 is usually a human expert (this is not a constraint) who demonstrates to an apprentice how to accomplish a given task. In the case of articulated robots, 
 kinesthetic teaching is often preferred where the teacher would hold the robot which, is back drivable, and demonstrate to him trajectories. Other ways are possible
 such as using vision or a wearable interfaces which are common to both teacher and expert. We will not go into a great detailed review of PbD, for an in depth review 
-the reader is referred to \cite{Billard08chapter}, \cite{Billard_2013}. However, a particular usage of PbD, which is of interest to use, is learning Dynamical Systems (DS).
+the reader is referred to \cite{Billard08chapter}, \cite{Billard_schol_2013}. However, a particular usage of PbD, which is of interest to use, is learning Dynamical Systems (DS).
 Learning dynamical systems from programming by demonstration is widely used approach in policy search methods. Most of the lately research in policy search methods reviewed 
 in Section \ref{lit:policy_search} use some form or another of PbD to initialise the policy. A human first shows a few repetitions of the 
 motion to be accomplished and typically a set of the state-velocity pairs are recorded $\{(x,\dot{x})\}$. Given these examples a stochastic policy $\policy(\dot{x},x)$ 
 usually represented by a regression function is learned form the recorded demonstrations. 
+
+We are considering scenarios which are continuous, sensory information is tactile and haptic and there the level of uncertainty 
+is extremely high. Policy search methods have been shown to be flexible and have been applied to high dimensional robotic problems, such as the full control 
+of a humanoid robot. However, the state space has always been considered fully observable or the MLS was used. Since that there is evidence 
+showing that humans and animals are far better at handling uncertainty than current planners and policies.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.7\textwidth]{./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
+ \caption{Learning from Demonstration in POMDP setting.}
+\end{figure}
+
 
 
 

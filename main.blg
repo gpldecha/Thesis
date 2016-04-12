@@ -4,7 +4,7 @@ The top-level auxiliary file: main.aux
 A level-1 auxiliary file: ./ch2-Background/scientific-interactions.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 284 of file main.aux
+---line 285 of file main.aux
  : \bibdata{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
  :                                                                                                                                            ,imitation_learning.bib}
 I'm skipping whatever remains of this command
