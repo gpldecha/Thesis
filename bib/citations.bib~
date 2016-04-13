@@ -907,7 +907,7 @@ author = "Michael Kasper and Gernot Fricke and Katja Steuernagel and Ewald von P
 } 
 
 
-@article{Gerkey01042006,
+@article{Gerkey_2006,
 author = {Gerkey, Brian P. and Thrun, Sebastian and Gordon, Geoff}, 
 title = {Visibility-based Pursuit-evasion with Limited Field of View},
 volume = {25}, 
@@ -920,7 +920,14 @@ eprint = {http://ijr.sagepub.com/content/25/4/299.full.pdf+html},
 journal = {The International Journal of Robotics Research} 
 }
 
+%% Motion control theory and shite
 
+. 
+2009
 
-
+@book{Biomechanics_2009,
+    author    = "David A. Winter",
+    title     = "Biomechanics and motor control of human movement",
+    year      = "2009",
+}
 

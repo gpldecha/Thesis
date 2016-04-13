@@ -1,0 +1,43 @@
+
+\begin{figure} 
+\centering
+\begin{minipage}{\linewidth}
+\begin{tikzpicture}[every annotation/.style = {draw, fill = white, font = \Large}]
+
+\path[mindmap,concept color=black!40,text=white, every node/.style={concept,circular drop shadow},  
+    root/.style    = {concept color=black!40,font=\Large\bfseries,scale=0.8},
+    level 1 concept/.append style={level distance=11em,sibling angle=90,font=\large\bfseries},
+    level 2 concept/.append style={level distance=9em,font=\bfseries},
+  ]
+  node[root] at (0,0)  {Acting under uncertainty}[clockwise from=135]
+    child [concept color=red!90]  { node [concept] (PolicySearch) {Policy search} [clockwise from=180]    }
+    child [concept color=teal!90] { node [concept] (Planning)     {Planning}[clockwise from=50] }
+    child [concept color=orange!90] { node {Heuristics}[clockwise from=-10]   }
+    child [concept color=blue!90] { node  [concept] (ValueIteration) {Value Iteration}  [clockwise from=-55]
+    };
+ 
+     \info[15]{PolicySearch.north}{left,anchor=north}{
+      \item local
+      \item manipulation, reflexes
+      \item continuous actions
+      \item off-line
+    }
+    
+    \info[15]{ValueIteration.south}{left,anchor=north}{
+      \item global
+      \item navigation
+      \item discrete actions
+      \item off-line
+    }
+    
+    \info[15]{Planning.south}{left,anchor=south}{
+      \item local
+      \item navigation
+      \item continuous actions
+      \item on-line
+    }
+ 
+\end{tikzpicture}
+\end{minipage}
+\caption{Mind-map of AI and robotic methods for acting under uncertainty.}
+\end{figure}

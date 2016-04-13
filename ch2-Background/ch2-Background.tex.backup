@@ -526,8 +526,87 @@ This is an extremely dense and spread out area of research, no doubt because of 
 importance. If uncertainty is not considered adequately, the control policy 
 risks being suboptimal or lead to drastic failure. 
 
-\include{./ch2-Background/scientific-interactions}
 
+\begin{figure} 
+\centering
+\hspace*{-4cm}
+\begin{minipage}{\linewidth}
+\begin{tikzpicture}[every annotation/.style = {draw, fill = white, font = \Large}]
+
+\path[mindmap,concept color=black!40,text=white, every node/.style={concept,circular drop shadow},  
+    root/.style    = {concept color=black!40,font=\Large\bfseries},
+    level 1 concept/.append style={level distance=15em,sibling angle=90,font=\large\bfseries},
+    level 2 concept/.append style={level distance=9em,font=\bfseries},
+  ]
+    node[root] at (0,0)  {Acting under uncertainty}[clockwise from=135]
+    child [concept color=red!90]  { node [concept] (PolicySearch) {Policy search} [clockwise from=180]
+          child { node (EM) {EM} }
+	  child { node (Gradient) {Gradient} }
+	  child { node (GradientFree) {Gradient free}
+        }
+    }
+    child [concept color=teal!90] { node {Planning}[clockwise from=50]
+        child { node (BRM) {Belief\\ road maps}}
+        child { node (OptimalControl) {Optimal control}}
+    }
+    child [concept color=orange!90] { node {Heuristics}[clockwise from=-10]
+        child { node {Info.\\Gain}}
+        child { node {QMDP}}
+        child { node {Myopic}}
+    }
+    child [concept color=blue!90] { node  [concept] (ValueIteration) {Value Iteration}  [clockwise from=-55]
+	child { node (Latent) {Latent\\ VI}}
+        child { node (ApproxVI) {Approx. VI}}
+        child { node (PBVI) {Point-base\\ VI}
+        }
+    };
+    
+    \begin{scope}[mindmap]
+      \node[fill={green!40!black},circle,level 1,color=green!40!black,text=white,font=\large\bfseries] (ActorCritic) at (-5,0) {Actor-critic};
+    \end{scope}
+  
+    \path (ActorCritic) to[circle connection bar switch color=from (green!40!black) to (blue!90)] (ValueIteration) ;
+    \path (ActorCritic) to[circle connection bar switch color=from (green!40!black) to (red!90)] (PolicySearch) ;
+  
+    \info[7]{Latent.south}{below,anchor=north}{
+      \item E-PCA
+    }
+    
+    \info[9]{ApproxVI.south}{below,anchor=north}{
+      \item MC-POMDP
+    }
+    
+    \info[9]{PBVI.south west}{below,anchor=north}{
+      \item SARSOP
+      \item HSVI2
+    }
+  
+    \info[7]{EM.south west}{below,anchor=north}{
+      \item PoWER
+    }
+  
+    \info[10]{Gradient.north west}{above,anchor=north,yshift=1cm}{
+      \item REINFORCE
+    }
+
+    \info[6]{ActorCritic.south west}{below,anchor=south,xshift=-1.5cm,yshift=0.5cm}{
+      \item eNAC
+    }
+    
+    \info[9]{OptimalControl.south}{below,anchor=north}{
+      \item B-LQR
+      \item LQG-MP
+    }
+    
+    \info[9]{BRM.north}{below,anchor=north,yshift=1.3cm}{
+      \item BRM
+      \item FIRM
+    }
+\end{tikzpicture}
+\end{minipage}
+\caption{Mind-map of AI and robotic methods for acting under uncertainty.}
+\end{figure}
+	
 % Vision and range sensors can estimate the pose of an object, but there is still residual uncertainty.
 % Tactile sensing, combined with proprioception, can give highly reliable inforation about object position.
 % Uncertainty due to sensor noise is particularly problematic for fine manipulation tasks[1], such as grasping 
@@ -929,7 +1008,7 @@ DARPA\footnote{https://www.youtube.com/watch?v=9Oav3JajR7Q} teams when faces wit
 % Explicitly incorporate shape uncertainties as constraints in grasp planning.  Takes both shape and contact uncertainty into consideration
 % 
 
-\section{Approach}\label{sec:approach}
+\subsection{Summary: literature}
 
 In the literature we characterised four approaches of how artificial agents have been programmed to reason under uncertainty. 
 
@@ -938,14 +1017,14 @@ When control algorithms were first being applied to mobile robotics uncertainty 
 MLS, Q-MDP and other techniques not fully discussed such as \textit{next best view} methods. Practically speaking 
 the computational resources at the time were too limited and it was unfeasible to solve optimally for a POMDP problem. 
 Also it is not clear at what time the robotic community started to apply results from operational research to robotics
-in the case of partially observability with respect to the state.
+in the case of state partially observability.
 Certainly it is not until the advent of the first point-based value iteration methods that there was a shift of interest 
-towards improving POMDP such that they could be applied to robotic domains (mobile \& manipulation). 
+towards improving POMDP solvers such that they could be applied to robotic domains (navigation \& manipulation). 
 When evaluated against heuristics methods it was clear that in some scenarios (Heaven \& Hell problem) 
 the POMDP solvers did far better. Value Iteration methods have not be widely used in cases where the action space 
 is continuous. There have been efforts to adapt them to continuous actions space, however there is yet no concrete evidence 
 that these methods scale well. If the robotic domain requires continuous actions then either policy search or optimal control 
-methods should be applied. Policy search methods were first considered since they are part of the markov decision process 
+methods are preferred. Policy search methods were first considered since they are part of the markov decision process 
 family which is within the POMDP framework.
 
 Policy search methods consider the uncertainty implicitly. These methods work 
@@ -955,20 +1034,75 @@ in the reviewed literature on policy search methods is predominantly characteris
 how well policy search methods would scale to situations in which there is a lot of uncertainty and so fare there has not 
 been a lot of emphasis on comparing policy search methods with heuristics. 
 
-Optimal control methods have recently started to gain traction since the addaptation of LQR to the belief state space. As for
-the case of policy search methods, the uncertainty is considered a Gaussian function, although recent research 
+Optimal control methods came later, after policy search, and have recently started to gain traction since the adaptation 
+of LQR to belief state spaces. As for policy search methods the uncertainty is considered Gaussian although recent research 
 has been addressing this. The advantage of optimal control with respect to policy search methods is that they are more 
-flexible since the objective function is computed online but at the expense of an increased computational cost.
+flexible since the objective function is resolved online. But at the expense of an increased computational cost.
 
-As for heuristics they are still actively being used in research and most successful applications in the DARPA robotic 
-challenge for instance use heuristics approaches. The probable reason is the volume of sensory information 
-and the size of the control architecture in robotic platforms competing does not leave room for anything else.  
+Heuristics are still actively being used in research and very successful applications in the DARPA robotic 
+challenge use heuristic approaches. The probable reason is the volume of sensory information 
+and the size of the control architecture in robotic platforms competing does not leave room for anything else. Especially  
+when considering project management constraints and reliability. That said, maybe there is no reason to use complicated 
+methods. We note that there has been a significant absence of comparison between optimal control, policy search 
+and heuristic problems on the same set of benchmark problems. 
 
+In Figure \ref{fig:mind_summary}, we summarise attributes we consider important in the four approaches we reviewed.
+We bring attention to the typical type of actions and problems which these methods address. Note that we consider both 
+Policy search and Value Iteration methods as being \textbf{off-line}. Although many authors say that the policy can be executed 
+at an time, the optimal solution is not attained until after many interactions with the environment. This is not the case for 
+Optimal Control and most Heuristic methods which give a solution a local optimal solution on the spot, which we consider to be 
+on-line methods.
 
+\begin{figure}[h]
+\centering
+\hspace*{2cm}
+\begin{minipage}{\linewidth}
+\begin{tikzpicture}[every annotation/.style = {draw, fill = white, font = \Large}]
 
-
-
-
+\path[mindmap,concept color=black!40,text=white, every node/.style={concept,circular drop shadow},  
+    root/.style    = {concept color=black!40,font=\Large\bfseries,scale=0.6},
+    level 1 concept/.append style={level distance=10em,sibling angle=90,font=\large\bfseries},
+    level 2 concept/.append style={level distance=9em,font=\bfseries},
+  ]
+  node[root] at (0,0)  {Acting under uncertainty}[clockwise from=135]
+    child [concept color=red!90]  	{ node [concept] (PolicySearch)   {Policy search} [clockwise from=180]    	}
+    child [concept color=teal!90] 	{ node [concept] (Planning)       {Planning}[clockwise from=50] 		}
+    child [concept color=orange!90] 	{ node [concept] (Heuristics)     {Heuristics}[clockwise from=-10]   		}
+    child [concept color=blue!90] 	{ node [concept] (ValueIteration) {Value Iteration}  [clockwise from=-55] 	};
+ 
+     \info[15]{PolicySearch.north}{left,anchor=north,yshift=2.1cm}{
+      \item local
+      \item manipulation, reflexes
+      \item continuous actions
+      \item off-line
+    }
+    
+    \info[15]{ValueIteration.south}{left,anchor=north}{
+      \item global
+      \item navigation
+      \item discrete actions
+      \item off-line
+    }
+    
+    \info[15]{Planning.north}{right,anchor=north,yshift=2.1cm}{
+      \item local
+      \item navigation
+      \item continuous actions
+      \item on-line
+    }
+ 
+     \info[15]{Heuristics.south}{left,anchor=north}{
+      \item local
+      \item navigation
+      \item macro actions
+      \item on-line
+    }
+\end{tikzpicture}
+\end{minipage}
+\caption{Summary of the aspects of the reviewed methods. Local refers to the optimality of the solution, on/off-line refers to if the solution is computed on the stop (on-line) or many
+simulations are required to obtain the solution (off-line).}
+\label{fig:mind_summary}
+\end{figure}
 
 The performance of all the methods mentioned in the literature review crucially depend on the quality of 
 \textbf{exemplary demonstrations}. For instance, PBVI require search heuristics to find an optimal set of belief points, 
@@ -978,33 +1112,81 @@ if you initialise your search method or algorithm with an initial solution which
 then which ever optimisation method used PBVI, Policy Search, Planning,... a solution should be obtained with 
 computational ease. The question is then: \textit{how to generate such exemplary demonstrations ?} 
 
-Programming by Demonstration (PbD) is a methodology whose aim is to achieve the transfer of knowledge and behaviour from a teacher to an apprentice. The teacher 
-is usually a human expert (this is not a constraint) who demonstrates to an apprentice how to accomplish a given task. In the case of articulated robots, 
-kinesthetic teaching is often preferred where the teacher would hold the robot which, is back drivable, and demonstrate to him trajectories. Other ways are possible
-such as using vision or a wearable interfaces which are common to both teacher and expert. We will not go into a great detailed review of PbD, for an in depth review 
-the reader is referred to \cite{Billard08chapter}, \cite{Billard_schol_2013}. However, a particular usage of PbD, which is of interest to use, is learning Dynamical Systems (DS).
-Learning dynamical systems from programming by demonstration is widely used approach in policy search methods. Most of the lately research in policy search methods reviewed 
-in Section \ref{lit:policy_search} use some form or another of PbD to initialise the policy. A human first shows a few repetitions of the 
-motion to be accomplished and typically a set of the state-velocity pairs are recorded $\{(x,\dot{x})\}$. Given these examples a stochastic policy $\policy(\dot{x},x)$ 
-usually represented by a regression function is learned form the recorded demonstrations. 
 
-We are considering scenarios which are continuous, sensory information is tactile and haptic and there the level of uncertainty 
-is extremely high. Policy search methods have been shown to be flexible and have been applied to high dimensional robotic problems, such as the full control 
-of a humanoid robot. However, the state space has always been considered fully observable or the MLS was used. Since that there is evidence 
-showing that humans and animals are far better at handling uncertainty than current planners and policies.
+
+\section{Approach}\label{sec:approach}
+
+As discussed in the literature summary, the initial data provided to the solvers plays an important role in the optimisation time and
+the quality of the final policy. A popular approach to provide initial data is a method known as Programming by Demonstration (PbD). 
+PbD is a methodology whose aim is to achieve the transfer of knowledge and behaviour from a teacher to an apprentice. The teacher 
+is usually a human expert (this is not a constraint) who demonstrates to an apprentice how to accomplish a given task. In the case of articulated robots, 
+kinesthetic teaching is often preferred. The teacher would hold the robot which, is back drivable, and demonstrate to him trajectories. Other ways are possible
+such as using vision or a wearable interfaces which are common to both teacher and expert. We will not go into a great detailed review of PbD, for an in depth review 
+the reader is referred to \cite{Billard08chapter}, \cite{Billard_schol_2013}. PbD has had many successful applications when the state space is considered observable
+but for the latent state case there are few examples. In this thesis we seek to demonstrate the applicability of the PbD framework to a partially observable setting.
+In this process we will demonstrate if human beings are suitable teachers. The PbD approach relies in general on the quality of the teacher. To be able to 
+study the ability of humans as teachers in a POMDP setting, we choose scenarios in which a high level of uncertainty is present. For this reason we restrict 
+ourselves to tasks in which the subjects can only use, proprioception and their sense of touch. In summary we seek to learn control policies for robots in 
+tasks which have the following problem specific attributes:
+
+
+\tikzstyle{fancy_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+\tikzstyle{fancytitle} = [fill=white,draw= black, text=white,rounded corners=1mm,text=black]
+
+\begin{center}
+\begin{tikzpicture}
+\node [fancy_box] (box){
+\begin{minipage}{0.6\textwidth}
+\begin{itemize}
+ \item Continuous action and state space.
+ \item High amount of non-Gaussian uncertainty.
+ \item Haptic \& tactile information
+\end{itemize}
+\end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Problem attributes};
+\end{tikzpicture}
+\end{center}
+
+Our approach relies on the assumption that humans are sufficiently good at handling uncertainty, that their behaviour can be learned and 
+transferred to an artificial agent. A traditional PbD approach has a teacher demonstrate a task during which the state of the robot
+(joint or Cartesian position) and applied actions (velocities) are recorded and stored as a dataset $D=\{(x,a)\}$. From this dataset a 
+regression policy is learned $\policy(x,a)$ which encapsulates the behaviour. The policy after being learned can be refined via policy search if wanted. 
+In a POMDP setting however, the state is not known and is instead represented by a belief state, $b$. In this thesis we follow the
+PbD approach, gather a set of demonstrations of belief states and actions $\{(b,a)\}$ and learn a generative distribution $\policy(b,a)$
+of the behaviour which can then transfer to a robot. There are a few caveats which make this task not as straight forward as it seams.
+
+\begin{itemize}
+ \item \textbf{The belief state is unknown}: When the robot apprentice is watching the human perform a search task under state uncertainty, it is 
+ unable to observe the belief state of the human. All that the agent can observe directly are the actions of the teacher. We make two assumptions, the first 
+ is that apprentice can infer the observations of the teacher by examining the teachers relation with the environment and secondly the initial uncertainty of the 
+ teacher is assumed to be known. From these two assumptions, the sequence of belief states can be inferred via a Bayesian filter. This implies that  the mental 
+ belief state of the human teacher is in fact known given the assumptions. We give more details in Chapter 3 on the validity of this assumption
+ in which will discuss the relation it has with Bayesian Theory of Mind (BoTM).
+ 
+ \item \textbf{Learning a policy as a function of non-parametric beliefs:} Given that we are considering high levels of uncertainty and type of observations are sparse
+ and in the form of contacts, no parametrisation of the belief in terms of a Gaussian function would be adequate. In this thesis all the considered beliefs will be from the non-parametric 
+ Bayesian filter family, such as particle filters, which allows for a lot of flexibility. Learning a policy directly as a function of a particle filter is intractable. First 
+ in non-parametric filters there is typically thousands of states and in efficient particle filters the number of parameters varies over time. We take a from of \textbf{belief compression}
+ in which transform the belief into the most likely state and the entropy. In this way the size of the belief state is fixed and low dimensional.
+ 
+ \item \textbf{Reactive policy}: The control loop which computes a belief state, compresses, and computes the 
+ resulting action to take should happen at around 10 to 100 Hz. This number may seem arbitrary but at a 100Hz 
+ 
+ \item \textbf{Scalable belief filter}:
+ 
+\end{itemize}
+
 
 \begin{figure}
  \centering
- \includegraphics[width=0.7\textwidth]{./ch2-Background/Figures/reasoning_uncertainty_concept1.pdf}
- \caption{Learning from Demonstration in POMDP setting.}
+ \includegraphics[width=\textwidth]{./ch2-Background/Figures/approach_concept.pdf}
+ \caption{Three stages of learning a POMDP policy from human demonstrations. \textbf{Demonstrations:} An apprentice is looking at a human teacher who is searching for the
+ alarm clock's button and his pair of socks. The agent assumes a priori the beliefs the human has with respect to his position and that of the alarm clock and socks, these are 
+ represented by the red, yellow and blue density functions. \textbf{Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs 
+ is compressed to a fixed parametrisation. \textbf{Learn policy:} A generative policy, $\policy(g(b),a)$ is learned from the actions and compressed beliefs and can be executed 
+ according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next 
+ belief state.}
 \end{figure}
-
-
-
-
-
-
-
-
 
 
