@@ -1117,18 +1117,23 @@ computational ease. The question is then: \textit{how to generate such exemplary
 \section{Approach}\label{sec:approach}
 
 As discussed in the literature summary, the initial data provided to the solvers plays an important role in the optimisation time and
-the quality of the final policy. A popular approach to provide initial data is a method known as Programming by Demonstration (PbD). 
+the quality of the final policy or plan. A popular approach known as Programming by Demonstration (PbD) is a way to provide the initial exemplary data. 
 PbD is a methodology whose aim is to achieve the transfer of knowledge and behaviour from a teacher to an apprentice. The teacher 
 is usually a human expert (this is not a constraint) who demonstrates to an apprentice how to accomplish a given task. In the case of articulated robots, 
-kinesthetic teaching is often preferred. The teacher would hold the robot which, is back drivable, and demonstrate to him trajectories. Other ways are possible
-such as using vision or a wearable interfaces which are common to both teacher and expert. We will not go into a great detailed review of PbD, for an in depth review 
+kinesthetic teaching is often preferred. The teacher would hold the robot which, is back drivable, and demonstrate to him trajectories. From the 
+trajectories the states and actions at each time step are recorded and stored in dataset $D=\{(x,a)\}$ which is then used to learn a 
+a policy $\policy(x,a)$, usually a regressor function, which encapsulates the taught behaviour. Other ways are possible such as using vision or a wearable interfaces which are common to both teacher and expert. We will not go into a great detailed review of PbD, for an in depth review 
 the reader is referred to \cite{Billard08chapter}, \cite{Billard_schol_2013}. PbD has had many successful applications when the state space is considered observable
-but for the latent state case there are few examples. In this thesis we seek to demonstrate the applicability of the PbD framework to a partially observable setting.
-In this process we will demonstrate if human beings are suitable teachers. The PbD approach relies in general on the quality of the teacher. To be able to 
-study the ability of humans as teachers in a POMDP setting, we choose scenarios in which a high level of uncertainty is present. For this reason we restrict 
-ourselves to tasks in which the subjects can only use, proprioception and their sense of touch. In summary we seek to learn control policies for robots in 
-tasks which have the following problem specific attributes:
+but for the latent state case there are very few examples. 
 
+In this thesis we apply the PbD framework to a partially observable setting; we want humans to teach robots how to act under uncertainty.
+We know that generally speaking we are better at handling uncertainty than artificial agents, especially in haptic and tactile tasks. 
+A hypothesis for this observation is probably that our perception capabilities are much higher and acute than 
+current robotic software and hardware systems.
+To be able to study the ability of humans as teachers in a POMDP setting, we choose scenarios in which a high level of uncertainty is present. For 
+this reason we restrict ourselves to tasks in which the subjects can only use, their sense of touch. We namely consider \textbf{search tasks} in 
+which a human is searching for an object whilst \textbf{blindfolded}. In summary we seek to learn control policies for robots in 
+tasks which have the following problem specific attributes:
 
 \tikzstyle{fancy_box}  = [draw=black, fill=blue!20, very thick,  rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
 \tikzstyle{fancytitle} = [fill=white,draw= black, text=white,rounded corners=1mm,text=black]
@@ -1138,9 +1143,10 @@ tasks which have the following problem specific attributes:
 \node [fancy_box] (box){
 \begin{minipage}{0.6\textwidth}
 \begin{itemize}
+ \item Blindfolded search tasks, no vision.
+ \item Sparse haptic and tactile information.
  \item Continuous action and state space.
  \item High amount of non-Gaussian uncertainty.
- \item Haptic \& tactile information
 \end{itemize}
 \end{minipage}
 };
@@ -1148,45 +1154,68 @@ tasks which have the following problem specific attributes:
 \end{tikzpicture}
 \end{center}
 
-Our approach relies on the assumption that humans are sufficiently good at handling uncertainty, that their behaviour can be learned and 
-transferred to an artificial agent. A traditional PbD approach has a teacher demonstrate a task during which the state of the robot
-(joint or Cartesian position) and applied actions (velocities) are recorded and stored as a dataset $D=\{(x,a)\}$. From this dataset a 
-regression policy is learned $\policy(x,a)$ which encapsulates the behaviour. The policy after being learned can be refined via policy search if wanted. 
-In a POMDP setting however, the state is not known and is instead represented by a belief state, $b$. In this thesis we follow the
-PbD approach, gather a set of demonstrations of belief states and actions $\{(b,a)\}$ and learn a generative distribution $\policy(b,a)$
-of the behaviour which can then transfer to a robot. There are a few caveats which make this task not as straight forward as it seams.
+In our approach, the robot apprentice observes the human teacher demonstrate a search task. As the human teacher searches, he makes contact with 
+various aspects of the environment trying to localise himself whilst looking for the object in question. During the demonstration the apprentice 
+infers the humans beliefs by observing his actions and stores them into a dataset $D = \{(b,a)\}$. Given this belief-action dataset we learn a 
+generative distribution $\policy(b,a)$ of the behaviour exhibited during the search which is then transfer to the robot apprentice.  In Figure
+\ref{fig:belief-pipeline} we illustrate the PbD-POMDP data pipeline.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.8\textwidth]{./ch2-Background/Figures/belief_pipeline.pdf}
+ \caption{Three steps in learning a POMDP policy from human demonstrations: First gather the belief-action dataset, second compress the beliefs and third 
+ learn a generative policy.}
+ \label{fig:belief-pipeline}
+\end{figure}
+
+This is the general 
+concept but there are a few caveats which make this task not as straight forward as it seems.
 
 \begin{itemize}
  \item \textbf{The belief state is unknown}: When the robot apprentice is watching the human perform a search task under state uncertainty, it is 
- unable to observe the belief state of the human. All that the agent can observe directly are the actions of the teacher. We make two assumptions, the first 
- is that apprentice can infer the observations of the teacher by examining the teachers relation with the environment and secondly the initial uncertainty of the 
+ unable to observe the belief state of the human. All that the agent can observe directly are the actions of the teacher. We make \textbf{two assumptions}, the first 
+ is that the apprentice can infer the observations of the teacher by examining the teachers relation with the environment and secondly the initial uncertainty of the 
  teacher is assumed to be known. From these two assumptions, the sequence of belief states can be inferred via a Bayesian filter. This implies that  the mental 
  belief state of the human teacher is in fact known given the assumptions. We give more details in Chapter 3 on the validity of this assumption
- in which will discuss the relation it has with Bayesian Theory of Mind (BoTM).
+ and discuss their relation to Bayesian Theory of Mind (BoTM).
  
  \item \textbf{Learning a policy as a function of non-parametric beliefs:} Given that we are considering high levels of uncertainty and type of observations are sparse
  and in the form of contacts, no parametrisation of the belief in terms of a Gaussian function would be adequate. In this thesis all the considered beliefs will be from the non-parametric 
  Bayesian filter family, such as particle filters, which allows for a lot of flexibility. Learning a policy directly as a function of a particle filter is intractable. First 
  in non-parametric filters there is typically thousands of states and in efficient particle filters the number of parameters varies over time. We take a from of \textbf{belief compression}
  in which transform the belief into the most likely state and the entropy. In this way the size of the belief state is fixed and low dimensional.
- 
- \item \textbf{Reactive policy}: The control loop which computes a belief state, compresses, and computes the 
- resulting action to take should happen at around 10 to 100 Hz. This number may seem arbitrary but at a 100Hz 
- 
- \item \textbf{Scalable belief filter}:
- 
 \end{itemize}
-
-
+ 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{./ch2-Background/Figures/approach_concept.pdf}
- \caption{Three stages of learning a POMDP policy from human demonstrations. \textbf{Demonstrations:} An apprentice is looking at a human teacher who is searching for the
- alarm clock's button and his pair of socks. The agent assumes a priori the beliefs the human has with respect to his position and that of the alarm clock and socks, these are 
+ \includegraphics[width=\textwidth]{./ch2-Background/Figures/human_search.pdf}
+ \caption{\textbf{Demonstrations:} An apprentice is looking at a human teacher who is searching for the
+ alarm clock's button and his pair of socks. The apprentice assumes a priori the beliefs the human has with respect to his position and that of the alarm clock and socks, these are 
  represented by the red, yellow and blue density functions. \textbf{Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs 
  is compressed to a fixed parametrisation. \textbf{Learn policy:} A generative policy, $\policy(g(b),a)$ is learned from the actions and compressed beliefs and can be executed 
  according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next 
  belief state.}
+\end{figure}
+
+\begin{itemize}
+
+ \item \textbf{Reactive policy}: The control loop cycle, which computes the belief state, compresses it, and computes the 
+ resulting action to take, should happen at around 10 to 100 Hz. This range may seem arbitrary but is in fact based on the humans control ability which at the highest
+ cognitive level a delay in response is around 100ms and at the lowest reflex level at around 10-20 ms \cite{Biomechanics_2009}. This is to draw attention that the 
+ full control loop, belief filtering, compression and action prediction should all happen within this range.
+ 
+ \item \textbf{Scalable belief filter}: In scenarios in which there are multiple objects being searched for by a human teacher, the joint belief distribution 
+ of a non-parametric Bayesian state space filter will become quickly computationally intractable. This motivates the development of a new type of SLAM filter methods
+ which can scale in situations in which observations are very sparse.
+\end{itemize}
+
+All of the points above will be the motivation behind many of the decision choices we take and demonstrate in the subsequent chapters, such to be able 
+
+
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.8\textwidth]{./ch2-Background/Figures/control_loop.pdf}
 \end{figure}
 
 
