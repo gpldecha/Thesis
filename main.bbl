@@ -1,4 +1,4 @@
-\begin{thebibliography}{78}
+\begin{thebibliography}{77}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -343,15 +343,6 @@ J.~Nunez-Varela, B.~Ravindran, and J.~L. Wyatt.
 \newblock In \emph{Robotics and Automation (ICRA), 2012 IEEE International
   Conference on}, pages 4444--4449, May 2012.
 \newblock \doi{10.1109/ICRA.2012.6225226}.
-
-\bibitem[Papadimitriou and Tsitsiklis(1987)]{psace_mdp_1987}
-Christos Papadimitriou and John~N. Tsitsiklis.
-\newblock The complexity of markov decision processes.
-\newblock \emph{Math. Oper. Res.}, 12\penalty0 (3):\penalty0 441--450, August
-  1987.
-\newblock ISSN 0364-765X.
-\newblock \doi{10.1287/moor.12.3.441}.
-\newblock URL \url{http://dx.doi.org/10.1287/moor.12.3.441}.
 
 \bibitem[Peters and Schaal(2008)]{NAC_2008}
 Jan Peters and Stefan Schaal.

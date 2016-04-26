@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 295 of file main.aux
+---line 296 of file main.aux
  : \bibdata{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
  :                                                                                                                                            ,imitation_learning.bib}
 I'm skipping whatever remains of this command
@@ -42,45 +42,45 @@ Warning--can't use both author and editor fields in Hauser_2011
 Warning--empty journal in DRQ_AAAI_2015
 Warning--can't use both author and editor fields in RL_book_sa
 Warning--empty publisher in Biomechanics_2009
-You've used 78 entries,
+You've used 77 entries,
             2773 wiz_defined-function locations,
-            1190 strings with 23854 characters,
-and the built_in function-call counts, 44854 in all, are:
-= -- 4185
-> -- 2451
-< -- 75
-+ -- 820
-- -- 740
-* -- 3630
-:= -- 6551
-add.period$ -- 334
-call.type$ -- 78
-change.case$ -- 470
-chr.to.int$ -- 76
-cite$ -- 161
-duplicate$ -- 2110
-empty$ -- 3601
-format.name$ -- 862
-if$ -- 9827
+            1181 strings with 23653 characters,
+and the built_in function-call counts, 44355 in all, are:
+= -- 4132
+> -- 2430
+< -- 74
++ -- 813
+- -- 734
+* -- 3586
+:= -- 6474
+add.period$ -- 328
+call.type$ -- 77
+change.case$ -- 465
+chr.to.int$ -- 75
+cite$ -- 159
+duplicate$ -- 2090
+empty$ -- 3561
+format.name$ -- 853
+if$ -- 9722
 int.to.chr$ -- 3
 int.to.str$ -- 1
-missing$ -- 82
-newline$ -- 484
-num.names$ -- 327
-pop$ -- 965
+missing$ -- 81
+newline$ -- 476
+num.names$ -- 323
+pop$ -- 960
 preamble$ -- 1
-purify$ -- 397
+purify$ -- 393
 quote$ -- 0
-skip$ -- 1689
+skip$ -- 1674
 stack$ -- 0
-substring$ -- 1957
-swap$ -- 523
+substring$ -- 1930
+swap$ -- 521
 text.length$ -- 44
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 831
+type$ -- 820
 warning$ -- 5
-while$ -- 368
+while$ -- 363
 width$ -- 0
-write$ -- 1206
+write$ -- 1187
 (There were 6 error messages)
