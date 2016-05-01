@@ -3,21 +3,62 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 296 of file main.aux
- : \bibdata{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
- :                                                                                                                                            ,imitation_learning.bib}
+---line 414 of file main.aux
+ : \bibdata{bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
+ :                                                                                                                                                                       ,imitation_learning.bib,bib/ch3-citations.bib}
 I'm skipping whatever remains of this command
-Database file #1: bib/RL.bib.bib
-Database file #2: bib/pomdp.bib.bib
-Database file #3: bib/cpomdp.bib.bib
-Database file #4: bib/citations.bib.bib
+Database file #1: bib/search_human_blind.bib.bib
+Database file #2: bib/RL.bib.bib
+Database file #3: bib/pomdp.bib.bib
+Database file #4: bib/cpomdp.bib.bib
+Database file #5: bib/citations.bib.bib
+Repeated entry---line 559 of file bib/citations.bib.bib
+ : @incollection{BillardCDS08
+ :                           ,
+I'm skipping whatever remains of this entry
 Warning--string name "scholarpedia" is undefined
 --line 591 of file bib/citations.bib.bib
+Repeated entry---line 667 of file bib/citations.bib.bib
+ : @article{Arul_Mask_Clap_2002
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 725 of file bib/citations.bib.bib
+ : @article{Bake_Tene_Saxe_2006
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 877 of file bib/citations.bib.bib
+ : @inproceedings{DiffEntropyHuber2008
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1123 of file bib/citations.bib.bib
+ : @article{Richardson1_Baker1_Tenenbaum1_Saxe1_2012
+ :                                                  ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 1283 of file bib/citations.bib.bib
  : @inproceedings{stachniss05robotics
  :                                   ,
 I'm skipping whatever remains of this entry
-Database file #5: bib/DT.bib.bib
+Repeated entry---line 1715 of file bib/citations.bib.bib
+ : @article{Hamner_2006_5810
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1739 of file bib/citations.bib.bib
+ : @book{GeorgiosLidoris
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1753 of file bib/citations.bib.bib
+ : @article{Kasper2001153
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1773 of file bib/citations.bib.bib
+ : @article{Nicolescu01learningand
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1793 of file bib/citations.bib.bib
+ : @article{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain
+ :                                                                   ,
+I'm skipping whatever remains of this entry
+Database file #6: bib/DT.bib.bib
 Repeated entry---line 1 of file bib/DT.bib.bib
  : @book{VonNeumann1944
  :                     ,
@@ -26,12 +67,20 @@ Repeated entry---line 11 of file bib/DT.bib.bib
  : @article{Bernoulli1954
  :                       ,
 I'm skipping whatever remains of this entry
-Database file #6: bib/ToM.bib.bib
+Database file #7: bib/ToM.bib.bib
+Repeated entry---line 21 of file bib/ToM.bib.bib
+ : @article{Bake_Tene_Saxe_2006
+ :                             ,
+I'm skipping whatever remains of this entry
 Repeated entry---line 31 of file bib/ToM.bib.bib
  : @article{Bake_Saxe_Tene_2011
  :                             ,
 I'm skipping whatever remains of this entry
-Database file #7: bib/spatial_navigation.bib.bib
+Repeated entry---line 40 of file bib/ToM.bib.bib
+ : @article{Richardson1_Baker1_Tenenbaum1_Saxe1_2012
+ :                                                  ,
+I'm skipping whatever remains of this entry
+Database file #8: bib/spatial_navigation.bib.bib
 I was expecting a `,' or a `}'---line 127 of file bib/spatial_navigation.bib.bib
  :  
  :  journal = {Cognitive Psychology},
@@ -40,47 +89,51 @@ I'm skipping whatever remains of this entry
 Warning--empty journal in Billard_schol_2013
 Warning--can't use both author and editor fields in Hauser_2011
 Warning--empty journal in DRQ_AAAI_2015
+Warning--empty journal in human_stsm_2015
+Warning--empty year in human_stsm_2015
+Warning--empty year in human_stsm_2015
+Warning--can't use both author and editor fields in GeorgiosLidoris
 Warning--can't use both author and editor fields in RL_book_sa
 Warning--empty publisher in Biomechanics_2009
-You've used 77 entries,
+You've used 96 entries,
             2773 wiz_defined-function locations,
-            1181 strings with 23653 characters,
-and the built_in function-call counts, 44355 in all, are:
-= -- 4132
-> -- 2430
-< -- 74
-+ -- 813
-- -- 734
-* -- 3586
-:= -- 6474
-add.period$ -- 328
-call.type$ -- 77
-change.case$ -- 465
-chr.to.int$ -- 75
-cite$ -- 159
-duplicate$ -- 2090
-empty$ -- 3561
-format.name$ -- 853
-if$ -- 9722
-int.to.chr$ -- 3
+            1313 strings with 28065 characters,
+and the built_in function-call counts, 53915 in all, are:
+= -- 4986
+> -- 2969
+< -- 84
++ -- 996
+- -- 897
+* -- 4418
+:= -- 7930
+add.period$ -- 402
+call.type$ -- 96
+change.case$ -- 575
+chr.to.int$ -- 93
+cite$ -- 201
+duplicate$ -- 2515
+empty$ -- 4348
+format.name$ -- 1041
+if$ -- 11757
+int.to.chr$ -- 4
 int.to.str$ -- 1
-missing$ -- 81
-newline$ -- 476
-num.names$ -- 323
-pop$ -- 960
+missing$ -- 100
+newline$ -- 587
+num.names$ -- 401
+pop$ -- 1169
 preamble$ -- 1
-purify$ -- 393
+purify$ -- 485
 quote$ -- 0
-skip$ -- 1674
+skip$ -- 1986
 stack$ -- 0
-substring$ -- 1930
-swap$ -- 521
-text.length$ -- 44
+substring$ -- 2313
+swap$ -- 578
+text.length$ -- 47
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 820
-warning$ -- 5
-while$ -- 363
+type$ -- 1024
+warning$ -- 9
+while$ -- 438
 width$ -- 0
-write$ -- 1187
-(There were 6 error messages)
+write$ -- 1464
+(There were 18 error messages)

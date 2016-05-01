@@ -46,6 +46,13 @@
 %\usepackage[paperwidth=25cm,paperheight=22cm,left=1cm,top=1cm]{geometry}
 \usetikzlibrary{mindmap,shadows}
 
+\RequirePackage{natbib}
+\usepackage[utf8]{inputenc} %unicode support
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.9}
+
+
+
 
 % Information boxes
 \newcommand*{\info}[4][16.3]{%
@@ -75,7 +82,7 @@
 	\newcommand{\gDisplayIntroduction}{}
 	\newcommand{\gDisplayBackground}{}
 
-	%\newcommand{\gDisplayCDS}{}
+	\newcommand{\gDisplaySearch}{}
 	%\newcommand{\gDisplayMultiAtt}{}
 	%\newcommand{\gDisplayASVM}{}
 	%\newcommand{\gDisplayRRT}{}
@@ -128,7 +135,7 @@
 
 \ifdefined  	\gDisplayIntroduction 		\input{ch1-Introduction/ch1-Introduction.tex} \fi
 \ifdefined  	\gDisplayBackground		\input{ch2-Background/ch2-Background.tex} \fi
-\ifdefined	\gDisplaySearch			\input{ch3-Search} 	 \fi
+\ifdefined	\gDisplaySearch			\input{ch3-Search/ch3-Learning_search_behaviour_from_humans.tex}  \fi
 \ifdefined	\gDisplayMLMF	 		\input{ch4-MLMF}	 \fi
 \ifdefined	\gDisplayPegSocket		\input{ch5-PegSocket} 	 \fi
 \ifdefined	\gDisplayConclusions 		\input{ch6-Conclusions}  \fi
@@ -138,7 +145,7 @@
 
 \ifdefined \gDisplayBibliography
 	\bibliographystyle{plainnat}
-	\bibliography{bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib}
+	\bibliography{bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}
 \fi
 
 \end{document}

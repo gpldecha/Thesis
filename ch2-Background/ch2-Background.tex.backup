@@ -1,14 +1,48 @@
 \chapter{Background}
+%
+%	Need to make this stick with the previous Chapter !
+%
+%	-> 
+%
+%
+
+
+
+In this chapter we will study the applicability of the Programming by Demonstration framework in a partially observable setting 
+
+
+%\begin{abstract} % abstract
+%Decision making and planning for which the state information is only partially available is problem
+%faced by all forms of intelligent entities they being either virtual, synthetic or biological. The standard
+%approach to mathematically solving such a decisional problem is to formulate it as a Partially Observable
+%Decision Process (POMDP) and apply the same optimisation techniques used in the Markov Decision Process (MDP). However,
+%applying naively the same methodology to solve MDPs as with POMDPs makes the problem computationally intractable. To address this problem,
+%we take a Programming by Demonstration approach to provide a solution to the POMDP in continuous state and action space.
+%In this work we model the decision making process followed by humans when searching blindly for an object on a table. 
+%We show that by representing the belief of the human's position in the
+%environment by a Particle Filter (PF) and learning a mapping from this belief to their end-effector velocities with a 
+%Gaussian Mixture Model (GMM), we can model the human's search process and reproduce it for any agent. 
+%We further categorize the type of behaviours demonstrated by humans as being either risk-prone or risk-averse and find that more than 70\% of 
+%the human searches were considered to be risk-averse.
+%
+%We contrast the performance of this human-inspired search model with respect to Greedy and Coastal Navigation search methods. 
+%Our evaluation metric is the distance taken to reach the goal and how each method minimises the uncertainty.
+%We further analyse the control policy of the Coastal Navigation and GMM search models and argue that taking 
+%into account uncertainty is more efficient with respect to distance travelled to reach the goal.
+%\end{abstract}
+
+
 
 % Introduce what is planning under uncertainty
 Acting under uncertainty is central to AI and robotics and has been an active area of research for decades. It
 is an umbrella term which encompasses a wide spectrum of fields:  \textit{economics}, \textit{psychology}, 
 \textit{cognitive science}, \textit{neuroscience}, \textit{robotics} and \textit{artificial intelligence}.
 The work in this thesis relies on results from all of the aforementioned fields with varying degree.
-Cognitive and neuroscience bring justification into the way we represent our beliefs and how we act accordingly. 
-AI and robotics provide computational models and optimisation methods some of which are biologically inspired.
+Cognitive and neuroscience bring justification and biological inspiration in the way we represent our beliefs and how we act accordingly. 
+AI and robotics provide computational models and optimisation methods some of which are biologically inspired to be able to solve decision
+problems given uncertainty.
 Because of the vast spectrum of topics we cannot do justice to all them and we will focus on works which are directly 
-relevant to the problems we are addressing in this thesis.
+relevant to the problems we are addressing in this thesis, \textit{which is how to teach a robotic apprentice to act under uncertainty}.
 In this chapter we cover the following topics in the presented order: Decision Theory (DT), Markov Decision Process (MDP), 
 Partially Observable Markov Decision Process (POMDP), a literature review and the approach taken 
 in this thesis.\\[0.05cm]
@@ -28,9 +62,9 @@ in this thesis.\\[0.05cm]
  the Bellman optimal equation which is one of the most important result to date in sequential decision processes.
  \item \textbf{Section} \ref{sec:lit_rev}, provides an in depth literature review with the latest results in AI \& robotics in the subject 
 of planning and acting under uncertainty. We draw attention to the different approaches to solving this problem whilst pointing out
-their advantages and weaknesses.
- \item \textbf{Section} \ref{sec:approach}, summaries what has been achieved so fare, what are the open problems and how this 
- thesis contributes and complements the field. 
+their advantages and weaknesses. We summaries what has been achieved so fare and what are the open problems.
+ \item \textbf{Section} \ref{sec:approach}, the core approach taken by this thesis is detailed. We outline how we teach a robotic apprentice 
+ to act under uncertainty.
 \end{itemize}
 
 
@@ -184,22 +218,22 @@ software agents.
 \begin{tabular}{|l|p{9cm}|} 
 \hline
     \textbf{Notation} 			 	& \textbf{Definitions} \\ \hline\hline
-    $x_t \in \mathbb{R}^3$ 		 	& Cartesian state space position of the agent.\\
+    $x_t \in \mathbb{R}^3$ 		 	& Cartesian state space position of the agent end-effector.\\
     $y_t \in \mathbb{R}^{M}$		 	& Observation/measurement from the agents sensors.\\
-    $a_t \in \mathbb{R}^3$		 	& Action, usually the Cartesian velocity of the end-effector of the agent.\\
+    $a_t \in \mathbb{R}^3$		 	& Action, Cartesian velocity of the end-effector of the agent.\\
     $X,Y,A$				 	& State, observation and action random variables where $x$, $y$ and $a$ are realisation.\\
     $p(x_t)$ 					& Short hand notation for a probability density function, $p_{X}(x_t)$.\\
     $x_{0:t}$					& $\{x_0,x_1,\cdots,x_{t-1},x_t\}$, history up to time $t$.\\
     $p(x_t|y_{0:t},a_{0:t})$	 		& Filtered probability distribution over the state space given the action and observation history.\\
-    $b_t \in \mathbb{R}^{L}$			& Belief state, a function of the filtered distribution 
-						 $b(p(x_t|y_{0:t},a_{0:t}))$ which will be written as $b_t$ for simplicity.\\
-    $\policy(a_t|\cdot)$ 			& Probabilistic policy, $a_t \sim \pi_{\boldsymbol{\theta}}(a_t|\cdot)$ \\
-    $u(x) \in \mathbb{R}$			& Utility function, returns the utility of being in state $x$. It can also be dependent on the action, $r(x,a)$.\\
-    $\gamma \in [0,1)$				& Discount factor, the closer to one the more the later utilities are considered. When set to zero, only immediate rewards are 
+    $b_t$					& Belief state is the filtered state space distribution
+						 $b_t = p(x_t|y_{0:t},a_{0:t})$ which will be written as $b_t$ for simplicity.\\
+    $\policy(a_t|\cdot)$ 			& Parametric probabilistic policy, $a_t \sim \pi_{\boldsymbol{\theta}}(a_t|\cdot)$, where $\boldsymbol{\theta}$ is the parameters.\\
+    $u(x) \in \mathbb{R}$			& Utility function, returns the utility of being in state $x$. It can also be dependent on the action, $u(x,a)$.\\
+    $\gamma \in [0,1)$				& Discount factor, the closer to one the more the later utilities are considered. When set to zero, only immediate utilities are 
 						  considered which would result in a myopic greedy agent.\\
-    $p(x_{t+1}|x_t,a_t)$			& State transition function, returns the likelihood/probability of reaching state $x_{t+1}$ given that action $a_t$ is applied in state $x_t$.\\	
+    $p(x_{t+1}|x_t,a_t)$			& State transition model, returns the likelihood/probability of reaching state $x_{t+1}$ given that action $a_t$ is applied in state $x_t$.\\	
     $p(y_t|x_t)$				& Observation/measurement model, returns the likelihood/probability of observing $y_t$ given that the agent is in state $x_t$.\\
-    $\tau(b_{t-1}(x),u_{t-1},y_t)$		& Updates a belief given a motion and observation. It makes use of both the motion and observation functions. The state space estimation function, $\tau$, can be any kind of state space filter such as an Extended Kalman Filter (EKF) or a Particle Filter (PF).
+    $\tau(b_{t},u_{t},y_t)$		& Updates a belief given a motion and observation. It makes use of both the motion and observation functions. The state space estimation function, $\tau$, can be any kind of state space filter such as an Extended Kalman Filter (EKF) or a Particle Filter (PF).
     \\ \hline
 \end{tabular}
 \end{center}
@@ -500,7 +534,7 @@ Given such complexity it is hard to see POMDPs being actually usable for real wo
 techniques have emerged with some being very successful. In the next section, we survey the literature 
 and the developments of approximate POMDP algorithms and their applications.
 
-P-SPACE \cite{psace_mdp_1987} complete
+%P-SPACE \cite{psace_mdp_1987} complete
 
 %Before this point and before only value iteration on this subset instead of considering all beliefs.  If you have a $10 \times 10$ gird, this results in a total of a $100$ states %and a belief state of a $100$ dimensions! The PBVI approach initiated a renewed effort in 
 %porting VI to POMDPs with larger and larger state spaces
@@ -521,11 +555,18 @@ P-SPACE \cite{psace_mdp_1987} complete
 
 \section{Literature review}\label{sec:lit_rev}
 
-We review the latest methods of solving sequential decision problems under uncertainty. 
-This is an extremely dense and spread out area of research, no doubt because of its 
-importance. If uncertainty is not considered adequately, the control policy 
-risks being suboptimal or lead to drastic failure. 
+We review the latest methods on \textit{Acting under uncertainty}. This is an extremely dense and spread out area of research, 
+no doubt because of its importance. If uncertainty is not considered adequately, the control policy risks being suboptimal or lead to drastic failure. 
+We will focus the review four subsections in the following order: 
 
+\begin{itemize}
+ \item Value Iteration (VI) \ref{lit:VI}
+ \item Policy Search \ref{lit:policy_search}
+ \item Planning \ref{lit:Planning}
+ \item Heuristics \ref{lit:heuristics}
+\end{itemize}
+
+with an emphasis on robotic applications. In Figure \ref{fig:mindmap} we illustrate graphically these four topics which their associated sub-fields.
 
 \begin{figure} 
 \centering
@@ -605,6 +646,7 @@ risks being suboptimal or lead to drastic failure.
 \end{tikzpicture}
 \end{minipage}
 \caption{Mind-map of AI and robotic methods for acting under uncertainty.}
+\label{fig:mindmap}
 \end{figure}
 	
 % Vision and range sensors can estimate the pose of an object, but there is still residual uncertainty.
@@ -839,7 +881,7 @@ of re-usability. These are the \textbf{planning} methods.
 %minimise the number of cost function evaluations. Minimise uncertainty about its pose (location and heading). Policy is %parameterised by a finite set of way points.	
 %Same cost function as RL, but cost is with respect to the map (doing SLAM). Cannot use LQG to solve this problem 
 
-\subsection{Planning}
+\subsection{Planning}\label{lit:Planning}
 
 Belief space planners leverage the power of traditional planning and optimal control techniques such as: A*, D*, RRT, Dijkstra and LQR to the belief state space. 
 In most of the following techniques (with a few exceptions), a fundamental assumption made is that the motion and measurement models are Gaussian 
@@ -914,7 +956,7 @@ can be used in different environments, as oppose to a policy which would have to
 %Since the measurement term is unknown in advance the belief dynamics are stochastic.
 % Do value iteration backwards in time to find a locally optimal control policy
 
-\subsection{Heuristics}
+\subsection{Heuristics}\label{lit:heuristics}
 
 The methods discussed so far can be considered computationally expensive and/or constraining in the type 
 of belief which can be used (typically a uni-modal Gaussian). If the problem domain is more complex or 
@@ -1017,13 +1059,13 @@ When control algorithms were first being applied to mobile robotics uncertainty 
 MLS, Q-MDP and other techniques not fully discussed such as \textit{next best view} methods. Practically speaking 
 the computational resources at the time were too limited and it was unfeasible to solve optimally for a POMDP problem. 
 Also it is not clear at what time the robotic community started to apply results from operational research to robotics
-in the case of state partially observability.
+in the case of partial observability.
 Certainly it is not until the advent of the first point-based value iteration methods that there was a shift of interest 
 towards improving POMDP solvers such that they could be applied to robotic domains (navigation \& manipulation). 
 When evaluated against heuristics methods it was clear that in some scenarios (Heaven \& Hell problem) 
-the POMDP solvers did far better. Value Iteration methods have not be widely used in cases where the action space 
+the POMDP solvers did far better. Value Iteration methods have not been widely used in cases where the action space 
 is continuous. There have been efforts to adapt them to continuous actions space, however there is yet no concrete evidence 
-that these methods scale well. If the robotic domain requires continuous actions then either policy search or optimal control 
+that these methods scale. If the robotic domain requires continuous actions then either policy search or optimal control 
 methods are preferred. Policy search methods were first considered since they are part of the markov decision process 
 family which is within the POMDP framework.
 
@@ -1049,9 +1091,9 @@ and heuristic problems on the same set of benchmark problems.
 In Figure \ref{fig:mind_summary}, we summarise attributes we consider important in the four approaches we reviewed.
 We bring attention to the typical type of actions and problems which these methods address. Note that we consider both 
 Policy search and Value Iteration methods as being \textbf{off-line}. Although many authors say that the policy can be executed 
-at an time, the optimal solution is not attained until after many interactions with the environment. This is not the case for 
-Optimal Control and most Heuristic methods which give a solution a local optimal solution on the spot, which we consider to be 
-on-line methods.
+at any time, the optimal solution is not attained until after many interactions with the environment. This is not the case for 
+Optimal Control and most Heuristic methods which give a solution on the spot, which we consider to be 
+\textbf{on-line} methods.
 
 \begin{figure}[h]
 \centering
@@ -1180,11 +1222,11 @@ concept but there are a few caveats which make this task not as straight forward
  belief state of the human teacher is in fact known given the assumptions. We give more details in Chapter 3 on the validity of these assumptions
  and discuss their relation to Bayesian Theory of Mind (BoTM).
  
- \item \textbf{Learning a policy as a function of non-parametric beliefs:} Given that we are considering high levels of uncertainty and type of observations are sparse
- and in the form of contacts, no parametrisation of the belief in terms of a Gaussian function would be adequate. In this thesis all the considered beliefs will be from the non-parametric 
+ \item \textbf{Learning a policy as a function of non-parametric beliefs:} Given that we are considering high levels of uncertainty and the 
+ observations are sparse, in the form of contacts, no parametrisation of the belief in terms of a Gaussian function would be adequate. In this thesis all the considered beliefs will be from the non-parametric 
  Bayesian filter family, such as particle filters, which allows for a lot of flexibility. Learning a policy directly as a function of a particle filter is intractable. First 
- in non-parametric filters there is typically thousands of states and in efficient particle filters the number of parameters varies over time. We take a from of \textbf{belief compression}
- in which transform the belief into the most likely state and the entropy. In this way the size of the belief state is fixed and low dimensional.
+ in non-parametric filters there is typically thousands of states and in efficient particle filters the number of parameters varies over time.
+ We \textbf{compress the belief} into the most likely state and the entropy. In this way the size of the belief state is fixed and low dimensional.
 \end{itemize}
  
 \begin{figure}
@@ -1216,13 +1258,13 @@ observe he must infer the beliefs of the teacher (red, blue and orange probabili
  which can scale in situations in which observations are very sparse.
 \end{itemize}
 
-All of the points above will be the motivation behind many of the decision choices we take and demonstrate in the subsequent chapters, such to be able 
-to successfully teach robotic systems to act as humans given a state of partial observability.
+All of the above points are the motivation behind many of the decision choices we take and use in the subsequent chapters. 
+They are necessary such to be able to successfully teach robotic systems to act as humans in partial observable states.
 
 \begin{figure}
  \centering
  \includegraphics[width=0.4\textwidth]{./ch2-Background/Figures/control_loop.pdf}
- \caption{Control architecture of the robot. The control loop should run between 10-100Hz. Given an applied action, the world returns an observation 
+ \caption{Control architecture of the apprentice robot. The control loop should run between 10-100Hz. Given an applied action, the world returns an observation 
  which is integrated by the State Estimator (SE) to give the current belief. The belief is the compressed and given as input to the policy.}
  \label{fig:control_architecture}
 \end{figure}
