@@ -378,7 +378,7 @@ which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_
 \begin{tikzpicture}
 \node [white_box] (box){%
      \begin{minipage}{0.9\textwidth}
-     The Bayesian filter turns a prior probability distribution over the state space, $p(x_t|y_{0:t-1},a_{0:t-1})$,
+     The Bayesian filter turns a prior probability distribution over the state space, $p(x_{t-1}|y_{0:t-1},a_{0:t-1})$,
   to a posterior $p(x_t|y_{0:t},a_{0:t})$ by incorporating both motion and measurement. Applied recursively it 
   keep a probability distribution over the state space which considers all the past history of actions and observations. We define 
   the application of these two steps by the filter function $\tau$, which takes the current belief, the applied action 
@@ -386,7 +386,7 @@ which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_
   
   \textbf{Motion update}
 	\begin{equation}\label{eq:motion_update}
-	  p(x_t|y_{0:t-1},a_{0:t}) = \int p(x_t|x_{t-1},a_{t-1})\, p(x_t|y_{0:t-1},a_{0:t-1})\;da_{t-1}
+	  p(x_t|y_{0:t-1},a_{0:t}) = \int p(x_t|x_{t-1},a_t)\, p(x_{t-1}|y_{0:t-1},a_{0:t-1})\;dx_{t-1}
 	\end{equation}
       \textbf{Measurement update}
 	\begin{align}\label{eq:measurement_update}

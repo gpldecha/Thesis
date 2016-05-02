@@ -6,7 +6,7 @@
 %
 
 We drawed the conclusion from the literature survey in Chapter 2 that non-heuristic methods for planning and control 
-rely heavily on the initial data provided to their respective optimisers. An ideal sample set of behaviour should comprise 
+rely heavily on the initial data provided to their respective optimisers. An ideal initial set of behaviour should comprise 
 of explorative and exploitative actions such that a final optimal policy can quickly achieve the balance between minimising 
 uncertainty and solving the task at hand. This is especially true for Reinforcement Learning (RL) methods which require 
 explorative actions to be able to find an optimal policy. In many RL applications random exploration or Gaussian noise perturbation
@@ -22,16 +22,24 @@ In this Chapter, we demonstrate that human foresight and intuition can be levera
 exploration/exploitation dilemma under partial observable conditions. Human beings are versatile in their ability to 
 accomplish tasks which are considered to be complex by current robotic standards. This perceived ability we have over 
 current robotic systems, due to our prior domain knoweldge and experience, can be extracted, encapsulated and transferred 
-to a robot apprentice through the application of our methodology we later detail in this Chapter.
+to a robot apprentice.
 
-To achieve this transfer of behaviour from a human teacher to the robotic apprentice we apply the framework outlined in Chapter 2, 
-Section \ref{sec:approach} (PbD-POMDP) to a blindfolded haptic search task. In our blindfolded search task, both a robot and a human must search for an object on a table whilst deprived 
-of vision and hearing, illustrated in Figure \ref{fig:searching}. The robot and human both have prior knowledge of the environmental 
-setup making this a specific search problem with no required mapping of the environment, also known as active localisation. 
+To demonstrate the application of the transfer of behaviour from a human teacher to a robotic apprentice we apply the framework outlined in Chapter 2, 
+Section \ref{sec:approach} (PbD-POMDP) to a blindfolded haptic search task. In our blindfolded search task, both a robot and a human 
+must search for an object on a table whilst deprived of vision and hearing, illustrated in Figure \ref{fig:searching}. 
+The robot and human both have prior knowledge of the environmental setup making this a specific search problem with no required mapping of the environment, also known as active localisation. 
 In Figure \ref{fig:searching}, a human has his sense of vision and hearing impeded, making the perception of the environment partially observable and 
 only leaving the sense of touch available for solving the task. The hearing sense is also impeded since it can 
 facilitate localisation when no visual information is available and the robot has no equivalent giving an unfair 
 advantage to the human. By impeding hearing we align the perception correspondence between the human and robot.
+
+By representing the belief of the human's position in the environment by a Particle Filter (PF) and learning a mapping from this belief 
+to their end-effector velocities with a Gaussian Mixture Model (GMM), we can model the human's search process and reproduce it for any agent. 
+We further categorize the type of behaviours demonstrated by humans as being either risk-prone or risk-averse and find that more than 70\% of 
+the human searches were considered to be risk-averse. We contrast the performance of this human-inspired search model with respect to Greedy and Coastal Navigation search methods. 
+Our evaluation metric is the distance taken to reach the goal and how each method minimises the uncertainty.
+We further analyse the control policy of the Coastal Navigation and GMM search models and argue that taking 
+into account uncertainty is more efficient with respect to distance travelled to reach the goal.
 
 \begin{figure}[h]
   \centering
@@ -45,20 +53,13 @@ advantage to the human. By impeding hearing we align the perception corresponden
  \label{fig:searching}
 \end{figure} 
 
-It is non-trivial to have a robot learn the behaviour exhibited by humans performing this task. As we cannot encapsulate the true complexity of 
-human thinking, we model the human's state through two variables, namely, the human's uncertainty about his current location and the human's  
-belief of his position. The various strategies adopted by humans are modelled by building a mapping from the state variables to actions, which are the motion of 
-the human arm. Aside from the problem of correctly approximating the belief and its evolution over time, the model needs to take into consideration
-that people behave very differently given the same situation. As a result it is not just a single strategy that will be transferred but rather a mixture 
-of strategies. 
-
 There are \textbf{two assumptions} we make when we apply Programming by Demonstration (also known as Imitation Learning) to the POMDP task described above. 
 The first assumptions is that the human teacher's \textit{spatial cognitive} abilities are good enough to accomplish 
 the task in a consistent fashion. In other words demonstrations should not be random and pattern exists. The second assumption is that human's beliefs inferred  
 by the apprentice are close to the actual belief of the human. 
 
-Before detailing the mathematical and implementation details of PbD-POMDP approach, we review aspects of the literature in robotics and cognitive science 
-which have studied the validity of the two assumptions we made above; namely \textit{Spatial Navigation}, \textit{Theory of Mind} and \textit{Programming by Demonstration}
+%Before detailing the mathematical and implementation details of PbD-POMDP approach, we detail the outline of 
+%this Chapter.
 
 %\begin{itemize}
 % \item Do humans exhibit particular search strategies and if so is it feasible to learn them ?
@@ -79,7 +80,41 @@ which have studied the validity of the two assumptions we made above; namely \te
 %humans are suitable teachers for showing robots how to handle this uncertainty we compare
 %human policies with that of an ideal agent, modelled by a POMDP
 
-\section{Background}
+\section{Outline}
+
+\begin{itemize}
+
+\item  \hyperref[ch3:background]{\ref{ch3:background}   Background}\\
+We review aspects of the literature in robotics and cognitive science which are related to spatial navigation which 
+consider scenarios with limited perceptual information. We review related literature from \textit{Spatial Navigation}, 
+\textit{Theory of Mind} and \textit{Programming by Demonstration}
+
+\item  \hyperref[ch3:experiment]{\ref{ch3:experiment}   Experiment}\\
+We detail the table search experiment setup. A total of 15 subjects participated in our experiment and each 
+participant repeated it 10 times, giving us a total of a 150 searches.
+
+\item  \hyperref[ch3:formulation]{\ref{ch3:formulation}  Formulation}\\
+We detail the implementation of humans belief in terms of a Particle Filter (PF). This includes the measurement and motion 
+models. We describe how we compress the belief particle filter to the most likely state and differential entropy.
+
+\item  \hyperref[chap3:policies]{\ref{chap3:policies} 	Policies}
+\begin{itemize}
+  \item \hyperref[chap3:GMM_policy]{\ref{chap3:GMM_policy} Modelling human search strategies}\\
+  We detail the implementation and parametrisation of a Gaussian Mixture Model (GMM) policy encapsulating
+the human search strategies and how we use it to synthesis new searches.
+  \item \hyperref[chap3:costal_policy]{\ref{chap3:costal_policy} Coastal Navigation}\\
+  We detail the implementation of a Coastal Navigation policy, which we used to compare against 
+  the modelled behaviour of the human demonstrators.
+\end{itemize}
+
+\item  \hyperref[chap3:results]{\ref{chap3:results} 	Results}\\
+We conduct three types of analysis: We quantify the behaviour present in humans and policies in terms of riskiness; we 
+qualitatively evaluate the differences between the GMM policy learned from human demonstrations and the Coastal Navigation policy;
+we evaluate the distance taken to find the goal for a set of four search policies, including the GMM.
+
+\end{itemize}
+
+\section{Background}\label{ch3:background}
 
 %\subsection{Acting under partial observability}
 %Learning controllers or policies to act within a context where the state space is partially observable is of high relevance to all real 
@@ -95,11 +130,6 @@ which have studied the validity of the two assumptions we made above; namely \te
 %are unobservable. Even with the increasing usage of neuro-imaging techniques such as functional Magnetic Reasons Imaging (fMRI)
 %and electroencephalogram (EEG), whose technical aspects impose limitations on the possible experimental studies, it is hard to 
 %determine a cognitive mathematical model of the underlying processes present in spatial navigation. 
-
-
-\textbf{ration belief}
-\textbf{rational action}
-\textbf{rational desires}
 
 \subsection{Spatial navigation}
 %
@@ -185,14 +215,32 @@ this setup and evidence from previous studies, humans should be able to achieve 
 %In the Section \ref{sec:deci_un} on Decisions in Chapter 2, we introduced the concept of rationality for 
 %both beliefs and desires. 
 
+A crucial aspect for the success of PbD-POMDP learning is for the apprentice to be able to infer 
+the human's belief of his location whilst he is searching. In others words the apprentice
+(human or robotic) has to infer the cognitive map of the teacher. 
 
-A crucial aspect of our work is to be able to infer the human's location belief whilst he is searching. 
-The apprentice when observing the teacher performing the task has to infer the humans mental belief, such that he knows 
-how to act when in a similar situation. Given that the teachers belief are not observable we have to make the assumption 
-that the teachers beliefs are \textbf{rational}. The aspect described above is centred around Theory of Mind (ToM) 
-is concerned with our ability to infer the mental state of others, such as their beliefs, desires, intentions, goals and current knowledge. 
-A critical part is our ability to build a mental representation of another person’s belief given then information we think he/she knows.
+%This is possible by observing the actions of teacher and guessing his perception 
 
+The study of inference of another's mental state is part of Theory of Mind (ToM) \cite{Towards_a_ToM_2010}, which is concerned 
+with our ability to infer the mental state of others, such as beliefs, desires, intentions, perception,
+goals and current knowledge. Similarly we will have to infer the teachers beliefs. To do so we will  make the 
+assumption that the teachers beliefs are \textbf{rational}. 
+A rational belief is a belief for which observations are bringing supportive evidence and 
+gradually increases the certainty of the belief. In a recursive formulation this known as Bayesian Theory of Mind (BToM),
+where Bayesian component highlights the hypothesis that humans integrate information and update their beliefs in a similar 
+fashion to Bayes rule.
+
+Because of the complexity in the number of sensory sub-components and their interplay required as a precursor to the development
+of a ToM much effort has focused on the development necessary sub-components such as gaze following.
+Early work in implementing a ToM in a humanoid robot was introduced in \cite{ToM_humanoid} and is based on ToM models of \cite{Leslie_TOMM} 
+and \cite{Baron-Cohen}. The author focused on building basic skills such as face finding and distinguishing animate and inanimate 
+stimuli but leave as an open problem the final interaction between all the components.
+
+In \cite{MRF_ToM}, the authors model ToM as a Markov Random Field which defines a joint probability distribution other a set of
+hidden actions and observation variables. The functions of these variables are hand crafted for each experiment, the authors demonstrate
+that though a suitable parameterisation of the MRF they achieve results comparable to the predictions of ToM.
+Recently in \cite{ToM_HRI_2106} a ToM and planning architecture have been integrated in a joint action collaborative human robot task. 
+In which the position, goal and action state of the human partner his maintained by his robotic assistant.
 
 Work on modelling human beliefs and intentions \cite{Bake_Saxe_Tene_2011}\cite{Richardson1_Baker1_Tenenbaum1_Saxe1_2012} 
 has been undertaken in cognitive science. Human mind attributes, such as beliefs, desires and intentions, are not directly observable. 
@@ -202,16 +250,19 @@ yielded similar inference capabilities when asked to infer the intentions of an 
 This provided evidence supporting the hypothesis that humans integrate information using Bayes rule. Further, in
 \cite{Bake_Saxe_Tene_2011}, a similar experiment was performed in which the inference capabilities of humans,
 with regard to both belief and desire of an agent, were comparable to that of their Bayesian model. 
-Our work makes the similar hypothesis that humans integrate information in a Bayesian way, however in the 
-continuous domain. We infer the belief humans have of their location in the world during a search task.
+
+In our PbD-POMDP framework we makes the similar hypothesis that humans integrate information in a Bayesian way, however in the 
+continuous domain. We infer the belief humans have of their location in the world during search tasks.
+
 
 
 \subsection{Programming by demonstration \& uncertainty}
 
 %% Programming by Demonstration  Imitation Learning
-Programming by demonstration (PbD) is advantageous in this context since it removes the need to perform the time 
+Programming by demonstration (PbD) is advantageous in the POMDP and MDP contexts since it removes the need to perform the time 
 consuming exploration of the state-action tree to discover an optimal policy and does not rely on any exploration 
-heuristics to gather a sufficient set of belief points (as in point based value iteration methods). 
+heuristics to gather a sufficient set of belief points (as in point based value iteration methods discussed in Chapter 2).
+
 We expect humans to perform an informed search. In contrast to stochastic sampling methods, 
 humans utilise past experience to evaluate the costs of their actions in the future and to guide their search. This foresight and experience are implicitly encoded 
 in the parameters of the model we learn from the demonstrated searches.
@@ -244,15 +295,37 @@ the learning in continuous action space at trajectory level and multiple actions
 %																	   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Experimental setup}
+\section{Experiment: table search}\label{ch3:experiment}
 
-In the experimental setup, a group of 15 human volunteers were asked to search for a
-wooden green block located at a fixed position on a bare table, see Figure \ref{fig:experiment} (\textit{top left}). 
+In our search task setup, Figure \ref{fig:tab_search_task} and  Figure \ref{fig:experiment} (\textit{top left}), 
+a group of 15 human volunteers were asked to search for a wooden green block located at a fixed position on a bare table. 
 Each participant repeated the experiment 10 times from each of 4 mean starting points with an associated small variance. 
-The starting positions were given with respect to the
-location of the human's hand (all participants where right handed). The humans were always facing the table with their right 
-arm stretched out in front of them. The 
-position of their hand was then either in front, to the left, to the right, or in contact with the table itself. 
+The starting positions were given with respect to the location of the human's hand (all participants where right handed). The humans were always facing the table with their right 
+arm stretched out in front of them. The  position of their hand was then either in front, to the left, to the right, or in contact with the table itself. 
+
+\begin{figure}
+ \centering
+   \includegraphics[width=0.8\textwidth]{./ch3-Search/Figures/experimentsetup}
+  \caption{Table search task. Blindfolded human subjects after a disorientation step are placed in one of the 
+  four starting locations. The heading of the subject is always kept the same. The humans objective is to located 
+  the green block on the table. Throughout all experiments the green wooden block is kept constant.}
+  \label{fig:tab_search_task}
+\end{figure}
+
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.95\textwidth]{./ch3-Search/Figures/Figure2}
+  \caption{\textit{Top left}: A participant is trying to locate the green wooden block on the table
+given that both vision and hearing senses have been inhibited, the location of his hand is being tracked by the
+OptiTrack\textsuperscript{\textregistered} system. \textit{Top right:} Initial distribution of the uncertainty or belief we assume
+the human has with respect to his position. \textit{Bottom right:} Set of recorded searches, the trajectories are with respect to the hand.
+\textit{Bottom right:} Trajectories starting from same area but have different search patterns, the red trajectories all navigate to the goal
+via the top right corner as opposed to the blue which go by the bottom left and right corner. Among these two groups there are trajectories which
+seem to minimize the distance taken to reach the goal as opposed to some which seek to stay close to the edge and corners.}
+\label{fig:experiment}
+\end{figure}
+
 
 As covered in the background section, previous work has taken a probabilistic Bayesian approach to model the beliefs and intent 
 of humans. A key finding was that humans update their beliefs using Bayes rule (shown so far in the discrete case). 
@@ -271,40 +344,35 @@ corner could be varied. In Figure \ref{fig:experiment}
 which all started from the same region. One interesting aspect is the diversity present,
 demonstrating clearly that humans behave differently given the same situation.  
 
-\begin{figure}
-\centering
-  \includegraphics[width=0.95\textwidth]{./ch3-Search/Figures/Figure2}
-  \caption{\textit{Top left}: A participant is trying to locate the green wooden block on the table
-given that both vision and hearing senses have been inhibited, the location of his hand is being tracked by the
-OptiTrack\textsuperscript{\textregistered} system. \textit{Top right:} Initial distribution of the uncertainty or belief we assume
-the human has with respect to his position. \textit{Bottom right:} Set of recorded searches, the trajectories are with respect to the hand.
-\textit{Bottom right:} Trajectories starting from same area but have different search patterns, the red trajectories all navigate to the goal
-via the top right corner as opposed to the blue which go by the bottom left and right corner. Among these two groups there are trajectories which
-seem to minimize the distance taken to reach the goal as opposed to some which seek to stay close to the edge and corners.}
-\label{fig:experiment}
-\end{figure}
+It is non-trivial to have a robot learn the behaviour exhibited by humans performing this task. As we cannot encapsulate the true complexity of 
+human thinking, we model the human's state through two variables, namely, the human's uncertainty about his current location and the human's  
+belief of his position. The various strategies adopted by humans are modelled by building a mapping from the state variables to actions, which are the motion of 
+the human arm. Aside from the problem of correctly approximating the belief and its evolution over time, the model needs to take into consideration
+that people behave very differently given the same situation. As a result it is not just a single strategy that will be transferred but rather a mixture 
+of strategies. 
 
-\subsection{Formulation}
+
+\section{Formulation} \label{ch3:formulation}
 
 In the standard PbD formulation of this problem, a parametrised function is learned,
-mapping from state, $x_t$, which denotes the current position of the demonstrator's hand to $\dot{x}_t$, the hand's displacement. 
-In our case since the environment is partially observable we have a belief or probability density function, $p(x_{t}|z_{0:t})$, which is conditioned on all sensing information, $z$, (the subscript, $0:t$, indicates
-the time slice which ranges from, $t=0$, to the current time, $t=t$) over the state space at any given point in time.
-We seek to learn this mapping, $f : p(x_{t}|z_{0:t}) \mapsto \dot{x}$,  from demonstrations. During each demonstration we record a set of variables consisting of the
-following:
+mapping from state, $x_t$, which denotes the current position of the demonstrator's hand to  
+the hand's displacement, $\dot{x}_t$. In our case since the environment is partially observable 
+we have a belief or probability density function, $p(x_{t}|y_{0:t},\dot{x}_{0:t})$, which is conditioned on all 
+sensing information, $y$, (the subscript, $0:t$, indicates the time slice which ranges from, $t=0$, to 
+the current time, $t=t$) over the state space at any given point in time and the history of applied actions, $a_{0:t}$. 
+We seek to learn this mapping, $f : p(x_{t}|y_{0:t},\dot{x}_{0:t}) \mapsto \dot{x}_{t+1}$, from demonstrations. During 
+each demonstration we record a set of variables consisting of the following:
 
-\begin{enumerate}
- \item[1.] $\dot{x}_t \in \mathbb{R}^{3}$, velocity of the hand in Cartesian
+\begin{itemize}
+ \item $\dot{x}_t \in \mathbb{R}^{3}$, velocity of the hand in Cartesian
 space, which is normalised. 
- \item[2.] $\hat{x}_t = \operatorname*{arg\,max}_{x_t} p(x_{t}|z_{0:t})$, the most likely position of the
+ \item $\hat{x}_t = \operatorname*{arg\,max}_{x_t} p(x_{t}|y_{0:t},\dot{x}_{0:t})$, the most likely position of the
 end-effector, or believed position.
- \item[3.] $U \in \mathbb{R}$, the level of uncertainty which is the entropy of the belief: $H\left(p(x_{t}|z_{0:t})\right)$.
-\end{enumerate}
-A statistical controller was learned from a data set of triples $\{(x,\hat{x},U)\}$
-and a desired direction (normalised velocity) was obtained from conditioning on the belief and uncertainty.
-
-Having described the experiment we proceed to give an in-depth description of the mathematical representation of
-the belief, sensing and motion models and the uncertainty. 
+ \item $U \in \mathbb{R}$, the level of uncertainty which is the entropy of the belief: $H\left(p(x_{t}|y_{0:t},\dot{x}_{0:t})\right)$.
+\end{itemize}
+A statistical controller was learned from the tuple dataset: $\{(\dot{x},\hat{x},U)\}$ recorded during the search 
+trials of the human subjects. Having described the experiment we proceed to give an in-depth description 
+of the mathematical representation of the belief, sensing and motion models and the uncertainty. 
 
 
 \subsubsection{Belief model}
@@ -314,33 +382,35 @@ A human's belief of his location in an environment can be multi-modal or uni-mod
 We chose a particle filter to be able to represent such a wide range of probability distributions. A particle filter is a Bayesian probabilistic method 
 which recursively integrates dynamics and sensing to estimate a posterior from a prior probability density. The particle filter has two elements. The first 
 estimates a distribution over the possible next state given dynamics and the second corrects it through integrating sensing. Given 
-a \textit{motion model} $p(x_{t}|x_{t-1},\dot{x}_{t})$, and a \textit{sensing model} $p(z_{t}|x_{t})$, we recursively apply a prediction phase where we incorporate
-motion to update the state, and an update phase where the sensing data is used to compute the state's posterior distribution. The two steps are depicted below.
+a \textit{motion model} $p(x_{t}|x_{t-1},\dot{x}_{t})$, and a \textit{sensing model} $p(y_{t}|x_{t})$, we recursively apply a 
+prediction phase where we incorporate motion to update the state, and an update phase where the sensing data is used to 
+compute the state's posterior distribution. The two steps are depicted below.
 
 \begin{eqnarray}
- p(x_{t}|z_{0:t-1}) &=& \int p(x_{t}|x_{t-1},\dot{x}_{t})\,p(x_{t-1}|z_{0:t-1})\,dx_{t-1} \\
- p(x_{t}|z_{0:t}) &=& \frac{p(z_{t}|x_{t})p(x_{t}|z_{0:t-1})}{p(z_{t}|z_{0:t-1})}
+ p(x_{t}|y_{0:t-1},\dot{x}_{0:t}) &=& \int p(x_{t}|x_{t-1},\dot{x}_{t})\,p(x_{t-1}|y_{0:t-1},\dot{x}_{0:t-1})\,dx_{t-1} \\
+ p(x_{t}|y_{0:t},\dot{x}_{0:t}) &=& \frac{p(y_{t}|x_{t})p(x_{t}|y_{0:t-1},\dot{x}_{0:t})}{p(y_{t}|y_{0:t-1})}
 \end{eqnarray}
 
-The probability distribution over the state $p(x_{t}|z_{0:t})$ is represented by a set of weighted particles which represent hypothetical
+The probability distribution over the state $p(x_{t}|y_{0:t},\dot{x}_{0:t})$ is represented by a set of weighted particles which represent hypothetical
 locations of the end-effector and  their density which is proportional to the likelihood. The particular particle filter used was the 
-\textit{Regularised Sequential Importance Sampling} \cite[p.182]{Arul_Mask_Clap_2002}. 
-From previous literature \cite{Bake_Saxe_Tene_2011} it has been shown that there is a similarity between Bayes update rule and the way humans integrate information over time. 
-Under this assumption we hypothesise that if the initial belief of the human is known then the successive update steps of the particle filter should correspond to a good approximation 
+\textit{Regularised Sequential Importance Sampling} \cite[p.182]{Arul_Mask_Clap_2002}. From previous literature \cite{Bake_Saxe_Tene_2011} 
+it has been shown that there is a similarity between Bayes update rule and the way humans integrate information over time. Under this assumption we hypothesise that if the initial belief of the human is known then the successive update steps of the particle filter should correspond to a good approximation 
 of the next beliefs. 
 
-\subsubsection{Sensing \& Motion model}
-\paragraph{sensing model}
-The sensing model tells us the likelihood, $p(z_t|x_t)$, of a particular sensation $z_t$ given
-a position $x_t \in \mathbb{R}^{3}$. In a human's case, the sensation of a curvature indicates the likelihood of being near an edge
-or a corner. However the likelihood cannot be modelled through using the human's sensing information.
-Direct access to pressure, temperature and such salient information is not available. Real sensory information needs to be matched against 
-virtual sensation at each hypothetical location $x_t$ of a particle. Additionally,  for the transfer of behaviour from human to robot to be successful, the robot should be
-able to perceive the same information as the human, given the same situation. An approximation of what a human or robot senses can be inferred, based on the
-end-effector's distance to particular features in the environment. In our case four main features are present, namely corners, edges, surfaces and an additional dummy feature defining no
-contact, air. The choice of these features is prior knowledge given to our system and not extracted through statistical analysis of recorded trajectories. 
-The sensing vector is $z_t = \left[p_c,p_e,p_s,p_a\right]$, where $p$ refers to probability and the subscript corresponds to the first letter of the feature it is associated with. In
-equation \ref{eq:sensingfunction}, the sensing function, $h(x_t,x_c)$, returns the probability of sensing a corner, where $x_c \in \mathbb{R}^3$ is the Cartesian position of the corner which is
+\subsubsection{Sensing model}
+
+The sensing model tells us the likelihood, $p(y_t|x_t)$, of a particular sensation $y_t$ given
+a position $x_t \in \mathbb{R}^{3}$. In a human's case, the sensation of a curvature indicates the 
+likelihood of being near an edge or a corner. However the likelihood cannot be modelled through using 
+the human's sensing information. Direct access to pressure, temperature and such salient information is not available. 
+Real sensory information needs to be matched against virtual sensation at each hypothetical location $x_t$ of a particle. 
+Additionally,  for the transfer of behaviour from human to robot to be successful, the robot should be
+able to perceive the same information as the human, given the same situation. An approximation of what a human or robot senses 
+can be inferred, based on the end-effector's distance to particular features in the environment. In our case four main features 
+are present, namely corners, edges, surfaces and an additional dummy feature defining no contact, air. The choice of these features is prior knowledge 
+given to our system and not extracted through statistical analysis of recorded trajectories. The sensing vector is $y_t = \left[p_c,p_e,p_s,p_a\right]$, 
+where $p$ refers to probability and the subscript corresponds to the first letter of the feature it is associated with. In Equation \ref{eq:sensingfunction}, 
+the sensing function, $h(x_t,x_c)$, returns the probability of sensing a corner, where $x_c \in \mathbb{R}^3$ is the Cartesian position of the corner which is
 the closest to $x_t$. 
 
 \begin{equation}\label{eq:sensingfunction}
@@ -352,37 +422,46 @@ any feature which is more than 1cm way from the end effector or hand has a proba
 The same sensing function is repeated for all feature types.
 
 The sensing model takes into account the inherent uncertainty of the sensing function \ref{eq:sensingfunction}, 
-and gives the likelihood, $p(z_t|x_t)$ of a position. Since the range of sensing is extremely small and entries are probabilistic we assume no noise in the sensor measurement.
-The likelihood of a hypothetical location, $x_t$,  is related to Jensen-Shannon divergence (JSD), $p(z_t|x_t) = 1 - JSD(z_t||\hat{z}_t)$ , between true sensing vector,
-$z_t$, obtained by the agent and that of the hypothetical sensation $\hat{z}_t$ generated at the location of a particle. 
+and gives the likelihood, $p(y_t|x_t)$ of a position. Since the range of sensing is extremely small and entries are probabilistic 
+we assume no noise in the sensor measurement.
+The likelihood of a hypothetical location, $x_t$,  is related to Jensen-Shannon divergence (JSD), $p(y_t|x_t) = 1 - JSD(y_t||\hat{y}_t)$ , between true sensing vector,
+$z_t$, obtained by the agent and that of the hypothetical sensation $\hat{y}_t$ generated at the location of a particle. 
 
-\paragraph{motion model}
+
+\subsubsection{Motion model}
+
 The motion model is straight forward compared with the sensing model. In the robot's case the Jacobian gives the next 
 Cartesian position given the current joint angles and angular velocity of the robot's joints.
 From this the motion model is given by $ p(x_{t}|x_{t-1},\dot{x}_{t}) = \mathrm{J}(q)\dot{q} + \epsilon$ where $q$ is 
-the angular position of the robot's joints, $J(q)$ is the Jacobian and $\epsilon \sim \mathcal{N}(0,\sigma^{2}I)$ is white noise. The robot's motion is very precise and its noise variance is very low. For humans, 
-the motion model is the velocity of the hand movement provided by the tracking system.
+the angular position of the robot's joints, $J(q)$ is the Jacobian and $\epsilon \sim \mathcal{N}(0,\sigma^{2}I)$ is white noise. 
+The robot's motion is very precise and its noise variance is very low. For humans, the motion model is the velocity of the hand 
+movement provided by the tracking system. In our experiment we consider the noise from motion to be negligible. An increase in 
+uncertainty already results from the re-sampling stage of SIR particle filter and we found no need to add additional motion noise.
+The particles were thus updated applying to them the measured velocity from either the visual tracking system (when recording the 
+human demonstrations) or from the velocity obtained from the robots forward kinematics.
 
 \subsubsection{Uncertainty}
 
 % First motivate entropy as a natural method for computing the uncertainty
 
-In a probability distribution framework, entropy is used to represent uncertainty. It is the expectation of a random variable's total amount 
-of unpredictability. The higher the entropy the more the uncertainty, likewise the lower the entropy, the less the uncertainty. 
-In our context, a set of weighted samples $\{w_{i},x_{i}\}^{i=1\dots N}$ replaces the true
-probability density function of the belief, $p_u(x_t|z_{0:t})$. A reconstruction of 
-the underlying probability density is achieved by fitting a Gaussian  Mixture Model (GMM), equation \ref{eq:gmm1}, to the particles,
+In a probability distribution framework, entropy is used to represent uncertainty. It is the expectation of a 
+random variable's total amount of unpredictability. The higher the entropy the more the uncertainty, likewise the 
+lower the entropy, the less the uncertainty. In our context, a set of weighted samples $\{w_{i},x_{i}\}^{i=1\dots N}$ replaces 
+the true probability density function of the belief, $p_u(x_t|y_{0:t},\dot{x}_{0:t})$. A reconstruction of 
+the underlying probability density is achieved by fitting a Gaussian  Mixture Model (GMM), Equation \ref{eq:gmm1}, to the particles,
 
 \begin{equation}\label{eq:gmm1}
-  p_u(x_t|z_{0:t}\: ;\{\pi,\mu,\Sigma\}) = \sum\limits_{k=1}^{K} \pi_{k} \cdot \mathcal{N}(x_t\: ;\mu_{k},\Sigma_{k} )
+  p_u(x_t|y_{0:t},\dot{x}_{0:t}\: ;\{\pi,\mu,\Sigma\}) = \sum\limits_{k=1}^{K} \pi_{k} \cdot \mathcal{N}(x_t\: ;\mu_{k},\Sigma_{k} )
 \end{equation}
 
-where $K$ is the number of Gaussian components,  the scalar $\pi_{k}$ represents the weight associated to mixture component $k$ (indicating the component's overall contribution to the
-distribution) and $\sum_{k=1}^{K} \pi_{k} = 1$. The parameters $\mu_{k}$ and $\Sigma_{k}$ are the mean and covariance of the normal distribution $k$. 
+where $K$ is the number of Gaussian components,  the scalar $\pi_{k}$ represents the weight associated to mixture component $k$ 
+(indicating the component's overall contribution to the distribution) and $\sum_{k=1}^{K} \pi_{k} = 1$. The parameters $\mu_{k}$ 
+and $\Sigma_{k}$ are the mean and covariance of the normal distribution $k$. 
 
 The main difficulty here is determining the number of parameters of the density function in a computationally efficient manner.
-We approach this problem by finding all the modes in the particle set via mean-shift hill climbing and set these as the means of the Gaussian functions. Their
-covariances are determined by maximizing the likelihood of the density function via Expectation-Maximization (EM). 
+We approach this problem by finding all the modes in the particle set via mean-shift hill climbing and set these as the 
+means of the Gaussian functions. Their covariances are determined by maximizing the likelihood of the density function 
+via Expectation-Maximization (EM). 
 %
 %	images/clustering.eps
 %
@@ -398,10 +477,10 @@ covariances are determined by maximizing the likelihood of the density function 
   \label{fig:clustering}
 \end{figure}
 
-Given the estimated density we can compute the upper bound of the differential entropy \cite{DiffEntropyHuber2008}, $H$, 
-which is taken to be the uncertainty $U$,
+Given the estimated density we can compute the upper bound of the differential entropy \cite{DiffEntropyHuber2008}, $H$,
+%which is taken to be the uncertainty $U$,
 \begin{equation}
-  H\left(  p_u(x_t|z_{0:t}\: ;\{\pi,\mu,\Sigma\}) \right) = \sum\limits_{k=1}^{K} \pi_{k} \left( -\log(\pi_{k}) + \frac{1}{2} \log((2\pi e)^{D} |\Sigma_{k}|) \right)
+  H\left(  p_u(x_t|y_{0:t},\dot{x}_{0:t}\: ;\{\pi,\mu,\Sigma\}) \right) = \sum\limits_{k=1}^{K} \pi_{k} \left( -\log(\pi_{k}) + \frac{1}{2} \log((2\pi e)^{D} |\Sigma_{k}|) \right)
 \end{equation}
 where $e$ is the base of the natural logarithm and $D$ the dimension (being 3 in our case).
 
@@ -426,14 +505,14 @@ Figure \ref{fig:clustering} depicts different configurations of the modes (clust
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Methods}
+\section{Policies}\label{chap3:policies}
 
-\subsection{Model of human search}
+\subsection{Modelling human search strategies}\label{chap3:GMM_policy}
 
 During the experiments, the recorded trajectories show that different actions are present for the same belief and uncertainty making the data multi-modal
 (for a particular position and uncertainty different velocities are present). That is multiple actions are possible given a specific belief. 
 This results in a one-to-many mapping which is not a valid function, eliminating any regression technique which directly learns a non-linear function. 
-To accommodate this fact we again made use of a GMM to model the human's demonstrated searches, $\{(x,\dot{x},U)\}$. 
+To accommodate this fact we use a GMM to model the human's demonstrated searches, $\{(x,\dot{x},U)\}$. 
 Using statistical models to encode control policies in robotics is quite common, see \cite{BillardCDS08}. 
 
 % explain how much data we have vs the number of gaussian components
@@ -482,9 +561,10 @@ high information gain as oppose to lighter ones. Not surprisingly, the highest a
   \label{fig:gmm}
 \end{figure}
 
-\subsection{Coastal Navigation}
+\subsection{Coastal Navigation}\label{chap3:costal_policy}
 
-Coastal navigation \cite{CostalNavigation1999} is a path planning method in which the objective function, equation \ref{eq:objective_function}, is composed of two terms.
+Coastal navigation \cite{CostalNavigation1999} is a path planning method in which the objective function, 
+Equation \ref{eq:objective_function}, is composed of two terms.
 
 \begin{equation}\label{eq:objective_function}
  f(x_{0:T}) = \sum\limits_{t=0}^{T} \lambda_1 \cdot c(x_t) + \lambda_2 \cdot I(x_t)
@@ -498,16 +578,17 @@ of each term.
 
 In our table environment we discretised the state space, $\mathbb{R}^3$, into bins so as to have a resolution of approximately, $1 cm^3$, giving us a total of a 125'000
 states. The action space was discretised to 6 actions, two for each dimension meaning that all motion is parallel to the axis. For each state, $x_t$, an $I(x_t)$ value is
-computed by evaluating equation \ref{eq:IG},
+computed by evaluating Equation \ref{eq:IG},
 
 % Explain how the Information Gain is computed
 
 \begin{equation}\label{eq:IG}
- I(x_t) = \mathbb{E}_{p(z_t|x_t)}\{ H(p_u(x_t|z_{0:t}) \} - H(p_u(x_t|z_{0:t-1}))
+ I(x_t) = \mathbb{E}_{p(y_t|x_t)}\{ H(p_u(x_t|y_{0:t},\dot{x}_{0:t}) \} - H(p_u(x_t|y_{0:t-1},\dot{x}_{0:t}))
 \end{equation}
 which is essentially the difference between the entropy of a prior pdf to that of a posterior pdf.
 We set our initial pdf to be uniformly distributed and  we computed the maximum likelihood sensation for each discrete state $x_t$
-which is akin to the expected sensation or assuming that there is no uncertainty in sensor measurement (an assumption often made throughout the literature to avoid carrying out the integral of the expectation in equation \ref{eq:IG}).
+which is akin to the expected sensation or assuming that there is no uncertainty in sensor measurement (an assumption 
+often made throughout the literature to avoid carrying out the integral of the expectation in Equation \ref{eq:IG}).
 The result is the difference between the posterior pdf, given that the sensation occurred in $x_t$, and the prior pdf. The resulting cost
 map is illustrated in Figure \ref{fig:gmm}. As expected, corners have the highest information gain followed by edges and surfaces. 
 We do not show the values of the table since they provided much less information gain.
@@ -518,7 +599,7 @@ computes the shortest path to a specific target from all the states. This result
 \subsection{Control}
 The standard approach to control with a GMM is to condition on the state,
 $\hat{x}_t$ and $U_t$ in our case and perform inference on resulting conditional
-GMM, equation \ref{eq:conditional}, which is a distribution over velocities or directions.
+GMM, Equation \ref{eq:conditional}, which is a distribution over velocities or directions.
 
 \begin{equation} \label{eq:conditional}
   p_s(\dot{x}|\hat{x},U) = \sum\limits_{k=1}^{K} \pi^{k}_{\dot{x}|\hat{x},U} \cdot  \mathcal{N}\left(\dot{x}\: ;  \mu^{k}_{\dot{x}|\hat{x},U}, \Sigma^{k}_{\dot{x}|\hat{x},U} \right)
@@ -578,9 +659,9 @@ trials.
 
 \begin{figure}
 \centering
-  \includegraphics[width=0.8\textwidth]{./ch3-Search/Figures/Figure5}
+  \includegraphics[width=0.8\textwidth]{./ch3-Search/Figures/Control_schematics}
   \caption{Overview of the decision loop. At the top a strategy is chosen given an initial belief
-$p(x_{0}|z_{0})$ of the location of the end-effector (initially through sampling the conditional). 
+$p(x_{0}|y_{0})$ of the location of the end-effector (initially through sampling the conditional). 
 A speed is applied to the given direction based on the believed distance
 to the goal. This velocity is passed onwards to
 a low level impedance controller which sends out the required torques. The
@@ -605,19 +686,27 @@ at the lowest level which outputs appropriate joint torques $\tau$. The overall 
 %																	   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Results and discussion}
+\section{Results and discussion}\label{chap3:results}
 
-We analysed the types of behaviour present in the human demonstration as well as in
-4 different search algorithms, namely Greedy, GMM, Hybrid and Coastal. A qualitative analysis of the GMM search policy 
-(namely the different modes/decisions present) is contrasted with the Coastal navigation policy. Finally we evaluated the 
-performance of the searches, with respect to the distance taken to reach the goal and the uncertainty profiles towards the end of 
+Throughout our evaluation of our GMM PbD-POMDP control policy we will be considering four control policies: Greedy, GMM, Hybrid and 
+Costal. We evaluate behaviour present in the human demonstrations, and the four above mentioned policies in terms 
+of their riskiness. We qualitatively compare the policies of the GMM model and Costal Navigation algorithm and highlight the 
+effect uncertainty has. We finish with a quantitative evaluation of search efficiency in terms of distance travelled until the goal is found.
+The layout of this section follows as:
+\begin{itemize}
+ \item Section \ref{sub:search_behaviour}, we analyse the types of behaviour present in the human demonstration as well as in
+four different search algorithms: Greedy, GMM, Hybrid and Coastal.
+ \item Section \ref{sub:policy_analysis}, we qualitatively analysis the GMM search policy (namely the different modes/decisions present) 
+ is contrasted to the Coastal navigation policy.
+ \item Section \ref{sub:time_uncertainty}, we evaluated the performance of the searches, with respect to the distance taken to reach the goal and the uncertainty profiles towards the end of 
 the searches in 5 different experiments (different types of initializations). 
+\end{itemize}
 
-\subsection{Search \& behaviour analysis}
+\subsection{Search \& behaviour analysis}\label{sub:search_behaviour}
 
 For each method (Greedy, GMM, Hybrid, Coastal) 70 searches were performed with all starting positions drawn from the
 uniform distribution depicted in Figure \ref{fig:experiment} \textit{top right}. Figure \ref{fig:expectedfeatures} 
-gives the expected sensation $\mathbb{E}\{z\}$ and  variance $\mathrm{Var}\{z\}$ for each trajectory with respect 
+gives the expected sensation $\mathbb{E}\{y\}$ and  variance $\mathrm{Var}\{y\}$ for each trajectory with respect 
 to the edge and corner of the table. 
 
 % The edge and corner feaures are employed in trajectory classification
@@ -698,6 +787,7 @@ Greedy search policies and finally Coastal and Greedy.
 
 
 \begin{table}
+\centering
  \begin{tabular}{l|c|c|c|c|c|}
                  &  Greedy & GMM   & Hybrid & Coastal & Human \\ \hline
   risk-prone (f) &   77 \% & 11 \% &  30 \% & 46 \% & 26  \% \\ \hline
@@ -738,7 +828,7 @@ tendency to be risk-averse.
 \end{figure}
 
 
-\subsection{GMM \& Coastal Navigation policy analysis}
+\subsection{GMM \& Coastal Navigation policy analysis}\label{sub:policy_analysis}
 
 We next illustrate some of the modes (action choices) present during simulation and evaluate their 
 plausibility. Figure \ref{fig:modes} shows that multiple decision points have been correctly embedded in the GMM model. All
@@ -786,7 +876,7 @@ This approach could potentially lead to unnecessary travel cost which could othe
   \label{fig:vectorfield}
 \end{figure}
 
-\subsection{Time efficiency \& Uncertainty}
+\subsection{Time efficiency \& Uncertainty}\label{sub:time_uncertainty}
 
 We seek to distinguish the most efficient method in terms of two metrics, the distance taken to reach the goal
 and the level of uncertainty upon arriving at the goal. We report results on 5 different search 

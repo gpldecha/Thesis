@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  30 APR 2016 15:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  2 MAY 2016 17:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -745,45 +745,53 @@ Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
 Library (tcolorbox): 'tcbtheorems.code.tex' version '2.70'
-) (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip77
+\enit@outerparindent=\dimen199
+\enit@toks=\toks46
+\enit@inbox=\box51
+\enitdp@description=\count152
+)
+(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
 (/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
 (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
 (/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
-\pgffor@iter=\dimen199
-\pgffor@skip=\dimen200
-\pgffor@stack=\toks46
-\pgffor@toks=\toks47
+\pgffor@iter=\dimen200
+\pgffor@skip=\dimen201
+\pgffor@stack=\toks47
+\pgffor@toks=\toks48
 ))
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
 
 (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2010/05/31 v2.10 (rcs-revision 1.15)
-\pgf@plot@mark@count=\count152
-\pgfplotmarksize=\dimen201
+\pgf@plot@mark@count=\count153
+\pgfplotmarksize=\dimen202
 )
-\tikz@lastx=\dimen202
-\tikz@lasty=\dimen203
-\tikz@lastxsaved=\dimen204
-\tikz@lastysaved=\dimen205
-\tikzleveldistance=\dimen206
-\tikzsiblingdistance=\dimen207
-\tikz@figbox=\box51
-\tikz@tempbox=\box52
-\tikztreelevel=\count153
-\tikznumberofchildren=\count154
-\tikznumberofcurrentchild=\count155
-\tikz@fig@count=\count156
+\tikz@lastx=\dimen203
+\tikz@lasty=\dimen204
+\tikz@lastxsaved=\dimen205
+\tikz@lastysaved=\dimen206
+\tikzleveldistance=\dimen207
+\tikzsiblingdistance=\dimen208
+\tikz@figbox=\box52
+\tikz@tempbox=\box53
+\tikztreelevel=\count154
+\tikznumberofchildren=\count155
+\tikznumberofcurrentchild=\count156
+\tikz@fig@count=\count157
 
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
-\pgfmatrixcurrentrow=\count157
-\pgfmatrixcurrentcolumn=\count158
-\pgf@matrix@numberofcolumns=\count159
+\pgfmatrixcurrentrow=\count158
+\pgfmatrixcurrentcolumn=\count159
+\pgf@matrix@numberofcolumns=\count160
 )
-\tikz@expandcount=\count160
+\tikz@expandcount=\count161
 
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
 hs.code.tex
@@ -800,16 +808,16 @@ File: tikzlibrarytrees.code.tex 2008/02/24 v2.10 (rcs-revision 1.2)
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecor
 ations.code.tex
 (/usr/share/texmf/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen208
-\pgfdecoratedremainingdistance=\dimen209
-\pgfdecoratedinputsegmentcompleteddistance=\dimen210
-\pgfdecoratedinputsegmentremainingdistance=\dimen211
-\pgf@decorate@distancetomove=\dimen212
-\pgf@decorate@repeatstate=\count161
-\pgfdecorationsegmentamplitude=\dimen213
-\pgfdecorationsegmentlength=\dimen214
+\pgfdecoratedcompleteddistance=\dimen209
+\pgfdecoratedremainingdistance=\dimen210
+\pgfdecoratedinputsegmentcompleteddistance=\dimen211
+\pgfdecoratedinputsegmentremainingdistance=\dimen212
+\pgf@decorate@distancetomove=\dimen213
+\pgf@decorate@repeatstate=\count162
+\pgfdecorationsegmentamplitude=\dimen214
+\pgfdecorationsegmentlength=\dimen215
 )
-\tikz@lib@dec@box=\box53
+\tikz@lib@dec@box=\box54
 ))
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
 ws.code.tex
@@ -824,8 +832,8 @@ File: pgflibraryfadings.code.tex 2008/02/07 v2.10 (rcs-revision 1.3)
 )))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks48
-\inpenc@posthook=\toks49
+\inpenc@prehook=\toks49
+\inpenc@posthook=\toks50
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -1041,39 +1049,45 @@ Now handling font encoding PD1 ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 76.
+\c@mylisti=\count163
+\c@mylistii=\count164
+\c@mylistiii=\count165
+\c@mylistiv=\count166
+\c@mylistv=\count167
+\enitdp@mylist=\count168
+Package hyperref Info: Option `colorlinks' set `true' on input line 82.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-\chapternumberheight=\dimen215
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 111.
+LaTeX Font Info:    ... okay on input line 111.
+\chapternumberheight=\dimen216
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count162
-\scratchdimen=\dimen216
-\scratchbox=\box54
-\nofMPsegments=\count163
-\nofMParguments=\count164
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count165
-\MPscratchDim=\dimen217
-\MPnumerator=\count166
-\makeMPintoPDFobject=\count167
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count169
+\scratchdimen=\dimen217
+\scratchbox=\box55
+\nofMPsegments=\count170
+\nofMParguments=\count171
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count172
+\MPscratchDim=\dimen218
+\MPnumerator=\count173
+\makeMPintoPDFobject=\count174
+\everyMPtoPDFconversion=\toks52
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1093,9 +1107,9 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box55
-Package backref Info: ** backref set up for natbib ** on input line 105.
-Package hyperref Info: Link coloring ON on input line 105.
+\AtBeginShipoutBox=\box56
+Package backref Info: ** backref set up for natbib ** on input line 111.
+Package hyperref Info: Link coloring ON on input line 111.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1103,23 +1117,23 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count168
+\c@section@level=\count175
 )
-LaTeX Info: Redefining \ref on input line 105.
-LaTeX Info: Redefining \pageref on input line 105.
-LaTeX Info: Redefining \nameref on input line 105.
+LaTeX Info: Redefining \ref on input line 111.
+LaTeX Info: Redefining \pageref on input line 111.
+LaTeX Info: Redefining \nameref on input line 111.
 
 (./main.out) (./main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
  ABD: EveryShipout initializing macros (./macros.tex
-\widebarargwidth=\skip77
-\widebarargheight=\skip78
-\c@nbdrafts=\count169
+\widebarargwidth=\skip78
+\widebarargheight=\skip79
+\c@nbdrafts=\count176
 )
-\thesis@dim=\dimen218
-LaTeX Font Info:    Try loading font information for T1+aess on input line 119.
+\thesis@dim=\dimen219
+LaTeX Font Info:    Try loading font information for T1+aess on input line 125.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aess.fd
@@ -1155,7 +1169,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 
 ]
-<ch1-Introduction/Figures/examples.pdf, id=202, 14316.78719pt x 10078.85469pt>
+<ch1-Introduction/Figures/examples.pdf, id=206, 14316.78719pt x 10078.85469pt>
 File: ch1-Introduction/Figures/examples.pdf Graphic file (type pdf)
 
 <use ch1-Introduction/Figures/examples.pdf>
@@ -1198,7 +1212,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--16
 
  []
 
-<./ch2-Background/Figures/chap_overview.pdf, id=254, 498.9699pt x 43.46237pt>
+<./ch2-Background/Figures/chap_overview.pdf, id=258, 498.9699pt x 43.46237pt>
 File: ./ch2-Background/Figures/chap_overview.pdf Graphic file (type pdf)
 
 <use ./ch2-Background/Figures/chap_overview.pdf>
@@ -1216,7 +1230,7 @@ LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <10> not available
 
  <./ch2-Background/Figures/chap_overview.pdf>] [8]
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pdf, id
-=272, 181.67876pt x 223.83624pt>
+=276, 181.67876pt x 223.83624pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/cognitive_loop.pd
 f Graphic file (type pdf)
 
@@ -1232,7 +1246,7 @@ Underfull \hbox (badness 7415) in paragraph at lines 202--203
  []
 
 [11] [12]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf, id=330, 209.
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf, id=334, 209.
 80884pt x 205.01593pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp3.pdf Graphic 
 file (type pdf)
@@ -1242,7 +1256,7 @@ Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
 s/mdp3.pdf used on input line 248.
 (pdftex.def)             Requested size: 155.24895pt x 151.70941pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf, id=331, 209.
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf, id=335, 209.
 80884pt x 194.90315pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/mdp2.pdf Graphic 
 file (type pdf)
@@ -1267,7 +1281,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 322--329
 
 [15]
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf, id=
-473, 340.27126pt x 346.29375pt>
+477, 340.27126pt x 346.29375pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf
  Graphic file (type pdf)
 
@@ -1277,7 +1291,7 @@ s/motion_update.pdf used on input line 357.
 (pdftex.def)             Requested size: 155.24895pt x 157.99718pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf, id=47
-4, 340.27126pt x 353.32pt>
+8, 340.27126pt x 353.32pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf G
 raphic file (type pdf)
 
@@ -1286,7 +1300,7 @@ Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
 s/measurement.pdf used on input line 358.
 (pdftex.def)             Requested size: 155.24895pt x 161.20293pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=475
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf, id=479
 , 340.27126pt x 356.33125pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf Gr
 aphic file (type pdf)
@@ -1297,7 +1311,7 @@ s/likelihood.pdf used on input line 359.
 (pdftex.def)             Requested size: 155.24895pt x 162.57681pt.
 
 </home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.pdf
-, id=476, 340.27126pt x 352.31625pt>
+, id=480, 340.27126pt x 352.31625pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_updat
 e.pdf Graphic file (type pdf)
 
@@ -1340,7 +1354,7 @@ pdfTeX warning: /usr/bin/pdflatex (file /home/guillaume/Documents/Thesis/ch2-Ba
 ckground/Figures/measurement_update.pdf): PDF inclusion: multiple pdfs with pag
 e group included in a single page
 >] [18]
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf, id=587, 43
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf, id=591, 43
 5.22601pt x 407.62288pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp2.pdf Graphi
 c file (type pdf)
@@ -1350,7 +1364,7 @@ Package pdftex.def Info: /home/guillaume/Documents/Thesis/ch2-Background/Figure
 s/pomdp2.pdf used on input line 424.
 (pdftex.def)             Requested size: 155.24895pt x 145.40063pt.
 
-</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=588, 43
+</home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf, id=592, 43
 5.22601pt x 407.57268pt>
 File: /home/guillaume/Documents/Thesis/ch2-Background/Figures/pomdp3.pdf Graphi
 c file (type pdf)
@@ -1485,7 +1499,7 @@ Underfull \vbox (badness 1038) has occurred while \output is active []
 
  [36]
 [37]
-<./ch2-Background/Figures/belief_pipeline.pdf, id=1108, 531.9875pt x 63.23625pt
+<./ch2-Background/Figures/belief_pipeline.pdf, id=1112, 531.9875pt x 63.23625pt
 >
 File: ./ch2-Background/Figures/belief_pipeline.pdf Graphic file (type pdf)
  <use ./ch2-Background/Figures/belief_pipeline.pdf>
@@ -1493,7 +1507,7 @@ Package pdftex.def Info: ./ch2-Background/Figures/belief_pipeline.pdf used on i
 nput line 1175.
 (pdftex.def)             Requested size: 276.00105pt x 32.80873pt.
  [38 <./ch2-Background/Figures/belief_pipeline.pdf>]
-<./ch2-Background/Figures/human_search.pdf, id=1124, 676.5275pt x 544.0325pt>
+<./ch2-Background/Figures/human_search.pdf, id=1128, 676.5275pt x 544.0325pt>
 File: ./ch2-Background/Figures/human_search.pdf Graphic file (type pdf)
 
 <use ./ch2-Background/Figures/human_search.pdf>
@@ -1501,7 +1515,7 @@ Package pdftex.def Info: ./ch2-Background/Figures/human_search.pdf used on inpu
 t line 1201.
 (pdftex.def)             Requested size: 345.0pt x 277.4363pt.
  [39 <./ch2-Background/Figures/human_search.pdf>]
-<./ch2-Background/Figures/control_loop.pdf, id=1200, 270.00874pt x 180.675pt>
+<./ch2-Background/Figures/control_loop.pdf, id=1204, 270.00874pt x 180.675pt>
 File: ./ch2-Background/Figures/control_loop.pdf Graphic file (type pdf)
 
 <use ./ch2-Background/Figures/control_loop.pdf>
@@ -1518,43 +1532,41 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [41
 
 ]
-<./ch3-Search/Figures/Figure1.pdf, id=1218, 1210.10616pt x 677.79083pt>
+<./ch3-Search/Figures/Figure1.pdf, id=1222, 1210.10616pt x 677.79083pt>
 File: ./ch3-Search/Figures/Figure1.pdf Graphic file (type pdf)
 
 <use ./ch3-Search/Figures/Figure1.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure1.pdf used on input line 38
+Package pdftex.def Info: ./ch3-Search/Figures/Figure1.pdf used on input line 46
 .
 (pdftex.def)             Requested size: 327.74895pt x 183.5748pt.
  [42 <./ch3-Search/Figures/Figure1.pdf>]
-Overfull \hbox (8.62532pt too wide) in paragraph at lines 60--62
-[]\T1/aer/m/n/10 Before de-tail-ing the math-e-mat-i-cal and im-ple-men-ta-tion
- de-tails of PbD-POMDP
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 82--83
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--109
+Overfull \hbox (0.32454pt too wide) in paragraph at lines 103--106
+\T1/aer/m/n/10 Mix-ture Model (GMM) pol-icy en-cap-su-lat-ing the hu-man search
+ strate-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--139
 
  []
 
 [43]
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \vbox (badness 2293) has occurred while \output is active []
+
+ [44]
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
-[44]
-Overfull \hbox (4.66512pt too wide) in paragraph at lines 168--175
+
+Overfull \hbox (4.66512pt too wide) in paragraph at lines 199--206
 \T1/aer/m/n/10 both hu-mans and an-i-mals are bet-ter at spa-tial nav-i-ga-tion
  than robots [][][]Stankiewicz
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--183
-
  []
 
 [45]
@@ -1563,178 +1575,184 @@ Underfull \hbox (badness 10000) in paragraph at lines 213--214
  []
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
-[47] <./ch3-Search/Figures/Figure2.pdf, id=1417, 4973.48126pt x 4846.12607pt>
+[47]
+<./ch3-Search/Figures/experimentsetup.pdf, id=1450, 154.6509pt x 100.59929pt>
+File: ./ch3-Search/Figures/experimentsetup.pdf Graphic file (type pdf)
+
+<use ./ch3-Search/Figures/experimentsetup.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/experimentsetup.pdf used on input
+ line 308.
+(pdftex.def)             Requested size: 276.00105pt x 179.56502pt.
+
+<./ch3-Search/Figures/Figure2.pdf, id=1451, 4973.48126pt x 4846.12607pt>
 File: ./ch3-Search/Figures/Figure2.pdf Graphic file (type pdf)
 
 <use ./ch3-Search/Figures/Figure2.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure2.pdf used on input line 28
-0.
+Package pdftex.def Info: ./ch3-Search/Figures/Figure2.pdf used on input line 31
+8.
 (pdftex.def)             Requested size: 327.74895pt x 319.29811pt.
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 287.
-
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
-
- []
-
-[48 <./ch3-Search/Figures/Figure2.pdf>]
-Overfull \hbox (17.1591pt too wide) in paragraph at lines 305--306
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 325.
+ [48] [49 <./ch3-Search/Figures/experimentsetup.pdf>] [50 <./ch3-Search/Figures
+/Figure2.pdf>]
+Overfull \hbox (37.34198pt too wide) in paragraph at lines 371--372
 []$\OML/cmm/m/it/10 U \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R$\T1/aer/m/n/10 , the l
 evel of un-cer-tainty which is the en-tropy of the be-lief: $\OML/cmm/m/it/10 H
  []$\T1/aer/m/n/10 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 
  []
 
-[49] [50]
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
-<./ch3-Search/Figures/Figure3.pdf, id=1793, 1999.47pt x 1282.7925pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
+
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
+
+ []
+
+<./ch3-Search/Figures/Figure3.pdf, id=1850, 1999.47pt x 1282.7925pt>
 File: ./ch3-Search/Figures/Figure3.pdf Graphic file (type pdf)
 
 <use ./ch3-Search/Figures/Figure3.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure3.pdf used on input line 39
-6.
+Package pdftex.def Info: ./ch3-Search/Figures/Figure3.pdf used on input line 47
+1.
 (pdftex.def)             Requested size: 327.74895pt x 210.26189pt.
- [51]
-Underfull \hbox (badness 10000) in paragraph at lines 433--434
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 435--436
-
- []
-
-[52 <./ch3-Search/Figures/Figure3.pdf>]
-<./ch3-Search/Figures/Figure4.pdf, id=1838, 840.36507pt x 256.01367pt>
+ [53] [54 <./ch3-Search/Figures/Figure3.pdf>] <./ch3-Search/Figures/Figure4.pdf
+, id=1896, 840.36507pt x 256.01367pt>
 File: ./ch3-Search/Figures/Figure4.pdf Graphic file (type pdf)
 
 <use ./ch3-Search/Figures/Figure4.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure4.pdf used on input line 48
-1.
+Package pdftex.def Info: ./ch3-Search/Figures/Figure4.pdf used on input line 55
+6.
 (pdftex.def)             Requested size: 327.74895pt x 99.84883pt.
+ [55] [56 <./ch3-Search/Figures/Figure4.pdf>]
+Underfull \vbox (badness 2426) has occurred while \output is active []
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--490
-
- []
-
-[53 <./ch3-Search/Figures/Figure4.pdf>] [54]
-<./ch3-Search/Figures/Figure5.pdf, id=1888, 448.04146pt x 472.89034pt>
-File: ./ch3-Search/Figures/Figure5.pdf Graphic file (type pdf)
-
-<use ./ch3-Search/Figures/Figure5.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure5.pdf used on input line 58
-5.
-(pdftex.def)             Requested size: 276.00105pt x 291.31288pt.
-
-Underfull \vbox (badness 1400) has occurred while \output is active []
-
- [55]
-[56 <./ch3-Search/Figures/Figure5.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 612--613
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
-
- []
-
-[57] <./ch3-Search/Figures/Figure6.pdf, id=1950, 898.63855pt x 773.60895pt>
+ [57]
+<./ch3-Search/Figures/Control_schematics.pdf, id=1953, 448.02425pt x 461.64836p
+t>
+File: ./ch3-Search/Figures/Control_schematics.pdf Graphic file (type pdf)
+ <use ./ch3-Search/Figures/Control_schematics.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/Control_schematics.pdf used on in
+put line 662.
+(pdftex.def)             Requested size: 276.00105pt x 284.40866pt.
+ [58 <./ch3-Search/Figures/Control_schematics.pdf>] [59]
+<./ch3-Search/Figures/Figure6.pdf, id=2011, 898.63855pt x 773.60895pt>
 File: ./ch3-Search/Figures/Figure6.pdf Graphic file (type pdf)
 
 <use ./ch3-Search/Figures/Figure6.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure6.pdf used on input line 66
-0.
+Package pdftex.def Info: ./ch3-Search/Figures/Figure6.pdf used on input line 74
+5.
 (pdftex.def)             Requested size: 327.74895pt x 282.14653pt.
- [58 <./ch3-Search/Figures/Figure6.pdf>]
-<./ch3-Search/Figures/Figure7.pdf, id=2013, 797.2293pt x 335.92015pt>
-File: ./ch3-Search/Figures/Figure7.pdf Graphic file (type pdf)
-
-<use ./ch3-Search/Figures/Figure7.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure7.pdf used on input line 69
-0.
-(pdftex.def)             Requested size: 327.74895pt x 138.0972pt.
- [59 <./ch3-Search/Figures/Figure7.pdf>]
-<./ch3-Search/Figures/Figure8.pdf, id=2397, 813.19434pt x 710.02765pt>
-File: ./ch3-Search/Figures/Figure8.pdf Graphic file (type pdf)
-
-<use ./ch3-Search/Figures/Figure8.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure8.pdf used on input line 73
-3.
-(pdftex.def)             Requested size: 327.74895pt x 286.16202pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 745--746
-
- []
-
-[60 <./ch3-Search/Figures/Figure8.pdf>]
-<./ch3-Search/Figures/Figure9.pdf, id=3607, 2913.51352pt x 2027.02289pt>
-File: ./ch3-Search/Figures/Figure9.pdf Graphic file (type pdf)
-
-<use ./ch3-Search/Figures/Figure9.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure9.pdf used on input line 75
-3.
-(pdftex.def)             Requested size: 327.74895pt x 228.01477pt.
- [61 <./ch3-Search/Figures/Figure9.pdf>]
-<./ch3-Search/Figures/Figure10.pdf, id=3628, 844.18512pt x 720.12788pt>
-File: ./ch3-Search/Figures/Figure10.pdf Graphic file (type pdf)
-
-<use ./ch3-Search/Figures/Figure10.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure10.pdf used on input line 7
-84.
-(pdftex.def)             Requested size: 327.74895pt x 279.5851pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 793--794
-
- []
-
-[62 <./ch3-Search/Figures/Figure10.pdf>]
-<./ch3-Search/Figures/Figure11.pdf, id=3714, 881.79437pt x 689.70172pt>
-File: ./ch3-Search/Figures/Figure11.pdf Graphic file (type pdf)
-
-<use ./ch3-Search/Figures/Figure11.pdf>
-Package pdftex.def Info: ./ch3-Search/Figures/Figure11.pdf used on input line 8
-12.
-(pdftex.def)             Requested size: 327.74895pt x 256.3538pt.
- [63 <./ch3-Search/Figures/Figure11.pdf>]
-Overfull \hbox (70.90662pt too wide) in paragraph at lines 858--862
- [][] 
- []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[64] <./ch3-Search/Figures/Figure12.pdf, id=5769, 902.84175pt x 759.99559pt>
+<./ch3-Search/Figures/Figure7.pdf, id=2015, 797.2293pt x 335.92015pt>
+File: ./ch3-Search/Figures/Figure7.pdf Graphic file (type pdf)
+
+<use ./ch3-Search/Figures/Figure7.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/Figure7.pdf used on input line 77
+5.
+(pdftex.def)             Requested size: 327.74895pt x 138.0972pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[60] <./ch3-Search/Figures/Figure8.pdf, id=2028, 813.19434pt x 710.02765pt>
+File: ./ch3-Search/Figures/Figure8.pdf Graphic file (type pdf)
+
+<use ./ch3-Search/Figures/Figure8.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/Figure8.pdf used on input line 81
+9.
+(pdftex.def)             Requested size: 327.74895pt x 286.16202pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[61 <./ch3-Search/Figures/Figure6.pdf>]
+<./ch3-Search/Figures/Figure9.pdf, id=2090, 2913.51352pt x 2027.02289pt>
+File: ./ch3-Search/Figures/Figure9.pdf Graphic file (type pdf)
+
+<use ./ch3-Search/Figures/Figure9.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/Figure9.pdf used on input line 83
+9.
+(pdftex.def)             Requested size: 327.74895pt x 228.01477pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./ch3-Search/Figures/Figure10.pdf, id=2092, 844.18512pt x 720.12788pt>
+File: ./ch3-Search/Figures/Figure10.pdf Graphic file (type pdf)
+
+<use ./ch3-Search/Figures/Figure10.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/Figure10.pdf used on input line 8
+70.
+(pdftex.def)             Requested size: 327.74895pt x 279.5851pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[62 <./ch3-Search/Figures/Figure7.pdf>]
+<./ch3-Search/Figures/Figure11.pdf, id=2472, 881.79437pt x 689.70172pt>
+File: ./ch3-Search/Figures/Figure11.pdf Graphic file (type pdf)
+
+<use ./ch3-Search/Figures/Figure11.pdf>
+Package pdftex.def Info: ./ch3-Search/Figures/Figure11.pdf used on input line 8
+98.
+(pdftex.def)             Requested size: 327.74895pt x 256.3538pt.
+
+Underfull \vbox (badness 1033) has occurred while \output is active []
+
+ [63 <./ch3-Search/Figures/Figure8.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (70.90662pt too wide) in paragraph at lines 944--948
+ [][] 
+ []
+
+
+Underfull \vbox (badness 1681) has occurred while \output is active []
+
+ [64 <./ch3-Search/Figures/Figure9.pdf>]
+Underfull \vbox (badness 3364) has occurred while \output is active []
+
+ [65 <./ch3-Search/Figures/Figure10.pdf>] [66 <./ch3-Search/Figures/Figure11.pd
+f>]
+<./ch3-Search/Figures/Figure12.pdf, id=5830, 902.84175pt x 759.99559pt>
 File: ./ch3-Search/Figures/Figure12.pdf Graphic file (type pdf)
 
 <use ./ch3-Search/Figures/Figure12.pdf>
 Package pdftex.def Info: ./ch3-Search/Figures/Figure12.pdf used on input line 9
-12.
+98.
 (pdftex.def)             Requested size: 327.74895pt x 275.89433pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 943--944
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
 
  []
 
-[65])
-Underfull \vbox (badness 1472) has occurred while \output is active []
-
- [66 <./ch3-Search/Figures/Figure12.pdf>] [67] [68
+[68 <./ch3-Search/Figures/Figure12.pdf>]) [69] [70
 
 ] (./main.bbl (./main.brf)
 \tf@brf=\write6
@@ -1749,140 +1767,132 @@ orty,
 LaTeX Font Info:    Try loading font information for T1+aett on input line 36.
 (/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-) [69
+) [71
 
 ]
-Underfull \hbox (badness 1990) in paragraph at lines 107--107
+Underfull \hbox (badness 1990) in paragraph at lines 112--112
 \T1/aer/m/n/10 ric pomdps.  In Makoto Kaneko and Yoshi-hiko Naka-mura, ed-i-tor
 s,
  []
 
 LaTeX Font Info:    Font shape `OMS/aer/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 163.
-[70]
-Underfull \hbox (badness 2478) in paragraph at lines 211--211
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 176.
+[72]
+Underfull \hbox (badness 2478) in paragraph at lines 234--234
 []\T1/aer/m/n/10 Kris Hauser.  \T1/aer/m/it/10 Al-go-rith-mic Foun-da-tions of 
 Robotics IX: Se-lected Con-
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 211--211
+Underfull \hbox (badness 4608) in paragraph at lines 234--234
 \T1/aer/m/it/10 tri-bu-tions of the Ninth In-ter-na-tional Work-shop on the Al-
 go-rith-mic
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 211--211
+Underfull \hbox (badness 1565) in paragraph at lines 234--234
 \T1/aer/m/it/10 Foun-da-tions of Robotics\T1/aer/m/n/10 , chap-ter Ran-dom-ized
  Belief-Space Re-plan-ning
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 211--211
+Underfull \hbox (badness 1939) in paragraph at lines 234--234
 \T1/aer/m/n/10 in Partially-Observable Con-tin-u-ous Spaces, pages 193--209.  S
 pringer
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 211--211
+Underfull \hbox (badness 1043) in paragraph at lines 234--234
 \T1/aer/m/n/10 Berlin Hei-del-berg, Berlin, Hei-del-berg, 2011.  ISBN 978-3-642
 -17452-0.
  []
 
-[71]
-Underfull \hbox (badness 1688) in paragraph at lines 284--284
+[73]
+Underfull \hbox (badness 1688) in paragraph at lines 307--307
 \T1/aer/m/n/10 00023-[]X$.  URL [][]$\T1/aett/m/n/10 http : / / dx . doi . org 
 / 10 . 1016 / S0004-[]3702(98 ) 00023-[]X$[][]\T1/aer/m/n/10 .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
 \T1/aett/m/n/10 2455-[]autonomous-[]helicopter-[]flight-[]via-[]reinforcement-[
 ]learning .
  []
 
-[72]
-Underfull \hbox (badness 2134) in paragraph at lines 426--426
+[74]
+Underfull \hbox (badness 2134) in paragraph at lines 455--455
 []\T1/aer/m/n/10 A. Nowé, P. Vrancx, and Y-M. De Hauwere.  \T1/aer/m/it/10 Re-i
 n-force-ment Learn-
  []
 
 
-Underfull \hbox (badness 5446) in paragraph at lines 426--426
+Underfull \hbox (badness 5446) in paragraph at lines 455--455
 \T1/aer/m/it/10 ing: State-of-the-Art\T1/aer/m/n/10 , chap-ter Game The-ory and
  Multi-agent Re-
  []
 
 
-Underfull \hbox (badness 8151) in paragraph at lines 426--426
+Underfull \hbox (badness 8151) in paragraph at lines 455--455
 \T1/aer/m/n/10 in-force-ment Learn-ing, pages 441--470.  Springer, 2012.  URL
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--426
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 [][]$\T1/aett/m/n/10 http : / / www . springer . com / engineering / computatio
 nal + intelligence +
  []
 
-[73]
-Underfull \hbox (badness 1694) in paragraph at lines 460--460
+[75]
+Underfull \hbox (badness 1694) in paragraph at lines 489--489
 \T1/aer/m/n/10 2007 . 11 . 026$.  URL [][]$\T1/aett/m/n/10 http : / / www . sci
 encedirect . com / science / article /
  []
 
-[74]
-Underfull \hbox (badness 2088) in paragraph at lines 566--566
+[76]
+Underfull \hbox (badness 2088) in paragraph at lines 595--595
 \T1/aer/m/n/10 1667--1674. MIT Press, 2003.  URL [][]$\T1/aett/m/n/10 http : / 
 / papers . nips . cc / paper /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 595--595
 \T1/aett/m/n/10 2319-[]exponential-[]family-[]pca-[]for-[]belief-[]compression-
 []in-[]pomdps .
  []
 
-[75] [76])
+[77] [78])
 
 Package caption Warning: Unused \captionsetup[algorithm] on input line 33.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 151.
-[77]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 151.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 157.
+[79]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 157.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 151.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 151.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 157.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 157.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F79EA54E46CEE3A26FD4176B9228B0F0;2495.
+(rerunfilecheck)             Checksum: A5D95B5ED3C6248D6494360894FBC77B;2554.
+Package rerunfilecheck Info: File `main.brf' has not changed.
+(rerunfilecheck)             Checksum: 4FB6B271FBAE9F4DF411135D20341464;6605.
 
-
-Package rerunfilecheck Warning: File `main.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `main.brf':
-(rerunfilecheck)             Before: 29E4D23DC123BFBC7FEA6A5C4EE29532;6276
-(rerunfilecheck)             After:  A1D5B5D6EC997E139C64ABF09F85B40E;6276.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 151.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 157.
  )
-(\end occurred when \ifdefined on line 146 was incomplete)
-(\end occurred when \ifdefined on line 138 was incomplete)
-(\end occurred when \ifdefined on line 137 was incomplete)
-(\end occurred when \ifdefined on line 136 was incomplete) 
+(\end occurred when \ifdefined on line 152 was incomplete)
+(\end occurred when \ifdefined on line 144 was incomplete)
+(\end occurred when \ifdefined on line 143 was incomplete)
+(\end occurred when \ifdefined on line 142 was incomplete) 
 Here is how much of TeX's memory you used:
- 21426 strings out of 493304
- 379187 string characters out of 6139872
- 510955 words of memory out of 5000000
- 24006 multiletter control sequences out of 15000+600000
+ 21818 strings out of 493304
+ 385693 string characters out of 6139872
+ 520347 words of memory out of 5000000
+ 24382 multiletter control sequences out of 15000+600000
  68071 words of font info for 143 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 55i,16n,79p,1273b,1369s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,16n,79p,1274b,1369s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fo
@@ -1916,10 +1926,10 @@ amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mu10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb>
-Output written on main.pdf (79 pages, 19966305 bytes).
+Output written on main.pdf (81 pages, 20000814 bytes).
 PDF statistics:
- 6502 PDF objects out of 7423 (max. 8388607)
- 4641 compressed objects within 47 object streams
- 301 named destinations out of 1000 (max. 500000)
- 689 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6574 PDF objects out of 7423 (max. 8388607)
+ 4708 compressed objects within 48 object streams
+ 312 named destinations out of 1000 (max. 500000)
+ 702 words of extra memory for PDF output out of 10000 (max. 10000000)
 

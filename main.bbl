@@ -1,4 +1,4 @@
-\begin{thebibliography}{96}
+\begin{thebibliography}{102}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -52,6 +52,11 @@ Chris~L. Baker, Joshua~B. Tenenbaum, and Rebecca~R. Saxe.
 \newblock Bayesian models of human action understanding.
 \newblock In \emph{Advances in Neural Information Processing Systems 18}, pages
   99--106, 2006.
+
+\bibitem[Baron-Cohen(1995)]{Baron-Cohen}
+Simon Baron-Cohen.
+\newblock \emph{Mindblindness}.
+\newblock MIT Press, 1995.
 
 \bibitem[Baxter and Bartlett(2000)]{gpomdp_2000}
 Jonathan Baxter and Peter~L. Bartlett.
@@ -115,6 +120,14 @@ Neil Burgess.
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/S1364661306002713}.
 
+\bibitem[Butterfield et~al.(2009)Butterfield, Jenkins, Sobel, and
+  Schwertfeger]{MRF_ToM}
+J.~Butterfield, O.~C. Jenkins, D.~Sobel, and J.~Schwertfeger.
+\newblock Modeling aspects of {T}heory of {M}ind with {M}arkov {R}andom
+  {F}ields.
+\newblock \emph{International Journal of Social Robotics}, 1\penalty0
+  (1):\penalty0 41--51, January 2009.
+
 \bibitem[Cassandra et~al.(1996{\natexlab{a}})Cassandra, Kaelbling, and
   Kurien]{ActingUncertainty_1996}
 A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
@@ -160,6 +173,16 @@ Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
 \newblock ISSN 1935-8253.
 \newblock \doi{10.1561/2300000021}.
 \newblock URL \url{http://dx.doi.org/10.1561/2300000021}.
+
+\bibitem[Devin and Alami(2016)]{ToM_HRI_2106}
+Sandra Devin and Rachid Alami.
+\newblock An implemented theory of mind to improve human-robot shared plans
+  execution.
+\newblock In \emph{The Eleventh {ACM/IEEE} International Conference on Human
+  Robot Interation, {HRI} 2016, Christchurch, New Zealand, March 7-10, 2016},
+  pages 319--326, 2016.
+\newblock \doi{10.1109/HRI.2016.7451768}.
+\newblock URL \url{http://dx.doi.org/10.1109/HRI.2016.7451768}.
 
 \bibitem[Du et~al.(2010)Du, Hsu, Kurniawati, Lee, Ong, and
   Png]{POMDP_approach_2010}
@@ -339,6 +362,12 @@ Hanna Kurniawati, David Hsu, and Wee~Sun Lee.
 Pamela~Banta Lavenexa, Valérie Boujonb, Angélique Ndarugendamwob, and Pierre
   Lavenexa.
 \newblock Human short-term spatial memory: Precision predicts capacity.
+
+\bibitem[Leslie(1994)]{Leslie_TOMM}
+Alan~M. Leslie.
+\newblock \emph{ToMM,ToBY, and Agency: Core architecture and domain
+  specificity}.
+\newblock Cambridge University Press, 1994.
 
 \bibitem[Li et~al.(2016)Li, Hang, Kragic, and Billard]{Li_2015}
 Miao Li, Kaiyu Hang, Danica Kragic, and Aude Billard.
@@ -570,6 +599,14 @@ Nicholas Roy and Sebastian Thrun.
 \newblock In \emph{In Advances in Neural Processing Systems 12}, pages
   1043--1049, 1999.
 
+\bibitem[Scassellati(2002)]{ToM_humanoid}
+Brian Scassellati.
+\newblock Theory of mind for a humanoid robot.
+\newblock \emph{Auton. Robots}, 12\penalty0 (1):\penalty0 13--24, January 2002.
+\newblock ISSN 0929-5593.
+\newblock \doi{10.1023/A:1013298507114}.
+\newblock URL \url{http://dx.doi.org/10.1023/A:1013298507114}.
+
 \bibitem[Silver et~al.(2010)Silver, Bagnell, and
   Stentz]{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain}
 David Silver, J.~Andrew Bagnell, and Anthony Stentz.
@@ -589,6 +626,16 @@ Trey Smith and Reid~G. Simmons.
 \newblock Point-based {POMDP} algorithms: Improved analysis and implementation.
 \newblock \emph{CoRR}, abs/1207.1412, 2012.
 \newblock URL \url{http://arxiv.org/abs/1207.1412}.
+
+\bibitem[Sodian and Kristen(2010)]{Towards_a_ToM_2010}
+Beate Sodian and Susanne Kristen.
+\newblock Theory of mind.
+\newblock In Britt Glatzeder, Vinod Goel, and Albrecht Müller, editors,
+  \emph{Towards a Theory of Thinking}, On Thinking, pages 189--201. Springer
+  Berlin Heidelberg, 2010.
+\newblock ISBN 978-3-642-03128-1.
+\newblock \doi{10.1007/978-3-642-03129-8_13}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-03129-8_13}.
 
 \bibitem[Spaan and Vlassis(2005)]{Spaan05icra}
 Matthijs T.~J. Spaan and Nikos Vlassis.
