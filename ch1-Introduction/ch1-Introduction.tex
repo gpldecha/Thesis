@@ -1,44 +1,8 @@
 \chapter{Introduction}
 
 \section{Motivation}
-% Search is amazing, ability to reason given limitied information, we can do many things without
-% fully observing our environment. 
-% Examples where partial observability is everywhere in the world and how we as humans have to deal 
-% with it on a day to day basis which almost second nature to use. We do not have to think about it, we 
-% just do it. This is increadibly difficult to do for robots, acting and reasing given incomplete information
-% is one of the most challanging aspects of artificel intiellegence. Because of the sheer branching factor. 
-% 
-% Neuroscience evidence 
-%
-% Long-term and short term memory
-%
-%
-% When reasoning with respect to uncertainty, number of assumptions are made
-%
 
-%
-% 1) Describe uncertainty & risk in the world how important it is for biological entities to approprietly take it 
-%    into account for survivial.  
-%
-%    Description of what humans are able to do on a day to day basis and how important uncertainty is Balancing risk.
-%    Evidence of humans being expectation maximisers.
-%
-% 2) 
-%
 
-% An action is the result of two hidden states; Our beliefs and desires.
-
-%
-% 3) How is uncertainty handles in artificel intelligence ?
-%
-%
-%
-% 4) Uncertainty in robotics; how is it handled.
-%
-%
-% 5) Summary
-
-% 1)
 Taking long term decisions or spontaneous reactive actions when presented with incomplete information or partial knowledge is 
 paramount to the survival of any biological or synthetic entity. Reasoning given a state of uncertainty is a continuously occurring event throughout our 
 livelihood. When considering long term decisions an abundance of examples come to mind. For instance, in economic investments 
@@ -46,9 +10,29 @@ uncertainty is to the best of efforts quantified and minimised in order to avoid
 when looking for the snooze button of an alarm clock, early in the morning, our hand seems to autonomously search the surrounding space picking up
 sensory cues gradually acquiring information guiding us towards the button. All the above types of decision require the integration of 
 evidence and an ability to predict the outcomes of the taken decisions in order to insure a favourable end state. 
-Abilities close to these have met with mixed levels of success in Artificial Intelligence (AI) \& robotics. There is a been 
-noticeable success in artificial agents beating humans at board games (backgammon, chess and go) but having a robot successfully 
-climb a staircase, open a door or pick up a glass are still ongoing open problems. 
+The ability to reason, in Artificial Intelligence (AI) \& robotics, whilst taking uncertainty into consideration has 
+resulted in mixed levels of success. 
+
+% Solving decision problem for structured problems [Operational Research]; backgammon, chess or go, where the adversiary can be considered
+% a source of uncertainty.
+
+There has been noticeable success in artificial agents beating humans at board games such as backgammon (TD-Backgammon), chess (Deep blue) and now 
+recently go (AlphaGo). All in which the source of uncertainty originates from the adversary's actions, the stochastic of the game (throwing die). 
+
+The gab between human ability and robotic autonomous systems starts to diverge when the action space is continuous, non-discretisable and 
+the uncertainty element cannot be ignored. It is still difficult for robots to open doors and turn valves. In the 2015 darap grand 
+challenge X teams managed to successfully accomplish this task.
+Applications in which environment conditions induce poor visibility or a high uncertainty outcome of the decisions are becoming more 
+wide spread. Examples of such environments include exo-planetary exploration (mars rover ea citation), deep water exploration. 
+
+
+%There is a been noticeable success in artificial agents beating humans at board games (backgammon, chess and go) but having a robot successfully 
+%çclimb a staircase, open a door or pick up a glass are still ongoing open problems. 
+
+%	What is the gap ?  -> Uncertainty + Decision making on a continuous setting is hard.
+%	Examples
+%
+
 
 It is not yet fully understood how decisions are taken, yet alone under uncertainty. The difficulty is that two processes responsible 
 for the synthesis of our actions and decisions, our beliefs and desires, are not directly or easily measurable. There is growing interest in 
@@ -59,18 +43,6 @@ At a behavioural level, early efforts to model human decision making were made i
 (\cite{Bernoulli1954},\cite{VonNeumann1944}), in which gambles and investments were chiefly considered. There has been 
 considerable effort in many fields (neuroscience, cognitive science, physiology, economics, etc..) to understand how decisions and actions 
 are taken, starting with the role of our neurons to high level decisions like gambling, orientation and navigation problems to reflexes. 
- 
-% . In locomotion behaviour uncertainty plays a role on how we plan our paths, there is evidence 
-%in Neuroscience that the hypocampus plays an important role our internal representation.
-
-% Understanding and subsequently predicting the way we reason 
-% with respect to uncertainty and de facto how we handle risk has been modelled by a utility function and the probabilistic outcome 
-% of our decisionse
-
-% Should speak about evidence of neuroscience activity during locomotion. Do we know which parts of the brain are being 
-% triggered when we are doing search. Is there neuroscience evidence of an internal map representation in our brain 
-% ego-centric allocentric represenation (
- 
 % 3) Aritficiel intelligence & robots (How is uncertainty taken into account in the decision process)
 
 Artificial intelligence \& robotics considered early on uncertainty in decision making, 
@@ -182,6 +154,14 @@ statistical controller, both good and bad demonstrations will be mixed in togeth
 representing the task we can explicitly have a quality metric of the provided demonstrations. In this way 
 we can optimise the parameters of our generative model to maximise the cost function. In this LfD Reinforcement 
 Learning setup with a very simple cost function we can have a significant improvement of our a policy.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{roadmap.pdf}
+  \caption{Roadmap of the Thesis with key points. }
+\end{figure}
+
 
 \section{Thesis outline}
 
