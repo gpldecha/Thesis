@@ -154,16 +154,6 @@ D.~Chen and G.~von Wichert.
   Conference on}, pages 4312--4317, May 2015.
 \newblock \doi{10.1109/ICRA.2015.7139794}.
 
-\bibitem[de~Chambrier and Billard(2014)]{Chambrier2014}
-Guillaume de~Chambrier and Aude Billard.
-\newblock Learning search policies from humans in a partially observable
-  context.
-\newblock \emph{Robotics and Biomimetics}, 1\penalty0 (1):\penalty0 1--16,
-  2014.
-\newblock ISSN 2197-3768.
-\newblock \doi{10.1186/s40638-014-0008-1}.
-\newblock URL \url{http://dx.doi.org/10.1186/s40638-014-0008-1}.
-
 \bibitem[Deisenroth et~al.(2011)Deisenroth, Neumann, and
   Peters]{p_search_surv_2011}
 Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
@@ -294,6 +284,21 @@ Shervin Javdani, Matthew Klingensmith, Drew Bagnell, Nancy~S. Pollard, and
 \newblock Efficient touch based localization through submodularity.
 \newblock \emph{CoRR}, abs/1208.6067, 2012.
 \newblock URL \url{http://arxiv.org/abs/1208.6067}.
+
+\bibitem[Johnson et~al.(2015)Johnson, Shrewsbury, Bertrand, Wu, Duran, Floyd,
+  Abeles, Stephen, Mertins, Lesman, Carff, Rifenburgh, Kaveti, Straatman,
+  Smith, Griffioen, Layton, de~Boer, Koolen, Neuhaus, and Pratt]{DARPA_2015}
+Matthew Johnson, Brandon Shrewsbury, Sylvain Bertrand, Tingfan Wu, Daniel
+  Duran, Marshall Floyd, Peter Abeles, Douglas Stephen, Nathan Mertins, Alex
+  Lesman, John Carff, William Rifenburgh, Pushyami Kaveti, Wessel Straatman,
+  Jesper Smith, Maarten Griffioen, Brooke Layton, Tomas de~Boer, Twan Koolen,
+  Peter Neuhaus, and Jerry Pratt.
+\newblock Team ihmc's lessons learned from the darpa robotics challenge trials.
+\newblock \emph{Journal of Field Robotics}, 32\penalty0 (2):\penalty0 192--208,
+  2015.
+\newblock ISSN 1556-4967.
+\newblock \doi{10.1002/rob.21571}.
+\newblock URL \url{http://dx.doi.org/10.1002/rob.21571}.
 
 \bibitem[Kaelbling et~al.(1998)Kaelbling, Littman, and
   Cassandra]{Kaelbling_1998}
