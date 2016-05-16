@@ -19,7 +19,7 @@ which observations are discontinuous and occur as impulses.
 
 In this chapter, we demonstrate that human foresight and intuition can be leveraged as a means of solving the 
 exploration/exploitation dilemma under partial observable conditions. Human beings are versatile in their ability to 
-accomplish tasks which are considered to be complex by current robotic standards. This perceived ability which have over 
+accomplish tasks which are considered to be complex by current robotic standards. This perceived ability which we have over 
 current robotic systems, due to our prior domain knoweldge and experience, can be extracted, encapsulated and transferred 
 to a robot apprentice.
 
@@ -56,28 +56,6 @@ There are \textbf{two assumptions} we make when applying Programming by Demonstr
 The first assumption is that the human teacher's \textit{spatial cognitive} abilities are good enough to accomplish 
 the task in a consistent fashion. In other words demonstrations should not be random and a pattern exists. The second assumption is that human's beliefs inferred  
 by the apprentice are close to the actual belief of the human. 
-
-%Before detailing the mathematical and implementation details of PbD-POMDP approach, we detail the outline of 
-%this Chapter.
-
-%\begin{itemize}
-% \item Do humans exhibit particular search strategies and if so is it feasible to learn them ?
-% \item How well does a statistical controller learned from human demonstrations perform with
-% respect to approaches which do not take into account the uncertainty directly ?
-%\end{itemize}
-
-%Before each demonstration the human volunteer is disoriented. His transitional position is varied with 
-%respect to the table although his heading remains the same (facing the table) leaving no uncertainty 
-%on his orientation. The disorientation of the human subject is to ensure that his believed location is uniform. 
-%At the first time step, the human's state of mind can be considered observable. All proceeding 
-%beliefs can then be recursively estimated from the initial belief. 
-
-
-%Learning from demonstrations (LfD) has long been a successful method for transferring
-%knowledge from human teachers to robots. A common problem which arises in robotic
-%navigation is how to take into account appropriately state uncertainty. To consider whether
-%humans are suitable teachers for showing robots how to handle this uncertainty we compare
-%human policies with that of an ideal agent, modelled by a POMDP
 
 \section{Outline}
 
@@ -143,7 +121,7 @@ in this map. The aspects of both  construction and correction of a cognitive map
 There is reported evidence that we use both vestibular and proprioception in inferring self-motion in order to update our position through dead reckoning (also known as path integration). 
 Given the estimated position we then use external cues such as geometric (the shape of a room) and features (the colour of the walls), 
 to correct our position. The actual representation of our position and environment in our cognitive map has been proposed,
-\cite{spatial_memory_how_ego_allo_combine_2006},to be either encoded in our own frame of reference (egocentric) or in a frame of reference which 
+\cite{spatial_memory_how_ego_allo_combine_2006}, to be either encoded in our own frame of reference (egocentric) or in a frame of reference which 
 is independent to us (allocentric) and acts like a standard paper map or both. This cognitive map enables us to reason about the relations between our own position and that of other items and landmarks present. 
 This representation also facilitates our ability to localise ourselves and plan novel routes when needed.
 
@@ -194,7 +172,7 @@ with an ideal agent (POMDP solution). The authors' main findings where that as t
 performance of the human subject decreased with respect to the ideal agent, as human subjects are limited by the 
 uncertainty in their location and have difficulty in maintaining multiple hypothesises.
 
-\subsubsection{Summary}
+\subsubsection{Summary: spatial cognition}
 
 
 The studies detailed above reported that if the environment is not overly large and complex our cognitive model is sufficient 
@@ -311,8 +289,6 @@ arm stretched out in front of them. The  position of their hand was then either 
   the green block on the table. Throughout all experiments the green wooden block is kept in the same location.}
   \label{fig:tab_search_task}
 \end{figure}
-
-
 \begin{figure}
 \centering
   \includegraphics[width=\textwidth]{./ch3-Search/Figures/Figure2}
@@ -425,8 +401,17 @@ The sensing model takes into account the inherent uncertainty of the sensing fun
 and gives the likelihood, $p(y_t|x_t)$ of a position. Since the range of sensing is extremely small and entries are probabilistic 
 we assume no noise in the sensor measurement.
 The likelihood of a hypothetical location, $x_t$,  is related to Jensen-Shannon divergence (JSD), $p(y_t|x_t) = 1 - JSD(y_t||\hat{y}_t)$ , between true sensing vector,
-$z_t$, obtained by the agent and that of the hypothetical sensation $\hat{y}_t$ generated at the location of a particle. 
+$z_t$, obtained by the agent and that of the hypothetical sensation $\hat{y}_t$ generated at the location of a particle. In Figure \ref{fig:pf_example}, four 
+different beliefs are shown.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{./ch3-Search/Figures/particlefilter.pdf}
+  \caption{Four different time frames of the evolution of the belief particle filter. \textit{Top left}: Initial belief distribution; a lot of uncertainty.
+  \textit{Top right:} First contact is made with the table, the measurement likelihood restrains the samples to be on the table's surface. \textit{Bottom right:}
+  First contact is an edge. \textit{Bottom left:} Gradual localisation.}
+  \label{fig:pf_example}
+\end{figure}
 
 \subsubsection{Motion model}
 
@@ -891,10 +876,7 @@ initialized uniformly. As for the other 4 search experiments, 40 separate runs w
 
 \begin{figure}
    \centering
-    \subfigure[]{\includegraphics[width=0.47\textwidth]{./ch3-Search/Figures/search_1.pdf}}
-    \subfigure[]{\includegraphics[width=0.47\textwidth]{./ch3-Search/Figures/search_2.pdf}}
-    \subfigure[]{\includegraphics[width=0.47\textwidth]{./ch3-Search/Figures/search_3.pdf}}	 
-    \subfigure[]{\includegraphics[width=0.47\textwidth]{./ch3-Search/Figures/search_4.pdf}}	 
+ \includegraphics[width=\textwidth]{./ch3-Search/Figures/Figure11}
 \caption{Four search initializations, from \textit{top left} to \textit{bottom right} we refer to them as \#1-4. The 
 circle indicates the true starting point of the end-effector (eof), whilst the triangle is the initial believed location of the eof.
 The initialisation in \#1 was chosen such that the true and believed eof locations were at opposite sides of the table. 
@@ -941,9 +923,10 @@ comparative study.
 
 \begin{table}
  \centering
-  \begin{tabular}{c|c|c|c|c|c|}
+  \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
    search method &  Uniform       &   \#1	   & 	\#2	     & 	    \#3	       &   \#4 \\ \hline
-   p-value (F)   &  2.01e-06 (14) & 5.03e-07 (19) &  7.17e-11 (36) &  4.1e-06 (15) &  4.21e-16 (67)
+   p-value (F)   &  2e-06 (14) & 5e-07 (19) &  7e-11 (36) &  4-06 (15) &  4e-16 (67) \\ \hline
  \end{tabular}
  \caption{ANOVA tests the null hypothesis that all search experiments produced the same type of search with respect to the distance taken to reach the goal. 
  All the p-values are extremely small which indicate that the null hypothesis can safely be rejected.}
@@ -961,13 +944,14 @@ characteristics such as edge following behaviour.
 
 \begin{table}
  \centering
- \begin{tabular}{c|c|c|c|}
+ \begin{tabular}{|c|c|c|c|}
+ \hline
    p-value (F)   &  Greedy vs GMM      &     Greedy vs Coastal        &  GMM vs Coastal     \\\hline
   Uniform & 3.59e-08 (30)  &   3.32e-04 (13) 		     &  1.90e-01 (2)  \cellcolor{Gray}\\
 \#1  	  & 5.80e-08 (46) &  1.88e-01 (2) \cellcolor{Gray} &  4.58e-06 (28)\\
 \#2	  & 3.60e-08 (47) &  4.68e-04 (14)		    &  4.54e-06 (28) \\
 \#3	  & 3.57e-07 (37) &  2.07e-05 (23)		    &  1.25e-01 (2) \cellcolor{Gray} \\
-\#4	  & 6.70e-10 (64) &  1.58e-01 (2) \cellcolor{Gray} &  6.34e-13 (107)
+\#4	  & 6.70e-10 (64) &  1.58e-01 (2) \cellcolor{Gray} &  6.34e-13 (107) \\ \hline
 \end{tabular}
 \caption{ANOVA between paired search methods. The first column gives an indication of the probability that both the Greedy 
 and GMM searches are statistically the same (the null hypothesis). This was rejected with a tolerance of below \%1. 
@@ -1018,9 +1002,9 @@ of uncertainty at the arrival which leads to the assumption that chance has a no
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%																	   %
-%				Conclusion 		 										   %
-%																	   %
+%																	%
+%				Conclusion 		 										%
+%																	%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \FloatBarrier
@@ -1046,7 +1030,28 @@ accounts for it better than Greedy or Coastal planning approaches. This is evide
 where the believed position and true position of the end-effector were significantly far apart and distant from salient areas. 
 Future questions of scientific value to be addressed are to which extent do humans follow the reasoning 
 of a Markov Decision Process in a partially observable situation where the state space is continuous 
-(the problem has been partially addressed in \cite{Bake_Saxe_Tene_2011} for discrete states and actions). A further aspect of interest
-is to study the situation where multiple beliefs are present and investigate how humans 
-perform simultaneous localization and mapping as opposed to active localization which was the area of interest of 
-this research. 
+(the problem has been partially addressed in \cite{Bake_Saxe_Tene_2011} for discrete states and actions). 
+
+A drawback of the PbD-POMDP approach is that the quality of the learned policy is dependent on the abilities 
+of the human teacher. If the teacher is good on average then transferred policy will be also good, if however
+the human is suboptimal at performing the task, then the resulting policy will be poor. 
+
+
+%A further aspect of interestis to study the situation where multiple beliefs are present and investigate how humans 
+%perform simultaneous localization and mapping as opposed to active localization which was the area of interest of 
+%this research. 
+
+
+% Basically talk about the drawback and introduce the next chapter.
+
+
+
+
+
+
+
+
+
+
+
+

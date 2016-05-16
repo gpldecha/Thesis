@@ -19,7 +19,7 @@ which observations are discontinuous and occur as impulses.
 
 In this chapter, we demonstrate that human foresight and intuition can be leveraged as a means of solving the 
 exploration/exploitation dilemma under partial observable conditions. Human beings are versatile in their ability to 
-accomplish tasks which are considered to be complex by current robotic standards. This perceived ability which have over 
+accomplish tasks which are considered to be complex by current robotic standards. This perceived ability which we have over 
 current robotic systems, due to our prior domain knoweldge and experience, can be extracted, encapsulated and transferred 
 to a robot apprentice.
 
@@ -121,7 +121,7 @@ in this map. The aspects of both  construction and correction of a cognitive map
 There is reported evidence that we use both vestibular and proprioception in inferring self-motion in order to update our position through dead reckoning (also known as path integration). 
 Given the estimated position we then use external cues such as geometric (the shape of a room) and features (the colour of the walls), 
 to correct our position. The actual representation of our position and environment in our cognitive map has been proposed,
-\cite{spatial_memory_how_ego_allo_combine_2006},to be either encoded in our own frame of reference (egocentric) or in a frame of reference which 
+\cite{spatial_memory_how_ego_allo_combine_2006}, to be either encoded in our own frame of reference (egocentric) or in a frame of reference which 
 is independent to us (allocentric) and acts like a standard paper map or both. This cognitive map enables us to reason about the relations between our own position and that of other items and landmarks present. 
 This representation also facilitates our ability to localise ourselves and plan novel routes when needed.
 
@@ -1002,9 +1002,9 @@ of uncertainty at the arrival which leads to the assumption that chance has a no
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%																	   %
-%				Conclusion 		 										   %
-%																	   %
+%																	%
+%				Conclusion 		 										%
+%																	%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \FloatBarrier
@@ -1030,7 +1030,31 @@ accounts for it better than Greedy or Coastal planning approaches. This is evide
 where the believed position and true position of the end-effector were significantly far apart and distant from salient areas. 
 Future questions of scientific value to be addressed are to which extent do humans follow the reasoning 
 of a Markov Decision Process in a partially observable situation where the state space is continuous 
-(the problem has been partially addressed in \cite{Bake_Saxe_Tene_2011} for discrete states and actions). A further aspect of interest
-is to study the situation where multiple beliefs are present and investigate how humans 
-perform simultaneous localization and mapping as opposed to active localization which was the area of interest of 
-this research. 
+(the problem has been partially addressed in \cite{Bake_Saxe_Tene_2011} for discrete states and actions). 
+
+A drawback of the PbD-POMDP approach is that the quality of the learned policy is dependent on the abilities 
+of the human teacher. If the teacher is good (on average) then the transferred policy will be adequate, if however
+the human is suboptimal at performing the task, then the resulting policy will be poor. An autonomous way of
+evaluating the quality of the demonstrations whilst learning a policy is necessary. In the next chapter, ``Chapter 4'', we 
+demonstrate that by introducing a cost function and using a Reinforcement Learning approach we can account
+for poor demonstrations and increase the quality of the policy.
+
+
+%A further aspect of interestis to study the situation where multiple beliefs are present and investigate how humans 
+%perform simultaneous localization and mapping as opposed to active localization which was the area of interest of 
+%this research. 
+
+
+% Basically talk about the drawback and introduce the next chapter.
+
+
+
+
+
+
+
+
+
+
+
+
