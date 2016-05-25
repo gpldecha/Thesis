@@ -4,7 +4,7 @@
 %
 %	-> 
 %
-Conclusions drawn from the literature survey in Chapter 2 is that non-heuristic methods for planning and control 
+The conclusions drawn from the literature survey in Chapter 2 are that non-heuristic methods for planning and control 
 rely heavily on the initial data provided to their respective optimisers. An ideal initial set of behaviour should be comprised
 of explorative and exploitative actions so that a final optimal policy can quickly achieve the balance between minimising 
 uncertainty and solving the task at hand. This is especially true for Reinforcement Learning (RL) methods which make use of 
@@ -28,7 +28,7 @@ Section \ref{sec:approach} (PbD-POMDP) to a blindfolded haptic search task. In o
 must search for an object on a table whilst deprived of vision and hearing, illustrated in Figure \ref{fig:searching}. 
 The robot and human both have prior knowledge of the environmental setup making this a specific search problem with no required mapping of the environment, also known as active localisation. 
 In Figure \ref{fig:searching}, a human has his sense of vision and hearing impeded, making the perception of the environment partially observable and 
-only leaving the sense of touch available for solving the task. The hearing sense is also impeded since it can 
+leaving only the sense of touch available for solving the task. The hearing sense is also impeded since it can 
 facilitate localisation when no visual information is available and the robot has no equivalent giving an unfair 
 advantage to the human. By impeding hearing we align the perception correspondence between the human and robot.
 
@@ -37,8 +37,8 @@ to hand actions (velocities) with a Gaussian Mixture Model (GMM), we can model t
 We further categorize the type of behaviours demonstrated by humans as being either risk-prone or risk-averse and find that more than 70\% of 
 the human searches were considered to be risk-averse. We contrast the performance of this human-inspired search model with respect to Greedy and Coastal Navigation search methods. 
 Our evaluation metric is the distance taken to reach the goal and how each method minimises the uncertainty.
-We further analyse the control policy of the Coastal Navigation and GMM search models and argue that taking 
-into account uncertainty is more efficient with respect to distance travelled to reach the goal.
+We further analyse the control policy of the Coastal Navigation and GMM search models and argue that taking  uncertainty
+into account is more efficient with respect to distance travelled to reach the goal.
 
 \begin{figure}[h]
   \centering
@@ -52,7 +52,7 @@ into account uncertainty is more efficient with respect to distance travelled to
  \label{fig:searching}
 \end{figure} 
 
-There are \textbf{two assumptions} we make when applying Programming by Demonstration (also known as Imitation Learning) to the POMDP task described above. 
+There are \textbf{two assumptions} we make when applying Programming by Demonstration, PbD (also known as Imitation Learning), to the POMDP task described above. 
 The first assumption is that the human teacher's \textit{spatial cognitive} abilities are good enough to accomplish 
 the task in a consistent fashion. In other words demonstrations should not be random and a pattern exists. The second assumption is that human's beliefs inferred  
 by the apprentice are close to the actual belief of the human. 
@@ -64,7 +64,7 @@ by the apprentice are close to the actual belief of the human.
 \item  \hyperref[ch3:background]{\ref{ch3:background}   Background}\\
 We review aspects of the literature in robotics and cognitive science which are related to spatial navigation which 
 consider scenarios with limited perceptual information. We review related literature from \textit{Spatial Navigation}, 
-\textit{Theory of Mind} and \textit{Programming by Demonstration}
+\textit{Theory of Mind} and \textit{Programming by Demonstration}.
 
 \item  \hyperref[ch3:experiment]{\ref{ch3:experiment}   Experiment}\\
 The table search experiment protocols are described and we detail how to learn and transfer search strategies from human teachers to a robot 
@@ -137,7 +137,7 @@ the setup and touched all objects present. This guided exploration (the experime
 the participants could correctly recall all the objects' locations twice consecutively without help. In a testing room (no objects present) 
 the participants were asked ``Judgement of Relative Direction''  questions and the accuracy and response time were recorded. From the results the authors 
 concluded that blindfolded and late blinded participants used a allocentric representation of the object array, whilst the congenital blind 
-subjects use an egocentric model. The cause of this discrepancy is attributed to the role played by vision in the development of the 
+subjects use an egocentric model. The cause of this difference is attributed to the role played by vision in the development of the 
 multisensory brain area, in which vision is necessary for the development of an allocentric model. 
 
 Many similar experiments have been conducted and a summary can be found in the following review \cite{spatial_memory_how_ego_allo_combine_2006},
@@ -149,28 +149,28 @@ memory used by the egocentric model.
 
 The quality of the human teacher in  search tasks, which are partially observable in the terms of absence of vision,
 will strongly depend on the teacher's ability to maintain an accurate cognitive map of his environment. This implies
-that the size of the environment and search task will have an effect on the teachers ability to provide near optimal 
+that the size of the environment and search task will have an effect on the teacher's ability to provide near optimal 
 demonstrations. 
-Early and influential research into humans short term memory was presented in 1956 by George Miller in a seminal work, \cite{cogprints730} 
+Early and influential research into human's short term memory was presented in 1956 by George Miller in a seminal work, \cite{cogprints730} 
 (22'780 citations), in which he described the ``so called'' magical number of our short term memory as being $7\pm2$ items, 
-known as \textit{Miller's Law}. This research was conducted on a one dimension task in which no spatial navigation was required.
+known as \textit{Miller's Law}. This research was conducted on a one dimensional task in which no spatial navigation was required.
 Since then there have been many studies investigating the limits of short term memory.
 
-In \cite{human_stsm_2015} a set of subjects had to find in a 4m $\times$ 4m room, within a 1 minute interval, either 1, 3, 5 or 7 goal pads, 
-among a grid array of 23 pads. They measured the subjects' error in terms of the number of locations visited before finding the goals. 
+In \cite{human_stsm_2015} a set of subjects had to find either 1, 3, 5 or 7 goal pads, among a grid array of 23 pads in a 4m $\times$ 4m room, 
+within a 1 minute interval. They measured the subjects' error in terms of the number of locations visited before finding the goals. 
 They found that on average the subjects had to visit ``$1.6 \times \#num\_goals$'' pads before achieving the task. The authors concluded 
 that in this spatial navigation task there was no magical number which represents the limit of short term memory.
 In another spatial navigation experiment, \cite{Iachini2014}, the effect that the scale of the environment 
-has on the ego-allocentric representation is studies in blindfolded, late and early blind subjects. The main findings were
-that cognitive blind people have more difficulty in developing an allocentric representation of the world. In terms of 
-difference in the scale of the problem (two conditions where compared, a task which required no locomotion and one that did), 
-only a small difference existed for the blindfolded subjects.
+has on the ego-allocentric representation is studied in blindfolded, late and early blind subjects. The main findings were
+that cognitively blind people have more difficulty in developing an allocentric representation of the world. 
+%In terms of difference in the scale of the problem (two conditions where compared, a task which required no locomotion and one that did), 
+%only a small difference existed for the blindfolded subjects.
 
-A search task in a virtual maze is conducted by a set of human subjects, \cite{stankiewicz2006lost}. The aim 
-was to investigate the limitations that perception, memory and uncertainty have on humans decisions in comparison 
-with an ideal agent (POMDP solution). The authors' main findings where that as the size of the maze increased the
-performance of the human subject decreased with respect to the ideal agent, as human subjects are limited by the 
-uncertainty in their location and have difficulty in maintaining multiple hypothesises.
+In \cite{stankiewicz2006lost}, a search task in a virtual maze is conducted by a set of human subjects.  The aim 
+is to investigate the limitations that perception, memory and uncertainty have on human decisions in comparison 
+with an ideal agent (POMDP solution). The authors' main findings were that as the size of the maze increases the
+performance of the human subject decreases with respect to the ideal agent, as human subjects are limited by the 
+uncertainty in their location and have difficulty in maintaining multiple hypotheses.
 
 \subsubsection{Summary: spatial cognition}
 
@@ -178,7 +178,7 @@ uncertainty in their location and have difficulty in maintaining multiple hypoth
 The studies detailed above reported that if the environment is not overly large and complex our cognitive model is sufficient 
 to produce policies which are on par with an optimal POMDP agent. 
 
-Our study seeks to transfer exploratory behaviour from human teachers to a robot apprentice in partially observable setting. 
+Our study seeks to transfer exploratory behaviour from human teachers to a robot apprentice in a partially observable setting. 
 In our search scenario the environment is less than 3 meters in length and 2 meters in depth with a single goal object to be found. 
 Given this setup and the evidence from previous studies, humans should be able to achieve this task with a high level of proficiency. 
 
@@ -201,25 +201,25 @@ the human's belief of his location whilst he is searching. In others words the a
 
 The study of inference of another's mental state is part of Theory of Mind (ToM) \cite{Towards_a_ToM_2010}, which is concerned 
 with our ability to infer beliefs, desires, intentions, perception,
-goals and current knowledge. Similarly, the apprentice will have to infer the teacher's beliefs. To do so we will  make the 
-assumption that the teacher's beliefs are \textbf{rational}. 
-A rational belief is a belief for which observations bring supportive evidence and 
+goals and current knowledge. In this study, the apprentice will have to infer the teacher's beliefs which we assume are 
+\textbf{rational}. A rational belief is a belief for which observations bring supportive evidence and 
 gradually increase the certainty of the belief. In a recursive formulation this known as Bayesian Theory of Mind (BToM),
 where the Bayesian component highlights the hypothesis that humans integrate information and update their beliefs in a similar 
 fashion to Bayes rule.
 
-Due to complexity in the number of sensory sub-components and their interplay, required as a precursor to the development
-of a ToM, much effort has been focused on the development of these necessary sub-components, such as gaze following.
+Due to the complexity in the number of sensory sub-components, such as gaze following, and their interplay, required as a precursor to the development
+of a ToM, much effort has been focused their  development.
 Early work in implementing a ToM in a humanoid robot was introduced in \cite{ToM_humanoid} and is based on ToM models of \cite{Leslie_TOMM} 
 and \cite{Baron-Cohen}. The author focused on building basic skills such as face finding and distinguishing animate and inanimate 
 stimuli but left open the problem of the final interaction between all the components.
 
 In \cite{MRF_ToM}, the authors model ToM as a Markov Random Field which defines a joint probability distribution over a set of
-hidden actions and observation variables. The functions of these variables are hand crafted for each experiment. 
+hidden actions and observation variables. The functions of these variables are hand-crafted for each experiment. 
 The authors demonstrate that through a suitable parameterisation of the MRF they achieve results comparable to the predictions of ToM.
 Recently in \cite{ToM_HRI_2106}, ToM and planning architecture have been integrated in a joint action collaborative human robot task, 
 in which position, goal and action state of the human partner is maintained by his robotic assistant.
 
+% ????
 Work on modelling human beliefs and intentions has been undertaken in cognitive science, \cite{Bake_Saxe_Tene_2011}, 
 \cite{Richardson1_Baker1_Tenenbaum1_Saxe1_2012}. In \cite{Bake_Tene_Saxe_2006}, the authors present a Bayesian framework 
 for modelling the way humans reason and predict actions of an intentional agent. The comparison between 
@@ -228,11 +228,10 @@ This when asked to guess the intentions of a goal oriented agent in a 2D world, 
 humans were observing. This provided evidence supporting the hypothesis that humans integrate information using Bayes rule. 
 Further, in \cite{Bake_Saxe_Tene_2011}, a similar experiment was performed in which the inference capabilities of humans,
 with regard to both belief and desire of an agent, were comparable to that of their Bayesian model. Again they found
-the humans inference was comparable to that of the Bayesian model.
+the human's inference was comparable to that of the Bayesian model.
 
 In our PbD-POMDP framework we make a similar hypothesis that humans integrate information in a Bayesian way, however in a 
 continuous domain. We infer the belief that humans have of their location in the world during search tasks.
-
 
 \subsection{Programming by demonstration \& uncertainty}
 
@@ -316,7 +315,7 @@ Before each trial the participant was told that he/she would always be facing th
 like in the case of a door) but his/her translational starting position would vary. 
 For instance, the table might not be always directly in front of the person and his/her distance to the edge or 
 corner could be varied. In Figure \ref{fig:experiment}
-\textit{bottom left}, we illustrate four representative recorded searches whilst in the \textit{bottom right}, we illustrate a set trajectories 
+\textit{bottom left}, we illustrate four representative recorded searches whilst in the \textit{bottom right}, we illustrate a set of trajectories 
 which all started from the same region. One interesting aspect is the diversity present,
 demonstrating clearly that humans behave differently given the same situation.  
 
@@ -370,7 +369,8 @@ compute the state's posterior distribution. The two steps are depicted below.
 The probability distribution over the state $p(x_{t}|y_{0:t},\dot{x}_{0:t})$ is represented by a set of weighted particles which represent hypothetical
 locations of the end-effector and  their density which is proportional to the likelihood. The particular particle filter used was the 
 \textit{Regularised Sequential Importance Sampling} \cite[p.182]{Arul_Mask_Clap_2002}. From previous literature \cite{Bake_Saxe_Tene_2011} 
-it has been shown that there is a similarity between Bayes update rule and the way humans integrate information over time. Under this assumption we hypothesise that if the initial belief of the human is known then the successive update steps of the particle filter should correspond to a good approximation 
+it has been shown that there is a similarity between Bayes update rule and the way humans integrate information over time. Under this assumption 
+we hypothesise that if the initial belief of the human is known then the successive update steps of the particle filter should correspond to a good approximation 
 of the next beliefs. 
 
 \subsubsection{Sensing model}
@@ -423,7 +423,7 @@ The robot's motion is very precise and its noise variance is very low. For human
 movement provided by the tracking system. In our experiment we consider the noise from motion to be negligible. An increase in 
 uncertainty already results from the re-sampling stage of Sampling Importance Resampling (SIR) particle filter and we found 
 no need to add additional motion noise.
-The particles positions were updated by applying the measured velocity obtained either from the visual tracking system 
+The particles' positions were updated by applying the measured velocity obtained from either the visual tracking system 
 (when recording the human demonstrations) or the robot's forward kinematics.
 
 \subsubsection{Uncertainty}
@@ -674,17 +674,17 @@ at the lowest level which outputs appropriate joint torques $\tau$. The overall 
 \FloatBarrier
 \section{Results and discussion}\label{chap3:results}
 
-Throughout our evaluation of our GMM PbD-POMDP control policy we will be considering four control policies: Greedy, GMM, Hybrid and 
+Throughout our evaluation of our GMM PbD-POMDP control policy we will be considering four search policies: Greedy, GMM, Hybrid and 
 Coastal. We evaluate behaviour present in the human demonstrations, and the four above mentioned policies in terms 
-of their riskiness. We qualitatively compare the policies of the GMM model and Coastal Navigation algorithm and highlight the 
+of their riskiness. We qualitatively compare the policies of the GMM model and the Coastal Navigation algorithm and highlight the 
 effect of uncertainty. We finish with a quantitative evaluation of search efficiency in terms of distance travelled until the goal is found.
 The layout of this section follows as:
 \begin{itemize}
  \item Section \ref{sub:search_behaviour}, we analyse the types of behaviour present in the human demonstration as well as in
 four different search algorithms: Greedy, GMM, Hybrid and Coastal.
- \item Section \ref{sub:policy_analysis}, we qualitatively analysis the GMM search policy (namely the different modes/decisions present) 
- is contrasted to the Coastal navigation policy.
- \item Section \ref{sub:time_uncertainty}, we evaluate the performance of the searches, with respect to the distance taken to reach the goal and the uncertainty profiles towards the end of 
+ \item Section \ref{sub:policy_analysis}, we qualitatively analyse the GMM search policy (namely the different modes/decisions present) 
+ with respect to the Coastal navigation policy.
+ \item Section \ref{sub:time_uncertainty}, we evaluate the search performance, with respect to the distance taken to reach the goal and the uncertainty profiles towards the end of 
 the searches in 5 different experiments (different types of initializations). 
 \end{itemize}
 \FloatBarrier
@@ -756,7 +756,7 @@ Greedy search policies and finally Coastal and Greedy.
   \includegraphics[width=\textwidth]{./ch3-Search/Figures/Figure7} 
  \caption{Risk of searches. Illustration of risk-prone and risk-averse searches in terms of a Risk factor (\textit{left}) and expected sensation (\textit{right}).
  \textit{Left:} Each trajectory was reduced to a single scalar, which we call the Risk factor, quantifying the risk of a trajectory. The Risk factor 
- is inversely proportional to the sum of the information gain of a particular trajectory. The colour paired dotes (risk averse) and squares (risk prone) 
+ is inversely proportional to the sum of the information gain of a particular trajectory. The colour paired dots (risk averse) and squares (risk prone) 
  represent trajectories which are plotted in 
  Figure \ref{fig:risk_examples}, to illustrate that these correspond to risk averse and prone searches.
  \textit{Right:} Corresponding trajectories chosen in the Risk factor space but represented in the feature space. As expected, trajectories with
@@ -805,7 +805,7 @@ tendency to be risk-averse.
   \textit{Top right:} Two Greedy trajectories. \textit{Bottom left:} GMM trajectories, all starting from the same location, the
   colour coding is to illustrate the different policies which were encoded and emerge given the same initial conditions. 
   \textit{Bottom right:} Corresponding expected features of each trajectory, the colour coding matches the trajectories 
-  to the ``GMM risk types'' sub-figure. All the searches which were generated by the GMM in for this initialisation produced
+  to the ``GMM risk types'' sub-figure. All the searches which were generated by the GMM for this initialisation produced
   risk-averse searches (based on the feature metric discussed previous).}
   \label{fig:risk_examples}
 \end{figure}
