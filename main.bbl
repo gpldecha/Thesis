@@ -1,4 +1,4 @@
-\begin{thebibliography}{102}
+\begin{thebibliography}{138}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -34,6 +34,23 @@ Douglas Aberdeen and Jonathan Baxter.
 \newblock URL
   \url{http://users.rsise.anu.edu.au/~daa/files/papers/gradIstate-icml.pdf}.
 
+\bibitem[Abu-Dakka et~al.(2014)Abu-Dakka, Nemec, Kramberger, Buch, Kr{\"u}ger,
+  and Ude]{sol_pdg_pbd_2014}
+Fares Abu-Dakka, Bojan Nemec, Aljaz Kramberger, Anders~Glent Buch, Norbert
+  Kr{\"u}ger, and Ales Ude.
+\newblock {S}olving peg-in-hole tasks by human demonstration and exception
+  strategies.
+\newblock \emph{Industrial Robot}, 41\penalty0 (6):\penalty0 575--584, 2014.
+\newblock ISSN 0143-991X.
+\newblock \doi{http://dx.doi.org/10.1108/IR-07-2014-0363}.
+
+\bibitem[Agostini and Celaya(2010)]{rl_gmm_2010}
+A.~Agostini and E.~Celaya.
+\newblock Reinforcement learning with a gaussian mixture model.
+\newblock In \emph{The 2010 International Joint Conference on Neural Networks
+  (IJCNN)}, pages 1--8, July 2010.
+\newblock \doi{10.1109/IJCNN.2010.5596306}.
+
 \bibitem[Arulampalam et~al.(2002)Arulampalam, Maskell, Gordon, and
   Clapp]{Arul_Mask_Clap_2002}
 M.S. Arulampalam, S.~Maskell, N.~Gordon, and T.~Clapp.
@@ -41,6 +58,12 @@ M.S. Arulampalam, S.~Maskell, N.~Gordon, and T.~Clapp.
   bayesian tracking.
 \newblock \emph{IEEE Transactions on Signal Processing}, 50\penalty0
   (2):\penalty0 174--188, February 2002.
+
+\bibitem[Atkeson et~al.(1997)Atkeson, Moore, and
+  Schaal]{Atkeson97locallyweighted}
+Christopher~G. Atkeson, Andrew~W. Moore, and Stefan Schaal.
+\newblock Locally weighted learning.
+\newblock \emph{ARTIFICIAL INTELLIGENCE REVIEW}, pages 11--73, 1997.
 
 \bibitem[Bake et~al.(2011)Bake, Tenenbaum, and Saxe]{Bake_Saxe_Tene_2011}
 Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
@@ -63,6 +86,13 @@ Jonathan Baxter and Peter~L. Bartlett.
 \newblock Reinforcement learning in pomdp's via direct gradient ascent.
 \newblock In \emph{In Proc. 17th International Conf. on Machine Learning},
   pages 41--48. Morgan Kaufmann, 2000.
+
+\bibitem[Bergman and Bergman(1999)]{Bergman99recursivebayesian}
+Niclas Bergman and C~Niclas Bergman.
+\newblock Recursive bayesian estimation: Navigation and tracking applications.
+  thesis no 579.
+\newblock Technical report, Linköping University, Linköping Studies in
+  Science and Technology. Doctoral dissertation, 1999.
 
 \bibitem[Bernoulli(1954)]{Bernoulli1954}
 D.~Bernoulli.
@@ -88,6 +118,20 @@ Aude Billard, Sylvain Calinon, R{\"u}diger Dillmann, and Stefan Schaal.
 \newblock In Oussama Khatib~Prof. Bruno Siciliano~Prof., editor, \emph{Springer
   Handbook of Robotics}, pages 1371--1394. Springer, Springer,
   2008{\natexlab{b}}.
+
+\bibitem[Bou-Ammar et~al.(2010)Bou-Ammar, Voos, and Ertel]{fvi_uav_2010}
+H.~Bou-Ammar, H.~Voos, and W.~Ertel.
+\newblock Controller design for quadrotor uavs using reinforcement learning.
+\newblock In \emph{2010 IEEE International Conference on Control Applications},
+  pages 2130--2135, Sept 2010.
+\newblock \doi{10.1109/CCA.2010.5611206}.
+
+\bibitem[Boyan and Moore(1995)]{Boyan95generalizationin}
+Justin~A. Boyan and Andrew~W. Moore.
+\newblock Generalization in reinforcement learning: Safely approximating the
+  value function.
+\newblock In \emph{Advances in Neural Information Processing Systems 7}, pages
+  369--376. MIT Press, 1995.
 
 \bibitem[Brechtel et~al.(2013)Brechtel, Gindele, and
   Dillmann]{solving_continous_pomdps_2013}
@@ -128,6 +172,22 @@ J.~Butterfield, O.~C. Jenkins, D.~Sobel, and J.~Schwertfeger.
 \newblock \emph{International Journal of Social Robotics}, 1\penalty0
   (1):\penalty0 41--51, January 2009.
 
+\bibitem[Buşoniu et~al.(2011)Buşoniu, Ernst, Schutter, and
+  Babuška]{approx_rl_overview_2011}
+L.~Buşoniu, D.~Ernst, B.~De Schutter, and R.~Babuška.
+\newblock Approximate reinforcement learning: An overview.
+\newblock In \emph{2011 IEEE Symposium on Adaptive Dynamic Programming and
+  Reinforcement Learning (ADPRL)}, pages 1--8, April 2011.
+\newblock \doi{10.1109/ADPRL.2011.5967353}.
+
+\bibitem[Calinon et~al.(2010)Calinon, D'halluin, Sauser, Caldwell, and
+  Billard]{gesture_calinon_2010}
+S.~Calinon, F.~D'halluin, E.~L. Sauser, D.~G. Caldwell, and A.~G. Billard.
+\newblock Learning and reproduction of gestures by imitation.
+\newblock \emph{IEEE Robotics Automation Magazine}, 17\penalty0 (2):\penalty0
+  44--54, June 2010.
+\newblock ISSN 1070-9932.
+
 \bibitem[Cassandra et~al.(1996{\natexlab{a}})Cassandra, Kaelbling, and
   Kurien]{ActingUncertainty_1996}
 A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
@@ -146,6 +206,16 @@ A.~R. Cassandra, L.~P. Kaelbling, and J.~A. Kurien.
   the 1996 IEEE/RSJ International Conference on}, volume~2, pages 963--972
   vol.2, Nov 1996{\natexlab{b}}.
 
+\bibitem[Chambrier and Billard(2014)]{Chambrier2014}
+Guillaume~de Chambrier and Aude Billard.
+\newblock Learning search policies from humans in a partially observable
+  context.
+\newblock \emph{Robotics and Biomimetics}, 1\penalty0 (1):\penalty0 1--16,
+  2014.
+\newblock ISSN 2197-3768.
+\newblock \doi{10.1186/s40638-014-0008-1}.
+\newblock URL \url{http://dx.doi.org/10.1186/s40638-014-0008-1}.
+
 \bibitem[Chen and von Wichert(2015)]{u_aware_grasp_ICRA_2015}
 D.~Chen and G.~von Wichert.
 \newblock An uncertainty-aware precision grasping process for objects with
@@ -153,6 +223,23 @@ D.~Chen and G.~von Wichert.
 \newblock In \emph{Robotics and Automation (ICRA), 2015 IEEE International
   Conference on}, pages 4312--4317, May 2015.
 \newblock \doi{10.1109/ICRA.2015.7139794}.
+
+\bibitem[Cheng and Chen(2014)]{online_gpr_icra_2014}
+H.~Cheng and H.~Chen.
+\newblock Online parameter optimization in robotic force controlled assembly
+  processes.
+\newblock In \emph{2014 IEEE International Conference on Robotics and
+  Automation (ICRA)}, pages 3465--3470, May 2014.
+\newblock \doi{10.1109/ICRA.2014.6907358}.
+
+\bibitem[Chhatpar and Branicky(2001)]{search_strategies_icra_2001}
+S.~R. Chhatpar and M.~S. Branicky.
+\newblock Search strategies for peg-in-hole assemblies with position
+  uncertainty.
+\newblock In \emph{Intelligent Robots and Systems, 2001. Proceedings. 2001
+  IEEE/RSJ International Conference on}, volume~3, pages 1465--1470 vol.3,
+  2001.
+\newblock \doi{10.1109/IROS.2001.977187}.
 
 \bibitem[Deisenroth et~al.(2011)Deisenroth, Neumann, and
   Peters]{p_search_surv_2011}
@@ -163,6 +250,24 @@ Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
 \newblock ISSN 1935-8253.
 \newblock \doi{10.1561/2300000021}.
 \newblock URL \url{http://dx.doi.org/10.1561/2300000021}.
+
+\bibitem[Deisenroth et~al.(2013{\natexlab{a}})Deisenroth, Neumann, and
+  Peters]{rl_gradient_survey_2013}
+Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
+\newblock A survey on policy search for robotics.
+\newblock \emph{Foundations and Trends® in Robotics}, 2\penalty0
+  (1–2):\penalty0 1--142, 2013{\natexlab{a}}.
+\newblock ISSN 1935-8253.
+\newblock \doi{10.1561/2300000021}.
+\newblock URL \url{http://dx.doi.org/10.1561/2300000021}.
+
+\bibitem[Deisenroth et~al.(2013{\natexlab{b}})Deisenroth, Neumann, and
+  Peters]{DeisenrothNP2013}
+MP. Deisenroth, G.~Neumann, and J.~Peters.
+\newblock A survey on policy search for robotics, foundations and trends in
+  robotics.
+\newblock \emph{Foundations and Trends in Robotics}, 2\penalty0 (1-2):\penalty0
+  1--142, 2013{\natexlab{b}}.
 
 \bibitem[Devin and Alami(2016)]{ToM_HRI_2106}
 Sandra Devin and Rachid Alami.
@@ -188,22 +293,68 @@ Tom Erez and William~D. Smart.
   using local approximation.
 \newblock In \emph{Conf. on Uncertainty in Artificial Intelligence}, 2010.
 
-\bibitem[Ernst et~al.(2005)Ernst, Geurts, and Wehenkel]{Tree_batch_2005}
+\bibitem[Ernst et~al.(2005{\natexlab{a}})Ernst, Geurts, and Wehenkel]{EGW05}
 Damien Ernst, Pierre Geurts, and Louis Wehenkel.
 \newblock Tree-based batch mode reinforcement learning.
-\newblock \emph{J. Mach. Learn. Res.}, 6:\penalty0 503--556, December 2005.
+\newblock \emph{Journal of Machine Learning Research}, 6:\penalty0 503--556,
+  April 2005{\natexlab{a}}.
+
+\bibitem[Ernst et~al.(2005{\natexlab{b}})Ernst, Geurts, and
+  Wehenkel]{Tree_batch_2005}
+Damien Ernst, Pierre Geurts, and Louis Wehenkel.
+\newblock Tree-based batch mode reinforcement learning.
+\newblock \emph{J. Mach. Learn. Res.}, 6:\penalty0 503--556, December
+  2005{\natexlab{b}}.
 \newblock ISSN 1532-4435.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=1046920.1088690}.
 
-\bibitem[Grondman et~al.(2012)Grondman, Busoniu, Lopes, and
+\bibitem[Fisher and Mujtaba(1992)]{hybrid_1992}
+William~D. Fisher and M.~Shahid Mujtaba.
+\newblock Hybrid position/force control: A correct formulation.
+\newblock \emph{The International Journal of Robotics Research}, 11\penalty0
+  (4):\penalty0 299--311, 1992.
+\newblock \doi{10.1177/027836499201100403}.
+\newblock URL \url{http://ijr.sagepub.com/content/11/4/299.abstract}.
+
+\bibitem[Fonteneau et~al.(2013)Fonteneau, Murphy, Wehenkel, and
+  Ernst]{batch_synth_traj_2013}
+Raphael Fonteneau, Susan~A. Murphy, Louis Wehenkel, and Damien Ernst.
+\newblock Batch mode reinforcement learning based on the synthesis of
+  artificial trajectories.
+\newblock \emph{Annals {OR}}, 208\penalty0 (1):\penalty0 383--416, 2013.
+\newblock \doi{10.1007/s10479-012-1248-5}.
+\newblock URL \url{http://dx.doi.org/10.1007/s10479-012-1248-5}.
+
+\bibitem[Grondman et~al.(2012{\natexlab{a}})Grondman, Busoniu, Lopes, and
   Babuska]{ac_survey_2012}
 I.~Grondman, L.~Busoniu, G.~A.~D. Lopes, and R.~Babuska.
 \newblock A survey of actor-critic reinforcement learning: Standard and natural
   policy gradients.
 \newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C
-  (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov 2012.
+  (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov
+  2012{\natexlab{a}}.
 \newblock ISSN 1094-6977.
 \newblock \doi{10.1109/TSMCC.2012.2218595}.
+
+\bibitem[Grondman et~al.(2012{\natexlab{b}})Grondman, Busoniu, Lopes, and
+  Babuska]{rl_ac_surv_2012}
+I.~Grondman, L.~Busoniu, G.~A.~D. Lopes, and R.~Babuska.
+\newblock A survey of actor-critic reinforcement learning: Standard and natural
+  policy gradients.
+\newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C
+  (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov
+  2012{\natexlab{b}}.
+\newblock ISSN 1094-6977.
+\newblock \doi{10.1109/TSMCC.2012.2218595}.
+
+\bibitem[Gullapalli et~al.(1994)Gullapalli, Barto, and
+  Grupen]{learn_admittance_icra_1994}
+Vijaykumar Gullapalli, Andrew~G. Barto, and Roderic~A. Grupen.
+\newblock Learning admittance mappings for force-guided assembly.
+\newblock In \emph{Proceedings of the 1994 International Conference on Robotics
+  and Automation, San Diego, CA, USA, May 1994}, pages 2633--2638, 1994.
+\newblock \doi{10.1109/ROBOT.1994.351117}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.1994.351117}.
 
 \bibitem[Hamner et~al.(2006)Hamner, Singh, and Scherer]{Hamner_2006_5810}
 Bradley Hamner, Sanjiv Singh, and Sebastian Scherer.
@@ -310,6 +461,14 @@ Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
 \newblock \doi{10.1016/S0004-3702(98)00023-X}.
 \newblock URL \url{http://dx.doi.org/10.1016/S0004-3702(98)00023-X}.
 
+\bibitem[Kalakrishnan et~al.(2011)Kalakrishnan, Righetti, Pastor, and
+  Schaal]{learn_force_c_icirs_2011}
+M.~Kalakrishnan, L.~Righetti, P.~Pastor, and S.~Schaal.
+\newblock Learning force control policies for compliant manipulation.
+\newblock In \emph{2011 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems}, pages 4639--4644, Sept 2011.
+\newblock \doi{10.1109/IROS.2011.6095096}.
+
 \bibitem[Kasper et~al.(2001)Kasper, Fricke, Steuernagel, and von
   Puttkamer]{Kasper2001153}
 Michael Kasper, Gernot Fricke, Katja Steuernagel, and Ewald von Puttkamer.
@@ -338,6 +497,14 @@ J.~Kober and J.~Peters.
 J.~Kober, J.~Andrew~(Drew) Bagnell, and J.~Peters.
 \newblock Reinforcement learning in robotics: A survey.
 \newblock \emph{International Journal of Robotics Research}, July 2013.
+
+\bibitem[kook Yun(2008)]{compliant_manip_icra_2008}
+Seung kook Yun.
+\newblock Compliant manipulation for peg-in-hole: Is passive compliance a key
+  to learn contact motion?
+\newblock In \emph{Robotics and Automation, 2008. ICRA 2008. IEEE International
+  Conference on}, pages 1647--1652, May 2008.
+\newblock \doi{10.1109/ROBOT.2008.4543437}.
 
 \bibitem[Kormushev et~al.(2010{\natexlab{a}})Kormushev, Calinon, and
   Caldwell]{pancake_2010}
@@ -415,6 +582,33 @@ Michael~L. Littman, Anthony~R. Cassandra, and Leslie~Pack Kaelbling.
   Kaufmann, 1995.
 \newblock URL \url{http://people.csail.mit.edu/lpk/papers/ml95.ps}.
 
+\bibitem[M.~Bdiwi(2015)]{peg_imcssd_2015}
+M.~Jokesch J.~Suchy M.~Bdiwi, A.~Winkler.
+\newblock Improved peg-in-hole (5-pin plug) task: Intended for charging
+  electric vehicles by robot system automatically.
+\newblock In \emph{Proc. of 12th IEEE International Multi-Conference on
+  Systems, Signals and Devices}, 2015.
+
+\bibitem[Meeussen et~al.(2010)Meeussen, Wise, Glaser, Chitta, McGann, Mihelich,
+  Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski, Konolige,
+  Gerkey, and Berger]{peg_personal_icra_2010}
+W.~Meeussen, M.~Wise, S.~Glaser, S.~Chitta, C.~McGann, P.~Mihelich,
+  E.~Marder-Eppstein, M.~Muja, V.~Eruhimov, T.~Foote, J.~Hsu, R.~B. Rusu,
+  B.~Marthi, G.~Bradski, K.~Konolige, B.~Gerkey, and E.~Berger.
+\newblock Autonomous door opening and plugging in with a personal robot.
+\newblock In \emph{Robotics and Automation (ICRA), 2010 IEEE International
+  Conference on}, pages 729--736, May 2010.
+\newblock \doi{10.1109/ROBOT.2010.5509556}.
+
+\bibitem[Melo and Lopes(2008)]{fnac_ca_2008}
+Francisco~S. Melo and Manuel Lopes.
+\newblock \emph{Fitted Natural Actor-Critic: A New Algorithm for Continuous
+  State-Action MDPs}, pages 66--81.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2008.
+\newblock ISBN 978-3-540-87481-2.
+\newblock \doi{10.1007/978-3-540-87481-2_5}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-87481-2_5}.
+
 \bibitem[Miller(1956)]{cogprints730}
 George Miller.
 \newblock The magical number seven, plus or minus two: Some limits on our
@@ -434,6 +628,30 @@ Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei~A. Rusu, Joel Veness,
 \newblock Human-level control through deep reinforcement learning.
 \newblock \emph{Nature}, 518\penalty0 (7540):\penalty0 529--533, 02 2015.
 \newblock URL \url{http://dx.doi.org/10.1038/nature14236}.
+
+\bibitem[Nemec et~al.(2013)Nemec, Abu-Dakka, Ridge, Ude, Jørgensen,
+  Savarimuthu, Jouffroy, Petersen, and Krüger]{trans_workpiece_icra_2013}
+B.~Nemec, F.~J. Abu-Dakka, B.~Ridge, A.~Ude, J.~A. Jørgensen, T.~R.
+  Savarimuthu, J.~Jouffroy, H.~G. Petersen, and N.~Krüger.
+\newblock Transfer of assembly operations to new workpiece poses by adaptation
+  to the desired force profile.
+\newblock In \emph{Advanced Robotics (ICAR), 2013 16th International Conference
+  on}, pages 1--7, Nov 2013.
+\newblock \doi{10.1109/ICAR.2013.6766568}.
+
+\bibitem[Neumann and Peters(2009{\natexlab{a}})]{fqi_nips_peter_2009}
+G.~Neumann and J.~Peters.
+\newblock Fitted q-iteration by advantage weighted regression.
+\newblock In \emph{Advances in neural information processing systems 21}, pages
+  1177--1184, Red Hook, NY, USA, June 2009{\natexlab{a}}.
+  Max-Planck-Gesellschaft, Curran.
+
+\bibitem[Neumann and Peters(2009{\natexlab{b}})]{NIPS2008_3501}
+Gerhard Neumann and Jan~R. Peters.
+\newblock Fitted q-iteration by advantage weighted regression.
+\newblock In D.~Koller, D.~Schuurmans, Y.~Bengio, and L.~Bottou, editors,
+  \emph{Advances in Neural Information Processing Systems 21}, pages
+  1177--1184. Curran Associates, Inc., 2009{\natexlab{b}}.
 
 \bibitem[Ng and Jordan(2000)]{Pegasus_2000}
 Andrew~Y. Ng and Michael Jordan.
@@ -467,6 +685,14 @@ J.~Nunez-Varela, B.~Ravindran, and J.~L. Wyatt.
   Conference on}, pages 4444--4449, May 2012.
 \newblock \doi{10.1109/ICRA.2012.6225226}.
 
+\bibitem[Park et~al.(2013)Park, Bae, Park, Baeg, and
+  Park]{intuitive_peg_isr_2013}
+Hyeonjun Park, Ji-Hun Bae, Jae-Han Park, Moon-Hong Baeg, and Jaeheung Park.
+\newblock Intuitive peg-in-hole assembly strategy with a compliant manipulator.
+\newblock In \emph{Robotics (ISR), 2013 44th International Symposium on}, pages
+  1--5, Oct 2013.
+\newblock \doi{10.1109/ISR.2013.6695699}.
+
 \bibitem[Pasqualotto et~al.(2013)Pasqualotto, Spiller, Jansari, and
   Proulx]{Pasqualotto2013175}
 Achille Pasqualotto, Mary~Jane Spiller, Ashok~S. Jansari, and Michael~J.
@@ -479,11 +705,17 @@ Achille Pasqualotto, Mary~Jane Spiller, Ashok~S. Jansari, and Michael~J.
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/S0166432812005682}.
 
-\bibitem[Peters and Schaal(2008)]{NAC_2008}
+\bibitem[Peters and Schaal(2008{\natexlab{a}})]{peter_nac_2008}
+J.~Peters and S.~Schaal.
+\newblock Natural actor-critic.
+\newblock \emph{Neurocomputing}, 71\penalty0 (7-9):\penalty0 1180--1190,
+  2008{\natexlab{a}}.
+
+\bibitem[Peters and Schaal(2008{\natexlab{b}})]{NAC_2008}
 Jan Peters and Stefan Schaal.
 \newblock Natural actor-critic.
 \newblock \emph{Neurocomputing}, 71\penalty0 (7–9):\penalty0 1180 -- 1190,
-  2008.
+  2008{\natexlab{b}}.
 \newblock ISSN 0925-2312.
 \newblock \doi{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
 \newblock URL
@@ -560,12 +792,28 @@ Hilary Richardson, Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
 \newblock In \emph{Proceedings of the 34th Annual Meeting of the Cognitive
   Science Society (COGSCI)}, August 2012.
 
-\bibitem[Riedmiller(2005)]{neura_fqi_2005}
+\bibitem[Riedmiller(2005{\natexlab{a}})]{Riedmiller05neuralfitted}
 Martin Riedmiller.
 \newblock Neural fitted q iteration – first experiences with a data efficient
   neural reinforcement learning method.
 \newblock In \emph{In 16th European Conference on Machine Learning}, pages
-  317--328. Springer, 2005.
+  317--328. Springer, 2005{\natexlab{a}}.
+
+\bibitem[Riedmiller(2005{\natexlab{b}})]{Riedmiller2005}
+Martin Riedmiller.
+\newblock \emph{Neural Fitted Q Iteration -- First Experiences with a Data
+  Efficient Neural Reinforcement Learning Method}, pages 317--328.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2005{\natexlab{b}}.
+\newblock ISBN 978-3-540-31692-3.
+\newblock \doi{10.1007/11564096_32}.
+\newblock URL \url{http://dx.doi.org/10.1007/11564096_32}.
+
+\bibitem[Riedmiller(2005{\natexlab{c}})]{neura_fqi_2005}
+Martin Riedmiller.
+\newblock Neural fitted q iteration – first experiences with a data efficient
+  neural reinforcement learning method.
+\newblock In \emph{In 16th European Conference on Machine Learning}, pages
+  317--328. Springer, 2005{\natexlab{c}}.
 
 \bibitem[Ross et~al.(2008)Ross, Pineau, Paquet, and
   Chaib-draa]{Ross08onlineplanning}
@@ -611,6 +859,13 @@ Brian Scassellati.
 \newblock ISSN 0929-5593.
 \newblock \doi{10.1023/A:1013298507114}.
 \newblock URL \url{http://dx.doi.org/10.1023/A:1013298507114}.
+
+\bibitem[Schaal et~al.(2004)Schaal, Peters, Nakanishi, and
+  Ijspeert]{Schaal04learningmovement}
+Stefan Schaal, Jan Peters, Jun Nakanishi, and Auke Ijspeert.
+\newblock Learning movement primitives.
+\newblock In \emph{International Symposium on Robotics Research (ISRR2003}.
+  Springer, 2004.
 
 \bibitem[Silver et~al.(2010)Silver, Bagnell, and
   Stentz]{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain}
@@ -688,6 +943,32 @@ Wen Sun and R.~Alterovitz.
 \newblock In \emph{Intelligent Robots and Systems (IROS 2014), 2014 IEEE/RSJ
   International Conference on}, pages 1775--1781, Sept 2014.
 \newblock \doi{10.1109/IROS.2014.6942795}.
+
+\bibitem[Sung(2004)]{gmr_2004}
+H.G Sung.
+\newblock \emph{Gaussian Mixture Regression and Classification}.
+\newblock PhD thesis, Rice University, 2004.
+
+\bibitem[Sutton and Barto(1998{\natexlab{a}})]{sutton98a}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock \emph{Reinforcement Learning: An Introduction}.
+\newblock {MIT} Press, 1998{\natexlab{a}}.
+\newblock ISBN 0262193981.
+\newblock URL
+  \url{http://www.cs.ualberta.ca/\%7Esutton/book/ebook/the-book.html}.
+
+\bibitem[Sutton et~al.(2000)Sutton, Mcallester, Singh, and
+  Mansour]{Sutton00policygradient}
+Richard~S. Sutton, David Mcallester, Satinder Singh, and Yishay Mansour.
+\newblock Policy gradient methods for reinforcement learning with function
+  approximation.
+\newblock In \emph{In Advances in Neural Information Processing Systems 12},
+  pages 1057--1063. MIT Press, 2000.
+
+\bibitem[Sutton and Barto(1998{\natexlab{b}})]{sutton1998reinforcement}
+R.S. Sutton and A.G. Barto.
+\newblock \emph{Reinforcement learning: An introduction}, volume 116.
+\newblock Cambridge Univ Press, 1998{\natexlab{b}}.
 
 \bibitem[Thrun(2000)]{MC-POMDP}
 Sebastian Thrun.
@@ -809,6 +1090,16 @@ Thomas Wolbers, Mary Hegarty, Christian Buchel, and Jack~M Loomis.
 \newblock \doi{http://dx.doi.org/10.1038/nn.2189}.
 \newblock URL
   \url{http://www.nature.com/neuro/journal/v11/n10/suppinfo/nn.2189_S1.html}.
+
+\bibitem[Yang et~al.(2014)Yang, Lin, Song, Nemec, Ude, Buch, Krüger, and
+  Savarimuthu]{fast_peg_pbd_icmc_2014}
+Yang Yang, Linglong Lin, {Y. T.} Song, Bojan Nemec, Ales Ude, {Anders Glent}
+  Buch, Norbert Krüger, and {Thiusius Rajeeth} Savarimuthu.
+\newblock \emph{Fast programming of peg-in-hole actions by human
+  demonstration}, pages 990--995.
+\newblock IEEE, 2014.
+\newblock ISBN 978-1-4799-2537-7.
+\newblock \doi{10.1109/ICMC.2014.7231702}.
 
 \bibitem[Zito et~al.(2013)Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and
   Wyatt]{seq_traj_replan_iros_2013}

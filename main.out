@@ -34,4 +34,29 @@
 \BOOKMARK [2][-]{subsection.3.6.2}{GMM \046 Coastal Navigation policy analysis}{section.3.6}% 34
 \BOOKMARK [2][-]{subsection.3.6.3}{Distance efficiency \046 Uncertainty}{section.3.6}% 35
 \BOOKMARK [1][-]{section.3.7}{Conclusions}{chapter.3}% 36
-\BOOKMARK [0][-]{chapter*.53}{References}{}% 37
+\BOOKMARK [0][-]{chapter.4}{Peg in hole}{}% 37
+\BOOKMARK [1][-]{section.4.1}{Outline}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.2}{Background}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.2.1}{Peg-in-hole}{section.4.2}% 40
+\BOOKMARK [2][-]{subsection.4.2.2}{Actor-Critic \046 Fitted Reinforcement Learning}{section.4.2}% 41
+\BOOKMARK [1][-]{section.4.3}{Experiment}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.4}{Formulation}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.4.1}{Belief probability density function}{section.4.4}% 44
+\BOOKMARK [2][-]{subsection.4.4.2}{Belief compression}{section.4.4}% 45
+\BOOKMARK [1][-]{section.4.5}{Learning Actor and Critic}{chapter.4}% 46
+\BOOKMARK [2][-]{subsection.4.5.1}{Actor}{section.4.5}% 47
+\BOOKMARK [2][-]{subsection.4.5.2}{Critic}{section.4.5}% 48
+\BOOKMARK [2][-]{subsection.4.5.3}{Actor update}{section.4.5}% 49
+\BOOKMARK [1][-]{section.4.6}{Control architecture}{chapter.4}% 50
+\BOOKMARK [1][-]{section.4.7}{Results}{chapter.4}% 51
+\BOOKMARK [2][-]{subsection.4.7.1}{Distance taken to reach socket's edge \(Qualitative\)}{section.4.7}% 52
+\BOOKMARK [2][-]{subsection.4.7.2}{Distance taken to reach socket's edge \(Quantitative\)}{section.4.7}% 53
+\BOOKMARK [2][-]{subsection.4.7.3}{Importance of data}{section.4.7}% 54
+\BOOKMARK [2][-]{subsection.4.7.4}{Generalisation}{section.4.7}% 55
+\BOOKMARK [2][-]{subsection.4.7.5}{Distance taken to connect the peg to the socket}{section.4.7}% 56
+\BOOKMARK [1][-]{section.4.8}{Discussion \046 Conclusion}{chapter.4}% 57
+\BOOKMARK [1][-]{section.4.9}{Appendix}{chapter.4}% 58
+\BOOKMARK [2][-]{subsection.4.9.1}{EM policy search}{section.4.9}% 59
+\BOOKMARK [2][-]{subsection.4.9.2}{Q-EM for GMM derivation}{section.4.9}% 60
+\BOOKMARK [2][-]{subsection.4.9.3}{Unbiased estimator}{section.4.9}% 61
+\BOOKMARK [0][-]{chapter*.72}{References}{}% 62

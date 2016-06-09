@@ -52,7 +52,15 @@
 \usepackage{color, colortbl}
 \definecolor{Gray}{gray}{0.9}
 \usepackage{placeins}
-
+\usepackage{algorithm,algpseudocode}% http://ctan.org/pkg/{algorithms,algorithmx}
+\algnewcommand{\Inputs}[1]{%
+  \State \textbf{Inputs:}
+  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+}
+\algnewcommand{\Initialize}[1]{%
+  \State \textbf{Initialize:}
+  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+}
 
 \newlist{mylist}{enumerate}{5}  % Specify 5 Levels as clone of enumerate
 \setlist[mylist,1]{label={\arabic*.}}  % Roman uppercase numbers I.
@@ -90,6 +98,8 @@
 	\newcommand{\gDisplayBackground}{}
 
 	\newcommand{\gDisplaySearch}{}
+        \newcommand{\gDisplayPegSocket}{}
+
 	%\newcommand{\gDisplayMultiAtt}{}
 	%\newcommand{\gDisplayASVM}{}
 	%\newcommand{\gDisplayRRT}{}
@@ -105,6 +115,24 @@
 \DeclareMathOperator*{\argmax}{\arg\max}   % rbp
 \DeclareMathOperator{\policy}{\pi_{\boldsymbol{\theta}}}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
+\newcommand{\X}{x}
+\newcommand{\B}{b}
+\newcommand{\U}{\dot{x}}
+
+\newcommand{\Ui}{\dot{x}^{[i]}}
+\newcommand{\Bi}{b^{[i]}}
+\newcommand{\Xm}{x^{[m]}}
+
+\newcommand{\invSigK}{\boldsymbol{\Sigma}^{[k]^{-1}}}
+\newcommand{\SigK}{\boldsymbol{\Sigma}^{[k]}}
+\newcommand{\Sig}[1]{\boldsymbol{\Sigma}^{[#1]}}
+\newcommand{\Mu}[1]{\boldsymbol{\mu}^{[#1]}}
+\newcommand{\MuK}{\boldsymbol{\mu}^{[k]}}
+\newcommand{\xb}{\dot{x}|b}
+
+\newcommand{\piK}{w^{[k]}}
+\newcommand{\Para}{\boldsymbol{\theta}}
+
 
 
 \graphicspath{{ch1-Introduction/Figures/}}
@@ -144,7 +172,7 @@
 \ifdefined  	\gDisplayBackground		\input{ch2-Background/ch2-Background.tex} \fi
 \ifdefined	\gDisplaySearch			\input{ch3-Search/ch3-Learning_search_behaviour_from_humans.tex}  \fi
 \ifdefined	\gDisplayMLMF	 		\input{ch4-MLMF}	 \fi
-\ifdefined	\gDisplayPegSocket		\input{ch5-PegSocket} 	 \fi
+\ifdefined	\gDisplayPegSocket		\input{ch4-PiH/ch4-PiH.tex} 	 \fi
 \ifdefined	\gDisplayConclusions 		\input{ch6-Conclusions}  \fi
 \ifdefined	\gDisplayAppendix 	 	\input{Appendix} 	 \fi
 	
@@ -152,7 +180,5 @@
 
 \ifdefined \gDisplayBibliography
 	\bibliographystyle{plainnat}
-	\bibliography{bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}
-\fi
-
+	\bibliography{bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}\fi
 \end{document}
