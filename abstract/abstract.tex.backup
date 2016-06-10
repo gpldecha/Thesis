@@ -22,14 +22,19 @@
  
 This thesis lies within the domain of Programming by Demonstrations (PbD), State Space Estimation (SSE) and Reinforcement Learning (RL). 
 <<<<<<< HEAD
+<<<<<<< HEAD
 A large body of scientific work in PbD has focused on learning how to imitate human behaviour. Tasks such as ``pick and place'', 
 =======
 A significant proportion of scientific work in PbD has focused on learning how to imitate human behaviour. Tasks such as ``pick and place'', 
 >>>>>>> .
+=======
+A significant proportion of scientific work in PbD has focused on learning how to imitate human behaviour. Tasks such as ``pick and place'', 
+>>>>>>> master
 hitting motions, and bipedal locomotion have been encoded through either symbolic, statistical or dynamical system representations. 
 In contrast there has been less focus on transferring higher cognitive behaviour, such as problem solving skills and search strategies,
 from humans to robots. 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 Our aim is to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
 We consider for instance tasks such as localising  an object in a room or connection a plug to a power socket in the dark, 
@@ -38,6 +43,8 @@ There are many robotic application domains in which uncertainty, resulting from 
 maintenance, planetary exploration and occluded manipulation tasks. Learning human search models and transferring them to robots proves useful
 in such domains.
 =======
+=======
+>>>>>>> master
 The aim of this thesis is to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
 We consider for instance tasks such as localising  an object in a dark room or connection a plug to a power socket in the dark, 
 or any such situation with total suppression of visual information, and transfer this reasoning mechanism to a robot apprentice. 
@@ -79,10 +86,14 @@ Both search tasks above can be considered as active localisation in the sense th
 the human or robot in the world. We now consider search setting in which both the position of the robot and and aspects of environment 
 are uncertain. Given the unstructured nature of the belief a histogram parametrisation of the joint distribution over the robot 
 <<<<<<< HEAD
+<<<<<<< HEAD
 and the environment is necessary. However, naively doing so becomes quickly intractable as the computational cost is exponential in 
 =======
 and the environment is necessary. However, naively doing so becomes quickly infeasible as the computational cost is exponential in 
 >>>>>>> .
+=======
+and the environment is necessary. However, naively doing so becomes quickly infeasible as the computational cost is exponential in 
+>>>>>>> master
 terms of the parametrisation. We demonstrate that by only parametrising
 the marginals and by memorising the parameters of the measurement likelihood functions we can recover the exact 
 same solution as the naive parametrisations at a cost which is linear in space and time complexity as oppose to exponential.
