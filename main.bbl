@@ -1,4 +1,4 @@
-\begin{thebibliography}{138}
+\begin{thebibliography}{127}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,13 +43,6 @@ Fares Abu-Dakka, Bojan Nemec, Aljaz Kramberger, Anders~Glent Buch, Norbert
 \newblock \emph{Industrial Robot}, 41\penalty0 (6):\penalty0 575--584, 2014.
 \newblock ISSN 0143-991X.
 \newblock \doi{http://dx.doi.org/10.1108/IR-07-2014-0363}.
-
-\bibitem[Agostini and Celaya(2010)]{rl_gmm_2010}
-A.~Agostini and E.~Celaya.
-\newblock Reinforcement learning with a gaussian mixture model.
-\newblock In \emph{The 2010 International Joint Conference on Neural Networks
-  (IJCNN)}, pages 1--8, July 2010.
-\newblock \doi{10.1109/IJCNN.2010.5596306}.
 
 \bibitem[Arulampalam et~al.(2002)Arulampalam, Maskell, Gordon, and
   Clapp]{Arul_Mask_Clap_2002}
@@ -119,20 +112,6 @@ Aude Billard, Sylvain Calinon, R{\"u}diger Dillmann, and Stefan Schaal.
   Handbook of Robotics}, pages 1371--1394. Springer, Springer,
   2008{\natexlab{b}}.
 
-\bibitem[Bou-Ammar et~al.(2010)Bou-Ammar, Voos, and Ertel]{fvi_uav_2010}
-H.~Bou-Ammar, H.~Voos, and W.~Ertel.
-\newblock Controller design for quadrotor uavs using reinforcement learning.
-\newblock In \emph{2010 IEEE International Conference on Control Applications},
-  pages 2130--2135, Sept 2010.
-\newblock \doi{10.1109/CCA.2010.5611206}.
-
-\bibitem[Boyan and Moore(1995)]{Boyan95generalizationin}
-Justin~A. Boyan and Andrew~W. Moore.
-\newblock Generalization in reinforcement learning: Safely approximating the
-  value function.
-\newblock In \emph{Advances in Neural Information Processing Systems 7}, pages
-  369--376. MIT Press, 1995.
-
 \bibitem[Brechtel et~al.(2013)Brechtel, Gindele, and
   Dillmann]{solving_continous_pomdps_2013}
 Sebastian Brechtel, Tobias Gindele, and Rüdiger Dillmann.
@@ -171,14 +150,6 @@ J.~Butterfield, O.~C. Jenkins, D.~Sobel, and J.~Schwertfeger.
   {F}ields.
 \newblock \emph{International Journal of Social Robotics}, 1\penalty0
   (1):\penalty0 41--51, January 2009.
-
-\bibitem[Buşoniu et~al.(2011)Buşoniu, Ernst, Schutter, and
-  Babuška]{approx_rl_overview_2011}
-L.~Buşoniu, D.~Ernst, B.~De Schutter, and R.~Babuška.
-\newblock Approximate reinforcement learning: An overview.
-\newblock In \emph{2011 IEEE Symposium on Adaptive Dynamic Programming and
-  Reinforcement Learning (ADPRL)}, pages 1--8, April 2011.
-\newblock \doi{10.1109/ADPRL.2011.5967353}.
 
 \bibitem[Calinon et~al.(2010)Calinon, D'halluin, Sauser, Caldwell, and
   Billard]{gesture_calinon_2010}
@@ -316,34 +287,13 @@ William~D. Fisher and M.~Shahid Mujtaba.
 \newblock \doi{10.1177/027836499201100403}.
 \newblock URL \url{http://ijr.sagepub.com/content/11/4/299.abstract}.
 
-\bibitem[Fonteneau et~al.(2013)Fonteneau, Murphy, Wehenkel, and
-  Ernst]{batch_synth_traj_2013}
-Raphael Fonteneau, Susan~A. Murphy, Louis Wehenkel, and Damien Ernst.
-\newblock Batch mode reinforcement learning based on the synthesis of
-  artificial trajectories.
-\newblock \emph{Annals {OR}}, 208\penalty0 (1):\penalty0 383--416, 2013.
-\newblock \doi{10.1007/s10479-012-1248-5}.
-\newblock URL \url{http://dx.doi.org/10.1007/s10479-012-1248-5}.
-
-\bibitem[Grondman et~al.(2012{\natexlab{a}})Grondman, Busoniu, Lopes, and
+\bibitem[Grondman et~al.(2012)Grondman, Busoniu, Lopes, and
   Babuska]{ac_survey_2012}
 I.~Grondman, L.~Busoniu, G.~A.~D. Lopes, and R.~Babuska.
 \newblock A survey of actor-critic reinforcement learning: Standard and natural
   policy gradients.
 \newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C
-  (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov
-  2012{\natexlab{a}}.
-\newblock ISSN 1094-6977.
-\newblock \doi{10.1109/TSMCC.2012.2218595}.
-
-\bibitem[Grondman et~al.(2012{\natexlab{b}})Grondman, Busoniu, Lopes, and
-  Babuska]{rl_ac_surv_2012}
-I.~Grondman, L.~Busoniu, G.~A.~D. Lopes, and R.~Babuska.
-\newblock A survey of actor-critic reinforcement learning: Standard and natural
-  policy gradients.
-\newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C
-  (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov
-  2012{\natexlab{b}}.
+  (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov 2012.
 \newblock ISSN 1094-6977.
 \newblock \doi{10.1109/TSMCC.2012.2218595}.
 
@@ -600,15 +550,6 @@ W.~Meeussen, M.~Wise, S.~Glaser, S.~Chitta, C.~McGann, P.~Mihelich,
   Conference on}, pages 729--736, May 2010.
 \newblock \doi{10.1109/ROBOT.2010.5509556}.
 
-\bibitem[Melo and Lopes(2008)]{fnac_ca_2008}
-Francisco~S. Melo and Manuel Lopes.
-\newblock \emph{Fitted Natural Actor-Critic: A New Algorithm for Continuous
-  State-Action MDPs}, pages 66--81.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2008.
-\newblock ISBN 978-3-540-87481-2.
-\newblock \doi{10.1007/978-3-540-87481-2_5}.
-\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-87481-2_5}.
-
 \bibitem[Miller(1956)]{cogprints730}
 George Miller.
 \newblock The magical number seven, plus or minus two: Some limits on our
@@ -639,19 +580,12 @@ B.~Nemec, F.~J. Abu-Dakka, B.~Ridge, A.~Ude, J.~A. Jørgensen, T.~R.
   on}, pages 1--7, Nov 2013.
 \newblock \doi{10.1109/ICAR.2013.6766568}.
 
-\bibitem[Neumann and Peters(2009{\natexlab{a}})]{fqi_nips_peter_2009}
-G.~Neumann and J.~Peters.
-\newblock Fitted q-iteration by advantage weighted regression.
-\newblock In \emph{Advances in neural information processing systems 21}, pages
-  1177--1184, Red Hook, NY, USA, June 2009{\natexlab{a}}.
-  Max-Planck-Gesellschaft, Curran.
-
-\bibitem[Neumann and Peters(2009{\natexlab{b}})]{NIPS2008_3501}
+\bibitem[Neumann and Peters(2009)]{NIPS2008_3501}
 Gerhard Neumann and Jan~R. Peters.
 \newblock Fitted q-iteration by advantage weighted regression.
 \newblock In D.~Koller, D.~Schuurmans, Y.~Bengio, and L.~Bottou, editors,
   \emph{Advances in Neural Information Processing Systems 21}, pages
-  1177--1184. Curran Associates, Inc., 2009{\natexlab{b}}.
+  1177--1184. Curran Associates, Inc., 2009.
 
 \bibitem[Ng and Jordan(2000)]{Pegasus_2000}
 Andrew~Y. Ng and Michael Jordan.
@@ -799,21 +733,12 @@ Martin Riedmiller.
 \newblock In \emph{In 16th European Conference on Machine Learning}, pages
   317--328. Springer, 2005{\natexlab{a}}.
 
-\bibitem[Riedmiller(2005{\natexlab{b}})]{Riedmiller2005}
-Martin Riedmiller.
-\newblock \emph{Neural Fitted Q Iteration -- First Experiences with a Data
-  Efficient Neural Reinforcement Learning Method}, pages 317--328.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2005{\natexlab{b}}.
-\newblock ISBN 978-3-540-31692-3.
-\newblock \doi{10.1007/11564096_32}.
-\newblock URL \url{http://dx.doi.org/10.1007/11564096_32}.
-
-\bibitem[Riedmiller(2005{\natexlab{c}})]{neura_fqi_2005}
+\bibitem[Riedmiller(2005{\natexlab{b}})]{neura_fqi_2005}
 Martin Riedmiller.
 \newblock Neural fitted q iteration – first experiences with a data efficient
   neural reinforcement learning method.
 \newblock In \emph{In 16th European Conference on Machine Learning}, pages
-  317--328. Springer, 2005{\natexlab{c}}.
+  317--328. Springer, 2005{\natexlab{b}}.
 
 \bibitem[Ross et~al.(2008)Ross, Pineau, Paquet, and
   Chaib-draa]{Ross08onlineplanning}
@@ -949,26 +874,10 @@ H.G Sung.
 \newblock \emph{Gaussian Mixture Regression and Classification}.
 \newblock PhD thesis, Rice University, 2004.
 
-\bibitem[Sutton and Barto(1998{\natexlab{a}})]{sutton98a}
-Richard~S. Sutton and Andrew~G. Barto.
-\newblock \emph{Reinforcement Learning: An Introduction}.
-\newblock {MIT} Press, 1998{\natexlab{a}}.
-\newblock ISBN 0262193981.
-\newblock URL
-  \url{http://www.cs.ualberta.ca/\%7Esutton/book/ebook/the-book.html}.
-
-\bibitem[Sutton et~al.(2000)Sutton, Mcallester, Singh, and
-  Mansour]{Sutton00policygradient}
-Richard~S. Sutton, David Mcallester, Satinder Singh, and Yishay Mansour.
-\newblock Policy gradient methods for reinforcement learning with function
-  approximation.
-\newblock In \emph{In Advances in Neural Information Processing Systems 12},
-  pages 1057--1063. MIT Press, 2000.
-
-\bibitem[Sutton and Barto(1998{\natexlab{b}})]{sutton1998reinforcement}
+\bibitem[Sutton and Barto(1998)]{sutton1998reinforcement}
 R.S. Sutton and A.G. Barto.
 \newblock \emph{Reinforcement learning: An introduction}, volume 116.
-\newblock Cambridge Univ Press, 1998{\natexlab{b}}.
+\newblock Cambridge Univ Press, 1998.
 
 \bibitem[Thrun(2000)]{MC-POMDP}
 Sebastian Thrun.

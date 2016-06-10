@@ -21,27 +21,39 @@
 \begin{abstract}
  
 This thesis lies within the domain of Programming by Demonstrations (PbD), State Space Estimation (SSE) and Reinforcement Learning (RL). 
+<<<<<<< HEAD
 A large body of scientific work in PbD has focused on learning how to imitate human behaviour. Tasks such as ``pick and place'', 
+=======
+A significant proportion of scientific work in PbD has focused on learning how to imitate human behaviour. Tasks such as ``pick and place'', 
+>>>>>>> .
 hitting motions, and bipedal locomotion have been encoded through either symbolic, statistical or dynamical system representations. 
-In contrast there has been less focus on transferring higher cognitive behaviour such as problem solving skills and search strategies 
+In contrast there has been less focus on transferring higher cognitive behaviour, such as problem solving skills and search strategies,
 from humans to robots. 
 
+<<<<<<< HEAD
 Our aim is to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
 We consider for instance tasks such as localising  an object in a room or connection a plug to a power socket in the dark, 
 or any such situation with total suppression of visual information, and transfer this reasoning mechanisms to a robot apprentice. 
 There are many robotic application domains in which uncertainty, resulting from a lack of visual perception, is common, such as in underwater 
 maintenance, planetary exploration and occluded manipulation tasks. Learning human search models and transferring them to robots proves useful
 in such domains.
+=======
+The aim of this thesis is to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
+We consider for instance tasks such as localising  an object in a dark room or connection a plug to a power socket in the dark, 
+or any such situation with total suppression of visual information, and transfer this reasoning mechanism to a robot apprentice. 
+%We chose to focus on proprioceptive and haptic feedback, since it is vital in motor control 
+%coordination. As humans we can do nearly just as much without vision than with it (with some readjustment).
+>>>>>>> .
 
-A difficulty in learning humans reasoning mechanisms, in the search scenarios we consider, is that the humans 
-beliefs and sensations (haptic and tactile) are unobservable and they vary within and across subjects. 
-We infer the human sensations from either the kinematic relationship between them and a known geometric description of 
-the environment or the human subjects use a tool equipped with a sensor (force-torque sensor) whose measurements 
+A difficulty in learning human reasoning mechanisms in the search scenarios we consider, is that the humans'  
+sensations (haptic and tactile) and beliefs are unobservable and they vary within and across subjects. 
+We infer the human's sensations from either the kinematic relationship between them and a known geometric description of 
+the environment or a tool equipped with a sensor (force-torque sensor) whose measurements 
 are used to infer the human sensations. The actual sensations, which are a function of either the sensor tool or kinematic-environment 
-measurements, are transformed to a binary feature vector which encodes whether contact are present between features such as 
+measurements, are transformed to a binary feature vector which encodes whether contacts have been made with features such as 
 surfaces, edges and corners of the environment. 
 
-We model the humans beliefs by a probability density function which we update through recursive Bayesian 
+We model the human's beliefs by a probability density function which we update through recursive Bayesian 
 state space estimation using motion estimates, acquired through a tracking system (the human subjects wore markers), 
 and the sensation estimates were obtained as described above. An assumption we make is that probability 
 density function, representing the humans belief, is updated by a Bayesian recursion 
@@ -66,7 +78,11 @@ improved without the need of performing exploratory rollouts which are costly an
 Both search tasks above can be considered as active localisation in the sense that uncertainty originates from the position of 
 the human or robot in the world. We now consider search setting in which both the position of the robot and and aspects of environment 
 are uncertain. Given the unstructured nature of the belief a histogram parametrisation of the joint distribution over the robot 
+<<<<<<< HEAD
 and the environment is necessary. However, naively doing so becomes quickly intractable as the computational cost is exponential in 
+=======
+and the environment is necessary. However, naively doing so becomes quickly infeasible as the computational cost is exponential in 
+>>>>>>> .
 terms of the parametrisation. We demonstrate that by only parametrising
 the marginals and by memorising the parameters of the measurement likelihood functions we can recover the exact 
 same solution as the naive parametrisations at a cost which is linear in space and time complexity as oppose to exponential.
