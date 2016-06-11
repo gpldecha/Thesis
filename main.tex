@@ -1,14 +1,21 @@
 \documentclass[fancy,estyle,twoside,a4paper]{ethesis}
-%\documentclass[fancy,estyle,twoside,draftthesis]{ethesis}
 
 %The following two packages are required to have awesome font qualities!
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl} %,placeins
-%\usepackage{rotating}
-%\usepackage{lscape} %to have a landscape page
+
+% ========== Mathematics 
 
 \usepackage{amsmath,amssymb,amstext,amsthm}
+\numberwithin{equation}{section}
+
+
+
+
 \usepackage[round]{natbib}
+
+% ========== Color
+
 \usepackage{color,soul,bm}
 \usepackage{colortbl}
 \usepackage[normalem]{ulem} %to have nice underlining, for exmaple try \uwave{blahblah}
@@ -18,6 +25,8 @@
 \usepackage{fancyhdr}
 \usepackage{lettrine} %Typeset dropped capitals
 
+% ========== Algorithm
+
 \usepackage[chapter, ruled]{algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
@@ -26,6 +35,7 @@
 \usepackage{bibentry}
 \nobibliography*
 
+% ========== Figures
   
 \usepackage{multirow}
 \usepackage[footnotesize,bf,hang]{caption,subfigure}
@@ -99,10 +109,7 @@
 
 	\newcommand{\gDisplaySearch}{}
         \newcommand{\gDisplayPegSocket}{}
-
-	%\newcommand{\gDisplayMultiAtt}{}
-	%\newcommand{\gDisplayASVM}{}
-	%\newcommand{\gDisplayRRT}{}
+	\newcommand{\gDisplayMLMF}{}
 	%\newcommand{\gDisplayConclusions}{}
 	%\newcommand{\gDisplayAppendix}{}
 	\newcommand{\gDisplayBibliography}{}
@@ -132,6 +139,15 @@
 
 \newcommand{\piK}{w^{[k]}}
 \newcommand{\Para}{\boldsymbol{\theta}}
+
+\newcommand{\V}{\ensuremath{\mathcal{V}}}
+\newcommand{\varOne}{\ensuremath{\sigma_{x}^{2}}}
+\newcommand{\varTwo}{\ensuremath{\sigma_{m}^{2}}}
+\newcommand{\stdOne}{\ensuremath{\sigma_{x}}}
+\newcommand{\stdTwo}{\ensuremath{\sigma_{m}}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\newcommand{\dependent}{\rotatebox[origin=c]{180}{$\independent$}}
+%\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
 
 
 
@@ -168,17 +184,17 @@
 
 \mainmatter
 
-\ifdefined  	\gDisplayIntroduction 		\input{ch1-Introduction/ch1-Introduction.tex} \fi
-\ifdefined  	\gDisplayBackground		\input{ch2-Background/ch2-Background.tex} \fi
+\ifdefined  	\gDisplayIntroduction 		\input{ch1-Introduction/ch1-Introduction.tex} 	\fi
+\ifdefined  	\gDisplayBackground		\input{ch2-Background/ch2-Background.tex} 	\fi
 \ifdefined	\gDisplaySearch			\input{ch3-Search/ch3-Learning_search_behaviour_from_humans.tex}  \fi
-\ifdefined	\gDisplayMLMF	 		\input{ch4-MLMF}	 \fi
-\ifdefined	\gDisplayPegSocket		\input{ch4-PiH/ch4-PiH.tex} 	 \fi
-\ifdefined	\gDisplayConclusions 		\input{ch6-Conclusions}  \fi
-\ifdefined	\gDisplayAppendix 	 	\input{Appendix} 	 \fi
+\ifdefined	\gDisplayPegSocket		\input{ch4-PiH/ch4-PiH.tex} 	 		\fi
+\ifdefined	\gDisplayMLMF	 		\input{ch5-MLMF/ch5-MLMF.tex}	 		\fi
+\ifdefined	\gDisplayConclusions 		\input{ch6-Conclusions}  			\fi
+\ifdefined	\gDisplayAppendix 	 	\input{Appendix} 	 			\fi
 	
 \backmatter
 
 \ifdefined \gDisplayBibliography
 	\bibliographystyle{plainnat}
-	\bibliography{bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}\fi
+	\bibliography{bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}\fi
 \end{document}

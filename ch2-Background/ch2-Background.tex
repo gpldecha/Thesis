@@ -375,7 +375,7 @@ The two update steps, motion and measurement, are part of a recursive state esti
 which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_update}.
 \begin{figure}
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}    
 \node [white_box] (box){%
      \begin{minipage}{0.9\textwidth}
      The Bayesian filter turns a prior probability distribution over the state space, $p(x_{t-1}|y_{0:t-1},a_{0:t-1})$,
@@ -402,6 +402,7 @@ which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_
 \node[fancytitle, right=10pt] at (box.north west) {Bayesian filter};
 \end{tikzpicture}%
 \caption{Bayesian state space filter.}
+ \label{fig:baysian_filter}
 \end{figure}
 
 The motion model, Equation \ref{eq:motion_update}, updates the position of the probability distribution according to 

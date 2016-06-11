@@ -64,7 +64,7 @@
 \@writefile{brf}{\backcite{VonNeumann1944}{{12}{2.1.1}{figure.caption.4}}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Sequential decision making}{13}{section.2.2}}
 \newlabel{sec:sqp}{{2.2}{13}{Sequential decision making}{section.2.2}{}}
-\newlabel{eq:joint_state_actions_util}{{2.1}{13}{Sequential decision making}{equation.2.2.1}{}}
+\newlabel{eq:joint_state_actions_util}{{2.2.1}{13}{Sequential decision making}{equation.2.2.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Definition of common variables used.\relax }}{14}{table.caption.5}}
 \newlabel{tab:notation}{{2.1}{14}{Definition of common variables used.\relax }{table.caption.5}{}}
 \newlabel{fig:mdp_off}{{2.3(a)}{15}{Subfigure 2 2.3(a)}{subfigure.2.3.1}{}}
@@ -75,14 +75,14 @@
 \newlabel{fig:mdp}{{2.3}{15}{Dynamical Bayesian Network of a Markov Decision Process; it encodes the temporal relation between the random variables (circles), utilities (diamond) and decisions (squares). The arrows specify conditional distributions. In \textbf {(a)} the decision nodes are not considered random variables whilst in \textbf {(b)} they are. From these two DBN we can read off two conditional distributions, the state transition distribution (in red) and the action distribution (in purple). \relax }{figure.caption.6}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {off-policy}}}{15}{figure.caption.6}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {on-policy}}}{15}{figure.caption.6}}
-\newlabel{eq:joint_state_actions}{{2.2}{16}{Sequential decision making}{equation.2.2.2}{}}
-\newlabel{eq:temporal_expected_utility}{{2.4}{16}{Sequential decision making}{equation.2.2.4}{}}
-\newlabel{eq:expansion}{{2.5}{16}{Sequential decision making}{equation.2.2.5}{}}
-\newlabel{eq:bellman}{{2.6}{16}{Sequential decision making}{equation.2.2.6}{}}
-\newlabel{eq:on_policy_bellman}{{2.7}{17}{Sequential decision making}{equation.2.2.7}{}}
+\newlabel{eq:joint_state_actions}{{2.2.2}{16}{Sequential decision making}{equation.2.2.2}{}}
+\newlabel{eq:temporal_expected_utility}{{2.2.4}{16}{Sequential decision making}{equation.2.2.4}{}}
+\newlabel{eq:expansion}{{2.2.5}{16}{Sequential decision making}{equation.2.2.5}{}}
+\newlabel{eq:bellman}{{2.2.6}{16}{Sequential decision making}{equation.2.2.6}{}}
+\newlabel{eq:on_policy_bellman}{{2.2.7}{17}{Sequential decision making}{equation.2.2.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}POMDP}{17}{subsection.2.2.1}}
-\newlabel{eq:sensor}{{2.8}{18}{POMDP}{equation.2.2.8}{}}
-\newlabel{eq:likelihood}{{2.9}{18}{POMDP}{equation.2.2.9}{}}
+\newlabel{eq:sensor}{{2.2.8}{18}{POMDP}{equation.2.2.8}{}}
+\newlabel{eq:likelihood}{{2.2.9}{18}{POMDP}{equation.2.2.9}{}}
 \newlabel{fig:motion_update}{{2.4(a)}{19}{Subfigure 2 2.4(a)}{subfigure.2.4.1}{}}
 \newlabel{sub@fig:motion_update}{{(a)}{19}{Subfigure 2 2.4(a)\relax }{subfigure.2.4.1}{}}
 \newlabel{fig:measurement}{{2.4(b)}{19}{Subfigure 2 2.4(b)}{subfigure.2.4.2}{}}
@@ -97,9 +97,10 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{19}{figure.caption.7}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{19}{figure.caption.7}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {}}}{19}{figure.caption.7}}
-\newlabel{eq:motion_update}{{2.10}{20}{POMDP}{equation.2.2.10}{}}
-\newlabel{eq:measurement_update}{{2.11}{20}{POMDP}{equation.2.2.11}{}}
+\newlabel{eq:motion_update}{{2.2.10}{20}{POMDP}{equation.2.2.10}{}}
+\newlabel{eq:measurement_update}{{2.2.11}{20}{POMDP}{equation.2.2.11}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Bayesian state space filter.\relax }}{20}{figure.caption.8}}
+\newlabel{fig:baysian_filter}{{2.5}{20}{Bayesian state space filter.\relax }{figure.caption.8}{}}
 \newlabel{fig:sub_pomdp}{{2.6(a)}{21}{Subfigure 2 2.6(a)}{subfigure.2.6.1}{}}
 \newlabel{sub@fig:sub_pomdp}{{(a)}{21}{Subfigure 2 2.6(a)\relax }{subfigure.2.6.1}{}}
 \newlabel{fig:sub_bmdp}{{2.6(b)}{21}{Subfigure 2 2.6(b)}{subfigure.2.6.2}{}}
@@ -108,13 +109,13 @@
 \newlabel{fig:pomdp}{{2.6}{21}{\textbf {(a)} POMDP graphical model. The state space, $X$, is hidden, but is still partially observable through a measurement, $Y$. \textbf {(b)} The POMDP is cast into a belief Markov Decision Process, belief-MDP. The state space is a probability distribution, $b(x_t) = p(x_t)$, (known as a belief state) and is no longer considered a latent state. The original state transition function $p(x_{t+1}|x_t,a_t)$ is replaced by a belief state transition, $p(b_{t+1}|b_t,a_t)$. The reward is now a function of the belief.\relax }{figure.caption.9}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{21}{figure.caption.9}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{21}{figure.caption.9}}
-\newlabel{eq:belief_bellman}{{2.15}{21}{POMDP}{equation.2.2.15}{}}
+\newlabel{eq:belief_bellman}{{2.2.15}{21}{POMDP}{equation.2.2.15}{}}
 \citation{Sondik_1973}
 \citation{Thrun_2005}
 \citation{Kaelbling_1998}
-\newlabel{eq:belief_state_transformation}{{2.16}{22}{POMDP}{equation.2.2.16}{}}
-\newlabel{eq:max_component}{{2.17}{22}{POMDP}{equation.2.2.17}{}}
-\newlabel{eq:final_belief_bellman}{{2.18}{22}{POMDP}{equation.2.2.18}{}}
+\newlabel{eq:belief_state_transformation}{{2.2.16}{22}{POMDP}{equation.2.2.16}{}}
+\newlabel{eq:max_component}{{2.2.17}{22}{POMDP}{equation.2.2.17}{}}
+\newlabel{eq:final_belief_bellman}{{2.2.18}{22}{POMDP}{equation.2.2.18}{}}
 \@writefile{brf}{\backcite{Sondik_1973}{{22}{2.2.1}{equation.2.2.18}}}
 \@writefile{brf}{\backcite{Thrun_2005}{{22}{2.2.1}{equation.2.2.18}}}
 \@writefile{brf}{\backcite{Kaelbling_1998}{{22}{2.2.1}{equation.2.2.18}}}
@@ -132,41 +133,41 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Value Iteration}{23}{subsection.2.3.1}}
 \newlabel{lit:VI}{{2.3.1}{23}{Value Iteration}{subsection.2.3.1}{}}
 \@writefile{brf}{\backcite{Thrun_2005}{{23}{2.3.1}{subsection.2.3.1}}}
-\@writefile{toc}{\contentsline {subsubsection}{Point-base Value Iteration}{23}{section*.11}}
-\@writefile{brf}{\backcite{PBVI}{{23}{2.3.1}{section*.11}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Mind-map of AI and robotic methods for acting under uncertainty.\relax }}{24}{figure.caption.10}}
 \newlabel{fig:mindmap}{{2.7}{24}{Mind-map of AI and robotic methods for acting under uncertainty.\relax }{figure.caption.10}{}}
 \citation{Spaan05icra}
 \citation{PBVI_C_2006}
 \citation{solving_continous_pomdps_2013}
+\@writefile{toc}{\contentsline {subsubsection}{Point-base Value Iteration}{25}{section*.11}}
+\@writefile{brf}{\backcite{PBVI}{{25}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{HSV}{{25}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{HSVI2}{{25}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{FSVI}{{25}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{SARSOP}{{25}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{POMDP_approach_2010}{{25}{2.3.1}{section*.11}}}
-\@writefile{brf}{\backcite{Spaan05icra}{{25}{2.3.1}{section*.11}}}
-\@writefile{brf}{\backcite{PBVI_C_2006}{{25}{2.3.1}{section*.11}}}
 \citation{Ross08onlineplanning}
-\citation{MC-POMDP}
-\citation{Tree_batch_2005}
+\@writefile{brf}{\backcite{Spaan05icra}{{26}{2.3.1}{section*.11}}}
+\@writefile{brf}{\backcite{PBVI_C_2006}{{26}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{solving_continous_pomdps_2013}{{26}{2.3.1}{section*.11}}}
 \@writefile{brf}{\backcite{Ross08onlineplanning}{{26}{2.3.1}{section*.11}}}
 \@writefile{toc}{\contentsline {subsubsection}{Approximate Value Iteration}{26}{section*.12}}
-\@writefile{brf}{\backcite{MC-POMDP}{{26}{2.3.1}{section*.12}}}
+\citation{MC-POMDP}
+\citation{Tree_batch_2005}
 \citation{mc_update_ppomdps}
 \citation{neura_fqi_2005}
 \citation{DRQ_AAAI_2015}
 \citation{mnih-dqn-2015}
-\citation{Roy99coastalnavigation}
+\@writefile{brf}{\backcite{MC-POMDP}{{27}{2.3.1}{section*.12}}}
 \@writefile{brf}{\backcite{Tree_batch_2005}{{27}{2.3.1}{section*.12}}}
 \@writefile{brf}{\backcite{mc_update_ppomdps}{{27}{2.3.1}{section*.12}}}
 \@writefile{brf}{\backcite{neura_fqi_2005}{{27}{2.3.1}{section*.12}}}
 \@writefile{brf}{\backcite{DRQ_AAAI_2015}{{27}{2.3.1}{section*.12}}}
 \@writefile{brf}{\backcite{mnih-dqn-2015}{{27}{2.3.1}{section*.12}}}
-\@writefile{toc}{\contentsline {subsubsection}{Latent Value Iteration}{27}{section*.13}}
+\citation{Roy99coastalnavigation}
 \citation{belief_compression_2005}
 \citation{EPCA_2003}
 \citation{bs_compression_2010}
+\@writefile{toc}{\contentsline {subsubsection}{Latent Value Iteration}{28}{section*.13}}
 \@writefile{brf}{\backcite{Roy99coastalnavigation}{{28}{2.3.1}{section*.13}}}
 \@writefile{brf}{\backcite{belief_compression_2005}{{28}{2.3.1}{section*.13}}}
 \@writefile{brf}{\backcite{EPCA_2003}{{28}{2.3.1}{section*.13}}}
@@ -185,16 +186,13 @@
 \@writefile{brf}{\backcite{gpomdp_2000}{{29}{2.3.2}{subsection.2.3.2}}}
 \@writefile{toc}{\contentsline {subsubsection}{Gradient: policy search}{29}{section*.15}}
 \@writefile{brf}{\backcite{reinforce_1992}{{29}{2.3.2}{section*.15}}}
-\@writefile{brf}{\backcite{gpomdp_2000}{{29}{2.3.2}{section*.15}}}
 \citation{PoWER_2009}
 \citation{archery_2010}
 \citation{pancake_2010}
 \citation{Wang2016}
 \citation{p_search_surv_2011}
 \citation{RL_robots_surv_2013}
-\citation{ac_survey_2012}
-\citation{eNAC_2003}
-\citation{NAC_2008}
+\@writefile{brf}{\backcite{gpomdp_2000}{{30}{2.3.2}{section*.15}}}
 \@writefile{brf}{\backcite{sis_pomdp_2002}{{30}{2.3.2}{section*.15}}}
 \@writefile{brf}{\backcite{Pegasus_2000}{{30}{2.3.2}{section*.15}}}
 \@writefile{brf}{\backcite{heli_2004}{{30}{2.3.2}{section*.15}}}
@@ -207,13 +205,14 @@
 \@writefile{brf}{\backcite{Wang2016}{{30}{2.3.2}{section*.16}}}
 \@writefile{brf}{\backcite{p_search_surv_2011}{{30}{2.3.2}{section*.16}}}
 \@writefile{brf}{\backcite{RL_robots_surv_2013}{{30}{2.3.2}{section*.16}}}
-\@writefile{toc}{\contentsline {subsubsection}{Actor-critic: policy search}{30}{section*.17}}
+\citation{ac_survey_2012}
+\citation{eNAC_2003}
+\citation{NAC_2008}
+\@writefile{toc}{\contentsline {subsubsection}{Actor-critic: policy search}{31}{section*.17}}
 \@writefile{brf}{\backcite{ac_survey_2012}{{31}{2.3.2}{section*.17}}}
 \@writefile{brf}{\backcite{eNAC_2003}{{31}{2.3.2}{section*.17}}}
 \@writefile{brf}{\backcite{NAC_2008}{{31}{2.3.2}{section*.17}}}
 \@writefile{toc}{\contentsline {subsubsection}{Summary: policy search}{31}{section*.18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Planning}{31}{subsection.2.3.3}}
-\newlabel{lit:Planning}{{2.3.3}{31}{Planning}{subsection.2.3.3}{}}
 \citation{BelRoadMap_2009}
 \citation{Quadrator_2008}
 \citation{FIRM_2011}
@@ -223,6 +222,8 @@
 \citation{Erez10ascalable}
 \citation{van_den_Berg_2012}
 \citation{Needle_2014}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Planning}{32}{subsection.2.3.3}}
+\newlabel{lit:Planning}{{2.3.3}{32}{Planning}{subsection.2.3.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Belief space road maps}{32}{section*.19}}
 \@writefile{brf}{\backcite{BelRoadMap_2009}{{32}{2.3.3}{section*.19}}}
 \@writefile{brf}{\backcite{Quadrator_2008}{{32}{2.3.3}{section*.19}}}
@@ -242,6 +243,11 @@
 \citation{un_water_inspection_icra_2012}
 \citation{u_aware_grasp_ICRA_2015}
 \citation{Li_2015}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Heuristics}{34}{subsection.2.3.4}}
+\newlabel{lit:heuristics}{{2.3.4}{34}{Heuristics}{subsection.2.3.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Myopic \& Q-MDP}{34}{section*.22}}
+\@writefile{brf}{\backcite{un_water_inspection_icra_2012}{{34}{2.3.4}{section*.22}}}
+\@writefile{brf}{\backcite{u_aware_grasp_ICRA_2015}{{34}{2.3.4}{section*.22}}}
 \citation{Littman95}
 \citation{RL_book_sa}
 \citation{Thrun_2005}
@@ -250,15 +256,10 @@
 \citation{where_look_2012}
 \citation{Hauser_2011}
 \citation{pomdp_iros_tous_2015}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Heuristics}{34}{subsection.2.3.4}}
-\newlabel{lit:heuristics}{{2.3.4}{34}{Heuristics}{subsection.2.3.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Myopic \& Q-MDP}{34}{section*.22}}
-\@writefile{brf}{\backcite{un_water_inspection_icra_2012}{{34}{2.3.4}{section*.22}}}
-\@writefile{brf}{\backcite{u_aware_grasp_ICRA_2015}{{34}{2.3.4}{section*.22}}}
-\@writefile{brf}{\backcite{Li_2015}{{34}{2.3.4}{section*.22}}}
 \citation{CostalNavigation1999}
 \citation{stachniss05robotics}
 \citation{dense_entropy_icra_2014}
+\@writefile{brf}{\backcite{Li_2015}{{35}{2.3.4}{section*.22}}}
 \@writefile{brf}{\backcite{Littman95}{{35}{2.3.4}{section*.22}}}
 \@writefile{brf}{\backcite{RL_book_sa}{{35}{2.3.4}{section*.22}}}
 \@writefile{brf}{\backcite{Thrun_2005}{{35}{2.3.4}{section*.22}}}
@@ -268,10 +269,10 @@
 \@writefile{brf}{\backcite{Hauser_2011}{{35}{2.3.4}{section*.22}}}
 \@writefile{brf}{\backcite{pomdp_iros_tous_2015}{{35}{2.3.4}{section*.22}}}
 \@writefile{toc}{\contentsline {subsubsection}{Information gain}{35}{section*.23}}
-\@writefile{brf}{\backcite{CostalNavigation1999}{{35}{2.3.4}{section*.23}}}
 \citation{Hsiao_RSS_10}
 \citation{Efficient_touch_2012}
 \citation{next_best_touch}
+\@writefile{brf}{\backcite{CostalNavigation1999}{{36}{2.3.4}{section*.23}}}
 \@writefile{brf}{\backcite{stachniss05robotics}{{36}{2.3.4}{section*.23}}}
 \@writefile{brf}{\backcite{dense_entropy_icra_2014}{{36}{2.3.4}{section*.23}}}
 \@writefile{brf}{\backcite{Hsiao_RSS_10}{{36}{2.3.4}{section*.23}}}
@@ -279,19 +280,19 @@
 \@writefile{brf}{\backcite{next_best_touch}{{36}{2.3.4}{section*.23}}}
 \@writefile{toc}{\contentsline {subsubsection}{Summary: heuristic}{36}{section*.24}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}Summary: literature}{37}{subsection.2.3.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Summary of the aspects of the reviewed methods. Local refers to the optimality of the solution, on/off-line refers to if the solution is computed on the stop (on-line) or many simulations are required to obtain the solution (off-line).\relax }}{38}{figure.caption.25}}
-\newlabel{fig:mind_summary}{{2.8}{38}{Summary of the aspects of the reviewed methods. Local refers to the optimality of the solution, on/off-line refers to if the solution is computed on the stop (on-line) or many simulations are required to obtain the solution (off-line).\relax }{figure.caption.25}{}}
 \citation{Billard08chapter}
 \citation{Billard_schol_2013}
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}Approach}{39}{section.2.4}}
-\newlabel{sec:approach}{{2.4}{39}{Approach}{section.2.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Approach}{38}{section.2.4}}
+\newlabel{sec:approach}{{2.4}{38}{Approach}{section.2.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Summary of the aspects of the reviewed methods. Local refers to the optimality of the solution, on/off-line refers to if the solution is computed on the stop (on-line) or many simulations are required to obtain the solution (off-line).\relax }}{39}{figure.caption.25}}
+\newlabel{fig:mind_summary}{{2.8}{39}{Summary of the aspects of the reviewed methods. Local refers to the optimality of the solution, on/off-line refers to if the solution is computed on the stop (on-line) or many simulations are required to obtain the solution (off-line).\relax }{figure.caption.25}{}}
 \@writefile{brf}{\backcite{Billard08chapter}{{39}{2.4}{section.2.4}}}
 \@writefile{brf}{\backcite{Billard_schol_2013}{{39}{2.4}{section.2.4}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Three steps in learning a POMDP policy from human demonstrations: First gather the belief-action dataset, second compress the beliefs and third learn a generative policy.\relax }}{40}{figure.caption.26}}
 \newlabel{fig:belief-pipeline}{{2.9}{40}{Three steps in learning a POMDP policy from human demonstrations: First gather the belief-action dataset, second compress the beliefs and third learn a generative policy.\relax }{figure.caption.26}{}}
-\citation{Biomechanics_2009}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces \textbf  {Demonstrations:} An apprentice is looking at a human teacher who is searching for the alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf  {Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs is compressed to a fixed parametrisation. \textbf  {Learn policy:} A generative policy, $\policy  (g(b),a)$ is learned from the actions and compressed beliefs and can be executed according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next belief state.\relax }}{41}{figure.caption.27}}
 \newlabel{fig:human_search}{{2.10}{41}{\textbf {Demonstrations:} An apprentice is looking at a human teacher who is searching for the alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf {Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs is compressed to a fixed parametrisation. \textbf {Learn policy:} A generative policy, $\policy (g(b),a)$ is learned from the actions and compressed beliefs and can be executed according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next belief state.\relax }{figure.caption.27}{}}
+\citation{Biomechanics_2009}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Control architecture of the apprentice robot. The control loop should run between 10-100Hz. Given an applied action, the world returns an observation which is integrated by the State Estimator (SE) to give the current belief. The belief is the compressed and given as input to the policy.\relax }}{42}{figure.caption.28}}
 \newlabel{fig:control_architecture}{{2.11}{42}{Control architecture of the apprentice robot. The control loop should run between 10-100Hz. Given an applied action, the world returns an observation which is integrated by the State Estimator (SE) to give the current belief. The belief is the compressed and given as input to the policy.\relax }{figure.caption.28}{}}
 \@writefile{brf}{\backcite{Biomechanics_2009}{{42}{2.4}{figure.caption.27}}}
@@ -376,7 +377,7 @@
 \@writefile{brf}{\backcite{Arul_Mask_Clap_2002}{{54}{3.4}{equation.3.4.1}}}
 \@writefile{brf}{\backcite{Bake_Saxe_Tene_2011}{{54}{3.4}{equation.3.4.1}}}
 \@writefile{toc}{\contentsline {subsubsection}{Sensing model}{54}{section*.35}}
-\newlabel{eq:sensingfunction}{{3.3}{54}{Sensing model}{equation.3.4.3}{}}
+\newlabel{eq:sensingfunction}{{3.4.3}{54}{Sensing model}{equation.3.4.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Four different time frames of the evolution of the belief particle filter. \textit  {Top left}: Initial belief distribution; a lot of uncertainty. \textit  {Top right:} First contact is made with the table, the measurement likelihood restrains the samples to be on the table's surface. \textit  {Bottom right:} First contact is an edge. \textit  {Bottom left:} Gradual localisation.\relax }}{55}{figure.caption.36}}
 \newlabel{fig:pf_example}{{3.4}{55}{Four different time frames of the evolution of the belief particle filter. \textit {Top left}: Initial belief distribution; a lot of uncertainty. \textit {Top right:} First contact is made with the table, the measurement likelihood restrains the samples to be on the table's surface. \textit {Bottom right:} First contact is an edge. \textit {Bottom left:} Gradual localisation.\relax }{figure.caption.36}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Motion model}{55}{section*.37}}
@@ -384,7 +385,7 @@
 \citation{DiffEntropyHuber2008}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Representation of the estimated density function. \textit  {Top Left and Right:} Initial starting point, all Gaussian functions are uniformly distributed with uniform priors. The red cluster always has the highest likelihood which is taken to be the believed location of the robot's/human's end-effector. \textit  {Bottom Left:} Contact with the table has been established, the robot location differers from his belief. \textit  {Bottom Right:} Contact has been made with a corner, the clusters reflect that the robot could be at any corner (note that weights are not depicted, only cluster assignment).\relax }}{56}{figure.caption.39}}
 \newlabel{fig:clustering}{{3.5}{56}{Representation of the estimated density function. \textit {Top Left and Right:} Initial starting point, all Gaussian functions are uniformly distributed with uniform priors. The red cluster always has the highest likelihood which is taken to be the believed location of the robot's/human's end-effector. \textit {Bottom Left:} Contact with the table has been established, the robot location differers from his belief. \textit {Bottom Right:} Contact has been made with a corner, the clusters reflect that the robot could be at any corner (note that weights are not depicted, only cluster assignment).\relax }{figure.caption.39}{}}
-\newlabel{eq:gmm1}{{3.4}{56}{Uncertainty}{equation.3.4.4}{}}
+\newlabel{eq:gmm1}{{3.4.4}{56}{Uncertainty}{equation.3.4.4}{}}
 \citation{BillardCDS08}
 \@writefile{brf}{\backcite{DiffEntropyHuber2008}{{57}{3.4}{figure.caption.39}}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Policies}{57}{section.3.5}}
@@ -395,17 +396,17 @@
 \citation{CostalNavigation1999}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit  {Left: } Resulting search GMM, a total of 67 Gaussian mixture components are present. We note the many overlapping Gaussians: this results from the level of uncertainty over the different choices taken. For example humans follow along the edge of the table in different directions and might leave the edge once they are confident with respect to their location. \textit  {Right:} Information Gain map of the table environment, dark regions indicate high information gain as oppose to lighter ones. Not surprisingly, the highest are the corners, followed by the edges.\relax }}{58}{figure.caption.40}}
 \newlabel{fig:gmm}{{3.6}{58}{\textit {Left: } Resulting search GMM, a total of 67 Gaussian mixture components are present. We note the many overlapping Gaussians: this results from the level of uncertainty over the different choices taken. For example humans follow along the edge of the table in different directions and might leave the edge once they are confident with respect to their location. \textit {Right:} Information Gain map of the table environment, dark regions indicate high information gain as oppose to lighter ones. Not surprisingly, the highest are the corners, followed by the edges.\relax }{figure.caption.40}{}}
-\newlabel{eq:gmm2}{{3.7}{58}{Modelling human search strategies}{equation.3.5.7}{}}
+\newlabel{eq:gmm2}{{3.5.1}{58}{Modelling human search strategies}{equation.3.5.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Coastal Navigation}{58}{subsection.3.5.2}}
 \newlabel{chap3:costal_policy}{{3.5.2}{58}{Coastal Navigation}{subsection.3.5.2}{}}
 \@writefile{brf}{\backcite{CostalNavigation1999}{{58}{3.5.2}{subsection.3.5.2}}}
-\newlabel{eq:objective_function}{{3.8}{58}{Coastal Navigation}{equation.3.5.8}{}}
-\newlabel{eq:IG}{{3.9}{59}{Coastal Navigation}{equation.3.5.9}{}}
+\newlabel{eq:objective_function}{{3.5.2}{58}{Coastal Navigation}{equation.3.5.2}{}}
+\newlabel{eq:IG}{{3.5.3}{59}{Coastal Navigation}{equation.3.5.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}Control}{59}{subsection.3.5.3}}
-\newlabel{eq:conditional}{{3.10}{59}{Control}{equation.3.5.10}{}}
-\newlabel{eq:GMR}{{3.11}{59}{Control}{equation.3.5.11}{}}
-\newlabel{eq:weight}{{3.12}{60}{Control}{equation.3.5.12}{}}
-\newlabel{eq:w_expectation}{{3.13}{60}{Control}{equation.3.5.13}{}}
+\newlabel{eq:conditional}{{3.5.4}{59}{Control}{equation.3.5.4}{}}
+\newlabel{eq:GMR}{{3.5.5}{59}{Control}{equation.3.5.5}{}}
+\newlabel{eq:weight}{{3.5.6}{60}{Control}{equation.3.5.6}{}}
+\newlabel{eq:w_expectation}{{3.5.7}{60}{Control}{equation.3.5.7}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Overview of the decision loop. At the top a strategy is chosen given an initial belief $p(x_{0}|y_{0})$ of the location of the end-effector (initially through sampling the conditional). A speed is applied to the given direction based on the believed distance to the goal. This velocity is passed onwards to a low level impedance controller which sends out the required torques. The resulting sensation, encoded through the Multinomial distribution over the environment features, and actual displacement are sent back to update the belief.\relax }}{61}{figure.caption.41}}
 \newlabel{fig:flow_chart}{{3.7}{61}{Overview of the decision loop. At the top a strategy is chosen given an initial belief $p(x_{0}|y_{0})$ of the location of the end-effector (initially through sampling the conditional). A speed is applied to the given direction based on the believed distance to the goal. This velocity is passed onwards to a low level impedance controller which sends out the required torques. The resulting sensation, encoded through the Multinomial distribution over the environment features, and actual displacement are sent back to update the belief.\relax }{figure.caption.41}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.6}Results and discussion}{62}{section.3.6}}
@@ -493,16 +494,16 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Belief compression}{82}{subsection.4.3.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Learning Actor and Critic}{83}{section.4.4}}
 \newlabel{sec:learning-value-actor}{{4.4}{83}{Learning Actor and Critic}{section.4.4}{}}
-\newlabel{eq:value_function}{{4.1}{83}{Learning Actor and Critic}{equation.4.4.1}{}}
+\newlabel{eq:value_function}{{4.4.1}{83}{Learning Actor and Critic}{equation.4.4.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Actor}{83}{subsection.4.4.1}}
-\newlabel{eq:GMM}{{4.2}{83}{Actor}{equation.4.4.2}{}}
+\newlabel{eq:GMM}{{4.4.2}{83}{Actor}{equation.4.4.2}{}}
 \citation{Atkeson97locallyweighted}
 \citation{EGW05}
 \citation{NIPS2008_3501,EGW05,Riedmiller05neuralfitted}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Critic}{84}{subsection.4.4.2}}
 \@writefile{brf}{\backcite{Atkeson97locallyweighted}{{84}{4.4.2}{subsection.4.4.2}}}
-\newlabel{eq:W}{{4.3}{84}{Critic}{equation.4.4.3}{}}
-\newlabel{eq:lwr_predict}{{4.4}{84}{Critic}{equation.4.4.4}{}}
+\newlabel{eq:W}{{4.4.3}{84}{Critic}{equation.4.4.3}{}}
+\newlabel{eq:lwr_predict}{{4.4.4}{84}{Critic}{equation.4.4.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Fitted Policy Evaluation}{84}{section*.56}}
 \@writefile{brf}{\backcite{EGW05}{{84}{4.4.2}{section*.56}}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {4.1}{\ignorespaces Fitted Policy Evaluation\relax }}{84}{algorithm.4.1}}
@@ -518,24 +519,24 @@
 \@writefile{brf}{\backcite{sutton1998reinforcement}{{85}{4.4.3}{subsection.4.4.3}}}
 \@writefile{brf}{\backcite{DeisenrothNP2013}{{85}{4.4.3}{subsection.4.4.3}}}
 \citation{peter_nac_2008}
-\newlabel{eq:disc_return}{{4.5}{86}{Actor update}{equation.4.4.5}{}}
-\newlabel{eq:expected_reward}{{4.6}{86}{Actor update}{equation.4.4.6}{}}
-\newlabel{eq:grad_log_cost}{{4.7}{86}{Actor update}{equation.4.4.7}{}}
-\newlabel{eq:advantage_f}{{4.8}{86}{Actor update}{equation.4.4.8}{}}
+\newlabel{eq:disc_return}{{4.4.5}{86}{Actor update}{equation.4.4.5}{}}
+\newlabel{eq:expected_reward}{{4.4.6}{86}{Actor update}{equation.4.4.6}{}}
+\newlabel{eq:grad_log_cost}{{4.4.7}{86}{Actor update}{equation.4.4.7}{}}
+\newlabel{eq:advantage_f}{{4.4.8}{86}{Actor update}{equation.4.4.8}{}}
 \@writefile{brf}{\backcite{peter_nac_2008}{{86}{4.4.3}{equation.4.4.8}}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Control architecture}{86}{section.4.5}}
 \newlabel{seq:control_architecture}{{4.5}{86}{Control architecture}{section.4.5}{}}
 \citation{gesture_calinon_2010}
 \citation{gmr_2004}
-\newlabel{eq:gmm_conditional}{{4.9}{87}{Control architecture}{equation.4.5.9}{}}
-\@writefile{brf}{\backcite{gesture_calinon_2010}{{87}{4.5}{equation.4.5.9}}}
-\@writefile{brf}{\backcite{gmr_2004}{{87}{4.5}{equation.4.5.9}}}
-\newlabel{eq:alpha_eq}{{4.10}{87}{Control architecture}{equation.4.5.10}{}}
-\newlabel{eq:alpha_expectation}{{4.11}{87}{Control architecture}{equation.4.5.11}{}}
-\newlabel{eq:modulation}{{4.12}{87}{Control architecture}{equation.4.5.12}{}}
+\newlabel{eq:gmm_conditional}{{4.5.1}{87}{Control architecture}{equation.4.5.1}{}}
+\@writefile{brf}{\backcite{gesture_calinon_2010}{{87}{4.5}{equation.4.5.1}}}
+\@writefile{brf}{\backcite{gmr_2004}{{87}{4.5}{equation.4.5.1}}}
+\newlabel{eq:alpha_eq}{{4.5.2}{87}{Control architecture}{equation.4.5.2}{}}
+\newlabel{eq:alpha_expectation}{{4.5.3}{87}{Control architecture}{equation.4.5.3}{}}
+\newlabel{eq:modulation}{{4.5.4}{87}{Control architecture}{equation.4.5.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Control architecture. The PMF (belief) received a measured velocity, $\mathaccentV {dot}05F{\mathaccentV {tilde}07E{x}}$, and sensor feature $\mathaccentV {tilde}07E{y}$ and gets updated via Bayes rule. The belief is compressed and used by both the GMM policy and the proportional speed controller, Equation \ref  {eq:prop_speed}.\relax }}{88}{figure.caption.58}}
 \newlabel{fig:control_flow}{{4.5}{88}{Control architecture. The PMF (belief) received a measured velocity, $\dot {\tilde {x}}$, and sensor feature $\tilde {y}$ and gets updated via Bayes rule. The belief is compressed and used by both the GMM policy and the proportional speed controller, Equation \ref {eq:prop_speed}.\relax }{figure.caption.58}{}}
-\newlabel{eq:prop_speed}{{4.13}{88}{Control architecture}{equation.4.5.13}{}}
+\newlabel{eq:prop_speed}{{4.5.5}{88}{Control architecture}{equation.4.5.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Q-EM and GMM policy vector fields. \textit  {Top}: The GMM policy is conditioned on an entropy of $-10$ and $-5.2$. For the lowest entropy level, most of the probability mass is close to the socket area since this level corresponds to very little uncertainty; we are already localised. We can see that the policy converges to the socket area regardless of the location of the believed state. For an entropy of $-5.2$ we can see that the likelihood of the policy is present across wall. The vector field directs the end-effector to go towards the left or right edge of the wall. \textit  {Bottom}: The entropy is marginalised out, the yellow vector field is of the Q-EM and orange of the GMM. The Q-EM vector field tends to be closer to a sink and there is less variation.\relax }}{89}{figure.caption.59}}
 \newlabel{fig:policy_vf}{{4.6}{89}{Q-EM and GMM policy vector fields. \textit {Top}: The GMM policy is conditioned on an entropy of $-10$ and $-5.2$. For the lowest entropy level, most of the probability mass is close to the socket area since this level corresponds to very little uncertainty; we are already localised. We can see that the policy converges to the socket area regardless of the location of the believed state. For an entropy of $-5.2$ we can see that the likelihood of the policy is present across wall. The vector field directs the end-effector to go towards the left or right edge of the wall. \textit {Bottom}: The entropy is marginalised out, the yellow vector field is of the Q-EM and orange of the GMM. The Q-EM vector field tends to be closer to a sink and there is less variation.\relax }{figure.caption.59}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}Results}{90}{section.4.6}}
@@ -588,164 +589,336 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.8.1}EM policy search}{103}{subsection.4.8.1}}
 \newlabel{app:lb}{{4.8.1}{103}{EM policy search}{subsection.4.8.1}{}}
 \citation{rl_gradient_survey_2013}
-\newlabel{eq:lower_bound}{{4.15}{104}{EM policy search}{equation.4.8.15}{}}
-\newlabel{eq:grad_log_cost_2}{{4.18}{104}{EM policy search}{equation.4.8.18}{}}
-\@writefile{brf}{\backcite{rl_gradient_survey_2013}{{104}{4.8.1}{equation.4.8.18}}}
+\newlabel{eq:lower_bound}{{4.8.2}{104}{EM policy search}{equation.4.8.2}{}}
+\newlabel{eq:grad_log_cost_2}{{4.8.5}{104}{EM policy search}{equation.4.8.5}{}}
+\@writefile{brf}{\backcite{rl_gradient_survey_2013}{{104}{4.8.1}{equation.4.8.5}}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.8.2}Q-EM for GMM derivation}{104}{subsection.4.8.2}}
 \newlabel{app:grad}{{4.8.2}{104}{Q-EM for GMM derivation}{subsection.4.8.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.8.3}Unbiased estimator}{105}{subsection.4.8.3}}
 \newlabel{app:unbiased_delta}{{4.8.3}{105}{Unbiased estimator}{subsection.4.8.3}{}}
+\citation{Thrun_Burgard_Fox_2005}
+\citation{Thrun02particlefilters,negative_info_markov_localisation}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Non-parametric Bayesian State Space Estimator}{107}{chapter.5}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\citation{Thrun_Burgard_Fox_2005}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces  \textit  {Table Environment} Table World (delimited by the black rectangle), viewed from above, and the agent's beliefs. There are three different probability density functions present on the table. The blue represents the believed location of the agent, the red and green probability distributions are associated with object 1 and 2. The white shapes in each figure represent the true location of each associated object or agent.\relax }}{108}{figure.caption.72}}
+\newlabel{fig:Figure1}{{5.1}{108}{\textit {Table Environment} Table World (delimited by the black rectangle), viewed from above, and the agent's beliefs. There are three different probability density functions present on the table. The blue represents the believed location of the agent, the red and green probability distributions are associated with object 1 and 2. The white shapes in each figure represent the true location of each associated object or agent.\relax }{figure.caption.72}{}}
+\@writefile{brf}{\backcite{Thrun_Burgard_Fox_2005}{{108}{5}{figure.caption.72}}}
+\@writefile{brf}{\backcite{Thrun02particlefilters}{{108}{5}{figure.caption.72}}}
+\@writefile{brf}{\backcite{negative_info_markov_localisation}{{108}{5}{figure.caption.72}}}
+\@writefile{brf}{\backcite{Thrun_Burgard_Fox_2005}{{108}{5}{figure.caption.72}}}
+\citation{NegInfoFurtherStudies}
+\citation{Bake_Saxe_Tene_2011}
+\citation{deChambrier2013}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Assumptions and attributes which have to be fulfilled by our Bayesian State Space Filter. \relax }}{109}{figure.caption.73}}
+\newlabel{fig:ch5_assmuptions}{{5.2}{109}{Assumptions and attributes which have to be fulfilled by our Bayesian State Space Filter. \relax }{figure.caption.73}{}}
+\@writefile{brf}{\backcite{NegInfoFurtherStudies}{{109}{5}{figure.caption.73}}}
+\@writefile{brf}{\backcite{Bake_Saxe_Tene_2011}{{110}{5}{figure.caption.73}}}
+\@writefile{brf}{\backcite{deChambrier2013}{{110}{5}{figure.caption.73}}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Outline}{110}{section.5.1}}
+\citation{Plagemann07gaussianbeam}
+\citation{DataAssociation2003}
+\citation{SLAM_part1}
+\citation{TutGraphSLAM}
+\citation{FastSLAM}
+\citation{Thrun_Burgard_Fox_2005}
+\citation{SLAM_HBR}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Background}{111}{section.5.2}}
+\newlabel{ch5:background}{{5.2}{111}{Background}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}SLAM}{111}{subsection.5.2.1}}
+\@writefile{brf}{\backcite{Plagemann07gaussianbeam}{{111}{5.2.1}{subsection.5.2.1}}}
+\@writefile{brf}{\backcite{DataAssociation2003}{{111}{5.2.1}{subsection.5.2.1}}}
+\@writefile{brf}{\backcite{SLAM_part1}{{111}{5.2.1}{subsection.5.2.1}}}
+\@writefile{brf}{\backcite{TutGraphSLAM}{{111}{5.2.1}{subsection.5.2.1}}}
+\@writefile{brf}{\backcite{FastSLAM}{{111}{5.2.1}{subsection.5.2.1}}}
+\citation{Thrun_grid_based_1996}
+\citation{Kollar_2008_Exploration_SLAM}
+\citation{Navigation_strategires_for_exploring_indoor_environments}
+\citation{PRM_1996}
+\citation{RRT-SLAM}
+\citation{ActivePosSLAM}
+\citation{stachniss05robotics}
+\citation{Ross08onlineplanning}
+\citation{GeorgiosLidoris}
+\citation{Active_SLAM_Uncertainty_compar,tovar_planning,KL_SLAM_exploration_PF}
+\@writefile{brf}{\backcite{Thrun_Burgard_Fox_2005}{{112}{5.2.1}{subsection.5.2.1}}}
+\@writefile{brf}{\backcite{SLAM_HBR}{{112}{5.2.1}{subsection.5.2.1}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Active-SLAM \& Exploration}{112}{subsection.5.2.2}}
+\@writefile{brf}{\backcite{Thrun_grid_based_1996}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{Kollar_2008_Exploration_SLAM}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{Navigation_strategires_for_exploring_indoor_environments}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{PRM_1996}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{RRT-SLAM}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{ActivePosSLAM}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{stachniss05robotics}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{Ross08onlineplanning}{{112}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{GeorgiosLidoris}{{112}{5.2.2}{subsection.5.2.2}}}
+\citation{BayesBall}
+\citation{barberBRML2012}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Directed graphical model of dependencies between the agent(A), objects(O), sensing(Y) and action(u) random variables. Each object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left [Y^{(1)},\dots  ,Y^{(M-1)}\right ]^{\mathrm  {T}}$, where $M$ is the total number of agent and object random variables in the filter. For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with them thus they will never have a time subscript. The two models necessary for filtering are the motion model $P(A_t|A_{t-1},u_t)$ (red) and measurement model $P(Y_t|A_t,O)$ (blue).\relax }}{113}{figure.caption.74}}
+\newlabel{fig:bayesian_sse_dag}{{5.3}{113}{Directed graphical model of dependencies between the agent(A), objects(O), sensing(Y) and action(u) random variables. Each object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left [Y^{(1)},\dots ,Y^{(M-1)}\right ]^{\mathrm {T}}$, where $M$ is the total number of agent and object random variables in the filter. For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with them thus they will never have a time subscript. The two models necessary for filtering are the motion model $P(A_t|A_{t-1},u_t)$ (red) and measurement model $P(Y_t|A_t,O)$ (blue).\relax }{figure.caption.74}{}}
+\@writefile{brf}{\backcite{Active_SLAM_Uncertainty_compar}{{113}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{tovar_planning}{{113}{5.2.2}{subsection.5.2.2}}}
+\@writefile{brf}{\backcite{KL_SLAM_exploration_PF}{{113}{5.2.2}{subsection.5.2.2}}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Bayesian State Space Estimation}{113}{section.5.3}}
+\newlabel{ch5:BSSE}{{5.3}{113}{Bayesian State Space Estimation}{section.5.3}{}}
+\@writefile{brf}{\backcite{BayesBall}{{114}{5.3}{figure.caption.74}}}
+\@writefile{brf}{\backcite{barberBRML2012}{{114}{5.3}{figure.caption.74}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Bayesian filter}{114}{subsection.5.3.1}}
+\newlabel{eq:joint}{{5.3.1}{114}{Bayesian filter}{equation.5.3.1}{}}
+\newlabel{eq:time-update}{{5.3.2}{114}{Bayesian filter}{equation.5.3.2}{}}
+\newlabel{eq:measurement-update}{{5.3.3}{114}{Bayesian filter}{equation.5.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Measurement model}{115}{section*.75}}
+\newlabel{subsub:measurement-model}{{5.3.1}{115}{Measurement model}{section*.75}{}}
+\newlabel{eq:disc-measurement_function}{{5.3.4}{115}{Measurement model}{equation.5.3.4}{}}
+\newlabel{eq:ekf-measurement_function}{{5.3.5}{115}{Measurement model}{equation.5.3.5}{}}
+\newlabel{eq:lik-measurement}{{5.3.6}{116}{Measurement model}{equation.5.3.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Dynamic model}{116}{section*.76}}
+\newlabel{subsub:dynamic-model}{{5.3.1}{116}{Dynamic model}{section*.76}{}}
+\newlabel{eq:dynamical_model}{{5.3.7}{116}{Dynamic model}{equation.5.3.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}Simultaneous Localisation and Mapping}{116}{subsection.5.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Histogram/Discrete SLAM}{116}{section*.77}}
+\newlabel{sec:Discrete}{{5.3.2}{116}{Histogram/Discrete SLAM}{section*.77}{}}
+\@writefile{toc}{\contentsline {subsubsection}{EKF-SLAM}{116}{section*.79}}
+\newlabel{sec:EKF-SLAM}{{5.3.2}{116}{EKF-SLAM}{section*.79}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces \textbf  {Histogram SLAM} An agent and one object are present in the 1D world. The red and blue points represent the true locations whilst the lines are the probability of their current location (beliefs). (1) Initial beliefs, the marginals $P(A_t)$ and $P(O)$. The dotted lines annotated by L and R denote the left and right edges of the agent's belief mode. The agent will follow the policy shown by the black arrow which is a sweep to the right followed by one to the left. 2) The left end of the agent's distribution has reached the initial right end of the distribution, see dotted lines for reference. When the left end, L, has reached the right end, R, the probability of the object being at R is equal to the underlying or ground uncertainty of the agent's belief. From (3) to (4) object belief continuously increases in states 0 to 45. (5) agent and Object occupy the same state, the beliefs merge.\relax }}{117}{figure.caption.78}}
+\newlabel{fig:discrete_example}{{5.4}{117}{\textbf {Histogram SLAM} An agent and one object are present in the 1D world. The red and blue points represent the true locations whilst the lines are the probability of their current location (beliefs). (1) Initial beliefs, the marginals $P(A_t)$ and $P(O)$. The dotted lines annotated by L and R denote the left and right edges of the agent's belief mode. The agent will follow the policy shown by the black arrow which is a sweep to the right followed by one to the left. 2) The left end of the agent's distribution has reached the initial right end of the distribution, see dotted lines for reference. When the left end, L, has reached the right end, R, the probability of the object being at R is equal to the underlying or ground uncertainty of the agent's belief. From (3) to (4) object belief continuously increases in states 0 to 45. (5) agent and Object occupy the same state, the beliefs merge.\relax }{figure.caption.78}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Time slices of the evolution of the pdfs according to EKF-SLAM. The numbers in the top right corner of each plot indicate the temporal ordering. The blue pdf represents the agent's believed location and the circle with the dot in the middle is the true location of the agent. The same holds for the red distribution which represents the agent's belief of the location of an object. \textit  {Top:} evolution of the Kalman gain, $K$, parameter according to the measurement error $e$. $K_a$ is the gain update for the agent's Gaussian parameters and $K_o$ is the gain update for the object. \textit  {Middle:} evolution of the covariance components of $\Sigma $ over time. $\Sigma _a$ and $\Sigma _o$ are the variances of the agent and object positions and $\Sigma _{ao}$ is the cross covariance term. \textit  {Bottom:} true sensing $Y_t$ and the expected sensation $\mathaccentV {hat}05E{Y}_t$. 1D EKF-SLAM, the figures to the left show the evolution of the agent's belief of his location and that of an object which are represented by the blue and red Gaussian functions. The figures to the right show the evolution of the parameters of the EKF-SLAM.\relax }}{119}{figure.caption.80}}
+\newlabel{fig:slam}{{5.5}{119}{Time slices of the evolution of the pdfs according to EKF-SLAM. The numbers in the top right corner of each plot indicate the temporal ordering. The blue pdf represents the agent's believed location and the circle with the dot in the middle is the true location of the agent. The same holds for the red distribution which represents the agent's belief of the location of an object. \textit {Top:} evolution of the Kalman gain, $K$, parameter according to the measurement error $e$. $K_a$ is the gain update for the agent's Gaussian parameters and $K_o$ is the gain update for the object. \textit {Middle:} evolution of the covariance components of $\Sigma $ over time. $\Sigma _a$ and $\Sigma _o$ are the variances of the agent and object positions and $\Sigma _{ao}$ is the cross covariance term. \textit {Bottom:} true sensing $Y_t$ and the expected sensation $\hat {Y}_t$. 1D EKF-SLAM, the figures to the left show the evolution of the agent's belief of his location and that of an object which are represented by the blue and red Gaussian functions. The figures to the right show the evolution of the parameters of the EKF-SLAM.\relax }{figure.caption.80}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Measurement Likelihood Memory Filter}{120}{section.5.4}}
+\newlabel{ch5:MLMF}{{5.4}{120}{Measurement Likelihood Memory Filter}{section.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}New joint parametrisation \& intuition}{120}{subsection.5.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Time evolution of both the joint and marginal distributions of the agent (blue) and object (red) probability distributions for the case of a 1D search. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. The black line represents the measurement likelihood function. It is along this line $A=O$ that the joint distribution will be changed. On the \textit  {Left}, the measurement likelihood causes all the mass of joint distribution lying on the line $A=O$ to be removed. The reason for this is that the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of both the agent and the object), and all the probability mass which lies in the area of influence of the measurement likelihood gets removed and redistributed to the other states in the joint distribution due to normalisation.\relax }}{121}{figure.caption.81}}
+\newlabel{fig:margina_joint_example}{{5.6}{121}{Time evolution of both the joint and marginal distributions of the agent (blue) and object (red) probability distributions for the case of a 1D search. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. The black line represents the measurement likelihood function. It is along this line $A=O$ that the joint distribution will be changed. On the \textit {Left}, the measurement likelihood causes all the mass of joint distribution lying on the line $A=O$ to be removed. The reason for this is that the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of both the agent and the object), and all the probability mass which lies in the area of influence of the measurement likelihood gets removed and redistributed to the other states in the joint distribution due to normalisation.\relax }{figure.caption.81}{}}
+\newlabel{eq:memory_function}{{5.4.1}{121}{New joint parametrisation \& intuition}{equation.5.4.1}{}}
+\newlabel{eq:joint_filter_memory}{{5.4.2}{121}{New joint parametrisation \& intuition}{equation.5.4.2}{}}
+\newlabel{eq:time_update_memory}{{5.4.3}{121}{New joint parametrisation \& intuition}{equation.5.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces  $P(Y_t|A_t,O)$ effect on the joint distribution for three different initialisations. The tube area depicts the regions where the measurement function influences the joint distribution. The tube's boundary is governed by the bandwidth of the radial basis function of the measurement likelihood function. The joint distribution can be decomposed into a dependent $A \cap O$ (the intersection of $A$ and $O$) and independent $A \ominus O$ term (the symmetric difference of $A$ and $O$, everything outside the area of intersection but still within the red and blue circles). In the three other figures any probability mass of the joint distribution which lies in the tube will be in the $\cap $, all probability mass outside the tube but still within the grey rectangle is located in $\ominus $ and the white space is in the domain but not parametrised and thus not considered. \textbf  {a)} The initial configuration, the agent and object pdfs are not overlapping and thus are completely independent. The joint distribution is not intersecting with the measurement function. \textbf  {b)} The marginals overlap one another resulting in the measurement likelihood function intersection with the joint distribution. The probability mass at the intersection gets removed and renormalised to other regions which is the result of applying Bayes integration. \textbf  {c)} The marginals of $A$ and $B$ are completely overlapping, however only a small fraction of the probability mass in the joint distribution is within the measurement function's tube.\relax }}{122}{figure.caption.82}}
+\newlabel{fig:overlap_dependence_independence}{{5.7}{122}{$P(Y_t|A_t,O)$ effect on the joint distribution for three different initialisations. The tube area depicts the regions where the measurement function influences the joint distribution. The tube's boundary is governed by the bandwidth of the radial basis function of the measurement likelihood function. The joint distribution can be decomposed into a dependent $A \cap O$ (the intersection of $A$ and $O$) and independent $A \ominus O$ term (the symmetric difference of $A$ and $O$, everything outside the area of intersection but still within the red and blue circles). In the three other figures any probability mass of the joint distribution which lies in the tube will be in the $\cap $, all probability mass outside the tube but still within the grey rectangle is located in $\ominus $ and the white space is in the domain but not parametrised and thus not considered. \textbf {a)} The initial configuration, the agent and object pdfs are not overlapping and thus are completely independent. The joint distribution is not intersecting with the measurement function. \textbf {b)} The marginals overlap one another resulting in the measurement likelihood function intersection with the joint distribution. The probability mass at the intersection gets removed and renormalised to other regions which is the result of applying Bayes integration. \textbf {c)} The marginals of $A$ and $B$ are completely overlapping, however only a small fraction of the probability mass in the joint distribution is within the measurement function's tube.\relax }{figure.caption.82}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Computation of evidence and marginals}{122}{subsection.5.4.2}}
+\newlabel{eq:joint_independent_dependent}{{5.4.4}{123}{Computation of evidence and marginals}{equation.5.4.4}{}}
+\newlabel{eq:I}{{5.4.5}{123}{Computation of evidence and marginals}{equation.5.4.5}{}}
+\citation{PF_tutorial_2002}
+\newlabel{eq:marignal_mrf}{{5.4.6}{124}{Computation of evidence and marginals}{equation.5.4.6}{}}
+\newlabel{eq:marignal_mrf_2}{{5.4.7}{124}{Computation of evidence and marginals}{equation.5.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}MLMF-SLAM Algorithm}{124}{subsection.5.4.3}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5.1}{\ignorespaces MLMF-SLAM\relax }}{124}{algorithm.5.1}}
+\newlabel{alg:mrf-slam}{{5.1}{124}{MLMF-SLAM\relax }{algorithm.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Space \& time complexity (MLMF)}{125}{section.5.5}}
+\newlabel{ch5:space_time_complexity_MLMF}{{5.5}{125}{Space \& time complexity (MLMF)}{section.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Space complexity}{125}{subsection.5.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Time complexity}{125}{subsection.5.5.2}}
+\@writefile{brf}{\backcite{PF_tutorial_2002}{{125}{1}{Hfootnote.9}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces \textit  {left:} Joint distribution $P(A,O^{(1)},O^{(2)})$ of the agent and two objects. Each measurement likelihood function, $P(Y|A,O^{(1)})$, $P(Y|A,O^{(2)})$ and $P(Y|O^{(1)},O^{(2)})$ corresponds to a hyperplane in the joint distribution. The measurement function $P(Y|O^{(1)},O^{(2)})$ stipulates that the objects cannot be in the same state. The marginal space is discretised to $N = 100$ states giving the total number of states in the joint distribution as $100^3$ $(M=3)$. \textit  {right:} Joint distribution of the agent and one object $P(A_t,O|Y_{0:t})$. Three measurement functions have been added to the memory term. At every time step when an action is taken all measurement functions are updated according to the action applied $u_t$. This means that the first function to be added to the memory will have had all actions applied to it. The number of the equations and their associated lines in the plot indicate the order in which they have been added to the memory. The three points are candidates at which we want to evaluate the joint distribution. First the offset $A=O+c$ is evaluated which corresponds to the dotted red lines. Then these are checked against all the offsets stored in memory. The cost of evaluating the joint distribution at the yellow point is $\BigO  {1}$ since we only have to check the first element in the memory. For the green and cyan points the cost is $\BigO  {\qopname  \relax o{log}(n)}$, where $n$ is the current size of the memory.\relax }}{126}{figure.caption.83}}
+\newlabel{fig:3bel_lik_profile}{{5.8}{126}{\textit {left:} Joint distribution $P(A,O^{(1)},O^{(2)})$ of the agent and two objects. Each measurement likelihood function, $P(Y|A,O^{(1)})$, $P(Y|A,O^{(2)})$ and $P(Y|O^{(1)},O^{(2)})$ corresponds to a hyperplane in the joint distribution. The measurement function $P(Y|O^{(1)},O^{(2)})$ stipulates that the objects cannot be in the same state. The marginal space is discretised to $N = 100$ states giving the total number of states in the joint distribution as $100^3$ $(M=3)$. \textit {right:} Joint distribution of the agent and one object $P(A_t,O|Y_{0:t})$. Three measurement functions have been added to the memory term. At every time step when an action is taken all measurement functions are updated according to the action applied $u_t$. This means that the first function to be added to the memory will have had all actions applied to it. The number of the equations and their associated lines in the plot indicate the order in which they have been added to the memory. The three points are candidates at which we want to evaluate the joint distribution. First the offset $A=O+c$ is evaluated which corresponds to the dotted red lines. Then these are checked against all the offsets stored in memory. The cost of evaluating the joint distribution at the yellow point is $\BigO {1}$ since we only have to check the first element in the memory. For the green and cyan points the cost is $\BigO {\log (n)}$, where $n$ is the current size of the memory.\relax }{figure.caption.83}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Scalable extension to multiple objects}{127}{section.5.6}}
+\newlabel{subsec:scalabe_extension}{{5.6}{127}{Scalable extension to multiple objects}{section.5.6}{}}
+\newlabel{eq:pair_wise_joint}{{5.6.1}{127}{Scalable extension to multiple objects}{equation.5.6.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces \textbf  {Scalable filter} Each agent-object joint distribution pair is modelled independently. For clarity we have left out the action random variable $u$ which is linked to every agent node. Two joint distributions $P(A^{(1)},O^{(1)}|Y^{(1)}_{0:t})$ and $P(A^{(2)},O^{(2)}|Y^{(2)}_{0:t})$ parametrise the graphical model. The dashed undirected lines represent a wanted dependency, if present $O^{(1)}$ and $O^{(2)}$ are to be dependent through $A$. In the standard setting there will be no exchange of information between the individual joints. However we demonstrate later on how we perform a one time transfer of information when one of the objects is sensed.\relax }}{128}{figure.caption.84}}
+\newlabel{fig:scalable_mlmf_dae}{{5.9}{128}{\textbf {Scalable filter} Each agent-object joint distribution pair is modelled independently. For clarity we have left out the action random variable $u$ which is linked to every agent node. Two joint distributions $P(A^{(1)},O^{(1)}|Y^{(1)}_{0:t})$ and $P(A^{(2)},O^{(2)}|Y^{(2)}_{0:t})$ parametrise the graphical model. The dashed undirected lines represent a wanted dependency, if present $O^{(1)}$ and $O^{(2)}$ are to be dependent through $A$. In the standard setting there will be no exchange of information between the individual joints. However we demonstrate later on how we perform a one time transfer of information when one of the objects is sensed.\relax }{figure.caption.84}{}}
+\newlabel{eq:marg_indep}{{5.6.2}{128}{Scalable extension to multiple objects}{equation.5.6.2}{}}
+\newlabel{eq:marg_indep_prod}{{5.6.4}{128}{Scalable extension to multiple objects}{equation.5.6.4}{}}
+\newlabel{eq:marg_indep_sum}{{5.6.5}{128}{Scalable extension to multiple objects}{equation.5.6.5}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5.2}{\ignorespaces Scalable-MLMF: Measurement Update\relax }}{129}{algorithm.5.2}}
+\newlabel{alg:scalabe-mrf-slam}{{5.2}{129}{Scalable-MLMF: Measurement Update\relax }{algorithm.5.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}Evaluation}{129}{section.5.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces \textbf  {Transfer of information between joint distributions} \textit  {top left and right:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior and post sensing. The red and blue lines correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted black lines are for ease of comparing the joint distributions prior and post sensing. \textit  {bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the blue line becomes an infeasible solution to the agent and object locations. \textit  {bottom left:} The constraint imposed by the measurement likelihood function of the second object (blue line) is transferred to the joint distribution of the first object according to Algorithm \ref  {alg:scalabe-mrf-slam}. The result is a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }}{130}{figure.caption.85}}
+\newlabel{fig:transfer_information}{{5.10}{130}{\textbf {Transfer of information between joint distributions} \textit {top left and right:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior and post sensing. The red and blue lines correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted black lines are for ease of comparing the joint distributions prior and post sensing. \textit {bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the blue line becomes an infeasible solution to the agent and object locations. \textit {bottom left:} The constraint imposed by the measurement likelihood function of the second object (blue line) is transferred to the joint distribution of the first object according to Algorithm \ref {alg:scalabe-mrf-slam}. The result is a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }{figure.caption.85}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces \textbf  {Independence \& Objects} \textit  {left:} resulting marginals after setting the agent marginals of each pair wise joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref  {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit  {right:} resulting marginals in which the objects have no influence on one another. The difference between the two figures is that the object $O^{(1)}$ marginal changed in the case where we introduced the dependence \textit  {left plot}, and remained unchanged in the case where the objects are treated as being independent \textit  {right plot}.\relax }}{130}{figure.caption.86}}
+\newlabel{fig:independence_object}{{5.11}{130}{\textbf {Independence \& Objects} \textit {left:} resulting marginals after setting the agent marginals of each pair wise joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit {right:} resulting marginals in which the objects have no influence on one another. The difference between the two figures is that the object $O^{(1)}$ marginal changed in the case where we introduced the dependence \textit {left plot}, and remained unchanged in the case where the objects are treated as being independent \textit {right plot}.\relax }{figure.caption.86}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces \textbf  {Time and space complexity summary} For both MLMF and scalabe-MLMF the worst case scenario is reported for the space complexity.\relax }}{131}{table.caption.87}}
+\newlabel{tab:time_space_summary}{{5.1}{131}{\textbf {Time and space complexity summary} For both MLMF and scalabe-MLMF the worst case scenario is reported for the space complexity.\relax }{table.caption.87}{}}
+\newlabel{ch5:evaluation}{{5.7}{131}{Evaluation}{section.5.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Evaluation of time complexity}{131}{subsection.5.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Evaluation of independence assumption}{131}{subsection.5.7.2}}
+\newlabel{subsec:eval_indep_assumptiom}{{5.7.2}{131}{Evaluation of independence assumption}{subsection.5.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces \textbf  {Time complexity:} \textit  {left:} mean time taken in Hz for a loop update (motion and measurement) as a function of the number of states in a marginal and the number of objects present. \textit  {right:} time taken for a loop update with respect to the number of states in the marginal. The colour coded lines are associated with the number of objects present. The computational cost is plotted on a log scale. As the number of states increases exponentially the computational cost matches it.\relax }}{132}{figure.caption.88}}
+\newlabel{fig:time_complexity}{{5.12}{132}{\textbf {Time complexity:} \textit {left:} mean time taken in Hz for a loop update (motion and measurement) as a function of the number of states in a marginal and the number of objects present. \textit {right:} time taken for a loop update with respect to the number of states in the marginal. The colour coded lines are associated with the number of objects present. The computational cost is plotted on a log scale. As the number of states increases exponentially the computational cost matches it.\relax }{figure.caption.88}{}}
+\newlabel{eq:hellinger}{{5.7.1}{132}{Evaluation of independence assumption}{equation.5.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Evaluation of memory}{132}{subsection.5.7.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces \textbf  {Comparison of scalable-MLMF and the histogram filter} A deterministic sweep policy was carried out for 100 different initialisations of the agent and object beliefs. \textit  {top left:} One particular Initialisation of the agent and object random variables. The true position of the agent and objects were sampled at random. The black arrow indicates the general policy which was followed for each of the 100 sweeps. These were performed for 1) scalable-MLMF with objects considered to be independent at all times (no Algorithm \ref  {alg:scalabe-mrf-slam}). 2) Agent marginal $P(A_t|Y_{0:t})$ is the product of marginals $P(A^{(i)}_t|Y^{(i)}_{0:t})$ (Equation \ref  {eq:marg_indep_prod}). 3) marginal $P(A_t|Y_t)$ is taken to be the average of all marginals $P(A^{(i)}_t|Y^{(i)}_{0:t})$ (Equation \ref  {eq:marg_indep_sum}). For each of these three experiment we report the kernel density estimation over the Hellinger distances taken at every time step between ground truth (from histogram filter) and scalable-MLMF.\relax }}{133}{figure.caption.89}}
+\newlabel{fig:independence_assumption_test}{{5.13}{133}{\textbf {Comparison of scalable-MLMF and the histogram filter} A deterministic sweep policy was carried out for 100 different initialisations of the agent and object beliefs. \textit {top left:} One particular Initialisation of the agent and object random variables. The true position of the agent and objects were sampled at random. The black arrow indicates the general policy which was followed for each of the 100 sweeps. These were performed for 1) scalable-MLMF with objects considered to be independent at all times (no Algorithm \ref {alg:scalabe-mrf-slam}). 2) Agent marginal $P(A_t|Y_{0:t})$ is the product of marginals $P(A^{(i)}_t|Y^{(i)}_{0:t})$ (Equation \ref {eq:marg_indep_prod}). 3) marginal $P(A_t|Y_t)$ is taken to be the average of all marginals $P(A^{(i)}_t|Y^{(i)}_{0:t})$ (Equation \ref {eq:marg_indep_sum}). For each of these three experiment we report the kernel density estimation over the Hellinger distances taken at every time step between ground truth (from histogram filter) and scalable-MLMF.\relax }{figure.caption.89}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \textbf  {Agent's prior beliefs.} Two types of environment, the first is a 2D world in which the agent lives in a square surrounded by a wall whilst the second is a 1D world. In the 2D figures the agent is illustrated by a circle with a bar to indicate its heading. The true location of the objects are represented by colour coded squares. \textit  {Top row} three different initialisations of the agent's location. \textit  {Bottom row} d) the agent's prior beliefs with respect to the location of the first object and e) belief of the second object's location. \textit  {bottom row} f) 1D world with one object.\relax }}{134}{figure.caption.90}}
+\newlabel{fig:exploration_init}{{5.14}{134}{\textbf {Agent's prior beliefs.} Two types of environment, the first is a 2D world in which the agent lives in a square surrounded by a wall whilst the second is a 1D world. In the 2D figures the agent is illustrated by a circle with a bar to indicate its heading. The true location of the objects are represented by colour coded squares. \textit {Top row} three different initialisations of the agent's location. \textit {Bottom row} d) the agent's prior beliefs with respect to the location of the first object and e) belief of the second object's location. \textit {bottom row} f) 1D world with one object.\relax }{figure.caption.90}{}}
+\newlabel{eq:greedy_algorithm}{{5.7.2}{134}{Evaluation of memory}{equation.5.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces \textbf  {Memory size vs time to find objects} Results of the effect of the memory size on the decision process. The memory size is reported as the percentage of total number of states present in the marginal space. At 100\% the size of the memory is equal to that of the state space. \textit  {left:} results of the 1D search illustrated in Figure \ref  {fig:exploration_init} \textit  {f)}. \textit  {Middle \& right:} 2D search with initialisations accordingly depicted in Figure \ref  {fig:exploration_init}. \relax }}{135}{figure.caption.91}}
+\newlabel{fig:time_to_reach_goal}{{5.15}{135}{\textbf {Memory size vs time to find objects} Results of the effect of the memory size on the decision process. The memory size is reported as the percentage of total number of states present in the marginal space. At 100\% the size of the memory is equal to that of the state space. \textit {left:} results of the 1D search illustrated in Figure \ref {fig:exploration_init} \textit {f)}. \textit {Middle \& right:} 2D search with initialisations accordingly depicted in Figure \ref {fig:exploration_init}. \relax }{figure.caption.91}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.8}Conclusion}{135}{section.5.8}}
+\newlabel{ch5:conclusion}{{5.8}{135}{Conclusion}{section.5.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.9}Appendix}{137}{section.5.9}}
+\newlabel{ch5:appendix}{{5.9}{137}{Appendix}{section.5.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9.1}Bayesian filtering recursion}{137}{subsection.5.9.1}}
+\newlabel{appendix:bayes_recursion}{{5.9.1}{137}{Bayesian filtering recursion}{subsection.5.9.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9.2}Derivation of the evidence}{137}{subsection.5.9.2}}
+\newlabel{appendix:evidence}{{5.9.2}{137}{Derivation of the evidence}{subsection.5.9.2}{}}
+\newlabel{eq:marginal_likelihood_memory}{{5.9.2}{137}{Derivation of the evidence}{equation.5.9.2}{}}
+\newlabel{eq:marginal_likelihood_memory_last}{{5.9.4}{137}{Derivation of the evidence}{equation.5.9.4}{}}
+\newlabel{eq:marginal_likelihood_equal_I}{{5.9.8}{138}{Derivation of the evidence}{equation.5.9.8}{}}
+\newlabel{eq:marginal_likelihood_equal_I2}{{5.9.12}{138}{Derivation of the evidence}{equation.5.9.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9.3}Derivation of the marginal}{138}{subsection.5.9.3}}
+\newlabel{appendix:marginal}{{5.9.3}{138}{Derivation of the marginal}{subsection.5.9.3}{}}
+\newlabel{eq:dependence1}{{5.9.14}{139}{Derivation of the marginal}{equation.5.9.14}{}}
+\newlabel{eq:dependence2}{{5.9.15}{139}{Derivation of the marginal}{equation.5.9.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9.4}Space \& time complexity (scalable-MLMF)}{139}{subsection.5.9.4}}
+\newlabel{appendix:space_time_scalable_mlmf}{{5.9.4}{139}{Space \& time complexity (scalable-MLMF)}{subsection.5.9.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9.5}Space complexity}{139}{subsection.5.9.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.9.6}Time complexity}{139}{subsection.5.9.6}}
+\newlabel{appendix:memory_time_complexity}{{5.9.6}{139}{Time complexity}{subsection.5.9.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces \textbf  {Memory list} After three updates the memory term $P(Y_{0:t}|A_t,O)$ contains three functions. The parametrisation of the functions is the same with the exception of actions $u_t$ which are added after each motion update step. As the result the first function added to the list will have all the actions applied to it from the first time step to the last.\relax }}{140}{table.caption.92}}
+\newlabel{tab:memory_list}{{5.2}{140}{\textbf {Memory list} After three updates the memory term $P(Y_{0:t}|A_t,O)$ contains three functions. The parametrisation of the functions is the same with the exception of actions $u_t$ which are added after each motion update step. As the result the first function added to the list will have all the actions applied to it from the first time step to the last.\relax }{table.caption.92}{}}
 \bibstyle{plainnat}
-\bibdata{bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}
+\bibdata{bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}
 \bibcite{FIRM_2011}{{1}{2011}{{a.~Agha-mohammadi et~al.}}{{a.~Agha-mohammadi, Chakravorty, and Amato}}}
 \bibcite{rob_online_bs_icra_2014}{{2}{2014}{{a.~Agha-mohammadi et~al.}}{{a.~Agha-mohammadi, Agarwal, Mahadevan, Chakravorty, Tomkins, Denny, and Amato}}}
 \bibcite{sis_pomdp_2002}{{3}{2002}{{Aberdeen and Baxter}}{{}}}
 \bibcite{sol_pdg_pbd_2014}{{4}{2014}{{Abu-Dakka et~al.}}{{Abu-Dakka, Nemec, Kramberger, Buch, Kr{\"u}ger, and Ude}}}
-<<<<<<< HEAD
-\bibcite{rl_gmm_2010}{{5}{2010}{{Agostini and Celaya}}{{}}}
-\bibcite{Arul_Mask_Clap_2002}{{6}{2002}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
+\bibcite{Arul_Mask_Clap_2002}{{5}{2002{a}}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
+\bibcite{PF_tutorial_2002}{{6}{2002{b}}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
 \bibcite{Atkeson97locallyweighted}{{7}{1997}{{Atkeson et~al.}}{{Atkeson, Moore, and Schaal}}}
 \bibcite{Bake_Saxe_Tene_2011}{{8}{2011}{{Bake et~al.}}{{Bake, Tenenbaum, and Saxe}}}
 \bibcite{Bake_Tene_Saxe_2006}{{9}{2006}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
-\bibcite{Baron-Cohen}{{10}{1995}{{Baron-Cohen}}{{}}}
-\bibcite{gpomdp_2000}{{11}{2000}{{Baxter and Bartlett}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{References}{109}{chapter*.72}}
-=======
-\bibcite{Arul_Mask_Clap_2002}{{5}{2002}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
-\bibcite{Atkeson97locallyweighted}{{6}{1997}{{Atkeson et~al.}}{{Atkeson, Moore, and Schaal}}}
-\bibcite{Bake_Saxe_Tene_2011}{{7}{2011}{{Bake et~al.}}{{Bake, Tenenbaum, and Saxe}}}
-\bibcite{Bake_Tene_Saxe_2006}{{8}{2006}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
-\bibcite{Baron-Cohen}{{9}{1995}{{Baron-Cohen}}{{}}}
-\bibcite{gpomdp_2000}{{10}{2000}{{Baxter and Bartlett}}{{}}}
-\bibcite{Bergman99recursivebayesian}{{11}{1999}{{Bergman and Bergman}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{References}{107}{chapter*.72}}
->>>>>>> abe94c119f57f8397eebb602de2c1f62ada9e6a0
+\bibcite{barberBRML2012}{{10}{2012}{{Barber}}{{}}}
+\@writefile{toc}{\contentsline {chapter}{References}{141}{chapter*.93}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\bibcite{Bergman99recursivebayesian}{{12}{1999}{{Bergman and Bergman}}{{}}}
-\bibcite{Bernoulli1954}{{13}{1954}{{Bernoulli}}{{}}}
-\bibcite{Billard_schol_2013}{{14}{2013}{{Billard and Grollman}}{{}}}
-\bibcite{Billard08chapter}{{15}{2008{a}}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
-\bibcite{BillardCDS08}{{16}{2008{b}}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
-\bibcite{fvi_uav_2010}{{17}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
-\bibcite{Boyan95generalizationin}{{18}{1995}{{Boyan and Moore}}{{}}}
-\bibcite{solving_continous_pomdps_2013}{{19}{2013}{{Brechtel et~al.}}{{Brechtel, Gindele, and Dillmann}}}
-\bibcite{mc_update_ppomdps}{{20}{2011}{{Brooks and Williams}}{{}}}
-\bibcite{spatial_memory_how_ego_allo_combine_2006}{{21}{2006}{{Burgess}}{{}}}
-\bibcite{MRF_ToM}{{22}{2009}{{Butterfield et~al.}}{{Butterfield, Jenkins, Sobel, and Schwertfeger}}}
-\bibcite{approx_rl_overview_2011}{{23}{2011}{{Bu\IeC {\c s}oniu et~al.}}{{Bu\IeC {\c s}oniu, Ernst, Schutter, and Babu\IeC {\v s}ka}}}
-\bibcite{gesture_calinon_2010}{{24}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
+\bibcite{Baron-Cohen}{{11}{1995}{{Baron-Cohen}}{{}}}
+\bibcite{gpomdp_2000}{{12}{2000}{{Baxter and Bartlett}}{{}}}
+\bibcite{Bergman99recursivebayesian}{{13}{1999}{{Bergman and Bergman}}{{}}}
+\bibcite{Bernoulli1954}{{14}{1954}{{Bernoulli}}{{}}}
+\bibcite{Billard_schol_2013}{{15}{2013}{{Billard and Grollman}}{{}}}
+\bibcite{Billard08chapter}{{16}{2008{a}}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
+\bibcite{BillardCDS08}{{17}{2008{b}}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
+\bibcite{solving_continous_pomdps_2013}{{18}{2013}{{Brechtel et~al.}}{{Brechtel, Gindele, and Dillmann}}}
+\bibcite{mc_update_ppomdps}{{19}{2011}{{Brooks and Williams}}{{}}}
+\bibcite{spatial_memory_how_ego_allo_combine_2006}{{20}{2006}{{Burgess}}{{}}}
+\bibcite{MRF_ToM}{{21}{2009}{{Butterfield et~al.}}{{Butterfield, Jenkins, Sobel, and Schwertfeger}}}
+\bibcite{gesture_calinon_2010}{{22}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
+\bibcite{KL_SLAM_exploration_PF}{{23}{2010}{{Carlone et~al.}}{{Carlone, Du, Ng, Bona, and Indri}}}
+\bibcite{Active_SLAM_Uncertainty_compar}{{24}{2012}{{Carrillo et~al.}}{{Carrillo, Reid, and Castellanos}}}
 \bibcite{ActingUncertainty_1996}{{25}{1996{a}}{{Cassandra et~al.}}{{Cassandra, Kaelbling, and Kurien}}}
 \bibcite{acting_uncer_1996}{{26}{1996{b}}{{Cassandra et~al.}}{{Cassandra, Kaelbling, and Kurien}}}
 \bibcite{Chambrier2014}{{27}{2014}{{Chambrier and Billard}}{{}}}
 \bibcite{u_aware_grasp_ICRA_2015}{{28}{2015}{{Chen and von Wichert}}{{}}}
 \bibcite{online_gpr_icra_2014}{{29}{2014}{{Cheng and Chen}}{{}}}
 \bibcite{search_strategies_icra_2001}{{30}{2001}{{Chhatpar and Branicky}}{{}}}
-\bibcite{p_search_surv_2011}{{31}{2011}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{rl_gradient_survey_2013}{{32}{2013{a}}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{DeisenrothNP2013}{{33}{2013{b}}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{ToM_HRI_2106}{{34}{2016}{{Devin and Alami}}{{}}}
-\bibcite{POMDP_approach_2010}{{35}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
-\bibcite{Erez10ascalable}{{36}{2010}{{Erez and Smart}}{{}}}
-\bibcite{EGW05}{{37}{2005{a}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
-\bibcite{Tree_batch_2005}{{38}{2005{b}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
-\bibcite{hybrid_1992}{{39}{1992}{{Fisher and Mujtaba}}{{}}}
-\bibcite{batch_synth_traj_2013}{{40}{2013}{{Fonteneau et~al.}}{{Fonteneau, Murphy, Wehenkel, and Ernst}}}
-\bibcite{ac_survey_2012}{{41}{2012{a}}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
-\bibcite{rl_ac_surv_2012}{{42}{2012{b}}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
-\bibcite{learn_admittance_icra_1994}{{43}{1994}{{Gullapalli et~al.}}{{Gullapalli, Barto, and Grupen}}}
-\bibcite{Hamner_2006_5810}{{44}{2006}{{Hamner et~al.}}{{Hamner, Singh, and Scherer}}}
-\bibcite{Hauser_2011}{{45}{2011}{{Hauser}}{{}}}
-\bibcite{DRQ_AAAI_2015}{{46}{2015}{{Hausknecht and Stone}}{{}}}
-\bibcite{Quadrator_2008}{{47}{2008}{{He et~al.}}{{He, Prentice, and Roy}}}
-\bibcite{next_best_touch}{{48}{2013}{{Hebert et~al.}}{{Hebert, Howard, Hudson, Ma, and Burdick}}}
-\bibcite{un_water_inspection_icra_2012}{{49}{2012}{{Hollinger et~al.}}{{Hollinger, Englot, Hover, Mitra, and Sukhatme}}}
-\bibcite{Hsiao_RSS_10}{{50}{2010}{{Hsiao et~al.}}{{Hsiao, Kaelbling, and Lozano-Perez}}}
-\bibcite{DiffEntropyHuber2008}{{51}{2008}{{Huber et~al.}}{{Huber, Bailey, Durrant-Whyte, and Hanebeck}}}
-\bibcite{Iachini2014}{{52}{2014}{{Iachini et~al.}}{{Iachini, Ruggiero, and Ruotolo}}}
-\bibcite{Efficient_touch_2012}{{53}{2012}{{Javdani et~al.}}{{Javdani, Klingensmith, Bagnell, Pollard, and Srinivasa}}}
-\bibcite{DARPA_2015}{{54}{2015}{{Johnson et~al.}}{{Johnson, Shrewsbury, Bertrand, Wu, Duran, Floyd, Abeles, Stephen, Mertins, Lesman, Carff, Rifenburgh, Kaveti, Straatman, Smith, Griffioen, Layton, de~Boer, Koolen, Neuhaus, and Pratt}}}
-\bibcite{Kaelbling_1998}{{55}{1998}{{Kaelbling et~al.}}{{Kaelbling, Littman, and Cassandra}}}
-\bibcite{learn_force_c_icirs_2011}{{56}{2011}{{Kalakrishnan et~al.}}{{Kalakrishnan, Righetti, Pastor, and Schaal}}}
-\bibcite{Kasper2001153}{{57}{2001}{{Kasper et~al.}}{{Kasper, Fricke, Steuernagel, and von Puttkamer}}}
-\bibcite{heli_2004}{{58}{2004}{{Kim et~al.}}{{Kim, Jordan, Sastry, and Ng}}}
-\bibcite{PoWER_2009}{{59}{2009}{{Kober and Peters}}{{}}}
-\bibcite{RL_robots_surv_2013}{{60}{2013}{{Kober et~al.}}{{Kober, Bagnell, and Peters}}}
-\bibcite{compliant_manip_icra_2008}{{61}{2008}{{kook Yun}}{{}}}
-\bibcite{pancake_2010}{{62}{2010{a}}{{Kormushev et~al.}}{{Kormushev, Calinon, and Caldwell}}}
-\bibcite{archery_2010}{{63}{2010{b}}{{Kormushev et~al.}}{{Kormushev, Calinon, Saegusa, and Metta}}}
-\bibcite{SARSOP}{{64}{2008}{{Kurniawati et~al.}}{{Kurniawati, Hsu, and Lee}}}
-\bibcite{human_stsm_2015}{{65}{}{{Lavenexa et~al.}}{{Lavenexa, Boujonb, Ndarugendamwob, and Lavenexa}}}
-\bibcite{Leslie_TOMM}{{66}{1994}{{Leslie}}{{}}}
-\bibcite{Li_2015}{{67}{2016}{{Li et~al.}}{{Li, Hang, Kragic, and Billard}}}
-\bibcite{bs_compression_2010}{{68}{2010}{{Li et~al.}}{{Li, Cheung, and Liu}}}
-\bibcite{GeorgiosLidoris}{{69}{2011}{{Lidoris}}{{}}}
-\bibcite{qmdp_ijcnn_2014}{{70}{2014}{{Lin et~al.}}{{Lin, Lu, and Makedon}}}
-\bibcite{Littman95}{{71}{1995}{{Littman et~al.}}{{Littman, Cassandra, and Kaelbling}}}
-\bibcite{peg_imcssd_2015}{{72}{2015}{{M.~Bdiwi}}{{}}}
-\bibcite{peg_personal_icra_2010}{{73}{2010}{{Meeussen et~al.}}{{Meeussen, Wise, Glaser, Chitta, McGann, Mihelich, Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski, Konolige, Gerkey, and Berger}}}
-\bibcite{fnac_ca_2008}{{74}{2008}{{Melo and Lopes}}{{}}}
-\bibcite{cogprints730}{{75}{1956}{{Miller}}{{}}}
-\bibcite{mnih-dqn-2015}{{76}{2015}{{Mnih et~al.}}{{Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare, Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik, Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis}}}
-\bibcite{trans_workpiece_icra_2013}{{77}{2013}{{Nemec et~al.}}{{Nemec, Abu-Dakka, Ridge, Ude, J\IeC {\o }rgensen, Savarimuthu, Jouffroy, Petersen, and Kr\IeC {\"u}ger}}}
-\bibcite{fqi_nips_peter_2009}{{78}{2009{a}}{{Neumann and Peters}}{{}}}
-\bibcite{NIPS2008_3501}{{79}{2009{b}}{{Neumann and Peters}}{{}}}
-\bibcite{Pegasus_2000}{{80}{2000}{{Ng and Jordan}}{{}}}
-\bibcite{Nicolescu01learningand}{{81}{2001}{{Nicolescu and Mataric}}{{}}}
-\bibcite{RL_book_sa}{{82}{2012}{{Now\'{e} et~al.}}{{Now\'{e}, Vrancx, and De~Hauwere}}}
-\bibcite{where_look_2012}{{83}{2012}{{Nunez-Varela et~al.}}{{Nunez-Varela, Ravindran, and Wyatt}}}
-\bibcite{intuitive_peg_isr_2013}{{84}{2013}{{Park et~al.}}{{Park, Bae, Park, Baeg, and Park}}}
-\bibcite{Pasqualotto2013175}{{85}{2013}{{Pasqualotto et~al.}}{{Pasqualotto, Spiller, Jansari, and Proulx}}}
-\bibcite{peter_nac_2008}{{86}{2008{a}}{{Peters and Schaal}}{{}}}
-\bibcite{NAC_2008}{{87}{2008{b}}{{Peters and Schaal}}{{}}}
-\bibcite{PBVI}{{88}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
-\bibcite{non_gauss_bel_plan_2012}{{89}{2012}{{Platt et~al.}}{{Platt, Kaelbling, Lozano-Perez, and Tedrake}}}
-\bibcite{bsp_rss_2010a}{{90}{2010}{{Platt et~al.}}{{Platt, Tedrake, Kaelbling, and Lozano-P\'{e}rez}}}
-\bibcite{PBVI_C_2006}{{91}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
-\bibcite{BelRoadMap_2009}{{92}{2009}{{Prentice and Roy}}{{}}}
-\bibcite{decision_un_2013}{{93}{2013}{{Preuschoff et~al.}}{{Preuschoff, Mohr, and Hsu}}}
-\bibcite{rai2013learning}{{94}{2013}{{Rai et~al.}}{{Rai, De~Chambrier, and Billard}}}
-\bibcite{Sondik_1973}{{95}{1973}{{Richard D.~Smallwood}}{{}}}
-\bibcite{Richardson1_Baker1_Tenenbaum1_Saxe1_2012}{{96}{2012}{{Richardson et~al.}}{{Richardson, Bake, Tenenbaum, and Saxe}}}
-\bibcite{Riedmiller05neuralfitted}{{97}{2005{a}}{{Riedmiller}}{{}}}
-\bibcite{Riedmiller2005}{{98}{2005{b}}{{Riedmiller}}{{}}}
-\bibcite{neura_fqi_2005}{{99}{2005{c}}{{Riedmiller}}{{}}}
-\bibcite{Ross08onlineplanning}{{100}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
-\bibcite{CostalNavigation1999}{{101}{1999}{{Roy et~al.}}{{Roy, Burgard, Fox, and Thrun}}}
-\bibcite{belief_compression_2005}{{102}{2005}{{Roy}}{{}}}
-\bibcite{EPCA_2003}{{103}{2003}{{Roy and Gordon}}{{}}}
-\bibcite{Roy99coastalnavigation}{{104}{1999}{{Roy and Thrun}}{{}}}
-\bibcite{ToM_humanoid}{{105}{2002}{{Scassellati}}{{}}}
-\bibcite{Schaal04learningmovement}{{106}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
-\bibcite{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain}{{107}{2010}{{Silver et~al.}}{{Silver, Bagnell, and Stentz}}}
-\bibcite{HSV}{{108}{2004}{{Smith and Simmons}}{{}}}
-\bibcite{HSVI2}{{109}{2012}{{Smith and Simmons}}{{}}}
-\bibcite{Towards_a_ToM_2010}{{110}{2010}{{Sodian and Kristen}}{{}}}
-\bibcite{Spaan05icra}{{111}{2005}{{Spaan and Vlassis}}{{}}}
-\bibcite{stachniss05robotics}{{112}{2005}{{Stachniss et~al.}}{{Stachniss, Grisetti, and Burgard}}}
-\bibcite{stankiewicz2006lost}{{113}{2006}{{Stankiewicz et~al.}}{{Stankiewicz, Legge, Mansfield, and Schlicht}}}
-\bibcite{dmp_iros_2011}{{114}{2011}{{Stulp et~al.}}{{Stulp, Theodorou, Kalakrishnan, Pastor, Righetti, and Schaal}}}
-\bibcite{dmp_seq_2012}{{115}{2012}{{Stulp et~al.}}{{Stulp, Theodorou, and Schaal}}}
-\bibcite{Needle_2014}{{116}{2014}{{Sun and Alterovitz}}{{}}}
-\bibcite{gmr_2004}{{117}{2004}{{Sung}}{{}}}
-\bibcite{sutton98a}{{118}{1998{a}}{{Sutton and Barto}}{{}}}
-\bibcite{Sutton00policygradient}{{119}{2000}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
-\bibcite{sutton1998reinforcement}{{120}{1998{b}}{{Sutton and Barto}}{{}}}
-\bibcite{MC-POMDP}{{121}{2000}{{Thrun}}{{}}}
-\bibcite{Thrun_2005}{{122}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{dense_entropy_icra_2014}{{123}{2014}{{Vallve and Andrade{-}Cetto}}{{}}}
-\bibcite{LQG_MP_2011}{{124}{2011}{{Van Den~Berg et~al.}}{{Van Den~Berg, Abbeel, and Goldberg}}}
-\bibcite{van_den_Berg_2012}{{125}{2012}{{van~den Berg et~al.}}{{van~den Berg, Patil, and Alterovitz}}}
-\bibcite{FSVI}{{126}{2007}{{Veloso}}{{}}}
-\bibcite{pomdp_iros_tous_2015}{{127}{2015}{{Vien and Toussaint}}{{}}}
-\bibcite{eNAC_2003}{{128}{2003}{{Vijayakumar et~al.}}{{Vijayakumar, Shibata, and Schaal}}}
-\bibcite{VonNeumann1944}{{129}{1990}{{Von~Neumann and Morgenstern}}{{}}}
-\bibcite{Wang2016}{{130}{2016}{{Wang et~al.}}{{Wang, Uchibe, and Doya}}}
-\bibcite{Wang_2007}{{131}{2007}{{Wang}}{{}}}
-\bibcite{updating_egocentric_human_navigation_2000}{{132}{2000}{{Wang and Spelke}}{{}}}
-\bibcite{reinforce_1992}{{133}{1992}{{Williams}}{{}}}
-\bibcite{Biomechanics_2009}{{134}{2009}{{Winter}}{{}}}
-\bibcite{what_det_our_nav_ability_2010}{{135}{2010}{{Wolbers and Hegarty}}{{}}}
-\bibcite{spatial_updating_2008}{{136}{2008}{{Wolbers et~al.}}{{Wolbers, Hegarty, Buchel, and Loomis}}}
-\bibcite{fast_peg_pbd_icmc_2014}{{137}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kr\IeC {\"u}ger, and Savarimuthu}}}
-\bibcite{seq_traj_replan_iros_2013}{{138}{2013}{{Zito et~al.}}{{Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and Wyatt}}}
+\bibcite{deChambrier2013}{{31}{2013}{{de~Chambrier and Billard}}{{}}}
+\bibcite{p_search_surv_2011}{{32}{2011}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{rl_gradient_survey_2013}{{33}{2013{a}}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{DeisenrothNP2013}{{34}{2013{b}}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{ToM_HRI_2106}{{35}{2016}{{Devin and Alami}}{{}}}
+\bibcite{POMDP_approach_2010}{{36}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
+\bibcite{SLAM_part1}{{37}{2006}{{Durrant-Whyte and Bailey}}{{}}}
+\bibcite{Erez10ascalable}{{38}{2010}{{Erez and Smart}}{{}}}
+\bibcite{EGW05}{{39}{2005{a}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
+\bibcite{Tree_batch_2005}{{40}{2005{b}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
+\bibcite{hybrid_1992}{{41}{1992}{{Fisher and Mujtaba}}{{}}}
+\bibcite{Navigation_strategires_for_exploring_indoor_environments}{{42}{2002}{{Gonz{\'{a}}lez{-}Ba{\~{n}}os and Latombe}}{{}}}
+\bibcite{TutGraphSLAM}{{43}{2010}{{Grisetti et~al.}}{{Grisetti, Kummerle, Stachniss, and Burgard}}}
+\bibcite{ac_survey_2012}{{44}{2012}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
+\bibcite{learn_admittance_icra_1994}{{45}{1994}{{Gullapalli et~al.}}{{Gullapalli, Barto, and Grupen}}}
+\bibcite{Hamner_2006_5810}{{46}{2006}{{Hamner et~al.}}{{Hamner, Singh, and Scherer}}}
+\bibcite{Hauser_2011}{{47}{2011}{{Hauser}}{{}}}
+\bibcite{DRQ_AAAI_2015}{{48}{2015}{{Hausknecht and Stone}}{{}}}
+\bibcite{Quadrator_2008}{{49}{2008}{{He et~al.}}{{He, Prentice, and Roy}}}
+\bibcite{next_best_touch}{{50}{2013}{{Hebert et~al.}}{{Hebert, Howard, Hudson, Ma, and Burdick}}}
+\bibcite{negative_info_markov_localisation}{{51}{2005}{{Hoffman et~al.}}{{Hoffman, Spranger, Gohring, and Jungel}}}
+\bibcite{NegInfoFurtherStudies}{{52}{2006}{{Hoffmann et~al.}}{{Hoffmann, Spranger, Gohring, Jungel, and Burkhard}}}
+\bibcite{un_water_inspection_icra_2012}{{53}{2012}{{Hollinger et~al.}}{{Hollinger, Englot, Hover, Mitra, and Sukhatme}}}
+\bibcite{Hsiao_RSS_10}{{54}{2010}{{Hsiao et~al.}}{{Hsiao, Kaelbling, and Lozano-Perez}}}
+\bibcite{RRT-SLAM}{{55}{2008}{{Huang and Gupta}}{{}}}
+\bibcite{DiffEntropyHuber2008}{{56}{2008}{{Huber et~al.}}{{Huber, Bailey, Durrant-Whyte, and Hanebeck}}}
+\bibcite{Iachini2014}{{57}{2014}{{Iachini et~al.}}{{Iachini, Ruggiero, and Ruotolo}}}
+\bibcite{Efficient_touch_2012}{{58}{2012}{{Javdani et~al.}}{{Javdani, Klingensmith, Bagnell, Pollard, and Srinivasa}}}
+\bibcite{DARPA_2015}{{59}{2015}{{Johnson et~al.}}{{Johnson, Shrewsbury, Bertrand, Wu, Duran, Floyd, Abeles, Stephen, Mertins, Lesman, Carff, Rifenburgh, Kaveti, Straatman, Smith, Griffioen, Layton, de~Boer, Koolen, Neuhaus, and Pratt}}}
+\bibcite{Kaelbling_1998}{{60}{1998}{{Kaelbling et~al.}}{{Kaelbling, Littman, and Cassandra}}}
+\bibcite{learn_force_c_icirs_2011}{{61}{2011}{{Kalakrishnan et~al.}}{{Kalakrishnan, Righetti, Pastor, and Schaal}}}
+\bibcite{Kasper2001153}{{62}{2001}{{Kasper et~al.}}{{Kasper, Fricke, Steuernagel, and von Puttkamer}}}
+\bibcite{PRM_1996}{{63}{1996}{{Kavraki et~al.}}{{Kavraki, Svestka, Latombe, and Overmars}}}
+\bibcite{heli_2004}{{64}{2004}{{Kim et~al.}}{{Kim, Jordan, Sastry, and Ng}}}
+\bibcite{PoWER_2009}{{65}{2009}{{Kober and Peters}}{{}}}
+\bibcite{RL_robots_surv_2013}{{66}{2013}{{Kober et~al.}}{{Kober, Bagnell, and Peters}}}
+\bibcite{Kollar_2008_Exploration_SLAM}{{67}{2008}{{Kollar and Roy}}{{}}}
+\bibcite{compliant_manip_icra_2008}{{68}{2008}{{kook Yun}}{{}}}
+\bibcite{pancake_2010}{{69}{2010{a}}{{Kormushev et~al.}}{{Kormushev, Calinon, and Caldwell}}}
+\bibcite{archery_2010}{{70}{2010{b}}{{Kormushev et~al.}}{{Kormushev, Calinon, Saegusa, and Metta}}}
+\bibcite{SARSOP}{{71}{2008}{{Kurniawati et~al.}}{{Kurniawati, Hsu, and Lee}}}
+\bibcite{human_stsm_2015}{{72}{}{{Lavenexa et~al.}}{{Lavenexa, Boujonb, Ndarugendamwob, and Lavenexa}}}
+\bibcite{Leslie_TOMM}{{73}{1994}{{Leslie}}{{}}}
+\bibcite{Li_2015}{{74}{2016}{{Li et~al.}}{{Li, Hang, Kragic, and Billard}}}
+\bibcite{bs_compression_2010}{{75}{2010}{{Li et~al.}}{{Li, Cheung, and Liu}}}
+\bibcite{GeorgiosLidoris}{{76}{2011}{{Lidoris}}{{}}}
+\bibcite{qmdp_ijcnn_2014}{{77}{2014}{{Lin et~al.}}{{Lin, Lu, and Makedon}}}
+\bibcite{Littman95}{{78}{1995}{{Littman et~al.}}{{Littman, Cassandra, and Kaelbling}}}
+\bibcite{peg_imcssd_2015}{{79}{2015}{{M.~Bdiwi}}{{}}}
+\bibcite{peg_personal_icra_2010}{{80}{2010}{{Meeussen et~al.}}{{Meeussen, Wise, Glaser, Chitta, McGann, Mihelich, Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski, Konolige, Gerkey, and Berger}}}
+\bibcite{cogprints730}{{81}{1956}{{Miller}}{{}}}
+\bibcite{mnih-dqn-2015}{{82}{2015}{{Mnih et~al.}}{{Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare, Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik, Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis}}}
+\bibcite{DataAssociation2003}{{83}{2003}{{Montemerlo and Thrun}}{{}}}
+\bibcite{FastSLAM}{{84}{2003}{{Montemerlo et~al.}}{{Montemerlo, Thrun, Koller, and Wegbreit}}}
+\bibcite{trans_workpiece_icra_2013}{{85}{2013}{{Nemec et~al.}}{{Nemec, Abu-Dakka, Ridge, Ude, J\IeC {\o }rgensen, Savarimuthu, Jouffroy, Petersen, and Kr\IeC {\"u}ger}}}
+\bibcite{NIPS2008_3501}{{86}{2009}{{Neumann and Peters}}{{}}}
+\bibcite{Pegasus_2000}{{87}{2000}{{Ng and Jordan}}{{}}}
+\bibcite{Nicolescu01learningand}{{88}{2001}{{Nicolescu and Mataric}}{{}}}
+\bibcite{RL_book_sa}{{89}{2012}{{Now\'{e} et~al.}}{{Now\'{e}, Vrancx, and De~Hauwere}}}
+\bibcite{where_look_2012}{{90}{2012}{{Nunez-Varela et~al.}}{{Nunez-Varela, Ravindran, and Wyatt}}}
+\bibcite{intuitive_peg_isr_2013}{{91}{2013}{{Park et~al.}}{{Park, Bae, Park, Baeg, and Park}}}
+\bibcite{Pasqualotto2013175}{{92}{2013}{{Pasqualotto et~al.}}{{Pasqualotto, Spiller, Jansari, and Proulx}}}
+\bibcite{peter_nac_2008}{{93}{2008{a}}{{Peters and Schaal}}{{}}}
+\bibcite{NAC_2008}{{94}{2008{b}}{{Peters and Schaal}}{{}}}
+\bibcite{PBVI}{{95}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
+\bibcite{Plagemann07gaussianbeam}{{96}{2007}{{Plagemann et~al.}}{{Plagemann, Kersting, Pfaff, and Burgard}}}
+\bibcite{non_gauss_bel_plan_2012}{{97}{2012}{{Platt et~al.}}{{Platt, Kaelbling, Lozano-Perez, and Tedrake}}}
+\bibcite{bsp_rss_2010a}{{98}{2010}{{Platt et~al.}}{{Platt, Tedrake, Kaelbling, and Lozano-P\'{e}rez}}}
+\bibcite{PBVI_C_2006}{{99}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
+\bibcite{BelRoadMap_2009}{{100}{2009}{{Prentice and Roy}}{{}}}
+\bibcite{decision_un_2013}{{101}{2013}{{Preuschoff et~al.}}{{Preuschoff, Mohr, and Hsu}}}
+\bibcite{rai2013learning}{{102}{2013}{{Rai et~al.}}{{Rai, De~Chambrier, and Billard}}}
+\bibcite{Sondik_1973}{{103}{1973}{{Richard D.~Smallwood}}{{}}}
+\bibcite{Richardson1_Baker1_Tenenbaum1_Saxe1_2012}{{104}{2012}{{Richardson et~al.}}{{Richardson, Bake, Tenenbaum, and Saxe}}}
+\bibcite{Riedmiller05neuralfitted}{{105}{2005{a}}{{Riedmiller}}{{}}}
+\bibcite{neura_fqi_2005}{{106}{2005{b}}{{Riedmiller}}{{}}}
+\bibcite{Ross08onlineplanning}{{107}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
+\bibcite{CostalNavigation1999}{{108}{1999}{{Roy et~al.}}{{Roy, Burgard, Fox, and Thrun}}}
+\bibcite{belief_compression_2005}{{109}{2005}{{Roy}}{{}}}
+\bibcite{EPCA_2003}{{110}{2003}{{Roy and Gordon}}{{}}}
+\bibcite{Roy99coastalnavigation}{{111}{1999}{{Roy and Thrun}}{{}}}
+\bibcite{ToM_humanoid}{{112}{2002}{{Scassellati}}{{}}}
+\bibcite{Schaal04learningmovement}{{113}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
+\bibcite{Thrun_Burgard_Fox_2005}{{114}{2005}{{Sebastian~Thrun and Fox}}{{}}}
+\bibcite{BayesBall}{{115}{1998}{{Shachter}}{{}}}
+\bibcite{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain}{{116}{2010}{{Silver et~al.}}{{Silver, Bagnell, and Stentz}}}
+\bibcite{HSV}{{117}{2004}{{Smith and Simmons}}{{}}}
+\bibcite{HSVI2}{{118}{2012}{{Smith and Simmons}}{{}}}
+\bibcite{Towards_a_ToM_2010}{{119}{2010}{{Sodian and Kristen}}{{}}}
+\bibcite{Spaan05icra}{{120}{2005}{{Spaan and Vlassis}}{{}}}
+\bibcite{stachniss05robotics}{{121}{2005}{{Stachniss et~al.}}{{Stachniss, Grisetti, and Burgard}}}
+\bibcite{stankiewicz2006lost}{{122}{2006}{{Stankiewicz et~al.}}{{Stankiewicz, Legge, Mansfield, and Schlicht}}}
+\bibcite{dmp_iros_2011}{{123}{2011}{{Stulp et~al.}}{{Stulp, Theodorou, Kalakrishnan, Pastor, Righetti, and Schaal}}}
+\bibcite{dmp_seq_2012}{{124}{2012}{{Stulp et~al.}}{{Stulp, Theodorou, and Schaal}}}
+\bibcite{Needle_2014}{{125}{2014}{{Sun and Alterovitz}}{{}}}
+\bibcite{gmr_2004}{{126}{2004}{{Sung}}{{}}}
+\bibcite{sutton1998reinforcement}{{127}{1998}{{Sutton and Barto}}{{}}}
+\bibcite{MC-POMDP}{{128}{2000}{{Thrun}}{{}}}
+\bibcite{Thrun02particlefilters}{{129}{2002}{{Thrun}}{{}}}
+\bibcite{Thrun_grid_based_1996}{{130}{1996}{{Thrun and B\"{u}}}{{}}}
+\bibcite{SLAM_HBR}{{131}{2008}{{Thrun and Leonard}}{{}}}
+\bibcite{Thrun_2005}{{132}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
+\bibcite{tovar_planning}{{133}{2006}{{Tovar et~al.}}{{Tovar, Mu\IeC {\~n}oz-G\IeC {\'o}mez, Murrieta-Cid, Alencastre-Miranda, Monroy, and Hutchinson}}}
+\bibcite{ActivePosSLAM}{{134}{2012}{{Valencia et~al.}}{{Valencia, Miro, Dissanayake, and Andrade-Cetto}}}
+\bibcite{dense_entropy_icra_2014}{{135}{2014}{{Vallve and Andrade{-}Cetto}}{{}}}
+\bibcite{LQG_MP_2011}{{136}{2011}{{Van Den~Berg et~al.}}{{Van Den~Berg, Abbeel, and Goldberg}}}
+\bibcite{van_den_Berg_2012}{{137}{2012}{{van~den Berg et~al.}}{{van~den Berg, Patil, and Alterovitz}}}
+\bibcite{FSVI}{{138}{2007}{{Veloso}}{{}}}
+\bibcite{pomdp_iros_tous_2015}{{139}{2015}{{Vien and Toussaint}}{{}}}
+\bibcite{eNAC_2003}{{140}{2003}{{Vijayakumar et~al.}}{{Vijayakumar, Shibata, and Schaal}}}
+\bibcite{VonNeumann1944}{{141}{1990}{{Von~Neumann and Morgenstern}}{{}}}
+\bibcite{Wang2016}{{142}{2016}{{Wang et~al.}}{{Wang, Uchibe, and Doya}}}
+\bibcite{Wang_2007}{{143}{2007}{{Wang}}{{}}}
+\bibcite{updating_egocentric_human_navigation_2000}{{144}{2000}{{Wang and Spelke}}{{}}}
+\bibcite{reinforce_1992}{{145}{1992}{{Williams}}{{}}}
+\bibcite{Biomechanics_2009}{{146}{2009}{{Winter}}{{}}}
+\bibcite{what_det_our_nav_ability_2010}{{147}{2010}{{Wolbers and Hegarty}}{{}}}
+\bibcite{spatial_updating_2008}{{148}{2008}{{Wolbers et~al.}}{{Wolbers, Hegarty, Buchel, and Loomis}}}
+\bibcite{fast_peg_pbd_icmc_2014}{{149}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kr\IeC {\"u}ger, and Savarimuthu}}}
+\bibcite{seq_traj_replan_iros_2013}{{150}{2013}{{Zito et~al.}}{{Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and Wyatt}}}
