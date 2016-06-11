@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 622 of file main.aux
+---line 599 of file main.aux
  : \bibdata{bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
  :                                                                                                                                                                                        ,imitation_learning.bib,bib/ch3-citations.bib}
 I'm skipping whatever remains of this command
@@ -20,14 +20,6 @@ Repeated entry---line 282 of file bib/RL.bib.bib
 I'm skipping whatever remains of this entry
 Database file #4: bib/pomdp.bib.bib
 Database file #5: bib/cpomdp.bib.bib
-Repeated entry---line 564 of file bib/cpomdp.bib.bib
- : @inproceedings{Sutton00policygradient
- :                                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 574 of file bib/cpomdp.bib.bib
- : @inproceedings{Boyan95generalizationin
- :                                       ,
-I'm skipping whatever remains of this entry
 Database file #6: bib/citations.bib.bib
 Repeated entry---line 559 of file bib/citations.bib.bib
  : @incollection{BillardCDS08
@@ -128,49 +120,47 @@ Too many commas in name 1 of "M. Bdiwi, A. Winkler, M. Jokesch, J. Suchy" for en
 while executing---line 1429 of file plainnat.bst
 Too many commas in name 1 of "M. Bdiwi, A. Winkler, M. Jokesch, J. Suchy" for entry peg_imcssd_2015
 while executing---line 1429 of file plainnat.bst
-Warning--can't use both author and editor fields in fnac_ca_2008
 Warning--can't use both author and editor fields in RL_book_sa
-Warning--can't use both author and editor fields in Riedmiller2005
 Warning--empty publisher in Biomechanics_2009
-You've used 138 entries,
+You've used 127 entries,
             2773 wiz_defined-function locations,
-            1579 strings with 37706 characters,
-and the built_in function-call counts, 78798 in all, are:
-= -- 7253
-> -- 4481
-< -- 130
-+ -- 1512
-- -- 1363
-* -- 6468
-:= -- 11627
-add.period$ -- 580
-call.type$ -- 138
-change.case$ -- 847
-chr.to.int$ -- 127
-cite$ -- 287
-duplicate$ -- 3627
-empty$ -- 6240
-format.name$ -- 1577
-if$ -- 17159
-int.to.chr$ -- 12
+            1507 strings with 34984 characters,
+and the built_in function-call counts, 72437 in all, are:
+= -- 6640
+> -- 4180
+< -- 116
++ -- 1407
+- -- 1273
+* -- 5966
+:= -- 10722
+add.period$ -- 529
+call.type$ -- 127
+change.case$ -- 787
+chr.to.int$ -- 120
+cite$ -- 263
+duplicate$ -- 3314
+empty$ -- 5715
+format.name$ -- 1466
+if$ -- 15736
+int.to.chr$ -- 8
 int.to.str$ -- 1
-missing$ -- 147
-newline$ -- 842
-num.names$ -- 573
-pop$ -- 1738
+missing$ -- 133
+newline$ -- 772
+num.names$ -- 529
+pop$ -- 1605
 preamble$ -- 1
-purify$ -- 722
+purify$ -- 670
 quote$ -- 0
-skip$ -- 2890
+skip$ -- 2648
 stack$ -- 0
-substring$ -- 3313
-swap$ -- 866
-text.length$ -- 71
+substring$ -- 3015
+swap$ -- 768
+text.length$ -- 63
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1451
-warning$ -- 11
-while$ -- 636
+type$ -- 1345
+warning$ -- 9
+while$ -- 580
 width$ -- 0
-write$ -- 2108
-(There were 29 error messages)
+write$ -- 1929
+(There were 27 error messages)
