@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  9 JUN 2016 15:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.9)  11 JUN 2016 10:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2139,128 +2139,125 @@ orty,
 [109
 
 ]
-Underfull \hbox (badness 1990) in paragraph at lines 135--135
+Underfull \hbox (badness 1990) in paragraph at lines 156--156
 \T1/aer/m/n/10 ric pomdps.  In Makoto Kaneko and Yoshi-hiko Naka-mura, ed-i-tor
 s,
  []
 
 [110]
 LaTeX Font Info:    Font shape `OMS/aer/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 224.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 253.
  [111]
-Underfull \hbox (badness 2478) in paragraph at lines 325--325
+Underfull \hbox (badness 2478) in paragraph at lines 375--375
 []\T1/aer/m/n/10 Kris Hauser.  \T1/aer/m/it/10 Al-go-rith-mic Foun-da-tions of 
 Robotics IX: Se-lected Con-
  []
 
 
-Underfull \hbox (badness 4608) in paragraph at lines 325--325
+Underfull \hbox (badness 4608) in paragraph at lines 375--375
 \T1/aer/m/it/10 tri-bu-tions of the Ninth In-ter-na-tional Work-shop on the Al-
 go-rith-mic
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 325--325
+Underfull \hbox (badness 1565) in paragraph at lines 375--375
 \T1/aer/m/it/10 Foun-da-tions of Robotics\T1/aer/m/n/10 , chap-ter Ran-dom-ized
  Belief-Space Re-plan-ning
  []
 
 
-Underfull \hbox (badness 1939) in paragraph at lines 325--325
+Underfull \hbox (badness 1939) in paragraph at lines 375--375
 \T1/aer/m/n/10 in Partially-Observable Con-tin-u-ous Spaces, pages 193--209.  S
 pringer
  []
 
 
-Underfull \hbox (badness 1043) in paragraph at lines 325--325
+Underfull \hbox (badness 1043) in paragraph at lines 375--375
 \T1/aer/m/n/10 Berlin Hei-del-berg, Berlin, Hei-del-berg, 2011.  ISBN 978-3-642
 -17452-0.
  []
 
 [112]
-Underfull \hbox (badness 1688) in paragraph at lines 413--413
+Underfull \hbox (badness 1688) in paragraph at lines 463--463
 \T1/aer/m/n/10 00023-[]X$.  URL [][]$\T1/aett/m/n/10 http : / / dx . doi . org 
 / 10 . 1016 / S0004-[]3702(98 ) 00023-[]X$[][]\T1/aer/m/n/10 .
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 438--438
+[113]
+Underfull \hbox (badness 10000) in paragraph at lines 488--488
 \T1/aett/m/n/10 2455-[]autonomous-[]helicopter-[]flight-[]via-[]reinforcement-[
 ]learning .
  []
 
-[113] [114]
-Underfull \hbox (badness 2134) in paragraph at lines 612--612
+[114]
+Underfull \hbox (badness 1043) in paragraph at lines 611--611
+\T1/aer/m/n/10 Berlin Hei-del-berg, Berlin, Hei-del-berg, 2008.  ISBN 978-3-540
+-87481-2.
+ []
+
+[115]
+Underfull \hbox (badness 2134) in paragraph at lines 678--678
 []\T1/aer/m/n/10 A. Nowé, P. Vrancx, and Y-M. De Hauwere.  \T1/aer/m/it/10 Re-i
 n-force-ment Learn-
  []
 
 
-Underfull \hbox (badness 5446) in paragraph at lines 612--612
+Underfull \hbox (badness 5446) in paragraph at lines 678--678
 \T1/aer/m/it/10 ing: State-of-the-Art\T1/aer/m/n/10 , chap-ter Game The-ory and
  Multi-agent Re-
  []
 
 
-Underfull \hbox (badness 8151) in paragraph at lines 612--612
+Underfull \hbox (badness 8151) in paragraph at lines 678--678
 \T1/aer/m/n/10 in-force-ment Learn-ing, pages 441--470.  Springer, 2012.  URL
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--612
+Underfull \hbox (badness 10000) in paragraph at lines 678--678
 [][]$\T1/aett/m/n/10 http : / / www . springer . com / engineering / computatio
 nal + intelligence +
  []
 
 
-Underfull \hbox (badness 1701) in paragraph at lines 660--660
+Underfull \hbox (badness 1701) in paragraph at lines 726--726
 \T1/aer/m/n/10 j . neucom . 2007 . 11 . 026$.  URL [][]$\T1/aett/m/n/10 http : 
 / / www . sciencedirect . com / science /
  []
 
-[115] [116]
-Underfull \hbox (badness 2088) in paragraph at lines 773--773
+[116]
+Underfull \hbox (badness 2088) in paragraph at lines 848--848
 \T1/aer/m/n/10 1667--1674. MIT Press, 2003.  URL [][]$\T1/aett/m/n/10 http : / 
 / papers . nips . cc / paper /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 773--773
+Underfull \hbox (badness 10000) in paragraph at lines 848--848
 \T1/aett/m/n/10 2319-[]exponential-[]family-[]pca-[]for-[]belief-[]compression-
 []in-[]pomdps .
  []
 
-[117] [118])
+[117] [118] [119])
 
 Package natbib Warning: There were undefined citations.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
-[119]
+[120]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
- (./main.aux)
+ (./main.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 2484C61761EF5B0DDFDD481B352F2BA6;4339.
+Package rerunfilecheck Info: File `main.brf' has not changed.
+(rerunfilecheck)             Checksum: A6F9731096F44B269B29FCB376F9FA03;8476.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: DFF548BC0FBCF37AFDC094DE553B55AA;4321
-(rerunfilecheck)             After:  2484C61761EF5B0DDFDD481B352F2BA6;4339.
-
-Package rerunfilecheck Warning: File `main.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `main.brf':
-(rerunfilecheck)             Before: 92A93DA59A81B5BCB7A5D4F414FED468;8255
-(rerunfilecheck)             After:  A6F9731096F44B269B29FCB376F9FA03;8476.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
  )
@@ -2270,10 +2267,10 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
 (\end occurred when \ifdefined on line 172 was incomplete)
 (\end occurred when \ifdefined on line 171 was incomplete) 
 Here is how much of TeX's memory you used:
- 22450 strings out of 493304
- 400683 string characters out of 6139872
- 541215 words of memory out of 5000000
- 24806 multiletter control sequences out of 15000+600000
+ 22528 strings out of 493304
+ 402442 string characters out of 6139872
+ 544111 words of memory out of 5000000
+ 24872 multiletter control sequences out of 15000+600000
  74481 words of font info for 156 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  55i,19n,79p,1361b,1369s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2319,10 +2316,10 @@ st/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf/fonts/type1/
 public/tex-gyre/qhvr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helveti
 c/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb
 >
-Output written on main.pdf (121 pages, 66454238 bytes).
+Output written on main.pdf (122 pages, 66459932 bytes).
 PDF statistics:
- 9035 PDF objects out of 10688 (max. 8388607)
- 6478 compressed objects within 65 object streams
- 467 named destinations out of 1000 (max. 500000)
+ 9064 PDF objects out of 10688 (max. 8388607)
+ 6505 compressed objects within 66 object streams
+ 479 named destinations out of 1000 (max. 500000)
  1032 words of extra memory for PDF output out of 10000 (max. 10000000)
 
