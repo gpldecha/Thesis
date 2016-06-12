@@ -242,14 +242,12 @@ whose factorisation  respects the structure of a BN is guaranteed to satisfy all
 statements which can be read from the graph, but the converse with respect to the dependence statements is 
 not guaranteed \cite[p.43]{barberBRML2012}. 
 
-%There can be probabilistic dependencies which are present in the BN structure but not necessarily present in a chosen parametrisation 
-%of the joint probability distribution's factors \cite[p.43]{barberBRML2012}. 
-%This implies that BN are not suitable to model dependencies between random variables and are only suited 
-%to represent conditional independences. 
+The conditional dependence $A \dependent O | Y$ is key to all BSSE and SLAM algorithms, the measurement $Y$ makes both $A$ and $B$
+dependent implying that any decrease of uncertainty will effect both A and B. If there is no observation no information will be 
+exchanged between the two and no decrease of uncertainty can take place.
 
-We demonstrate how the two different parametrisations of the joint distribution for the BN in Figure \ref{fig:bayesian_sse_dag} 
-behave in the case of the absence of direct sighting of the object by the agent. Before this we review the steps necessary 
-and models required for the Bayesian filtering problem.
+We demonstrate how the two different parametrisations of the joint distribution of the BN in Figure \ref{fig:bayesian_sse_dag} 
+behave in the case of the absence of direct sighting of the object by the agent.
 
 \begin{figure}
 \centering
@@ -277,7 +275,7 @@ and models required for the Bayesian filtering problem.
 
 \subsubsection{EKF-SLAM}\label{sec:EKF-SLAM}
 
-In EKF-SLAM the joint distribution $p(A_{t},O|Y_{0:t},u_{0:t}) = g(x;\mu_t,\Sigma_t)$ is parametrised by a single Gaussian function $g$ with mean,
+In EKF-SLAM the joint density $p(A_{t},O|Y_{0:t},u_{0:t}) = g(x;\mu_t,\Sigma_t)$ is parametrised by a single Gaussian function $g$ with mean,
 $\mu_t = \left[\mu_{A_{t}},\mu_{O^{(1)}},\dots,\mu_{O^{(M-1)}}\right]^{\mathrm{T}} \in \mathbb{R}^{3 + 2\cdot (M-1)}$  where the random variables 
 are in $\mathbb{R}^2$, and covariance, $\Sigma_t$. 
 
@@ -289,26 +287,27 @@ are in $\mathbb{R}^2$, and covariance, $\Sigma_t$.
      \in \mathbb{R}^{(3 + 2\cdot (M-1)) \times (3 + 2\cdot (M-1))}
 \end{equation}
 
-The measurement model consists of two parts: the first part is the observation function, $h(\cdot)$, and the second part is the noise present in the measurement, 
-typically always taken to be white Gaussian.
+The measurement of features $j$ is typically the range and bearing to an observed features, $Y^{(j)}_t = [r,\phi]$,
+see Figure \ref{fig:belief_update_example} page \pageref{fig:belief_update_example} for an illustrate of a measurement update process.
+The assumption in EKF-SLAM is that the measurement is corrupted by Gaussian noise, $\epsilon \sim \mathcal{N}(0,R)$.
+This leads to a measurement likelihood function of the following form:
+%The measurement model consists of two parts: the first part is the observation function, $h(\cdot)$, and the second part is the noise present in the measurement, 
+%typically always taken to be white Gaussian.
 
-\begin{align}
-  Y_t &= h(A_t,O) + \epsilon \\\nonumber
- \hat{Y}_t &= h(A_t,O)  
-\end{align}
-
-Where $Y_t$ is the actual current observation sensed by the agents sensors, $\hat{Y}_t$ is an estimated/predicted observation
-and $\epsilon \sim \mathcal{N}(0,R)$ is the noise associated with the sensor measurement.
-
-The likelihood of an observation can be evaluated:
+%\begin{align}
+%  Y_t &= h(A_t,O) + \epsilon \\\nonumber
+% \hat{Y}_t &= h(A_t,O)  
+%\end{align}
+%Where $Y_t$ is the actual current observation sensed by the agents sensors, $\hat{Y}_t$ is an estimated/predicted observation
+%and $\epsilon \sim \mathcal{N}(0,R)$ is the noise associated with the sensor measurement.
+%The likelihood of an observation can be evaluated:
 \begin{equation} \label{eq:lik-measurement}
    p(Y_t|A_t,O_t) = \frac{1}{|2\pi R|^{\frac{1}{2}}} \exp \left( -\frac{1}{2} \big(Y_t - \hat{Y}_t\big)^{\mathrm{T}}R^{-1}\big(Y_t - \hat{Y}_t\big) \right)
 \end{equation}
-Where the covariance, $R$, encompasses the uncertainty in the measurement. 
-
-The elements of the covariance matrix capture the measurement error between the true $Y$ and expected $\hat{Y}$ 
-positions of the random variables. Because the joint distribution is parametrised by a single Multivariate Gaussian a closed 
-form solution to the filtering Equations \ref{eq:time-update} \& \ref{eq:measurement-update} is possible and is given below:
+Where the covariance, $R$, encompasses the uncertainty in the measurement. The elements of the covariance matrix capture 
+the measurement error between the true $Y$ and expected $\hat{Y}$ positions of the random variables. As the joint distribution 
+is parametrised by a single Multivariate Gaussian a closed form solution to the filtering Equations \ref{eq:time-update} \& \ref{eq:measurement-update} 
+exists, called the Kalman Filter, see Appendix []. 
 
 An important part in the application of EKF-SLAM is the error between the true measurement and the expected measurement 
 $e = (Y_t - \hat{Y}_t)$. In our scenario the agent can only perceive the objects once he enters in direct contact with them. 
@@ -329,7 +328,7 @@ $\Sigma$ over time. $\Sigma_a$ and $\Sigma_o$ are the variances of the agent and
 term. \textit{Bottom:} true sensing $Y_t$ and the expected sensation $\hat{Y}_t$.
 1D EKF-SLAM, the figures to the left show the evolution of the agent's belief of his location and that of an 
 object which are represented by the blue and red Gaussian functions. The figures to the right show the evolution of the parameters of the EKF-SLAM.}
-\label{fig:slam}
+\label{fig:EKF-SLAM}
 
 %\label{fig:slam-para}
 %\end{subfigure}
@@ -347,62 +346,133 @@ This confirms that the dependencies present in the structure given by the BN are
 
 
 
-\subsubsection{Histogram/Discrete SLAM}\label{sec:Discrete}
+\subsubsection{Histogram SLAM}\label{sec:Discrete}
 
-The general formulation of these two steps are provided below, see Appendix \ref{appendix:bayes_recursion} for complete derivation.
+In Histogram-SLAM the joint distribution is discretized and each bin has a parameter, 
+$P(A_t,O|Y_{0:t},u_{0:t}) = \theta^{(ij)}$, which sums to one, $\sum_{ij} \theta^{(ij)} = 1$. 
+The probability distribution of the agent's position is given by marginalising out the object random variable:
+\begin{align}
+ &P(A_t|Y_{0:t},u_{0:t})    = \sum\limits_{j=1}^{|O|} P(A_t,O|Y_{0:t},u_{0:t}) \label{eq:agent_marginal} \\
+ &P(A_t=1|Y_{0:t},u_{0:t})  = \sum\limits_{j=1}^{|O|} \theta^{(1j)}
+\end{align}
+The converse holds true for the object's marginal over its believed position. Figure \ref{fig:histogram_joint} illustrates 
+the joint distribution of both the agent and object's random variable. For ease of notation we use the shorthand $P(A)$
+for $P(A_t|Y_{0:t},u_{0:t})$. The 1D world in which the agent and object are located has been discretized to 10 states,
+which results in a joint distribution with 100 parameters!
+If we were to discretise the state space to $N$ bins, $i=1...N$, and there is a total of $M$ random variables (one agent and $M-1$ objects)
+the joint distribution would have $N^{M}$ parameters. This is an exponential increase which renders Histogram-SLAM in its naive from 
+intractable.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/hist_SLAM.pdf}
+ \caption{\textit{Left:} Joint distribution of the agent and object, before any action or measurement is integrated. There are 
+ \textit{Right:} Marginals of the agent and object, it tells use the probability of their location. The marginal of each 
+ random variable is obtained by marginalising the other out according to Equation \ref{eq:agent_marginal}. }
+ \label{fig:histogram_joint}
+\end{figure}
+
+
+%\begin{align*}\label{eq:disc-measurement_function}
+% P(Y_t=1|A_t=x_i,O=x_j) &= 1\;\; \forall i = j \\
+% P(Y_t=1|A_t=x_i,O=x_j) &= 0\;\; \forall i \not= j \\
+%\end{align*}
+
+
+\paragraph{Histogram likelihood model}
+
+A measurement model, $P(Y_t|A_t,O)$, predicts the likelihood of observations, $Y_t$, given the state of $A_t$ and $O$. 
+In the 1D world, an observation is made only if the agent enters in contact with the object, which implies that both
+occupy the same discrete state. Figure \ref{fig:histogram_likelihood}, illustrates the likelihood for the two possible 
+measurements (contact/no-contact) in our 1D world. Both likelihoods are sparse in the sense that there is only a small 
+region which gets affected by the likelihood. When there is no measurement (\textit{Left}) all the parameters of the 
+joint distribution which are in the black regions will become zero, if the object is detected (\textit{Right}) then 
+only parameters of the joint distribution which are within the white regions will be non-zero. It seems that all 
+operations on the joint distribution are constrained to the states $i = j$, which in the case of a 2-dimensional joint 
+distribution is a line. This is because of the \textbf{sparsity} of the likelihood function, which will be key to 
+the development of our MLMF filter.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/hist_likelihood.pdf}
+ \caption{1D world Likelihood $P(Y_t|A_t,O)$. \textit{Left:} No contact detected with the object, the current measurement 
+ is $\hat{Y}_t = \textcolor{red}0$, both the agent and object cannot be in the same state. \textit{Right:} The agent 
+ entered into contact with the object and got a haptic feedback $\hat{Y}_t = \textcolor{red}1$. There are only two measurements 
+ which the agent receives, contact or nothing.}
+ \label{fig:histogram_likelihood}
+\end{figure}
+
+Two models are needed to perform the recursion, namely the motion model $P(A_t|A_{t-1},u_t)$ and the measurement model
+$P(Y_t|A_t,O)$, which we already detailed. Applied one after the over to a prior joint distribution results in a posterior
+distribution, both Equation \ref{eq:time-update}-\ref{eq:measurement-update} are part of the histogram Bayesian filter 
+update:
 
 \paragraph{Motion-update:}
 \begin{equation}\label{eq:time-update}
    P(A_t,O|Y_{0:t-1},u_{0:t}) = \sum_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot  P(A_{t-1},O_t|Y_{0:t-1},u_{0:t-1})
 \end{equation}
-
 \paragraph{Measurement-update:}
 \begin{equation}\label{eq:measurement-update}
-   P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(Y_t|A_t,O)\cdot P(A_t,O|Y_{0:t-1},u_{t}) }{P(Y_t|Y_{0:t-1})   }
+   P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(Y_t|A_t,O)\cdot P(A_t,O|Y_{0:t-1},u_{t}) }{P(Y_t|Y_{0:t-1})}
 \end{equation}
 
-Two models are needed to perform the recursion, namely the motion model $P(A_t|A_{t-1},u_t)$ and the measurement model
-$P(Y_t|A_t,O)$. We give an example for two different parametrisations of the distributions given above. In the first
-case we consider the state space to be discrete, meaning that each conditional distribution will be parametrised by 
-conditional probability tables (CPTs) and for the second case we look at the parametrisation used by EKF-SLAM. 
-
-\paragraph{Discrete CPTs measurement model}
-
-A measurement model, $P(Y_t|A_t,O)$, should predict the likelihood of observations, $Y_t$, given the state of $A_t$ and $O$. 
-In our case an observation is made only if the agent enters in contact with the object, which implies that both
-occupy the same discrete state. If we were to discretise the state space to $N$ states, $x_i,\:i=1...N$, and the observation node $Y_t$  
-has $M$ parents, then the size of the CPT table is $N^{M}$. In our case only the
-entries for which both the agent and object are in the same state will have a probability of 1, all other entries will be 0.
-
-\begin{align*}\label{eq:disc-measurement_function}
- P(Y_t=1|A_t=x_i,O=x_j) &= 1\;\; \forall i = j \\
- P(Y_t=1|A_t=x_i,O=x_j) &= 0\;\; \forall i \not= j \\
-\end{align*}
- 
-In Figure \ref{fig:discrete_example} we demonstrate a simple 1D search in a discrete state space comprising 100 states. The joint
-distribution table $P(A_t,O)$ is initialised to be the product of the two originally independent prior distributions of
-the Agent and Object random variables $P(A_t)$ and $P(O)$. We then recursively apply the \textit{time} 
-and \textit{measurement} update Equations \ref{eq:time-update} \& \ref{eq:measurement-update}.
+For the derivation of these  two steps, the reader is referred toe Appendix \ref{appendix:bayes_recursion}.
+In Figure \ref{fig:discrete_example} we illustrate how the joint distribution evolves in the 1D world 
+we previous introduced. The agent's true position (unobservable) is in state 6 and the agent moves four steps towards state 10. At each time 
+step the agent does not sense the object and as a result the likelihood function  $P(Y_t=0|A_t,O)$ (Figure \ref{fig:histogram_likelihood} \textit{Left})
+gets applied. As the agent moves towards the right, the motion model shifts the joint distribution towards state 10 along the agents 
+dimension, $i$ (note that state 1 and 10 and wrapped).
 
 \begin{figure}
-\centering
-  \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure3.pdf}
- \caption{\textbf{Histogram SLAM} An agent and one object are present in the 1D world. The red and blue points represent the true
- locations whilst the lines are the probability of their current location (beliefs).
- (1) Initial beliefs, the marginals $P(A_t)$ and $P(O)$.
- The dotted lines annotated by L and R denote the left and right edges of the agent's belief mode. The agent will follow the policy
- shown by the black arrow which is a sweep to the right followed by one to the left.
- 2) The left end of the agent's distribution has reached the initial right end of the distribution, see dotted lines for reference. When the left end, L,
- has reached the right end, R, the probability of the object being at R is equal to the underlying or ground uncertainty of the agent's belief. 
- From (3) to (4) object belief continuously increases in states 0 to 45.
- (5) agent and Object occupy the same state, the beliefs merge.}
- \label{fig:discrete_example}
+ \centering
+  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/hist_motion.pdf}
+  \caption{Histogram-SLAM, 4 time steps. \textbf{1} Application of likelihood $P(Y_0=0|A_0,O)$ and the agent remains stationary, $u_0=0$, all states along the green line become zero.
+  \textbf{2} The agent moves to the right $u_1=1$, the motion $P(A_1|A_0,u_1)$, and likelihood models are applied consecutively. The right motion results in a shift (black arrow on the left) in the joint probability 
+  distribution towards the state $i=10$, all parameters on the pink line are zero. \textbf{3} Same as two. \textbf{4} The original result of the likelihood function,
+  green line, has moved by the same amount as the agent's displacement. At each time step a new likelihood function (pink line) is applied to the joint distribution.}
+  \label{fig:discrete_example}
 \end{figure}
 
-The search which was illustrated in Figure \ref{fig:discrete_example} gives the desired belief update, but at a significant cost, as the 
-space complexity of the joint distribution is exponential in the number of beliefs. Given $M$ beliefs with
-a total of $N$ states, the joint distribution will require $N^M$ parameters as will the conditional observation CPT table
-$p(Y_t|A_t,O)$. 
+As the agent moves to the right more parameters of the joint distribution become zero and because 
+of the re-normalisation by the \textbf{evidence} ($P(Y_t|Y_{0:t-1}$, denominator of Equation \ref{eq:measurement-update}) the value of the remaining 
+parameters increase. The amount by which the remaining parameters increase is equal to the sum of the probability mass which was set to zero by the likelihood function.
+In other words the values of the joint distributions parameters which fall on the pink line in Figure \ref{fig:discrete_example} get set to zero and redistributed to the 
+remaining non-zero parameters. This is an \textbf{important aspect} which will be present in MLMF and we will call this amount which has to be redistributed $\alpha$.
+
+When the agent enters into contact with the object and senses it, the likelihood function $P(Y_t=1|A_t,O)$, Figure \ref{fig:histogram_likelihood} (\textit{Right}), is 
+multiplied with the joint distribution with the result illustrated in Figure \ref{fig:discrete_example_contact}. Only parameters of the joint distribution whose indices
+satisfy $i = j$ will remain unchanged, all the others will become zero. In retrospective the likelihood $P(Y_t=1|A_t,O)$ acts as a \textbf{constraint}, the agent and 
+object have to be in the same state which results in being on a line traversing the 2D joint distribution.
+
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/joint_marginal_contact.pdf}
+ \caption{Histogram-SLAM contact. The agent has entered in contact with the object (measurement $\hat{Y}_t = 1$) and the likelihood function $P(Y_t=1|A_t,O)$ is applied to the joint
+ distribution. Only parameters on the line $i=j$ will remain unchanged and parameters for which $i \not= j$ will be set to zero.}
+ \label{fig:discrete_example_contact}
+\end{figure}
+
+
+
+%\begin{figure}
+%\centering
+%  \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure3.pdf}
+% \caption{\textbf{Histogram SLAM} An agent and one object are present in the 1D world. The red and blue points represent the true
+% locations whilst the lines are the probability of their current location (beliefs).
+% (1) Initial beliefs, the marginals $P(A_t)$ and $P(O)$.
+% The dotted lines annotated by L and R denote the left and right edges of the agent's belief mode. The agent will follow the policy
+% shown by the black arrow which is a sweep to the right followed by one to the left.
+% 2) The left end of the agent's distribution has reached the initial right end of the distribution, see dotted lines for reference. When the left end, L,
+% has reached the right end, R, the probability of the object being at R is equal to the underlying or ground uncertainty of the agent's belief. 
+% From (3) to (4) object belief continuously increases in states 0 to 45.
+% (5) agent and Object occupy the same state, the beliefs merge.}
+% \label{fig:discrete_example}
+%\end{figure}
+%The search which was illustrated in Figure \ref{fig:discrete_example} gives the desired belief update, but at a significant cost, as the 
+%space complexity of the joint distribution is exponential in the number of beliefs. Given $M$ beliefs with
+%a total of $N$ states, the joint distribution will require $N^M$ parameters as will the conditional observation CPT table
+%$p(Y_t|A_t,O)$. 
 
 
 
