@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="hist_SLAM.pdf">
+   sodipodi:docname="hist_SLAM.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="521.86456"
-     inkscape:cy="81.263499"
+     inkscape:cx="1021.8646"
+     inkscape:cy="131.2635"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36,9 +36,9 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:window-width="1680"
-     inkscape:window-height="974"
-     inkscape:window-x="1680"
-     inkscape:window-y="24"
+     inkscape:window-height="1022"
+     inkscape:window-x="3360"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <defs
      id="defs4">
@@ -129,7 +129,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

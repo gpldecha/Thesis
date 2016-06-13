@@ -64,24 +64,21 @@
 \BOOKMARK [2][-]{subsection.5.2.2}{Active-SLAM \046 Exploration}{section.5.2}% 64
 \BOOKMARK [1][-]{section.5.3}{Bayesian State Space Estimation}{chapter.5}% 65
 \BOOKMARK [1][-]{section.5.4}{Measurement Likelihood Memory Filter}{chapter.5}% 66
-\BOOKMARK [2][-]{subsection.5.4.1}{New joint parametrisation \046 intuition}{section.5.4}% 67
+\BOOKMARK [2][-]{subsection.5.4.1}{MLMF parametrisation}{section.5.4}% 67
 \BOOKMARK [2][-]{subsection.5.4.2}{Computation of evidence and marginals}{section.5.4}% 68
 \BOOKMARK [2][-]{subsection.5.4.3}{MLMF-SLAM Algorithm}{section.5.4}% 69
-\BOOKMARK [1][-]{section.5.5}{Space \046 time complexity \(MLMF\)}{chapter.5}% 70
-\BOOKMARK [2][-]{subsection.5.5.1}{Space complexity}{section.5.5}% 71
-\BOOKMARK [2][-]{subsection.5.5.2}{Time complexity}{section.5.5}% 72
-\BOOKMARK [1][-]{section.5.6}{Scalable extension to multiple objects}{chapter.5}% 73
-\BOOKMARK [1][-]{section.5.7}{Evaluation}{chapter.5}% 74
-\BOOKMARK [2][-]{subsection.5.7.1}{Evaluation of time complexity}{section.5.7}% 75
-\BOOKMARK [2][-]{subsection.5.7.2}{Evaluation of independence assumption}{section.5.7}% 76
-\BOOKMARK [2][-]{subsection.5.7.3}{Evaluation of memory}{section.5.7}% 77
-\BOOKMARK [1][-]{section.5.8}{Conclusion}{chapter.5}% 78
-\BOOKMARK [1][-]{section.5.9}{Appendix}{chapter.5}% 79
-\BOOKMARK [2][-]{subsection.5.9.1}{EKF-SLAM models}{section.5.9}% 80
-\BOOKMARK [2][-]{subsection.5.9.2}{Bayesian filtering recursion}{section.5.9}% 81
-\BOOKMARK [2][-]{subsection.5.9.3}{Derivation of the evidence}{section.5.9}% 82
-\BOOKMARK [2][-]{subsection.5.9.4}{Derivation of the marginal}{section.5.9}% 83
-\BOOKMARK [2][-]{subsection.5.9.5}{Space \046 time complexity \(scalable-MLMF\)}{section.5.9}% 84
-\BOOKMARK [2][-]{subsection.5.9.6}{Space complexity}{section.5.9}% 85
-\BOOKMARK [2][-]{subsection.5.9.7}{Time complexity}{section.5.9}% 86
-\BOOKMARK [0][-]{chapter*.95}{References}{}% 87
+\BOOKMARK [2][-]{subsection.5.4.4}{Space \046 time complexity \(MLMF\)}{section.5.4}% 70
+\BOOKMARK [2][-]{subsection.5.4.5}{Scalable extension to multiple objects}{section.5.4}% 71
+\BOOKMARK [1][-]{section.5.5}{Evaluation}{chapter.5}% 72
+\BOOKMARK [2][-]{subsection.5.5.1}{Evaluation of time complexity}{section.5.5}% 73
+\BOOKMARK [2][-]{subsection.5.5.2}{Evaluation of independence assumption}{section.5.5}% 74
+\BOOKMARK [2][-]{subsection.5.5.3}{Evaluation of memory}{section.5.5}% 75
+\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 76
+\BOOKMARK [1][-]{section.5.7}{Appendix}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.5.7.1}{Bayesian filtering recursion}{section.5.7}% 78
+\BOOKMARK [2][-]{subsection.5.7.2}{Derivation of the evidence}{section.5.7}% 79
+\BOOKMARK [2][-]{subsection.5.7.3}{Derivation of the marginal}{section.5.7}% 80
+\BOOKMARK [2][-]{subsection.5.7.4}{Space \046 time complexity \(scalable-MLMF\)}{section.5.7}% 81
+\BOOKMARK [2][-]{subsection.5.7.5}{Space complexity}{section.5.7}% 82
+\BOOKMARK [2][-]{subsection.5.7.6}{Time complexity}{section.5.7}% 83
+\BOOKMARK [0][-]{chapter*.98}{References}{}% 84

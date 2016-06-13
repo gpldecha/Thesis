@@ -15,7 +15,7 @@
    id="svg72036"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="joint_marginal_contact.svg">
+   sodipodi:docname="joint_marginal_contact.pdf">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -87,7 +87,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

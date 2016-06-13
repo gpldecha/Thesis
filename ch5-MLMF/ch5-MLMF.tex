@@ -116,19 +116,15 @@ The rest of this Chapter is structured as follwos:
 
 
 \begin{itemize}
- \item \hyperref[ch5:background]{\ref{ch5:background} Background}
-
- \item \hyperref[ch5:BSSE]{\ref{ch5:BSSE} Bayesian State Space Estimation}:  overview the Bayes filter recursion and apply it to a simple 
-    1D search scenario for both a discrete and Gaussian parametrisation of the beliefs. We demonstrate that discrete parametrisation gives
-    the correct filtered beliefs but at a very high cost and that the EKF-SLAM fails to provide the adequate solution.
-
- \item \hyperref[ch5:MLMF]{\ref{ch5:MLMF} Measurement Likelihood Memory Filter}
- We introduce the Measurement Likelihood Memory Filter and overview its parametrisation.
-    \begin{itemize}
-     \item \hyperref[ch5:space_time_complexity_MLMF]{\ref{ch5:space_time_complexity_MLMF} Space \& time complexity }
-     \item \hyperref[subsec:scalabe_extension]{\ref{subsec:scalabe_extension} Scalable extension to multiple objects }
-     We describes additional assumptions made with respect to the MLMF to make it scalable.
-    \end{itemize}
+ \item \hyperref[ch5:background]{\ref{ch5:background} Background}: Review of three prominent SLAM algorithms
+ and their assumptions and an overview of active-localisation and exploration methods used with SLAM.
+ \item \hyperref[ch5:BSSE]{\ref{ch5:BSSE} Bayesian State Space Estimation}:  Introduction of SLAM algorithm 
+ and assumptions and why EKF-SLAM is not suitable when mostly negative information is available. Description 
+ of the Histogram-SLAM algorithm and the assumptions we can exploit from the sparsity of the likelihood function
+ for the MLMF.
+ \item \hyperref[ch5:MLMF]{\ref{ch5:MLMF} Measurement Likelihood Memory Filter}:
+ Mathematical derivation of the MLMF, time and space complexity evaluation and extension to 
+ the scalable-MLMF.
  \item \hyperref[ch5:evaluation]{\ref{ch5:evaluation} Evaluation}
  We numerically evaluate the time complexity of the scalable-MLMF and check the assumption we made 
 for it to be scalable.We investigate the filter's sensitivity with respect to its parameters in an Active-SLAM setting.
@@ -246,8 +242,10 @@ The conditional dependence $A \dependent O | Y$ is key to all BSSE and SLAM algo
 dependent implying that any decrease of uncertainty will effect both A and B. If there is no observation no information will be 
 exchanged between the two and no decrease of uncertainty can take place.
 
-We demonstrate how the two different parametrisations of the joint distribution of the BN in Figure \ref{fig:bayesian_sse_dag} 
-behave in the case of the absence of direct sighting of the object by the agent.
+We next demonstrate how the two different parametrisations of the joint distribution of the BN in Figure \ref{fig:bayesian_sse_dag} 
+behave in the case of the absence of direct sighting of the object by the agent. The first parameterises the joint distribution
+by Multivariate Gaussian, which is known as EKF-SLAM, and the second discretises the joint distribution and is called Histogram-SLAM.
+
 
 \begin{figure}
 \centering
@@ -271,8 +269,6 @@ behave in the case of the absence of direct sighting of the object by the agent.
  \label{fig:ch5_dseperation}
 \end{figure}
 
-
-
 \subsubsection{EKF-SLAM}\label{sec:EKF-SLAM}
 
 In EKF-SLAM the joint density $p(A_{t},O|Y_{0:t},u_{0:t}) = g(x;\mu_t,\Sigma_t)$ is parametrised by a single Gaussian function $g$ with mean,
@@ -289,36 +285,25 @@ are in $\mathbb{R}^2$, and covariance, $\Sigma_t$.
 
 The measurement of features $j$ is typically the range and bearing to an observed features, $Y^{(j)}_t = [r,\phi]$,
 see Figure \ref{fig:belief_update_example} page \pageref{fig:belief_update_example} for an illustrate of a measurement update process.
-The assumption in EKF-SLAM is that the measurement is corrupted by Gaussian noise, $\epsilon \sim \mathcal{N}(0,R)$.
-This leads to a measurement likelihood function of the following form:
-%The measurement model consists of two parts: the first part is the observation function, $h(\cdot)$, and the second part is the noise present in the measurement, 
-%typically always taken to be white Gaussian.
-
-%\begin{align}
-%  Y_t &= h(A_t,O) + \epsilon \\\nonumber
-% \hat{Y}_t &= h(A_t,O)  
-%\end{align}
-%Where $Y_t$ is the actual current observation sensed by the agents sensors, $\hat{Y}_t$ is an estimated/predicted observation
-%and $\epsilon \sim \mathcal{N}(0,R)$ is the noise associated with the sensor measurement.
-%The likelihood of an observation can be evaluated:
+The assumption in EKF-SLAM is that the measurement is corrupted by Gaussian noise, $\epsilon \sim \mathcal{N}(0,R)$
+and the measured likelihood function has the following form,
 \begin{equation} \label{eq:lik-measurement}
    p(Y_t|A_t,O_t) = \frac{1}{|2\pi R|^{\frac{1}{2}}} \exp \left( -\frac{1}{2} \big(Y_t - \hat{Y}_t\big)^{\mathrm{T}}R^{-1}\big(Y_t - \hat{Y}_t\big) \right)
 \end{equation}
-Where the covariance, $R$, encompasses the uncertainty in the measurement. The elements of the covariance matrix capture 
+where the covariance, $R$, encompasses the uncertainty in the measurement. The elements of the covariance matrix capture 
 the measurement error between the true $Y$ and expected $\hat{Y}$ positions of the random variables. As the joint distribution 
 is parametrised by a single Multivariate Gaussian a closed form solution to the filtering Equations \ref{eq:time-update} \& \ref{eq:measurement-update} 
-exists, called the Kalman Filter, see Appendix []. 
+exists, called the Kalman Filter \cite{SLAM_part1}. 
 
 An important part in the application of EKF-SLAM is the error between the true measurement and the expected measurement 
 $e = (Y_t - \hat{Y}_t)$. In our scenario the agent can only perceive the objects once he enters in direct contact with them. 
-This means that the variance of the observation $Y_t$ will be very low and will always be equal to that of $\hat{Y}$ until a contact is made. To illustrate the problems this will
-entail, we give an illustration of a 1D search as we did for the discrete case. In Figure \ref{fig:EKF-SLAM} we show the resulting updates of the belief 
+This means that the variance of the observation $Y_t$ will be very low and will always be equal to that of $\hat{Y}$ until a contact is made. 
+To illustrate the problems this will entail, we give an illustration of a 1D search. In Figure \ref{fig:EKF-SLAM} we show the resulting updates of the belief 
 for 4 chosen time segments.
 
 \begin{figure}
 \centering
-\subfigure{\includegraphics[width=0.4\textwidth]{./ch5-MLMF/Figures/Figure4.pdf}}
-\subfigure{\includegraphics[width=0.55\textwidth]{./ch5-MLMF/Figures/Figure5.pdf}}
+ \includegraphics[width=0.9\textwidth]{./ch5-MLMF/Figures/Figure34.pdf}
 \caption{Time slices of the evolution of the pdfs according to EKF-SLAM. The numbers in the top right corner of each plot indicate the temporal ordering.
 The blue pdf represents the agent's believed location and the circle with the dot in the middle is the true location of the agent. The same holds 
 for the red distribution which represents the agent's belief of the location of an object.
@@ -329,28 +314,22 @@ term. \textit{Bottom:} true sensing $Y_t$ and the expected sensation $\hat{Y}_t$
 1D EKF-SLAM, the figures to the left show the evolution of the agent's belief of his location and that of an 
 object which are represented by the blue and red Gaussian functions. The figures to the right show the evolution of the parameters of the EKF-SLAM.}
 \label{fig:EKF-SLAM}
-
-%\label{fig:slam-para}
-%\end{subfigure}
-
-%\caption{}
 \end{figure}
 
-As expected we do not get the desired behaviour. Even when most of the belief mass of the agent's 
-location pdf overlaps that of the object pdf, no belief update occurs. The chosen parametrisation of the BN for EKF-SLAM only guarantees a 
+As expected we do not get the desired behaviour, which is that the beliefs start updating as soon as they are overlapping. 
+Even when most of the belief mass of the agent's 
+location pdf overlaps that of the object pdf, no belief update occurs. The multivariate Gaussian of the BN only guarantees a 
 dependency between the agent and object random variables when there is a positive sighting of the landmarks:
 $A \dependent O | Y$ iff $Y \not= 0$.  This can been seen in Figure \ref{fig:EKF-SLAM} (b), where the component 
 $\Sigma_{ao}$ is 0 most of the time which implies that $A \independent O | Y$ which is undesirable. 
 This confirms that the dependencies present in the structure given by the BN are dependent on the chosen parametrisation.
 
-
-
-
 \subsubsection{Histogram SLAM}\label{sec:Discrete}
 
 In Histogram-SLAM the joint distribution is discretized and each bin has a parameter, 
-$P(A_t,O|Y_{0:t},u_{0:t}) = \theta^{(ij)}$, which sums to one, $\sum_{ij} \theta^{(ij)} = 1$. 
-The probability distribution of the agent's position is given by marginalising out the object random variable:
+$P(A_t=i,O=j|Y_{0:t},u_{0:t}) = \theta^{(ij)}$, which sums to one, $\sum_{ij} \theta^{(ij)} = 1$. 
+For shorthand notation we will write $P(A_t,O|Y_{0:t},u_{0:t})$ instead of $P(A_t=i,O=j|Y_{0:t},u_{0:t})$.
+The probability distribution of the agent's position is given by marginalising the object random variable:
 \begin{align}
  &P(A_t|Y_{0:t},u_{0:t})    = \sum\limits_{j=1}^{|O|} P(A_t,O|Y_{0:t},u_{0:t}) \label{eq:agent_marginal} \\
  &P(A_t=1|Y_{0:t},u_{0:t})  = \sum\limits_{j=1}^{|O|} \theta^{(1j)}
@@ -371,13 +350,6 @@ intractable.
  random variable is obtained by marginalising the other out according to Equation \ref{eq:agent_marginal}. }
  \label{fig:histogram_joint}
 \end{figure}
-
-
-%\begin{align*}\label{eq:disc-measurement_function}
-% P(Y_t=1|A_t=x_i,O=x_j) &= 1\;\; \forall i = j \\
-% P(Y_t=1|A_t=x_i,O=x_j) &= 0\;\; \forall i \not= j \\
-%\end{align*}
-
 
 \paragraph{Histogram likelihood model}
 
@@ -437,15 +409,12 @@ As the agent moves to the right more parameters of the joint distribution become
 of the re-normalisation by the \textbf{evidence} ($P(Y_t|Y_{0:t-1}$, denominator of Equation \ref{eq:measurement-update}) the value of the remaining 
 parameters increase. The amount by which the remaining parameters increase is equal to the sum of the probability mass which was set to zero by the likelihood function.
 In other words the values of the joint distributions parameters which fall on the pink line in Figure \ref{fig:discrete_example} get set to zero and redistributed to the 
-remaining non-zero parameters. This is an \textbf{important aspect} which will be present in MLMF and we will call this amount which has to be redistributed $\alpha$.
+remaining non-zero parameters. This is an \textbf{important aspect} which will be present in MLMF and we will call this amount which has to be redistributed $\alpha \in \mathbb{R}$.
 
 When the agent enters into contact with the object and senses it, the likelihood function $P(Y_t=1|A_t,O)$, Figure \ref{fig:histogram_likelihood} (\textit{Right}), is 
 multiplied with the joint distribution with the result illustrated in Figure \ref{fig:discrete_example_contact}. Only parameters of the joint distribution whose indices
 satisfy $i = j$ will remain unchanged, all the others will become zero. In retrospective the likelihood $P(Y_t=1|A_t,O)$ acts as a \textbf{constraint}, the agent and 
 object have to be in the same state which is a line traversing the 2D joint distribution.
-
-The \textbf{problem} with Histogram-SLAM is that it has an exponential time and space complexity. 
-
 
 \begin{figure}
  \centering
@@ -455,27 +424,60 @@ The \textbf{problem} with Histogram-SLAM is that it has an exponential time and 
  \label{fig:discrete_example_contact}
 \end{figure}
 
+The \textbf{problem} with Histogram-SLAM is that its time and space complexity is exponential, as the joint distribution is discretized and 
+parametrised by $\theta^{(ij)}$. We instead propose a filter, named MLMF, which does not parameterise the joint distribution.
+
+The main idea behind the new filter, MLMF, which we formally introduce in the next section is to achieve the same result as 
+the Histogram filter but without having to parameterise the joint distribution, thus avoiding the exponential growth cost. 
+The \textbf{key idea} behind the mechanism of the MLMF filter is to only evaluate the joint distribution in states $(i,j)$ for which the likelihood 
+is zero and apply the updates directly to the marginals. The MLMF filter parametrises \textbf{explicitly} the marginals 
+$P(A_t|Y_{0:t},u_{0:t}): \theta^{(i)}$, $P(O|Y_{0:t},u_{0:t}): \theta^{(j)}$. This is in contrast to the Histogram filter in which the marginals are  
+derived from the joint distribution by marginalisation. For our filter to respect the Bayesian recursion, the MLMF has to \textbf{memories}
+the complete history of likelihood functions $\{P(Y_t|A_t,O)\}_{t=0:T}$ and the normalization coefficient $\alpha$. The reasons 
+for this will be made clear in the next section, below we summaries the parameters of the Histogram and desired-MLMF:
+
+\begin{center}
+\begin{minipage}{0.55\textwidth}
+\fbox{
+\begin{tabular}{lcl}
+ Histogram    & : & $\theta^{(ij)}$ \\
+ desired-MLMF & : & $\theta^{(i)}$, $\theta^{(j)},\alpha,\{(\hat{Y}_t,l)\}_{t=0:T}$\\
+	      &   & $i,j=1,\dots,N$
+\end{tabular}
+}
+\end{minipage}
+\end{center}
+
+%\begin{center}
+%\begin{tikzpicture}    
+%\node [white_box] (box){%
+%\begin{minipage}{0.55\textwidth}
+%\begin{tabular}{lcl}
+% Histogram & : & $\theta^{(ij)}$ \\
+% MLMF      & : & $\theta^{(i)}$, $\theta^{(j)},\alpha,\{(\hat{Y}_t,l)\}_{t=0:T}$\\%
+%	   &   & $i,j=1,\dots,N%$
+%\end{tabular}
+%\end{minipage}
+%};
+%\end{tikzpicture}%
+%\end{center}
 
 
-%\begin{figure}
-%\centering
-%  \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure3.pdf}
-% \caption{\textbf{Histogram SLAM} An agent and one object are present in the 1D world. The red and blue points represent the true
-% locations whilst the lines are the probability of their current location (beliefs).
-% (1) Initial beliefs, the marginals $P(A_t)$ and $P(O)$.
-% The dotted lines annotated by L and R denote the left and right edges of the agent's belief mode. The agent will follow the policy
-% shown by the black arrow which is a sweep to the right followed by one to the left.
-% 2) The left end of the agent's distribution has reached the initial right end of the distribution, see dotted lines for reference. When the left end, L,
-% has reached the right end, R, the probability of the object being at R is equal to the underlying or ground uncertainty of the agent's belief. 
-% From (3) to (4) object belief continuously increases in states 0 to 45.
-% (5) agent and Object occupy the same state, the beliefs merge.}
-% \label{fig:discrete_example}
-%\end{figure}
-%The search which was illustrated in Figure \ref{fig:discrete_example} gives the desired belief update, but at a significant cost, as the 
-%space complexity of the joint distribution is exponential in the number of beliefs. Given $M$ beliefs with
-%a total of $N$ states, the joint distribution will require $N^M$ parameters as will the conditional observation CPT table
-%$p(Y_t|A_t,O)$. 
+The likelihood function is parametrised by an input, $\hat{Y}_t$ and offset $l$ to the $i$-axis. In Figure \ref{fig:discrete_example} we see that
+the likelihood applied at the first time step (green line) is superimposed on the line $i=j$. As actions are applied, $u_{0:3}=[1,1,1,1]$, 
+the first likelihood function (green line) shifts by an amount corresponding to the total displacement (4 in this case), see the last sub-figure of
+\ref{fig:discrete_example}. The second likelihood applied at $t=1$ will have an offset corresponding to the sum $u_{1:3}$, the third will have 
+an offset of $u_{2:3}$ and so forth.
 
+The MLMF, which we mathematically derive in the next section, keeps as parameters the marginals, likelihood function parameters, and a normalisation 
+constant. The marginals are updated (filter recursion) by \textbf{evaluating} the joint distribution in states which are set to zero by the current 
+applied likelihood and removing the value of the zeroed parameters from the marginals. 
+
+When a positive contact is established with the object, the likelihood is zero everywhere but the states corresponding to  $i=j$, 
+see Figure \ref{fig:discrete_example_contact}. In this case there is no need to evaluate the likelihood at all the zero areas 
+in the joint distribution. The marginals are simply the normalisation of the line $i=j$. The evaluation of the joint distribution 
+given that the object is sensed or not is restricted to the states $(i,j)$ for which $i=j$ and there is a total of $N$ of them. 
+This is much less than evaluating, as it is for the histogram, $N^2$ states.
 
 
 \FloatBarrier
@@ -483,24 +485,28 @@ The \textbf{problem} with Histogram-SLAM is that it has an exponential time and 
 
 To get the correct marginals' update, the random variables $A$ and $O$ must remain 
 dependent in the absence of a positive observation $Y$ and in addition this dependence should be efficiently encoded in contrast to the
-discrete/histogram parametrisation of the marginals of the joint distribution shown in Section \ref{sec:Discrete}. 
+histogram parametrisation shown in Section \ref{sec:Discrete}. 
 
-The measurement function $P(Y_t|A_t,O)$ is the cause of the dependence between the random variables. If both the agent and object 
+The likelihood function $P(Y_t|A_t,O)$ is the cause of the dependence between the random variables. If both the agent and object 
 where completely independent, no additional parameters would be required to represent the joint distribution other than the marginals 
 $P(A_t)$ and $P(O)$ giving a total of $N \cdot M$ parameters ($N$ is the number of states and $M$ is the number of random variables). 
 At the other extreme if every single point in the domain of the random variables was dependent this would require the totality 
 of $N^M$ parameters as previously stated in the case of the histogram filter. We propose a method in which we do not model the joint
 distribution explicitly but rather only compute its impact on the marginals. 
 
-\subsection{New joint parametrisation \& intuition}
+\subsection{MLMF parametrisation}
+
+
+%\begin{equation}
+%  P(A_0,O|Y_0,u_0) =   P(A_0) \cdot P(O) \cdot P(Y_0|A_0,O)
+%\end{equation}
 
 Figure \ref{fig:margina_joint_example} shows two time slices of the evolution of the agent and object belief in a 1D world. In the \textit{left}
 figure a line passes through the probability mass of the joint distribution which was initialised to be independent,
-$P(A_0,O) = P(A_0) \cdot P(O)$. 
-This is the effect the measurement function $P(Y_t=0|A_t,O)$ has on the joint distribution given no object was sensed. As the agent 
+$P(A_0,O) = P(A_0) \cdot P(O)$. This is the effect the measurement function $P(Y_t=0|A_t,O)$ has on the joint distribution given no object was sensed. As the agent 
 moves towards state 100 the likelihood function is re-applied at every iteration and the result is visible in the \textit{right} figure. 
 As a result the probability mass is removed from the area in the joint distribution where $P(Y_t=0|A_t,O)$ has an influence.
-Because of the structure of the measurement likelihood function, this will always be on the $A=0$ axis in the joint distribution. 
+Because of the structure of the measurement likelihood function, this will always in joint distribution $i=j$ states . 
 The same is true for a range and bearing measurement function where the range translates to the width of the tube created in the 
 joint distribution. Our method will rely on remembering the applied measurement function on the joint distribution rather than the result. 
 It is far more efficient to remember a function than the values it changed in the
@@ -511,9 +517,8 @@ joint distribution.
  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure6.pdf}
  \caption{Time evolution of both the joint and marginal distributions of the agent (blue) and object (red) probability distributions for 
  the case of a 1D search. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. 
- The black line represents the measurement likelihood function. It is along this line $A=O$ that the joint distribution will be
- changed. On the \textit{Left}, the measurement likelihood causes all the mass of joint distribution
- lying on the line $A=O$ to be removed. 
+ The black line correspond to areas in which the likelihood function evaluates to zero.  \textit{Left}: the first applied 
+ likelihood function, orange $t=0$, causes all the mass of joint distribution whose's states are $i=j$ to be removed. 
  The reason for this is that the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of
  both the agent and the object), and all the probability mass which lies in the area of influence of the measurement likelihood gets 
  removed and redistributed to the other states in the joint distribution due to normalisation.}
@@ -527,7 +532,8 @@ we do not take a recursive approach but rather remember all measurement function
 the state, see Equation \ref{eq:memory_function}-\ref{eq:joint_filter_memory}.
 
 \begin{align} 
- P(A_{t-1},O|Y_{0:t-1},u_{0:t-1}) &= P(A_0) \cdot P(O)  \cdot  P(Y_0|A_0,O) \cdot \prod\limits_{t=1}^{t-1} P(A_t|A_{t-1},u_t) \cdot P(Y_t|A_t,O) \label{eq:memory_function} \\
+ P(A_{t-1},O|Y_{0:t-1},u_{0:t-1}) = &P(A_0) \cdot P(O)  \cdot  P(Y_0|A_0,O) \cdot  \nonumber \\ 
+				  &\prod\limits_{t=1}^{t-1} P(A_t|A_{t-1},u_t) \cdot P(Y_t|A_t,O)  \label{eq:memory_function} \\
  P(A_t,O|Y_{0:t},u_{0:t})         &= \frac{P(Y_t|A_t,O) \cdot  P(A_t,O|Y_{0:t-1},u_{0:t})  }{  P(Y_t|Y_{0:t-1}) } \label{eq:joint_filter_memory}
 \end{align}
 
@@ -540,11 +546,12 @@ $P(A_{t-1},O|Y_{0:t-1},u_{0:t-1})$ (Equation \ref{eq:memory_function}) to achiev
  P(A_t,O|Y_{0:t-1},u_{0:t}) &= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot  P(A_{t-1},O|Y_{0:t-1},u_{0:t-1})
  \end{align}
 
-At every time step a new measurement likelihood function and dynamics is added to Equation \ref{eq:memory_function}.
+At every time step a new likelihood function is added to Equation \ref{eq:memory_function} and a motion update 
+is applied to all the likelihood functions in memory and to the agent's marginal $P(A_0)$.
 The intuition of these two updates is as follows. At the first time step (after initialisation) we add the first measurement 
 likelihood function which results in the line shown in Figure \ref{fig:margina_joint_example} \textit{left}. 
 Then a motion update (agent moves towards state 100) is applied and this line (or measurement
-likelihood function) shifts along the agent's axis by the displacement caused by the forward model and a new line is added at $A=O$, 
+likelihood function) shifts along the agent's $i$-axis by the displacement caused by the forward model and a new line is added at $i=j$, 
 which is the result of the current measurement after the motion update. Repeating this process results in the white band present 
 in Figure \ref{fig:margina_joint_example} \textit{right}. 
 
@@ -557,10 +564,10 @@ In order to compute the marginal likelihood (also known as evidence) $P(Y_t|Y_{0
 $P(O|Y_{0:t})$ efficiently we take advantage of the fact that only a very small area 
 in the joint distribution space will be affected by the measurement likelihood function at each time step.
 
-Without lost of generality the measurement function will only make a difference to dependent $A \cap O$ regions in the joint distribution. 
+Without lost of generality the likelihood function will only make a difference to dependent $A \cap O$ regions in the joint distribution. 
 The region inside the symmetric difference $A \ominus O$, will not be affected.
 Figure \ref{fig:overlap_dependence_independence} shows the relation between the measurement 
-function $P(Y_t|A_t,O)$ and the joint distribution $P(A_t,O)$ for three different initialisations. 
+function $P(Y_t|A_t,O)$ and the joint distribution $P(A_t,O|Y_{0:t})$ for three different initialisations. 
 
 %\begin{FPfigure}
  \begin{figure}
@@ -568,13 +575,13 @@ function $P(Y_t|A_t,O)$ and the joint distribution $P(A_t,O)$ for three differen
   \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure7.pdf}
   \caption{
  $P(Y_t|A_t,O)$ effect on the joint distribution for three different initialisations. 
-  The tube area depicts the regions where the measurement function influences the joint distribution. 
+  The tube area depicts the regions where the measurement function influences the joint distribution, and 
+  the values of the random variables in these areas are dependent $A \cap O$. The variables of the joint 
+  distribution which are not effected by the likelihood function are independent from one another, $A \ominus O$. 
   The tube's boundary is governed by the bandwidth of the radial basis function of the measurement likelihood function.
-  The joint distribution can be decomposed into a dependent $A \cap O$ (the intersection of $A$ and $O$) and independent $A \ominus O$ term 
-  (the symmetric difference of $A$ and $O$, everything outside the area of intersection but still within the red and blue circles). 
-  In the three other figures any probability mass of the joint  distribution which lies in the tube will be in the $\cap$, all probability 
+  Any probability mass of the joint  distribution which lies in the tube will be in the $\cap$, all probability 
   mass outside the tube but still within the grey rectangle is located in $\ominus$ and 
- the white space is in the domain but not parametrised and thus not considered. \textbf{a)} The initial configuration, the agent and object pdfs 
+ the white space is in the domain but not parametrised and thus not considered. \textbf{a)} The agent and object marginals 
  are not overlapping and thus are completely independent. The joint distribution is not intersecting with the measurement function.
  \textbf{b)} The marginals overlap one another resulting in the measurement likelihood function intersection with the joint distribution.
  The probability mass at the intersection gets removed and renormalised to other regions which is the result of applying Bayes integration. 
@@ -593,11 +600,12 @@ dependent and independent term (Equation \ref{eq:joint_independent_dependent}).
 
 The probability mass covered by the dependent term is located within the measurement function's tube and the independent probability mass 
 is located outside as shown in Figure \ref{fig:overlap_dependence_independence}. This formulation will lead to large computational gain 
-as the independent term is not influenced by the measurement function: $P_{\ominus}(A_t,O|\mathbf{Y_{0:t}}) \propto P_{\ominus}(A_t,O|\mathbf{Y_{0:t-1}})$.
+as the independent term is not influenced by the measurement function: 
+$P_{\ominus}(A_t,O|\mathbf{Y_{0:t}}) \propto P_{\ominus}(A_t,O|\mathbf{Y_{0:t-1}})$.
 
 \paragraph{Evidence}
-The evidence of the measurement $P(Y_t|Y_{0:t-1})$ is the amount of probability mass which has be removed from the region of the joint 
-distribution where the measurement likelihood function has had an impact. At time step $t$, the normalising factor to be added to 
+The evidence of the measurement $P(Y_t|Y_{0:t-1})$ is the amount of probability mass which has been removed from the region of the joint 
+distribution where the likelihood function has set the parameters of the joint distribution to zero. At time step $t$, the normalising factor to be added to 
 the evidence is the difference between the probability mass located inside $A\cap O$ before the application of the measurement 
 function $P(Y_t|A_t,O)$ and after (see Appendix \ref{appendix:evidence} for the full derivation).
 
@@ -608,8 +616,12 @@ The advantage of this form is that the summation is only over states which are i
 distribution. This is generally always much smaller than the full space itself. By expanding the term $\alpha$ at time step $t$, 
 we obtain a better intuition, see Equation \ref{eq:I}.
 \begin{equation}\label{eq:I}
- \alpha_t =  \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O)  - P(Y_t|A_t,O)\cdot P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O) 
+ \alpha_t =  \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O) \Big(1 - P(Y_t|A_t,O)\Big) \nonumber \\
 \end{equation}
+Until an object is sensed, the likelihood will always be zero $P(Y_t|A_t,O) = 0$ and $\alpha$ will correspond to the probability 
+mass which falls within the region of the joint distribution in which the likelihood function is zero. In Figure 
+\ref{fig:overlap_dependence_independence} (\textit{Middle \& Right}) the sum of the probability mass in the green 
+regions is equal to $\alpha$.
 The point of interest is that as we perform the filtering process we will never renormalise the whole joint distribution, but only keep 
 track of how much it should have been normalised. To this end the original marginals $P(A_0)$ and $P(O)$  are never renormalised but are used 
 to compute at each step how much of the probability mass $\alpha_t$ should go to the normalisation factor 
@@ -617,7 +629,6 @@ $P(Y_t|Y_{0:t-1}) = 1 - (\alpha_{0} + \alpha_{1} + \cdots + \alpha_{t})$. The ev
 joint distribution sums to one and each $\alpha_t$ represents some of the mass removed from the joint distribution. Since we 
 keep track of the history of applied  measurement likelihood functions we never remove the same amount of probability mass twice
 from the joint distribution.
-
 
 \paragraph{Marginals}
 
@@ -635,31 +646,61 @@ process.
 \end{equation}
 
 Note that it is a recursive process, $P(A_t,|Y_{0:\mathbf{t}})$ is computed in terms of  $P(A_t,|Y_{0:\mathbf{t-1}})$.
+In table \ref{tab:mlmf_parameters} we summaries the functions and parameters of the MLMF for two random variables, an agent and object.
+\begin{table}[h]
+\centering
+\fbox{
+\begin{tabular}{lcl}
+    functions         &   & parameters \\\hline
+  $P(A_t|Y_{0:t})$    & : & $\theta^{(i)}$\\
+  $P(O|Y_{0:t})$      & : & $\theta^{(j)}$\\
+  $P(Y_t|Y_{0:t-1})$  & : & $\alpha \in \mathbb{R}$\\
+  $P(Y_{0:t}|A_t,O)$  & : & $\{(\hat{Y}_t,l)\}_{t=0:T}$ \\
+  $P_{\cap}(A_0)$     & : & $\theta_*^{(i)}$ \\
+  $P_{\cap}(O)$       & : & $\theta_*^{(j)}$
+\end{tabular}
+}
+\caption{MLMF Functions with associated parameters.  }
+\label{tab:mlmf_parameters}
+\end{table}
 
 \subsection{MLMF-SLAM Algorithm}
 
 \begin{algorithm}
 \caption{MLMF-SLAM}
-\textit{input}: $P^{*}(A_0), P^{*}(O), P(Y_0|A_0,O), \alpha=0$
+\textbf{INPUT}: $P_{\cap}(A_0)$, $P_{\cap}(O)$
  \begin{algorithmic}[1]
-   \State{$P(A) = P^{*}(A)$} \Comment{initialise marginals (first time step)}
-   \State{$P(O)   = P^{*}(O)$}
+   \vspace*{0.25cm}
+   \Statex{\textbf{Initialisation}}
+   \vspace*{0.25cm}
+
+   \State{$P(A|\emptyset) = P_{\cap}(A_0)$} 
+   \State{$P(O|\emptyset) = P_{\cap}(O)$}
+   \State{$\alpha         = 0$}
+   \State{$P(Y_0|A_0,O)   = \{\}$}
+
+   \vspace*{0.25cm}
    \Statex{\textbf{Measurement Update}}
-   \State{$P(A_t|Y_t) = P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:t}) \Big)$} 
-   \State{$P(O|Y_t) = P(O|Y_{0:t-1}) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:t})\Big)$}
-   \State{$\alpha = \alpha + \sum\limits_{A_t}\sum\limits_{O} P^{*}_{\cap}(A_t)\cdot P^{*}_{\cap}(O) - P(Y_0|A_t,O) \cdot P^{*}_{\cap}(A_t)\cdot P^{*}_{\cap}(O)$} \Comment{update normalisation factor}
-   \State{$P(Y_{0:t-1}|A_t,O) \leftarrow P(Y_t|A_t,O) $} \Comment{update memory}
+   \vspace*{0.25cm}
+   \State{$P(A_{t-1}|Y_{0:t}) = P(A_{t-1}|Y_{0:t-1}) - \Big(P_{\cap}(A_{t-1}|Y_{0:t-1}) -  P_{\cap}(A_{t-1}|Y_{0:t}) \Big)$} 
+   \State{$P(O|Y_{0:t}) = P(O|Y_{0:t-1}) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:t})\Big)$}
+   \vspace*{0.25cm}
+   \State{$\alpha = \alpha + \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O) \Big(1 - P(Y_t|A_t,O)\Big) $} 
+   \State{$P(Y_{0:t-1}|A_t,O) \leftarrow (\hat{Y}_t,l=0)$}
+   \vspace*{0.25cm}
    \Statex{\textbf{Motion Update}}
-   \State{$P(A_t|Y_t)  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P(A_t|Y_t) $}
-   \State{$P^{*}(A_t)  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P^{*}(A_t) $}
-   \State{$  P(A_t,O|Y_{0:t-1},u_{0:t}) = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot  P(A_{t-1},O|Y_{0:t-1},u_{0:t-1}) $} 
+   \vspace*{0.25cm}
+   \State{$P(A_t|Y_{0:t})  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P(A_t|Y_{0:t}) $}
+   \State{$P_{\cap}(A_t)  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P_{\cap}(A_t) $}
+   %\State{$  P(A_t,O|Y_{0:t-1},u_{0:t}) = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot  P(A_{t-1},O|Y_{0:t-1},u_{0:t-1}) $} 
 \end{algorithmic} \label{alg:mrf-slam}
-\textit{output:} $P(A_t|Y_{0:t-1})$, $P(O_t|Y_{0:t-1})$ 
+   \vspace*{0.25cm}
+
+\textbf{OUTPUT:} $P(A_t|Y_{0:t})$, $P(O_t|Y_{0:t})$ 
 \end{algorithm}
 
 In Algorithm \ref{alg:mrf-slam} we give the motion-measurement update recursion for the MLMF-SLAM. The input parameters consist 
 of all the marginals, the empty memory, the first measurement function and the amount of probability mass which has to be renormalised, $\alpha$. 
-Note that the marginals with the superscript $(*)$ are the original marginals at initialisation. 
 This formulation is advantageous as only the joint distribution is evaluated explicitly inside the tube 
 $A\cap O$ created in the joint space by the measurement function. Through the term $P(Y_{0:t}|A_t,O)$ we keep track of the normalisation factor $P(Y_t|Y_{0:t-1})$ which 
 is a scalar, and where we have previously applied the measurement function. 
@@ -670,14 +711,14 @@ and thus assert that Algorithm \ref{alg:mrf-slam} is a Bayesian Optimal Filter/S
 \footnote{An optimal Bayesian solution is an exact solution to the recursive problem of calculating the exact posterior density 
 \cite{PF_tutorial_2002}}.
 
-\section{Space \& time complexity (MLMF)}\label{ch5:space_time_complexity_MLMF}
+\subsection{Space \& time complexity (MLMF)}\label{ch5:space_time_complexity_MLMF}
 
 For discussion purposes we consider the case of three beliefs, namely that of the agent and two other objects $O^{(1)}$ and $O^{(2)}$ but 
 subsequently we generalise. As stated previously $M$ stands for the number of filtered random variables including the agent. When we refer 
 to only the objects we say that we have $M-1$ random variables. $N$ is the number of discrete states in the world. We contrast
 the MLMF with the histogram filter.
 
-\subsection{Space complexity}
+\subsubsection{Space complexity}
 
 \paragraph{Histogram}
 
@@ -694,28 +735,26 @@ the worst case scenario the space complexity of the memory will be $D\cdot N$. T
 $M \cdot (2 \cdot N) + D \cdot N$. In 1D all measurement functions will form a closed convex set so we only need to 
 keep track of the boundaries (two of them) giving a space complexity of  $M \cdot (2 \cdot N) + 2$.
 
-
 \begin{figure}
  \centering
   \includegraphics[width=0.9\textwidth]{./ch5-MLMF/Figures/Figure8.pdf}
-  \caption{\textit{left:} Joint distribution $P(A,O^{(1)},O^{(2)})$ of the agent and two objects. Each measurement likelihood function, $P(Y|A,O^{(1)})$, 
+  \caption{\textit{Left:} Joint distribution $P(A,O^{(1)},O^{(2)})$ of the agent and two objects. Each measurement likelihood function, $P(Y|A,O^{(1)})$, 
   $P(Y|A,O^{(2)})$ and $P(Y|O^{(1)},O^{(2)})$ corresponds to a hyperplane in the joint distribution. The measurement function $P(Y|O^{(1)},O^{(2)})$ 
   stipulates that the objects cannot be in the same state. The marginal space is discretised to $N = 100$ states giving the total number of states in 
-  the joint distribution as $100^3$ $(M=3)$. \textit{right:} Joint distribution of the agent and one object $P(A_t,O|Y_{0:t})$. Three measurement 
+  the joint distribution as $100^3$ $(M=3)$. \textit{Right:} Joint distribution of the agent and one object $P(A_t,O|Y_{0:t})$. Three measurement 
   functions have been added to the memory term. At every time step when an action is taken all measurement functions are updated according to 
   the action applied $u_t$. This means that the first function to be added to the memory will have had all actions applied to it. The number 
   of the equations and their associated lines in the plot indicate the order in which they have been added to the memory. 
-  The three points are candidates at which we want to evaluate the joint distribution. First the offset $A=O+c$
-  is evaluated which corresponds to the dotted red lines. Then these are checked against all the offsets stored in memory. The cost of evaluating
-  the joint distribution at the yellow point is $\BigO{1}$ since we only have to check the first element in the memory. For the green and cyan points the 
-  cost is $\BigO{\log(n)}$, where $n$ is the current size of the memory.}
+  The three points are candidates at which we want to evaluate the joint distribution.  The cost of evaluating the 
+  joint distribution at the yellow point is $\BigO(1)$ since we only have to check the first element in the memory. 
+  For the green and cyan points the cost is $\BigO(\log(n))$, where $n$ is the number of likelihood functions in memory.}
   \label{fig:3bel_lik_profile}
 \end{figure}
 
-\subsection{Time complexity}
+\subsubsection{Time complexity}
 
 \paragraph{Histogram}
-The computational cost of the histogram filter is equivalent to that of the space complexity, $\BigO{ N^M }$.
+The computational cost of the histogram filter is equivalent to that of the space complexity, $\BigO(N^M)$.
 
 \paragraph{MLMF}
 
@@ -723,18 +762,19 @@ Every state in the joint distribution's state space which has been changed by th
 evaluated in Algorithm \ref{alg:mrf-slam}. As a result the computational complexity is directly related to the number 
 of affected states. In Figure \ref{fig:3bel_lik_profile} \textit{left}, the number of effected states are those in the blue
 and red plane (the states in the green plane will only be changed once because the agent's motion is parallel to it).
-For $M$ random variables the computational cost is $\BigO{(M-1) \cdot N^{M-1}}$ as opposed to $\BigO{ N^M }$. The computation complexity
+For $M$ random variables the computational cost is $\BigO((M-1) \cdot N^{M-1})$ as opposed to $\BigO(N^M)$. The computation complexity
 in this setup is still exponential but to the order $M-1$ as opposed to $M$ which will nevertheless quickly limit the scalability as more objects are added. 
 
 \paragraph{Evaluation of a state in the joint distribution}
 
-In Figure \ref{fig:3bel_lik_profile} (right) we show three different points in the joint distribution to be evaluated. The memory of applied measurement functions 
-is searched to see if any have effected the values at the three chosen the states. The memory functions are sorted according to their offset from the axis $A=O$. For the yellow point the
-cost is of $\BigO{1}$ since we only have to check the first (last) element in the list. For the green and blue point
-the search is $\BigO{\log(n)}$, where $n$ is the number of stored memory functions (there can be no more than $N$, the total number of states). 
+In Figure \ref{fig:3bel_lik_profile} (right) we show three different points in the joint distribution to be evaluated. 
+The memory of applied measurement functions is searched to see if any have effected the values at the three chosen the states. 
+The memory functions are sorted according to their offset from the axis $i=j$. For the yellow point the cost is 
+of $\BigO(1)$ since we only have to check the first (last) element in the list. For the green and blue point the 
+search is $\BigO(\log(n))$, where $n$ is the number of stored memory functions (there can be no more than $N$, the total number of states). 
 
 
-\section{Scalable extension to multiple objects}\label{subsec:scalabe_extension}
+\subsection{Scalable extension to multiple objects}\label{subsec:scalabe_extension}
 
 To make our filter scalable we introduce an independence assumption between the objects and model the joint distribution (Equation \ref{eq:pair_wise_joint}) as the product 
 of agent-object pairs
@@ -855,15 +895,13 @@ time and space complexity of the scalable-MLMF filter see Appendix \ref{appendix
  \centering
  \begin{tabular}{c|c|c|}
 	         &    space   &     time \\ \hline
-   histogram     &    $N^M$                                         &  $\BigO{N^M}$ \\ \hline
-   MLMF          &    $M \cdot N \cdot \left(2 + D\right)$          &  $\BigO{(M-1) \cdot N^{(M-1)}}$ \\ \hline
-   scalable-MLMF &    $(M - 1) \cdot N \cdot \left(4 + D\right)$    &  $\BigO{2 \cdot (M-1) \cdot N}$ \\ \hline
+   histogram     &    $\BigO(N^M)$                                         &  $\BigO(N^M)$ \\ \hline
+   MLMF          &    $\BigO(M \cdot N \cdot D)$          &  $\BigO((M-1) \cdot N^{(M-1)})$ \\ \hline
+   scalable-MLMF &    $\BigO((M - 1) \cdot N \cdot D )$    &  $\BigO((M-1) \cdot N)$ \\ \hline
    \end{tabular}
    \caption{\textbf{Time and space complexity summary} For both MLMF and scalabe-MLMF the worst case scenario is reported for the space complexity.}
    \label{tab:time_space_summary}
 \end{table}
-
-
 
 
 \section{Evaluation}\label{ch5:evaluation}
@@ -1037,26 +1075,22 @@ exponentially as it is in the case with the histogram and MLMF filters.
 
 \section{Appendix}\label{ch5:appendix}
 
-\subsection{EKF-SLAM models}
-
-\paragraph{Motion update}
-\begin{align}
-  \bar{\mu}_t      &= f(\mu_{t-1},u_t)\\
-  \bar{\Sigma}_{t} &= F \Sigma_{t-1} F^{\mathrm{T}} + Q
-\end{align}
-Where $F = \left[\frac{\partial f(\mu_{t-1},u_t)}{\partial \mu_{t-1} } \right]$ is the Jacobian of the dynamic model with respect to the Gaussian mean. The 
-bar notation on the mean and covariance is to indicate that no sensing information has been used to update their estimates.
-
-\paragraph{Measurement update}
-
-\begin{align}
-   K    &= \bar{\Sigma}_{t} H (H \bar{\Sigma}_{t} H + R)^{-1} \\
-  \mu_t &= \bar{\mu}_t + K \cdot (Y_t - \hat{Y}_t)\\
-  \Sigma_t &= (I - KH) \bar{\Sigma}_{t}
-\end{align}
- 
-Where $H = \left[\frac{\partial h(\mu_A,\mu_O;\beta)}{\partial \mu_A\mu_O}\right]$ is the Jacobian of the measurement function (Equation \ref{eq:ekf-measurement_function})  
-with respect to the mean of the joint distribution. 
+%\subsection{EKF-SLAM models}
+%\paragraph{Motion update}
+%\begin{align}
+%  \bar{\mu}_t      &= f(\mu_{t-1},u_t)\\
+%  \bar{\Sigma}_{t} &= F \Sigma_{t-1} F^{\mathrm{T}} + Q
+%\end{align}
+%Where $F = \left[\frac{\partial f(\mu_{t-1},u_t)}{\partial \mu_{t-1} } \right]$ is the Jacobian of the dynamic model with respect to the Gaussian mean. The 
+%bar notation on the mean and covariance is to indicate that no sensing information has been used to update their estimates.
+%\paragraph{Measurement update}
+%\begin{align}
+%   K    &= \bar{\Sigma}_{t} H (H \bar{\Sigma}_{t} H + R)^{-1} \\
+%  \mu_t &= \bar{\mu}_t + K \cdot (Y_t - \hat{Y}_t)\\
+%  \Sigma_t &= (I - KH) \bar{\Sigma}_{t}
+%\end{align}
+%Where $H = \left[\frac{\partial h(\mu_A,\mu_O;\beta)}{\partial \mu_A\mu_O}\right]$ is the Jacobian of the measurement function (Equation \ref{eq:ekf-measurement_function})  
+%with respect to the mean of the joint distribution. 
 
 \subsection{Bayesian filtering recursion}\label{appendix:bayes_recursion}
 
@@ -1118,8 +1152,8 @@ The marginal of a particular random variable is the marginalisation or integrati
 we give a form of this integration which exploits the independent regions in the joint distribution.
 \begin{align}
  P(A_t,|Y_{0:t}) &= P(A_t|Y_{0:t-1}) - \Big(P(A_t|Y_{0:t-1}) - P(A_t|Y_{0:t}) \Big)  \\ 
-		  &=  P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) + P_{\ominus}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:t}) + P_{\ominus}(A_t|Y_{0:t})   \Big) \label{eq:dependence1} \\
-		  &=  P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:t})  \Big) \label{eq:dependence2} 
+		 &=  P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) + P_{\ominus}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:t}) + P_{\ominus}(A_t|Y_{0:t})   \Big) \label{eq:dependence1} \\
+		 &=  P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:t})  \Big) \label{eq:dependence2} 
 \end{align}
 
 

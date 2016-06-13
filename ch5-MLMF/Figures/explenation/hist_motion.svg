@@ -11,11 +11,11 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1518.5317"
-   height="2086.1709"
+   height="2188.9441"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="hist_motion.svg">
+   sodipodi:docname="hist_motion.pdf">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="1011.2637"
-     inkscape:cy="1234.1231"
+     inkscape:cx="629.69313"
+     inkscape:cy="983.72005"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -49,7 +49,7 @@
        enabled="true"
        snapvisiblegridlinesonly="true"
        originx="86.116742px"
-       originy="1037.1418px" />
+       originy="1037.1419px" />
   </sodipodi:namedview>
   <defs
      id="defs4">
@@ -242,7 +242,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -250,7 +250,7 @@
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1"
-     transform="translate(86.116742,-3.3328066)">
+     transform="translate(86.116742,99.440385)">
     <g
        transform="matrix(0,-1.3398856,1.3398856,0,-1.4813024,-226.43251)"
        id="g40096">
