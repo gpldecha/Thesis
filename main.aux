@@ -529,12 +529,12 @@
 \newlabel{fig:overlap_dependence_independence}{{5.11}{124}{$P(Y_t|A_t,O)$ effect on the joint distribution for three different initialisations. The tube area depicts the regions where the measurement function influences the joint distribution, and the values of the random variables in these areas are dependent $A \cap O$. The variables of the joint distribution which are not effected by the likelihood function are independent from one another, $A \ominus O$. The tube's boundary is governed by the bandwidth of the radial basis function of the measurement likelihood function. Any probability mass of the joint distribution which lies in the tube will be in the $\cap $, all probability mass outside the tube but still within the grey rectangle is located in $\ominus $ and the white space is in the domain but not parametrised and thus not considered. \textbf {a)} The agent and object marginals are not overlapping and thus are completely independent. The joint distribution is not intersecting with the measurement function. \textbf {b)} The marginals overlap one another resulting in the measurement likelihood function intersection with the joint distribution. The probability mass at the intersection gets removed and renormalised to other regions which is the result of applying Bayes integration. \textbf {c)} The marginals of $A$ and $B$ are completely overlapping, however only a small fraction of the probability mass in the joint distribution is within the measurement function's tube.\relax }{figure.caption.84}{}}
 \newlabel{eq:joint_independent_dependent}{{5.4.4}{124}{Computation of evidence and marginals}{equation.5.4.4}{}}
 \newlabel{eq:I}{{5.4.5}{125}{Computation of evidence and marginals}{equation.5.4.5}{}}
-\newlabel{eq:marignal_mrf}{{5.4.5}{125}{Computation of evidence and marginals}{equation.5.4.5}{}}
-\newlabel{eq:marignal_mrf_2}{{5.4.6}{125}{Computation of evidence and marginals}{equation.5.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}MLMF-SLAM Algorithm}{125}{subsection.5.4.3}}
+\newlabel{eq:marignal_mrf}{{5.4.7}{125}{Computation of evidence and marginals}{equation.5.4.7}{}}
+\newlabel{eq:marignal_mrf_2}{{5.4.8}{125}{Computation of evidence and marginals}{equation.5.4.8}{}}
 \citation{PF_tutorial_2002}
 \@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces MLMF Functions with associated parameters. \relax }}{126}{table.caption.85}}
 \newlabel{tab:mlmf_parameters}{{5.1}{126}{MLMF Functions with associated parameters. \relax }{table.caption.85}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}MLMF-SLAM Algorithm}{126}{subsection.5.4.3}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {5.1}{\ignorespaces MLMF-SLAM\relax }}{126}{algorithm.5.1}}
 \newlabel{alg:mrf-slam}{{5.1}{126}{MLMF-SLAM\relax }{algorithm.5.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Space \& time complexity (MLMF)}{127}{subsection.5.4.4}}
@@ -545,12 +545,12 @@
 \newlabel{fig:3bel_lik_profile}{{5.12}{128}{\textit {Left:} Joint distribution $P(A,O^{(1)},O^{(2)})$ of the agent and two objects. Each measurement likelihood function, $P(Y|A,O^{(1)})$, $P(Y|A,O^{(2)})$ and $P(Y|O^{(1)},O^{(2)})$ corresponds to a hyperplane in the joint distribution. The measurement function $P(Y|O^{(1)},O^{(2)})$ stipulates that the objects cannot be in the same state. The marginal space is discretised to $N = 100$ states giving the total number of states in the joint distribution as $100^3$ $(M=3)$. \textit {Right:} Joint distribution of the agent and one object $P(A_t,O|Y_{0:t})$. Three measurement functions have been added to the memory term. At every time step when an action is taken all measurement functions are updated according to the action applied $u_t$. This means that the first function to be added to the memory will have had all actions applied to it. The number of the equations and their associated lines in the plot indicate the order in which they have been added to the memory. The three points are candidates at which we want to evaluate the joint distribution. The cost of evaluating the joint distribution at the yellow point is $\BigO (1)$ since we only have to check the first element in the memory. For the green and cyan points the cost is $\BigO (\log (n))$, where $n$ is the number of likelihood functions in memory.\relax }{figure.caption.87}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.5}Scalable extension to multiple objects}{129}{subsection.5.4.5}}
 \newlabel{subsec:scalabe_extension}{{5.4.5}{129}{Scalable extension to multiple objects}{subsection.5.4.5}{}}
-\newlabel{eq:pair_wise_joint}{{5.4.7}{129}{Scalable extension to multiple objects}{equation.5.4.7}{}}
+\newlabel{eq:pair_wise_joint}{{5.4.9}{129}{Scalable extension to multiple objects}{equation.5.4.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces \textbf  {Scalable filter} Each agent-object joint distribution pair is modelled independently. For clarity we have left out the action random variable $u$ which is linked to every agent node. Two joint distributions $P(A^{(1)},O^{(1)}|Y^{(1)}_{0:t})$ and $P(A^{(2)},O^{(2)}|Y^{(2)}_{0:t})$ parametrise the graphical model. The dashed undirected lines represent a wanted dependency, if present $O^{(1)}$ and $O^{(2)}$ are to be dependent through $A$. In the standard setting there will be no exchange of information between the individual joints. However we demonstrate later on how we perform a one time transfer of information when one of the objects is sensed.\relax }}{130}{figure.caption.89}}
 \newlabel{fig:scalable_mlmf_dae}{{5.13}{130}{\textbf {Scalable filter} Each agent-object joint distribution pair is modelled independently. For clarity we have left out the action random variable $u$ which is linked to every agent node. Two joint distributions $P(A^{(1)},O^{(1)}|Y^{(1)}_{0:t})$ and $P(A^{(2)},O^{(2)}|Y^{(2)}_{0:t})$ parametrise the graphical model. The dashed undirected lines represent a wanted dependency, if present $O^{(1)}$ and $O^{(2)}$ are to be dependent through $A$. In the standard setting there will be no exchange of information between the individual joints. However we demonstrate later on how we perform a one time transfer of information when one of the objects is sensed.\relax }{figure.caption.89}{}}
-\newlabel{eq:marg_indep}{{5.4.8}{130}{Scalable extension to multiple objects}{equation.5.4.8}{}}
-\newlabel{eq:marg_indep_prod}{{5.4.10}{130}{Scalable extension to multiple objects}{equation.5.4.10}{}}
-\newlabel{eq:marg_indep_sum}{{5.4.11}{130}{Scalable extension to multiple objects}{equation.5.4.11}{}}
+\newlabel{eq:marg_indep}{{5.4.10}{130}{Scalable extension to multiple objects}{equation.5.4.10}{}}
+\newlabel{eq:marg_indep_prod}{{5.4.12}{130}{Scalable extension to multiple objects}{equation.5.4.12}{}}
+\newlabel{eq:marg_indep_sum}{{5.4.13}{130}{Scalable extension to multiple objects}{equation.5.4.13}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {5.2}{\ignorespaces Scalable-MLMF: Measurement Update\relax }}{131}{algorithm.5.2}}
 \newlabel{alg:scalabe-mrf-slam}{{5.2}{131}{Scalable-MLMF: Measurement Update\relax }{algorithm.5.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \textbf  {Transfer of information between joint distributions} \textit  {top left and right:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior and post sensing. The red and blue lines correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted black lines are for ease of comparing the joint distributions prior and post sensing. \textit  {bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the blue line becomes an infeasible solution to the agent and object locations. \textit  {bottom left:} The constraint imposed by the measurement likelihood function of the second object (blue line) is transferred to the joint distribution of the first object according to Algorithm \ref  {alg:scalabe-mrf-slam}. The result is a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }}{132}{figure.caption.90}}
@@ -581,25 +581,23 @@
 \newlabel{ch5:appendix}{{5.7}{139}{Appendix}{section.5.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Bayesian filtering recursion}{139}{subsection.5.7.1}}
 \newlabel{appendix:bayes_recursion}{{5.7.1}{139}{Bayesian filtering recursion}{subsection.5.7.1}{}}
-\newlabel{eq:br_chain}{{5.7.1}{139}{Bayesian filtering recursion}{equation.5.7.1}{}}
-\newlabel{eq:cancellations}{{5.7.2}{139}{Bayesian filtering recursion}{equation.5.7.2}{}}
+\newlabel{eq:br_chain}{{5.7.2}{139}{Bayesian filtering recursion}{equation.5.7.2}{}}
+\newlabel{eq:cancellations}{{5.7.3}{139}{Bayesian filtering recursion}{equation.5.7.3}{}}
+\newlabel{eq:ch5_measurement_update}{{5.7.7}{140}{Bayesian filtering recursion}{equation.5.7.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Derivation of the evidence}{140}{subsection.5.7.2}}
 \newlabel{appendix:evidence}{{5.7.2}{140}{Derivation of the evidence}{subsection.5.7.2}{}}
-\newlabel{eq:marginal_likelihood_memory}{{5.7.6}{140}{Derivation of the evidence}{equation.5.7.6}{}}
-\newlabel{eq:marginal_likelihood_memory_last}{{5.7.8}{140}{Derivation of the evidence}{equation.5.7.8}{}}
-\newlabel{eq:marginal_likelihood_equal_I}{{5.7.12}{140}{Derivation of the evidence}{equation.5.7.12}{}}
-\newlabel{eq:marginal_likelihood_equal_I2}{{5.7.16}{140}{Derivation of the evidence}{equation.5.7.16}{}}
+\newlabel{eq:ch5:numerator}{{5.7.8}{140}{Derivation of the evidence}{equation.5.7.8}{}}
+\newlabel{eq:marginal_likelihood_memory}{{5.7.9}{140}{Derivation of the evidence}{equation.5.7.9}{}}
+\newlabel{eq:marginal_likelihood_memory_last}{{5.7.13}{140}{Derivation of the evidence}{equation.5.7.13}{}}
+\newlabel{eq:ch5:less1_1}{{5.7.14}{140}{Derivation of the evidence}{equation.5.7.14}{}}
+\newlabel{eq:ch5:less1_2}{{5.7.15}{140}{Derivation of the evidence}{equation.5.7.15}{}}
+\newlabel{eq:marginal_likelihood_equal_I}{{5.7.17}{140}{Derivation of the evidence}{equation.5.7.17}{}}
+\newlabel{eq:marginal_likelihood_equal_I2}{{5.7.21}{141}{Derivation of the evidence}{equation.5.7.21}{}}
+\newlabel{eq:marginal_liklihood_final}{{5.7.22}{141}{Derivation of the evidence}{equation.5.7.22}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Derivation of the marginal}{141}{subsection.5.7.3}}
 \newlabel{appendix:marginal}{{5.7.3}{141}{Derivation of the marginal}{subsection.5.7.3}{}}
-\newlabel{eq:dependence1}{{5.7.18}{141}{Derivation of the marginal}{equation.5.7.18}{}}
-\newlabel{eq:dependence2}{{5.7.19}{141}{Derivation of the marginal}{equation.5.7.19}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.4}Space \& time complexity (scalable-MLMF)}{141}{subsection.5.7.4}}
-\newlabel{appendix:space_time_scalable_mlmf}{{5.7.4}{141}{Space \& time complexity (scalable-MLMF)}{subsection.5.7.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.5}Space complexity}{141}{subsection.5.7.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.6}Time complexity}{141}{subsection.5.7.6}}
-\newlabel{appendix:memory_time_complexity}{{5.7.6}{141}{Time complexity}{subsection.5.7.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces \textbf  {Memory list} After three updates the memory term $P(Y_{0:t}|A_t,O)$ contains three functions. The parametrisation of the functions is the same with the exception of actions $u_t$ which are added after each motion update step. As the result the first function added to the list will have all the actions applied to it from the first time step to the last.\relax }}{142}{table.caption.97}}
-\newlabel{tab:memory_list}{{5.3}{142}{\textbf {Memory list} After three updates the memory term $P(Y_{0:t}|A_t,O)$ contains three functions. The parametrisation of the functions is the same with the exception of actions $u_t$ which are added after each motion update step. As the result the first function added to the list will have all the actions applied to it from the first time step to the last.\relax }{table.caption.97}{}}
+\newlabel{eq:dependence1}{{5.7.24}{141}{Derivation of the marginal}{equation.5.7.24}{}}
+\newlabel{eq:dependence2}{{5.7.25}{141}{Derivation of the marginal}{equation.5.7.25}{}}
 \bibstyle{plainnat}
 \bibdata{bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}
 \bibcite{FIRM_2011}{{1}{2011}{{a.~Agha-mohammadi et~al.}}{{a.~Agha-mohammadi, Chakravorty, and Amato}}}
@@ -613,7 +611,7 @@
 \bibcite{Bake_Tene_Saxe_2006}{{9}{2006}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
 \bibcite{barberBRML2012}{{10}{2012}{{Barber}}{{}}}
 \bibcite{Baron-Cohen}{{11}{1995}{{Baron-Cohen}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{References}{143}{chapter*.98}}
+\@writefile{toc}{\contentsline {chapter}{References}{143}{chapter*.97}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibcite{gpomdp_2000}{{12}{2000}{{Baxter and Bartlett}}{{}}}

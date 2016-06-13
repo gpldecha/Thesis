@@ -503,12 +503,12 @@ distribution explicitly but rather only compute its impact on the marginals.
 
 Figure \ref{fig:margina_joint_example} shows two time slices of the evolution of the agent and object belief in a 1D world. In the \textit{left}
 figure a line passes through the probability mass of the joint distribution which was initialised to be independent,
-$P(A_0,O) = P(A_0) \cdot P(O)$. This is the effect the measurement function $P(Y_t=0|A_t,O)$ has on the joint distribution given no object was sensed. As the agent 
+$P(A_0,O) = P(A_0) \cdot P(O)$. This is the effect the likelihood function $P(Y_t=0|A_t,O)$ has on the joint distribution given no object was sensed. As the agent 
 moves towards state 100 the likelihood function is re-applied at every iteration and the result is visible in the \textit{right} figure. 
 As a result the probability mass is removed from the area in the joint distribution where $P(Y_t=0|A_t,O)$ has an influence.
-Because of the structure of the measurement likelihood function, this will always in joint distribution $i=j$ states . 
-The same is true for a range and bearing measurement function where the range translates to the width of the tube created in the 
-joint distribution. Our method will rely on remembering the applied measurement function on the joint distribution rather than the result. 
+Because of the structure of the likelihood function, this will always in joint distribution states for which $i=j$ . 
+The same is true for a range and bearing likelihood function where the range translates to the width of the tube created in the 
+joint distribution. Our method will rely on remembering the applied likelihood function on the joint distribution rather than the result. 
 It is far more efficient to remember a function than the values it changed in the
 joint distribution.
 
@@ -564,8 +564,9 @@ In order to compute the marginal likelihood (also known as evidence) $P(Y_t|Y_{0
 $P(O|Y_{0:t})$ efficiently we take advantage of the fact that only a very small area 
 in the joint distribution space will be affected by the measurement likelihood function at each time step.
 
-Without lost of generality the likelihood function will only make a difference to dependent $A \cap O$ regions in the joint distribution. 
-The region inside the symmetric difference $A \ominus O$, will not be affected.
+Without lost of generality the likelihood function will only make a difference to dependent $A \cap O$ regions in the joint distribution, areas 
+where the likelihood function smaller than one and the region inside $A \ominus O$ will not be affected, where the likelihood function 
+is equal to one.
 Figure \ref{fig:overlap_dependence_independence} shows the relation between the measurement 
 function $P(Y_t|A_t,O)$ and the joint distribution $P(A_t,O|Y_{0:t})$ for three different initialisations. 
 
@@ -608,16 +609,18 @@ The evidence of the measurement $P(Y_t|Y_{0:t-1})$ is the amount of probability 
 distribution where the likelihood function has set the parameters of the joint distribution to zero. At time step $t$, the normalising factor to be added to 
 the evidence is the difference between the probability mass located inside $A\cap O$ before the application of the measurement 
 function $P(Y_t|A_t,O)$ and after (see Appendix \ref{appendix:evidence} for the full derivation).
-
-%\begin{align}
-%  P(Y_0) &= 1 - \overbrace{\sum\limits_{A_0}\sum\limits_{O} P_{\cap}(A_0,O|Y_0) - P(Y_0|A_0,O)\cdot P_{\cap}(A_0,O|Y_0)}^{\mathlarger{\mathlarger{\alpha_0}}}
-%\end{align}
+%\begin{equation}
+%  P(Y_0) = 1 - \overbrace{\sum\limits_{A_0}\sum\limits_{O} P_{\cap}(A_0,O|Y_0) - P(Y_0|A_0,O)\cdot P_{\cap}(A_0,O|Y_0)}^{\alpha_0}
+%\end{equation}
 The advantage of this form is that the summation is only over states which are in the dependent area $\cap$ of the joint 
 distribution. This is generally always much smaller than the full space itself. By expanding the term $\alpha$ at time step $t$, 
 we obtain a better intuition, see Equation \ref{eq:I}.
-\begin{equation}\label{eq:I}
- \alpha_t =  \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O) \Big(1 - P(Y_t|A_t,O)\Big) \nonumber \\
-\end{equation}
+\begin{align}\label{eq:I}
+ \alpha_t &= \sum\limits_{A_t}\sum\limits_{O} \underbrace{P_{\cap}(A_t,O|Y_{0:t-1})}_{P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O) } (1 - P(Y_t|A_t,O)) \\
+\end{align}
+% \alpha_t &=  \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot P(Y_{0:t-1}|A_t,O) \Big(1 - P(Y_t|A_t,O)\Big) \nonumber \\
+
+
 Until an object is sensed, the likelihood will always be zero $P(Y_t|A_t,O) = 0$ and $\alpha$ will correspond to the probability 
 mass which falls within the region of the joint distribution in which the likelihood function is zero. In Figure 
 \ref{fig:overlap_dependence_independence} (\textit{Middle \& Right}) the sum of the probability mass in the green 
@@ -1095,56 +1098,78 @@ exponentially as it is in the case with the histogram and MLMF filters.
 \subsection{Bayesian filtering recursion}\label{appendix:bayes_recursion}
 
 \begin{align}
+  P(A_{0:t},O,Y_{0:t},u_{0:t})  &= P(A_0)P(O)\prod_{t=1}^{t} P(A_t|A_{t-1},u_{t-1}) P(Y_t|A_t,O) \\
   P(A_t,O,Y_{0:t},u_{0:t}) &= \sum_{A_{t-1}} P(A_t,A_{t-1},O,Y_t,Y_{0:t-1},u_{t},u_{0:t-1}) \label{eq:br_chain} \\
-		           &= \sum_{A_{t-1}} P(Y_t|\Ccancel[red]{Y_{0:t-1}},A_t,\cancel{A_{t-1}},O,\cancel{u_{t}},\cancel{u_{0:t-1}}) \label{eq:cancellations}
-		           \cdot  P(A_t|A_{t-1},O,u_{t},\cancel{Y_{0:t-1}},\cancel{u_{0:t-1}}) \\\nonumber 
-		           & \;\;\;\;\;\;  \cdot  P( A_{t-1},O,\Ccancel[red]{u_t},Y_{0:t-1},u_{0:t-1}) \\
-		           &= \sum_{A_{t-1}} P(Y_t|A_{t},O) \cdot P(A_t|A_{t-1},u_{t}) \cdot P(A_{t-1},O,Y_{0:t-1},u_{0:t-1}) \\
-		           &= P(Y_t|A_{t},O) \cdot \underbrace{\sum_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P(A_{t-1},O,Y_{0:t-1},u_{0:t-1})}_{P(A_t,O,Y_{0:t-1},u_{0:t})}
+		           &= \sum_{A_{t-1}} P(Y_t|\Ccancel[red]{Y_{0:t-1}},A_t,\cancel{A_{t-1}},O,\cancel{u_{t}},\cancel{u_{0:t-1}})\cdot \nonumber \\
+		           &\;\;\;\;\;\;\;\;\;\;\;\;       P(A_t|A_{t-1},O,u_{t},\cancel{Y_{0:t-1}},\cancel{u_{0:t-1}}) \cdot \nonumber  \\
+		           & \;\;\;\;\;\;\;\;\;\;\;\;      P( A_{t-1},O,\Ccancel[red]{u_t},Y_{0:t-1},u_{0:t-1}) \label{eq:cancellations} \\
+		           &= \sum_{A_{t-1}} P(Y_t|A_{t},O) \cdot P(A_t|A_{t-1},u_{t}) \cdot \nonumber \\
+		           &\;\;\;\;\;\;\;\;\;\;\;\;  P(A_{t-1},O,Y_{0:t-1},u_{0:t-1}) \\
+		           &= P(Y_t|A_{t},O) \cdot \underbrace{\sum_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P(A_{t-1},O,Y_{0:t-1},u_{0:t-1})}_{P(A_t,O,Y_{0:t-1},u_{0:t})} \\
+		          &= P(Y_t|A_{t},O) \cdot P(A_t,O,Y_{0:t-1},u_{0:t})
 \end{align}
 
 From line \ref{eq:br_chain} to \ref{eq:cancellations} we apply the chain rule of probabilities.
 All the cancellations on line \ref{eq:cancellations} come from the \textit{Markov Assumption} and the structure of the Bayesian network.
 The resulting final Bayesian recursion is obtained by conditioning on the measurement and actions, which is the normalisation factor.
 
-\begin{equation}
- P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(Y_t|A_{t},O) \cdot P(A_{t},O|Y_{0:t-1},u_{0:t})}{P(Y_t|Y_{0:t-1})}
+\begin{equation}\label{eq:ch5_measurement_update}
+ P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(Y_t|A_{t},O) \cdot P(A_{t},O|Y_{0:t-1},u_{0:t})}{P(Y_t|Y_{0:t-1},u_{0:t-1})}
 \end{equation}
 
 
 \subsection{Derivation of the evidence}\label{appendix:evidence}
 
-From first principle, Equation \ref{eq:marginal_likelihood_memory}, we demonstrated that the marginal likelihood is simply the difference
+From first principle, Equation \ref{eq:marginal_likelihood_memory}, we demonstrated that the marginal likelihood (also called evidence) is simply the difference
 in the probability mass located inside the measurement functions after applying $P(Y_t|A_t,O)$.
 
-\begin{align} \label{eq:marginal_likelihood_memory}
- P(Y_t|Y_{0:t-1}) &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot P(A_t,O|Y_{0:t-1}) \\
+The marginal likelihood is the marginalisation of all non measurement random variables from 
+the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerator} (we dropped $u_{0:t-1}$ for easing the notation).
+\begin{align}\label{eq:ch5:numerator}
+  P(Y_t,A_t,O|Y_{0:t-1}) &= P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})\\ 
+ P(Y_t|Y_{0:t-1}) &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t,A_t,O|Y_{0:t-1})  \label{eq:marginal_likelihood_memory}  
+\end{align}
+ 
+\begin{align}
+ &P(Y_t|Y_{0:t-1}) \\ 
+		  &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot P(A_t,O|Y_{0:t-1}) \\
 		  &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot \Big(P_{\ominus}(A_t,O|{\color{red}Y_{0:t-1}}) + P_{\cap}(A_t,O|Y_{0:t-1})\Big)\\
 		  &= \sum\limits_{A_t}\sum\limits_{O} P_{\ominus}(A_t,O|{\color{red}Y_{0:t}}) + P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \label{eq:marginal_likelihood_memory_last}
 \end{align}
 
-We use the fact that after applying the measurement likelihood function, which lies in the interval $0 \leq P(Y_t|A_t,O) \leq 1$, 
-to the joint distribution, its sum will always be smaller than $1$.
+In Equation \ref{eq:ch5:less1_1}, we use the fact that after applying the measurement likelihood function, which lies in the interval $0 \leq P(Y_t|A_t,O) \leq 1$, 
+to the joint distribution, its sum will always be smaller or equal to $1$.
+From Equation \ref{eq:ch5:less1_1} to \ref{eq:ch5:less1_2} we use the fact that $P(A_t,O|Y_{0:t-1})$ is a probability density and must sum to 1.
 
 \begin{align}
-  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})  &\leq \sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1}) \\
-  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1}) &\leq 1 \\
+  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})  &\leq \sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1}) \label{eq:ch5:less1_1}\\
+  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1}) &\leq 1 \label{eq:ch5:less1_2} \\
   P(Y_t|Y_{0:t-1}) &\leq 1 \\
   P(Y_t|Y_{0:t-1}) + \alpha &= 1 \label{eq:marginal_likelihood_equal_I}
 \end{align}
-
 We equate Equation \ref{eq:marginal_likelihood_equal_I} with \ref{eq:marginal_likelihood_memory_last} and find a solution for the marginal likelihood which
 only depends on areas of the joint distribution which are dependent.
 		   
 \begin{align}		  
- \sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1}) - \alpha  &= \sum\limits_{A_t}\sum\limits_{O} P_{\ominus}(A_t,O|Y_{0:t}) + P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
-   \alpha &= \sum\limits_{A_t}\sum\limits_{O}  P_{\ominus}(A_t,O|Y_{0:t}) + P_{\cap}(A_t,O|Y_{0:t-1})\\
-     & - P_{\ominus}(A_t,O|Y_{0:t}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
-    \alpha &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \label{eq:marginal_likelihood_equal_I2}
+ &\overbrace{\sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} - \alpha  = \nonumber \\ 
+      &\sum\limits_{A_t}\sum\limits_{O} P_{\ominus}(A_t,O|Y_{0:t}) + P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1})
 \end{align}
 
-The last line, Equation \ref{eq:marginal_likelihood_equal_I2}, when substituted back into line \ref{eq:marginal_likelihood_equal_I}, tells us that the normalisation factor or marginal likelihood is $1$ minus the difference in the area of
-dependence a priori to the application of the measurement function.
+\begin{align}   
+   \alpha &= \sum\limits_{A_t}\sum\limits_{O}  \overbrace{P_{\ominus}(A_t,O|Y_{0:t}) + P_{\cap}(A_t,O|Y_{0:t-1})}^{P(A_t,O|Y_{0:t-1})}\nonumber\\ 
+     & - P_{\ominus}(A_t,O|Y_{0:t}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
+    \alpha &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
+	   &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) (1 - P(Y_t|A_t,O)) \label{eq:marginal_likelihood_equal_I2}
+\end{align}
+
+The last line, Equation \ref{eq:marginal_likelihood_equal_I2}, when substituted back into line \ref{eq:marginal_likelihood_equal_I}, tells us that the 
+normalisation factor or marginal likelihood is $1$ minus the difference in the area of dependence a priori to the application of 
+the measurement function, Equation \ref{eq:marginal_liklihood_final}.
+
+\begin{equation}\label{eq:marginal_liklihood_final}
+ P(Y_t|Y_{0:t}) = 1 - \alpha
+\end{equation}
+
 
 \subsection{Derivation of the marginal}\label{appendix:marginal}
 
@@ -1157,50 +1182,42 @@ we give a form of this integration which exploits the independent regions in the
 \end{align}
 
 
-\subsection{Space \& time complexity (scalable-MLMF)}\label{appendix:space_time_scalable_mlmf}
+%\subsection{Space \& time complexity (scalable-MLMF)}\label{appendix:space_time_scalable_mlmf}
+%\subsection{Space complexity}
+%\paragraph{Scalable-MLMF}
+%The initial number of parameters is $\left(M - 1\right) \cdot \left(2 \cdot (2 \cdot N)\right)$. The $(2 \cdot N)$ is the cost per random variable
+%as before, the additional factor of $2$ arises because we model pair-wise joint distributions and there are two random variables per joint distribution. The final
+%factor $\left(M - 1\right)$ corresponds to the total number of joint distributions, in the case of $M$ random variables. The final cost is then 
+%$(M - 1) \cdot N \cdot \left(4 + D\right)$ when taking into account the history.
+%\subsection{Time complexity}
+%\paragraph{Scalabe-MLMF} The computational cost is $\BigO{2 \cdot \left(M - 1\right) \cdot N }$. For one agent-object joint distribution, $N$
+%states lie in the area of influence of the measurement function. Given $M$ random variables, the number of states needed to evaluate in all the joint distributions
+%is $M-1$. The final marginal of the agent $P(A_t|Y_t) = \prod\limits_{i=1}^{M-1} P(A^{(i)}_t|Y^{(i)}_t)$ is obtained through $(M-1)\cdot N$ multiplications or additions.
+%This explains the factor of $2$ in the final computational cost.
+%\paragraph{Memory}\label{appendix:memory_time_complexity}%
+%The MLMF filter stores the history of all likelihood functions which have been applied on the joint distribution. This is the 
+%memory term $P(Y_{0:t-1}|A_t,O)$ in Equation \ref{eq:joint_filter_memory}. Table \ref{tab:memory_list} shows the memory list after three 
+%iterations and the resulting effect in  the joint distribution is illustrated in Figure \ref{fig:3bel_lik_profile} \textit{right}.
+%\begin{table}
+%\begin{center}
+% \begin{tabular}{llc}
+% $P(Y_{0 }|A_0,O)  = $  & $P(Y_0|A_0,O)$				                            & (t=0) \\
+% $P(Y_{0:1}|A_1,O) = $  & $P(Y_1|A_1,O) \cdot P(Y_0|A_1,O+u_1)$                             & (t=1) \\
+% $P(Y_{0:2}|A_2,O) = $  & $P(Y_2|A_2,O) \cdot P(Y_1|A_2,O+u_1) \cdot P(Y_0|A_2,O+u_1+u_2)$  & (t=2)
+%\end{tabular}
+%\end{center}
+%\caption{\textbf{Memory list} After three updates the memory term $P(Y_{0:t}|A_t,O)$ contains three functions. The parametrisation
+%of the functions is the same with the exception of actions $u_t$ which are added after each motion update step. As the result the 
+%first function added to the list will have all the actions applied to it from the first time step to the last.}
+%\label{tab:memory_list}
+%\end{table}
 
-
-\subsection{Space complexity}
-
-\paragraph{Scalable-MLMF}
-The initial number of parameters is $\left(M - 1\right) \cdot \left(2 \cdot (2 \cdot N)\right)$. The $(2 \cdot N)$ is the cost per random variable
-as before, the additional factor of $2$ arises because we model pair-wise joint distributions and there are two random variables per joint distribution. The final
-factor $\left(M - 1\right)$ corresponds to the total number of joint distributions, in the case of $M$ random variables. The final cost is then 
-$(M - 1) \cdot N \cdot \left(4 + D\right)$ when taking into account the history.
-
-\subsection{Time complexity}
-
-\paragraph{Scalabe-MLMF} The computational cost is $\BigO{2 \cdot \left(M - 1\right) \cdot N }$. For one agent-object joint distribution, $N$
-states lie in the area of influence of the measurement function. Given $M$ random variables, the number of states needed to evaluate in all the joint distributions
-is $M-1$. The final marginal of the agent $P(A_t|Y_t) = \prod\limits_{i=1}^{M-1} P(A^{(i)}_t|Y^{(i)}_t)$ is obtained through $(M-1)\cdot N$ multiplications or additions.
-This explains the factor of $2$ in the final computational cost.
-
-\paragraph{Memory}\label{appendix:memory_time_complexity}
-
-The MLMF filter stores the history of all likelihood functions which have been applied on the joint distribution. This is the 
-memory term $P(Y_{0:t-1}|A_t,O)$ in Equation \ref{eq:joint_filter_memory}. Table \ref{tab:memory_list} shows the memory list after three 
-iterations and the resulting effect in  the joint distribution is illustrated in Figure \ref{fig:3bel_lik_profile} \textit{right}.
-
-\begin{table}
-\begin{center}
- \begin{tabular}{llc}
- $P(Y_{0 }|A_0,O)  = $  & $P(Y_0|A_0,O)$				                            & (t=0) \\
- $P(Y_{0:1}|A_1,O) = $  & $P(Y_1|A_1,O) \cdot P(Y_0|A_1,O+u_1)$                             & (t=1) \\
- $P(Y_{0:2}|A_2,O) = $  & $P(Y_2|A_2,O) \cdot P(Y_1|A_2,O+u_1) \cdot P(Y_0|A_2,O+u_1+u_2)$  & (t=2)
-\end{tabular}
-\end{center}
-\caption{\textbf{Memory list} After three updates the memory term $P(Y_{0:t}|A_t,O)$ contains three functions. The parametrisation
-of the functions is the same with the exception of actions $u_t$ which are added after each motion update step. As the result the 
-first function added to the list will have all the actions applied to it from the first time step to the last.}
-\label{tab:memory_list}
-\end{table}
-
-At every time step the current action (causing a displacement) is applied to all elements in the memory before appending the new 
-measurement function $P(Y_t|A_t,O)$. The application of the actions causes a shift of likelihood functions along the agent's axis
-in the joint distribution. As a result, the memory list is always sorted and the first element is always the last measurement function
-to have been applied. 
-During the measurement update Equation \ref{eq:marignal_mrf_2}, only the first entry of the memory function has to be evaluated
-giving a cost of $\BigO{1}$ at every time step when evaluating the dependent states (those which lie on the hyperplane). When
-evaluating a point which is not on the hyperplanes, its offset ($c$) can be evaluated $A=O+c$ and checked whether it is contained
-within the list. We employ a binary search which has a time complexity of $\BigO{\log(n)}$ (where $n$ is the current size of the memory). This is not necessary during most
-of the filtering process since the dependent states to be evaluated in the joint distribution always lie on the line $A=O$.
+%At every time step the current action (causing a displacement) is applied to all elements in the memory before appending the new 
+%measurement function $P(Y_t|A_t,O)$. The application of the actions causes a shift of likelihood functions along the agent's axis
+%in the joint distribution. As a result, the memory list is always sorted and the first element is always the last measurement function
+%to have been applied. 
+%During the measurement update Equation \ref{eq:marignal_mrf_2}, only the first entry of the memory function has to be evaluated
+%giving a cost of $\BigO{1}$ at every time step when evaluating the dependent states (those which lie on the hyperplane). When
+%evaluating a point which is not on the hyperplanes, its offset ($c$) can be evaluated $A=O+c$ and checked whether it is contained
+%within the list. We employ a binary search which has a time complexity of $\BigO{\log(n)}$ (where $n$ is the current size of the memory). This is not necessary during most
+%of the filtering process since the dependent states to be evaluated in the joint distribution always lie on the line $A=O$.

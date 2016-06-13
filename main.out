@@ -78,7 +78,4 @@
 \BOOKMARK [2][-]{subsection.5.7.1}{Bayesian filtering recursion}{section.5.7}% 78
 \BOOKMARK [2][-]{subsection.5.7.2}{Derivation of the evidence}{section.5.7}% 79
 \BOOKMARK [2][-]{subsection.5.7.3}{Derivation of the marginal}{section.5.7}% 80
-\BOOKMARK [2][-]{subsection.5.7.4}{Space \046 time complexity \(scalable-MLMF\)}{section.5.7}% 81
-\BOOKMARK [2][-]{subsection.5.7.5}{Space complexity}{section.5.7}% 82
-\BOOKMARK [2][-]{subsection.5.7.6}{Time complexity}{section.5.7}% 83
-\BOOKMARK [0][-]{chapter*.98}{References}{}% 84
+\BOOKMARK [0][-]{chapter*.97}{References}{}% 81
