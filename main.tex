@@ -27,9 +27,8 @@
 
 % ========== Algorithm
 
-\usepackage[chapter, ruled]{algorithm}
-\usepackage{algorithmicx}
-\usepackage{algpseudocode}
+%\usepackage[chapter, ruled]{algorithm}
+\usepackage[ruled,vlined,linesnumbered,noresetcount,boxed]{algorithm2e}
 \usepackage{color}
 
 \usepackage{bibentry}
@@ -40,7 +39,7 @@
 \usepackage{multirow}
 \usepackage[footnotesize,bf,hang]{caption,subfigure}
 
-\captionsetup[algorithm]{font=small}
+%\captionsetup[algorithm]{font=small}
 \usepackage{booktabs} %Publication quality tables in LaTeX
 
 %\usepackage{mathrsfs} %cool font, see http://zelmanov.ptep-online.com/ctan/symbols-a4.pdf
@@ -62,15 +61,6 @@
 \usepackage{color, colortbl}
 \definecolor{Gray}{gray}{0.9}
 \usepackage{placeins}
-\usepackage{algorithm,algpseudocode}% http://ctan.org/pkg/{algorithms,algorithmx}
-\algnewcommand{\Inputs}[1]{%
-  \State \textbf{Inputs:}
-  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
-}
-\algnewcommand{\Initialize}[1]{%
-  \State \textbf{Initialize:}
-  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
-}
 
 \newlist{mylist}{enumerate}{5}  % Specify 5 Levels as clone of enumerate
 \setlist[mylist,1]{label={\arabic*.}}  % Roman uppercase numbers I.
@@ -141,7 +131,7 @@
 \newcommand{\xb}{\dot{x}|b}
 
 \newcommand{\piK}{w^{[k]}}
-\newcommand{\Para}{\boldsymbol{\theta}}
+\newcommand{\Param}{\boldsymbol{\theta}}
 
 \newcommand{\V}{\ensuremath{\mathcal{V}}}
 \newcommand{\varOne}{\ensuremath{\sigma_{x}^{2}}}

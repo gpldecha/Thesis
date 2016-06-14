@@ -369,16 +369,16 @@ and the belief state, $b$, over the plug's location.
 \section{Learning Actor and Critic}\label{sec:learning-value-actor}
 
 In our approach we learn two data driven policies. The first policy maps from belief space 
-to linear velocity $\pi_{\Para_1} : b_t \mapsto \dot{x}_t$ and the second from 
-angular sensed wrench to angular velocity, $ \pi_{\Para_2} : \phi_t \mapsto \omega_t$.
-We chose to learn the belief policy $\pi_{\Para_1}$ in a Actor-Critic RL framework 
-and the wrench policy $\pi_{\Para_2}$ directly from the demonstrated data as was done 
+to linear velocity $\pi_{\Param_1} : b_t \mapsto \dot{x}_t$ and the second from 
+angular sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi_t \mapsto \omega_t$.
+We chose to learn the belief policy $\pi_{\Param_1}$ in a Actor-Critic RL framework 
+and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
 in [cite], which proved to be efficient in overcoming jamming during the PiH. 
-A POMDP solver's objective is to find a policy (Actor), $\pi_{\Para_1}: b \mapsto u$, which maximises 
-the value function (Critic) $V^{\pi_{\Para_1}} : b \mapsto \mathbb{R}$ for an initial belief, $b_{0}$. The value function
+A POMDP solver's objective is to find a policy (Actor), $\pi_{\Param_1}: b \mapsto u$, which maximises 
+the value function (Critic) $V^{\pi_{\Param_1}} : b \mapsto \mathbb{R}$ for an initial belief, $b_{0}$. The value function
 is the expected reward over an infinite time horizon.
 \begin{equation}\label{eq:value_function}
-  V^{\pi_{\Para_1}}(b_t) = \mathbb{E}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_0=b,\pi_{\Para_1}\Bigg\}
+  V^{\pi_{\Param_1}}(b_t) = \mathbb{E}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_0=b,\pi_{\Param_1}\Bigg\}
 \end{equation}
 
 In an Actor-Critic setting, the temporal difference error, $\delta_t \in \mathbb{R}$, of the value function (the Critic) is 
@@ -388,15 +388,15 @@ as the orientation remains the same during most of the search until it is time t
 When the plug has to be connected it is necessary to control for orientation to avoid jamming. 
 
 \subsection{Actor}
-%Two control policies are learned; The first $\pi_{\Para_1}: b \mapsto \U$, maps belief state $b$ to linear velocity, 
-%$\U$ and the second, $\pi_{\Para_2}: \phi \mapsto \omega$ , sensed wrench, $\phi$, to angular velocity, $\omega$.
+%Two control policies are learned; The first $\pi_{\Param_1}: b \mapsto \U$, maps belief state $b$ to linear velocity, 
+%$\U$ and the second, $\pi_{\Param_2}: \phi \mapsto \omega$ , sensed wrench, $\phi$, to angular velocity, $\omega$.
 %These actors/policies are parametrised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 Both actors/policies are parametrised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 
 \begin{equation}
- \pi_{\Para}(\U,\B) = \sum\limits_{k=1}^{K} \piK	    \cdot  g(\U,\B;\MuK,\SigK) \label{eq:GMM}
+ \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK	    \cdot  g(\U,\B;\MuK,\SigK) \label{eq:GMM}
 \end{equation}
-The parameters $\Para = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
 of the individual Gaussian functions, $g(.)$,
 \begin{center}
 $\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
@@ -409,18 +409,18 @@ where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in
 %There are three steps to learning and use for control a GMM model.  Firstly a generative model is learned through 
 %Expectation-Maximisation (EM) which maximised the likelihood
 
-A generative model of the angular velocity and wrench $\pi_{\Para_2}(\omega,\theta)$ and a generative model 
-of the linear velocity and belief state $\pi_{\Para_1}(\dot{x},b)$ are learned. 
+A generative model of the angular velocity and wrench $\pi_{\Param_2}(\omega,\theta)$ and a generative model 
+of the linear velocity and belief state $\pi_{\Param_1}(\dot{x},b)$ are learned. 
 In both cases we use the Bayesian Information Criterion to determine the number of Gaussian functions.
-In the next section, we will show how the parameters of $\pi_{\Para_1}$ can be adapted by the value function of the Critic.
+In the next section, we will show how the parameters of $\pi_{\Param_1}$ can be adapted by the value function of the Critic.
 
-%First a generative model, $p_{\Para}(\dot{x},b)$, is learned through maximising the likelihood of 
+%First a generative model, $p_{\Param}(\dot{x},b)$, is learned through maximising the likelihood of 
 %the dataset by Expectation-Maximisation (EM). 
-%Second the conditional is taken $p_{\Para}(\dot{x}|b)$
+%Second the conditional is taken $p_{\Param}(\dot{x}|b)$
 %giving a distribution over the applicable actions $\dot{x}$, Equation \ref{eq:GMC}
 
 %\begin{equation} 
-%  \pi_{\Para}(\U|\B) = \sum\limits_{k=1}^{K} \piK(\B) \cdot  g(\B;\MuK_{\U|\B},\SigK_{\U|\B}) \label{eq:GMC}
+%  \pi_{\Param}(\U|\B) = \sum\limits_{k=1}^{K} \piK(\B) \cdot  g(\B;\MuK_{\U|\B},\SigK_{\U|\B}) \label{eq:GMC}
 %\end{equation}
 %\begin{align}
 % w^{[k]}(\B)  &= \frac{\piK \cdot g(\B;\MuK_{\B},\SigK_{\B\B})}{\sum_{j=1}^{K} w^{[j]} \cdot g(\B;\Mu{j}_{\B},\Sig{j}_{\B\B}) } \\
@@ -428,8 +428,8 @@ In the next section, we will show how the parameters of $\pi_{\Para_1}$ can be a
 %  \SigK_{\U|\B} &= \SigK_{\U\U} - \SigK_{\U\B}\invSigK_{\B\B}\SigK_{\B\U}
 %\end{align}
 %Thirdly a concrete action, to be applied, is derived from the conditional distribution. One approach is
-%to take the expectation of the conditional, $\hat{\U} = \mathbb{E}_{p_{\Para}(\U|\B)}\{\U\}$ whilst 
-%another is to draw a sample $\U \sim p_{\Para}(\U|\B)$. 
+%to take the expectation of the conditional, $\hat{\U} = \mathbb{E}_{p_{\Param}(\U|\B)}\{\U\}$ whilst 
+%another is to draw a sample $\U \sim p_{\Param}(\U|\B)$. 
 
 \subsection{Critic}
 
@@ -475,20 +475,20 @@ This is an offline method which applies multiple sweeps of the Bellman backup op
 over a dataset of tuples $\{(\Bi_t,\Ui_t,r^{[i]}_{t},\Bi_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual,
 $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges. 
 
-\begin{algorithm} 
-\caption{Fitted Policy Evaluation}
-\label{alg:fpe}
-\begin{algorithmic}[1]
-    \Inputs{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
-    \State{Initialise $\hat{V}^{\pi}_{0} = 0$}
-    \For {$k=0$ in $K$}
-        \State $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$)
-	\If{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$ } 
-	  \State \textbf{return} $\hat{V}^{\pi}_{k+1}(\B)$
-	 \EndIf
-    \EndFor
-\end{algorithmic}
-\end{algorithm}
+%\begin{algorithm} 
+%\caption{Fitted Policy Evaluation}
+%\label{alg:fpe}
+%\begin{algorithmic}[1]
+%    \Inputs{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+%    \State{Initialise $\hat{V}^{\pi}_{0} = 0$}
+%    \For {$k=0$ in $K$}
+%        \State $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$)
+%	\If{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$ } 
+%	  \State \textbf{return} $\hat{V}^{\pi}_{k+1}(\B)$
+%	 \EndIf
+%    \EndFor
+%\end{algorithmic}
+%\end{algorithm}
 
 A wide spectrum of research has made use of batch RL methods to learn policies. 
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 
@@ -540,26 +540,26 @@ The reward of a demonstrated trajectory (one episode) is given by the discounted
 \begin{equation}\label{eq:disc_return}
  R(\B^{[i]},\U^{[i]}) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
 \end{equation}
-All policy gradient approaches seek to find a set of parameters, $\Para$, of the Actor,
+All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
 which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward}.
 \begin{align}\label{eq:expected_reward}
- J(\Para) &= \mathbb{E}_{\pi_{\Para}(\U,\B)}\{R(\B,\U)\} \nonumber \\
-	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Para}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{\pi_{\Para}(\U^{[i]},\B^{[i]})} \, R(\B^{[i]},\U^{[i]}) 
+ J(\Param) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\{R(\B,\U)\} \nonumber \\
+	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{\pi_{\Param}(\U^{[i]},\B^{[i]})} \, R(\B^{[i]},\U^{[i]}) 
 \end{align}
 
-To find the parameters which maximise the cost function, $\argmax_{\Para'} J(\Para')$, the derivative is taken and 
+To find the parameters which maximise the cost function, $\argmax_{\Param'} J(\Param')$, the derivative is taken and 
 set to zero. As this cannot be done directly, we maximise the logarithmic lower bound   
 of the cost function. This results in Equation \ref{eq:grad_log_cost},
 
 \begin{equation} \label{eq:grad_log_cost}
-    \nabla_{\Para'}\log(J(\Para')) = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Para'}\log \pi_{\Para'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
+    \nabla_{\Param'}\log(J(\Param')) = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
 \end{equation}
 
 Setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-$\Para=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
+$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
 which is weighted by $Q^{\pi}$, see Appendix \ref{app:lb} for a more complete derivation.
-We use the TD error of the \textit{Critic} as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi_{\Para}}$, 
-is close to the true value function $V^{\pi_{\Para}}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
+We use the TD error of the \textit{Critic} as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi_{\Param}}$, 
+is close to the true value function $V^{\pi_{\Param}}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
 (see Appendix \ref{app:unbiased_delta}).
 \begin{equation}\label{eq:advantage_f}
  A^{\pi}(b_t,u_t) = Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) = \delta^{\pi}_t
@@ -576,7 +576,7 @@ the Q-EM update steps cannot allow negative weights, we rescale the TD error to 
 %data set, $D_1 = \big\{\U^{[i]}_{1:T},\B^{[i]}_{1:T},\delta^{[i]}_{1:T}\}^{i=1\dots N}$ and learn a second policy for inserting the 
 %final steps of connecting the plug to socket with data set $D_2 = \{\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}^{i=1\dots N}$. 
 %In Figure \ref{fig:data_flow} we illustrate the data flow and the policies which are learned. Note that we also learn a belief space 
-%policy directly from the demonstrations, $\pi_{\Para_3}(\U,\B)$, which we will refer to as the GMM policy and we will use it to compare 
+%policy directly from the demonstrations, $\pi_{\Param_3}(\U,\B)$, which we will refer to as the GMM policy and we will use it to compare 
 %with the policy corrected by the Critic, which we call the Q-EM policy.
 %\begin{figure}[h]
 %  \centering
@@ -584,8 +584,8 @@ the Q-EM update steps cannot allow negative weights, we rescale the TD error to 
 %  \caption{Data flow and policies learned. The original data consists of five variables which are recorded during the demonstrations given 
 %  by the human teachers. The probability density function of the believed location of the end effector is compressed to a belief state, which 
 %  is the most likely state and entropy. The value function is learned via fitted policy iteration and each data point has a temporal difference 
-%  error. An actor policy is learned via Q-EM, $\pi_{\Para_1}(\U,\B)$ , a regular policy is learned via the standard EM approach, $\pi_{\Para_3}(\U,\B)$
-%  and a plug insertion policy is learned $\pi_{\Para_2}(\U,\B)$.}
+%  error. An actor policy is learned via Q-EM, $\pi_{\Param_1}(\U,\B)$ , a regular policy is learned via the standard EM approach, $\pi_{\Param_3}(\U,\B)$
+%  and a plug insertion policy is learned $\pi_{\Param_2}(\U,\B)$.}
 %  \label{fig:data_flow}
 %\end{figure}
 
@@ -597,7 +597,7 @@ the linear control policy is active. The orientation is kept constant.
 The direction to search is given by conditional, Equation \ref{eq:gmm_conditional},
 
 \begin{equation}\label{eq:gmm_conditional}
- \pi_{\Para}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \cdot g(\dot{x};\MuK_{\xb},\SigK_{\xb})
+ \pi_{\Param}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \cdot g(\dot{x};\MuK_{\xb},\SigK_{\xb})
 \end{equation}
 
 which is a distribution over the possible normalised velocities. The subscript $\xb$ indicates that the parameters 
@@ -615,7 +615,7 @@ direction, Equation \ref{eq:alpha_eq} - \ref{eq:alpha_expectation}.
 
 \begin{align}
  \alpha(\dot{x}) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<\dot{x},\MuK_{\xb}>)) \label{eq:alpha_eq}\\
- \dot{x} &= \mathbb{E}_{\alpha}\{\pi_{\Para}(\dot{x}|b)\} = \sum_{k=1}^K \alpha_k(\dot{x}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
+ \dot{x} &= \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|b)\} = \sum_{k=1}^K \alpha_k(\dot{x}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
 \end{align}
 
 When a velocity mode being applied is no longer present (because we have moved into a region of belief space where the current applied 
@@ -1085,35 +1085,35 @@ designing complicated reward functions. This is especially advantageous when onl
 
 \section{Appendix}
 \subsection{EM policy search}\label{app:lb}
-Steps taken to make a policy $pi_{\Para}(\U,\B)$ maximise the objective function, $J(\Para)$.
-The policy will be maximised with respect to the lower bound of the cost function $J(\Para)$:
+Steps taken to make a policy $pi_{\Param}(\U,\B)$ maximise the objective function, $J(\Param)$.
+The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
 \begin{align}
-  J(\Para') &= \sum_{i \in \mathbb{T}} \pi_{\Para'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
-	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Para'}(\Ui,\Bi)}{\pi_{\Para}(\Ui,\Bi)} \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi)
+  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
+	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
 \end{align}
 
 where $\mathbb{T}$ is the set of all rollouts. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
 summation.
 
 \begin{align}
-  \log( J(\Para') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Para'}(\Ui,\Bi)}{\pi_{\Para}(\Ui,\Bi)} \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Para'}(\Ui,\Bi)}{\pi_{\Para}(\Ui,\Bi)}\Bigg) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
+  \log( J(\Param') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
 \end{align}
 
-We take the derivative of the lower bound of $\log(J(\Para'))$, Equation \ref{eq:lower_bound}, with respect to $\Para'$ and set it to 
+We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
 zero so as to maximise the cost function.
 
 \begin{align}
- &\nabla_{\Para'}  \log( J(\Para') ) = \nonumber\\
- &\sum_{i \in \mathbb{T}} \nabla_{\Para'} \log\big( \pi_{\Para'}(\Ui,\Bi)\big) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    & - \underbrace{ \nabla_{\Para'} \log\big( \pi_{\Para}(\Ui,\Bi)\big) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
-				    &= \sum_{i \in \mathbb{T}} \nabla_{\Para'} \log\big( \pi_{\Para'}(\Ui,\Bi)\big) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    &= \mathbb{E}_{\pi_{\Para}(\U,\B)} \Big\{ \nabla_{\Para'} \log\big( \pi_{\Para'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
+ &\nabla_{\Param'}  \log( J(\Param') ) = \nonumber\\
+ &\sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+				    & - \underbrace{ \nabla_{\Param'} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
+				    &= \sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+				    &= \mathbb{E}_{\pi_{\Param}(\U,\B)} \Big\{ \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
 \end{align}
 
 \begin{align}
- \nabla_{\Para'}  \log( J(\Para') ) &= \mathbb{E}_{\pi_{\Para}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Para'}\log \pi_{\Para'}(\Ui,\Bi)\Big\}\\
-				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Para'}\log \pi_{\Para'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
+ \nabla_{\Param'}  \log( J(\Param') ) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Param'}\log \pi_{\Param'}(\Ui,\Bi)\Big\}\\
+				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
 \end{align}
 
 The reader is referred to \cite{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.
@@ -1122,10 +1122,10 @@ The reader is referred to \cite{rl_gradient_survey_2013} for more details regard
 
 Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of the notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
 and by setting the derivative of Equation \ref{eq:grad_log_cost_2} to zero and solving for the parameters
-$\Para=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation update step in EM:
+$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation update step in EM:
 
 \begin{align}
-\nabla_{\MuK} \log J(\Para) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
+\nabla_{\MuK} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
 			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
 \end{align}
 
@@ -1147,7 +1147,7 @@ Gaussian function $k$.
 %\subsection{M-step}\label{app:Q-EM}
 %Given a set of points $\X = (\U,\B)^{\mathrm{T}}$ and  a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
 %and by setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-%$\Para=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
+%$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
 %\begin{align}
 % w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\X^{[m]})\, \alpha(z_{mk})}{\sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})} \\
 % \MuK_{\textrm{\textbf{new}}}     &= \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q^{\pi}(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q^{\pi}(\X^{[j]})} \\
@@ -1163,7 +1163,7 @@ Gaussian function $k$.
 %\end{equation}
 The temporal difference error is an unbiased estimate of the advantage function:
 \begin{align}
-  \displaystyle \mathop \mathbb{E}_{\pi_{\Para}} \{ \delta^{\pi}_t|b_t,u_t\} &=  \mathop\mathbb{E}_{\pi_{\Para}}\{ r_{t+1} + \gamma V^{\pi}(b_{t+1})|b_t,u_t\} - V^{\pi}(b_t) \nonumber \\
+  \displaystyle \mathop \mathbb{E}_{\pi_{\Param}} \{ \delta^{\pi}_t|b_t,u_t\} &=  \mathop\mathbb{E}_{\pi_{\Param}}\{ r_{t+1} + \gamma V^{\pi}(b_{t+1})|b_t,u_t\} - V^{\pi}(b_t) \nonumber \\
 									   &= Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) \nonumber \\
 									   &= A^{\pi}(b_t,u_t)
 \end{align}
