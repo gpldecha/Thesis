@@ -517,30 +517,52 @@ joint distribution.
  \label{fig:margina_joint_example}
 \end{figure}
 
-The parametrisation of the MLMF is also based on the standard SLAM graphical model Figure \ref{fig:bayesian_sse_dag}. However
-we do not take a recursive approach but rather remember all measurement functions which have been applied since 
-the start.
-Equation \ref{eq:bn_joint_memory} is the joint distribution given the BN and is the starting point to all BSSE.
-\begin{align}
- P(A_{0:t},O,Y_{0:t-1},u_{0:t}) &= P(A_0)P(O)\prod_{t=0}^{t-1} \overbrace{P(A_t|A_{t-1},u_{t})}^{=1}  \underbrace{ P(Y_t|A_t,O) }_{\mathrm{memory}} \label{eq:bn_joint_memory} %\nonumber \\
+The parametrisation of the MLMF is derived from the Bayesian Network (BN) graphical model, Figure \ref{fig:bayesian_sse_dag}, from 
+which can be derived the Bayes filter recursion  Equation \ref{eq:ch5:motion_update}, (see Appendix \ref{appendix:bayes_joint} for complete derivation). 
+%However
+%we do not take a recursive approach but rather remember all measurement functions which have been applied since 
+%the start. %We start from the definition of the joint distribution Equation \ref{eq:bn_joint_memory} given by BN, which is the starting point to all BSSE.
+%\begin{align}
+% P(A_{0:t},O,Y_{0:t},u_{0:t}) &= P(A_0)P(O)\prod_{t=0}^{t} \overbrace{P(A_t|A_{t-1},u_{t})}^{=1}  \underbrace{ P(Y_t|A_t,O) }_{\mathrm{memory}} \label{eq:bn_joint_memory} %\nonumber \\
 %			      &= P(A_0)P(O) \underbrace{\prod_{t=0}^{t-1} P(Y_t|A_t,O)}_{\mathrm{memory}} \label{eq:bn_joint_memory}
-\end{align}
-From Equation \ref{eq:bn_joint_memory}, we can derive the formulation of the filtering update, Equation \ref{eq:ch5:motion_update}-\ref{eq:joint_filter_memory}
-(see Appendix \ref{appendix:bayes_joint} for complete derivation).
+%\end{align}
+%From Equation \ref{eq:bn_joint_memory}, we can derive the formulation of the filtering update, Equation \ref{eq:ch5:motion_update}-\ref{eq:joint_filter_memory}
+%(see Appendix \ref{appendix:bayes_joint} for complete derivation).
+
+%\begin{equation}
+% P(A_0,O,Y_0) =  P(Y_0|A_0,O) P(A_0) P(O) 
+%\end{equation}
+
+
+
+\begin{tikzpicture}    
+\node [white_box] (box){%
+\begin{minipage}{0.95\textwidth}
+
+motion:
+$P(A_t,O,Y_{0:t-1}|u_{1:t}) = \sum_{A_{t-1}} P(A_t|A_{t-1},u_t) P(A_{t-1},O,Y_{0:t-1}|u_{1:t-1})$%  \label{eq:ch5:motion_update}
+
+measurement:
 \begin{equation}
- P(A_t,O,Y_{0:t},u_{0:t}) = P(Y_t|A_t,O) \left( \sum_{A_{0:t-1}} P(A_{0:t},O,Y_{0:t-1},u_{0:t-1})  \right)  \label{eq:ch5:motion_update}
+ P(A_t,O,Y_{0:t}|u_{1:t}) = P(Y_t|A_{t},O) P(A_t,O,Y_{0:t-1}|u_{1:t-1})
 \end{equation}
 
+\end{minipage}
+
+};
+\end{tikzpicture}%
+
+
 \begin{equation}
-  P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(A_t,O,Y_{0:t},u_{0:t}) }{P(Y_{0:t},u_{0:t}) } \label{eq:joint_filter_memory}
+  P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(A_t,O,Y_{0:t}|u_{0:t}) }{P(Y_{0:t}|u_{0:t}) } \label{eq:joint_filter_memory}
 \end{equation}
 
 %\begin{equation}
 %  P(A_t,O|Y_{0:t},u_{0:t}) = \frac{P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1},u_{0:t}) }{P(Y_t|Y_{0:t-1},u_{0:t}) } \label{eq:joint_filter_memory}
 %\end{equation}
 
-We have not unrolled the joint distribution, Equation \ref{eq:joint_filter_memory} to it's recursive form  (see Appendix \ref{appendix:bayes_recursion} for the detailed derivation
-of the Bayesian recursion). The approach taken by MLMF is to keep all the \textbf{function parameters} of the Bayesian filter, Equation \ref{eq:joint_filter_memory},
+We have not unrolled the joint distribution also known as the Bayesian filter recursion, Equation \ref{eq:joint_filter_memory}, to it's recursive form  (see Appendix \ref{appendix:bayes_recursion} for the detailed derivation
+of the Bayesian recursion). MLMF keeps all the \textbf{likelihood parameters} of the Bayesian filter
 instead of the values $\boldsymbol{\theta}^{(ij)}$ of the joint distribution, as it is the case for Histogram-SLAM.
 %P(A_{t-1},O|Y_{0:t-1},u_{0:t-1}) = &P(A_0) \cdot P(O)  \cdot  P(Y_0|A_0,O) \cdot  \nonumber \\ 
 %				  &\prod\limits_{t=1}^{t-1} P(A_t|A_{t-1},u_t) \cdot P(Y_t|A_t,O)   \\
@@ -605,15 +627,15 @@ which is the result of the current measurement after the motion update. Repeatin
 in Figure \ref{fig:margina_joint_example} \textit{right}. 
 
 For ease of notation from this point onwards we will not show the conditioned actions $u_{0:t}$, so $P(A_t,O|Y_{0:t},u_{0:t})$ will 
-be $P(A_t,O|Y_{0:t})$ and $P(Y_t|Y_{0:t},u_{0:t})$ will be $P(Y_t|Y_{0:t})$.
+be $P(A_t,O|Y_{0:t})$.
 
 Our goal is to be able to compute the marginals $P(A_t|Y_{0:t})$, $P(O|Y_{0:t})$ of the agent and object random variables and 
-marginal likelihood $P(Y_t|Y_{0:t-1})$ without having to perform an expensive marginalisation over the entire space of the joint distribution as it was the case for Histogram-SLAM.
+marginal likelihood $P(Y_{0:t},u_{0:t})$ without having to perform an expensive marginalisation over the entire space of the joint distribution as it was the case for Histogram-SLAM.
 We next detail how these marginals can be computed whilst avoiding computational expense.
 
 \subsection{Computation of evidence and marginals}
 
-In order to compute the marginal likelihood (also known as evidence) $P(Y_t|Y_{0:t-1})$ and the filtered  marginals $P(A_t|Y_{0:t})$,
+In order to compute the marginal likelihood (also known as evidence) $P(Y_{0:t},u_{0:t})$ and the filtered  marginals $P(A_t|Y_{0:t})$,
 $P(O|Y_{0:t})$ efficiently we take advantage of the fact that only a very small area 
 in the joint distribution space will be affected by the measurement likelihood function at each time step.
 
@@ -662,9 +684,9 @@ is located outside as shown in Figure \ref{fig:overlap_dependence_independence}.
 as the independent term is not influenced by the measurement function: 
 $P_{\ominus}(A_t,O|\mathbf{Y_{0:t}}) \propto P_{\ominus}(A_t,O|\mathbf{Y_{0:t-1}})$.
 
-\paragraph{Evidence}
-The evidence of the measurement $P(Y_t|Y_{0:t-1})$ is the amount of probability mass which has been removed from the region of the joint 
-distribution where the likelihood function has set the parameters of the joint distribution to zero. At time step $t$, the normalising factor to be added to 
+\paragraph{Evidence}\\
+The evidence of the measurement $P(Y_{0:t},u_{0:t})$ is the amount of probability mass which has been removed from the region of the joint 
+distribution where the likelihood function has evaluated the parameters of the joint distribution to zero. At time step $t$, the normalising factor to be added to 
 the evidence is the difference between the probability mass located inside $A\cap O$ before the application of the measurement 
 function $P(Y_t|A_t,O)$ and after, see Equation \ref{eq:I} (see Appendix \ref{appendix:evidence} for the full derivation).
 
@@ -707,7 +729,7 @@ the marginals (not the full joint distribution) and update them where measuremen
  P(A_t|Y_{0:t})  =  P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  \mathbf{P_{\cap}(A_t|Y_{0:t}})  \Big) \label{eq:marignal_mrf} 
 \end{equation}
 \begin{align}\label{eq:marignal_mrf_2}
- \mathbf{P_{\cap}(A_t|Y_{0:t})} &= \frac{ \sum\limits_{O} \overbrace{P(Y_t|A_t,O) \cdot P_{\cap}(A_t)\cdot P_{\cap}(O) \cdot \prod_{t=0}^{t-1} P(Y_t|A_t,O) }^{P_{\cap}(A_t,O,Y_t|Y_{0:t-1})}}{\underbrace{1  - (\alpha_{0} + \alpha_{1} + \cdots + \alpha_{t-1})}_{P(Y_t|Y_{0:t-1})}} \\
+ \mathbf{P_{\cap}(A_t|Y_{0:t})} &= \frac{ \sum\limits_{O} \overbrace{ P(Y_t|A_{t},O)  \sum_{A_{t-1}} P(A_t|A_{t-1},u_t)  P(A_{t-1},O,Y_{0:t-1},u_{0:t-1})  }^{P_{\cap}(A_t,O,Y_{0:t},u_{0:t})}}{\underbrace{1  - (\alpha_{0} + \alpha_{1} + \cdots + \alpha_{t})}_{P(Y_{0:t},u_{0:t})}} \\
 		       &= \sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t})
 \end{align}
 
@@ -1190,49 +1212,51 @@ exponentially as it is in the case with the histogram and MLMF filters.
 %Where $H = \left[\frac{\partial h(\mu_A,\mu_O;\beta)}{\partial \mu_A\mu_O}\right]$ is the Jacobian of the measurement function (Equation \ref{eq:ekf-measurement_function})  
 %with respect to the mean of the joint distribution. 
 
-\subsection{Bayesian joint to filter}\label{appendix:bayes_joint}
+%\subsection{Bayesian joint to filter}\label{appendix:bayes_joint}
+%\begin{align}
+%&P(A_t,O,Y_{0:t},u_{0:t})\\
+%&= P(O) \left( \sum_{A_{0:t-1}}  P(A_0) \prod_{t=0}^{t} P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O) \right)  P(Y_t|A_t,O) \\
+%&= P(O) \left( \sum_{A_{0:t-1}} P(A_{0:t},Y_{0:t-1},u_{0:t}) \right)  \\
+%&= P(O) P(A_t,Y_{0:t},u_{0:t}) \\
+%&= P(A_t,O,Y_{0:t},u_{0:t})
+%\end{align}
+
+\subsection{Bayesian filtering recursion}\label{appendix:bayes_recursion}
+
 
 \begin{equation}
- P(A_{0:t},O,Y_{0:t},u_{0:t}) = P(A_0)P(O)\prod_{t=0}^t P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O)
+ P(A_{0:t},O,Y_{0:t}|u_{0:t}) = P(A_0)P(O)\prod_{t=0}^t P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O)
 \end{equation}
 (negative indices at $t=0$, become zero).
 
 \begin{equation}
-  P(A_t,O,Y_{0:t},u_{0:t}) = \sum_{A_{0:t-1}}  P(A_t,A_{0:t-1},O,Y_{0:t},u_{0:t}) \\
+  P(A_t,O,Y_{0:t}|u_{0:t}) = \sum_{A_{0:t-1}}  P(A_t,A_{0:t-1},O,Y_{0:t}|u_{0:t}) \\
 \end{equation}
 
-\begin{align}
-&P(A_t,O,Y_{0:t},u_{0:t})\\
-&= P(O) \left( \sum_{A_{0:t-1}}  P(A_0) \prod_{t=0}^{t} P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O) \right)  P(Y_t|A_t,O) \\
-&= P(O) \left( \sum_{A_{0:t-1}} P(A_{0:t},Y_{0:t-1},u_{0:t}) \right)  \\
-&= P(O) P(A_t,Y_{0:t},u_{0:t}) \\
-&= P(A_t,O,Y_{0:t},u_{0:t})
-\end{align}
 
-\subsection{Bayesian filtering recursion}\label{appendix:bayes_recursion}
 %  P(A_{0:t},O,Y_{0:t},u_{0:t})  &= P(A_0)P(O)\prod_{t=1}^{t} P(A_t|A_{t-1},u_{t-1}) P(Y_t|A_t,O) \\
 \paragraph{Filtering problem}\\
 We derive $P(A_t,O|Y_{0:t},u_{0:t})$, we start from the joint distribution, Equation \ref{eq:br_chain}:
 \begin{equation}
-   P(A_t,O,Y_{0:t},u_{0:t})  = \sum_{A_{t-1}} P(A_t,A_{t-1},O,Y_t,Y_{0:t-1},u_{t},u_{0:t-1}) \label{eq:br_chain} 
+   P(A_t,O,Y_{0:t}|u_{0:t})  = \sum_{A_{t-1}} P(A_t,A_{t-1},O,Y_t,Y_{0:t-1}|u_{t},u_{0:t-1}) \label{eq:br_chain} 
 \end{equation}
 
 
 \begin{tabular}{lll}
-   $P(A_t,O,Y_{0:t},u_{0:t})$ & $=\sum_{A_{t-1}}$ &  $P(Y_t|\Ccancel[red]{Y_{0:t-1}},A_t,\cancel{A_{t-1}},O,\cancel{u_{t}},\cancel{u_{0:t-1}}) $ \\
-			      &  & $P(A_t|A_{t-1},O,u_{t},\Ccancel[red]{Y_{0:t-1}},\Ccancel[red]{u_{0:t-1}}) $ \\
-			      &  & $P( A_{t-1},O,\Ccancel[red]{u_t},Y_{0:t-1},u_{0:t-1})$
+   $P(A_t,O,Y_{0:t}|u_{0:t})$ & $=\sum_{A_{t-1}}$ &  $P(Y_t|\Ccancel[red]{Y_{0:t-1}},A_t,\cancel{A_{t-1}},O,\cancel{u_{t}},\cancel{u_{0:t-1}}) $ \\
+			      &  & $P(A_t|A_{t-1},\Ccancel[red]{O},u_{t},\Ccancel[red]{Y_{0:t-1}},\Ccancel[red]{u_{0:t-1}}) $ \\
+			      &  & $P( A_{t-1},O,Y_{0:t-1}|\Ccancel[red]{u_t},u_{0:t-1})$
 \end{tabular}
 
 \begin{align}
-  &P(A_t,O,Y_{0:t},u_{0:t}) \\
-  &= \sum_{A_{t-1}} P(Y_t|A_{t},O)  P(A_t|A_{t-1},u_{t})  P(A_{t-1},O,Y_{0:t-1},u_{0:t-1}) \nonumber \\
-  &= P(Y_t|A_{t},O)  \underbrace{\sum_{A_{t-1}} P(A_t|A_{t-1},u_t)  P(A_{t-1},O,Y_{0:t-1},u_{0:t-1})}_{P(A_t,O,Y_{0:t-1},u_{0:t})} 
+  &P(A_t,O,Y_{0:t}|u_{0:t}) \\
+  &= \sum_{A_{t-1}} P(Y_t|A_{t},O)  P(A_t|A_{t-1},u_{t})  P(A_{t-1},O,Y_{0:t-1}|u_{0:t-1}) \nonumber \\
+  &= P(Y_t|A_{t},O)  \underbrace{\sum_{A_{t-1}} P(A_t|A_{t-1},u_t)  P(A_{t-1},O,Y_{0:t-1}|u_{0:t-1})}_{P(A_t,O,Y_{0:t-1}|u_{0:t})} 
 \end{align}
 
 \begin{align}
-   P(A_t,O,Y_{0:t},u_{0:t}) &= P(Y_t|A_{t},O)  P(A_t,O,Y_{0:t-1},u_{0:t}) \nonumber \\
-			    &= P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{0:t})  P(Y_{0:t-1},u_{0:t})
+   P(A_t,O,Y_{0:t}|u_{0:t}) &= P(Y_t|A_{t},O)  P(A_t,O,Y_{0:t-1}|u_{0:t}) \nonumber \\
+			    &= P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{0:t})  P(Y_{0:t-1}|u_{0:t})
 \end{align}
 
 
@@ -1241,8 +1265,8 @@ All the cancellations come from the \textit{Markov Assumption} read from the str
 The resulting final Bayesian recursion is obtained by conditioning on the measurement and actions, which is the normalisation factor.
 
 \begin{align}\label{eq:ch5_measurement_update}
- P(A_t,O|Y_{0:t},u_{0:t}) &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{0:t})  P(Y_{0:t-1},u_{0:t})}{P(Y_{0:t},u_{0:t})} \nonumber \\
-			  &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{0:t})  \Ccancel[red]{P(Y_{0:t-1},u_{0:t})}}{P(Y_t|Y_{0:t-1},u_{0:t}) \Ccancel[red]{(Y_{0:t-1},u_{0:t})}}  
+ P(A_t,O|Y_{0:t},u_{0:t}) &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{0:t})  P(Y_{0:t-1}|u_{0:t})}{P(Y_{0:t}|u_{0:t})} \nonumber \\
+			  &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{0:t})  \Ccancel[red]{P(Y_{0:t-1},u_{0:t})}}{P(Y_t|Y_{0:t-1},u_{0:t}) \Ccancel[red]{P(Y_{0:t-1}|u_{0:t})}}  
 \end{align}
  
 \begin{equation}
@@ -1255,6 +1279,25 @@ The resulting final Bayesian recursion is obtained by conditioning on the measur
 			  &= \sum\limits_{A_t} \sum\limits_O  P(Y_t,A_{t},O|Y_{0:t-1},u_{0:t})
 \end{align}
 
+\subsection{Bayesian Filter recursion}
+
+
+\begin{align}
+  P(A_0,O)     &= P(O) P(A_0)\\
+  P(A_0,O,Y_0) &= P(O) P(A_0) P(Y_0|A_0,O) \\
+  P(A_1,O,Y_0|u_1) &= P(O)\sum\limits_{A_0} P(A_1|A_0,u_1) P(A_0) P(Y_0|A_0,O)\\
+                   &= P(O)\sum\limits_{A_0} P(A_1,A_0,Y_0|u_1,O)\\
+                   &= P(O) P(A_1,Y_0|u_1,O)\\
+                   &= P(O) P(A_1|u_1) P(Y_0|A_1,O)
+\end{align} 
+
+\begin{align}
+ &P(A_2,O,Y_{0:1}|u_{1:2}) = \nonumber \\
+ &P(O) \sum\limits_{A_1} P(A_2|A_1,u_2) P(A_1) P(Y_0|A_1,O,u_1) P(Y_1|A_1,O) = \\
+ &P(O) \sum\limits_{A_1} P(A_2,A_1|u_2) P(Y_0|A_1,O,u_1) P(Y_1|A_1,O) \\
+ &P(O) P(A_2|u_{1:2}) P(Y_0|A_2,O) P(Y_1|A_2,O)
+\end{align}
+
 
 
 \subsection{Derivation of the evidence}\label{appendix:evidence}
@@ -1265,7 +1308,7 @@ in the probability mass located inside the measurement functions after applying 
 The marginal likelihood is the marginalisation of all non measurement random variables from 
 the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerator} (we dropped $u_{0:t-1}$ for easing the notation).
 \begin{align}\label{eq:ch5:numerator}
-  P(Y_t,A_t,O|Y_{0:t-1}) &= P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})\\ 
+  P(A_t,O,Y_t|Y_{0:t-1}) &= P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})\\ 
  P(Y_t|Y_{0:t-1}) &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t,A_t,O|Y_{0:t-1})  \label{eq:marginal_likelihood_memory}  
 \end{align}
  
