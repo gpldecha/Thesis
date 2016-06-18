@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="hist_motion.svg">
+   sodipodi:docname="hist_motion.pdf">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="670.34453"
-     inkscape:cy="309.08937"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="1686.2615"
+     inkscape:cy="616.29852"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -242,7 +242,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
