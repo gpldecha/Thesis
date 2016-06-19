@@ -720,10 +720,7 @@ inside $A\cap O$ before and after the application of the measurement function $P
 see Equation \ref{eq:I} (see Appendix \ref{appendix:evidence} for the full derivation).
 
 \begin{align}\label{eq:I}
- &P(Y_0)          		= 1 + \sum\limits_{A_0}\sum\limits_{O} P(Y_0|A_0,O)P_{\cap}(A_0,O) - P_{\cap}(A_0,O) \\
- &\alpha_0 			= \sum\limits_{A_0}\sum\limits_{O} P(Y_0|A_0,O)P_{\cap}(A_0,O) - P_{\cap}(A_0,O)\\
- &\alpha_t 	  		= \alpha_{t-1} + \sum\limits_{A_t}\sum\limits_{O} (1 - P(Y_t|A_t,O)) P_{\cap}(A_t,O|Y_{0:t-1}) \\
- &P(Y_{0:t}|u_{1:t})      	= 1 - \alpha_{t}
+ &P(Y_{0:t}|u_{1:t})      	= 1 + \sum\limits_{t=0}^ t \left( \overbrace{\sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P_{\cap}(A_t,O,Y_{0:t-1}|u_{0:t})}^{\alpha_t} \right)
 \end{align}
 The advantage of Equation \ref{eq:I} is that the summation is only over states which are in the dependent area $\cap$ of the joint 
 distribution. This is generally always much smaller than the full space itself.
@@ -921,14 +918,14 @@ The final worst case space complexity is linear in the number of random variable
 \subsubsection{Time complexity}
 
 For Histogram-SLAM, the computational cost is equivalent to that of the space complexity, $\BigO(N^M)$,
-since to obtain all the marginals, every state in the joint distribution has to be summed.
+since every state in the joint distribution has to be summed to obtain all the marginals.
 
 For MLMF-SLAM, every state in the joint distribution's state space which has been changed by the measurement likelihood function 
 has to be summed, see Figure \ref{fig:ch5:marginal_update}. As a result the computational complexity is directly related to the number 
-of dependent states $|A \cap O|$. In Figure \ref{fig:3bel_lik_profile} \textit{left}, the number of effected states are those in the blue
-and red plane (the states in the green plane will only be changed once because the agent's motion is parallel to it).
+of dependent states $|A \cap O|$. In Figure \ref{fig:3bel_lik_profile} \textit{left}, the number of effected states are shown bye the blue
+and red planes.
 For $M$ random variables the computational cost is $\BigO(N^{M-1})$ as opposed to $\BigO(N^M)$. 
-The computation complexity in this setup is still exponential but to the order $M-1$ as opposed to $M$ which will nevertheless quickly limits 
+The computation complexity in this setup is still exponential but to the order $M-1$ as opposed to $M$ which will nevertheless quickly limit 
 the scalability as more objects are added. 
 
 %\paragraph{Evaluation of a state in the joint distribution}
@@ -941,7 +938,7 @@ the scalability as more objects are added.
 \subsection{Scalable extension to multiple objects}\label{subsec:scalabe_extension}
 
 To make our filter scalable we introduce an \textbf{independence assumption} between the objects and model 
-the joint distribution (Equation \ref{eq:pair_wise_joint}) as the product of agent-object pairs:
+the joint distribution (Equation \ref{eq:pair_wise_joint}) as a product of agent-object joint distributions:
 
 \begin{equation}\label{eq:pair_wise_joint}
  P(A_t,O^{(1)},\cdots,O^{(M-1)}|Y_{0:t}) = \prod\limits_{i=1}^{M-1} P(A^{(i)}_t,O^{(i)}|Y^{(i)}_{0:t})
@@ -1054,8 +1051,8 @@ remain independent.
 
 The result of introducing a dependency between the objects through the agent's marginals in the event of a sensing and treating them
 independently gives the same solution as the histogram filter in this particular case. However as each individual marginal $A^{(i)}_t$ diverges 
-from the other marginals the filtered solution will diverge from the histogram's solution. We assume however that the objects are weakly dependent 
-and sharing information during positive sensing events would be sufficient. In section \ref{subsec:eval_indep_assumptiom} we will 
+from the other marginals the filtered solution will diverge from the histogram's solution. We assume however that the objects are weakly 
+dependent and sharing information during positive sensing events is sufficient. In section \ref{subsec:eval_indep_assumptiom} we will 
 evaluate the independence assumption with respect to the histogram filter.
 
 Table \ref{tab:time_space_summary} summarises the time and space complexity for the three filters.% In the case of transfer of
@@ -1064,11 +1061,10 @@ Table \ref{tab:time_space_summary} summarises the time and space complexity for 
 \begin{figure}
   \centering
   \fbox{\includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure11.pdf}}
-  \caption{\textbf{Independence \& Objects} \textit{left:} resulting marginals after setting the agent marginals of each pair wise joint distribution
-  equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref{alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. 
-  \textit{right:} resulting marginals in which the objects have no influence on one another. The difference
-   between the two figures is that the object $O^{(1)}$ marginal changed in the case where we introduced the dependence \textit{left plot}, and remained 
-  unchanged in the case where the objects are treated as being independent \textit{right plot}.}
+  \caption{\textbf{Independence \& Objects} \textit{left:} resulting marginals after setting the agent marginals of each 
+  joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref{alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. 
+  \textit{right:} resulting marginals in which the objects have no influence on one another.
+  Note that a transfer of information has caused a change in the marginal $O^{(1)}$.}
   \label{fig:independence_object}
 \end{figure}
 
@@ -1094,13 +1090,14 @@ Table \ref{tab:time_space_summary} summarises the time and space complexity for 
 
 We conduct three different types of evaluation to quantify the scalability and correctness of the scalable-MLMF filter. The first experiment
 tests the scalability of our filter in terms of processing time taken per motion-measurement update cycle. The second experiment evaluates the independence 
-assumption between the objects which was made in the scalable-MLMF filter. The third and final experiment determines the effect the memory size has 
-on a search policy whose goal is to locate all the objects in the \textit{Table} world.
+assumption between the objects which was made in the scalable-MLMF filter. The third and final experiment determines the effect the 
+memory size has on a search policy to locate all the objects in the \textit{Table} world.
 
 \subsection{Evaluation of time complexity}
 
 We measured the time taken by the motion-measurement update loop, as a function of the number beliefs and number of states per belief. 
-We started with a 100 states per belief and gradually increase it to 10'000'000 over 50 steps. For each of the 50 steps we went from 2 objects to 25. Figure \ref{fig:time_complexity} \textit{left} illustrates the computational
+We started with a 100 states per belief and gradually increase it to 10'000'000 over 50 steps. Each of the 50 steps treated 2 to 25  objects. 
+Figure \ref{fig:time_complexity} \textit{left} illustrates the computational
 cost as a function of number of states and objects. For each state-object pair 100 motion-measurement updates were performed. Most of the trials returned time updates 
 below 1 Hz. Figure \ref{fig:time_complexity} \textit{right} shows the computational cost as a function of the number of states plotted for 6 different filter runs with
 a different number of objects. As the number of states increases exponentially so does the computational cost. Note the cost increases at the same
@@ -1117,29 +1114,30 @@ the asymptotic time complexity.
 \end{figure}
 
 
-\subsection{Evaluation of independence assumption}\label{subsec:eval_indep_assumptiom}
+\subsection{Evaluation of the independence assumption}\label{subsec:eval_indep_assumptiom}
 
 In section \ref{subsec:scalabe_extension} we made the assumption (for scalability reasons) that the objects' beliefs are independent
 of one another. This assumption is validated by comparing the MLMF filter on three random variables, an agent and two objects, with the ground truth
 which we obtain from the standard histogram filter. For each of the three beliefs (the agent and two objects), 100 different marginals 
 were generated and the true locations (actual position of the agent and objects) were sampled. 
-The agent carries out  a sweep of the state space for each of the 100 initialisations and the actual policy is saved 
-and run with the scaled-MLMF filter. In the first experiment we assume that the objects are completely independent 
-and that there is no transfer of information between the pair-wise joint distributions. In the second and third experiments there 
+The agent carried out  a sweep of the state space for each of the marginals and the policy was saved 
+and run with the scaled-MLMF filter. In the first experiment we assumed that the objects are completely independent 
+and that there was no transfer of information between the pair-wise joint distributions. In the second and third experiments there 
 is an exchange of information as described in Algorithm \ref{alg:scalabe-mrf-slam}. Here we compare the effect of using the product of the agent's marginals $P(A_t|Y_{0:t}) = P(A^{(1)}_t|Y^{(1)}_{0:t}) \cdot P(A^{(2)}_t|Y^{(2)}_{0:t})$ 
-against their average $P(A_t|Y_{0:t}) = \frac{1}{2}P(A^{(1)}_t|Y^{(1)}_{0:t}) + \frac{1}{2}P(A^{(2)}_t|Y^{(2)}_{0:t})$. 
+with their average $P(A_t|Y_{0:t}) = \frac{1}{2}P(A^{(1)}_t|Y^{(1)}_{0:t}) + \frac{1}{2}P(A^{(2)}_t|Y^{(2)}_{0:t})$. 
 
-For each of the 100 sweeps the ground is compared with the histogram filter and scalabe-MLMF using the Hellinger distance (Equation \ref{eq:hellinger}).
+For each of the 100 sweeps the ground truth is compared with the scalabe-MLMF using the 
+Hellinger distance (Equation \ref{eq:hellinger})
 \begin{equation} \label{eq:hellinger}
  H(P,Q) = \frac{1}{\sqrt{2}}\, \|\sqrt{P} - \sqrt{Q}\|_2  
 \end{equation}
-The Hellinger distance is a metric which measures the distance between two probability distributions. Its value lies strictly between 0 (the two 
+which is a metric which measuring the distance between two probability distributions. Its value lies strictly between 0 (the two 
 distributions are identical) and 1 (no overlap between them). Figure \ref{fig:independence_assumption_test} shows the kernel density 
 distribution of the Hellinger distances taken at each time step for all 100 sweeps.
 
 The best results were for case 3). The \textit{bottom plots} show that the Hellinger distance distribution between the
-object marginals for both case 2) and 3) are the same. However there is a significant improvement when using the average of the agent's marginals as oppose to 
-their product. 
+object marginals for both case 2) and 3) are the same. However there is a significant improvement when using the average of 
+the agent's marginals as opposed to their product. 
 
 \begin{figure}
  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure13.pdf}
@@ -1168,17 +1166,17 @@ gain of the beliefs after applying an action (Equation \ref{eq:greedy_algorithm}
  u_{t} = \operatorname*{arg\,max}_{u_t} H\{P(A_{t-1},O|Y_{0:t-1},u_{1:t-1})\} - \mathbb{E}_{Y_t}\left[H\{P(A_{t},O|Y_{0:t},u_{1:t})\}\right]
 \end{equation}
 
-For each action we run the filter forward in time and considered all future measurements since we cannot know ahead of time the actual 
+For each action we run the filter forward in time and consider all future measurements since we cannot know ahead of time the actual 
 measurement. The information gain is the difference between the current entropy (defined 
 by $H\{\cdot\}$) and the future entropy after the simulated motion and measurement update. The action with the highest information gain 
-is subsequently selected. This is repeated at each time step. In Figure \ref{fig:exploration_init} we illustrate the environment setup for 
+is subsequently selected. This is repeated at each time step. Figure \ref{fig:exploration_init} illustrates the environment setup for 
 a 1D and 2D case. The agent's task is to find the objects in the environment.
 
 
 \begin{figure}
   \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure14.pdf}
   \caption{\textbf{Agent's prior beliefs.} Two types of environment, the first is 
-  a 2D world in which the agent lives in a square surrounded by a wall whilst the second is a 1D
+  a 2D world where the agent lives in a square surrounded by a wall whilst the second is a 1D
   world. In the 2D figures the agent is illustrated by a circle with a bar to indicate its heading. The true location 
   of the objects are represented by colour coded squares. \textit{Top row} three different initialisations of the agent's location. 
   \textit{Bottom row} d) the agent's prior beliefs with respect to the location of the first object and e) belief of the second object's location.
@@ -1188,31 +1186,37 @@ a 1D and 2D case. The agent's task is to find the objects in the environment.
 
 For the 2D search we consider three different initialisations (single-Gaussian, four-Gaussian, Uniform) for the agent's belief where there are 
 two objects to be found. Ten searches were carried out for each of the three initialisations of the agent's beliefs. 
-The true location of the agent, for each search, is sampled from its initial belief and the objects' locations 
-(red and green squares in Figure \ref{fig:exploration_init}) are kept fixed throughout all searches. We repeat each search for 18 different memory 
-sizes going from 1 to $N$ (the number of states). For the 1D search case we consider 1 object since adding more objects will make the search easier. 
-We are interested in how the memory effects the search and not the search itself. In Figure \ref{fig:time_to_reach_goal} we report on the time taken to 
-find all objects with respect to a given memory size which is shown as the percentage of the total number of states. 
+The agent's true location, for each search, is sampled from its initial belief, and the objects' locations 
+(red and green squares in Figure \ref{fig:exploration_init}) are kept fixed throughout all searches. We repeated each search for 
+18 different memory sizes ranging from 1 to $N$ (the number of states). For the 1D search case we considered one object since adding more objects would 
+make the search easier. We are interested in how the memory effects the search and not the search itself. In Figures \ref{fig:time_to_reach_goal_1D}-\ref{fig:time_to_reach_goal_2D} we 
+report on the time taken to find all objects with respect to a given memory size which is shown as the percentage of the total number of states. 
 In the 1D search case the variability of time taken to find the object converges when the memory size is at 60\% of the original state space. 
 As for the 2D search with 2 beliefs (agent \& 1 object) the convergence depends on the agent's initial belief. For the 1-Gaussian (green line) 
 all searches take approximately the same amount of time after a memory size of 9\%. As for the remaining two initialisations convergence is achieved at  48\%. 
 The same holds true for the case of 3 beliefs (agent \& 2 objects).
 
-In the 2D searches, the size of the memory has a less drastic impact than in the 1D (which is a special search case). 
-In the 2D case only when the memory size is less than 6\% is there a significant impact in terms of the time taken to find 
-the objects. We conclude that at least in the case of the greedy one step-look ahead planner which is frequently used in the literature, the 
-size of the memory seems not to be a limiting factor in terms of the time taken to accomplish the search.
+In the 2D searches, the memory size has a less impact on the time taken to find the objects than in the 1D (which is a special search case). 
+Only when the memory size is less than 6\% is there a significant change. We conclude that at least in the case of 
+the greedy one step-look ahead planner which is frequently used in the literature, the size of the memory seems not to be a limiting factor in terms of the time taken to accomplish the search.
 
+\begin{figure}	
+  \centering
+  \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/exper_mem_1d.pdf}
+  \caption{\textbf{Memory size vs time to find object in 1D} Results of the effect of the memory size on the decision process.
+  The memory size is reported as the percentage of total number of states present in the marginal space. At 100\% the size
+  of the memory is equal to that of the state space. results of the 1D search illustrated in Figure \ref{fig:exploration_init} \textit{f)}.} 
+  \label{fig:time_to_reach_goal_1D}
+\end{figure}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure15.pdf}
-  \caption{\textbf{Memory size vs time to find objects} Results of the effect of the memory size on the decision process.
-  The memory size is reported as the percentage of total number of states present in the marginal space. At 100\% the size
-  of the memory is equal to that of the state space. \textit{left:} results of the 1D search illustrated in Figure \ref{fig:exploration_init} \textit{f)}.
-  \textit{Middle \& right:} 2D search with initialisations accordingly depicted in Figure \ref{fig:exploration_init}.
-  }
-  \label{fig:time_to_reach_goal}
+  \centering
+  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/exper_mem_all.pdf}
+  \caption{\textbf{Memory size vs time to find objects in 2D}. 2D search with initialisations accordingly depicted in Figure \ref{fig:exploration_init}.}
+   \label{fig:time_to_reach_goal_2D}
 \end{figure}
+
+
 
 \FloatBarrier
 \section{Conclusion}\label{ch5:conclusion}
@@ -1220,29 +1224,30 @@ size of the memory seems not to be a limiting factor in terms of the time taken 
 This work addresses the Active-SLAM filtering problem for scenarios in which sensory information relating to the map is very limited. Current
 SLAM algorithms filter the errors originating from sensory measurements and not prior uncertainty. By making the assumption
 that the joint distribution of all the random variables is a multivariate Gaussian, inference is tractable. Since the origin of 
-our uncertainty is not originating from the measurement noise we cannot assume the joint distribution to have any special structure. 
-A suitable filter for such purposes is the histogram which makes no assumption about the shape or form taken by the joint distribution. 
-The drawback of this form of parametrisation is that the space and time complexity are exponential with respect to the number random variables 
-and this is a major limiting factor for scalability. 
+our uncertainty does not originate from the measurement noise, we cannot assume the joint distribution to have any special structure. 
+A suitable filter in this case would be the histogram which makes no assumption about the shape or form taken by the joint distribution. 
+However, the space and time complexity are exponential with respect to the number random variables and this is a major 
+limiting factor for scalability. 
 
 The main contribution of this work is a formulation of a histogram Bayesian state space estimator in which the computational complexity is 
-both linear in time and space. We took a different approach to other SLAM formulations in the sense that we did not
-explicitly parametrise the joint distribution but kept all parametrisation in the space of the marginals (beliefs),
+both linear in time and space. We have taken a different approach to other SLAM formulations in the sense that we did not
+explicitly parameterise the joint distribution but kept all parameterisation in the space of the marginals (beliefs),
 avoiding the exponential increase in parameter space which would otherwise have been the case. Our filter's parameters 
-consist of the marginals and the history of measurement functions which have been applied. By evaluating the joint 
-distribution solely at the states which are affected by the current measurement function whilst taking into account the 
-memory, the MLMF filter can recover exactly the same filtered marginals as the histogram filter. The worst case space complexity is 
-linear rather than exponential and the time complexity remains exponential but grows at a slower rate than in the histogram filter.
+consist of the marginals and the history of measurement functions which have been applied. By solely evaluating the joint 
+distribution at the states which are affected by the current measurement function whilst taking into account the 
+memory, the MLMF filter obtains the same filtered marginals as the histogram filter. Further, the worst case space complexity is 
+linear rather than exponential and the time complexity remains exponential but increases at lower rate than in the histogram filter.
 In striving to make the filter scalable we assume an independence assumption between the objects. An individual MLMF filter
 was used for each agent-object pair. We evaluated the difference between the scalable-MLMF filter with a ground truth provided 
-by the histogram filter for 100 different searches with respect to the Hellinger distance. We concluded that 
+by the histogram filter for 100 different searches with respect to the Hellinger distance. We conclude that 
 the divergence was relatively small and thus the scalable-MLMF filter provides a good approximation to the true filtered
-marginals. We evaluated the time taken to perform a motion-update loop for different discretisation of the state space (100 to 10'000'000 states) and 
-number of objects (2 to 25) present. In most of the cases we achieved an update cycle rate below 1Hz. We evaluated how the increase of the number of states 
-effected the computational cost. The relationship was found to be linear and thus is in agreement with our analysis of the asymptotic growth rate. 
-We analysed of the effect the memory size (the remembered number of measurement likelihood functions) on the decision theoretic process of reducing
-the uncertainty of the map and agent during a search task. We found that in the 2D case the memory size has much less effect than in the 1D case
-and we conclude that it is unnecessary to remember every single measurement function.
+marginals. We evaluated the time taken to perform a motion-update loop for different discretisations of the state 
+space (100 to 10'000'000 states) and number of objects (2 to 25). In most of the cases we achieved an update cycle rate below 1Hz. We evaluated how the increase of the number of states 
+effected the computational cost. The relationship was found to be linear and thus in agreement with our analysis of 
+the asymptotic growth rate. We analysed the effect of the memory size (the remembered number of measurement likelihood functions) 
+on the decision theoretic process of reducing the uncertainty of the map and agent during a search task. 
+We found that in the 2D case the memory size has much less effect than in the 1D case and we conclude that it 
+is unnecessary to remember every single measurement function.
 
 The implications of the MLMF and scalable-MLMF filter are that we have a computationally tractable means of 
 performing SLAM in a case scenario in which mostly negative information is present and the 
@@ -1380,27 +1385,73 @@ Repeating the above for $Y_{2:t}$ and $u_{3:t}$ results in:
 
 \subsection{Derivation of the evidence}\label{appendix:evidence}
 
-From first principle, Equation \ref{eq:marginal_likelihood_memory}, we demonstrated that the marginal likelihood (also called evidence) is simply the difference
+From first principle, Equation \ref{eq:marginal_likelihood_memory}, we demonstrated that 
+the marginal likelihood (also called evidence) is simply the difference
 in the probability mass located inside the measurement functions after applying $P(Y_t|A_t,O)$.
 
 The marginal likelihood is the marginalisation of all non measurement random variables from 
 the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerator}
-\begin{align}\label{eq:ch5:numerator}
-  P(A_t,O,Y_{0:t}|u_{1:t}) &= P(Y_t|A_t,O) \cdot P(A_t,O,Y_{0:t-1}|u_{1:t})\\ 
- P(Y_{0:t}|u_{0:t}) &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}|u_{1:t})  \label{eq:marginal_likelihood_memory}  
-\end{align}
-
-\begin{align}
- \sum\limits_{A_t} \sum\limits_O P(A_0,O) = 1\\
- \sum\limits_{A_t} \sum\limits_O P(A_t,O|Y_{0:t-1}) = 1
-\end{align}
-
+\begin{equation}\label{eq:ch5:numerator}
+ P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) \label{eq:marginal_likelihood_memory}   
+\end{equation}
  
 \begin{align}
-   P(Y_{0:t})         &= P(Y_t|Y_{0:t-1}) P(Y_{0:{ t-1}})\\
-   P(Y_{t}|Y_{0:t-1}) &= \sum\limits_{A_t} \sum\limits_O P(A_t,O,Y_t|Y_{0:t-1}) \\
-              &= \sum\limits_{A_t} \sum\limits_O P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1}) 
+  \alpha_t = \nabla_{Y_t}P(Y_{0:t}) =  P(Y_{0:t}) - P(Y_{0:t-1})
 \end{align}
+
+\begin{align}
+ \alpha_t  &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) - P(A_t,O,Y_{0:t-1})  \\
+	   &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1}) - P(A_t,O,Y_{0:t-1}) \\
+	   &= \sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P(A_t,O,Y_{0:t-1})
+\end{align}
+
+\begin{equation}
+ \alpha_t = \sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P_{\cap}(A_t,O,Y_{0:t-1})
+\end{equation}
+
+
+
+\begin{align}
+ \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} (P(Y_0|A_0,O) - 1)P(A_0,O)  \\
+\end{align}
+
+\begin{equation}
+ P(Y_0) = 1 + \alpha_0
+\end{equation}
+
+
+%\begin{align}
+% \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
+%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(Y_0|A_0,O) \cdot P(A_0,O) \\
+%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(A_0,O,Y_0)
+%\end{align}
+
+%\begin{align}
+% P(Y_0) = \sum\limits_{A_t} \sum\limits_O P(A_0,O) = 1\\
+% \sum\limits_{A_t} \sum\limits_O P(A_t,O|Y_{0:t-1}) = 1
+%\end{align}
+
+ %\begin{align}
+ % \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O)  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_0,O)}^{=1} \label{eq:ch5:less1_1}\\
+ % \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) &\leq 1 \label{eq:ch5:less1_2} \\
+ % P(Y_0) &\leq 1 \\
+ %  P(Y_0) &= 1 - \alpha_0 \label{eq:marginal_likelihood_equal_I}
+%\end{align}
+
+%\begin{align}
+%\alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
+%       &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(Y_0|A_0,O) \cdot P(A_0,O) \\
+%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(A_0,O,Y_0)
+%\end{align}
+
+
+
+ 
+%\begin{align}
+%   P(Y_{0:t})         &= P(Y_t|Y_{0:t-1}) P(Y_{0:{ t-1}})\\
+%   P(Y_{t}|Y_{0:t-1}) &= \sum\limits_{A_t} \sum\limits_O P(A_t,O,Y_t|Y_{0:t-1}) \\
+%              &= \sum\limits_{A_t} \sum\limits_O P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1}) 
+%\end{align}
 
  
  
@@ -1424,33 +1475,33 @@ the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerat
 %to the joint distribution, its sum will always be smaller or equal to $1$.
 %From Equation \ref{eq:ch5:less1_1} to \ref{eq:ch5:less1_2} we use the fact that $P(A_t,O|Y_{0:t-1})$ is a probability density and must sum to 1.
 
-\begin{align}
-  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} \label{eq:ch5:less1_1}\\
-  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1}) &\leq 1 \label{eq:ch5:less1_2} \\
-  P(Y_t|Y_{0:t-1}) &\leq 1 \\
-  P(Y_t|Y_{0:t-1}) + \alpha &= 1 \label{eq:marginal_likelihood_equal_I}
-\end{align}
-We equate Equation \ref{eq:marginal_likelihood_equal_I} with \ref{eq:marginal_likelihood_memory_last} and find a solution for the marginal likelihood which
-only depends on areas of the joint distribution which are dependent.
+%\begin{align}
+%  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} \label{eq:ch5:less1_1}\\
+%  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1}) &\leq 1 \label{eq:ch5:less1_2} \\
+%  P(Y_t|Y_{0:t-1}) &\leq 1 \\
+%  P(Y_t|Y_{0:t-1}) + \alpha &= 1 \label{eq:marginal_likelihood_equal_I}
+%\end{align}
+%We equate Equation \ref{eq:marginal_likelihood_equal_I} with \ref{eq:marginal_likelihood_memory_last} and find a solution for the marginal likelihood which
+%only depends on areas of the joint distribution which are dependent.
 		   
-\begin{align}		  
- &\overbrace{\sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} - \alpha  = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) + P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1})
-\end{align}
+%\begin{align}		  
+% &\overbrace{\sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} - \alpha  = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) + P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1})
+%\end{align}
 
-\begin{align}   
-   \alpha &= \sum\limits_{A_t}\sum\limits_{O}  \overbrace{P_{\ominus}(A_t,O|Y_{0:t-1}) + P_{\cap}(A_t,O|Y_{0:t-1})}^{P(A_t,O|Y_{0:t-1})}\nonumber\\ 
-	  & - P_{\ominus}(A_t,O,Y_{0:t}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O,Y_{0:t-1}) \\
-    \alpha &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
-	   &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) (1 - P(Y_t|A_t,O)) \label{eq:marginal_likelihood_equal_I2}
-\end{align}
+%\begin{align}   
+%   \alpha &= \sum\limits_{A_t}\sum\limits_{O}  \overbrace{P_{\ominus}(A_t,O|Y_{0:t-1}) + P_{\cap}(A_t,O|Y_{0:t-1})}^{P(A_t,O|Y_{0:t-1})}\nonumber\\ %
+%	  & - P_{\ominus}(A_t,O,Y_{0:t}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O,Y_{0:t-1}) \\
+%    \alpha &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
+%	   &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) (1 - P(Y_t|A_t,O)) \label{eq:marginal_likelihood_equal_I2}
+%\end{align}
 
-The last line, Equation \ref{eq:marginal_likelihood_equal_I2}, when substituted back into line \ref{eq:marginal_likelihood_equal_I}, tells us that the 
-normalisation factor or marginal likelihood is $1$ minus the difference in the area of dependence a priori to the application of 
-the measurement function, Equation \ref{eq:marginal_liklihood_final}.
+%The last line, Equation \ref{eq:marginal_likelihood_equal_I2}, when substituted back into line \ref{eq:marginal_likelihood_equal_I}, tells us that the 
+%normalisation factor or marginal likelihood is $1$ minus the difference in the area of dependence a priori to the application of 
+%the measurement function, Equation \ref{eq:marginal_liklihood_final}.
 
-\begin{equation}\label{eq:marginal_liklihood_final}
- P(Y_t|Y_{0:t}) = 1 - \alpha
-\end{equation}
+%\begin{equation}\label{eq:marginal_liklihood_final}
+% P(Y_t|Y_{0:t}) = 1 - \alpha
+%\end{equation}
 
 
 \subsection{Derivation of the marginal}\label{appendix:marginal}

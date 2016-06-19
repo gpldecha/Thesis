@@ -14,7 +14,7 @@
    id="svg90769"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Figure34.svg">
+   sodipodi:docname="Figure34.pdf">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -632,7 +632,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
