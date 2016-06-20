@@ -293,10 +293,11 @@ The $j$'th object measurement is described by range and bearing  $Y^{(j)}_t = [r
 see Figure \ref{fig:belief_update_example} page \pageref{fig:belief_update_example} for an illustration of a measurement update process.
 EKF-SLAM assumes that the measurement is corrupted by Gaussian noise, $\epsilon \sim \mathcal{N}(0,R)$,
 and this results in a measured likelihood function of the following form:
-\begin{equation} \label{eq:lik-measurement}
-   p(Y_t|A_t,O_t) = \frac{1}{|2\pi R|^{\frac{1}{2}}} \exp \left( -\frac{1}{2} \big(Y_t - \hat{Y}_t\big)^{\mathrm{T}}R^{-1}\big(Y_t - \hat{Y}_t\big) \right)
-\end{equation}
-where the covariance, $R$, encompasses the uncertainty in the measurement. The elements of the covariance matrix capture 
+\begin{align} 
+   p(Y_t|A_t,O_t) &= \frac{1}{|2\pi R|^{\frac{1}{2}}} \exp \left( -\frac{1}{2} \big(Y_t - \hat{Y}_t\big)^{\mathrm{T}}R^{-1}\big(Y_t - \hat{Y}_t\big) \right)\label{eq:lik-measurement}\\
+   \hat{Y}_t        &= \exp\left(-\frac{1}{2\sigma^2} ||A_t - O ||^2 \right)\label{eq:ch5:measurement_ekf}
+\end{align}
+where the covariance, $R$, encompasses the uncertainty in the measurement and Equation \ref{eq:ch5:measurement_ekf} is the measurement function. The elements of the covariance matrix capture 
 the measurement error between the true $Y$ and expected $\hat{Y}$ range and bearing of the object. As the joint distribution 
 is parametrised by a single Multivariate Gaussian, a closed form solution to the filtering Equations exists, called the Kalman 
 Filter \cite{SLAM_part1}. 
@@ -389,7 +390,7 @@ distribution is a line. The \textbf{sparsity} of the likelihood function  will b
 
 Two models are needed to perform the recursion, namely the motion model $P(A_t|A_{t-1},u_t)$ and the measurement model
 $P(Y_t|A_t,O)$, which we already detailed. Both models applied consecutively to the initial joint distribution results in a posterior
-distribution. Both Equation \ref{eq:time-update}-\ref{eq:measurement-update} are part of the histogram Bayesian filter 
+distribution. Both Equation \ref{eq:ch5:disc_motion}-\ref{eq:ch5:disc_measurement} are part of the histogram Bayesian filter 
 update:
 
 \begin{center}
@@ -401,9 +402,9 @@ update:
  &\mathrm{\textbf{intialisation}}\nonumber\\
  &P(A_0,O) = P(A_0) P(O) = \boldsymbol{\theta}^{(i)} \boldsymbol{\theta}^{(j)} = \boldsymbol{\theta}^{(i,j)} \label{eq:ch5:disc_prod_AO}\\
  &\mathrm{\textbf{motion}}\nonumber\\
- &P(A_t,O|Y_{0:t-1},u_{1:t}) = \sum_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot  P(A_{t-1},O_t|Y_{0:t-1},u_{1:t-1} \label{eq:ch5:disc_motion})\\
+ &P(A_t,O|Y_{0:t-1},u_{1:t}) = \sum_{A_{t-1}} P(A_t|A_{t-1},u_t) P(A_{t-1},O_t|Y_{0:t-1},u_{1:t-1} \label{eq:ch5:disc_motion})\\
  &\mathrm{\textbf{measurement}}\nonumber\\
- & P(A_t,O|Y_{0:t},u_{1:t}) = \frac{P(Y_t|A_t,O)\cdot P(A_t,O|Y_{0:t-1},u_{t}) }{P(Y_t|Y_{0:t-1})} \label{eq:ch5:disc_measurement} 
+ & P(A_t,O|Y_{0:t},u_{1:t}) = \frac{P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1},u_{t}) }{P(Y_t|Y_{0:t-1})} \label{eq:ch5:disc_measurement} 
 \end{align}
 \end{minipage}
 };
@@ -592,11 +593,11 @@ for the likelihood product.
 \Output{$\Psi_t$}
 \BlankLine
 \textbf{motion update}\label{alg:ch5:motion_memory}\\
-\For{$l_{t-1} \in \Psi_{t-1}$}{$l_t = update\_offset(l_{t-1},u_t)$}
+\For{$l_{t-1} \in \Psi_{t-1}$}{$l_t = l_{t-1} + u_t$}
 \textbf{measurement update}\\
 $\Psi_t \gets \{\Psi_{t-1}, (Y_t,l=0)\}$ 
 
-\caption{Likelihood motion update}
+\caption{Likelihood functions update}
 
 \end{algorithm} 
 \end{minipage}
@@ -720,10 +721,7 @@ inside $A\cap O$ before and after the application of the measurement function $P
 see Equation \ref{eq:I} (see Appendix \ref{appendix:evidence} for the full derivation).
 
 \begin{align}\label{eq:I}
- &P(Y_0)          		= 1 + \sum\limits_{A_0}\sum\limits_{O} P(Y_0|A_0,O)P_{\cap}(A_0,O) - P_{\cap}(A_0,O) \\
- &\alpha_0 			= \sum\limits_{A_0}\sum\limits_{O} P(Y_0|A_0,O)P_{\cap}(A_0,O) - P_{\cap}(A_0,O)\\
- &\alpha_t 	  		= \alpha_{t-1} + \sum\limits_{A_t}\sum\limits_{O} (1 - P(Y_t|A_t,O)) P_{\cap}(A_t,O|Y_{0:t-1}) \\
- &P(Y_{0:t}|u_{1:t})      	= 1 - \alpha_{t}
+ &P(Y_{0:t}|u_{1:t})      	= 1 + \sum\limits_{t=0}^ t \left( \overbrace{\sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P_{\cap}(A_t,O,Y_{0:t-1}|u_{0:t})}^{\alpha_t} \right)
 \end{align}
 The advantage of Equation \ref{eq:I} is that the summation is only over states which are in the dependent area $\cap$ of the joint 
 distribution. This is generally always much smaller than the full space itself.
@@ -846,8 +844,8 @@ state space $\boldsymbol{\theta} \in \mathbb{R}^N$, $\boldsymbol{\theta}^{(s)}$ 
 	$P(A_t|Y_{0:t},u_{1:t})$, $P(O|Y_{0:t})$}
 \BlankLine
 \textbf{motion update}\\
-$P(A_t|u_{1:t})  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P(A_{t-1}|u_{1:t-1})$\\
-$P(A_t|Y_{0:t-1},u_{1:t})  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t) \cdot P(A_{t-1}|Y_{0:t-1},u_{1:t-1})$\\
+$P(A_t|u_{1:t})  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t)  P(A_{t-1}|u_{1:t-1})$\\
+$P(A_t|Y_{0:t-1},u_{1:t})  = \sum\limits_{A_{t-1}} P(A_t|A_{t-1},u_t)  P(A_{t-1}|Y_{0:t-1},u_{1:t-1})$\\
 $P(Y_{0:t-1}|A_t,O) \gets$ motion update Algorithm \ref{alg:ch5:motion_memory} 
 \BlankLine
 \textbf{measurement update}
@@ -930,6 +928,9 @@ and red planes.
 For $M$ random variables the computational cost is $\BigO(N^{M-1})$ as opposed to $\BigO(N^M)$. 
 The computation complexity in this setup is still exponential but to the order $M-1$ as opposed to $M$ which will nevertheless quickly limit 
 the scalability as more objects are added. 
+
+Computing the value of a dependent state $(i,j)$ in the joint distribution required evaluating Equation \ref{eq:ch5:mlmf_filter_joint} which
+contains a product of $t$ likelihood functions. 
 
 %\paragraph{Evaluation of a state in the joint distribution}
 %In Figure \ref{fig:3bel_lik_profile} (right) we show three different points in the joint distribution to be evaluated. 
@@ -1339,7 +1340,7 @@ The resulting final Bayesian recursion is obtained by conditioning on the measur
 
 \begin{align}\label{eq:ch5_measurement_update}
  P(A_t,O|Y_{0:t},u_{1:t}) &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{1:t})  P(Y_{0:t-1}|u_{1:t})}{P(Y_{0:t}|u_{1:t})} \nonumber \\
-			  &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{1:t})  \Ccancel[red]{P(Y_{0:t-1},u_{1:t})}}{P(Y_t|Y_{0:t-1},u_{1:t}) \Ccancel[red]{P(Y_{0:t-1}|u_{1:t})}}  
+			  &= \frac{P(Y_t|A_{t},O)  P(A_t,O|Y_{0:t-1},u_{1:t})  \Ccancel[red]{P(Y_{0:t-1},u_{1:t})}}{P(Y_t|Y_{0:t-1},u_{1:t}) \Ccancel[red]{P(Y_{0:t-1}|u_{1:t})}}   
 \end{align}
  
 \begin{equation}
@@ -1388,16 +1389,19 @@ Repeating the above for $Y_{2:t}$ and $u_{3:t}$ results in:
 
 \subsection{Derivation of the evidence}\label{appendix:evidence}
 
-From first principle, Equation \ref{eq:marginal_likelihood_memory}, we demonstrated that 
-the marginal likelihood (also called evidence) is simply the difference
-in the probability mass located inside the measurement functions after applying $P(Y_t|A_t,O)$.
+%From first principle, Equation \ref{eq:marginal_likelihood_memory}, we demonstrated that 
+%the marginal likelihood (also called evidence) is simply the difference
+%in the probability mass located inside the measurement functions after applying $P(Y_t|A_t,O)$.
 
-The marginal likelihood is the marginalisation of all non measurement random variables from 
-the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerator}
+The evidence, also known as the marginal likelihood, is the marginalisation of all non measurement random variables from 
+the filtered joint distribution $P(A_t,O,Y_{0:t}|u_{1:t})$. We detail below how we compute the evidence in a recursive 
+manner whilst only considering dependent regions of the joint distribution.
+
+We start with the definition of the evidence (we dropped $u_{1:t}$ to simplify the notation).
 \begin{equation}\label{eq:ch5:numerator}
  P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) \label{eq:marginal_likelihood_memory}   
 \end{equation}
- 
+As we are interested in a recursive computation of the evidence, we consider the gradient:
 \begin{align}
   \alpha_t = \nabla_{Y_t}P(Y_{0:t}) =  P(Y_{0:t}) - P(Y_{0:t-1})
 \end{align}
@@ -1405,12 +1409,33 @@ the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerat
 \begin{align}
  \alpha_t  &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) - P(A_t,O,Y_{0:t-1})  \\
 	   &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1}) - P(A_t,O,Y_{0:t-1}) \\
-	   &= \sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P(A_t,O,Y_{0:t-1})
+	   &= \sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P(A_t,O,Y_{0:t-1}) \label{eq:ch5:gradient_alpha}
 \end{align}
+The gradient $\alpha_t$ is the difference in mass before and after the application the likelihood function, $P(Y_t|A_t,O)$. The above 
+summation, Equation \ref{eq:ch5:gradient_alpha}, is over the entire joint distribution state space. We can take advantage of the fact 
+that the likelihood function is sparse and will only affect a small region of the joint distribution, which we called the dependent states, $\cap$.
+The states which are not affected by the joint distribution will result in a contribution of zero to Equation \ref{eq:ch5:gradient_alpha}. We 
+rewrite the gradient update in terms of only the dependent regions:
+
+\begin{equation}
+ \alpha_t = \sum\limits_{A_t}\sum\limits_{O} (P(Y_t|A_t,O) - 1)P_{\cap}(A_t,O,Y_{0:t-1})
+\end{equation}
+
+Consider the first update of the evidence at time $t=0$:
 
 \begin{align}
- \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} (P(Y_0|A_0,O) - 1)P(A_0,O)  \\
+ \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} (P(Y_0|A_0,O) - 1)P(A_0,O) 
 \end{align}
+The one in Equation \ref{eq:ch5:evidence_yo} is the original value of the normalisation denominator before any observation is made and as the 
+initial joint distribution $P(A_0,O)$ is normalised the value of the denominator is one.
+\begin{equation}
+ P(Y_0) = 1 + \alpha_0 \label{eq:ch5:evidence_yo}
+\end{equation}
+For the evidence $P(Y_{0:t})$ we consider the summation of all the derivatives $\alpha_t$ from time $t=0$ until $t$:
+\begin{equation}
+ P(Y_{0:t}) = 1 + \sum_{t=0}^t \alpha_t \label{eq:ch5:evidence_y}
+\end{equation}
+
 
 %\begin{align}
 % \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
@@ -1423,18 +1448,18 @@ the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerat
 % \sum\limits_{A_t} \sum\limits_O P(A_t,O|Y_{0:t-1}) = 1
 %\end{align}
 
- \begin{align}
-  \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O)  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_0,O)}^{=1} \label{eq:ch5:less1_1}\\
-  \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) &\leq 1 \label{eq:ch5:less1_2} \\
-  P(Y_0) &\leq 1 \\
-   P(Y_0) &= 1 - \alpha_0 \label{eq:marginal_likelihood_equal_I}
-\end{align}
+ %\begin{align}
+ % \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O)  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_0,O)}^{=1} \label{eq:ch5:less1_1}\\
+ % \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) &\leq 1 \label{eq:ch5:less1_2} \\
+ % P(Y_0) &\leq 1 \\
+ %  P(Y_0) &= 1 - \alpha_0 \label{eq:marginal_likelihood_equal_I}
+%\end{align}
 
-\begin{align}
- \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
-        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(Y_0|A_0,O) \cdot P(A_0,O) \\
-        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(A_0,O,Y_0)
-\end{align}
+%\begin{align}
+%\alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
+%       &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(Y_0|A_0,O) \cdot P(A_0,O) \\
+%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(A_0,O,Y_0)
+%\end{align}
 
 
 
@@ -1447,21 +1472,21 @@ the nominator of Equation \ref{eq:ch5_measurement_update} \& \ref{eq:ch5:numerat
 
  
  
- \begin{align}
-  I\_tmp &= \sum\limits_{A_t}\sum\limits_{O} (1 - P(Y_t|A_t,O)) P(A_t,O,Y_{0:t-1})\\
-         &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t-1}) - P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1})\\
-         &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t-1}) - P(A_t,O,Y_{0:t})\\
-  Is     &= Is + I\_tmp \\
-  PYs   &= 1 - Is
- \end{align}
+ %\begin{align}
+ % I\_tmp &= \sum\limits_{A_t}\sum\limits_{O} (1 - P(Y_t|A_t,O)) P(A_t,O,Y_{0:t-1})\\
+ %        &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t-1}) - P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1})\\
+ %        &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t-1}) - P(A_t,O,Y_{0:t})\\
+ % Is     &= Is + I\_tmp \\
+ % PYs   &= 1 - Is
+ %\end{align}
 
  
  
-\begin{align}
- &P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot P(A_t,O,Y_{0:t-1}) 
+%\begin{align}
+% &P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot P(A_t,O,Y_{0:t-1}) 
 %		  &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot \Big(P_{\ominus}(A_t,O,{\color{red}Y_{0:t-1}}|u_{1:t}) + P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t})\Big)\\
 %		  &= \sum\limits_{A_t}\sum\limits_{O} P_{\ominus}(A_t,O,{\color{red}Y_{0:t}}|u_{1:t}) + P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t}) \label{eq:marginal_likelihood_memory_last}
-\end{align}
+%\end{align}
 
 %In Equation \ref{eq:ch5:less1_1}, we use the fact that after applying the measurement likelihood function, which lies in the interval $0 \leq P(Y_t|A_t,O) \leq 1$, 
 %to the joint distribution, its sum will always be smaller or equal to $1$.

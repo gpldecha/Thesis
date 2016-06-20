@@ -506,17 +506,18 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces \textbf  {a)} EKF-SLAM time slice evolutions of the pdfs. The temporal ordering is given by the numbers in the top right corner of each plot. The blue pdf represents the agent's believed location and the circle is the agent's true location. The same holds for the red distribution which represents the agent's belief of the location of an object. \textbf  {b)} Evolution of the covariance components of $\Sigma $ over time and true $Y_t$ and expected measurements, $\mathaccentV {hat}05E{Y}_t$. $\Sigma _a$ and $\Sigma _o$ are the variances of the agent and object positions and $\Sigma _{ao}$ is the cross-covariance term.\relax }}{115}{figure.caption.77}}
 \newlabel{fig:EKF-SLAM}{{5.5}{115}{\textbf {a)} EKF-SLAM time slice evolutions of the pdfs. The temporal ordering is given by the numbers in the top right corner of each plot. The blue pdf represents the agent's believed location and the circle is the agent's true location. The same holds for the red distribution which represents the agent's belief of the location of an object. \textbf {b)} Evolution of the covariance components of $\Sigma $ over time and true $Y_t$ and expected measurements, $\hat {Y}_t$. $\Sigma _a$ and $\Sigma _o$ are the variances of the agent and object positions and $\Sigma _{ao}$ is the cross-covariance term.\relax }{figure.caption.77}{}}
 \newlabel{eq:lik-measurement}{{5.3.3}{115}{EKF-SLAM}{equation.5.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces \textit  {Left:} Joint distribution of the agent and object before any action or measurement is integrated. \textit  {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref  {eq:agent_marginal}. The probability of the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }}{116}{figure.caption.79}}
-\newlabel{fig:histogram_joint}{{5.6}{116}{\textit {Left:} Joint distribution of the agent and object before any action or measurement is integrated. \textit {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref {eq:agent_marginal}. The probability of the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }{figure.caption.79}{}}
+\newlabel{eq:ch5:measurement_ekf}{{5.3.4}{115}{EKF-SLAM}{equation.5.3.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Histogram-SLAM}{116}{section*.78}}
 \newlabel{sec:Discrete}{{5.3}{116}{Histogram-SLAM}{section*.78}{}}
-\newlabel{eq:agent_marginal}{{5.3.4}{116}{Histogram-SLAM}{equation.5.3.4}{}}
+\newlabel{eq:agent_marginal}{{5.3.5}{116}{Histogram-SLAM}{equation.5.3.5}{}}
+\newlabel{eq:ch5:discrete_likelihoood}{{5.3.7}{116}{Histogram-SLAM}{equation.5.3.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces \textit  {Left:} Joint distribution of the agent and object before any action or measurement is integrated. \textit  {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref  {eq:agent_marginal}. The probability of the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }}{117}{figure.caption.79}}
+\newlabel{fig:histogram_joint}{{5.6}{117}{\textit {Left:} Joint distribution of the agent and object before any action or measurement is integrated. \textit {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref {eq:agent_marginal}. The probability of the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }{figure.caption.79}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces 1D world Likelihood $P(Y_t|A_t,O)$. \textit  {Left:} No contact detected with the object, the current measurement is $\mathaccentV {hat}05E{Y}_t = \leavevmode {\color  {red}0}$, both the agent and object cannot be in the same state. \textit  {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \leavevmode {\color  {red}1}$. There are only two measurements contact or no contact, which the agent receives.\relax }}{117}{figure.caption.80}}
 \newlabel{fig:histogram_likelihood}{{5.7}{117}{1D world Likelihood $P(Y_t|A_t,O)$. \textit {Left:} No contact detected with the object, the current measurement is $\hat {Y}_t = \textcolor {red}0$, both the agent and object cannot be in the same state. \textit {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \textcolor {red}1$. There are only two measurements contact or no contact, which the agent receives.\relax }{figure.caption.80}{}}
-\newlabel{eq:ch5:discrete_likelihoood}{{5.3.6}{117}{Histogram-SLAM}{equation.5.3.6}{}}
-\newlabel{eq:ch5:disc_prod_AO}{{5.3.7}{118}{Histogram-SLAM}{equation.5.3.7}{}}
-\newlabel{eq:ch5:disc_motion}{{5.3.8}{118}{Histogram-SLAM}{equation.5.3.8}{}}
-\newlabel{eq:ch5:disc_measurement}{{5.3.9}{118}{Histogram-SLAM}{equation.5.3.9}{}}
+\newlabel{eq:ch5:disc_prod_AO}{{5.3.8}{118}{Histogram-SLAM}{equation.5.3.8}{}}
+\newlabel{eq:ch5:disc_motion}{{5.3.9}{118}{Histogram-SLAM}{equation.5.3.9}{}}
+\newlabel{eq:ch5:disc_measurement}{{5.3.10}{118}{Histogram-SLAM}{equation.5.3.10}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Histogram-SLAM, 4 time steps. \textbf  {1} Application of likelihood $P(Y_0=0|A_0,O)$ and the agent remains stationary, $u_0=0$, all states along the green line become zero. \textbf  {2} The agent moves to the right $u_1=1$, the motion $P(A_1|A_0,u_1)$, and likelihood models are applied consecutively. The right motion results in a shift (black arrow on the left) in the joint probability distribution towards the state $i=10$. All parameters on the pink line are zero. \textbf  {3} Same as two. \textbf  {4} The original result of the likelihood function, green line, has moved by the same amount as the agent's displacement. At each time step a new likelihood function (pink line) is applied to the joint distribution.\relax }}{119}{figure.caption.81}}
 \newlabel{fig:discrete_example}{{5.8}{119}{Histogram-SLAM, 4 time steps. \textbf {1} Application of likelihood $P(Y_0=0|A_0,O)$ and the agent remains stationary, $u_0=0$, all states along the green line become zero. \textbf {2} The agent moves to the right $u_1=1$, the motion $P(A_1|A_0,u_1)$, and likelihood models are applied consecutively. The right motion results in a shift (black arrow on the left) in the joint probability distribution towards the state $i=10$. All parameters on the pink line are zero. \textbf {3} Same as two. \textbf {4} The original result of the likelihood function, green line, has moved by the same amount as the agent's displacement. At each time step a new likelihood function (pink line) is applied to the joint distribution.\relax }{figure.caption.81}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Histogram-SLAM contact. The agent has entered in contact with the object (measurement $Y_t = 1$) and the likelihood function $P(Y_t=1|A_t,O)$ is applied to the joint distribution. Only parameters on the line $i=j$ will remain unchanged and parameters for which $i \not = j$ will be set to zero.\relax }}{120}{figure.caption.82}}
@@ -532,7 +533,7 @@
 \newlabel{eq:memory}{{5.4.6}{122}{MLMF parametrisation}{equation.5.4.6}{}}
 \newlabel{alg:memory-motion}{{1}{123}{MLMF parametrisation}{algocfline.1}{}}
 \newlabel{alg:ch5:motion_memory}{{1}{123}{MLMF parametrisation}{AlgoLine.1.1}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Likelihood motion update\relax }}{123}{algocf.1}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Likelihood functions update\relax }}{123}{algocf.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Computation of evidence and marginals}{123}{subsection.5.4.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Evolution of the MLMF joint distribution (evaluation of Equation \ref  {eq:ch5:mlmf_filter_conditional}) and marginals for a 1D world. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. The black line correspond to areas in which the likelihood function evaluates to zero. \textit  {Left}: the first likelihood function $P(Y_0|A_0,O)$, causes all the mass of joint distribution whose's states are $i=j$ to be evaluated to zero, as the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of both the agent and the object). The probability mass which lies in the area of influence of the measurement likelihood (evaluated to zero) gets removed and redistributed to the other states in the joint distribution due to normalisation. \textit  {Right:} Two actions have be taken and three measurements have been observed. The joint distribution on the \textit  {right} is the result of applying the motion update, Equation \ref  {eq:ch5:mlmf_motion_update}, which moves the initial marginal $P(A_0)$ to $P(A_2|u_{1:2})$ and displaces the likelihood function. A new measurement is then added, Equation \ref  {eq:ch5:mlmf_filter_joint}, illustrated by the pink line.\relax }}{124}{figure.caption.83}}
 \newlabel{fig:margina_joint_example}{{5.10}{124}{Evolution of the MLMF joint distribution (evaluation of Equation \ref {eq:ch5:mlmf_filter_conditional}) and marginals for a 1D world. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. The black line correspond to areas in which the likelihood function evaluates to zero. \textit {Left}: the first likelihood function $P(Y_0|A_0,O)$, causes all the mass of joint distribution whose's states are $i=j$ to be evaluated to zero, as the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of both the agent and the object). The probability mass which lies in the area of influence of the measurement likelihood (evaluated to zero) gets removed and redistributed to the other states in the joint distribution due to normalisation. \textit {Right:} Two actions have be taken and three measurements have been observed. The joint distribution on the \textit {right} is the result of applying the motion update, Equation \ref {eq:ch5:mlmf_motion_update}, which moves the initial marginal $P(A_0)$ to $P(A_2|u_{1:2})$ and displaces the likelihood function. A new measurement is then added, Equation \ref {eq:ch5:mlmf_filter_joint}, illustrated by the pink line.\relax }{figure.caption.83}{}}
@@ -561,7 +562,7 @@
 \newlabel{eq:pair_wise_joint}{{5.4.12}{131}{Scalable extension to multiple objects}{equation.5.4.12}{}}
 \newlabel{eq:marg_indep}{{5.4.13}{131}{Scalable extension to multiple objects}{equation.5.4.13}{}}
 \newlabel{eq:marg_indep_prod}{{5.4.15}{131}{Scalable extension to multiple objects}{equation.5.4.15}{}}
-\newlabel{eq:marg_indep_sum}{{5.4.16}{131}{Scalable extension to multiple objects}{equation.5.4.16}{}}
+\newlabel{eq:marg_indep_sum}{{5.4.16}{132}{Scalable extension to multiple objects}{equation.5.4.16}{}}
 \newlabel{alg:scalabe-mrf-slam}{{3}{132}{Scalable extension to multiple objects}{algocfline.3}{}}
 \@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Scalable-MLMF: Measurement Update\relax }}{132}{algocf.3}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \textbf  {Transfer of information between joint distributions} \textit  {top left and right:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior and post sensing. The red and blue lines correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted black lines are for ease of comparing the joint distributions prior and post sensing. \textit  {bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the blue line becomes an infeasible solution to the agent and object locations. \textit  {bottom left:} The constraint imposed by the measurement likelihood function of the second object (blue line) is transferred to the joint distribution of the first object according to Algorithm \ref  {alg:scalabe-mrf-slam}. The result is a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }}{133}{figure.caption.90}}
@@ -572,9 +573,9 @@
 \newlabel{tab:time_space_summary}{{5.2}{134}{\textbf {Time and space complexity summary} For both MLMF and scalabe-MLMF the worst case scenario is reported for the space complexity.\relax }{table.caption.92}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.5}Evaluation}{134}{section.5.5}}
 \newlabel{ch5:evaluation}{{5.5}{134}{Evaluation}{section.5.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Evaluation of time complexity}{134}{subsection.5.5.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces \textbf  {Time complexity:} \textit  {left:} mean time taken for a loop update (motion and measurement) as a function of the number of states in a marginal and the number of objects present. \textit  {right:} time taken for a loop update with respect to the number of states in the marginal. The colour coded lines are associated with the number of objects present. The computational cost is plotted on a log scale. As the number of states increases exponentially the computational cost matches it.\relax }}{135}{figure.caption.93}}
 \newlabel{fig:time_complexity}{{5.16}{135}{\textbf {Time complexity:} \textit {left:} mean time taken for a loop update (motion and measurement) as a function of the number of states in a marginal and the number of objects present. \textit {right:} time taken for a loop update with respect to the number of states in the marginal. The colour coded lines are associated with the number of objects present. The computational cost is plotted on a log scale. As the number of states increases exponentially the computational cost matches it.\relax }{figure.caption.93}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Evaluation of time complexity}{135}{subsection.5.5.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Evaluation of the independence assumption}{135}{subsection.5.5.2}}
 \newlabel{subsec:eval_indep_assumptiom}{{5.5.2}{135}{Evaluation of the independence assumption}{subsection.5.5.2}{}}
 \newlabel{eq:hellinger}{{5.5.1}{136}{Evaluation of the independence assumption}{equation.5.5.1}{}}
@@ -586,27 +587,34 @@
 \newlabel{fig:exploration_init}{{5.18}{138}{\textbf {Agent's prior beliefs.} Two types of environment, the first is a 2D world where the agent lives in a square surrounded by a wall whilst the second is a 1D world. In the 2D figures the agent is illustrated by a circle with a bar to indicate its heading. The true location of the objects are represented by colour coded squares. \textit {Top row} three different initialisations of the agent's location. \textit {Bottom row} d) the agent's prior beliefs with respect to the location of the first object and e) belief of the second object's location. \textit {bottom row} f) 1D world with one object.\relax }{figure.caption.95}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces \textbf  {Memory size vs time to find object in 1D} Results of the effect of the memory size on the decision process. The memory size is reported as the percentage of total number of states present in the marginal space. At 100\% the size of the memory is equal to that of the state space. results of the 1D search illustrated in Figure \ref  {fig:exploration_init} \textit  {f)}.\relax }}{139}{figure.caption.96}}
 \newlabel{fig:time_to_reach_goal_1D}{{5.19}{139}{\textbf {Memory size vs time to find object in 1D} Results of the effect of the memory size on the decision process. The memory size is reported as the percentage of total number of states present in the marginal space. At 100\% the size of the memory is equal to that of the state space. results of the 1D search illustrated in Figure \ref {fig:exploration_init} \textit {f)}.\relax }{figure.caption.96}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces \textbf  {Memory size vs time to find objects in 2D}. 2D search with initialisations accordingly depicted in Figure \ref  {fig:exploration_init}.\relax }}{139}{figure.caption.97}}
-\newlabel{fig:time_to_reach_goal_2D}{{5.20}{139}{\textbf {Memory size vs time to find objects in 2D}. 2D search with initialisations accordingly depicted in Figure \ref {fig:exploration_init}.\relax }{figure.caption.97}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces \textbf  {Memory size vs time to find objects in 2D}. 2D search with initialisations accordingly depicted in Figure \ref  {fig:exploration_init}.\relax }}{140}{figure.caption.97}}
+\newlabel{fig:time_to_reach_goal_2D}{{5.20}{140}{\textbf {Memory size vs time to find objects in 2D}. 2D search with initialisations accordingly depicted in Figure \ref {fig:exploration_init}.\relax }{figure.caption.97}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.6}Conclusion}{140}{section.5.6}}
 \newlabel{ch5:conclusion}{{5.6}{140}{Conclusion}{section.5.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.7}Appendix}{141}{section.5.7}}
 \newlabel{ch5:appendix}{{5.7}{141}{Appendix}{section.5.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Bayesian filtering recursion}{141}{subsection.5.7.1}}
 \newlabel{appendix:bayes_recursion}{{5.7.1}{141}{Bayesian filtering recursion}{subsection.5.7.1}{}}
-\newlabel{eq:ch5:app:joint}{{5.7.1}{141}{Bayesian filtering recursion}{equation.5.7.1}{}}
-\newlabel{eq:br_chain}{{5.7.3}{141}{Bayesian filtering recursion}{equation.5.7.3}{}}
+\newlabel{eq:ch5:app:joint}{{5.7.1}{142}{Bayesian filtering recursion}{equation.5.7.1}{}}
+\newlabel{eq:br_chain}{{5.7.3}{142}{Bayesian filtering recursion}{equation.5.7.3}{}}
 \newlabel{eq:ch5_measurement_update}{{5.7.7}{142}{Bayesian filtering recursion}{equation.5.7.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Recursion example}{142}{subsection.5.7.2}}
-\newlabel{appendix:recursion_example}{{5.7.2}{142}{Recursion example}{subsection.5.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Recursion example}{143}{subsection.5.7.2}}
+\newlabel{appendix:recursion_example}{{5.7.2}{143}{Recursion example}{subsection.5.7.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Derivation of the evidence}{143}{subsection.5.7.3}}
 \newlabel{appendix:evidence}{{5.7.3}{143}{Derivation of the evidence}{subsection.5.7.3}{}}
-\newlabel{eq:marginal_likelihood_memory}{{5.7.21}{143}{Derivation of the evidence}{equation.5.7.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.4}Derivation of the marginal}{144}{subsection.5.7.4}}
-\newlabel{appendix:marginal}{{5.7.4}{144}{Derivation of the marginal}{subsection.5.7.4}{}}
-\newlabel{eq:ch5:app:dummy}{{5.7.36}{144}{Derivation of the marginal}{equation.5.7.36}{}}
-\newlabel{eq:dependence1}{{5.7.37}{145}{Derivation of the marginal}{equation.5.7.37}{}}
-\newlabel{eq:dependence2}{{5.7.38}{145}{Derivation of the marginal}{equation.5.7.38}{}}
+\newlabel{eq:marginal_likelihood_memory}{{5.7.21}{144}{Derivation of the evidence}{equation.5.7.21}{}}
+\newlabel{eq:ch5:gradient_alpha}{{5.7.25}{144}{Derivation of the evidence}{equation.5.7.25}{}}
+\newlabel{eq:ch5:evidence_yo}{{5.7.28}{144}{Derivation of the evidence}{equation.5.7.28}{}}
+\newlabel{eq:ch5:evidence_y}{{5.7.29}{145}{Derivation of the evidence}{equation.5.7.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.4}Derivation of the marginal}{145}{subsection.5.7.4}}
+\newlabel{appendix:marginal}{{5.7.4}{145}{Derivation of the marginal}{subsection.5.7.4}{}}
+\newlabel{eq:ch5:app:dummy}{{5.7.30}{145}{Derivation of the marginal}{equation.5.7.30}{}}
+\newlabel{eq:dependence1}{{5.7.31}{145}{Derivation of the marginal}{equation.5.7.31}{}}
+\newlabel{eq:dependence2}{{5.7.32}{145}{Derivation of the marginal}{equation.5.7.32}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion}{147}{chapter.6}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{loa}{\addvspace {10\p@ }}
 \bibstyle{plainnat}
 \bibdata{bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib,imitation_learning.bib,bib/ch3-citations.bib}
 \bibcite{FIRM_2011}{{1}{2011}{{a.~Agha-mohammadi et~al.}}{{a.~Agha-mohammadi, Chakravorty, and Amato}}}
@@ -620,7 +628,7 @@
 \bibcite{Bake_Tene_Saxe_2006}{{9}{2006}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
 \bibcite{barberBRML2012}{{10}{2012}{{Barber}}{{}}}
 \bibcite{Baron-Cohen}{{11}{1995}{{Baron-Cohen}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{References}{147}{chapter*.98}}
+\@writefile{toc}{\contentsline {chapter}{References}{149}{chapter*.98}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
