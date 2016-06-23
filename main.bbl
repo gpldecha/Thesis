@@ -1,4 +1,4 @@
-\begin{thebibliography}{150}
+\begin{thebibliography}{153}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -891,11 +891,21 @@ Nicholas Roy.
 \newblock URL
   \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180}.
 
-\bibitem[Roy and Gordon(2003)]{EPCA_2003}
+\bibitem[Roy and Gordon(2003{\natexlab{a}})]{EPCA_2003}
 Nicholas Roy and Geoffrey~J Gordon.
 \newblock Exponential family pca for belief compression in pomdps.
 \newblock In S.~Becker, S.~Thrun, and K.~Obermayer, editors, \emph{Advances in
-  Neural Information Processing Systems 15}, pages 1667--1674. MIT Press, 2003.
+  Neural Information Processing Systems 15}, pages 1667--1674. MIT Press,
+  2003{\natexlab{a}}.
+\newblock URL
+  \url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}.
+
+\bibitem[Roy and Gordon(2003{\natexlab{b}})]{NIPS2002_2319}
+Nicholas Roy and Geoffrey~J Gordon.
+\newblock Exponential family pca for belief compression in pomdps.
+\newblock In S.~Becker, S.~Thrun, and K.~Obermayer, editors, \emph{Advances in
+  Neural Information Processing Systems 15}, pages 1667--1674. MIT Press,
+  2003{\natexlab{b}}.
 \newblock URL
   \url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}.
 
@@ -1022,6 +1032,13 @@ R.S. Sutton and A.G. Barto.
 \newblock \emph{Reinforcement learning: An introduction}, volume 116.
 \newblock Cambridge Univ Press, 1998.
 
+\bibitem[Szepesvári(2010)]{RL_book_2010}
+Csaba Szepesvári.
+\newblock \emph{Algorithms for Reinforcement Learning}.
+\newblock Synthesis Lectures on Artificial Intelligence and Machine Learning.
+  Morgan and Claypool Publishers, 2010.
+\newblock URL \url{http://dx.doi.org/10.2200/S00268ED1V01Y201005AIM009}.
+
 \bibitem[Thrun(2000)]{MC-POMDP}
 Sebastian Thrun.
 \newblock Monte carlo {POMDP}s.
@@ -1110,11 +1127,18 @@ Manuela~M. Veloso, editor.
   Conference on Artificial Intelligence, Hyderabad, India, January 6-12, 2007},
   2007.
 
-\bibitem[Vien and Toussaint(2015)]{pomdp_iros_tous_2015}
+\bibitem[Vien and Toussaint(2015{\natexlab{a}})]{pomdp_iros_tous_2015}
 N.~A. Vien and M.~Toussaint.
 \newblock Pomdp manipulation via trajectory optimization.
 \newblock In \emph{Intelligent Robots and Systems (IROS), 2015 IEEE/RSJ
-  International Conference on}, pages 242--249, Sept 2015.
+  International Conference on}, pages 242--249, Sept 2015{\natexlab{a}}.
+
+\bibitem[Vien and Toussaint(2015{\natexlab{b}})]{pomdp_toussain_iros_2015}
+N.~A. Vien and M.~Toussaint.
+\newblock Pomdp manipulation via trajectory optimization.
+\newblock In \emph{Intelligent Robots and Systems (IROS), 2015 IEEE/RSJ
+  International Conference on}, pages 242--249, Sept 2015{\natexlab{b}}.
+\newblock \doi{10.1109/IROS.2015.7353381}.
 
 \bibitem[Vijayakumar et~al.(2003)Vijayakumar, Shibata, and Schaal]{eNAC_2003}
 Sethu Vijayakumar, Tomohiro Shibata, and Stefan Schaal.

@@ -3,33 +3,34 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 I couldn't open database file bib/ProspectTheory.bib.bib
----line 615 of file main.aux
- : \bibdata{bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
- :                                                                                                                                                                                                     ,imitation_learning.bib,bib/ch3-citations.bib}
+---line 631 of file main.aux
+ : \bibdata{bib/planning.bib,bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
+ :                                                                                                                                                                                                                      ,imitation_learning.bib,bib/ch3-citations.bib}
 I'm skipping whatever remains of this command
-Database file #1: bib/MLMF.bib.bib
-Database file #2: bib/peg_hole.bib.bib
+Database file #1: bib/planning.bib.bib
+Database file #2: bib/MLMF.bib.bib
+Database file #3: bib/peg_hole.bib.bib
 Repeated entry---line 367 of file bib/peg_hole.bib.bib
  : @incollection{NIPS2008_3501
  :                            ,
 I'm skipping whatever remains of this entry
-Database file #3: bib/search_human_blind.bib.bib
-Database file #4: bib/RL.bib.bib
+Database file #4: bib/search_human_blind.bib.bib
+Database file #5: bib/RL.bib.bib
 Repeated entry---line 282 of file bib/RL.bib.bib
  : @article{EGW05
  :               ,
 I'm skipping whatever remains of this entry
-Database file #5: bib/pomdp.bib.bib
+Database file #6: bib/pomdp.bib.bib
 Repeated entry---line 124 of file bib/pomdp.bib.bib
  : @article{Ross08onlineplanning
  :                              ,
 I'm skipping whatever remains of this entry
-Database file #6: bib/cpomdp.bib.bib
+Database file #7: bib/cpomdp.bib.bib
 Repeated entry---line 419 of file bib/cpomdp.bib.bib
  : @inproceedings{stachniss05robotics
  :                                   ,
 I'm skipping whatever remains of this entry
-Database file #7: bib/citations.bib.bib
+Database file #8: bib/citations.bib.bib
 Repeated entry---line 499 of file bib/citations.bib.bib
  : @book{GeorgiosLidoris
  :                      ,
@@ -92,7 +93,7 @@ Repeated entry---line 1793 of file bib/citations.bib.bib
  : @article{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain
  :                                                                   ,
 I'm skipping whatever remains of this entry
-Database file #8: bib/DT.bib.bib
+Database file #9: bib/DT.bib.bib
 Repeated entry---line 1 of file bib/DT.bib.bib
  : @book{VonNeumann1944
  :                     ,
@@ -101,7 +102,7 @@ Repeated entry---line 11 of file bib/DT.bib.bib
  : @article{Bernoulli1954
  :                       ,
 I'm skipping whatever remains of this entry
-Database file #9: bib/ToM.bib.bib
+Database file #10: bib/ToM.bib.bib
 Repeated entry---line 21 of file bib/ToM.bib.bib
  : @article{Bake_Tene_Saxe_2006
  :                             ,
@@ -114,7 +115,7 @@ Repeated entry---line 40 of file bib/ToM.bib.bib
  : @article{Richardson1_Baker1_Tenenbaum1_Saxe1_2012
  :                                                  ,
 I'm skipping whatever remains of this entry
-Database file #10: bib/spatial_navigation.bib.bib
+Database file #11: bib/spatial_navigation.bib.bib
 I was expecting a `,' or a `}'---line 127 of file bib/spatial_navigation.bib.bib
  :  
  :  journal = {Cognitive Psychology},
@@ -148,45 +149,45 @@ while executing---line 1429 of file plainnat.bst
 Warning--can't use both author and editor fields in RL_book_sa
 Warning--empty publisher in SLAM_HBR
 Warning--empty publisher in Biomechanics_2009
-You've used 150 entries,
+You've used 153 entries,
             2773 wiz_defined-function locations,
-            1659 strings with 40218 characters,
-and the built_in function-call counts, 85682 in all, are:
-= -- 7877
-> -- 4855
-< -- 143
-+ -- 1635
-- -- 1477
-* -- 6980
-:= -- 12604
-add.period$ -- 624
-call.type$ -- 150
-change.case$ -- 922
-chr.to.int$ -- 142
-cite$ -- 311
-duplicate$ -- 3968
-empty$ -- 6813
-format.name$ -- 1711
-if$ -- 18697
-int.to.chr$ -- 9
+            1671 strings with 40533 characters,
+and the built_in function-call counts, 87280 in all, are:
+= -- 8032
+> -- 4918
+< -- 148
++ -- 1658
+- -- 1495
+* -- 7092
+:= -- 12831
+add.period$ -- 638
+call.type$ -- 153
+change.case$ -- 935
+chr.to.int$ -- 143
+cite$ -- 317
+duplicate$ -- 4055
+empty$ -- 6955
+format.name$ -- 1736
+if$ -- 19061
+int.to.chr$ -- 11
 int.to.str$ -- 1
-missing$ -- 158
-newline$ -- 909
-num.names$ -- 621
-pop$ -- 1898
+missing$ -- 162
+newline$ -- 927
+num.names$ -- 635
+pop$ -- 1931
 preamble$ -- 1
-purify$ -- 784
+purify$ -- 795
 quote$ -- 0
-skip$ -- 3191
+skip$ -- 3255
 stack$ -- 0
-substring$ -- 3610
-swap$ -- 956
-text.length$ -- 78
+substring$ -- 3684
+swap$ -- 985
+text.length$ -- 80
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1588
+type$ -- 1616
 warning$ -- 11
-while$ -- 685
+while$ -- 700
 width$ -- 0
-write$ -- 2273
+write$ -- 2319
 (There were 33 error messages)

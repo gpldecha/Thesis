@@ -6,16 +6,15 @@ future research directions.
 \section{Main Contributions}
 
 In this thesis, we address aspects of acting under uncertainty. In Robotics and Artificial Intelligence (AI) this is not
-straightforward due to the complexity involved in solving Partially Observable Markov Decision Processes (POMDP), commonly used
-to describe uncertainty in tasks, 
+straightforward due to the complexity involved in solving the typical Partially Observable Markov Decision Process (POMDP) formulation commonly used, 
 which becomes quickly infeasible for even the simplest problems. Although there has been progress in the development of POMDP solvers with demonstrated 
 applications to robotics, these are predominantly verified in simulation in which the action space is discretised.  
 
 In relation to the goal of this thesis, which is to learn search policies from human teachers and transfer them to a robotic apprentice,
 the three major contributions of this thesis are three-fold: 
 
-Firstly, we demonstrate a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a mixture of search strategies 
-human teachers. We use a particle filter to represent the belief of the end-effector's position of both human teachers and robot apprentice.
+First, we demonstrate a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a search policy from human teachers. We 
+use a particle filter to represent the belief of the end-effector's position of both human teachers and robot apprentice.
 The particle filter is compressed to a belief state composed of the most likely state and entropy. 
 From a sequence of demonstrated belief states and actions, a generative joint  belief-action distribution parameterised by Gaussian Mixture Model (GMM)
 is learned. The GMM is used as an autonomous dynamical system which gives a velocity vector field when conditioned on the current
@@ -30,8 +29,8 @@ significantly improve the performance a search strategy designed to accomplish a
 % need to say that much fewer demonstrations are needed
 
 Thirdly, we developed a Bayesian State Space Estimator (BSSE) to solve the Simultaneous Localisation and Mapping (SLAM) 
-problem given that only haptic information is available, which we named Measurement Likelihood Memory Filter (MLMF). 
-Given the nature of the searches, we consider any prior structure in the beliefs (such as Gaussianity) to be 
+problem given that only haptic information is available, which we names Measurement Likelihood Memory Filter (MLMF). 
+Given the nature of the searches we consider any prior assumed structure in the beliefs (such as Gaussianity) is 
 ill-suited. We demonstrate that by choosing a different parameterisation of the Histogram Bayesian filter we are able 
 to overcome the exponential space and time complexity which is inherent to it. To the best of our knoweldge this is 
 the first work which considers negative information only in a SLAM setting.
@@ -58,9 +57,9 @@ resolving them.
 %
 Throughout this dissertation, we used Gaussian Mixture Models (GMM) to encode a vector 
 field policy which is a function of the current belief state. For the robot to be able to localise 
-itself the policy has to be guided towards salient areas, such as edges and corners, of 
+itself the policy has to guide it towards salient areas, such as edges and corners, of 
 the state space. However, as the GMM learning is non-deterministic and data driven, there 
-are no guarantees that behaviour such as paths remaining in contact with edges, in order to get haptic feedback, 
+are no guarantees that behaviour such as paths remaining in contact with edges, such to get haptic feedback, 
 will be encoded and reproduced by the GMM policy. 
 
 \begin{figure}[h]
@@ -107,7 +106,7 @@ which make them computationally cheap at runtime.
 
 A future direction of research would be to consider local adaptation of the dynamical system such to try
 and seek out specific sensory feedback. This could be achieved for instance by combining planning with 
-GMM policies or learning local dynamical system which seek out sensory feedback. The difficulty lies
+GMM policy or learning local dynamical system policies which seek out sensory feedback. The difficulty lies
 within negotiating the interplay between the two.
 
 \subsubsection{Belief compression}
@@ -129,7 +128,7 @@ density function and then a projecting to a latent space, which in the case of E
 an convex optimisation problem (iterative Newton's method) at each time step. 
 
 It is also not clear the effect an improved belief compression method would have on the policy. The better 
-the compression method (in terms of KL divergence) the more dimensions will be necessary and as a result 
+the compression method (in terms of KL divergence) the more dimensions will be necessary (15) and as a result 
 more data points will be required to train the GMM. We made the observation both in Chapter 3 and 4 that the 
 GMM policy was better than a myopic one. However, this holds true mostly when only a large amount of uncertainty 
 is present. When the uncertainty starts to decrease the Greedy method does just as good or better than a 
@@ -170,28 +169,35 @@ The draw back is that the time complexity remains exponential with respect to th
 (although at a lesser growth rate) and to address this we had to introduce an additional independence 
 assumption. This assumption means some information will be lost and the filtered marginals will 
 be an approximate solution with respect to an optimal Bayesian filter. There is no obvious remedy 
-to this problem. There are two approaches: either introduce an assumption (as we did) or do 
+to this problem. There is only two approaches, either introduce an assumption (as we did) or do 
 an approximate evaluation of the marginalisation. An approximate marginalisation could be achieved 
-by evaluating the value of the marginals at specific points and set the remaining marginal values by interpolating 
-between the chosen points.
+by evaluating the value of the marginals at specific points and set the remaining by interpolating 
+between the values of the specific points.
+
 
 \section{Final Words}
 
 During my PhD I have spent a considerable amount of time studying the role 
 of uncertainty in Artificial Intelligence, specifically how it affects 
 decision making in agents. I list below some anecdote and important 
-insights I have made throughout my PhD.
+insights I have made during the last period of my PhD.
 
 \begin{itemize}
-
- \item \textit{Humans can be poor teachers:}  Programming by Demonstration (PbD), traditionally requires an expert 
- teacher to provide a set of demonstrations in the form of state-velocity pairs which are used to learn 
- a policy represented by a regressor function. If the teacher is rarely successful at his task, learning a policy
- directly from his behaviour will yield a policy on par with the teachers performance.
- One of the original questions posed by PbD is \textit{what to imitate ?}, \cite{Billard08chapter}.
- By introducing a simple binary cost function, as we did in Chapter 4, we were able to improve the quality of the policy.
- All regression based PbD methods can use the Reinforcement Learning (RL) approach used in Chapter 4, with no additional 
- rollouts being necessary.
+ \item \textit{Myopic vs POMDP policies:} Across most of the discrete POMDP literature the Q-MDP myopic policy is 
+ used as a benchmark. In the problems considered, Q-MDP does not fair as good in terms of reward but the difference 
+ in the policies's parameters are not reported. Through this thesis we always used a myopic policy as a benchmark to compare with 
+ our more sophisticated approaches. Even though myopic policies do not consider uncertainty when taking an action,
+ the action will always lead to some information gain, since actuated robots are very precise. As a result the 
+ uncertainty will always decrease and eventually the robot will manage to accomplish its task.
+ It is not clear the difference that exists between myopic and continuous policy search methods on point motion and 
+ grasping tasks in which the uncertainty is considered uni-modal and Gaussian, as there has been no comparison.
+ This being said a lot depends on the perception capabilities of the robot. If the environment provides enough
+ sensory cues after a few time steps the robot will be localised regardless of the policy which he is following.
+ 
+ \item \textit{Humans can be poor teachers:} Traditionally Programming by Demonstration,  autonomous dynamical systems, 
+ \cite{Billard08chapter}) requires the teacher to be an expert. The demonstrations take the the form of velocity and 
+ state pairs from which a policy parameterised by a regression function is learned.
+ 
  
  \item \textit{Reinforcement Learning can be easy (continuous state and action space):} 
  RL is notable for needing lengthy simulations and episodes to be successful, which typically result in 
@@ -219,19 +225,8 @@ insights I have made throughout my PhD.
  a separate parameterisation of the policy in an Actor-Critic framework, it is
  again feasible to use simple reward functions which can result in significant 
  improvements of the policy as we showed in Chapter 4.
- 
-  \item \textit{Myopic vs POMDP policies:} Across most of the discrete POMDP literature the Q-MDP myopic policy is 
- used as a benchmark. In the problems considered, Q-MDP does not fair as good in terms of reward but the difference 
- in the policies's parameters are not reported. Through this thesis we always used a myopic policy as a benchmark to compare with 
- our more sophisticated approaches. Even though myopic policies do not consider uncertainty when taking an action,
- the action will always lead to some information gain, since actuated robots are very precise. As a result the 
- uncertainty will always decrease and eventually the robot will manage to accomplish its task.
- It is not clear the difference that exists between myopic and continuous policy search methods on point motion and 
- grasping tasks in which the uncertainty is considered uni-modal and Gaussian, as there has been no comparison.
- This being said a lot depends on the perception capabilities of the robot. If the environment provides enough
- sensory cues after a few time steps the robot will be localised regardless of the policy which he is following.
- 
 
+ \item \textit{Measurement likelihood}
 \end{itemize}
 
 

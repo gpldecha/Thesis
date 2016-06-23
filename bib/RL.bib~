@@ -334,7 +334,7 @@ month={Nov}
 @book{RL_book_2010,
   author = {Szepesvári, Csaba},
   booktitle = {Algorithms for Reinforcement Learning},
-  publisher = {Morgan and Claypool Publishers},
+  publisher = {Morgan & Claypool Publishers},
   series = {Synthesis Lectures on Artificial Intelligence and Machine Learning},
   title = {Algorithms for Reinforcement Learning},
   url = {http://dx.doi.org/10.2200/S00268ED1V01Y201005AIM009},
