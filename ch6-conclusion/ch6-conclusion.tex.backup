@@ -1,39 +1,37 @@
 \chapter{Conclusion and summary}
 
-This Chapter highlights the contributions, limitations and personal insights of this thesis and 
-future research directions.
+This Chapter highlights the contributions, limitations and personal insights of the author in this thesis and 
+proposes possible directions for future research.
 
 \section{Main Contributions}
 
-In this thesis, we address aspects of acting under uncertainty. In Robotics and Artificial Intelligence (AI) this is not
-straightforward due to the complexity involved in solving the typical Partially Observable Markov Decision Process (POMDP) formulation commonly used, 
-which becomes quickly infeasible for even the simplest problems. Although there has been progress in the development of POMDP solvers with demonstrated 
-applications to robotics, these are predominantly verified in simulation in which the action space is discretised.  
+This thesis, addresses aspects of acting under uncertainty. In the field of Robotics and Artificial Intelligence (AI) taking account 
+of uncertainty in searches is not straightforward. This is due to the complexity involved in solving Partially Observable Markov Decision Processes (POMDP), 
+commonly used to describe uncertainty in tasks, which become quickly infeasible for even the simplest problems. Although there has been progress in the 
+development of POMDP solvers with demonstrated applications to robotics, these are predominantly verified in simulation where the action space is discretised.  
 
-In relation to the goal of this thesis, which is to learn search policies from human teachers and transfer them to a robotic apprentice,
-the three major contributions of this thesis are three-fold: 
+This thesis concentrates on the learning of search policies from human teachers and their transfer to a robotic apprentice,
+and provides three major contributions to the current research which will be summarised below:
 
-First, we demonstrate a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a search policy from human teachers. We 
-use a particle filter to represent the belief of the end-effector's position of both human teachers and robot apprentice.
+Firstly, we demonstrate a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a mixture of search strategies 
+from human teachers. We use a particle filter to represent the belief of the end-effector's position of both human teachers and the robot apprentice.
 The particle filter is compressed to a belief state composed of the most likely state and entropy. 
-From a sequence of demonstrated belief states and actions, a generative joint  belief-action distribution parameterised by Gaussian Mixture Model (GMM)
-is learned. The GMM is used as an autonomous dynamical system which gives a velocity vector field when conditioned on the current
-belief state. We demonstrated that a mixture of different behaviours, such as risk prone and adverse, 
-were encoded by the generative model. 
+A sequence of demonstrated belief states and actions is used to learn a generative joint belief-action distribution parameterised by 
+Gaussian Mixture Model (GMM). The GMM is used as an autonomous dynamical system which gives a velocity vector field when conditioned on the current
+belief state. We demonstrate that mixed behaviours, such as risk prone and adverse, are encoded by the generative model. 
 
-Secondly, we propose a Reinforcement Learning (RL) approach to further optimise the parameters of the GMM model such 
-to explicitly encode the task. Previously we learned a mixture of strategies from the human teachers, however 
-we did not consider the quality of the demonstrated behaviour. By introducing a binary cost function and using 
+Secondly, we propose a Reinforcement Learning (RL) approach to further optimise the parameters of the GMM model
+to take into account the quality of the demonstrated behaviours. By introducing a binary cost function and using 
 approximate dynamic programming in an actor-critic framework (which we call RL-PbD-POMDP) we were able to 
-significantly improve the performance a search strategy designed to accomplish a peg-in-hole task.
+significantly improve the performance of a search strategy designed to accomplish a peg-in-hole task.
 % need to say that much fewer demonstrations are needed
 
-Thirdly, we developed a Bayesian State Space Estimator (BSSE) to solve the Simultaneous Localisation and Mapping (SLAM) 
-problem given that only haptic information is available, which we names Measurement Likelihood Memory Filter (MLMF). 
-Given the nature of the searches we consider any prior assumed structure in the beliefs (such as Gaussianity) is 
+Thirdly, we develop a Bayesian State Space Estimator (BSSE), which we named Measurement Likelihood Memory Filter (MLMF), to solve 
+the Simultaneous Localisation and Mapping (SLAM) problem given that only haptic information is available. 
+Given the nature of the searches, we consider any prior structure in the beliefs (such as Gaussianity) to be 
 ill-suited. We demonstrate that by choosing a different parameterisation of the Histogram Bayesian filter we are able 
-to overcome the exponential space and time complexity which is inherent to it. To the best of our knoweldge this is 
-the first work which considers negative information only in a SLAM setting.
+to overcome the inherent exponential space and time complexity. To the best of our knoweldge this is 
+the first work which considers mostly negative information in a SLAM setting.
 
 % In this thesis we demonstrate a continuous action and belief space POMDP framework for learning how to accomplish a task 
 % with only haptic and proprioceptive information.
@@ -46,7 +44,7 @@ the first work which considers negative information only in a SLAM setting.
 
 \section{Limitations and Future Work}
 
-We summaries the current perceived limitations of our work and discuss different approaches to 
+We summarise the current perceived limitations of our work and discuss different approaches to 
 resolving them.
 
 \subsubsection{Gaussian Mixture Controller}
@@ -57,9 +55,9 @@ resolving them.
 %
 Throughout this dissertation, we used Gaussian Mixture Models (GMM) to encode a vector 
 field policy which is a function of the current belief state. For the robot to be able to localise 
-itself the policy has to guide it towards salient areas, such as edges and corners, of 
-the state space. However, as the GMM learning is non-deterministic and data driven, there 
-are no guarantees that behaviour such as paths remaining in contact with edges, such to get haptic feedback, 
+itself the policy has to be guided towards salient areas of the state space, such as edges and corners. 
+However, as the GMM learning is non-deterministic and data driven, there are no guarantees that 
+behaviour such as remaining in contact with edges in order to get haptic feedback 
 will be encoded and reproduced by the GMM policy. 
 
 \begin{figure}[h]
@@ -67,47 +65,45 @@ will be encoded and reproduced by the GMM policy.
   \includegraphics[width=0.9\linewidth]{./ch6-conclusion/Figures/gmm_problem.pdf}
   \caption{GMM policy drawback. \textit{Top:} Two demonstrations, blue trajectories, follow a path
   which when fitted with a GMM (one Gaussian component is drawn in green) results in a vector which keeps the plug 
-  to remain in contact with the edge of the wall. \textit{Bottom:} A third demonstration, red line, 
+  in contact with the edge of the wall. \textit{Bottom:} A third demonstration, red line, 
   did not result in a contact with the edge of the wall. The Gaussian of the GMM is shifted to the 
   mean point of the data. The GMM policy no longer keeps the plug in contact with the edge.
   }
   \label{fig:ch6:gmm_traj}
 \end{figure}
 
-It would only require one trajectory which did not establish a contact with an edge, because of a
-poor demonstrations, for the vector field to be shifted resulting in a policy which fails to establish
-a contact with the environment, Figure \ref{fig:ch6:gmm_traj} illustrates an example of this drawback.
+It would require only one poorly demonstrated trajectory which failed to establish a contact with an edge, 
+for the vector field to be shifted resulting in a policy which fails to establish
+contact with the environment. Figure \ref{fig:ch6:gmm_traj} illustrates an example of this drawback.
 
 A solution would be to design a cost function which gives more importance to data points which are close 
-to salient features, such as edges and corners, and as result the components of the red trajectory in Figure 
-\ref{fig:ch6:gmm_traj} will not be considered during the learning. This is can be integrated into the 
-Actor-Critic Reinforcement Learning (RL) framework we used in Chapter 4, for the peg-in-hole task.
+to salient features, such as edges and corners. As a result, the components of the red trajectory in Figure 
+\ref{fig:ch6:gmm_traj} will not be considered during the learning. This can be integrated into the 
+Actor-Critic Reinforcement Learning (RL) framework used in Chapter 4, for the peg-in-hole task.
 
-The RL approach to ensuring that the policy results in behaviour which remains in contact with the environment,
-such to get informative sensory feedback, is an off-line approach. If the geometry of the environment was to 
-change by less than a centimetre we would be faced with the same situation (failing to remain in contact) 
-and the parameters of the GMM policy would have to be relearned through either giving new demonstrations or 
+RL is an off-line approach to ensuring that the policy results in behaviour which remains in contact with the environment. 
+However, if the geometry of the environment was to change by less than a centimetre the same situation would occur 
+(failure to remain in contact) and GMM policy parameters would have to be relearned through either new demonstrations or 
 via autonomous exploration.
 
-In the peg-in-hole task, Chapter 4, to enforce a constant contact with the environment 
-we used a hybrid force/position controller which disregarded the velocity orthonormal to the wall
-of the GMM policy which was controlled by independent force controller and the remaining were 
-modulated by a heuristic function such to get over edges. 
+In the peg-in-hole task described in Chapter 4, to enforce a constant contact with the environment 
+a hybrid force/position controller was used which disregarded the velocity component orthonormal to the wall.
+The remaining two velocity components where obtained from the GMM policy and modulated by a heuristic 
+function to surmount the edges of the plug. 
 
-The core of the problem is that no sensory feedback constraints are resolved during the execution of 
-the GMM policy. Approaches adaptable to variations in the environment and which can 
-produce trajectories which actively seek sensory feedback are belief space planners (reviewed in Chapter 2),
-which solve an objective function, with contact constraints \cite{pomdp_toussain_iros_2015}, online.
+This problem arises as during the execution of the GMM policy no sensory feedback constraints are resolved. 
+Approaches which take into consideration variations in the environment and which can produce trajectories which actively seek 
+sensory feedback are belief space planners (reviewed in Chapter 2).
+These solve an objective function online, with contact constraints \cite{pomdp_toussain_iros_2015}.
 
-The drawback back of online belief space planners is that they are computationally expensive and 
-require simulation of dynamics and sensory feedback in order to find an appropriate set 
-of actions whilst dynamic system approach, such as GMM policy, learn directly the sensory-control mapping 
-which make them computationally cheap at runtime.
+Such online belief space planners are computationally expensive and require simulation of dynamics and sensory 
+feedback in order to find an appropriate set of actions. A dynamic system approach, such as the GMM policy, 
+learns the sensory-control mapping directly making it computationally cheap at runtime.
 
-A future direction of research would be to consider local adaptation of the dynamical system such to try
+Future research could consider local adaptation of the dynamical system in order to try
 and seek out specific sensory feedback. This could be achieved for instance by combining planning with 
-GMM policy or learning local dynamical system policies which seek out sensory feedback. The difficulty lies
-within negotiating the interplay between the two.
+GMM policies or learning local dynamical systems which seek out sensory feedback. The difficulty lies
+in combining their joint actions.
 
 \subsubsection{Belief compression}
 %
@@ -116,22 +112,22 @@ within negotiating the interplay between the two.
 %
 %
 
-In all Chapters, the belief is represented by a probability density function and the GMM policy
+Throughout this research, the belief is represented by a probability density function and the GMM policy
 is learned from a dataset with a fixed number of dimensions, which is seven in our case (3 for velocity, 
-3 for most likely state and 1 for entropy). The compression of the belief to a belief state vector will result 
-in loss of information which in effect weakens the markov assumption. There exist other compression method, such 
-as E-PCA \cite{NIPS2002_2319} which is a non-linear dimensionality reduction techniques which retrieves a set of basis probability 
-distributions such to minimise the reconstruction Kullback–Leibler (KL) divergence. 
+3 for the most likely state and 1 for entropy). The compression of the belief to a belief state vector results 
+in loss of information which weakens the Markov assumption. There exists other compression methods, such 
+as E-PCA \cite{NIPS2002_2319}. This is a non-linear dimensionality reduction technique which retrieves a set of basis probability 
+distributions in order to minimise the reconstruction Kullback–Leibler (KL) divergence. 
 
-The problem with using such compression methods is that they require a discretisation of the probability 
-density function and then a projecting to a latent space, which in the case of E-PCA will require solving
+However, such compression methods require a discretisation of the probability 
+density function and then its projection to a latent space, which in the case of E-PCA, requires solving
 an convex optimisation problem (iterative Newton's method) at each time step. 
 
-It is also not clear the effect an improved belief compression method would have on the policy. The better 
-the compression method (in terms of KL divergence) the more dimensions will be necessary (15) and as a result 
-more data points will be required to train the GMM. We made the observation both in Chapter 3 and 4 that the 
-GMM policy was better than a myopic one. However, this holds true mostly when only a large amount of uncertainty 
-is present. When the uncertainty starts to decrease the Greedy method does just as good or better than a 
+Furthermore, it is also not clear what effect an improved belief compression method would have on the policy. The better 
+the compression method (in terms of KL divergence) the more dimensions will be necessary and as a result 
+more data points will be required to train the GMM. We make the observation in both Chapter 3 and Chapter 4 that the 
+GMM policy is better than a myopic policy. However, this holds true only when a large amount of uncertainty 
+is present. When the uncertainty starts to decrease the Greedy method does just as well or even better than a 
 four dimensional belief state GMM. As such the case for a more sophisticated belief compression method for 
 the tasks we consider is not clear cut.
 
@@ -169,35 +165,28 @@ The draw back is that the time complexity remains exponential with respect to th
 (although at a lesser growth rate) and to address this we had to introduce an additional independence 
 assumption. This assumption means some information will be lost and the filtered marginals will 
 be an approximate solution with respect to an optimal Bayesian filter. There is no obvious remedy 
-to this problem. There is only two approaches, either introduce an assumption (as we did) or do 
+to this problem. There are two approaches: either introduce an assumption (as we did) or do 
 an approximate evaluation of the marginalisation. An approximate marginalisation could be achieved 
-by evaluating the value of the marginals at specific points and set the remaining by interpolating 
-between the values of the specific points.
-
+by evaluating the value of the marginals at specific points and set the remaining marginal values by interpolating 
+between the chosen points.
 
 \section{Final Words}
 
 During my PhD I have spent a considerable amount of time studying the role 
 of uncertainty in Artificial Intelligence, specifically how it affects 
 decision making in agents. I list below some anecdote and important 
-insights I have made during the last period of my PhD.
+insights I have made throughout my PhD.
 
 \begin{itemize}
- \item \textit{Myopic vs POMDP policies:} Across most of the discrete POMDP literature the Q-MDP myopic policy is 
- used as a benchmark. In the problems considered, Q-MDP does not fair as good in terms of reward but the difference 
- in the policies's parameters are not reported. Through this thesis we always used a myopic policy as a benchmark to compare with 
- our more sophisticated approaches. Even though myopic policies do not consider uncertainty when taking an action,
- the action will always lead to some information gain, since actuated robots are very precise. As a result the 
- uncertainty will always decrease and eventually the robot will manage to accomplish its task.
- It is not clear the difference that exists between myopic and continuous policy search methods on point motion and 
- grasping tasks in which the uncertainty is considered uni-modal and Gaussian, as there has been no comparison.
- This being said a lot depends on the perception capabilities of the robot. If the environment provides enough
- sensory cues after a few time steps the robot will be localised regardless of the policy which he is following.
- 
- \item \textit{Humans can be poor teachers:} Traditionally Programming by Demonstration,  autonomous dynamical systems, 
- \cite{Billard08chapter}) requires the teacher to be an expert. The demonstrations take the the form of velocity and 
- state pairs from which a policy parameterised by a regression function is learned.
- 
+
+ \item \textit{Humans can be poor teachers:}  Programming by Demonstration (PbD), traditionally requires an expert 
+ teacher to provide a set of demonstrations in the form of state-velocity pairs which are used to learn 
+ a policy represented by a regressor function. If the teacher is rarely successful at his task, learning a policy
+ directly from his behaviour will yield a policy on par with the teachers performance.
+ One of the original questions posed by PbD is \textit{what to imitate ?}, \cite{Billard08chapter}.
+ By introducing a simple binary cost function, as we did in Chapter 4, we were able to improve the quality of the policy.
+ All regression based PbD methods can use the Reinforcement Learning (RL) approach used in Chapter 4, with no additional 
+ rollouts being necessary.
  
  \item \textit{Reinforcement Learning can be easy (continuous state and action space):} 
  RL is notable for needing lengthy simulations and episodes to be successful, which typically result in 
@@ -225,8 +214,19 @@ insights I have made during the last period of my PhD.
  a separate parameterisation of the policy in an Actor-Critic framework, it is
  again feasible to use simple reward functions which can result in significant 
  improvements of the policy as we showed in Chapter 4.
+ 
+  \item \textit{Myopic vs POMDP policies:} Across most of the discrete POMDP literature the Q-MDP myopic policy is 
+ used as a benchmark. In the problems considered, Q-MDP does not fair as good in terms of reward but the difference 
+ in the policies's parameters are not reported. Through this thesis we always used a myopic policy as a benchmark to compare with 
+ our more sophisticated approaches. Even though myopic policies do not consider uncertainty when taking an action,
+ the action will always lead to some information gain, since actuated robots are very precise. As a result the 
+ uncertainty will always decrease and eventually the robot will manage to accomplish its task.
+ It is not clear the difference that exists between myopic and continuous policy search methods on point motion and 
+ grasping tasks in which the uncertainty is considered uni-modal and Gaussian, as there has been no comparison.
+ This being said a lot depends on the perception capabilities of the robot. If the environment provides enough
+ sensory cues after a few time steps the robot will be localised regardless of the policy which he is following.
+ 
 
- \item \textit{Measurement likelihood}
 \end{itemize}
 
 

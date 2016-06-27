@@ -264,7 +264,7 @@ the sensory deprivation. See Figure \ref{fig:experiment_setup_data} (\textit{Rig
 
 \begin{figure}
  \centering
-   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/ex_setup_data.pdf}
+   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/start_position_v2.pdf}
    \caption{\textit{Left}: Black points represent the starting position of the end-effector
    for all the demonstrations. Four trajectories are illustrated. \textit{Right:} 
    Time taken for the teachers to accomplish the PiH once the socket is localised. Group A and B are depicted in red 
@@ -322,14 +322,14 @@ In Figure \ref{fig:PMF} (\textit{Right-bottom}) we illustrated the likelihood wh
 %  \label{fig:world_model}
 %\end{figure}
 
-%We illustrate the likelihood for one type of contact, other contacts have there own likelihood function who's 
+% %We illustrate the likelihood for one type of contact, other contacts have there own likelihood function who's 
 %activation depends on the current measurement. We do not consider the effect of noise since the measurements are binary. 
 %This is one particular approach to define a measurement likelihood function amongst many others.
 %  the feature of the measurement vector $y_t$ corresponding to a contact coming from the right is $1$.
 %  the feature of the measurement vector $y_t$ corresponding to a contact coming from the right is $1$.
 \begin{figure*}
  \centering
-   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/PMF/pmf_likelihood.pdf}
+   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/PMF/pmf_likelihood_v2.pdf}
    \caption{\textit{Left:} Point Mass Filter (PMF) update of a particular human demonstration. (1) Initial uniform distribution spread over the starting 
    region. Each grid cell represents a hypothetical position of the plug, the orientation is assumed to be known. (2) First contact, the distribution 
    is spread across the surface of the wall. The red trace is the trajectory history. (3) motion noise increases the uncertainty. (4) The plug is in contact with a socket edge.
@@ -369,16 +369,16 @@ and the belief state, $b$, over the plug's location.
 \section{Learning Actor and Critic}\label{sec:learning-value-actor}
 
 In our approach we learn two data driven policies. The first policy maps from belief space 
-to linear velocity $\pi_{\Para_1} : b_t \mapsto \dot{x}_t$ and the second from 
-angular sensed wrench to angular velocity, $ \pi_{\Para_2} : \phi_t \mapsto \omega_t$.
-We chose to learn the belief policy $\pi_{\Para_1}$ in a Actor-Critic RL framework 
-and the wrench policy $\pi_{\Para_2}$ directly from the demonstrated data as was done 
+to linear velocity $\pi_{\Param_1} : b_t \mapsto \dot{x}_t$ and the second from 
+angular sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi_t \mapsto \omega_t$.
+We chose to learn the belief policy $\pi_{\Param_1}$ in a Actor-Critic RL framework 
+and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
 in [cite], which proved to be efficient in overcoming jamming during the PiH. 
-A POMDP solver's objective is to find a policy (Actor), $\pi_{\Para_1}: b \mapsto u$, which maximises 
-the value function (Critic) $V^{\pi_{\Para_1}} : b \mapsto \mathbb{R}$ for an initial belief, $b_{0}$. The value function
+A POMDP solver's objective is to find a policy (Actor), $\pi_{\Param_1}: b \mapsto u$, which maximises 
+the value function (Critic) $V^{\pi_{\Param_1}} : b \mapsto \mathbb{R}$ for an initial belief, $b_{0}$. The value function
 is the expected reward over an infinite time horizon.
 \begin{equation}\label{eq:value_function}
-  V^{\pi_{\Para_1}}(b_t) = \mathbb{E}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_0=b,\pi_{\Para_1}\Bigg\}
+  V^{\pi_{\Param_1}}(b_t) = \mathbb{E}\Bigg\{ \sum_{t=0}^{\infty} \gamma^{t} r_{t+1} | b_0=b,\pi_{\Param_1}\Bigg\}
 \end{equation}
 
 In an Actor-Critic setting, the temporal difference error, $\delta_t \in \mathbb{R}$, of the value function (the Critic) is 
@@ -388,15 +388,15 @@ as the orientation remains the same during most of the search until it is time t
 When the plug has to be connected it is necessary to control for orientation to avoid jamming. 
 
 \subsection{Actor}
-%Two control policies are learned; The first $\pi_{\Para_1}: b \mapsto \U$, maps belief state $b$ to linear velocity, 
-%$\U$ and the second, $\pi_{\Para_2}: \phi \mapsto \omega$ , sensed wrench, $\phi$, to angular velocity, $\omega$.
+%Two control policies are learned; The first $\pi_{\Param_1}: b \mapsto \U$, maps belief state $b$ to linear velocity, 
+%$\U$ and the second, $\pi_{\Param_2}: \phi \mapsto \omega$ , sensed wrench, $\phi$, to angular velocity, $\omega$.
 %These actors/policies are parametrised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 Both actors/policies are parametrised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 
 \begin{equation}
- \pi_{\Para}(\U,\B) = \sum\limits_{k=1}^{K} \piK	    \cdot  g(\U,\B;\MuK,\SigK) \label{eq:GMM}
+ \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK	    \cdot  g(\U,\B;\MuK,\SigK) \label{eq:GMM}
 \end{equation}
-The parameters $\Para = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
 of the individual Gaussian functions, $g(.)$,
 \begin{center}
 $\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
@@ -409,18 +409,18 @@ where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in
 %There are three steps to learning and use for control a GMM model.  Firstly a generative model is learned through 
 %Expectation-Maximisation (EM) which maximised the likelihood
 
-A generative model of the angular velocity and wrench $\pi_{\Para_2}(\omega,\theta)$ and a generative model 
-of the linear velocity and belief state $\pi_{\Para_1}(\dot{x},b)$ are learned. 
+A generative model of the angular velocity and wrench $\pi_{\Param_2}(\omega,\theta)$ and a generative model 
+of the linear velocity and belief state $\pi_{\Param_1}(\dot{x},b)$ are learned. 
 In both cases we use the Bayesian Information Criterion to determine the number of Gaussian functions.
-In the next section, we will show how the parameters of $\pi_{\Para_1}$ can be adapted by the value function of the Critic.
+In the next section, we will show how the parameters of $\pi_{\Param_1}$ can be adapted by the value function of the Critic.
 
-%First a generative model, $p_{\Para}(\dot{x},b)$, is learned through maximising the likelihood of 
+%First a generative model, $p_{\Param}(\dot{x},b)$, is learned through maximising the likelihood of 
 %the dataset by Expectation-Maximisation (EM). 
-%Second the conditional is taken $p_{\Para}(\dot{x}|b)$
+%Second the conditional is taken $p_{\Param}(\dot{x}|b)$
 %giving a distribution over the applicable actions $\dot{x}$, Equation \ref{eq:GMC}
 
 %\begin{equation} 
-%  \pi_{\Para}(\U|\B) = \sum\limits_{k=1}^{K} \piK(\B) \cdot  g(\B;\MuK_{\U|\B},\SigK_{\U|\B}) \label{eq:GMC}
+%  \pi_{\Param}(\U|\B) = \sum\limits_{k=1}^{K} \piK(\B) \cdot  g(\B;\MuK_{\U|\B},\SigK_{\U|\B}) \label{eq:GMC}
 %\end{equation}
 %\begin{align}
 % w^{[k]}(\B)  &= \frac{\piK \cdot g(\B;\MuK_{\B},\SigK_{\B\B})}{\sum_{j=1}^{K} w^{[j]} \cdot g(\B;\Mu{j}_{\B},\Sig{j}_{\B\B}) } \\
@@ -428,8 +428,8 @@ In the next section, we will show how the parameters of $\pi_{\Para_1}$ can be a
 %  \SigK_{\U|\B} &= \SigK_{\U\U} - \SigK_{\U\B}\invSigK_{\B\B}\SigK_{\B\U}
 %\end{align}
 %Thirdly a concrete action, to be applied, is derived from the conditional distribution. One approach is
-%to take the expectation of the conditional, $\hat{\U} = \mathbb{E}_{p_{\Para}(\U|\B)}\{\U\}$ whilst 
-%another is to draw a sample $\U \sim p_{\Para}(\U|\B)$. 
+%to take the expectation of the conditional, $\hat{\U} = \mathbb{E}_{p_{\Param}(\U|\B)}\{\U\}$ whilst 
+%another is to draw a sample $\U \sim p_{\Param}(\U|\B)$. 
 
 \subsection{Critic}
 
@@ -475,20 +475,20 @@ This is an offline method which applies multiple sweeps of the Bellman backup op
 over a dataset of tuples $\{(\Bi_t,\Ui_t,r^{[i]}_{t},\Bi_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual,
 $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges. 
 
-\begin{algorithm} 
-\caption{Fitted Policy Evaluation}
-\label{alg:fpe}
-\begin{algorithmic}[1]
-    \Inputs{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
-    \State{Initialise $\hat{V}^{\pi}_{0} = 0$}
-    \For {$k=0$ in $K$}
-        \State $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$)
-	\If{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$ } 
-	  \State \textbf{return} $\hat{V}^{\pi}_{k+1}(\B)$
-	 \EndIf
-    \EndFor
-\end{algorithmic}
-\end{algorithm}
+%\begin{algorithm} 
+%\caption{Fitted Policy Evaluation}
+%\label{alg:fpe}
+%\begin{algorithmic}[1]
+%    \Inputs{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+%    \State{Initialise $\hat{V}^{\pi}_{0} = 0$}
+%    \For {$k=0$ in $K$}
+%        \State $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$)
+%	\If{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$ } 
+%	  \State \textbf{return} $\hat{V}^{\pi}_{k+1}(\B)$
+%	 \EndIf
+%    \EndFor
+%\end{algorithmic}
+%\end{algorithm}
 
 A wide spectrum of research has made use of batch RL methods to learn policies. 
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 
@@ -512,10 +512,17 @@ We applied Algorithm \ref{alg:fpe} on our dataset until convergence.
  \centering
  \setlength\fboxsep{0pt}
   \setlength\fboxrule{0.25pt}
-  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Fig/Figure1.pdf}
+  \includegraphics[width=\textwidth]{./ch4-PiH/Figures/ValueFunction/value_func_final_v2.pdf}
  \caption{\textit{Left:} LWR approximate value function $\hat{V}^{\pi}(\B)$. \textit{Right:} first five best and worst trajectories in terms of the accumulated value.}
   \label{fig:Figure1}
 \end{figure}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch4-PiH/Figures/ValueFunction/value_func_final_v3.pdf}
+ \caption{} 
+\end{figure}
+
 
 Figure \ref{fig:Figure1} (\textit{Left}) shows the belief space with respect to the value function. As expected, the 
 value function is high closest to the socket and low further away. Figure \ref{fig:Figure1}
@@ -540,26 +547,26 @@ The reward of a demonstrated trajectory (one episode) is given by the discounted
 \begin{equation}\label{eq:disc_return}
  R(\B^{[i]},\U^{[i]}) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
 \end{equation}
-All policy gradient approaches seek to find a set of parameters, $\Para$, of the Actor,
+All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
 which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward}.
 \begin{align}\label{eq:expected_reward}
- J(\Para) &= \mathbb{E}_{\pi_{\Para}(\U,\B)}\{R(\B,\U)\} \nonumber \\
-	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Para}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{\pi_{\Para}(\U^{[i]},\B^{[i]})} \, R(\B^{[i]},\U^{[i]}) 
+ J(\Param) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\{R(\B,\U)\} \nonumber \\
+	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{\pi_{\Param}(\U^{[i]},\B^{[i]})} \, R(\B^{[i]},\U^{[i]}) 
 \end{align}
 
-To find the parameters which maximise the cost function, $\argmax_{\Para'} J(\Para')$, the derivative is taken and 
+To find the parameters which maximise the cost function, $\argmax_{\Param'} J(\Param')$, the derivative is taken and 
 set to zero. As this cannot be done directly, we maximise the logarithmic lower bound   
 of the cost function. This results in Equation \ref{eq:grad_log_cost},
 
 \begin{equation} \label{eq:grad_log_cost}
-    \nabla_{\Para'}\log(J(\Para')) = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Para'}\log \pi_{\Para'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
+    \nabla_{\Param'}\log(J(\Param')) = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
 \end{equation}
 
 Setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-$\Para=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
+$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
 which is weighted by $Q^{\pi}$, see Appendix \ref{app:lb} for a more complete derivation.
-We use the TD error of the \textit{Critic} as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi_{\Para}}$, 
-is close to the true value function $V^{\pi_{\Para}}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
+We use the TD error of the \textit{Critic} as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi_{\Param}}$, 
+is close to the true value function $V^{\pi_{\Param}}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
 (see Appendix \ref{app:unbiased_delta}).
 \begin{equation}\label{eq:advantage_f}
  A^{\pi}(b_t,u_t) = Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) = \delta^{\pi}_t
@@ -576,7 +583,7 @@ the Q-EM update steps cannot allow negative weights, we rescale the TD error to 
 %data set, $D_1 = \big\{\U^{[i]}_{1:T},\B^{[i]}_{1:T},\delta^{[i]}_{1:T}\}^{i=1\dots N}$ and learn a second policy for inserting the 
 %final steps of connecting the plug to socket with data set $D_2 = \{\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}^{i=1\dots N}$. 
 %In Figure \ref{fig:data_flow} we illustrate the data flow and the policies which are learned. Note that we also learn a belief space 
-%policy directly from the demonstrations, $\pi_{\Para_3}(\U,\B)$, which we will refer to as the GMM policy and we will use it to compare 
+%policy directly from the demonstrations, $\pi_{\Param_3}(\U,\B)$, which we will refer to as the GMM policy and we will use it to compare 
 %with the policy corrected by the Critic, which we call the Q-EM policy.
 %\begin{figure}[h]
 %  \centering
@@ -584,10 +591,20 @@ the Q-EM update steps cannot allow negative weights, we rescale the TD error to 
 %  \caption{Data flow and policies learned. The original data consists of five variables which are recorded during the demonstrations given 
 %  by the human teachers. The probability density function of the believed location of the end effector is compressed to a belief state, which 
 %  is the most likely state and entropy. The value function is learned via fitted policy iteration and each data point has a temporal difference 
-%  error. An actor policy is learned via Q-EM, $\pi_{\Para_1}(\U,\B)$ , a regular policy is learned via the standard EM approach, $\pi_{\Para_3}(\U,\B)$
-%  and a plug insertion policy is learned $\pi_{\Para_2}(\U,\B)$.}
+%  error. An actor policy is learned via Q-EM, $\pi_{\Param_1}(\U,\B)$ , a regular policy is learned via the standard EM approach, $\pi_{\Param_3}(\U,\B)$
+%  and a plug insertion policy is learned $\pi_{\Param_2}(\U,\B)$.}
 %  \label{fig:data_flow}
 %\end{figure}
+
+\begin{figure}
+ \centering
+ \setlength\fboxsep{0pt}
+  \setlength\fboxrule{0.25pt}
+  \includegraphics[width=\textwidth]{./ch4-PiH/Figures/fpe_example.pdf}
+ \caption{}
+  \label{fig:fpe_example}
+\end{figure}
+
 
 \section{Control architecture}\label{seq:control_architecture}
 
@@ -597,7 +614,7 @@ the linear control policy is active. The orientation is kept constant.
 The direction to search is given by conditional, Equation \ref{eq:gmm_conditional},
 
 \begin{equation}\label{eq:gmm_conditional}
- \pi_{\Para}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \cdot g(\dot{x};\MuK_{\xb},\SigK_{\xb})
+ \pi_{\Param}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \cdot g(\dot{x};\MuK_{\xb},\SigK_{\xb})
 \end{equation}
 
 which is a distribution over the possible normalised velocities. The subscript $\xb$ indicates that the parameters 
@@ -615,7 +632,7 @@ direction, Equation \ref{eq:alpha_eq} - \ref{eq:alpha_expectation}.
 
 \begin{align}
  \alpha(\dot{x}) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<\dot{x},\MuK_{\xb}>)) \label{eq:alpha_eq}\\
- \dot{x} &= \mathbb{E}_{\alpha}\{\pi_{\Para}(\dot{x}|b)\} = \sum_{k=1}^K \alpha_k(\dot{x}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
+ \dot{x} &= \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|b)\} = \sum_{k=1}^K \alpha_k(\dot{x}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
 \end{align}
 
 When a velocity mode being applied is no longer present (because we have moved into a region of belief space where the current applied 
@@ -674,7 +691,7 @@ We evaluate the following three properties of the policy learned in our Actor-Cr
  a GMM policy learned through standard EM and a myopic Greedy policy. This highlights the difference between complicated and simplistic  
   search algorithms and as a result gives an appreciation of the problem's difficulty.
  \item \textbf{Importance of data} provided by human teachers. We evaluate whether it is possible to improve 
- the Greedy using it as means of generating demonstrations, which we call Q-Greedy. This is to test whether a human teacher is necessary
+ the Greedy using it as means of generating demonstrations, which we call Q-Greedy. This is to test whether a human teacher are necessary
  instead of using heuristics to gather demonstrations.
  We evaluate whether it is possible to obtain a good policy from the worst two teachers. Not all teachers 
  are necessarily proficient at the task in question and we want to test whether our methodology can be applied in these
@@ -718,7 +735,8 @@ This experiment compares the search policies with the human teachers.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/Experiment_final_v2.pdf}
+    \hspace*{-1.4cm}
+    \includegraphics[width=1.2\textwidth]{./ch4-PiH/Figures/Fig/experiment_final_v3.pdf}
     \caption{Three simulated search experiments. \textbf{Experiment 1:} Three start positions are considered: \textit{Left}, \textit{Center} and
      \textit{Right} in which the triangles depict true position of the end-effector. The red cube illustrates the extent of the uncertainty. 
      In the second row of Experiment 1, we illustrate the trajectories of both the GMM (orange) and Q-EM (yellow) policies. For each start condition 
@@ -805,9 +823,8 @@ which is performing the task with socket A. The Q-EM policy remains the best.
 
 \begin{figure}
  \centering
-   \subfigure[]{\includegraphics[width=0.33\textwidth]{./ch4-PiH/Figures/Fig/experiment1.pdf}}\hfill
-   \subfigure[]{\includegraphics[width=0.33\textwidth]{./ch4-PiH/Figures/Fig/experiment2.pdf}}\hfill
-   \subfigure[]{\includegraphics[width=0.33\textwidth]{./ch4-PiH/Figures/Fig/experiment3_plot2.pdf}}
+    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/experiment_1_2.pdf}
+  % \subfigure[]{}
    \caption{Distance travelled until the socket's edge is reached. (a) Three groups correspond to the initial conditions: Center, Left and Right
    depicted in Figure \ref{fig:box_exp_sim}, \textit{top left}. The Q-EM method is always better than the other methods, in terms of distance. (b)
    Results of the two initial conditions depicted in Figure \ref{fig:box_exp_sim}, \textit{top middle}, both the true position and most likely state are
@@ -815,7 +832,12 @@ which is performing the task with socket A. The Q-EM policy remains the best.
    Again the Q-EM method is better, but at a less significant level.}
    \label{fig:three_searches}
 \end{figure}
-
+\begin{figure}
+ \centering
+  \includegraphics[width=0.6\textwidth]{./ch4-PiH/Figures/Fig/experiment3_plot2.pdf}
+  \caption{}
+\end{figure}
+ 
 
 We have shown that under three different experimental settings the Q-EM algorithm is predominantly the best in terms of distance taken 
 to localise the socket. The GMM policy learned solely from the data provided by the human teachers also performs well in comparison to  
@@ -858,7 +880,7 @@ to maintain an accurate position estimate.
  
  \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/gmm.pdf}
+    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/gmm_v2c.pdf}
     \caption{Marginalised Gaussian Mixture parameters of the GMM and Q-EM learned from the demonstrations of teacher \#5. 
     The illustrated transparency of the Gaussian functions is proportional to their weight.
     \textit{Left column}: The Gaussian functions of the Q-EM have shifted from the left corner to the right. This is a result of the value function 
@@ -897,8 +919,8 @@ train a Q-Greedy policy. We used the Q-Greedy algorithm in combination with rand
 a simple exploration technique. We performed a maximum of 150 searches, which terminated once the socket was found and used these demonstrations to 
 learn a value function and GMM policy which we refer to as Q-Greedy. Figure \ref{fig:three_searches} illustrates the statistical results 
 of the Q-Greedy policy for Experiment 1 and 3, showing that there is no difference between two policies. 
-Our exploration method is probably too simplistic to allow to discover meaningful search patterns. We could probably devise better 
-search strategies which would result in good policy, but the point was to show that human behaviour does already have a usable trade-off 
+Our exploration method is probably too simplistic to discover meaningful search patterns and we could probably devise better 
+search strategies which would result in a good policy. However we have shown that human behaviour does already have a usable trade-off 
 between exploration and exploitation which can be used to learn a new policy through our RL-PbD-POMDP framework.
 
 \subsection{Generalisation}
@@ -906,7 +928,7 @@ between exploration and exploitation which can be used to learn a new policy thr
 An important aspect of a policy or any machine learning methodology is to be able to generalise. So far we have trained and 
 evaluated our policy within the same environment. To test whether our GMM policies can generalise to a new setting we changed 
 the location of the socket to the upper right corner of the wall. The GMM was trained in the frame of reference of the socket and
-when we translated the socket's location it also translates the policy. 
+when we translated the socket's location it also translated the policy. 
 
 \begin{figure}
  \centering
@@ -928,22 +950,21 @@ when we translated the socket's location it also translates the policy.
 \end{figure}
 
 To evaluate the generalisation of our learned policy we use the same initial conditions of Experiment 1 with an additional 
-new configuration named \textit{Fixed}, in which both the true and believed location are fixed, 
-see Figure \ref{fig:experiment5_traj}; blue triangle and circle. In Figure \ref{fig:experiment5_traj}, we illustrate the trajectories 
+new configuration named \textit{Fixed}, in which both the true and believed location are fixed, blue triangle and circle,
+see Figure \ref{fig:experiment5_traj}, which illustrates the trajectories 
 of the three search policies for the \textit{Fixed} initial condition. The Greedy policy moves in a straight line towards the top
 right corner of the table. As the true position is to the right, it takes the Greedy policy longer to find the wall 
 in contrast to both the GMM and Q-EM policies. From the statistical results shown in Figure \ref{fig:experiment5_stats} we can see
 that for the \textit{Fixed} and \textit{Right} initial condition, which are similar, both GMM and Q-EM are better. However, for 
 the \textit{Center} and \textit{Left} initial condition this is no longer the case. 
-The reason that the Greedy method is better under this condition is that the socket is close to informative features, since it 
-is located close to the edges of the wall. Once the end-effector has entered in contact with the wall the actions of the Greedy 
-policy always result in a decrease of uncertainty, which was not the case when the socket was located in the center of wall. 
-This is why both in the \textit{Fixed} and \textit{Right} initial condition the Greedy method does worse, because it takes a longer
-time to find the wall.
+The Greedy method is better under this condition since the socket is close to informative features (it is located close to the edges of the wall). 
+Once the end-effector has entered in contact with the wall the actions of the Greedy policy always result in a decrease of uncertainty, which was not the case when the socket was located in the center of wall. 
+Thus in both the \textit{Fixed} and \textit{Right} initial condition the Greedy method does worse because it takes longer
+to find the wall.
 
 The GMM based policies are still able to generalise under different socket locations. In general, as the socket's location is moved 
-further from the original frame of reference in which it was learned, the more likely the search quality will degrade. We 
-chose the upper right corner since it is the furthest point from the original and the GMM and Q-EM policies were still able to find 
+further from the original frame of reference in which it was learned, the more likely will the search quality degrade. We 
+chose the upper right corner since it is the furthest point from the origin and the GMM and Q-EM policies were still able to find 
 the socket. The policy will always be able to find the socket once it has localised itself. This is can be seen from the vector field 
 of the policy, see Figure \ref{fig:policy_vf}, when the entropy is low. In this case the policy acts like a point attractor.
 
@@ -957,7 +978,7 @@ on a KUKA LWR4 robot. The robot's end-effector is equipped with a plug holder on
 the same holders used during the demonstration of the human teachers. In this way both the teacher and robot apprentice share 
 the same sensory interface.
 
-We chose to have the robot's plug end-effector located to the right of the socket and a belief spread uniformly 
+We chose to have the robot's end-effector located to the right of the socket and a belief spread uniformly 
 along the z-axis. See Figure \ref{fig:real_pictures} for an illustration of the initial starting condition.
 This initial configuration was used to evaluate the search policies for three different sockets, see Figure \ref{fig:real_policy} (a) for 
 an illustration of the sockets. We kept the same initial configuration for the evaluation of the three sockets so that 
@@ -967,7 +988,7 @@ easier to connect whilst socket C should be harder as it has no informative feat
 
 For each of the sockets we performed 25 searches starting from the same initial condition. In Figure \ref{fig:real_policy} we plot
 the trajectories of each of the search methods for socket A. The GMM reproduces some of the behaviour exhibited by humans, such as 
-first localising one-self at the top of the socket before trying to attempt to make a connection. The Q-EM algorithm exhibits less variation
+first localising itself at the top of the socket before trying to attempt to make a connection. The Q-EM algorithm exhibits less variation
 than the GMM and tends to pass via the bottom of the socket to establish a connection. The Greedy method in contrast is much more  
 stochastic since it does not take into consideration the variance of the uncertainty  but instead tries to directly establish a connection.
 In Figure \ref{fig:real_statistics} (c) we can see that for socket A both the Greedy and Q-EM are better than the GMM and the Q-EM has less
@@ -998,11 +1019,11 @@ wander vertical up and down motions. Only when the uncertainty has been reduced 
  \label{fig:real_pictures}
 \end{figure*}
 
-\begin{figure*}
+\begin{figure}
  \centering
-   \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/real_exp_socketA.pdf}}
-   \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/real_exp_socketB.pdf}}
-   \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/peg_socket_connection.pdf}}
+   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Results2/real_exp_socketAB.pdf}
+  % \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/real_exp_socketB.pdf}}
+  % \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/peg_socket_connection.pdf}}
   \caption{Distance taken to connect plug to socket once the socket is localised. (a) \textbf{Socket A}. The human 
   Group A are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group 
   B\textsuperscript{*} first gave demonstrations on Socket B before giving demonstrations on Socket A. Group B\textsuperscript{*}
@@ -1011,23 +1032,25 @@ wander vertical up and down motions. Only when the uncertainty has been reduced 
   of the distance they took to insert the plug into the socket and as was the case for (a), the search policies travel less to accomplish 
   the task. (c) Distance taken (measured from point of contact of plug with socket edge) to connect the plug to the socket.  } 
   \label{fig:real_statistics}
-\end{figure*}
+\end{figure}
 
-The GMM and Q-EM policies are able to generalise to both socket B and C. The reason is that the geometric shape and connector interface of the 
+
+
+The GMM and Q-EM policies are able to generalise to both socket B and C, as the geometric shape and connector interface of the 
 two sockets are similar to socket A. The local force modulation of the policy's vector field, which isn't learned, allows the 
-end-effector to get over edges and obstacles whilst trying to maintain a constant contact force in the x-axis. This modulation makes it possible for the plug to get on top of socket C.
+end-effector to surmount edges and obstacles whilst trying to maintain a constant contact force in the x-axis. This modulation makes it possible for the plug to get on top of socket C.
 In Figure \ref{fig:real_statistics} (c) we illustrate the statistics of the distance taken to establish a connection for all three sockets. 
 The point of interest is that both the GMM and Q-EM algorithms do better than the Greedy approach for socket C. Socket C has no informative 
-features on its surface and as a result myopic policies will perform poorly in the Greedy policy case. However for socket A 
-and B, the Greedy policy performs better. Both of these two sockets have edges around their connector point allowing for easy localisation. 
+features on its surface and as a result myopic policies such as in the Greedy case will perform poorly. However for socket A 
+and B, the Greedy policy performs better as both of these sockets have edges around their connector point allowing for easy localisation. 
 It can also be seen that most search methods perform better on socket B than A, since the funnel shape connector helps in maintaining the plug 
 within the vicinity of the socket's holes. 
 
 
 The search discrepancy between the performance of the humans and search policies can be attributed to many causes. One plausible reason is 
 that the PMF probability density representation of the belief is more accurate than the human teachers. 
-The motion noise parameter was fixed to be proportional to the velocity. The robot moves at gentle pace ($\sim1$ cm/s) as 
-oppose to some of the human teachers. We are far less precise than the KUKA which has sub-millimetre accuracy.
+The motion noise parameter was fixed to be proportional to the velocity and the robot moves at gentle pace ($\sim1$ cm/s) as 
+opposed to some of the human teachers. In actuality, we are far less precise than the KUKA which has sub-millimetre accuracy.
 
 \section{Discussion \& Conclusion}\label{ch4:conclusion}
 % Recapulate what we did 
@@ -1045,7 +1068,7 @@ using the measured velocity obtained from a vision tracking system, and wrench a
 to the plug. The filtered probability density function, represented by a Point Mass Filter, was then compressed to the 
 most likely state and entropy.
 
-Two Gaussian Mixture Model policies where learned from the data recorded, during the teaching by the human teachers . 
+Two Gaussian Mixture Model policies where learned from the data recordedj during the teaching by the human teachers . 
 The first policy, called Q-EM, was learned in an Actor-Critic RL framework in which a value function was learned over 
 the belief space. This was then used to weigh training datapoints in the M-step update of Expectation-Maximisation (EM). The second 
 policy, called GMM, was learned using the standard EM algorithm, considering all training data points equally,
@@ -1055,28 +1078,28 @@ with data solely from the demonstrations of the search with socket A.
 We evaluated 4 different aspects of the learned policies. Firstly, we evaluated which of three policies, Q-EM, GMM and a Greedy policy, 
 took the least distance to find the socket. We concluded that across three different Experiments the Q-EM algorithm was always 
 the best. It was clear that the Q-EM policy was less random and more consistent than the GMM policy as it tried to enter in 
-contact with the table at the same height as the socket thus increasing the chances of finding the socket.
+contact with the wall at the same height as the socket thus increasing the chances of finding the socket.
 
 Secondly, we tested the importance of the data provided by the human teachers. We took the worst two teachers and trained an
 individual GMM and Q-EM policy for each of them. We found that the performance of the Q-EM was better than the GMM in terms 
-of distance travelled to find the socket. When qualitatively evaluating the the trajectories of the GMM with respect to the 
+of distance travelled to find the socket. When qualitatively evaluating the trajectories of the GMM with respect to the 
 Q-EM for the worst teacher, it is clear that the Q-EM policy managed to extract a search pattern, which was not the case 
 for the GMM policy. We also tried to learn a Q-EM policy from the data provided by a Greedy policy with explorative noise 
 and we found no improvement. From these results we conclude that the exploration and exploitation aspects of the trajectories 
 provided by the human teachers is necessary.
 
-Thirdly we tested whether the two policies were able to generalise to a different socket location. Under a specific condition
-which we called \textit{Fixed} both policies were significantly better than the Greedy policy. However for the \textit{Center}
-and \textit{Left} initial conditions the Greedy policy was better. For the initial conditions in which the Greedy policy will 
-enter in contact with the wall at an early stage, it performs better than the GMM and Q-EM.  The reason for this is that  
+Thirdly we tested whether the two policies were able to generalise to a different socket location. Under a specific condition,
+which we called \textit{Fixed}, both policies were significantly better than the Greedy policy. However for the \textit{Center}
+and \textit{Left} initial conditions the Greedy policy was better. For the initial conditions in which the Greedy policy 
+enters in contact with the wall at an early stage, it performs better than the GMM and Q-EM.  The reason for this is that  
 the actions taken by the Greedy policy in this setting will always result in a decrease of entropy when the location
-of the socket is close to a corner, as opposed to being in the center of the table.
+of the socket is close to a corner, as opposed to being in the center of the wall.
 
-Fourthly we evaluated the three policies on the KUKA LWR4 robot. First the policies all did better than the human 
+Fourthly we evaluated the three policies on the KUKA LWR4 robot. First all the policies did better than the human 
 teachers. For socket A, on which both the GMM and Q-EM policies were trained, there is no clear distinction between 
-the Q-EM and Greedy policy. On socket B, which was novel, the Greedy policy did better than the statistical controllers, 
+the Q-EM and Greedy policy. On socket B, which was novel, the Greedy policy performed better than the statistical controllers, 
 which we hypothesize was a result of a funnel which would make it easier for a myopic policy. For socket C, both the 
-GMM and Q-EM policies do better than the Greedy, as socket C has no features on its surface this being a disadvantage 
+GMM and Q-EM policies do better than the Greedy, as socket C has no features on its surface, this being a disadvantage 
 for a myopic policy.
 
 We concluded by making the observation that by simply adding a binary reward function in combination with 
@@ -1086,48 +1109,47 @@ designing complicated reward functions. This is especially advantageous when onl
 
 \section{Appendix}
 \subsection{EM policy search}\label{app:lb}
-Steps taken to make a policy $pi_{\Para}(\U,\B)$ maximise the objective function, $J(\Para)$.
-The policy will be maximised with respect to the lower bound of the cost function $J(\Para)$:
+Steps taken to make a policy $pi_{\Param}(\U,\B)$ maximise the objective function, $J(\Param)$.
+The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
 \begin{align}
-  J(\Para') &= \sum_{i \in \mathbb{T}} \pi_{\Para'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
-	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Para'}(\Ui,\Bi)}{\pi_{\Para}(\Ui,\Bi)} \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi)
+  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
+	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
 \end{align}
 
 where $\mathbb{T}$ is the set of all rollouts. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
 summation.
 
 \begin{align}
-  \log( J(\Para') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Para'}(\Ui,\Bi)}{\pi_{\Para}(\Ui,\Bi)} \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Para'}(\Ui,\Bi)}{\pi_{\Para}(\Ui,\Bi)}\Bigg) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
+  \log( J(\Param') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
 \end{align}
 
-The new cost function be derived by taking derivative with of the lower bound of $\log(J(\Para))$ with respect to its parameters.
-We take the derivative of the lower bound of $\log(J(\Para'))$, Equation \ref{eq:lower_bound}, with respect to $\Para'$ and set it to 
-zero such to maximise the cost function.
+We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
+zero so as to maximise the cost function.
 
 \begin{align}
- &\nabla_{\Para'}  \log( J(\Para') ) = \nonumber\\
- &\sum_{i \in \mathbb{T}} \nabla_{\Para'} \log\big( \pi_{\Para'}(\Ui,\Bi)\big) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    & - \underbrace{ \nabla_{\Para'} \log\big( \pi_{\Para}(\Ui,\Bi)\big) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
-				    &= \sum_{i \in \mathbb{T}} \nabla_{\Para'} \log\big( \pi_{\Para'}(\Ui,\Bi)\big) \, \pi_{\Para}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    &= \mathbb{E}_{\pi_{\Para}(\U,\B)} \Big\{ \nabla_{\Para'} \log\big( \pi_{\Para'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
+ &\nabla_{\Param'}  \log( J(\Param') ) = \nonumber\\
+ &\sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+				    & - \underbrace{ \nabla_{\Param'} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
+				    &= \sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+				    &= \mathbb{E}_{\pi_{\Param}(\U,\B)} \Big\{ \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
 \end{align}
 
 \begin{align}
- \nabla_{\Para'}  \log( J(\Para') ) &= \mathbb{E}_{\pi_{\Para}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Para'}\log \pi_{\Para'}(\Ui,\Bi)\Big\}\\
-				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Para'}\log \pi_{\Para'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
+ \nabla_{\Param'}  \log( J(\Param') ) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Param'}\log \pi_{\Param'}(\Ui,\Bi)\Big\}\\
+				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
 \end{align}
 
 The reader is referred to \cite{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.
 
 \subsection{Q-EM for GMM derivation}\label{app:grad}
 
-Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
+Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of the notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
 and by setting the derivative of Equation \ref{eq:grad_log_cost_2} to zero and solving for the parameters
-$\Para=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
+$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation update step in EM:
 
 \begin{align}
-\nabla_{\MuK} \log J(\Para) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
+\nabla_{\MuK} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
 			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
 \end{align}
 
@@ -1149,7 +1171,7 @@ Gaussian function $k$.
 %\subsection{M-step}\label{app:Q-EM}
 %Given a set of points $\X = (\U,\B)^{\mathrm{T}}$ and  a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
 %and by setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-%$\Para=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
+%$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
 %\begin{align}
 % w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\X^{[m]})\, \alpha(z_{mk})}{\sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})} \\
 % \MuK_{\textrm{\textbf{new}}}     &= \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q^{\pi}(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q^{\pi}(\X^{[j]})} \\
@@ -1165,7 +1187,7 @@ Gaussian function $k$.
 %\end{equation}
 The temporal difference error is an unbiased estimate of the advantage function:
 \begin{align}
-  \displaystyle \mathop \mathbb{E}_{\pi_{\Para}} \{ \delta^{\pi}_t|b_t,u_t\} &=  \mathop\mathbb{E}_{\pi_{\Para}}\{ r_{t+1} + \gamma V^{\pi}(b_{t+1})|b_t,u_t\} - V^{\pi}(b_t) \nonumber \\
+  \displaystyle \mathop \mathbb{E}_{\pi_{\Param}} \{ \delta^{\pi}_t|b_t,u_t\} &=  \mathop\mathbb{E}_{\pi_{\Param}}\{ r_{t+1} + \gamma V^{\pi}(b_{t+1})|b_t,u_t\} - V^{\pi}(b_t) \nonumber \\
 									   &= Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) \nonumber \\
 									   &= A^{\pi}(b_t,u_t)
 \end{align}
