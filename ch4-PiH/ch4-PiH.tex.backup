@@ -1,16 +1,33 @@
 \chapter{Peg in hole}
 
-In Chapter 3, we demonstrated that we could learn a search policy from demonstrations of human teachers for a task consisting of locating a wooden 
-object on a table and successfully transferring it to a robot apprentice. The motivation behind our approach is that the intuition 
-and knowledge exhibited by the human teachers, during the search, consists of a good balance between exploration and 
-exploitation actions which then can be encapsulated in a generative Gaussian Mixture Model (GMM) and subsequently used as a control policy. The approach
-is satisfactory if we are interested in extracting different behaviours present across the human teachers and reproducing 
+In Chapter 3, we demonstrated that we could learn a search policy from demonstrations of human teachers for a task consisting of 
+locating a wooden object on a table and successfully transferring it to a robot apprentice. The motivation behind our approach is 
+that the intuition and knowledge exhibited by the human teachers, during the search, consists of a good balance between 
+exploration and exploitation actions which then can be encapsulated in a generative Gaussian Mixture Model (GMM) and subsequently used as a control policy. 
+The approach is satisfactory if we are interested in extracting different behaviours present across the human teachers and reproducing 
 them. If our objective is however to learn a policy with a unique behaviour which is optimal or at least close to optimal, then using  
 the approach detailed in Chapter 3, as it is, will not necessarily result in a efficient policy. For the GMM will model
 both good patterns exhibited by the human teachers and their mistakes. If the task is difficult and many possible solutions exist, such 
 as was the case in the blindfolded search task of the previous Chapter, many demonstrations will be necessary for search patters to be 
-present and encoded in the GMM. Otherwise it would have to be combined with another policy as showed in Chapter 3, for our Hybrid GMM-Greedy 
-policy. There the task undertaken is implicitly encoded, as there is no cost function which is optimised, in 
+present and encoded in the GMM. Otherwise the GMM would have to be combined with another policy as showed in Chapter 3, for our Hybrid GMM-Greedy 
+policy. 
+
+%  This sentence is hard to follow. Break it into two sentences. What do you mean by goal-oriented? 
+%  It is not clear which shortcoming you want to highlight. Is the requirement for consistency or for goal-orientedness? 
+% Obviously, any task < no? The consistency requirement is also somewhat contradictory with the fact that you were embedding different 
+% styles of search across demonstrations.
+
+The demonstrated search task is implicitly encoded in the GMM parameters since no cost or reward function was defined, which is common practice in Planning 
+and Reinforcement Learning (RL).
+Previously different search strategies were encoded with no consideration of their quality. The drawback is that the GMM policy is learned via Expectation-Maximisation (EM) which does not consider whether the data 
+from the demonstrations are bad or good. If the task is difficult and there are mostly bad demonstrations, the GMM search policy will 
+reproduce suboptimal behaviour. It also could be that no teachers by themselves are good, but by combining different components of 
+the teachers individual demonstrations we can extract a good search strategy.
+
+
+teachers are not good at the task individually and maybe only a few demonstrations are the best, whilst the majority are bad.
+
+There the task undertaken is implicitly encoded, as there is no cost function which is optimised, in 
 the GMM and as a result the taught behaviour has to be goal oriented and consistent, which is not always the case in a blindfolded search task. 
 
 To overcome the above mentioned limitations, in this Chapter we use a binary cost function as means of ranking demonstrations provided 
@@ -690,9 +707,9 @@ We evaluate the following three properties of the policy learned in our Actor-Cr
  \item \textbf{Distance taken to accomplish the goal} (connect plug to socket). We compare the Q-EM policy with 
  a GMM policy learned through standard EM and a myopic Greedy policy. This highlights the difference between complicated and simplistic  
   search algorithms and as a result gives an appreciation of the problem's difficulty.
- \item \textbf{Importance of data} provided by human teachers. We evaluate whether it is possible to improve 
- the Greedy using it as means of generating demonstrations, which we call Q-Greedy. This is to test whether a human teacher are necessary
- instead of using heuristics to gather demonstrations.
+ \item \textbf{Importance of data} provided by human teachers. We evaluate whether it is possible to learn 
+ an improved GMM policy from Greedy demonstrations. We call this policy Q-Greedy and it is used to test whether 
+ human demonstrations are necessary.
  We evaluate whether it is possible to obtain a good policy from the worst two teachers. Not all teachers 
  are necessarily proficient at the task in question and we want to test whether our methodology can be applied in these
  cases. We evaluate if we  are able to obtain an improved policy from the worst two teachers.
@@ -816,26 +833,26 @@ edge and the believed position is facing the right edge, less distance is taken 
 Figure \ref{fig:three_searches} (b), as reason for the improvement over Case 1, is that in \textit{Case 2} the true location of 
 the end-effector is close to an edge which is an informative feature and results in a much faster localisation.
 
-From \textbf{Experiment 3}, Figure \ref{fig:three_searches} (c), it is clear that the three search policies have 
+From \textbf{Experiment 3}, Figure \ref{fig:three_searches_exp3}, it is clear that the three search policies have 
 less variation in the distance travelled to find the socket's edge than the human teachers. 
 All search policies are better than the human teachers with the exception of group B\textsuperscript{*}, 
 which is performing the task with socket A. The Q-EM policy remains the best. 
 
 \begin{figure}
  \centering
-    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/experiment_1_2.pdf}
-  % \subfigure[]{}
-   \caption{Distance travelled until the socket's edge is reached. (a) Three groups correspond to the initial conditions: Center, Left and Right
-   depicted in Figure \ref{fig:box_exp_sim}, \textit{top left}. The Q-EM method is always better than the other methods, in terms of distance. (b)
+  \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/experiment_1_2.pdf}
+  \caption{Distance travelled until the socket's edge is reached. a) Three groups correspond to the initial conditions: Center, Left and Right
+   depicted in Figure \ref{fig:box_exp_sim}, \textit{top left}. The Q-EM method is always better than the other methods, in terms of distance. b)
    Results of the two initial conditions depicted in Figure \ref{fig:box_exp_sim}, \textit{top middle}, both the true position and most likely state are
-   fixed. The Q-EM method always improves on the GMM. (c) Results corresponding to Experiment 3, Figure \ref{fig:box_exp_sim}, \textit{top right}.
-   Again the Q-EM method is better, but at a less significant level.}
+   fixed. The Q-EM method always improves on the GMM. }
    \label{fig:three_searches}
 \end{figure}
 \begin{figure}
  \centering
   \includegraphics[width=0.6\textwidth]{./ch4-PiH/Figures/Fig/experiment3_plot2.pdf}
-  \caption{}
+  \caption{Distance travelled until the socket's edge is reached. Results corresponding to Experiment 3, Figure \ref{fig:box_exp_sim}, \textit{top right}.
+   Again the Q-EM method is better, but at a less significant level.}
+   \label{fig:three_searches_exp3}
 \end{figure}
  
 
@@ -865,7 +882,7 @@ to maintain an accurate position estimate.
     \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/subject5.pdf}
 %    \subfigure[]{\includegraphics[width=0.45\textwidth]{./Figures/Results1/experiment4/value_subj_5.pdf}}
 %    \subfigure[]{\includegraphics[width=0.445\textwidth]{./Figures/Results1/experiment4/experiment4.pdf}}
-    \caption{Original teacher \# 5 demonstrations. The teacher demonstrates a preference
+    \caption{Demonstrations of teacher \# 5. The teacher demonstrates a preference
     to go first to the top of the wall. He then leaves contact with the wall to position himself in front of the socket before trying to 
     find it}
     \label{fig:subj_5_traj}
@@ -874,7 +891,7 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Fig/value_subj_5.pdf}
- \caption{Value function learned from the 15 demonstrations of teacher \#5.}
+ \caption{Value function learned from the 15 demonstrations of teacher \#5. The value of the belief space trajectories are plotted.}
  \label{fig:value_function_subj_5}
 \end{figure}
  
@@ -894,14 +911,15 @@ to maintain an accurate position estimate.
     \label{fig:gmm_exp4}
 \end{figure}
  
-Figure \ref{fig:value_function_subj_5} illustrates, the value function of the belief state learned from the data of teacher \# 5.
+Figure \ref{fig:value_function_subj_5} illustrates the value function of the belief state learned from the data of teacher \# 5.
 The states with the highest values seem to create a path going from the socket towards the right edge of the wall. 
 We proceed as before to learn a GMM policy from the raw data and a Q-EM policy in which the data points are weighted by 
 the gradient of the value function. In Figure \ref{fig:gmm_exp4}, we illustrate the 
 resulting Marginalised Gaussian Mixture parameters for both the GMM and Q-EM policies and we plot 25 rollouts of each policy starting at 
 the \textit{Center} initial condition used in Experiment 1. We note that the trajectories of the GMM 
 policy seem to have a lot of variance in contrast to the Q-EM policy, resulting from an access of variance amongst the 15 original demonstrations
-given by the teacher. Furthermore there is insufficient data to encode a pattern for the GMM model. In contrast, the Q-EM finds a 
+given by the teacher. To much variance is not necessarily good, a random policy will have to most variance (uniform) in terms of produced trajectories
+and will be extremely poor and achieving the goal. Furthermore there is insufficient data to encode a pattern for the GMM model. In contrast, the Q-EM finds a 
 pattern by combining multiple parts of the available data and as a result fewer data points are necessary to achieve a good policy. 
 This effect is clear in Figure \ref{fig:experiment4_stats}, showing the performance of the GMM and Q-EM algorithms 
 under the same initial conditions as in Experiment 1. For all the conditions and for both teachers \#5 and \#7 the Q-EM policy 
@@ -1027,14 +1045,19 @@ wander vertical up and down motions. Only when the uncertainty has been reduced 
   \caption{Distance taken to connect plug to socket once the socket is localised. (a) \textbf{Socket A}. The human 
   Group A are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group 
   B\textsuperscript{*} first gave demonstrations on Socket B before giving demonstrations on Socket A. Group B\textsuperscript{*}
-  is better than group A at doing the task. This is most likely a training effect. However all policy search methods are far better
-  at connecting the plug to the socket. (b) \textbf{Socket B}. Both groups A\textsuperscript{*} and B are similar in terms 
+  is better than Group A at doing the task. This is most likely a training effect. However all policy search methods are far better
+  at connecting the plug to the socket. (b) \textbf{Socket B}. Both Groups A\textsuperscript{*} and B are similar in terms 
   of the distance they took to insert the plug into the socket and as was the case for (a), the search policies travel less to accomplish 
-  the task. (c) Distance taken (measured from point of contact of plug with socket edge) to connect the plug to the socket.  } 
+  the task.   } 
   \label{fig:real_statistics}
 \end{figure}
 
-
+\begin{figure}
+ \centering
+   \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Results2/peg_socket_connection_v2.pdf}
+   \caption{Distance taken (measured from point of contact of plug with socket edge) to connect the plug to the socket.}
+  \label{fig:real_statistics2}
+\end{figure}
 
 The GMM and Q-EM policies are able to generalise to both socket B and C, as the geometric shape and connector interface of the 
 two sockets are similar to socket A. The local force modulation of the policy's vector field, which isn't learned, allows the 
