@@ -71,13 +71,13 @@ In all our evaluations the RL-PbD-POMDP approach proved to be always better. Mor
 the RL-PbD-POMDP approach performs significantly better when we use the training data from the worst teacher, 
 which mitigates the \textbf{original assumption} that the teachers have to be consistently efficient at the task.
 
-%\section{Outline}
-%\begin{itemize}
-%  \item \hyperref[ch4:background]{\ref{ch4:background}   Background}
-%  \item \hyperref[ch4:experiment]{\ref{ch4:experiment}   Experiment}
-%  \item \hyperref[ch4:formulation]{\ref{ch4:formulation} Formulation}
-%  \item \hyperref[ch4:results]{\ref{ch4:results}  	 Results}
-%\end{itemize}
+\section{Outline}
+\begin{itemize}
+  \item \hyperref[ch4:background]{\ref{ch4:background}   Background}
+  \item \hyperref[ch4:experiment]{\ref{ch4:experiment}   Experiment}
+  \item \hyperref[ch4:formulation]{\ref{ch4:formulation} Formulation}
+  \item \hyperref[ch4:results]{\ref{ch4:results}  	 Results}
+\end{itemize}
 
 \section{Background}\label{ch4:background}
 
@@ -92,24 +92,37 @@ in combination with position uncertainty can result in either jamming during the
 the plug finding the hole. This created a need for adaptive search and insertion policies for PiH, which has been driving research 
 in this area. 
 
-From the literature, we identified the different components in PiH solutions. All approaches
-use to some extent a vision system to estimate the position of the workpiece. 
-Given an estimate of the workpiece's position, 
-a common approach is to follow either a blind increasing spiral Cartesian trajectory or parametrised policies 
-which guarantee that all positions on the workpiece have been visited. 
-To increase the chances of a connection these approaches use a compliant controller 
-which usually includes a hybrid force/position controller.
-The second predominant approach (which has been confined to academic circles) follows the data driven Programming by Demonstration (PbD) 
-framework. Teleoperated or kinesthetic demonstrations of a human teacher are recorded and a policy is learned and fine-tuned 
-so as to reproduce the same (F)orce/(T)orque profile as that demonstrated by the human teacher. The first approach 
-does not consider reproducing the F/T profile but rather follows a position trajectory whilst being compliant.
+From the literature, we identified the different components in PiH solutions. 
 
-In \cite{peg_personal_icra_2010} a PR2 executes a parameterised policy designed to connect a plug to a power outlet
-in order for the PR2 to recharge itself. The plug is equipped with a checkerboard to facilitate pose estimation
-of the plug with respect to power outlet whose position is extracted through a vision processing pipeline.
-An initial connection is attempted by visual servoing which is successful 10\% of the time. When unsuccessful 
-a spiralling outward motion is carried out with 2mm increments. This method achieved an overall success rate of 95\%.
-The hybrid control paradigm \cite{hybrid_1992} was used throughout the execution of the task.
+All approaches use to some extent a vision system to estimate the position of the workpiece. 
+For instance in \cite{peg_personal_icra_2010} a PR2 is equipped with a checkerboard to facilitate pose 
+estimation  of the plug with respect to a power outlet whose position is extracted through a vision 
+processing pipeline. An initial connection is attempted by visual servoing which was successful 10\% of the 
+time. Given an estimate of the workpiece's position, a common approach is to follow either a blind increasing spiral 
+Cartesian trajectory or parametrised policies which guarantee that all positions on the workpiece have been visited.
+In \cite{peg_personal_icra_2010}, if the PR2 failed to connect the plug to the socket at the initial attempt, 
+a spiralling outward motion is carried out with 2mm increments and this method achieved an overall 
+success rate of 95\%. For this approach to be applicable to a generic robot, it would require the addition of an
+external camera and checkerboard to the robot in question which might be cumbersome. In our work we consider a 
+vision free system.
+
+%To increase the chances of a connection these approaches use a compliant controller 
+%which usually includes a hybrid force/position controller.
+%In \cite{peg_personal_icra_2010} a PR2 executes a parameterised policy designed to connect a plug to a power outlet
+%in order for the PR2 to recharge itself. The plug is equipped with a checkerboard to facilitate pose estimation
+%of the plug with respect to power outlet whose position is extracted through a vision processing pipeline.
+%An initial connection is attempted by visual servoing which is successful 10\% of the time. 
+%When unsuccessful a spiralling outward motion is carried out with 2mm increments. 
+%This method achieved an overall success rate of 95\%.
+%The hybrid control paradigm \cite{hybrid_1992} was used throughout the execution of the task.
+%The first approach does not consider reproducing the F/T profile 
+%but rather follows a position trajectory whilst being compliant.
+
+
+Another approach (which has been confined to academic circles) follows the data driven 
+Programming by Demonstration (PbD) framework. Teleoperated or kinesthetic demonstrations of a human teacher 
+are recorded and a policy is learned and fine-tuned so as to reproduce the same (F)orce/(T)orque profile as 
+that demonstrated by the human teacher. 
 
 % PbD: reproduce the F/T profile irrespective of the learned position trajectory DMP
 In \cite{fast_peg_pbd_icmc_2014} the authors learn a PiH policy for the Cranfield benchmark object.
@@ -121,7 +134,17 @@ by radial basis functions. Successive refinements of the DMP policy are achieved
 using force feedback to adapt the parameters of an admittance controller. This results in the policy having
 similar force profiles to the human teachers. Such an approach was first proposed by \cite{trans_workpiece_icra_2013}
 and further applications based on this method have been done \cite{sol_pdg_pbd_2014} with the incorporation of  
-a disturbance rejection policy.
+a disturbance rejection policy. Reproducing exactly the same force torque profile for the full trajectory 
+which is encoded in a time dependent dynamical system might be unnecessary as the force torque profile is 
+predominantly useful during the final stage of the PiH task, which is the insertion where jamming can occur 
+and the force torque information can be used to rectify this problem [Klas]. Instead a 
+hybrid control paradigm \cite{hybrid_1992} can be used to control the sensed force feedback with the environment.
+We take the hybrid control paradigm in this work in combination with a time-independent dynamical system.
+%whilst 
+%controlling for the position makes sense when considering only one type of object with time dependent dynamical 
+%system. If the dimensions of the object where to change, this would entail problems.
+
+
 Reinforcement learning has also been used in combination with DMP to learn PiH policies. In \cite{learn_force_c_icirs_2011}
 an DMP policy is initialised with kinesthetic demonstrations of a door opening and pen pick up task. The recorded Cartesian 
 trajectories are encoded in parameterised DMP policy and augmented with a F/T regressor profile. A reward function is designed, 
@@ -129,7 +152,9 @@ encoding desirable properties of the F/T profile such as smoothness and continui
 was found to be a 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input (sensed position, previous position and force)  and 6 dimensional 
 output (linear and angular velocity) neural network is learned by associative reinforcement learning. 
 During the learning process the plug is randomly positioned within the vicinity of the hole. After a 100 executions and 
-updates, the policy is successful and was able to generalise across different geometries and clearances. 
+updates, the policy is successful and was able to generalise across different geometries and clearances.
+This approach is similar in spirit to our work, however we will not be considering autonomous rollouts common 
+in RL, but will solely relay on the initial data provided by human teachers with no additional rollouts.
 
 The above policies were learned from human demonstrations and encoded by a regressor function and
 optimised to reproduce a desired F/T profile. Further approaches to the PiH problem 
@@ -145,6 +170,11 @@ search strategy has been applied in many PiH tasks. For instance in \cite{peg_im
 policy was developed to connect a 5-pin waterproof industrial charger to an electric socket. The authors 
 estimated the pose of the socket through a vision system and used a force controller in combination with a 
 spiral search policy to achieve a connection and demonstrated their approach to be reliable. 
+These blind search strategies don't consider actual state uncertainty and work well only when the plug or 
+peg is within the vicinity of the socket. In our work we consider no visual information leading to large
+amounts of state uncertainty making the direct application of such blind search methods ill-suited.
+
+% use state information as we do, much easier
 
 % Do it the same way that humans do it: Does not use FT sensor
 In \cite{intuitive_peg_isr_2013} the authors make the observation that humans lack the precision and sensing 
@@ -154,6 +184,9 @@ is the key to our success at PiH tasks \cite{compliant_manip_icra_2008}.
 The authors introduce an Intuitive Assembly Strategy (IAS) inspired by the above observation which 
 does not require the hole to be precisely localised. The IAS search strategy is based on compliant 
 spiral motion and the execution of the search trajectory is performed with a hybrid force/position controller.
+Our approach is also based on the observation that humans are good at accomplishing these kind of tasks
+and we exploit this in our own PiH policy. We further consider different type of geometric objects whilst 
+only considering haptic information.
 
 The spiral strategy is widely used in industrial applications due to its simplicity, 
 however, it is a blind search method. Another approach to the assembly process 
@@ -163,23 +196,30 @@ demonstrate that by learning the dynamical model of the task during execution, i
 learn the parameters of the policy faster than offline methods, such as Design of Experiment (DOE) 
 or Genetic Algorithms.
 
-%\subsection{Actor-Critic \& Fitted Reinforcement Learning}
-%For learning a POMDP policy for our search task, we consider RL approaches which naturally handles continuous 
-%belief-state and action space, such as policy search/gradient methods. We gave an overview in Chapter 2 of the different policy search methods 
-%fulfilling this requirement. However, an apparent drawback is that they work well on policies 
-%which have very few parameters with respect to the size of the state space, but they will perform poorly if the 
-%number of parameters is to large. The reason is that the variance of the policies' gradient
-%is large, making the stochastic gradient ascent learning slow. The PbD-POMDP policy we learned in 
-%Chapter 3 had over 80 Gaussian functions, each of dimension 7, and we expect the number of parameters of 
-%this policy to be in the same order.
-%Actor-critic's (AC) \cite[Chap. 6.6]{Sutton00policygradient} are an RL approach in which the policy (actor) and critic (value function) have separate
-%parameterization and can be represented by different functions, for instance the value function could be a 
-%decision tree and the policy a neural network. The advantage of an AC is that the policy can be chosen such 
-%that it is computationally efficient in queering actions and the value function does not necessarily have to have
-%the same input space as the policy. In a sense the two can be independent. The parameters of both the actor 
-%and critic are learned via gradient decent on the Temporal Different (TD) error. It has been reported and 
-%proven \cite{rl_ac_surv_2012} that the variance of the gradient update in AC methods has smaller variance than 
-%purely actor methods (policy gradient), which results in faster learning. 
+%  Aude comment
+% All this survey of state of the art refers primarily to the task at hand (peg and hole task), but do not refer to 
+% the particular RL-Pomdp approach. This is ok, since you review the latter in Chapter 2 , but explain this to the 
+% reader before starting bck, by stating that here you will review only work done on solving this particular 
+% task and refer to reader back to specific sections in chapter 2 for review of state of the art on the other 
+% relevant topics (list them).
+
+\subsection{Actor-Critic \& Fitted Reinforcement Learning}
+For learning a POMDP policy for our search task, we consider RL approaches which naturally handles continuous 
+belief-state and action space, such as policy search/gradient methods. We gave an overview in Chapter 2 of the different policy search methods 
+fulfilling this requirement. However, an apparent drawback is that they work well on policies 
+which have very few parameters with respect to the size of the state space, but they will perform poorly if the 
+number of parameters is to large. The reason is that the variance of the policies' gradient
+is large, making the stochastic gradient ascent learning slow. The PbD-POMDP policy we learned in 
+Chapter 3 had over 80 Gaussian functions, each of dimension 7, and we expect the number of parameters of 
+this policy to be in the same order.
+Actor-critic's (AC) \cite[Chap. 6.6]{Sutton00policygradient} are an RL approach in which the policy (actor) and critic (value function) have separate
+parameterization and can be represented by different functions, for instance the value function could be a 
+decision tree and the policy a neural network. The advantage of an AC is that the policy can be chosen such 
+that it is computationally efficient in queering actions and the value function does not necessarily have to have
+the same input space as the policy. In a sense the two can be independent. The parameters of both the actor 
+and critic are learned via gradient decent on the Temporal Different (TD) error. It has been reported and 
+proven \cite{rl_ac_surv_2012} that the variance of the gradient update in AC methods has smaller variance than 
+purely actor methods (policy gradient), which results in faster learning. 
 
 %To learn POMDP policy in partially observable search and PiH task we have to consider a pol
 %The policy we learn to accomplish the search and socket connection is based on an Actor-Critic (AC) architecture
@@ -228,7 +268,11 @@ or Genetic Algorithms.
 %\cite{DRQ_AAAI_2015}
 %\cite{approx_rl_overview_2011} % Appoximiate RL overview
 
-\section{Experiment}\label{ch4:experiment}
+% Entitle this Human Pilot Study and tell us in introduction that you first conduct a pilot study, 
+%  analyse the result and use these to gear the design of the algorithm, etc.
+
+
+\section{Human Pilot Study}\label{ch4:experiment}
 
 The sockets are positioned at the center of a fake wall clamped to a table, see Figure \ref{fig:experiment_setup} (\textit{Top-left})
 for an illustration of the environment. Each teacher is given the opportunity to familiarise himself with 
@@ -863,8 +907,6 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
     \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/subject5.pdf}
-%    \subfigure[]{\includegraphics[width=0.45\textwidth]{./Figures/Results1/experiment4/value_subj_5.pdf}}
-%    \subfigure[]{\includegraphics[width=0.445\textwidth]{./Figures/Results1/experiment4/experiment4.pdf}}
     \caption{Original teacher \# 5 demonstrations. The teacher demonstrates a preference
     to go first to the top of the wall. He then leaves contact with the wall to position himself in front of the socket before trying to 
     find it}

@@ -92,24 +92,37 @@ in combination with position uncertainty can result in either jamming during the
 the plug finding the hole. This created a need for adaptive search and insertion policies for PiH, which has been driving research 
 in this area. 
 
-From the literature, we identified the different components in PiH solutions. All approaches
-use to some extent a vision system to estimate the position of the workpiece. 
-Given an estimate of the workpiece's position, 
-a common approach is to follow either a blind increasing spiral Cartesian trajectory or parametrised policies 
-which guarantee that all positions on the workpiece have been visited. 
-To increase the chances of a connection these approaches use a compliant controller 
-which usually includes a hybrid force/position controller.
-The second predominant approach (which has been confined to academic circles) follows the data driven Programming by Demonstration (PbD) 
-framework. Teleoperated or kinesthetic demonstrations of a human teacher are recorded and a policy is learned and fine-tuned 
-so as to reproduce the same (F)orce/(T)orque profile as that demonstrated by the human teacher. The first approach 
-does not consider reproducing the F/T profile but rather follows a position trajectory whilst being compliant.
+From the literature, we identified the different components in PiH solutions. 
 
-In \cite{peg_personal_icra_2010} a PR2 executes a parameterised policy designed to connect a plug to a power outlet
-in order for the PR2 to recharge itself. The plug is equipped with a checkerboard to facilitate pose estimation
-of the plug with respect to power outlet whose position is extracted through a vision processing pipeline.
-An initial connection is attempted by visual servoing which is successful 10\% of the time. When unsuccessful 
-a spiralling outward motion is carried out with 2mm increments. This method achieved an overall success rate of 95\%.
-The hybrid control paradigm \cite{hybrid_1992} was used throughout the execution of the task.
+All approaches use to some extent a vision system to estimate the position of the workpiece. 
+For instance in \cite{peg_personal_icra_2010} a PR2 is equipped with a checkerboard to facilitate pose 
+estimation  of the plug with respect to a power outlet whose position is extracted through a vision 
+processing pipeline. An initial connection is attempted by visual servoing which was successful 10\% of the 
+time. Given an estimate of the workpiece's position, a common approach is to follow either a blind increasing spiral 
+Cartesian trajectory or parametrised policies which guarantee that all positions on the workpiece have been visited.
+In \cite{peg_personal_icra_2010}, if the PR2 failed to connect the plug to the socket at the initial attempt, 
+a spiralling outward motion is carried out with 2mm increments and this method achieved an overall 
+success rate of 95\%. For this approach to be applicable to a generic robot, it would require the addition of an
+external camera and checkerboard to the robot in question which might be cumbersome. In our work we consider a 
+vision free system.
+
+%To increase the chances of a connection these approaches use a compliant controller 
+%which usually includes a hybrid force/position controller.
+%In \cite{peg_personal_icra_2010} a PR2 executes a parameterised policy designed to connect a plug to a power outlet
+%in order for the PR2 to recharge itself. The plug is equipped with a checkerboard to facilitate pose estimation
+%of the plug with respect to power outlet whose position is extracted through a vision processing pipeline.
+%An initial connection is attempted by visual servoing which is successful 10\% of the time. 
+%When unsuccessful a spiralling outward motion is carried out with 2mm increments. 
+%This method achieved an overall success rate of 95\%.
+%The hybrid control paradigm \cite{hybrid_1992} was used throughout the execution of the task.
+%The first approach does not consider reproducing the F/T profile 
+%but rather follows a position trajectory whilst being compliant.
+
+
+The second approach (which has been confined to academic circles) follows the data driven 
+Programming by Demonstration (PbD) framework. Teleoperated or kinesthetic demonstrations of a human teacher 
+are recorded and a policy is learned and fine-tuned so as to reproduce the same (F)orce/(T)orque profile as 
+that demonstrated by the human teacher. 
 
 % PbD: reproduce the F/T profile irrespective of the learned position trajectory DMP
 In \cite{fast_peg_pbd_icmc_2014} the authors learn a PiH policy for the Cranfield benchmark object.
@@ -121,7 +134,13 @@ by radial basis functions. Successive refinements of the DMP policy are achieved
 using force feedback to adapt the parameters of an admittance controller. This results in the policy having
 similar force profiles to the human teachers. Such an approach was first proposed by \cite{trans_workpiece_icra_2013}
 and further applications based on this method have been done \cite{sol_pdg_pbd_2014} with the incorporation of  
-a disturbance rejection policy.
+a disturbance rejection policy. Reproducing exactly the same force torque profile for the full trajectory 
+which is encoded in a time dependent dynamical system 
+%whilst 
+%controlling for the position makes sense when considering only one type of object with time dependent dynamical 
+%system. If the dimensions of the object where to change, this would entail problems.
+
+
 Reinforcement learning has also been used in combination with DMP to learn PiH policies. In \cite{learn_force_c_icirs_2011}
 an DMP policy is initialised with kinesthetic demonstrations of a door opening and pen pick up task. The recorded Cartesian 
 trajectories are encoded in parameterised DMP policy and augmented with a F/T regressor profile. A reward function is designed, 
@@ -162,6 +181,13 @@ the authors develop an online Gaussian Process policy optimisation of an assembl
 demonstrate that by learning the dynamical model of the task during execution, it can be used to 
 learn the parameters of the policy faster than offline methods, such as Design of Experiment (DOE) 
 or Genetic Algorithms.
+
+%  Aude comment
+% All this survey of state of the art refers primarily to the task at hand (peg and hole task), but do not refer to 
+% the particular RL-Pomdp approach. This is ok, since you review the latter in Chapter 2 , but explain this to the 
+% reader before starting bck, by stating that here you will review only work done on solving this particular 
+% task and refer to reader back to specific sections in chapter 2 for review of state of the art on the other 
+% relevant topics (list them).
 
 %\subsection{Actor-Critic \& Fitted Reinforcement Learning}
 %For learning a POMDP policy for our search task, we consider RL approaches which naturally handles continuous 
@@ -863,8 +889,6 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
     \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/subject5.pdf}
-%    \subfigure[]{\includegraphics[width=0.45\textwidth]{./Figures/Results1/experiment4/value_subj_5.pdf}}
-%    \subfigure[]{\includegraphics[width=0.445\textwidth]{./Figures/Results1/experiment4/experiment4.pdf}}
     \caption{Original teacher \# 5 demonstrations. The teacher demonstrates a preference
     to go first to the top of the wall. He then leaves contact with the wall to position himself in front of the socket before trying to 
     find it}
@@ -1034,7 +1058,12 @@ wander vertical up and down motions. Only when the uncertainty has been reduced 
   \label{fig:real_statistics}
 \end{figure}
 
-
+\begin{figure}
+ \centering
+   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Results2/peg_socket_connection_v2.pdf}
+   \caption{}
+  \label{fig:real_statistics2}
+\end{figure}
 
 The GMM and Q-EM policies are able to generalise to both socket B and C, as the geometric shape and connector interface of the 
 two sockets are similar to socket A. The local force modulation of the policy's vector field, which isn't learned, allows the 
