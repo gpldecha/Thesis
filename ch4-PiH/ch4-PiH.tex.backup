@@ -17,11 +17,11 @@ policy).
 % Obviously, any task < no? The consistency requirement is also somewhat contradictory with the fact that you were embedding different 
 % styles of search across demonstrations.
 
-The demonstrated search task is implicitly encoded in the GMM parameters since no cost or reward function was defined, which is common practice in 
-Planning and Reinforcement Learning (RL). 
-The drawback is that the GMM policy is learned via Expectation-Maximisation (EM) which does not consider whether the data 
-from the demonstrations are good or bad. If the task is difficult and there are mostly bad demonstrations, the GMM search policy will 
-reproduce suboptimal behaviour. It also could be that no teachers by themselves are good, but by combining different components of 
+The reason that the GMM does not discriminate between behaviours, as the Expectation-Maximisation (EM) algorithm used to 
+learn the GMM policy does not consider whether the data from the demonstrations are good or bad. This is because no cost or 
+reward function, encoding the objective of the task, was defined which is common practice in Planning and Reinforcement Learning (RL). 
+If the task is difficult and there are mostly bad demonstrations, the GMM search policy will reproduce suboptimal behaviour. 
+It also could be that no teachers by themselves are good, but by combining different components of 
 the teachers individual demonstrations we can extract a good search strategy.
 
 
@@ -598,7 +598,7 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 %\caption{Fitted Policy Evaluation}
 %\label{alg:fpe}
 %\begin{algorithmic}[1]
-%    \Inputs{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+%    \Inputs{}
 %    \State{Initialise $\hat{V}^{\pi}_{0} = 0$}
 %    \For {$k=0$ in $K$}
 %        \State $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$)
@@ -608,6 +608,21 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 %    \EndFor
 %\end{algorithmic}
 %\end{algorithm}
+
+\begin{algorithm}[H]
+\label{alg:fpe}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+
+\Input{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+\BlankLine
+\For{$k=0 \in K$}{
+$\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$
+\If(\tcp*[h]{O(\Left,\This)==1}){\Left compatible with \This}
+}
+\caption{Fitted Policy Evaluation}
+\end{algorithm} 
+
 
 A wide spectrum of research has made use of batch RL methods to learn policies. 
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 

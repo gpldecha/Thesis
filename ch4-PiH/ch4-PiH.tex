@@ -598,7 +598,7 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 %\caption{Fitted Policy Evaluation}
 %\label{alg:fpe}
 %\begin{algorithmic}[1]
-%    \Inputs{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+%    \Inputs{}
 %    \State{Initialise $\hat{V}^{\pi}_{0} = 0$}
 %    \For {$k=0$ in $K$}
 %        \State $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$)
@@ -609,6 +609,22 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 %\end{algorithmic}
 %\end{algorithm}
 
+\begin{center}
+\begin{minipage}{.65\linewidth}
+\begin{algorithm}[H]
+\label{alg:fpe}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+\Input{$K$, $\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
+\Output{$\hat{V}^{\pi}_{k}(\B_t)$}
+\BlankLine
+\While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$}{
+  $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1})$
+}
+\caption{Fitted Policy Evaluation}
+\end{algorithm} 
+\end{minipage}
+\end{center}
 A wide spectrum of research has made use of batch RL methods to learn policies. 
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 
 \cite{NIPS2008_3501,EGW05,Riedmiller05neuralfitted}. Although learning the 

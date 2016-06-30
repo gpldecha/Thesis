@@ -385,34 +385,36 @@
 \newlabel{fig:experiment_setup_data}{{4.6}{87}{\textit {Left}: Black points represent the starting position of the end-effector for all the demonstrations. Four trajectories are illustrated. \textit {Right:} Time taken for the teachers to accomplish the PiH once the socket is localised. Group A and B are depicted in red and blue. The asterisk indicates that the group has changed sockets, so Group A\textsuperscript {*} means that Group A is now performing the task with socket B and Group B\textsuperscript {*} means that group B is now performing the task with socket A.\relax }{figure.caption.60}{}}
 \citation{Atkeson97locallyweighted}
 \citation{EGW05}
-\citation{NIPS2008_3501,EGW05,Riedmiller05neuralfitted}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Critic}{88}{subsection.4.4.2}}
 \newlabel{eq:W}{{4.4.3}{88}{Critic}{equation.4.4.3}{}}
 \newlabel{eq:lwr_predict}{{4.4.4}{88}{Critic}{equation.4.4.4}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Fitted Policy Evaluation}{88}{section*.61}}
+\citation{NIPS2008_3501,EGW05,Riedmiller05neuralfitted}
 \citation{sutton1998reinforcement}
 \citation{DeisenrothNP2013}
+\newlabel{alg:fpe}{{1}{89}{Fitted Policy Evaluation}{algocfline.1}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Fitted Policy Evaluation\relax }}{89}{algocf.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Actor update}{89}{subsection.4.4.3}}
-\newlabel{eq:disc_return}{{4.4.5}{89}{Actor update}{equation.4.4.5}{}}
-\newlabel{eq:expected_reward}{{4.4.6}{89}{Actor update}{equation.4.4.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces \textit  {Left:} LWR approximate value function $\mathaccentV {hat}05E{V}^{\pi }(b)$. \textit  {Right:} first five best and worst trajectories in terms of the accumulated value.\relax }}{90}{figure.caption.62}}
 \newlabel{fig:Figure1}{{4.7}{90}{\textit {Left:} LWR approximate value function $\hat {V}^{\pi }(\B )$. \textit {Right:} first five best and worst trajectories in terms of the accumulated value.\relax }{figure.caption.62}{}}
-\citation{peter_nac_2008}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces \relax }}{91}{figure.caption.63}}
+\newlabel{eq:disc_return}{{4.4.5}{91}{Actor update}{equation.4.4.5}{}}
+\newlabel{eq:expected_reward}{{4.4.6}{91}{Actor update}{equation.4.4.6}{}}
 \newlabel{eq:grad_log_cost}{{4.4.7}{91}{Actor update}{equation.4.4.7}{}}
-\newlabel{eq:advantage_f}{{4.4.8}{91}{Actor update}{equation.4.4.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Control architecture}{91}{section.4.5}}
-\newlabel{ch4:control_architecture}{{4.5}{91}{Control architecture}{section.4.5}{}}
+\citation{peter_nac_2008}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces \relax }}{92}{figure.caption.64}}
 \newlabel{fig:fpe_example}{{4.9}{92}{\relax }{figure.caption.64}{}}
+\newlabel{eq:advantage_f}{{4.4.8}{92}{Actor update}{equation.4.4.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Control architecture}{92}{section.4.5}}
+\newlabel{ch4:control_architecture}{{4.5}{92}{Control architecture}{section.4.5}{}}
 \citation{gesture_calinon_2010}
 \citation{gmr_2004}
 \newlabel{eq:gmm_conditional}{{4.5.1}{93}{Control architecture}{equation.4.5.1}{}}
 \newlabel{eq:alpha_eq}{{4.5.2}{93}{Control architecture}{equation.4.5.2}{}}
 \newlabel{eq:alpha_expectation}{{4.5.3}{93}{Control architecture}{equation.4.5.3}{}}
+\newlabel{eq:modulation}{{4.5.4}{93}{Control architecture}{equation.4.5.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces Control architecture. The PMF (belief) received a measured velocity, $\mathaccentV {dot}05F{\mathaccentV {tilde}07E{x}}$, and sensor feature $\mathaccentV {tilde}07E{y}$ and gets updated via Bayes rule. The belief is compressed and used by both the GMM policy and the proportional speed controller, Equation \ref  {eq:prop_speed}.\relax }}{94}{figure.caption.65}}
 \newlabel{fig:control_flow}{{4.10}{94}{Control architecture. The PMF (belief) received a measured velocity, $\dot {\tilde {x}}$, and sensor feature $\tilde {y}$ and gets updated via Bayes rule. The belief is compressed and used by both the GMM policy and the proportional speed controller, Equation \ref {eq:prop_speed}.\relax }{figure.caption.65}{}}
-\newlabel{eq:modulation}{{4.5.4}{94}{Control architecture}{equation.4.5.4}{}}
 \newlabel{eq:prop_speed}{{4.5.5}{94}{Control architecture}{equation.4.5.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces Q-EM and GMM policy vector fields. \textit  {Top}: The GMM policy is conditioned on an entropy of $-10$ and $-5.2$. For the lowest entropy level, most of the probability mass is close to the socket area since this level corresponds to very little uncertainty; we are already localised. We can see that the policy converges to the socket area regardless of the location of the believed state. For an entropy of $-5.2$ we can see that the likelihood of the policy is present across wall. The vector field directs the end-effector to go towards the left or right edge of the wall. \textit  {Bottom}: The entropy is marginalised out, the yellow vector field is of the Q-EM and orange of the GMM. The Q-EM vector field tends to be closer to a sink and there is less variation.\relax }}{95}{figure.caption.66}}
 \newlabel{fig:policy_vf}{{4.11}{95}{Q-EM and GMM policy vector fields. \textit {Top}: The GMM policy is conditioned on an entropy of $-10$ and $-5.2$. For the lowest entropy level, most of the probability mass is close to the socket area since this level corresponds to very little uncertainty; we are already localised. We can see that the policy converges to the socket area regardless of the location of the believed state. For an entropy of $-5.2$ we can see that the likelihood of the policy is present across wall. The vector field directs the end-effector to go towards the left or right edge of the wall. \textit {Bottom}: The entropy is marginalised out, the yellow vector field is of the Q-EM and orange of the GMM. The Q-EM vector field tends to be closer to a sink and there is less variation.\relax }{figure.caption.66}{}}
@@ -545,9 +547,9 @@
 \newlabel{eq:ch5:mlmf_filter_joint}{{5.4.4}{130}{MLMF parametrisation}{equation.5.4.4}{}}
 \newlabel{eq:ch5:mlmf_filter_conditional}{{5.4.5}{130}{MLMF parametrisation}{equation.5.4.5}{}}
 \newlabel{eq:memory}{{5.4.6}{130}{MLMF parametrisation}{equation.5.4.6}{}}
-\newlabel{alg:memory-motion}{{1}{131}{MLMF parametrisation}{algocfline.1}{}}
-\newlabel{alg:ch5:motion_memory}{{1}{131}{MLMF parametrisation}{AlgoLine.1.1}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Likelihood functions update\relax }}{131}{algocf.1}}
+\newlabel{alg:memory-motion}{{2}{131}{MLMF parametrisation}{algocfline.2}{}}
+\newlabel{alg:ch5:motion_memory}{{3}{131}{MLMF parametrisation}{AlgoLine.2.3}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces Likelihood functions update\relax }}{131}{algocf.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Computation of evidence and marginals}{131}{subsection.5.4.2}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Evolution of the MLMF joint distribution (evaluation of Equation \ref  {eq:ch5:mlmf_filter_conditional}) and marginals for a 1D world. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. The black line correspond to areas in which the likelihood function evaluates to zero. \textit  {Left}: the first likelihood function $P(Y_0|A_0,O)$, causes all the mass of joint distribution whose's states are $i=j$ to be evaluated to zero, as the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of both the agent and the object). The probability mass which lies in the area of influence of the measurement likelihood (evaluated to zero) gets removed and redistributed to the other states in the joint distribution due to normalisation. \textit  {Right:} Two actions have be taken and three measurements have been observed. The joint distribution on the \textit  {right} is the result of applying the motion update, Equation \ref  {eq:ch5:mlmf_motion_update}, which moves the initial marginal $P(A_0)$ to $P(A_2|u_{1:2})$ and displaces the likelihood function. A new measurement is then added, Equation \ref  {eq:ch5:mlmf_filter_joint}, illustrated by the pink line.\relax }}{132}{figure.caption.92}}
 \newlabel{fig:margina_joint_example}{{5.10}{132}{Evolution of the MLMF joint distribution (evaluation of Equation \ref {eq:ch5:mlmf_filter_conditional}) and marginals for a 1D world. The space is discretised to 100 bins and the agent is moving in the direction of the black arrow. The black line correspond to areas in which the likelihood function evaluates to zero. \textit {Left}: the first likelihood function $P(Y_0|A_0,O)$, causes all the mass of joint distribution whose's states are $i=j$ to be evaluated to zero, as the agent has not sensed the object (the red and blue circles on the marginals indicate the true position of both the agent and the object). The probability mass which lies in the area of influence of the measurement likelihood (evaluated to zero) gets removed and redistributed to the other states in the joint distribution due to normalisation. \textit {Right:} Two actions have be taken and three measurements have been observed. The joint distribution on the \textit {right} is the result of applying the motion update, Equation \ref {eq:ch5:mlmf_motion_update}, which moves the initial marginal $P(A_0)$ to $P(A_2|u_{1:2})$ and displaces the likelihood function. A new measurement is then added, Equation \ref {eq:ch5:mlmf_filter_joint}, illustrated by the pink line.\relax }{figure.caption.92}{}}
@@ -562,8 +564,8 @@
 \@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces MLMF functions with associated parameters. The marginal parameters are the discretisation of the state space $\bm  {\theta } \in \mathbb  {R}^N$, $\bm  {\theta }^{(s)}$ corresponds to the probability being in state $s$.\relax }}{136}{table.caption.95}}
 \newlabel{tab:mlmf_parameters}{{5.1}{136}{MLMF functions with associated parameters. The marginal parameters are the discretisation of the state space $\boldsymbol {\theta } \in \mathbb {R}^N$, $\boldsymbol {\theta }^{(s)}$ corresponds to the probability being in state $s$.\relax }{table.caption.95}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}MLMF-SLAM Algorithm}{136}{subsection.5.4.3}}
-\newlabel{alg:mrf-slam}{{2}{136}{MLMF-SLAM Algorithm}{algocfline.2}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {2}{\ignorespaces MLMF-SLAM\relax }}{136}{algocf.2}}
+\newlabel{alg:mrf-slam}{{3}{136}{MLMF-SLAM Algorithm}{algocfline.3}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces MLMF-SLAM\relax }}{136}{algocf.3}}
 \citation{PF_tutorial_2002}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Space \& time complexity}{137}{subsection.5.4.4}}
 \newlabel{ch5:space_time_complexity_MLMF}{{5.4.4}{137}{Space \& time complexity}{subsection.5.4.4}{}}
@@ -577,8 +579,8 @@
 \newlabel{eq:marg_indep}{{5.4.13}{139}{Scalable extension to multiple objects}{equation.5.4.13}{}}
 \newlabel{eq:marg_indep_prod}{{5.4.15}{139}{Scalable extension to multiple objects}{equation.5.4.15}{}}
 \newlabel{eq:marg_indep_sum}{{5.4.16}{140}{Scalable extension to multiple objects}{equation.5.4.16}{}}
-\newlabel{alg:scalabe-mrf-slam}{{3}{140}{Scalable extension to multiple objects}{algocfline.3}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {3}{\ignorespaces Scalable-MLMF: Measurement Update\relax }}{140}{algocf.3}}
+\newlabel{alg:scalabe-mrf-slam}{{4}{140}{Scalable extension to multiple objects}{algocfline.4}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Scalable-MLMF: Measurement Update\relax }}{140}{algocf.4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \textbf  {Transfer of information between joint distributions} \textit  {top left and right:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior and post sensing. The red and blue lines correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted black lines are for ease of comparing the joint distributions prior and post sensing. \textit  {bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the blue line becomes an infeasible solution to the agent and object locations. \textit  {bottom left:} The constraint imposed by the measurement likelihood function of the second object (blue line) is transferred to the joint distribution of the first object according to Algorithm \ref  {alg:scalabe-mrf-slam}. The result is a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }}{141}{figure.caption.99}}
 \newlabel{fig:transfer_information}{{5.14}{141}{\textbf {Transfer of information between joint distributions} \textit {top left and right:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior and post sensing. The red and blue lines correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted black lines are for ease of comparing the joint distributions prior and post sensing. \textit {bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the blue line becomes an infeasible solution to the agent and object locations. \textit {bottom left:} The constraint imposed by the measurement likelihood function of the second object (blue line) is transferred to the joint distribution of the first object according to Algorithm \ref {alg:scalabe-mrf-slam}. The result is a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }{figure.caption.99}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces \textbf  {Independence \& Objects} \textit  {left:} resulting marginals after setting the agent marginals of each joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref  {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit  {right:} resulting marginals in which the objects have no influence on one another. Note that a transfer of information has caused a change in the marginal $O^{(1)}$.\relax }}{142}{figure.caption.100}}
