@@ -46,43 +46,45 @@
 \BOOKMARK [1][-]{section.4.4}{Learning Actor and Critic}{chapter.4}% 46
 \BOOKMARK [2][-]{subsection.4.4.1}{Actor}{section.4.4}% 47
 \BOOKMARK [2][-]{subsection.4.4.2}{Critic}{section.4.4}% 48
-\BOOKMARK [2][-]{subsection.4.4.3}{Actor update}{section.4.4}% 49
-\BOOKMARK [1][-]{section.4.5}{Control architecture}{chapter.4}% 50
-\BOOKMARK [1][-]{section.4.6}{Results}{chapter.4}% 51
-\BOOKMARK [2][-]{subsection.4.6.1}{Distance taken to reach the socket's edge \(Qualitative\)}{section.4.6}% 52
-\BOOKMARK [2][-]{subsection.4.6.2}{Distance taken to reach the socket's edge \(Quantitative\)}{section.4.6}% 53
-\BOOKMARK [2][-]{subsection.4.6.3}{Importance of data}{section.4.6}% 54
-\BOOKMARK [2][-]{subsection.4.6.4}{Generalisation}{section.4.6}% 55
-\BOOKMARK [2][-]{subsection.4.6.5}{Distance taken to connect the plug to the socket}{section.4.6}% 56
-\BOOKMARK [1][-]{section.4.7}{Discussion \046 Conclusion}{chapter.4}% 57
-\BOOKMARK [1][-]{section.4.8}{Appendix}{chapter.4}% 58
-\BOOKMARK [2][-]{subsection.4.8.1}{EM policy search}{section.4.8}% 59
-\BOOKMARK [2][-]{subsection.4.8.2}{Q-EM for GMM derivation}{section.4.8}% 60
-\BOOKMARK [2][-]{subsection.4.8.3}{Unbiased estimator}{section.4.8}% 61
-\BOOKMARK [0][-]{chapter.5}{Non-parametric Bayesian State Space Estimator}{}% 62
-\BOOKMARK [1][-]{section.5.1}{Outline}{chapter.5}% 63
-\BOOKMARK [1][-]{section.5.2}{Background}{chapter.5}% 64
-\BOOKMARK [2][-]{subsection.5.2.1}{SLAM}{section.5.2}% 65
-\BOOKMARK [2][-]{subsection.5.2.2}{Active-SLAM \046 Exploration}{section.5.2}% 66
-\BOOKMARK [1][-]{section.5.3}{Bayesian State Space Estimation}{chapter.5}% 67
-\BOOKMARK [1][-]{section.5.4}{Measurement Likelihood Memory Filter}{chapter.5}% 68
-\BOOKMARK [2][-]{subsection.5.4.1}{MLMF parametrisation}{section.5.4}% 69
-\BOOKMARK [2][-]{subsection.5.4.2}{Computation of evidence and marginals}{section.5.4}% 70
-\BOOKMARK [2][-]{subsection.5.4.3}{MLMF-SLAM Algorithm}{section.5.4}% 71
-\BOOKMARK [2][-]{subsection.5.4.4}{Space \046 time complexity}{section.5.4}% 72
-\BOOKMARK [2][-]{subsection.5.4.5}{Scalable extension to multiple objects}{section.5.4}% 73
-\BOOKMARK [1][-]{section.5.5}{Evaluation}{chapter.5}% 74
-\BOOKMARK [2][-]{subsection.5.5.1}{Evaluation of time complexity}{section.5.5}% 75
-\BOOKMARK [2][-]{subsection.5.5.2}{Evaluation of the independence assumption}{section.5.5}% 76
-\BOOKMARK [2][-]{subsection.5.5.3}{Evaluation of memory}{section.5.5}% 77
-\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 78
-\BOOKMARK [1][-]{section.5.7}{Appendix}{chapter.5}% 79
-\BOOKMARK [2][-]{subsection.5.7.1}{Bayesian filtering recursion}{section.5.7}% 80
-\BOOKMARK [2][-]{subsection.5.7.2}{Recursion example}{section.5.7}% 81
-\BOOKMARK [2][-]{subsection.5.7.3}{Derivation of the evidence}{section.5.7}% 82
-\BOOKMARK [2][-]{subsection.5.7.4}{Derivation of the marginal}{section.5.7}% 83
-\BOOKMARK [0][-]{chapter.6}{Conclusion and summary}{}% 84
-\BOOKMARK [1][-]{section.6.1}{Main Contributions}{chapter.6}% 85
-\BOOKMARK [1][-]{section.6.2}{Limitations and Future Work}{chapter.6}% 86
-\BOOKMARK [1][-]{section.6.3}{Final Words}{chapter.6}% 87
-\BOOKMARK [0][-]{chapter*.112}{References}{}% 88
+\BOOKMARK [2][-]{subsection.4.4.3}{Fitted policy evaluation}{section.4.4}% 49
+\BOOKMARK [2][-]{subsection.4.4.4}{Policy improvement}{section.4.4}% 50
+\BOOKMARK [2][-]{subsection.4.4.5}{Fitted policy evaluation and improvement example}{section.4.4}% 51
+\BOOKMARK [1][-]{section.4.5}{Control architecture}{chapter.4}% 52
+\BOOKMARK [1][-]{section.4.6}{Results}{chapter.4}% 53
+\BOOKMARK [2][-]{subsection.4.6.1}{Distance taken to reach the socket's edge \(Qualitative\)}{section.4.6}% 54
+\BOOKMARK [2][-]{subsection.4.6.2}{Distance taken to reach the socket's edge \(Quantitative\)}{section.4.6}% 55
+\BOOKMARK [2][-]{subsection.4.6.3}{Importance of data}{section.4.6}% 56
+\BOOKMARK [2][-]{subsection.4.6.4}{Generalisation}{section.4.6}% 57
+\BOOKMARK [2][-]{subsection.4.6.5}{Distance taken to connect the plug to the socket}{section.4.6}% 58
+\BOOKMARK [1][-]{section.4.7}{Discussion \046 Conclusion}{chapter.4}% 59
+\BOOKMARK [1][-]{section.4.8}{Appendix}{chapter.4}% 60
+\BOOKMARK [2][-]{subsection.4.8.1}{EM policy search}{section.4.8}% 61
+\BOOKMARK [2][-]{subsection.4.8.2}{Q-EM for GMM derivation}{section.4.8}% 62
+\BOOKMARK [2][-]{subsection.4.8.3}{Unbiased estimator}{section.4.8}% 63
+\BOOKMARK [0][-]{chapter.5}{Non-parametric Bayesian State Space Estimator}{}% 64
+\BOOKMARK [1][-]{section.5.1}{Outline}{chapter.5}% 65
+\BOOKMARK [1][-]{section.5.2}{Background}{chapter.5}% 66
+\BOOKMARK [2][-]{subsection.5.2.1}{SLAM}{section.5.2}% 67
+\BOOKMARK [2][-]{subsection.5.2.2}{Active-SLAM \046 Exploration}{section.5.2}% 68
+\BOOKMARK [1][-]{section.5.3}{Bayesian State Space Estimation}{chapter.5}% 69
+\BOOKMARK [1][-]{section.5.4}{Measurement Likelihood Memory Filter}{chapter.5}% 70
+\BOOKMARK [2][-]{subsection.5.4.1}{MLMF parametrisation}{section.5.4}% 71
+\BOOKMARK [2][-]{subsection.5.4.2}{Computation of evidence and marginals}{section.5.4}% 72
+\BOOKMARK [2][-]{subsection.5.4.3}{MLMF-SLAM Algorithm}{section.5.4}% 73
+\BOOKMARK [2][-]{subsection.5.4.4}{Space \046 time complexity}{section.5.4}% 74
+\BOOKMARK [2][-]{subsection.5.4.5}{Scalable extension to multiple objects}{section.5.4}% 75
+\BOOKMARK [1][-]{section.5.5}{Evaluation}{chapter.5}% 76
+\BOOKMARK [2][-]{subsection.5.5.1}{Evaluation of time complexity}{section.5.5}% 77
+\BOOKMARK [2][-]{subsection.5.5.2}{Evaluation of the independence assumption}{section.5.5}% 78
+\BOOKMARK [2][-]{subsection.5.5.3}{Evaluation of memory}{section.5.5}% 79
+\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 80
+\BOOKMARK [1][-]{section.5.7}{Appendix}{chapter.5}% 81
+\BOOKMARK [2][-]{subsection.5.7.1}{Bayesian filtering recursion}{section.5.7}% 82
+\BOOKMARK [2][-]{subsection.5.7.2}{Recursion example}{section.5.7}% 83
+\BOOKMARK [2][-]{subsection.5.7.3}{Derivation of the evidence}{section.5.7}% 84
+\BOOKMARK [2][-]{subsection.5.7.4}{Derivation of the marginal}{section.5.7}% 85
+\BOOKMARK [0][-]{chapter.6}{Conclusion and summary}{}% 86
+\BOOKMARK [1][-]{section.6.1}{Main Contributions}{chapter.6}% 87
+\BOOKMARK [1][-]{section.6.2}{Limitations and Future Work}{chapter.6}% 88
+\BOOKMARK [1][-]{section.6.3}{Final Words}{chapter.6}% 89
+\BOOKMARK [0][-]{chapter*.110}{References}{}% 90
