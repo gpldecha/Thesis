@@ -1,15 +1,16 @@
 \chapter{Peg in hole}
 
-In Chapter 3, we demonstrated that we could learn a search policy from demonstrations of human teachers for a task consisting of 
-locating a wooden object on a table and successfully transferring it to a robot apprentice. The motivation behind our approach is 
-that the intuition and knowledge exhibited by the human teachers, during the search, consists of a good balance between 
-exploration and exploitation actions which then can be encapsulated in a generative Gaussian Mixture Model (GMM) and subsequently used as a control policy. 
-The approach is satisfactory if we are interested in extracting different behaviours present across the human teachers and reproducing 
-them. If our objective is however to learn a policy with a unique behaviour which is optimal or at least close to optimal, then using  
-the approach detailed in Chapter 3, as it is, will not necessarily result in a efficient policy. For the GMM will model
-both good patterns exhibited by the human teachers and their mistakes. If the task is difficult and many possible solutions exist, such 
-as was the case in the blindfolded search task of the previous Chapter, many demonstrations will be necessary for search patters to be 
-present and encoded in the GMM. Otherwise the GMM would have to be combined with another policy as showed (Hybrid GMM-Greedy 
+In Chapter 3, we demonstrated that we could learn a search policy and successfully transfer it to a robot apprentice
+from demonstrations of human teachers for a task consisting of locating a wooden object on a table. 
+In these search tasks our approach is based on the fact that intuition and knowledge exhibited by the human teachers, 
+during the search, gives a good balance between exploration and exploitation actions which can then be encapsulated in 
+a generative Gaussian Mixture Model (GMM) and be subsequently used as a control policy. 
+The approach is satisfactory when extracting the many different behaviours demonstrated by the human teachers and reproducing 
+them. However for learning an optimal or near optial policy with a unique behaviour the using  
+of this approach will not necessarily result in a efficient policy. For the GMM will model
+both the good and the bad search strategies exhibited by the human teachers. If the task is difficult and many possible solutions exist, such 
+as in the previously discussed blindfolded search task in Chapter 3, many demonstrations will be required for search patters to
+emerge and be encoded in the GMM. Otherwise the GMM needs to be combined with another policy as previously shown (Hybrid GMM-Greedy 
 policy). 
 
 %  This sentence is hard to follow. Break it into two sentences. What do you mean by goal-oriented? 
@@ -17,49 +18,49 @@ policy).
 % Obviously, any task < no? The consistency requirement is also somewhat contradictory with the fact that you were embedding different 
 % styles of search across demonstrations.
 
-The reason that the GMM does not discriminate between behaviours, as the Expectation-Maximisation (EM) algorithm used to 
-learn the GMM policy does not consider whether the data from the demonstrations are good or bad. This is because no cost or 
-reward function, encoding the objective of the task, was defined which is common practice in Planning and Reinforcement Learning (RL). 
-If the task is difficult and there are mostly bad demonstrations, the GMM search policy will reproduce suboptimal behaviour. 
-It also could be that no teachers by themselves are good, but by combining different components of 
-the teachers individual demonstrations we can extract a good search strategy.
+GMM does not discriminate between behaviours, as the Expectation-Maximisation (EM) algorithm used to 
+learn the GMM policy ignores the quality of the demonstrated data. The EM algorithm does not contain a cost or 
+reward function, encoding the objective of the task, which is common practice in Planning and Reinforcement Learning (RL). 
+In the case of a difficult task where there are mostly bad demonstrations, the GMM search policy will reproduce suboptimal behaviour.
+Additionally there may be that no good teachers, however by combining different components from 
+individual demonstrations a good search strategy can be extracted.
 
 
 %teachers are not good at the task individually and maybe only a few demonstrations are the best, whilst the majority are bad.
 %There the task undertaken is implicitly encoded, as there is no cost function which is optimised, in 
 %the GMM and as a result the taught behaviour has to be goal oriented and consistent, which is not always the case in a blindfolded search task. 
 
-To overcome the above mentioned limitations, in this Chapter we use a binary cost function as means of ranking demonstrations 
-provided by the human teachers. We combine our PbD-POMDP approach with an Actor-Critic Reinforcement Learning (RL) framework which 
-is close to Fitted-Value Iteration(FVI) and other experience replay methods. We we will refer to this new method as RL-PbD-POMDP. 
-Our objective is to avoid noisy explorative rollouts, common to all RL approaches and is their Achille's heel, and only rely on 
-the data provided by the human teachers. We want to avoid any autonomous exploration common in RL for three reasons. 
-Firstly it is time consuming and is typically only applicable to RL problems in which an exhaustive exploration 
-of the entire state or parameter space is feasible, such as in traditional RL problems like the inverted pendulum or mountain cart. 
+To overcome the above mentioned limitations, we introduce a binary cost function as a means of ranking the human teachers' demonstrations.
+To this end, we combine our PbD-POMDP approach with an Actor-Critic Reinforcement Learning (RL) framework which 
+is close to Fitted-Value Iteration(FVI) and other Experience replay methods. This new method we refer to as RL-PbD-POMDP. 
+Our objective is to avoid the noisy explorative rollouts, a weakness common to all RL approaches, and only rely on 
+the data provided by the human teachers. Autonomous exploration in RL can be seen to have three problem areas.
+
+Firstly it is time consuming and is typically only applicable where an exhaustive exploration 
+of the entire state or parameter space is feasible, such as in the inverted pendulum or mountain cart type problems. 
 The universal exploration method, used throughout RL, is state independent (sometimes state dependent) white noise 
 which results in an entire exploration of the state space. This
-is neither practical [nor?]or feasible for the type of search problems we are considering. The second reason is that the 
-exploration cannot be random as we are using a physical robotic system, and this would be dangerous. The third and
-most important reason is that we want to use the same amount of information for our RL-PbD-POMDP as we used 
-for the PbD-POMDP approach.  This would enable a fair comparison and support our hypothesis that we can obtain 
-obtain an improved policy without the need of any additional information than human demonstrations.
+is neither practical nor feasible for the type of search problems we are considering. Secondly in this search 
+problem as we are using a physical robotic system the exploration cannot be random as this would be dangerous.
+Finally it is imperative that both the PbD-POMDP and RL-PbD-POMDP receive the same information. This would enable a fair comparison 
+between the two algorithms and support our hypothesis that the RL-PbD-POMDP provides an improved policy 
+with only human demonstrations as input.
 
 %We chose a search and Peg-In-Hole (PiH) task
 We analyse our RL-PbD-POMDP approach on a power-socket Peg-in-Hole (PiH) search task. In this task, human teachers must demonstrate 
 to a robot apprentice how to search for and connect a plug to a power socket, see Figure \ref{fig:experiment_setup} (\textit{Left}). 
-The first component of the task, the search for the socket, is similar to the table-wooden block setup in the previous Chapter. 
-Here the connection of the plug to the power socket, the PiH component, requires a higher level of precision to be able to achieve.
+The first part of the task, the search for the socket, is similar to the table wooden-block setup in the previous chapter. 
+However the connection of the plug to the power socket, the PiH component, requires a higher level of precision.
 In Figure \ref{fig:experiment_setup} (\textit{Right}) the robot reproduces the behaviour demonstrated by the teacher.
 
 % Show figure of the task setup.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.95\textwidth]{./ch4-PiH/Figures/Fig/human_example_search.pdf}
-  \caption{Peg-in-hole search task. \textit{Left:} A teacher is wearing ear defenders (to impede any hearing) and 
-  a blindfold. He his searching for the socket's location and then will attempt to establish a connection. Force 
-  and torque information is accessible from an ATI 6-axis force torque sensor at the end-effector of the tool the teacher is holding.
-  \textit{Right:} The KUKA LWR robot equipped with the same force torque sensor and plug reproducing the demonstrated behaviour of the 
-  teacher.}
+  \caption{Peg-in-hole (PiH) search task. \textit{Left:} A teacher is wearing ear defenders (to impede any hearing) and 
+  a blindfold. He first searches for the socket's location and then attempts to establish a connection. Force 
+  and torque information is obtained from an ATI 6-axis force torque sensor at the end-effector of the tool held by the teacher.
+  \textit{Right:} The KUKA LWR4 robot equipped with the same force torque sensor and plug reproducing the teacher's demonstrated behaviour.}
   \label{fig:experiment_setup}
 \end{figure}
 
@@ -77,7 +78,7 @@ In Figure \ref{fig:experiment_setup} (\textit{Right}) the robot reproduces the b
 \begin{itemize}
   \item \hyperref[ch4:background]{\ref{ch4:background}   Background}\\
   We review aspects of the literature related to the Peg-in-hole problem and Actor-Critic Reinforcement Learning 
-  with an emphasis on Fitted methods (also known as Batch or Experience replay), which we will adapting to our GMM policy.
+  with an emphasis on Fitted methods (also known as Batch or Experience replay), which we adapt to our GMM policy.
   \item \hyperref[ch4:experiment]{\ref{ch4:experiment}   Experiment methods}\\
   We detail the Peg-in-Hole search task, the number of participants (teachers) which provide demonstrations, the 
   type of data which is recorded and the representation of the human's location belief.
@@ -86,20 +87,20 @@ In Figure \ref{fig:experiment_setup} (\textit{Right}) the robot reproduces the b
   framework.
   \item \hyperref[ch4:control_architecture]{\ref{ch4:control_architecture} Control architecture}\\
   The learned behaviour is demonstrated on a 7 Degree of Freedom (DoF) articulated robot, named KUKA LWR4. 
-  We detail the hybrid position-force controller and dynamical field modulation heuristic which we used in 
+  We detail the hybrid position-force controller and dynamical field modulation heuristic which is used in 
   combination with the learned behaviour policy from the human teachers.
   \item \hyperref[ch4:results]{\ref{ch4:results}  	 Results}\\
   We perform a set of 5 simulated experiments to test the generalisation, the importance of data provided by the human 
   teachers and the performance against simple search approaches to find the location of the socket. We further perform 
   3 experiments on the real robotic platform to test the generalisation of the learned policy on different power sockets.
   \item \hyperref[ch4:conclusion]{\ref{ch4:conclusion} Conclusion}\\
-  We found that by learning a value function over the belief space using approximate dynamic programming (part of FVI) and using 
-this as a Critic to update the parameters of our GMM policy (Actor) we were able to achieve an important improvement over our 
-previous PbD-POMDP approach. We  performed evaluations both in simulation and on the KUKA LWR robot where we tested 
-policies ability to generalise to sockets for which no training data was provided and different socket locations. 
-In all our evaluations the RL-PbD-POMDP approach proved to be always better. More importantly we demonstrate that 
-the RL-PbD-POMDP approach performs significantly better when we use the training data from the worst teacher, 
-which mitigates the \textbf{original assumption} that the teachers have to be consistently efficient at the task.
+  The RL-PbD-POMDP policy achieves an important improvement over the previous PbD-POMDP approach
+   by learning a value function over the belief space using approximate dynamic programming (part of FVI) and using it 
+   to update the parameters of our GMM policy. We evaluate the ability of the policies to generalise to novel sockets 
+   and different socket locations, both in simulation and on the KUKA LWR robot.
+   The RL-PbD-POMDP approach consistently proves to be better. More importantly the RL-PbD-POMDP approach performs 
+   significantly better when it is used on the worst teacher's demonstrations, which mitigates the \textbf{original assumption} that 
+   teachers have to be consistently efficient at the task.
 \end{itemize}
 
 \section{Background}\label{ch4:background}
@@ -111,7 +112,7 @@ examples including the assembly of vehicular transmission components \cite{searc
 valves \cite{online_gpr_icra_2014}. To be successful, the estimated
 position of the robot's end-effector and workpiece must be precise. Typically, the clearance the between 
 and plug and the workpiece's hole is very small leaving little room for error. As a result, variations in the assembly's components 
-in combination with position uncertainty can result in either jamming during the insertion process or in failure of 
+in combination with position uncertainty can result in either jamming during the insertion process or in failure for 
 the plug finding the hole. This created a need for adaptive search and insertion policies for PiH, which has been driving research 
 in this area. 
 
@@ -120,11 +121,11 @@ From the literature, we identified the different components in PiH solutions.
 All approaches use to some extent a vision system to estimate the position of the workpiece. 
 For instance in \cite{peg_personal_icra_2010} a PR2 is equipped with a checkerboard to facilitate pose 
 estimation  of the plug with respect to a power outlet whose position is extracted through a vision 
-processing pipeline. An initial connection is attempted by visual servoing which was successful 10\% of the 
+processing pipeline. An initial connection is attempted by visual servoing which is successful 10\% of the 
 time. Given an estimate of the workpiece's position, a common approach is to follow either a blind increasing spiral 
 Cartesian trajectory or parametrised policies which guarantee that all positions on the workpiece have been visited.
-In \cite{peg_personal_icra_2010}, if the PR2 failed to connect the plug to the socket at the initial attempt, 
-a spiralling outward motion is carried out with 2mm increments and this method achieved an overall 
+In \cite{peg_personal_icra_2010}, if the PR2 initially fails to connect the plug to the socket
+a spiralling outward motion is carried out with 2mm increments which obtains an overall 
 success rate of 95\%. For this approach to be applicable to a generic robot, it would require the addition of an
 external camera and checkerboard to the robot in question which might be cumbersome. In our work we consider a 
 vision free system.
@@ -143,7 +144,7 @@ vision free system.
 
 
 Another approach (which has been confined to academic circles) follows the data driven 
-Programming by Demonstration (PbD) framework. Teleoperated or kinesthetic demonstrations of a human teacher 
+Programming by Demonstration (PbD) framework. Teleoperated or kinesthetic demonstrations by a human teacher 
 are recorded and a policy is learned and fine-tuned so as to reproduce the same (F)orce/(T)orque profile as 
 that demonstrated by the human teacher. 
 
@@ -156,62 +157,61 @@ encodes the recorded Cartesian end-effector pose. A F/T profile is encoded separ
 by radial basis functions. Successive refinements of the DMP policy are achieved through 
 using force feedback to adapt the parameters of an admittance controller. This results in the policy having
 similar force profiles to the human teachers. Such an approach was first proposed by \cite{trans_workpiece_icra_2013}
-and further applications based on this method have been done \cite{sol_pdg_pbd_2014} with the incorporation of  
+and further applications based on this method have been performed \cite{sol_pdg_pbd_2014} with the incorporation of  
 a disturbance rejection policy. Reproducing exactly the same force torque profile for the full trajectory 
 which is encoded in a time dependent dynamical system might be unnecessary as the force torque profile is 
-predominantly useful during the final stage of the PiH task, which is the insertion where jamming can occur 
-and the force torque information can be used to rectify this problem [Klas]. Instead a 
-hybrid control paradigm \cite{hybrid_1992} can be used to control the sensed force feedback with the environment.
-We take the hybrid control paradigm in this work in combination with a time-independent dynamical system.
+predominantly useful during the final stage of the PiH task, where the insertion can cause jamming. 
+The force torque information can be used to rectify this problem [Klas]. A 
+hybrid control paradigm \cite{hybrid_1992} can also be used to control the sensed force feedback with the environment.
+We make use of the hybrid control paradigm in this work in combination with a time-independent dynamical system.
 
 Reinforcement learning has also been used in combination with DMP to learn PiH policies. In \cite{learn_force_c_icirs_2011}
 an DMP policy is initialised with kinesthetic demonstrations of a door opening and pen pick up task. The recorded Cartesian 
-trajectories are encoded in parameterised DMP policy and augmented with a F/T regressor profile. A reward function is designed, 
-encoding desirable properties of the F/T profile such as smoothness and continuity, and after 110 trials a policy
-was found to be a 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input (sensed position, previous position and force)  and 6 dimensional 
-output (linear and angular velocity) neural network is learned by associative reinforcement learning. 
+trajectories are encoded in a parameterised DMP policy and augmented with a F/T regressor profile. A reward function is designed, 
+encoding desirable properties of the F/T profile such as smoothness and continuity. After 110 trials the policy
+was found to be a 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input (sensed position, previous position and force) 
+and a 6 dimensional output (linear and angular velocity) neural network is learned by associative reinforcement learning. 
 During the learning process the plug is randomly positioned within the vicinity of the hole. After a 100 executions and 
-updates, the policy is successful and was able to generalise across different geometries and clearances.
+updates, the policy was shown to be successful and was able to generalise across different geometries and clearances.
 This approach is similar in spirit to our work, however we will not be considering autonomous rollouts common 
-in RL, but will solely relay on the initial data provided by human teachers with no additional rollouts.
+in RL, but will solely rely on the initial data provided by human teachers with no additional rollouts.
 
-The above policies were learned from human demonstrations and encoded by a regressor function and
-optimised to reproduce a desired F/T profile. Further approaches to the PiH problem 
+All the above policies were learned from human demonstrations and encoded by a regressor function and
+optimised to reproduce a desired F/T profile. Other approaches to the PiH problem 
 are predominantly based on heuristic search mechanisms and compliant controllers.
 
 % Blind search stragegies
-In \cite{search_strategies_icra_2001} different blind search policies for the insertion of a spline toothed hub 
-into a forward clutch are analysed. The state space is discretised into points so that the distance between two 
+In \cite{search_strategies_icra_2001} different blind search policies are analysed for the insertion of a spline toothed hub 
+into a forward clutch. The state space is discretised into points so that the distance between two 
 neighbours is smaller than the clearance of the hole, which is known as a spray point coverage. Different search 
-strategies which ensure that all the points are visited are evaluated. It is found that paths following  
-concentric circles gradually spiralling inwards were the most effective method in finding the hole. The concentric circle
+strategies are evaluated which ensure that all the points are visited. It is found that paths following  
+concentric circles gradually spiralling inwards are the most effective method for finding the hole. This concentric circle
 search strategy has been applied in many PiH tasks. For instance in \cite{peg_imcssd_2015}, a PiH heuristic 
 policy was developed to connect a 5-pin waterproof industrial charger to an electric socket. The authors 
 estimated the pose of the socket through a vision system and used a force controller in combination with a 
 spiral search policy to achieve a connection and demonstrated their approach to be reliable. 
-These blind search strategies don't consider actual state uncertainty and work well only when the plug or 
-peg is within the vicinity of the socket. In our work we consider no visual information leading to large
-amounts of state uncertainty making the direct application of such blind search methods ill-suited.
+These blind search strategies do not consider actual state uncertainty and only work well when the plug or 
+peg is within the vicinity of the socket. In our work we consider no visual information which leads to 
+high state uncertainty making the direct application of such blind search methods ill-suited.
 
 % Do it the same way that humans do it: Does not use FT sensor
-In \cite{intuitive_peg_isr_2013} the authors make the observation that humans lack the precision and sensing 
-accuracy of robotic systems. But nevertheless, are more proficient than robots at PiH. The authors observe that when humans try to connect a square plug to a socket, they rub the plug against the socket's 
+In \cite{intuitive_peg_isr_2013} the authors observe that humans lack the precision and sensing 
+accuracy of robotic systems, but nevertheless, are more proficient than robots at PiH. The authors state that when 
+humans try to connect a square plug to a socket, they rub the plug against the socket's 
 outlet without looking. It is thought that the inherent compliance in humans' motor control  
 is the key to our success at PiH tasks \cite{compliant_manip_icra_2008}. 
 The authors introduce an Intuitive Assembly Strategy (IAS) inspired by the above observation which 
 does not require the hole to be precisely localised. The IAS search strategy is based on compliant 
 spiral motion and the execution of the search trajectory is performed with a hybrid force/position controller.
-Our approach is also based on the observation that humans are good at accomplishing these kind of tasks
-and we exploit this in our own PiH policy. We further consider different type of geometric objects whilst 
-only considering haptic information.
+We also have observed that humans are good at accomplishing such tasks and we exploit this in our own PiH policy. 
+We further consider different types of geometric objects whilst only considering haptic information.
 
 The spiral strategy is widely used in industrial applications due to its simplicity, 
-however, it is a blind search method. Another approach to the assembly process 
-consists of fine-tuning parameters of predefined policies. In \cite{online_gpr_icra_2014}
+however, it is a blind search method. Another approach when dealing with the assembly
+process consists of fine-tuning parameters of predefined policies. In \cite{online_gpr_icra_2014}
 the authors develop an online Gaussian Process policy optimisation of an assembly task. They 
-demonstrate that by learning the dynamical model of the task during execution, it can be used to 
-learn the parameters of the policy faster than offline methods, such as Design of Experiment (DOE) 
-or Genetic Algorithms.
+demonstrate that by learning the dynamical model of the task during execution, it is faster than offline methods, 
+such as Design of Experiment (DOE) or Genetic Algorithms.
 
 %  Aude comment
 % All this survey of state of the art refers primarily to the task at hand (peg and hole task), but do not refer to 
@@ -317,14 +317,14 @@ purely actor methods (policy gradient), which results in faster learning.
 % The teachers are told and shown before hand the setup and 
 % it is made clear to them that they will always be starting in the orange area facing the wall which we demarcated with tap. 
 
-Figure \ref{fig:experiment_setup} (\textit{Top-left}), illustrates the PiH-search experiment setup. The orange area represents 
+Figure \ref{fig:search_task_setup} (\textit{Top-left}), illustrates the PiH-search experiment setup. The orange area represents 
 the teachers starting area and is assumed prior knowledge. The sockets are always positioned at the center of a fake wall (wooden plank) which is clamped to a table, see 
 Figure \ref{fig:search_task_setup} (\textit{Top-right}) for an illustration. 
 
 We consider one type of plug, Type J\footnote{http://www.iec.ch/worldplugs/typeJ.htm}, and three different power sockets. 
 Power \textit{socket A}, has a ring around its holes, \textit{socket B} has a funnel, which we hypothesize should make 
-it easier to connect, and \textit{socket C} has a flat elevated surface. See Figure \ref{fig:experiment_setup}
-(\textit{Top-left}) for an illustration. 
+it easier to connect, and \textit{socket C} has a flat elevated surface. See Figure \ref{fig:search_task_setup}
+(\textit{Bottom}) for an illustration. 
 
 \begin{figure}
  \centering
@@ -336,15 +336,15 @@ it easier to connect, and \textit{socket C} has a flat elevated surface. See Fig
     \label{fig:search_task_setup}
 \end{figure}
 
-The plug held by the human teachers is attached to a cylindrical handle with 
-an ATI 6 axis force torque sensor (Nano25 \footnote{http://www.ati-ia.com/products/ft/sensors.aspx}) fixed 
-between the two, which provides \textbf{raw} wrench $\phi \in \mathbb{R}^6$ measurements.
- We define the \textbf{actual} measurement to be a function of the sensed wrench, 
-$\tilde{y}_t = h(\phi_t)$, which is a binary feature vector. The feature vector encodes whether a contact is present 
-and the direction in which it occurs, which we discretized to the four cardinalities.
+The human teacher holds the plug which is attached to a cylindrical handle with 
+an ATI 6 axis force torque sensor (Nano25 \footnote{http://www.ati-ia.com/products/ft/sensors.aspx}) 
+which provides \textbf{raw} wrench $\phi \in \mathbb{R}^6$ measurements. We define the \textbf{actual} measurement 
+to be a function of the raw wrench, $\tilde{y}_t = h(\phi_t)$, which is a binary feature vector. The feature vector encodes whether a contact is present 
+and the direction in which it occurs, which is discretized to the four cardinalities.
 
-On top of the cylinder is a set of markers from which a motion capture system OptiTrack\footnote{http://www.optitrack.com/}, see Figure \ref{fig:plug_cylinder}, 
-which provides both linear, $\dot{x} \in \mathbb{R}^3$, and angular velocity, $\omega \in \mathbb{R}^3$ measurements at each time step.
+On top of the cylinder there is a set of markers used by a motion capture system OptiTrack\footnote{http://www.optitrack.com/}, 
+see Figure \ref{fig:plug_cylinder}, to measure both linear, $\dot{x} \in \mathbb{R}^3$, and angular 
+velocity, $\omega \in \mathbb{R}^3$, at each time step.
 
 \begin{figure}
  \centering
@@ -353,34 +353,34 @@ which provides both linear, $\dot{x} \in \mathbb{R}^3$, and angular velocity, $\
  \label{fig:plug_cylinder}
 \end{figure}
 
-During the experiment the position and orientation of the plug is recorded at a rate of a 100 Hz
-from the optitrack system which has sub-millimeter tracking accuracy. The force and torque information 
+During the experiment the position and orientation of the plug are recorded at a rate of a 100 Hz
+using the OptiTrack system which has sub-millimeter tracking accuracy. The force and torque information 
 from the ATI sensor is recorded at the same rate. 
 
-We assume that the human's location belief is represented by a probability distribution function. We make
-the assumption that the participants initial belief is uniformly distributed in orange are depicted in 
-Figure \ref{fig:search_task_setup} and that all subsequent beliefs can be inferred from the measured velocity 
-and measurements provided by the ATI sensor. We next describe how we represent, compute and compress this 
-belief.
+In this task, the human's location belief is represented by a probability distribution function. 
+The participants (teachers) initial belief is assumed to be uniformly distributed as depicted 
+in orange area of Figure \ref{fig:search_task_setup} and that all subsequent beliefs can be inferred from the measured velocity 
+and measurements provided by the ATI and OptiTrack sensors. The following section describes how the belief can be represented, 
+computed and compressed.
 
 \subsubsection{Belief state}
 %\subsubsection{Belief probability density function}
 % Before explaining the measurement model we detail what measurement $\tilde{y}_t$ is.
 %This step essentially consists of applying a convolution kernel to the PMF where the covariance 
 %is proportional to the measured velocity.
-In our setting the belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{0:t})$,  
+For the task in hand, the belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{0:t})$,  
 is a Point Mass Filter (PMF) \cite[p.87]{Bergman99recursivebayesian}, which is a  Bayesian filter.
 It is parametrised by a set of grid cells  which contain valid probabilities 
-and recursively updated by the application of a \textbf{motion}, $p(x_t|x_{t-1},\dot{x}_t)$ 
-and \textbf{measurement}, $p(y_t|x_t)$ model. The motion model updates the position of the probability density function and subsequently increases the uncertainty 
-of the position.  The measurement model indicates areas of the state space from which a measurement $\tilde{y}_t$ could have originated. 
-In Figure \ref{fig:PMF} (\textit{Right-bottom}) we illustrated the likelihood when an edge is sensed.
+and is recursively updated by the application of a \textbf{motion}, $p(x_t|x_{t-1},\dot{x}_t)$ 
+and \textbf{measurement}, $p(y_t|x_t)$ model. The motion model updates the position of the probability density function 
+and subsequently increases the uncertainty of the position.  The measurement model indicates areas 
+of the state space from which a measurement $\tilde{y}_t$ could have originated. 
+In Figure \ref{fig:PMF} (\textit{Bottom-right}) we illustrate the likelihood when an edge is sensed.
 
-Our choice of a PMF, as means to represent the believed location of the plug, 
-is motivated by the fact that the sensing likelihoods are non-gaussian and lead to 
-multi-modal distributions.  A PMF is able to capture such non-gaussianity whilst remaining fully deterministic 
+A PMF was chosen to represent the believed location of the plug as the sensing 
+the sensing likelihoods are non-gaussian and lead to multi-modal distributions.  
+A PMF is able to capture such non-gaussianity whilst remaining fully deterministic 
 (which is not the case for a particle filter).
-
 
 \begin{figure*}
  \centering
@@ -397,16 +397,16 @@ multi-modal distributions.  A PMF is able to capture such non-gaussianity whilst
 
 %\subsubsection{Belief compression}
 
-The probability density function $p(x_t|y_{0:t},\dot{x}_{0:t})$ is high dimensional and it is 
-impractical to directly learn a statistical policy $\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{0:t}) \rightarrow \dot{x}_t$; 
-therefore some form of compression is necessary. One possibility would be E-PCA \cite{E-PCA} which finds a set of 
-representative basis functions (which are probability distributions). Although elegant this method 
+The probability density function $p(x_t|y_{0:t},\dot{x}_{0:t})$ is high dimensional and thus it is 
+impractical to directly learn a statistical policy $\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{0:t}) \rightarrow \dot{x}_t$
+without some form of compression. One possibility would be E-PCA \cite{E-PCA} which extracts a set of 
+representative basis functions which are aslo probability distributions. Although elegant this method 
 requires a discretisation of the belief space which is computationally expensive. Instead we chose to 
 compress the pdf to a belief space vector composed of the maximum a posteriori, $\hat{x}^{\mathrm{MAP}}_t = \argmax_{x_t} p(x_t|y_{0:t},\dot{x}_{0:t}) \in \mathbb{R}^3$, and the differentiation entropy, 
 $U = H\{p(x_t|y_{0:t},\dot{x}_{0:t})\} \in \mathbb{R}$. All pdfs in our recorded data set $D$ are transformed to 
 a belief space feature vector, $b_t = [\hat{x}^{\mathrm{MAP}}_t,U]^{\mathrm{T}}$. 
 
-For each demonstration of the task by a participant we obtained a dataset $D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}$, 
+Each demonstration of the task by a participant results in a dataset $D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}$, 
 where the upper index $[i]$ references the ith search trajectory (also one execution of the task or one episode) and 
 subscript $1:T$ denotes the time steps during the trajectory from initialisation $t=1$ until the end $t=T$. 
 %The data consisted of the plug's linear velocity, $\dot{x} \in \mathbb{R}^3$, 
@@ -415,34 +415,40 @@ subscript $1:T$ denotes the time steps during the trajectory from initialisation
 
 \subsection{Participants and experiment protocol}
 
-We recruited 10 volunteers to be teachers (all male) from the EPFL campus (Master's and PhD). The statistics of the 
-participants age was 26 (2.4) [24-30] (mean (standard deviation) [min-max]). Each participant carried out a total 
-of 30 demonstrations of the PiH search-task and each session lasted approximately 50 minutes and never exceeded one hour. 
-The 10 participants where divided in two groups of 5. One group stated by performing 15 repetitions of the PiH searches task with socket A
-and after completion and a 10 minute break the participant performed an additional 15 searches with socket B.
-The group of 5 teachers starting with socket A, will be called ``Group A'' and vis versa, the group of 5 teachers starting with socket B will 
-be referred to as ``Group B''. Figure \ref{fig:experiment_design} summarises the walk through of the experiment.
-The only criteria of exclusion was that ability of the subject to accomplish the task. All participants gave written consent 
+To perform the PiH search tasks we recruited 10 student volunteers to be teachers (all male Master's and PhD students).
+The participants were aged between 24 and 30 with an average age of 26 years and a standard deviation of 2.4 years.
+Each participant carried out 30 demonstrations of the PiH search-task and each session lasted approximately 50 minutes and 
+never exceeded one hour. The 10 participants were divided equally in two groups, A and B. Each member of group A began 
+by performing 15 repetitions of the PiH searches task with socket A, followed by a 10 minute break. Then they performed an 
+additional 15 searches with socket B. The members of group B performed the same protocol starting with socket B and ending
+with socket A.
+%The group of 5 teachers starting with socket A, will be called ``Group A'' and vis versa, the group of 5 teachers starting with socket B will 
+%be referred to as ``Group B''. 
+Figure \ref{fig:experiment_design} summarises a walk through of the experiment.
+The only criteria of exclusion was the inability of the subject to accomplish the task. All participants gave written consent 
 for taking part in this study.
 
-Below we describe the generic experimental taken for the two Groups A \& B of 5 subjects. 
+%Below we describe the generic experiment taken for the two Groups A \& B of 5 subjects.
+The next section describes in detail the protocol for the search task:
 
 \begin{enumerate}
- \item participant signs a form of consent before the start of the experiment.
- \item Each participant is given the opportunity to familiarise himself with the environment and become comfortable in wearing the sensor deprivation apparatus.
- During this time the participant tries multiple times to connect the plug to the socket whilst standing within its vicinity.  
- \item After each participant felt sufficiently ready to carry out the task to the best of his ability, the experimenter proceeded to disoriented
-  him through the usage of swivel chair. The disorientation process took 30 seconds and included both translation and rotation components.
-  After the disorientation step finished the participant was signalled to stand up. The participants were reminded that they were facing the direction of 
-  the wall and that the starting location would be always within the orange rectangular area.  Once the participant was standing he was signalled 
-  by alight touch to the should that he could start the task.
-  \item After the task was finished, the subject was disoriented once again and the task was repeated a total of 15 times. After the first 15 
-  trials we finished, the subject was given a 10 minute break to rest whilst the experiment would change the type of socket. If the participant
-  was of Group A, the socket would be changed to B and vis-versa.
+ \item Participant signs a form of consent before starting the experiment.
+ \item Each participant is given the opportunity to familiarise himself with the environment and become 
+ comfortable in wearing the sensor deprivation apparatus.
+ During this time the participant is allowed to practice connecting the plug to the socket whilst standing within its vicinity.  
+ \item Once the participant feels sufficiently ready to carry out the task to the best of his ability, the experimenter 
+  proceeded to disorient him through the usage of swivel chair. The disorientation process takes 30 seconds and included 
+  both translation and rotation motions. After disorientation, the participant is signalled to stand up. The participant
+  is reminded that he is facing the direction of the wall and that his the starting location is within the orange 
+  rectangular area demarcated on the floor. Once the participant is standing he is signalled by a light touch to the shoulder 
+  that he can start the task.
+  \item At task completion, the subject is once again disoriented and the this process is repeated a total of 15 times.
+  After 15 trials, the subject is given a 10 minute break to rest whilst the experimenter changes the type of socket (A or B). 
+  A participant of group A will now continue with socket B. Similarly a participant of group B will continue after the break 
+  with socket A.
 \end{enumerate}
 
-Each group carried out a total of 30 PiH-search experiments under two conditions. Group A did 15 searches first with socket A and after the break 
-another 15 searches with socket B. The same logic applies to Group B.
+Each participant carried out a total of 30 PiH-search experiments, giving a total of 300 demonstrations.
 
 \begin{figure}
 \centering
@@ -459,16 +465,16 @@ another 15 searches with socket B. The same logic applies to Group B.
 
 \subsection{preliminary results}
 
-Both groups A and B took $9\pm10$s to find their socket. This was expected since the sockets 
+Both groups A and B took $9\pm10$s to find the socket's edge, regardless of the type. This is to be expected since the sockets 
 are at the same location. However after the socket was found it took a further $8\pm7$s on average for group A to connect
-socket B and $12\pm10$s on average for group B to connect socket A. As we can see this is not a straight forward task when considering
+socket A and $12\pm10$s on average for group B to connect socket A. As we can see this is not a straight forward task when considering
 the sensory deprivation. See Figure \ref{fig:experiment_setup_data} (\textit{Bottom}) the time taken to connect the plug to the socket.
 
 \begin{figure}
  \centering
    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/start_position_v2.pdf}
-   \caption{\textit{Left}: Black points represent the starting position of the end-effector
-   for all the demonstrations. Four trajectories are illustrated. \textit{Right:} 
+   \caption{\textit{Top}: Black points represent the starting position of the end-effector
+   for all the demonstrations. Four trajectories are illustrated. \textit{Bottom:} 
    Time taken for the teachers to accomplish the PiH once the socket is localised. Group A and B are depicted in red 
    and blue. The asterisk indicates that the group has changed sockets, so Group A\textsuperscript{*} means
    that Group A is now performing the task with socket B and Group B\textsuperscript{*} means that group B is now performing 
@@ -476,11 +482,11 @@ the sensory deprivation. See Figure \ref{fig:experiment_setup_data} (\textit{Bot
   \label{fig:experiment_setup_data}
 \end{figure}
 
-In Figure \ref{fig:experiment_setup_data} we can see the time taken by the teachers to accomplish the task. 
-A group of 10 human teachers participated in the plug-socket experiment. Each teacher performed the search and PiH 
-for sockets A and B. A teacher of group A (starting with socket A), would start by performing 15 times the search and connection 
-with socket A and after a short break, during which socket A was replaced by socket B, would carry on to perform 15 trials 
-with socket B.
+%In Figure \ref{fig:experiment_setup_data} we can see the time taken by the teachers to accomplish the task. 
+%A group of 10 human teachers participated in the plug-socket experiment. Each teacher performed the search and PiH 
+%for sockets A and B. A teacher of group A (starting with socket A), would start by performing 15 times the search and connection 
+%with socket A and after a short break, during which socket A was replaced by socket B, would carry on to perform 15 trials 
+%with socket B.
 
 %The location belief of the humans was represented by a probability density function. We made the assumption 
 %that after the disorientation step the human's believed location would be uniform and spread across the 
@@ -718,23 +724,24 @@ GMM parameterization of the policy.
 
 \subsection{Fitted policy evaluation and improvement example}
 
-In Figure \ref{fig:fpe_example}, we illustrate an example of how Fitted policy evaluation and improvement works
-in a simple 2D example to give an intuition behind the mechanism involved. The \textit{Top-left} subfigure,
-illustrates 10 demonstrated trajectories from two teachers (5 each) which end in a goal state. The optimal 
-path to reach the goal is a straight from the start to goal state passing in between two obstacles. 
-Between the two teachers non of them demonstrated the optimal straight path. If we were to fit a GMM 
-$\pi_{\Param}(\U,\X)$ to the demonstrated data and take the policy to be the output of the 
+To give an intuition of fitted policy evaluation and improvement mechanisms, we give a 2D example 
+which is illustrate in Figure \ref{fig:fpe_example}. The \textit{Top-left} subfigure,
+depicts 10 trajectories demonstrated by two teachers going from start (white circle) to goal (orange star) state. 
+The optimal path to reach the goal is to travel in a straight line passing in between two obstacles. 
+None of the two teachers demonstrated the optimal straight path. If we fit a GMM 
+$\pi_{\Param}(\U,\X)$ to the teacher's data and take the policy to be the  
 Gaussian Mixture Regression (GMR) $\mathbb{E}\{\pi_{\Param}(\U|\B)\}$ we get the behaviour 
 illustrated in the \textit{Bottom-left} subfigure. As different behaviours were demonstrated and encoded 
 in the GMM, the trajectory generated from the GMR policy are an average of the original demonstrated 
-behaviour.  No policy trajectories truly replicate the demonstrated behaviour.  In the \textit{Top-right}
+behaviour. No policy trajectories truly replicate the demonstrated behaviour. In the \textit{Top-right}
 subfigure, we apply fitted policy evaluation to the original demonstrated data (discount 
-factor $\gamma=0.99$ and reward $r=1$ when goal reached and zero otherwise) and compute the value function.
-The \textit{Bottom-right} subfigure illustrates the GMM policy learned via Q-EM detailed above. As 
+factor $\gamma=0.99$ and reward $r=1$ when the goal is reached and zero otherwise) and compute the value function.
+The \textit{Bottom-right} subfigure illustrates the GMM policy learned with the Q-EM algorithm. As 
 the advantage function $ A^{\pi}(\X,\U)$ is highest along the start-goal axis, data points from 
 both teachers which follow this gradient will be weighted higher than other data points. This 
 results in policy much closer to optimality with better quality rollouts than the trajectories generated 
-by the policy learned via standard EM.
+by the policy learned via standard EM, see the \textit{Bottom-right} subfigure for an illustrate of 
+the policy and trajectories resulting from policy improvement.
 
 \begin{figure}
  \centering
@@ -755,14 +762,22 @@ by the policy learned via standard EM.
   \label{fig:fpe_example}
 \end{figure}
 
+The same is applied to the demonstrations from the PiH-search task. Figure \ref{fig:Figure1} (\textit{Top})
+shows the value function of the most likely state. 
+shows the belief space with respect to the value function. As expected, the 
+value function is high closest to the socket and low further away. Figure \ref{fig:Figure1}
+(\textit{Right}) shows the best and worst trajectories in terms of the accumulated value function. There is a
+close relationship between the best trajectories and the time taken to successfully connect the plug to the socket. 
+We can see that the five best trajectories (red) tend to be aligned with the socket (star position in front of socket), 
+whilst the five worst are towards the edges of the wall.
 
 \begin{figure}
  \centering
  \setlength\fboxsep{0pt}
   \setlength\fboxrule{0.25pt}
   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/ValueFunction/value_func_final_v2.pdf}
- \caption{\textit{Left:} LWR approximate value function $\hat{V}^{\pi}(\B)$. \textit{Right:} first five best and worst trajectories in terms of the accumulated value.}
-  \label{fig:Figure1}
+ \caption{\textit{T:} LWR approximate value function $\hat{V}^{\pi}(\B)$. \textit{Right:} first five best and worst trajectories in terms of the accumulated value.}
+ \label{fig:Figure1}
 \end{figure}
 
 \begin{figure}
@@ -772,12 +787,6 @@ by the policy learned via standard EM.
 \end{figure}
 
 
-Figure \ref{fig:Figure1} (\textit{Left}) shows the belief space with respect to the value function. As expected, the 
-value function is high closest to the socket and low further away. Figure \ref{fig:Figure1}
-(\textit{Right}) shows the best and worst trajectories in terms of the accumulated value function. There is a
-close relationship between the best trajectories and the time taken to successfully connect the plug to the socket. We can see that the five best trajectories
-(red) tend to be aligned with the socket (star position in front of socket), whilst the five worst are towards the edges
-of the wall.
 
 
 
