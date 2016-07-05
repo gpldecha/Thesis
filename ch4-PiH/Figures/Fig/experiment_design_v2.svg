@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="experiment_design_v2.svg">
+   sodipodi:docname="experiment_design_v2.pdf">
   <defs
      id="defs4">
     <marker
@@ -126,7 +126,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -519,7 +519,7 @@
          id="tspan4281"
          x="51.948147"
          y="246.08124"
-         style="font-size:10px">Group One</tspan></text>
+         style="font-size:10px">Group A</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -567,7 +567,7 @@
          id="tspan4281-9"
          x="51.665245"
          y="318.81223"
-         style="font-size:10px">Group Two</tspan></text>
+         style="font-size:10px">Group B</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14.91236115px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -774,7 +774,7 @@
          id="tspan3104-8"
          x="262.24976"
          y="326.87155"
-         style="font-size:13px">B*</tspan></text>
+         style="font-size:13px">A</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -786,7 +786,7 @@
          id="tspan3104-1"
          x="262.30688"
          y="247.36217"
-         style="font-size:13px">A*</tspan></text>
+         style="font-size:13px">B</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
