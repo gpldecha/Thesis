@@ -2,192 +2,62 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
-I couldn't open database file bib/ProspectTheory.bib.bib
----line 631 of file main.aux
- : \bibdata{bib/planning.bib,bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,bib/ProspectTheory.bib
- :                                                                                                                                                                                                                      ,imitation_learning.bib,bib/ch3-citations.bib}
-I'm skipping whatever remains of this command
-Database file #1: bib/planning.bib.bib
-Database file #2: bib/MLMF.bib.bib
-Database file #3: bib/peg_hole.bib.bib
-Repeated entry---line 367 of file bib/peg_hole.bib.bib
- : @incollection{NIPS2008_3501
- :                            ,
-I'm skipping whatever remains of this entry
-Database file #4: bib/search_human_blind.bib.bib
-Database file #5: bib/RL.bib.bib
-Repeated entry---line 282 of file bib/RL.bib.bib
- : @article{EGW05
- :               ,
-I'm skipping whatever remains of this entry
-Database file #6: bib/pomdp.bib.bib
-Repeated entry---line 124 of file bib/pomdp.bib.bib
- : @article{Ross08onlineplanning
- :                              ,
-I'm skipping whatever remains of this entry
-Database file #7: bib/cpomdp.bib.bib
-Repeated entry---line 419 of file bib/cpomdp.bib.bib
- : @inproceedings{stachniss05robotics
- :                                   ,
-I'm skipping whatever remains of this entry
-Database file #8: bib/citations.bib.bib
-Repeated entry---line 499 of file bib/citations.bib.bib
- : @book{GeorgiosLidoris
- :                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 559 of file bib/citations.bib.bib
- : @incollection{BillardCDS08
- :                           ,
-I'm skipping whatever remains of this entry
-Warning--string name "scholarpedia" is undefined
---line 591 of file bib/citations.bib.bib
-Repeated entry---line 667 of file bib/citations.bib.bib
- : @article{Arul_Mask_Clap_2002
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 707 of file bib/citations.bib.bib
- : @article{Bake_Saxe_Tene_2011
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 725 of file bib/citations.bib.bib
- : @article{Bake_Tene_Saxe_2006
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 877 of file bib/citations.bib.bib
- : @inproceedings{DiffEntropyHuber2008
- :                                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1123 of file bib/citations.bib.bib
- : @article{Richardson1_Baker1_Tenenbaum1_Saxe1_2012
- :                                                  ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1283 of file bib/citations.bib.bib
- : @inproceedings{stachniss05robotics
- :                                   ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1533 of file bib/citations.bib.bib
- : @article{Thrun_Burgard_Fox_2005
- :                                ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1621 of file bib/citations.bib.bib
- : ﻿@article{Chambrier2014
- :                          ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1715 of file bib/citations.bib.bib
- : @article{Hamner_2006_5810
- :                          ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1739 of file bib/citations.bib.bib
- : @book{GeorgiosLidoris
- :                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1753 of file bib/citations.bib.bib
- : @article{Kasper2001153
- :                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1773 of file bib/citations.bib.bib
- : @article{Nicolescu01learningand
- :                                ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1793 of file bib/citations.bib.bib
- : @article{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain
- :                                                                   ,
-I'm skipping whatever remains of this entry
-Database file #9: bib/DT.bib.bib
-Repeated entry---line 1 of file bib/DT.bib.bib
- : @book{VonNeumann1944
- :                     ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 11 of file bib/DT.bib.bib
- : @article{Bernoulli1954
- :                       ,
-I'm skipping whatever remains of this entry
-Database file #10: bib/ToM.bib.bib
-Repeated entry---line 21 of file bib/ToM.bib.bib
- : @article{Bake_Tene_Saxe_2006
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 31 of file bib/ToM.bib.bib
- : @article{Bake_Saxe_Tene_2011
- :                             ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 40 of file bib/ToM.bib.bib
- : @article{Richardson1_Baker1_Tenenbaum1_Saxe1_2012
- :                                                  ,
-I'm skipping whatever remains of this entry
-Database file #11: bib/spatial_navigation.bib.bib
-I was expecting a `,' or a `}'---line 127 of file bib/spatial_navigation.bib.bib
- :  
- :  journal = {Cognitive Psychology},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-A bad cross reference---entry "ToM_HRI_2106"
-refers to entry "DBLP:conf/hri/2016", which doesn't exist
-A bad cross reference---entry "learn_admittance_icra_1994"
-refers to entry "DBLP:conf/icra/1994", which doesn't exist
-A bad cross reference---entry "SLAM_HBR"
-refers to entry "DBLP:reference/robo/2008", which doesn't exist
-Warning--I didn't find a database entry for "DBLP:reference/robo/2008"
-Warning--I didn't find a database entry for "DBLP:conf/icra/1994"
-Warning--I didn't find a database entry for "DBLP:conf/hri/2016"
-Too many commas in name 1 of "M. Bdiwi, A. Winkler, M. Jokesch, J. Suchy" for entry peg_imcssd_2015
-while executing---line 1347 of file plainnat.bst
-Too many commas in name 1 of "M. Bdiwi, A. Winkler, M. Jokesch, J. Suchy" for entry peg_imcssd_2015
-while executing---line 1347 of file plainnat.bst
-Warning--empty journal in Billard_schol_2013
+Database file #1: bib/MLMF.bib.bib
+Database file #2: bib/peg_hole.bib.bib
+Database file #3: bib/RL.bib.bib
+Database file #4: bib/pomdp.bib.bib
+Database file #5: bib/citations.bib.bib
+Database file #6: bib/DT.bib.bib
+Database file #7: bib/spatial_navigation.bib.bib
+Database file #8: bib/ch3-citations.bib.bib
+Warning--empty institution in stable_FA_gordon_1995
 Warning--can't use both author and editor fields in Hauser_2011
 Warning--empty journal in DRQ_AAAI_2015
-Warning--empty journal in human_stsm_2015
-Warning--empty year in human_stsm_2015
-Warning--empty year in human_stsm_2015
 Warning--can't use both author and editor fields in GeorgiosLidoris
-Warning--empty publisher in GeorgiosLidoris
-Too many commas in name 1 of "M. Bdiwi, A. Winkler, M. Jokesch, J. Suchy" for entry peg_imcssd_2015
-while executing---line 1429 of file plainnat.bst
-Too many commas in name 1 of "M. Bdiwi, A. Winkler, M. Jokesch, J. Suchy" for entry peg_imcssd_2015
-while executing---line 1429 of file plainnat.bst
 Warning--can't use both author and editor fields in RL_book_sa
+Warning--can't use both author and editor fields in Riedmiller2005
 Warning--empty publisher in SLAM_HBR
+Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
-You've used 153 entries,
+You've used 168 entries,
             2773 wiz_defined-function locations,
-            1671 strings with 40533 characters,
-and the built_in function-call counts, 87280 in all, are:
-= -- 8032
-> -- 4918
-< -- 148
-+ -- 1658
-- -- 1495
-* -- 7092
-:= -- 12831
-add.period$ -- 638
-call.type$ -- 153
-change.case$ -- 935
-chr.to.int$ -- 143
-cite$ -- 317
-duplicate$ -- 4055
-empty$ -- 6955
-format.name$ -- 1736
-if$ -- 19061
-int.to.chr$ -- 11
+            1760 strings with 43371 characters,
+and the built_in function-call counts, 95353 in all, are:
+= -- 8798
+> -- 5328
+< -- 165
++ -- 1801
+- -- 1618
+* -- 7744
+:= -- 14010
+add.period$ -- 700
+call.type$ -- 168
+change.case$ -- 1019
+chr.to.int$ -- 153
+cite$ -- 345
+duplicate$ -- 4440
+empty$ -- 7610
+format.name$ -- 1886
+if$ -- 20839
+int.to.chr$ -- 16
 int.to.str$ -- 1
-missing$ -- 162
-newline$ -- 927
-num.names$ -- 635
-pop$ -- 1931
+missing$ -- 178
+newline$ -- 1016
+num.names$ -- 695
+pop$ -- 2093
 preamble$ -- 1
-purify$ -- 795
+purify$ -- 866
 quote$ -- 0
-skip$ -- 3255
+skip$ -- 3556
 stack$ -- 0
-substring$ -- 3684
-swap$ -- 985
-text.length$ -- 80
+substring$ -- 4026
+swap$ -- 1094
+text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1616
-warning$ -- 11
-while$ -- 700
+type$ -- 1766
+warning$ -- 9
+while$ -- 770
 width$ -- 0
-write$ -- 2319
-(There were 33 error messages)
+write$ -- 2553
+(There were 9 warnings)

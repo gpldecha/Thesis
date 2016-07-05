@@ -88,9 +88,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="169.53715"
-     inkscape:cy="92.169116"
+     inkscape:zoom="2.8"
+     inkscape:cx="176.2185"
+     inkscape:cy="70.668815"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -519,7 +519,7 @@
          id="tspan4281"
          x="51.948147"
          y="246.08124"
-         style="font-size:10px">Group A</tspan></text>
+         style="font-size:10px">Group One</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -567,19 +567,19 @@
          id="tspan4281-9"
          x="51.665245"
          y="318.81223"
-         style="font-size:10px">Group B</tspan></text>
+         style="font-size:10px">Group Two</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
-       x="172.14285"
-       y="242.36217"
+       style="font-size:14.91236115px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
+       x="162.17131"
+       y="307.36218"
        id="text4410"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4412"
-         x="172.14285"
-         y="242.36217"
-         style="font-size:9px">~20 minutes</tspan></text>
+         x="162.17131"
+         y="307.36218"
+         style="font-size:6.71056223px">~20 minutes</tspan></text>
     <g
        id="g3883-8"
        transform="matrix(0.85626287,0,0,0.85626287,-51.015594,294.52881)">
@@ -730,18 +730,6 @@
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
-       x="260.54678"
-       y="242.36217"
-       id="text4410-1"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4412-22"
-         x="260.54678"
-         y="242.36217"
-         style="font-size:9px">~20 minutes</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
        x="49.285713"
        y="382.36218"
        id="text4283-1"
@@ -751,5 +739,65 @@
          x="49.285713"
          y="382.36218"
          style="font-size:9px">demonstrations</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14.91236115px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
+       x="267.64597"
+       y="307.36218"
+       id="text4410-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4412-6"
+         x="267.64597"
+         y="307.36218"
+         style="font-size:6.71056223px">~20 minutes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
+       x="172.31305"
+       y="247.36217"
+       id="text3102"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3104"
+         x="172.31305"
+         y="247.36217"
+         style="font-size:13px">A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
+       x="262.24976"
+       y="326.87155"
+       id="text3102-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3104-8"
+         x="262.24976"
+         y="326.87155"
+         style="font-size:13px">B*</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
+       x="262.30688"
+       y="247.36217"
+       id="text3102-90"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3104-1"
+         x="262.30688"
+         y="247.36217"
+         style="font-size:13px">A*</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
+       x="172.37018"
+       y="326.87155"
+       id="text3102-90-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3104-1-6"
+         x="172.37018"
+         y="326.87155"
+         style="font-size:13px">B</tspan></text>
   </g>
 </svg>
