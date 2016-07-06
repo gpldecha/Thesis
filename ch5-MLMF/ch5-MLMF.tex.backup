@@ -27,7 +27,7 @@ bottom  table and has only a limited knowledge of its location, somewhere near t
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.95\linewidth]{./ch5-MLMF/Figures/Figure1.pdf}
+  \includegraphics[width=0.95\linewidth]{./ch5-MLMF/Figures/Figure1_v2.pdf}
   \caption{ \textit{Table Environment} Table World (delimited by the black rectangle), viewed from above, and the agent's beliefs. 
   There are three different probability density functions present on the table. 
   The blue represents the believed location of the agent, the red and green probability distributions are associated with object 1 and 2.
@@ -215,12 +215,12 @@ algorithms of the BSSE family incorporate this information to provide an estimat
  \label{eq:joint}
 \end{equation}
 
-This is know as the filtering problem where all past information is incorporated to estimate the current state.  
+This is known as the filtering problem where all past information is incorporated to estimate the current state.  
 
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure2.pdf}
-\caption{Directed graphical model of dependencies between the agent(A), objects(O), sensing(Y) and action(u) random variables. Each 
+\caption{Directed graphical model of dependencies between the agent(A) and object(O)'s estimated location. Each 
 object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left[Y^{(1)},\dots,Y^{(M-1)}\right]^{\mathrm{T}}$,
 where $M$ is the total number of agent and object random variables in the filter. 
 For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with 
@@ -339,9 +339,9 @@ The probability distribution of the agent's position is given by marginalising t
  &P(A_t|Y_{0:t},u_{1:t})    = \sum\limits_{j=1}^{|O|} P(A_t,O|Y_{0:t},u_{1:t}) \label{eq:agent_marginal} \\
  &P(A_t=1|Y_{0:t},u_{1:t})  = \sum\limits_{j=1}^{|O|} \boldsymbol{\theta}^{(1j)}
 \end{align}
-The converse holds true for the object's marginal over its believed position. Figure \ref{fig:histogram_joint} illustrates 
-the joint distribution of both the agent and the object random variable. For ease of notation we use the shorthand $P(A)$
-for $P(A_t|Y_{0:t},u_{1:t})$. The 1D world of the agent and object is discretised to 10 states, producing 
+The converse holds true for the object's marginal, that is Equation \ref{eq:agent_marginal} summation would be over 
+the agents variable . Figure \ref{fig:histogram_joint} illustrates the joint distribution of both the agent and the object random variable. 
+For ease of notation we use the shorthand $P(A_t)$ for $P(A_t|Y_{0:t},u_{1:t})$. The 1D world of the agent and object is discretised to 10 states, producing 
 a joint distribution with 100 parameters!
 For a state space of $N$ bins, $i=1...N$, and there is a total of $M$ random variables (one agent and $M-1$ objects)
 and the joint distribution has $N^{M}$ parameters. This exponential increase renders Histogram-SLAM intractable
@@ -350,10 +350,10 @@ with this parameterisation.
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/hist_SLAM.pdf}
- \caption{\textit{Left:} Joint distribution of the agent and object before any action or measurement is integrated. 
+ \caption{\textit{Left:} Initialisation of the agent and object joint distribution. 
  \textit{Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each 
  random variable is obtained from Equation \ref{eq:agent_marginal}. The probability of
- the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. }
+ the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. }
  \label{fig:histogram_joint}
 \end{figure}
 
@@ -382,7 +382,7 @@ distribution is a line. The \textbf{sparsity} of the likelihood function  will b
  \centering
  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/hist_likelihood.pdf}
  \caption{1D world Likelihood $P(Y_t|A_t,O)$. \textit{Left:} No contact detected with the object, the current measurement 
- is $\hat{Y}_t = \textcolor{red}0$, both the agent and object cannot be in the same state. \textit{Right:} The agent 
+ is $Y_t = \textcolor{red}0$, both the agent and object cannot be in the same state. \textit{Right:} The agent 
  entered into contact with the object and received a haptic feedback $Y_t = \textcolor{red}1$. There are only two measurements 
  contact or no contact, which the agent receives.}
  \label{fig:histogram_likelihood}
@@ -404,7 +404,7 @@ update:
  &\mathrm{\textbf{motion}}\nonumber\\
  &P(A_t,O|Y_{0:t-1},u_{1:t}) = \sum_{A_{t-1}} P(A_t|A_{t-1},u_t) P(A_{t-1},O_t|Y_{0:t-1},u_{1:t-1} \label{eq:ch5:disc_motion})\\
  &\mathrm{\textbf{measurement}}\nonumber\\
- & P(A_t,O|Y_{0:t},u_{1:t}) = \frac{P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1},u_{t}) }{P(Y_t|Y_{0:t-1})} \label{eq:ch5:disc_measurement} 
+ & P(A_t,O|Y_{0:t},u_{1:t}) = \frac{P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1},u_{1:t}) }{P(Y_t|Y_{0:t-1})} \label{eq:ch5:disc_measurement} 
 \end{align}
 \end{minipage}
 };
@@ -551,7 +551,7 @@ filtered joint by the marginal likelihood.
  &\mathrm{\textbf{measurement}}\nonumber\\
  &P(A_t,O,Y_{0:t}|u_{1:t}) = P(Y_t|A_{t},O) P(A_t,O,Y_{0:t-1}|u_{1:t-1})  \label{eq:ch5:mlmf_measurement_update} \\
  &\mathrm{\textbf{filter (joint)}}\nonumber\\
- &P(A_t,O,Y_{0:t}|u_{1:t}) = P(O) P(A_t|u_{1:t}) \prod_{i=1}^{t}P(Y_i|A_t,O) \label{eq:ch5:mlmf_filter_joint} \\
+ &P(A_t,O,Y_{0:t}|u_{1:t}) = P(O) P(A_t|u_{1:t}) \prod_{i=0}^{t}P(Y_i|A_t,O) \label{eq:ch5:mlmf_filter_joint} \\
  &\mathrm{\textbf{filter (conditional)}}\nonumber\\
  &P(A_t,O|Y_{0:t},u_{1:t}) = \frac{P(A_t,O,Y_{0:t}|u_{1:t}) }{P(Y_{0:t}|u_{1:t}) } \label{eq:ch5:mlmf_filter_conditional}
 \end{align}
@@ -851,8 +851,8 @@ $P(Y_{0:t-1}|A_t,O) \gets$ motion update Algorithm \ref{alg:ch5:motion_memory}
 \textbf{measurement update}
 \BlankLine
 $P(A_t|Y_{0:t}) = P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:t}) \Big)$  \\
-$P(O|Y_{0:t}) = P(O|Y_{0:t-1}) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:t})\Big)$    \\
-$\alpha_{0:t} = \alpha_{0:t-1} +  \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) (1 - P(Y_t|A_t,O))$ \\
+$P(O|Y_{0:t})   = P(O|Y_{0:t-1}) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:t})\Big)$    \\
+$\alpha_{0:t}   = \alpha_{0:t-1} +  \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) (1 - P(Y_t|A_t,O))$ \\
 
 $P(Y_{0:t}|A_{0:t},O) \gets$ measurement update Algorithm \ref{alg:ch5:motion_memory} 
 \caption{MLMF-SLAM}
@@ -877,8 +877,6 @@ For discussion purposes we consider the case of three beliefs, namely that of th
 subsequently generalise. As stated previously $M$ stands for the number of filtered random variables including the agent. 
 $N$ is the number of discrete states in the world. In the following section, we compare MLMF-SLAM with the Histogram-SLAM.
 
-%At every time step we store the action, $u_t \in D$, only if the current marginals have changed as a result of the measurement likelihood function, $P(Y_t|A_t,O)$.
-
 
 \subsubsection{Space complexity}
 
@@ -887,10 +885,10 @@ Histogram-SLAM would require $N^3$ parameters for the joint distribution $P(A,O^
 
 For MLMF-SLAM, each random variable $X$ requires two sets parameters $\boldsymbol{\theta}$ and $\boldsymbol{\theta}^*$ 
 (see Table \ref{tab:mlmf_parameters}). Given
-$M$ random variables, the initial number of parameters is $M \cdot (2 \cdot N)$.
+$M$ random variables, the initial number of parameters is $M (2 N)$.
 At every time step the likelihood memory function increments by one measurement and offset, $(Y_t,l=0)$ (Algorithm \ref{alg:ch5:motion_memory}).
 Given a state space of size $N$, there can be no more than $N$ different measurement functions (one for each state). In
-the worst case scenario the space complexity of the memory will be $N$, giving a total of $M \cdot (2 \cdot N) + N$. 
+the worst case scenario the space complexity of the memory will be $N$, giving a total of $M (2 N) + N$. 
 The final worst case space complexity is linear in the number of random variables, $\BigO(N\,M)$. 
 
 \begin{figure}
@@ -930,7 +928,9 @@ The computation complexity in this setup is still exponential but to the order $
 the scalability as more objects are added. 
 
 Computing the value of a dependent state $(i,j)$ in the joint distribution required evaluating Equation \ref{eq:ch5:mlmf_filter_joint} which
-contains a product of $t$ likelihood functions. 
+contains a product of $t$ likelihood functions. However the likelihood functions are not overlapping and binary. As a result complete product
+does not have to be evaluated since only one likelihood function will effect the state $(i,j)$. Thus evaluating Equation \ref{eq:ch5:mlmf_filter_joint}
+yields a cost of $\BigO(1)$ and \textbf{not} $\BigO(t)$.
 
 %\paragraph{Evaluation of a state in the joint distribution}
 %In Figure \ref{fig:3bel_lik_profile} (right) we show three different points in the joint distribution to be evaluated. 
@@ -1296,21 +1296,58 @@ exponentially as it is in the case with the histogram and MLMF filters.
 %&= P(A_t,O,Y_{0:t},u_{1:t})
 %\end{align}
 
+\subsection{Probabilities}
+
+There are two rules are extensively used in the derivation of a Bayesian Filter filter recursion regardless 
+of the chosen parameterisation. Although well known we restate them here for convenience.
+
+\begin{itemize}
+ \item \textbf{Chain rule}\\
+ \begin{equation}
+  P(X_M,\cdots,X_1) = P(X_M|X_{M-1},\cdots,X_1) P(X_{M-1},\cdots,X_1) \label{eq:ch5:chain_rule}
+ \end{equation}
+ \item \textbf{Conditional independence}\\
+  \begin{align}
+    P(A,B|C) &= P(A|\Ccancel[red]{B},C) P(B|C) \nonumber \\
+             &= P(A|C) P(B|C)
+  \end{align}
+  $A$ and $B$ are independent given that $C$ is known.
+\end{itemize}
+
+
 \subsection{Bayesian filtering recursion}\label{appendix:bayes_recursion}
 
 \paragraph{Joint distribution}\\
+
+The joint distribution is over all the random variables since $t=0$ until the current 
+time step $t$:
 \begin{align}
  &P(A_{0:t},O,Y_{0:t}|u_{1:t}) =\nonumber \\ 
- &P(A_0)P(O)P(Y_0|A_0,O)\prod_{t=1}^t P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O) \label{eq:ch5:app:joint}
+ &P(A_0)P(O)P(Y_0|A_0,O)\prod_{t=1}^t P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O) \label{eq:ch5:app:joint} \\
+ &P(A_0)P(O)P(Y_0|A_0,O) P(A_{1:t}|u_{1:t}) P(Y_{1:t}|A_{1:t},O)  \label{eq:ch5:app:joint_2} \\
+ &P(A_0)P(O) P(A_{1:t}|u_{1:t}) P(Y_{0:t}|A_{0:t},O) \label{eq:ch5:joint_final}
 \end{align}
+From \label{eq:ch5:app:joint} to \label{eq:ch5:app:joint_2} we the transition and likelihood 
+functions separately and made use of the chain rule of probabilities (Equation \ref{eq:ch5:chain_rule}) and conditional independence
+
+From Equation \ref{eq:ch5:joint_final} by multiplying the first three terms together we gets
+$P(A_{0:t},O|u_{1:t})$ and we can see clearly the relationship with the joint distribution:
+
+\begin{equation}
+ P(A_{0:t},O,Y_{0:t}|u_{1:t}) =  P(A_{0:t},O|u_{1:t}) P(Y_{0:t}|A_{0:t},O)
+\end{equation}
+
+Typically we are interested in the filtered joint distribution $P(A_t,O,Y_{0:t}|u_{1:t})$ which 
+is obtained by marginalising over $A_{0:t-1}$:
 \begin{equation}
   P(A_t,O,Y_{0:t}|u_{1:t}) = \sum_{A_{0:t-1}}  P(A_t,A_{0:t-1},O,Y_{0:t}|u_{1:t}) \\
 \end{equation}
-
+A recursion exists making it not necessary to sum over all agents random variables from the state time 
+until then end, but instead only have to consider the last time step, see the next paragraph.
 
 %  P(A_{0:t},O,Y_{0:t},u_{1:t})  &= P(A_0)P(O)\prod_{t=1}^{t} P(A_t|A_{t-1},u_{t-1}) P(Y_t|A_t,O) \\
 \paragraph{Filtering problem}\\
-We derive $P(A_t,O|Y_{0:t},u_{1:t})$, we start from the joint distribution, Equation \ref{eq:br_chain}:
+We derive $P(A_t,O,Y_{0:t}|u_{1:t})$, we start from the joint distribution, Equation \ref{eq:br_chain}:
 \begin{equation}
    P(A_t,O,Y_{0:t}|u_{1:t})  = \sum_{A_{t-1}} P(A_t,A_{t-1},O,Y_t,Y_{0:t-1}|u_{t},u_{1:t-1}) \label{eq:br_chain} 
 \end{equation}
@@ -1356,8 +1393,8 @@ The resulting final Bayesian recursion is obtained by conditioning on the measur
 \subsection{Recursion example}\label{appendix:recursion_example}
 
 Derivation of the filtered joint distribution, $P(A_t,O,Y_t|Y_{0:t},u_{1:t})$, for 
-two updates. At initialisation when no action has yet been taken the filtered distribution 
-is:
+two updates. At initialisation when no action has yet been taken the filtered joint distribution 
+is the product of the initial marginals and first likelihood function:
 \begin{equation}
   P(A_0,O,Y_0) = P(O) P(A_0) P(Y_0|A_0,O) 
 \end{equation}
@@ -1366,26 +1403,45 @@ The a first action, $u_1$ is applied, which to get the filtered joint distributi
 \begin{align}
   P(A_1,O,Y_0|u_1) &= P(O)\sum\limits_{A_0} P(A_1|A_0,u_1) P(A_0) P(Y_0|A_0,O)\\
                    &= P(O)\sum\limits_{A_0} P(A_1,A_0,Y_0|u_1,O)\\
-                   &= P(O) P(A_1,Y_0|u_1,O)\\
-                   &= P(O) P(A_1|u_1) P(Y_0|A_1,O)
+                   &= P(O) P(A_1,Y_0|u_1,O) \label{eq:ch5:rec_ex1}\\
+                   &= P(O) P(Y_0|A_1,O,u_1) P(A_1|u_1,\Ccancel[red]{O}) \label{eq:ch5:rec_ex2}\\
+                   &= P(O) P(Y_0|A_1,O,u_1) P(A_1|u_1) 
 \end{align} 
+From Equation \ref{eq:ch5:rec_ex1} to \ref{eq:ch5:rec_ex2} we used the Chain rule \ref{eq:ch5:chain_rule} and 
+the cancellations in Equation \ref{eq:ch5:rec_ex2} arise from the factorisation of the joint distribution, 
+see Figure \ref{fig:bayesian_sse_dag} on page \pageref{fig:bayesian_sse_dag}, the marginal of $A$ does not depend on $O$,
 After the application of the first action, the filtered joint has the following form:
 \begin{equation}
- P(A_1,O,Y_0|u_1) = P(O) P(A_1|u_1) P(Y_0|A_1,O)
+ P(A_1,O,Y_0|u_1) = P(O) P(A_1|u_1) P(Y_0|A_1,O,u_1)
 \end{equation}
 A second measurement $Y_1$ and action $u_2$ are integrated into the filtered joint distribution:
 \begin{align}
  &P(A_2,O,Y_{0:1}|u_{1:2}) = \nonumber \\
- &P(O) \sum\limits_{A_1} P(A_2|A_1,u_2) P(A_1) P(Y_0|A_1,O,u_1) P(Y_1|A_1,O) = \\
- &P(O) \sum\limits_{A_1} P(A_2,A_1|u_2) P(Y_0|A_1,O,u_1) P(Y_1|A_1,O) \\
- &P(O) P(A_2|u_{1:2}) P(Y_0|A_2,O) P(Y_1|A_2,O)
+ &P(O) \sum\limits_{A_1} P(A_2|A_1,u_2) P(A_1|u_1) P(Y_0|A_1,O,u_1) P(Y_1|A_1,O) = \nonumber\\
+ &P(O) \sum\limits_{A_1} P(A_2,A_1|u_{1:2}) P(Y_{0:1}|A_1,O,u_1) = \nonumber \\
+ &P(O) \sum\limits_{A_1} P(A_2,A_1,Y_{0:1}|O,u_{1:2}) = \nonumber \\
+ &P(O) P(A_2,Y_{0:1}|O,u_{1:2}) = \\
+ &P(O) P(Y_{0:1}|A_2,O,u_{1:2})P(A_2|\Ccancel[red]{O},u_{1:2}) \label{eq:ch5:rec_ex3} 
 \end{align}
+We expand the function $P(Y_{0:1}|A_2,O,u_{1:2})$ to give a sense of how the likelihood function's positions 
+get as illustrated in Figure \ref{fig:discrete_example} on page \pageref{fig:discrete_example}.
+
+\begin{align}
+  P(Y_0,Y_1|A_2,O,u_1,u_2) &= P(Y_0|\Ccancel[red]{Y_1},A_2,O,u_1,u_2) P(Y_1|A_2,O,\Ccancel[red]{u_1},u_2) \\
+		           &= P(Y_0|A_2,O,u_{1:2}) P(Y_1|A_2,O,u_2)
+\end{align}
+The first likelihood of measurement $Y_0$ is dependent on the last to applied actions whilst the likelihood
+of $Y_1$ is dependent on the last action.
+ 
+ %&P(O) P(A_2|u_{1:2}) P(Y_0|A_2,O) P(Y_1|A_2,O) \label{eq:ch5:rec_ex4}
+ %\end{align}
+%From Equation \ref{eq:ch5:rec_ex3} to \ref{eq:ch5:rec_ex4} we did the same steps as for Equation \ref{eq:ch5:rec_ex1} to \ref{eq:ch5:rec_ex2}.
 Repeating the above for $Y_{2:t}$ and $u_{3:t}$ results in:
 \begin{equation}
- P(A_t,O,Y_{0:t}|u_{1:t}) = P(O)P(A_t|u_{1:t}) \prod_{i=0}^{t} P(Y_i|A_t,O)
+ P(A_t,O,Y_{0:t}|u_{1:t}) = P(O)P(A_t|u_{1:t}) \prod_{i=0}^{t} P(Y_i|A_t,O,u_{i:t})
 \end{equation}
 
-
+where we defined $P(Y_0|A_0,O,u_{0}) := P(Y_0|A_0,O)$
 
 \subsection{Derivation of the evidence}\label{appendix:evidence}
 
@@ -1399,7 +1455,7 @@ manner whilst only considering dependent regions of the joint distribution.
 
 We start with the definition of the evidence (we dropped $u_{1:t}$ to simplify the notation).
 \begin{equation}\label{eq:ch5:numerator}
- P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) \label{eq:marginal_likelihood_memory}   
+ P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) 
 \end{equation}
 As we are interested in a recursive computation of the evidence, we consider the gradient:
 \begin{align}

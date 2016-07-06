@@ -513,12 +513,13 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Outline}{120}{section.5.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.2}Background}{120}{section.5.2}}
 \newlabel{ch5:background}{{5.2}{120}{Background}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}SLAM}{120}{subsection.5.2.1}}
 \citation{SLAM_part1}
 \citation{TutGraphSLAM}
 \citation{FastSLAM}
 \citation{Thrun_Burgard_Fox_2005}
 \citation{SLAM_HBR}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}SLAM}{121}{subsection.5.2.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Active-SLAM \& Exploration}{121}{subsection.5.2.2}}
 \citation{Thrun_grid_based_1996}
 \citation{Kollar_2008_Exploration_SLAM}
 \citation{Navigation_strategires_for_exploring_indoor_environments}
@@ -529,13 +530,12 @@
 \citation{Ross08onlineplanning}
 \citation{GeorgiosLidoris}
 \citation{Active_SLAM_Uncertainty_compar,tovar_planning,KL_SLAM_exploration_PF}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Active-SLAM \& Exploration}{122}{subsection.5.2.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.3}Bayesian State Space Estimation}{122}{section.5.3}}
+\newlabel{ch5:BSSE}{{5.3}{122}{Bayesian State Space Estimation}{section.5.3}{}}
 \citation{BayesBall}
 \citation{barberBRML2012}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Directed graphical model of dependencies between the agent(A), objects(O), sensing(Y) and action(u) random variables. Each object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left [Y^{(1)},\dots  ,Y^{(M-1)}\right ]^{\mathrm  {T}}$, where $M$ is the total number of agent and object random variables in the filter. For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with them thus they will never have a time subscript. The two models necessary for filtering are the motion model $P(A_t|A_{t-1},u_t)$ (red) and measurement model $P(Y_t|A_t,O)$ (blue).\relax }}{123}{figure.caption.83}}
-\newlabel{fig:bayesian_sse_dag}{{5.3}{123}{Directed graphical model of dependencies between the agent(A), objects(O), sensing(Y) and action(u) random variables. Each object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left [Y^{(1)},\dots ,Y^{(M-1)}\right ]^{\mathrm {T}}$, where $M$ is the total number of agent and object random variables in the filter. For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with them thus they will never have a time subscript. The two models necessary for filtering are the motion model $P(A_t|A_{t-1},u_t)$ (red) and measurement model $P(Y_t|A_t,O)$ (blue).\relax }{figure.caption.83}{}}
-\newlabel{ch5:BSSE}{{5.3}{123}{Bayesian State Space Estimation}{section.5.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Directed graphical model of dependencies between the agent(A) and object(O)'s estimated location. Each object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left [Y^{(1)},\dots  ,Y^{(M-1)}\right ]^{\mathrm  {T}}$, where $M$ is the total number of agent and object random variables in the filter. For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with them thus they will never have a time subscript. The two models necessary for filtering are the motion model $P(A_t|A_{t-1},u_t)$ (red) and measurement model $P(Y_t|A_t,O)$ (blue).\relax }}{123}{figure.caption.83}}
+\newlabel{fig:bayesian_sse_dag}{{5.3}{123}{Directed graphical model of dependencies between the agent(A) and object(O)'s estimated location. Each object, $O^{(i)}$ is associated with one sensing random variable $Y^{(i)}$. The overall sensing random variable is $Y = \left [Y^{(1)},\dots ,Y^{(M-1)}\right ]^{\mathrm {T}}$, where $M$ is the total number of agent and object random variables in the filter. For readability we have left out the time index $t$ from $A$ and $Y$. Since the objects are static, they have no temporal process associated with them thus they will never have a time subscript. The two models necessary for filtering are the motion model $P(A_t|A_{t-1},u_t)$ (red) and measurement model $P(Y_t|A_t,O)$ (blue).\relax }{figure.caption.83}{}}
 \newlabel{eq:joint}{{5.3.1}{123}{Bayesian State Space Estimation}{equation.5.3.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Dependence and independence relation between the random variables of the BN Figure \ref  {fig:bayesian_sse_dag}\relax }}{124}{figure.caption.84}}
 \newlabel{fig:ch5_dseperation}{{5.4}{124}{Dependence and independence relation between the random variables of the BN Figure \ref {fig:bayesian_sse_dag}\relax }{figure.caption.84}{}}
@@ -550,10 +550,10 @@
 \newlabel{sec:Discrete}{{5.3}{126}{Histogram-SLAM}{section*.87}{}}
 \newlabel{eq:agent_marginal}{{5.3.5}{126}{Histogram-SLAM}{equation.5.3.5}{}}
 \newlabel{eq:ch5:discrete_likelihoood}{{5.3.7}{126}{Histogram-SLAM}{equation.5.3.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces \textit  {Left:} Joint distribution of the agent and object before any action or measurement is integrated. \textit  {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref  {eq:agent_marginal}. The probability of the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }}{127}{figure.caption.88}}
-\newlabel{fig:histogram_joint}{{5.6}{127}{\textit {Left:} Joint distribution of the agent and object before any action or measurement is integrated. \textit {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref {eq:agent_marginal}. The probability of the agent and object begin in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }{figure.caption.88}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces 1D world Likelihood $P(Y_t|A_t,O)$. \textit  {Left:} No contact detected with the object, the current measurement is $\mathaccentV {hat}05E{Y}_t = \leavevmode {\color  {red}0}$, both the agent and object cannot be in the same state. \textit  {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \leavevmode {\color  {red}1}$. There are only two measurements contact or no contact, which the agent receives.\relax }}{127}{figure.caption.89}}
-\newlabel{fig:histogram_likelihood}{{5.7}{127}{1D world Likelihood $P(Y_t|A_t,O)$. \textit {Left:} No contact detected with the object, the current measurement is $\hat {Y}_t = \textcolor {red}0$, both the agent and object cannot be in the same state. \textit {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \textcolor {red}1$. There are only two measurements contact or no contact, which the agent receives.\relax }{figure.caption.89}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces \textit  {Left:} Initialisation of the agent and object joint distribution. \textit  {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref  {eq:agent_marginal}. The probability of the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }}{127}{figure.caption.88}}
+\newlabel{fig:histogram_joint}{{5.6}{127}{\textit {Left:} Initialisation of the agent and object joint distribution. \textit {Right:} Marginals of the agent and object, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref {eq:agent_marginal}. The probability of the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \relax }{figure.caption.88}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces 1D world Likelihood $P(Y_t|A_t,O)$. \textit  {Left:} No contact detected with the object, the current measurement is $Y_t = \leavevmode {\color  {red}0}$, both the agent and object cannot be in the same state. \textit  {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \leavevmode {\color  {red}1}$. There are only two measurements contact or no contact, which the agent receives.\relax }}{127}{figure.caption.89}}
+\newlabel{fig:histogram_likelihood}{{5.7}{127}{1D world Likelihood $P(Y_t|A_t,O)$. \textit {Left:} No contact detected with the object, the current measurement is $Y_t = \textcolor {red}0$, both the agent and object cannot be in the same state. \textit {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \textcolor {red}1$. There are only two measurements contact or no contact, which the agent receives.\relax }{figure.caption.89}{}}
 \newlabel{eq:ch5:disc_prod_AO}{{5.3.8}{128}{Histogram-SLAM}{equation.5.3.8}{}}
 \newlabel{eq:ch5:disc_motion}{{5.3.9}{128}{Histogram-SLAM}{equation.5.3.9}{}}
 \newlabel{eq:ch5:disc_measurement}{{5.3.10}{128}{Histogram-SLAM}{equation.5.3.10}{}}
@@ -632,24 +632,33 @@
 \newlabel{ch5:conclusion}{{5.6}{150}{Conclusion}{section.5.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.7}Appendix}{151}{section.5.7}}
 \newlabel{ch5:appendix}{{5.7}{151}{Appendix}{section.5.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Bayesian filtering recursion}{151}{subsection.5.7.1}}
-\newlabel{appendix:bayes_recursion}{{5.7.1}{151}{Bayesian filtering recursion}{subsection.5.7.1}{}}
-\newlabel{eq:ch5:app:joint}{{5.7.1}{152}{Bayesian filtering recursion}{equation.5.7.1}{}}
-\newlabel{eq:br_chain}{{5.7.3}{152}{Bayesian filtering recursion}{equation.5.7.3}{}}
-\newlabel{eq:ch5_measurement_update}{{5.7.7}{152}{Bayesian filtering recursion}{equation.5.7.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Recursion example}{153}{subsection.5.7.2}}
-\newlabel{appendix:recursion_example}{{5.7.2}{153}{Recursion example}{subsection.5.7.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Derivation of the evidence}{153}{subsection.5.7.3}}
-\newlabel{appendix:evidence}{{5.7.3}{153}{Derivation of the evidence}{subsection.5.7.3}{}}
-\newlabel{eq:ch5:numerator}{{5.7.21}{154}{Derivation of the evidence}{equation.5.7.21}{}}
-\newlabel{eq:ch5:gradient_alpha}{{5.7.25}{154}{Derivation of the evidence}{equation.5.7.25}{}}
-\newlabel{eq:ch5:evidence_yo}{{5.7.28}{154}{Derivation of the evidence}{equation.5.7.28}{}}
-\newlabel{eq:ch5:evidence_y}{{5.7.29}{155}{Derivation of the evidence}{equation.5.7.29}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.4}Derivation of the marginal}{155}{subsection.5.7.4}}
-\newlabel{appendix:marginal}{{5.7.4}{155}{Derivation of the marginal}{subsection.5.7.4}{}}
-\newlabel{eq:ch5:app:dummy}{{5.7.30}{155}{Derivation of the marginal}{equation.5.7.30}{}}
-\newlabel{eq:dependence1}{{5.7.31}{155}{Derivation of the marginal}{equation.5.7.31}{}}
-\newlabel{eq:dependence2}{{5.7.32}{155}{Derivation of the marginal}{equation.5.7.32}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}Probabilities}{151}{subsection.5.7.1}}
+\newlabel{eq:ch5:chain_rule}{{5.7.1}{152}{Probabilities}{equation.5.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Bayesian filtering recursion}{152}{subsection.5.7.2}}
+\newlabel{appendix:bayes_recursion}{{5.7.2}{152}{Bayesian filtering recursion}{subsection.5.7.2}{}}
+\newlabel{eq:ch5:app:joint}{{5.7.3}{152}{Bayesian filtering recursion}{equation.5.7.3}{}}
+\newlabel{eq:ch5:app:joint_2}{{5.7.4}{152}{Bayesian filtering recursion}{equation.5.7.4}{}}
+\newlabel{eq:ch5:joint_final}{{5.7.5}{152}{Bayesian filtering recursion}{equation.5.7.5}{}}
+\newlabel{eq:ch5:app:joint}{{5.7.2}{152}{Bayesian filtering recursion}{equation.5.7.5}{}}
+\newlabel{eq:ch5:app:joint_2}{{5.7.2}{152}{Bayesian filtering recursion}{equation.5.7.5}{}}
+\newlabel{eq:br_chain}{{5.7.8}{153}{Bayesian filtering recursion}{equation.5.7.8}{}}
+\newlabel{eq:ch5_measurement_update}{{5.7.12}{153}{Bayesian filtering recursion}{equation.5.7.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.3}Recursion example}{153}{subsection.5.7.3}}
+\newlabel{appendix:recursion_example}{{5.7.3}{153}{Recursion example}{subsection.5.7.3}{}}
+\newlabel{eq:ch5:rec_ex1}{{5.7.19}{154}{Recursion example}{equation.5.7.19}{}}
+\newlabel{eq:ch5:rec_ex2}{{5.7.20}{154}{Recursion example}{equation.5.7.20}{}}
+\newlabel{eq:ch5:rec_ex3}{{5.7.24}{154}{Recursion example}{equation.5.7.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.4}Derivation of the evidence}{155}{subsection.5.7.4}}
+\newlabel{appendix:evidence}{{5.7.4}{155}{Derivation of the evidence}{subsection.5.7.4}{}}
+\newlabel{eq:ch5:numerator}{{5.7.28}{155}{Derivation of the evidence}{equation.5.7.28}{}}
+\newlabel{eq:ch5:gradient_alpha}{{5.7.32}{155}{Derivation of the evidence}{equation.5.7.32}{}}
+\newlabel{eq:ch5:evidence_yo}{{5.7.35}{156}{Derivation of the evidence}{equation.5.7.35}{}}
+\newlabel{eq:ch5:evidence_y}{{5.7.36}{156}{Derivation of the evidence}{equation.5.7.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.5}Derivation of the marginal}{156}{subsection.5.7.5}}
+\newlabel{appendix:marginal}{{5.7.5}{156}{Derivation of the marginal}{subsection.5.7.5}{}}
+\newlabel{eq:ch5:app:dummy}{{5.7.37}{156}{Derivation of the marginal}{equation.5.7.37}{}}
+\newlabel{eq:dependence1}{{5.7.38}{156}{Derivation of the marginal}{equation.5.7.38}{}}
+\newlabel{eq:dependence2}{{5.7.39}{156}{Derivation of the marginal}{equation.5.7.39}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusion and summary}{157}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}

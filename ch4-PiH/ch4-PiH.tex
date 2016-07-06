@@ -110,8 +110,8 @@ In Figure \ref{fig:experiment_setup} (\textit{Right}) the robot reproduces the b
 The Peg-in-Hole (PiH) task is one of the most widespread steps in industrial assembly and manipulations processes, with 
 examples including the assembly of vehicular transmission components \cite{search_strategies_icra_2001} and 
 valves \cite{online_gpr_icra_2014}. To be successful, the estimated
-position of the robot's end-effector and workpiece must be precise. Typically, the clearance the between 
-and plug and the workpiece's hole is very small leaving little room for error. As a result, variations in the assembly's components 
+position of the robot's end-effector and workpiece must be precise. Typically, the clearance between peg and plug 
+is very small leaving little room for error. As a result, variations in the assembly's components 
 in combination with position uncertainty can result in either jamming during the insertion process or in failure for 
 the plug finding the hole. This created a need for adaptive search and insertion policies for PiH, which has been driving research 
 in this area. 
@@ -153,15 +153,14 @@ In \cite{fast_peg_pbd_icmc_2014} the authors learn a PiH policy for the Cranfiel
 A vision system obtains the pose parameters of the object whilst a human teacher  
 demonstrates trajectories, through teleoperation, in the frame of reference of the object. 
 A time-dependent policy represented with Dynamic Movement Primitives (DMP) \cite{Schaal04learningmovement} 
-encodes the recorded Cartesian end-effector pose. A F/T profile is encoded separately by a regressor parameterised 
-by radial basis functions. Successive refinements of the DMP policy are achieved through 
+encodes the recorded Cartesian end-effector pose. In \cite{trans_workpiece_icra_2013}, a F/T profile 
+is encoded separately by a regressor parameterised by radial basis functions. Successive refinements of the DMP policy are achieved through 
 using force feedback to adapt the parameters of an admittance controller. This results in the policy having
-similar force profiles to the human teachers. Such an approach was first proposed by \cite{trans_workpiece_icra_2013}
-and further applications based on this method have been performed \cite{sol_pdg_pbd_2014} with the incorporation of  
-a disturbance rejection policy. Reproducing exactly the same force torque profile for the full trajectory 
+similar force profiles to the human teachers. Further applications based on this method have been 
+performed \cite{sol_pdg_pbd_2014} with the incorporation of a disturbance rejection policy. Reproducing exactly the same force torque profile for the full trajectory 
 which is encoded in a time dependent dynamical system might be unnecessary as the force torque profile is 
 predominantly useful during the final stage of the PiH task, where the insertion can cause jamming. 
-The force torque information can be used to rectify this problem \cite{Kronander2015}. A 
+The force torque information can be used to rectify this problem \cite[Chap. 5]{Kronander2015}. A 
 hybrid control paradigm \cite{hybrid_1992} can also be used to control the sensed force feedback with the environment.
 We make use of the hybrid control paradigm in this work in combination with a time-independent dynamical system.
 
@@ -498,7 +497,7 @@ to linear velocity $\pi_{\Param_1} : b_t \mapsto \dot{x}_t$ and the second from
 angular sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi_t \mapsto \omega_t$.
 We chose to learn the belief policy $\pi_{\Param_1}$ in a Actor-Critic RL framework 
 and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
-in \cite{Kronander2015}, which proved to be efficient in overcoming jamming during the PiH. 
+in \cite[Chap. 5]{Kronander2015}, which proved to be efficient in overcoming jamming during the PiH. 
 A POMDP solver's objective is to find a policy (Actor), $\pi_{\Param_1}: b \mapsto u$, which maximises 
 the value function (Critic) $V^{\pi_{\Param_1}} : b \mapsto \mathbb{R}$ for an initial belief, $b_{0}$. The value function
 is the expected reward over an infinite time horizon.
