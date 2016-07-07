@@ -943,8 +943,8 @@ of MLMF-SLAM with Histogram-SLAM.
 
 \subsubsection{Space complexity}
 
-Figure \ref{fig:3bel_lik_profile} \textit{left} illustrates the volume occupied by the joint distribution for a marginal space of $N$ states. 
-Histogram-SLAM would require $N^3$ parameters for the joint distribution $P(A,O^{(1)},O^{(2)})$ and $N^{M}$ for $M$ random variables. 
+Figure \ref{fig:3bel_lik_profile} \textit{left} illustrates the volume occupied by the joint distribution
+for a space with $N$ states. Histogram-SLAM would require $N^3$ parameters for the joint distribution $P(A,O^{(1)},O^{(2)})$ and $N^{M}$ for $M$ random variables. 
 
 For MLMF-SLAM, each random variable requires two sets parameters $\boldsymbol{\theta}$ and $\boldsymbol{\theta}^*$ 
 (see Table \ref{tab:mlmf_parameters}). Given
@@ -985,11 +985,11 @@ since every state in the joint distribution has to be summed to obtain all the m
 
 For MLMF-SLAM, every state in the joint distribution's state space which has been changed by the measurement likelihood function 
 has to be summed, see Figure \ref{fig:ch5:marginal_update} on page \pageref{fig:ch5:marginal_update}. As a result the computational complexity is directly related to the number 
-of dependent states $|A \cap O|$. In Figure \ref{fig:ch5:marginal_update}, this corresponds to the states in the joint distribution for 
-which $i = j$ and there are $N$ of them for a joint distribution with $N^2$ states. In Figure \ref{fig:3bel_lik_profile} \textit{left}
+of dependent states $|A \cap O|$. In Figure \ref{fig:ch5:marginal_update}, this corresponds to states where $i = j$ and there are $N$ out of a total $N^2$ states
+in the joint distribution. In Figure \ref{fig:3bel_lik_profile} \textit{left}
 we illustrate a joint distribution with $N^3$ states and the dependent states $|A \cap O^{(1)} \cap O^{(2)}|$ are those which 
 are within the blue and red planes (where the likelihood evaluates to zero). The blue and red plain comprise of $N^2$ states each 
-giving a total of $2\,N^2$ dependent states. Let's see why it is $N^2$ for each likelihood, the overall likelihood is given by 
+giving a total of $2\,N^2$ dependent states. Lets see why it is $N^2$ for each likelihood, the overall likelihood is given by 
 Equation \ref{eq:ch5:overall_likelihood}:
 
 \begin{equation}
@@ -1000,7 +1000,7 @@ The likelihood term $P(Y_t|A_t,O^{(1)})$ will evaluate states to zero which sati
 the measurement of object $O^{(1)}$ is independent of object $O^{(2)}$. If we had 3 objects, the joint would be
 $P(A_t=i,O^{(1)}=j,O^{(2)}=k,O^{(l)}=l)$ then the likelihood $P(Y_t|A_t,O^{(1)})$ will evaluate to 
 zero for $i=j$ $\forall k,l$ which would mean $N^3$ dependent states.
-In general, for $M$ random variables the computational cost is $(M-1) N^{M-1}$ which gives $\BigO(N^{M-1})$ as opposed to $\BigO(N^M)$. 
+In general, for $M$ random variables the computational cost is $(M-1) N^{M-1}$ which gives $\BigO(N^{M-1})$ as opposed to the Histogram-SLAM's $\BigO(N^M)$. 
 The computation complexity in this setup is still exponential but to the order $M-1$ as opposed to $M$ which will nevertheless 
 quickly limits the scalability as more objects are added. 
 
@@ -1202,9 +1202,10 @@ of one another. This assumption is validated by comparing the MLMF filter on thr
 which we obtain from the standard histogram filter. For each of the three beliefs (the agent and two objects), 100 different marginals 
 were generated and the true locations (actual position of the agent and objects) were sampled. 
 The agent carried out  a sweep of the state space for each of the marginals and the policy was saved 
-and run with the scaled-MLMF filter. In the first experiment we assumed that the objects are completely independent 
+and run with the scalable-MLMF filter. In the first experiment we assumed that the objects are completely independent 
 and that there was no transfer of information between the pair-wise joint distributions. In the second and third experiments there 
-is an exchange of information as described in Algorithm \ref{alg:scalabe-mrf-slam}. Here we compare the effect of using the product of the agent's marginals $P(A_t|Y_{0:t}) = P(A^{(1)}_t|Y^{(1)}_{0:t}) \cdot P(A^{(2)}_t|Y^{(2)}_{0:t})$ 
+is an exchange of information as described in Algorithm \ref{alg:scalabe-mrf-slam}. Here we compare the effect of using 
+the product of the agent's marginals $P(A_t|Y_{0:t}) = P(A^{(1)}_t|Y^{(1)}_{0:t})\, P(A^{(2)}_t|Y^{(2)}_{0:t})$ 
 with their average $P(A_t|Y_{0:t}) = \frac{1}{2}P(A^{(1)}_t|Y^{(1)}_{0:t}) + \frac{1}{2}P(A^{(2)}_t|Y^{(2)}_{0:t})$. 
 
 For each of the 100 sweeps the ground truth is compared with the scalabe-MLMF using the 
@@ -1220,10 +1221,14 @@ The best results were for case 3). The \textit{bottom plots} show that the Helli
 object marginals for both case 2) and 3) are the same. However there is a significant improvement when using the average of 
 the agent's marginals as opposed to their product. 
 
+% Do not just report on the results, discuss them. 
+% Also, clarify why you compared the use of product of marginal, 
+% what you expected from this.
+
 \begin{figure}
  \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure13.pdf}
  \caption{\textbf{Comparison of scalable-MLMF and the histogram filter} A deterministic sweep policy was carried out for 100 different initialisations of 
- the agent and object beliefs. \textit{top left:} One particular Initialisation of the agent and object
+ the agent and object beliefs. \textit{Top left:} One particular Initialisation of the agent and object
  random variables. The true position of the agent and objects were sampled at random. The black arrow indicates the general policy which was 
  followed for each of the 100 sweeps. 
  These were performed for 1) scalable-MLMF  with objects considered to be independent at all times (no Algorithm \ref{alg:scalabe-mrf-slam}). 2) 
@@ -1238,8 +1243,8 @@ the agent's marginals as opposed to their product.
 
 The memory is the list of all measurement likelihood functions which have been applied on the joint 
 distribution since initialisation. As detailed previously there can be no more than $N$ different measurement likelihood functions added to 
-memory. In the case of a very large state space this might be cumbersome. We investigate how restricting the memory size 
-can impact on the decision process in an Active-SLAM setting. Given our set up we choose a breadth-first search in the action 
+memory. In the case of a very large state space this might be cumbersome. We investigate how restricting the memory size, the number 
+of parameters in $\Psi$, can impact on the decision process in an Active-SLAM setting. Given our set up we choose a breadth-first search in the action 
 space with a one time step horizon, making it a greedy algorithm. The objective function we utilise is the information
 gain of the beliefs after applying an action (Equation \ref{eq:greedy_algorithm}).
 
