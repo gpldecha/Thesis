@@ -573,6 +573,15 @@ Equation \ref{eq:ch5:mlmf_filter_joint}, which is all the likelihood functions s
 \begin{equation}
  P(Y_{0:t}|A_t,O,u_{0:t};\Psi_t) := \prod_{i=0}^t P(Y_i|A_t,O,u_{i:t}) \label{eq:memory}
 \end{equation}
+
+\begin{equation} \label{eq:ch5:liklihood_v2}
+P(Y_t=1|A_t,O,u_{i:t}=l) =
+  \begin{cases}
+    1       & \quad \text{if } A_t + l = O     \\
+    0  	    & \quad \text{else}  \\
+  \end{cases}
+\end{equation}
+
 %  as illustrated in Figure \ref{fig:discrete_example} and \ref{fig:margina_joint_example}.
 The likelihood functions have two different functional forms (see Figure \ref{fig:histogram_likelihood}) which is dictated 
 by the current binary measurement and the offset of the likelihood function along the agent's axis. The parameters of Equation \ref{eq:memory}
