@@ -7,6 +7,7 @@
 % ========== Mathematics 
 
 \usepackage{amsmath,amssymb,amstext,amsthm}
+\usepackage{blkarray}
 \numberwithin{equation}{section}
 \usepackage{mathtools}
 
@@ -27,7 +28,7 @@
 % ========== Algorithm
 
 %\usepackage[chapter, ruled]{algorithm}
-\usepackage[ruled,vlined,linesnumbered,noresetcount,boxed]{algorithm2e}
+\usepackage[ruled,vlined,linesnumbered,boxed]{algorithm2e}
 \usepackage{color}
 
 \usepackage{bibentry}
@@ -161,6 +162,8 @@
 %    urlcolor=black
 %}
 
+
+
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathreplacing,calc}
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
@@ -173,6 +176,11 @@
                 node [align=center, text width=2.5cm, pos=0.5, anchor=west] {#4};
     \end{tikzpicture}
 }%
+
+
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+
 
 
 \graphicspath{{ch1-Introduction/Figures/}}
