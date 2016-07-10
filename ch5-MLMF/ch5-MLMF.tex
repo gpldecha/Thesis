@@ -1326,43 +1326,43 @@ the greedy one step-look ahead planner which is frequently used in the literatur
 This work addresses the Active-SLAM filtering problem for scenarios in which sensory information relating to the map is very limited. Current
 SLAM algorithms filter the errors originating from sensory measurements and not prior uncertainty. By making the assumption
 that the joint distribution of all the random variables is a multivariate Gaussian, inference is tractable. Since the origin of 
-our uncertainty does not originate from the measurement noise, we cannot assume the joint distribution to have any special structure. 
-A suitable filter in this case would be the histogram which makes no assumption about the shape or form taken by the joint distribution. 
+the uncertainty does not originate from the measurement noise, no assumption can be made about the structure of the joint distribution.
+In this case a suitable filter would be the histogram which makes no assumption about the shape or form taken by the joint distribution. 
 However, the space and time complexity are exponential with respect to the number random variables and this is a major 
 limiting factor for scalability. 
 
 The main contribution of this work is a formulation of a histogram Bayesian state space estimator in which the computational complexity is 
-both linear in time and space. We have taken a different approach to other SLAM formulations in the sense that we did not
-explicitly parameterise the joint distribution but kept all parameterisation in the space of the marginals (beliefs),
-avoiding the exponential increase in parameter space which would otherwise have been the case. Our filter's parameters 
-consist of the marginals and the history of measurement functions which have been applied. By solely evaluating the joint 
+both linear in time and space. A different approach to other SLAM formulations as been taken in the sense that
+the joint distribution is not explicitly parameterised avoiding the exponential increase in parameter space which would otherwise have been the case. 
+The MLMF parameters consist of the marginals and the history of measurement functions which have been applied. By solely evaluating the joint 
 distribution at the states which are affected by the current measurement function whilst taking into account the 
 memory, the MLMF filter obtains the same filtered marginals as the histogram filter. Further, the worst case space complexity is 
 linear rather than exponential and the time complexity remains exponential but increases at lower rate than in the histogram filter.
-In striving to make the filter scalable we assume an independence assumption between the objects. An individual MLMF filter
-was used for each agent-object pair. We evaluated the difference between the scalable-MLMF filter with a ground truth provided 
+In striving to make the filter scalable we make the assumption that the objects are independent. An individual MLMF
+is used for each agent-object pair. We evaluate the difference between the scalable-MLMF with a ground truth provided 
 by the histogram filter for 100 different searches with respect to the Hellinger distance. We conclude that 
-the divergence was relatively small and thus the scalable-MLMF filter provides a good approximation to the true filtered
-marginals. We evaluated the time taken to perform a motion-update loop for different discretisations of the state 
-space (100 to 10'000'000 states) and number of objects (2 to 25). In most of the cases we achieved an update cycle rate below 1Hz. We evaluated how the increase of the number of states 
-effected the computational cost. The relationship was found to be linear and thus in agreement with our analysis of 
-the asymptotic growth rate. We analysed the effect of the memory size (the remembered number of measurement likelihood functions) 
-on the decision theoretic process of reducing the uncertainty of the map and agent during a search task. 
-We found that in the 2D case the memory size has much less effect than in the 1D case and we conclude that it 
+the divergence is relatively small and thus the scalable-MLMF filter provides a good approximation to the true filtered
+marginals. We evaluate the time taken to perform a motion-update loop for different discretisations of the state 
+space (100 to 10'000'000 states) and number of objects (2 to 25). In most of the cases we achieve an update cycle rate below 1Hz. 
+We evaluate how the increase of the number of states effects the computational cost and find  the relationship to be linear and thus 
+in agreement with our analysis of the asymptotic growth rate. We analyse the effect of the memory size 
+(the remembered number of measurement likelihood functions) on the decision theoretic process of reducing 
+the uncertainty of the map and agent during a search task. 
+We conclude that in the 2D case the memory size has much less effect than in the 1D case and that it 
 is unnecessary to remember every single measurement function.
 
-The implications of the MLMF and scalable-MLMF filter are that we have a computationally tractable means of 
+This implies that the MLMF and scalable-MLMF that we have are a computationally tractable means of 
 performing SLAM in a case scenario in which mostly negative information is present and the 
-joint distribution cannot be assumed to have any specific structure. The filter can be used at a higher cognitive level than 
-processing raw sensory information as it is often in Active-SLAM. It would be well suited for reasoning tasks 
+joint distribution cannot be assumed to have any specific structure. Furthermore, the filter can be used at a higher cognitive level than 
+the processing of raw sensory information as is often the case in Active-SLAM. MLMF would be well suited for reasoning tasks 
 where the robot's field of view is limited.
 
-An interesting future extension would be to make the original MLMF filter scalable without introducing assumptions.
+An interesting future extension could be to make the original MLMF filter scalable without introducing assumptions.
 One possibility could to be to consider Monte Carlo integration methods for inference. These can scale well to high dimensional 
 spaces whilst still providing reliable estimates. A second possibility could be to investigate the use of Gaussian Mixtures as a 
-form of parameterisation of the marginals so that it might be possible to blend our filter with  
-EKF-SLAM. This would allow the parameters to grow quadratically with respect to the dimension of the marginal space as opposed to
-exponentially as it is in the case with the histogram and MLMF filters.
+form of parameterisation of the marginals to blend our filter with EKF-SLAM. This would allow the parameters 
+to grow quadratically with respect to the dimension of the marginal space as opposed to exponentially as is the case 
+with the histogram and MLMF filters.
 
 
 
