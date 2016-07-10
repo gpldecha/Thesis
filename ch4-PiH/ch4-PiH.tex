@@ -907,17 +907,23 @@ We evaluate the following three aspects of the policy learned in our Actor-Criti
  B and C, which were not used during the training phase.
 \end{enumerate}
 
-We evaluate the above properties under two separate conditions. In the \textbf{first condition} we consider the period between the start 
-of the search until the socket is localised. In the \textbf{second condition} we consider the period from the point the socket is found until
-a connection has been established. In the first condition the evaluation is done in simulation whilst 
-in the second condition, when the socket is found, we perform the evaluation with a physical robot, the KUKA LWR4.
+We evaluate aspects 1) and 2) purely in simulation as finding the socket requires much less precision than establishing a 
+connection and the physics of the interaction is simple. Aspect 3), the generalisation, is evaluated both in simulation,
+up to the point of localising the socket's edge, and on the KUKA LWR robotic platform
+for the connection phase of the task. The main reason for employing the robot is that the connection phase dynamics is 
+complex and a simulation would be unrealistic. For the robot evaluation we consider 
+the search starting already within the vicinity of the socket.
 
-This choice is motivated by the fact that the two parts of the task require different levels of precision.
-Finding the socket requires much less precision than establishing a connection. It is more informative to consider the performance of these two parts separately.
-Another aspect is that the search for the socket can be reliably evaluated in simulation since the physics of the interaction
-is simple. The connection phase is more complicated and a simulation would be unrealistic.
-For the evaluation of the connection of the plug to the socket we consider the search start point already within 
-the vicinity of the socket.
+
+%We evaluate the above properties under two separate conditions. In the \textbf{first condition} we consider the period between the start 
+%of the search until the socket is localised. In the \textbf{second condition} we consider the period from the point the socket is found until
+%a connection has been established. In the first condition the evaluation is done in simulation whilst 
+%in the second condition, when the socket is found, we perform the evaluation with a physical robot, the KUKA LWR4.
+
+%This choice is motivated by the fact that the two parts of the task require different levels of precision.
+%Finding the socket requires much less precision than establishing a connection. It is more informative to consider the performance of these two parts separately.
+%Another aspect is that the search for the socket can be reliably evaluated in simulation since the physics of the interaction
+%is simple. The connection phase is more complicated and a simulation would be unrealistic.
 
 \subsection{Distance taken to reach the socket's edge (Qualitative)}
 
