@@ -10,54 +10,54 @@ Database file #5: bib/citations.bib.bib
 Database file #6: bib/DT.bib.bib
 Database file #7: bib/spatial_navigation.bib.bib
 Database file #8: bib/ch3-citations.bib.bib
-Warning--empty institution in stable_FA_gordon_1995
+Warning--I didn't find a database entry for "neura_fqi_2005"
 Warning--can't use both author and editor fields in Hauser_2011
 Warning--empty journal in DRQ_AAAI_2015
 Warning--can't use both author and editor fields in GeorgiosLidoris
 Warning--can't use both author and editor fields in RL_book_sa
-Warning--can't use both author and editor fields in Riedmiller2005
+Warning--empty publisher in Riedmiller2005
 Warning--empty publisher in SLAM_HBR
 Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
-You've used 168 entries,
+You've used 164 entries,
             2773 wiz_defined-function locations,
-            1760 strings with 43371 characters,
-and the built_in function-call counts, 95353 in all, are:
-= -- 8798
-> -- 5328
-< -- 165
-+ -- 1801
-- -- 1618
-* -- 7744
-:= -- 14010
-add.period$ -- 700
-call.type$ -- 168
-change.case$ -- 1019
-chr.to.int$ -- 153
-cite$ -- 345
-duplicate$ -- 4440
-empty$ -- 7610
-format.name$ -- 1886
-if$ -- 20839
-int.to.chr$ -- 16
+            1724 strings with 41915 characters,
+and the built_in function-call counts, 91963 in all, are:
+= -- 8471
+> -- 5050
+< -- 161
++ -- 1704
+- -- 1528
+* -- 7428
+:= -- 13472
+add.period$ -- 673
+call.type$ -- 164
+change.case$ -- 976
+chr.to.int$ -- 152
+cite$ -- 336
+duplicate$ -- 4332
+empty$ -- 7437
+format.name$ -- 1794
+if$ -- 20131
+int.to.chr$ -- 13
 int.to.str$ -- 1
-missing$ -- 178
-newline$ -- 1016
-num.names$ -- 695
-pop$ -- 2093
+missing$ -- 175
+newline$ -- 984
+num.names$ -- 679
+pop$ -- 2029
 preamble$ -- 1
-purify$ -- 866
+purify$ -- 828
 quote$ -- 0
-skip$ -- 3556
+skip$ -- 3457
 stack$ -- 0
-substring$ -- 4026
-swap$ -- 1094
-text.length$ -- 89
+substring$ -- 3897
+swap$ -- 1059
+text.length$ -- 86
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1766
-warning$ -- 9
-while$ -- 770
+type$ -- 1722
+warning$ -- 8
+while$ -- 747
 width$ -- 0
-write$ -- 2553
+write$ -- 2468
 (There were 9 warnings)

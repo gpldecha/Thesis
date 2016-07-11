@@ -1,0 +1,354 @@
+@book{VonNeumann1944,
+    author = "Von Neumann, John and Morgenstern, O.",
+    title = "The theory of games and economic behavior",
+    year = "1990",
+    publisher = "Princeton",
+    edition = "3",
+    keywords = "book.mathtext",
+}
+
+
+@article{Bernoulli1954,
+  author = {Bernoulli, D.},
+  journal = {Econometrica},
+  number = {1},
+  pages = {23--36},
+  title = {{Exposition of a New Theory on the Measurement of Risk (1748)}},
+  volume = {22},
+  year = {1954}
+}
+
+@TechReport{Ellsberg_paradox,
+  author={Daniel Ellsberg},
+  title={{Risk, Ambiguity and the Savage Axioms}},
+  year=2000,
+  month=Dec,
+  institution={David K. Levine},
+  type={Levine's Working Paper Archive},
+  url={http://ideas.repec.org/p/cla/levarc/7605.html},
+  number={7605},
+  abstract={No abstract is available for this item.},
+  keywords={},
+}
+
+
+@article{MACHINA01051987,
+author = {MACHINA, MARK J.}, 
+title = {Decision-Making in the Presence of Risk},
+volume = {236}, 
+number = {4801}, 
+pages = {537-543}, 
+year = {1987}, 
+doi = {10.1126/science.236.4801.537}, 
+abstract ={Proposed in the 18th century by Cramer and Bernoulli and formally axiomatized in the 20th century by von Neumann and Morgenstern and others, the expected utility model has long been the dominant framework for the analysis of decision-making under risk. A growing body of experimental evidence, however, indicates that individuals systematically violate the key behavioral assumption of this model, the so-called independence axiom. This has led to the development and analysis of nonexpected utility models of decision-making. Although recent work in this area has shown that the analytical results of expected utility theory are more robust than previously supposed, other important issues remain unresolved.}, 
+URL = {http://www.sciencemag.org/content/236/4801/537.abstract}, 
+eprint = {http://www.sciencemag.org/content/236/4801/537.full.pdf}, 
+journal = {Science} 
+}
+
+
+
+% Neuroscience
+
+@ARTICLE{decision_un_2013,
+AUTHOR={Preuschoff, Kerstin  and  Mohr, Peter NC  and  Hsu, Ming},   
+TITLE={Decision making under uncertainty},      
+JOURNAL={Frontiers in Neuroscience},      
+VOLUME={7},      
+YEAR={2013},      
+NUMBER={218},     
+URL={http://www.frontiersin.org/decision_neuroscience/10.3389/fnins.2013.00218/full},       
+DOI={10.3389/fnins.2013.00218},      
+ISSN={1662-453X} 
+}
+
+
+
+% === Review ===
+
+@incollection{Towards_a_ToM_2010,
+year={2010},
+isbn={978-3-642-03128-1},
+booktitle={Towards a Theory of Thinking},
+series={On Thinking},
+editor={Glatzeder, Britt and Goel, Vinod and Müller, Albrecht},
+doi={10.1007/978-3-642-03129-8_13},
+title={Theory of Mind},
+url={http://dx.doi.org/10.1007/978-3-642-03129-8_13},
+publisher={Springer Berlin Heidelberg},
+author={Sodian, Beate and Kristen, Susanne},
+pages={189-201},
+language={English}
+}
+
+% The Bayesian Theory of Mind
+
+@ARTICLE{Bake_Tene_Saxe_2006,
+  author = {Bake, Chris and Tenenbaum, Joshua. and Saxe, Rebecca},
+  title = {Bayesian models of human action understanding},
+  journal = {NIPS},
+  year = {2006},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+
+@ARTICLE{Bake_Saxe_Tene_2011,
+  author = {Bake, Chris and Tenenbaum, Joshua. and Saxe, Rebecca},
+  title = {Bayesian Theory of Mind: Modeling Joint Belief-Desire Attribution},
+  journal = {Journal of Cognitive Science},
+  year = {2011},
+  owner = {guillaume},
+  timestamp = {2013.01.03}
+}
+
+@ARTICLE{Richardson1_Baker1_Tenenbaum1_Saxe1_2012,
+  author = {Hilary Richardson and Bake, Chris and Tenenbaum, Joshua. and Saxe, Rebecca},
+  title = {The Development of Joint Belief-Desire Inferences},
+  journal = {Cognitive Science Socitety},
+  year = {2012},
+  owner = {guillaume},
+  timestamp = {2013.01.13}
+}
+
+% Theory of Mind Chimps
+
+
+@article{Chimp_ToM,
+  title={Does the chimpanzee have a theory of mind ?},
+  author={Premack, David and Woodruff, Guy},
+  journal={Behavioral and Brain Sciences},
+  volume={1},
+  number={4},
+  month={Dec},
+  year={1978},
+  publisher={Elsevier},
+  url={http://dx.doi.org/10.1017/S0140525X00076512}
+}
+
+@article{Chimp_TOM_30,
+	title={Does the chimpanzee have a theory of mind? 30 years later},
+	author={Call, Josep and Tomasello, Michael},
+	url={doi: 10.1016/j.tics.2008.02.010},
+	journal={Trends in Cognitive Sciences},
+	pages={187--192},
+	volume={12},
+	publisher={Elsevier},
+	year={2014},
+	month={11}
+}
+
+% === Neuroscience ====
+
+
+@article{Gallagher200377,
+title =  {Functional imaging of ‘theory of mind’},
+journal = {Trends in Cognitive Sciences},
+volume = {7},
+number = {2},
+pages = {77 - 83},
+year = {2003},
+issn = {1364-6613},
+doi = {http://dx.doi.org/10.1016/S1364-6613(02)00025-6},
+author = {Helen L. Gallagher and Christopher D. Frith}
+}
+
+
+@article{Sommer20071378,
+title = "Neural correlates of true and false belief reasoning ",
+journal = "NeuroImage ",
+volume = "35",
+number = "3",
+pages = "1378 - 1384",
+year = "2007",
+note = "",
+issn = "1053-8119",
+doi = "http://dx.doi.org/10.1016/j.neuroimage.2007.01.042",
+url = "http://www.sciencedirect.com/science/article/pii/S1053811907000468",
+author = "Monika Sommer and Katrin Döhnel and Beate Sodian and Jörg Meinhardt and Claudia Thoermer and Göran Hajak"
+}
+
+
+
+
+% ==== Tom ====
+
+@book{Baron-Cohen,
+author="Simon Baron-Cohen",
+title="Mindblindness",
+year="1995",
+publisher="MIT Press"
+}
+
+@book{Leslie_TOMM,
+author="Alan M. Leslie",
+title="ToMM,ToBY, and Agency: Core architecture and domain specificity",
+year="1994",
+publisher="Cambridge University Press"
+}
+
+
+% ==== Evidence in humans ====
+
+@article{Wimmer1983103,
+title = "Beliefs about beliefs: Representation and constraining function of wrong beliefs in young children's understanding of deception ",
+journal = "Cognition ",
+volume = "13",
+number = "1",
+pages = "103 - 128",
+year = "1983",
+note = "",
+issn = "0010-0277",
+doi = "http://dx.doi.org/10.1016/0010-0277(83)90004-5",
+url = "http://www.sciencedirect.com/science/article/pii/0010027783900045",
+author = "Heinz Wimmer and Josef Perner"
+}
+
+
+@book{he2009false,
+  title={False-belief Understanding in 2.5 Year Olds: Evidence from Change-of-location and Unexpected-contents Violation-of-expectation Tasks},
+  author={He, Z.},
+  url={http://books.google.ch/books?id=0l5VQwAACAAJ},
+  year={2009},
+  publisher={University of Illinois at Urbana-Champaign}
+}
+
+% ToM and autism
+
+@article{baron1985does,
+  title={Does the autistic child have a “theory of mind”?},
+  author={Baron-Cohen, Simon and Leslie, Alan M and Frith, Uta},
+  journal={Cognition},
+  volume={21},
+  number={1},
+  pages={37--46},
+  year={1985},
+  publisher={Elsevier}
+}
+
+
+% ====== Robotics ToM ==========
+
+
+@article{ToM_humanoid,
+ author = {Scassellati, Brian},
+ title = {Theory of Mind for a Humanoid Robot},
+ journal = {Auton. Robots},
+ issue_date = {January 2002},
+ volume = {12},
+ number = {1},
+ month = jan,
+ year = {2002},
+ issn = {0929-5593},
+ pages = {13--24},
+ numpages = {12},
+ url = {http://dx.doi.org/10.1023/A:1013298507114},
+ doi = {10.1023/A:1013298507114},
+ acmid = {591902},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ keywords = {humanoid robots, social interaction, visual perception},
+} 
+
+
+@article{MRF_ToM,
+  added-at = {2009-10-14T21:07:56.000+0200},
+  author = {Butterfield, J. and Jenkins, O. C. and Sobel, D. and Schwertfeger, J.},
+  biburl = {http://www.bibsonomy.org/bibtex/2b689c90f15234d417e2bd8ceacd3649d/robbel},
+  category = {journal},
+  journal = {International Journal of Social Robotics},
+  keywords = {imported},
+  month = Jan,
+  number = 1,
+  pages = {41-51},
+  timestamp = {2009-10-14T21:07:56.000+0200},
+  title = {Modeling Aspects of {T}heory of {M}ind with {M}arkov {R}andom {F}ields},
+  volume = 1,
+  year = 2009
+}
+
+
+
+@inproceedings{ToM_on_Robots,
+ author = {Hegel, Frank and Krach, Soeren and Kircher, Tilo and Wrede, Britta and Sagerer, Gerhard},
+ title = {Theory of Mind (ToM) on Robots: A Functional Neuroimaging Study},
+ booktitle = {Proceedings of the 3rd ACM/IEEE International Conference on Human Robot Interaction},
+ series = {HRI '08},
+ year = {2008},
+ isbn = {978-1-60558-017-3},
+ location = {Amsterdam, The Netherlands},
+ pages = {335--342},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1349822.1349866},
+ doi = {10.1145/1349822.1349866},
+ acmid = {1349866},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {FMRI, anthropomorphism, social robots, theory of mind},
+} 
+
+
+
+@inproceedings{ToM_HRI_2106,
+  author    = {Sandra Devin and
+               Rachid Alami},
+  title     = {An Implemented Theory of Mind to Improve Human-Robot Shared Plans
+               Execution},
+  booktitle = {The Eleventh {ACM/IEEE} International Conference on Human Robot Interation,
+               {HRI} 2016, Christchurch, New Zealand, March 7-10, 2016},
+  pages     = {319--326},
+  year      = {2016},
+  url       = {http://dx.doi.org/10.1109/HRI.2016.7451768},
+  doi       = {10.1109/HRI.2016.7451768}
+}
+
+
+% Prospect Theory
+
+
+@article{Prospect_Theory_30y,
+Author 		= {Barberis, Nicholas C.},
+Title 		= {Thirty Years of Prospect Theory in Economics: A Review and Assessment},
+Journal 	= {Journal of Economic Perspectives},
+Volume 		= {27},
+Number 		= {1},
+Year 		= {2013},
+Pages 		= {173-96},
+DOI = {10.1257/jep.27.1.173}
+}
+
+@ARTICLE{Kahneman79prospecttheory,
+author 		= {Daniel Kahneman and Amos Tversky},
+title 		= {Prospect theory: An analysis of decisions under risk},
+journal 	= {Econometrica},
+year 		= {1979},
+pages 		= {263--291}
+}
+
+@article{Advances_in_ptheory,
+year={1992},
+journal={Journal of Risk and Uncertainty},
+volume={5},
+number={4},
+title={Advances in prospect theory: Cumulative representation of uncertainty},
+publisher={Kluwer Academic Publishers},
+author={Tversky, Amos and Kahneman, Daniel},
+pages={297-323}
+
+}
+
+@article{tversky_framing_1981,
+  author = {Tversky, A. and Kahneman, D.},
+  journal = {Science},
+  number = 4481,
+  pages = {453--458},
+  title = {The Framing of Decisions and the Psychology of Choice},
+  volume = 211,
+  year = 1981
+}
+
+
+
+
+
+

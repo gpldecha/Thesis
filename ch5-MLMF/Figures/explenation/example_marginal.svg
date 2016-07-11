@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="example_marginal.svg">
+   sodipodi:docname="example_marginal.svg.pdf">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -28,9 +28,9 @@
      inkscape:window-height="974"
      id="namedview1957"
      showgrid="false"
-     inkscape:zoom="0.5618761"
-     inkscape:cx="188.52521"
-     inkscape:cy="890.40505"
+     inkscape:zoom="0.28093805"
+     inkscape:cx="891.02978"
+     inkscape:cy="659.0215"
      inkscape:window-x="1680"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

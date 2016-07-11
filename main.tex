@@ -1,8 +1,8 @@
 \documentclass[fancy,estyle,twoside,a4paper]{ethesis}
 
 %The following two packages are required to have awesome font qualities!
-\usepackage[T1]{fontenc}
 \usepackage{ae,aecompl} %,placeins
+
 
 % ========== Mathematics 
 
@@ -58,10 +58,16 @@
 \usetikzlibrary{mindmap,shadows}
 
 \RequirePackage{natbib}
-\usepackage[utf8]{inputenc} %unicode support
 \usepackage{color, colortbl}
 \definecolor{Gray}{gray}{0.9}
 \usepackage{placeins}
+
+
+\usepackage[utf8]{inputenc}
+\inputencoding{latin1}
+\usepackage[T1]{fontenc}
+
+
 
 \newlist{mylist}{enumerate}{5}  % Specify 5 Levels as clone of enumerate
 \setlist[mylist,1]{label={\arabic*.}}  % Roman uppercase numbers I.
@@ -96,8 +102,8 @@
 
 
 	\newcommand{\gDisplayTitle}{}
-	%\newcommand{\gDisplayPreamble}{}
-	%\newcommand{\gDisplayTableOfContents}{}
+	\newcommand{\gDisplayPreamble}{}
+	\newcommand{\gDisplayTableOfContents}{}
 	\newcommand{\gDisplayIntroduction}{}
 	\newcommand{\gDisplayBackground}{}
 
@@ -105,7 +111,7 @@
         \newcommand{\gDisplayPegSocket}{}
 	\newcommand{\gDisplayMLMF}{}
 	\newcommand{\gDisplayConclusions}{}
-	%\newcommand{\gDisplayAppendix}{}
+	\newcommand{\gDisplayAppendix}{}
 	\newcommand{\gDisplayBibliography}{}
 
 
@@ -196,7 +202,7 @@
 	\college{Doctoral Program on Manufacturing Systems and Robotics}
 	\schools{School of Engineering} %
 	\advisor{Prof. Aude Billard}
-	\degreeyear{October, 2016}
+	\degreeyear{August, 2016}
 	\phdthesis
 	\maketitle
 	\emptynewpage
@@ -222,7 +228,7 @@
 \ifdefined	\gDisplayPegSocket		\input{ch4-PiH/ch4-PiH.tex} 	 		\fi
 \ifdefined	\gDisplayMLMF	 		\input{ch5-MLMF/ch5-MLMF.tex}	 		\fi
 \ifdefined	\gDisplayConclusions 		\input{ch6-conclusion/ch6-conclusion.tex}  			\fi
-\ifdefined	\gDisplayAppendix 	 	\input{Appendix} 	 			\fi
+\ifdefined	\gDisplayAppendix 	 	\input{Appendix/appendix.tex} 	 			\fi
 	
 \backmatter
 %bib/ProspectTheory.bib

@@ -1,0 +1,430 @@
+
+@INPROCEEDINGS{peg_personal_icra_2010,
+author={W. Meeussen and M. Wise and S. Glaser and S. Chitta and C. McGann and P. Mihelich and E. Marder-Eppstein and M. Muja and V. Eruhimov and T. Foote and J. Hsu and R. B. Rusu and B. Marthi and G. Bradski and K. Konolige and B. Gerkey and E. Berger},
+booktitle={Robotics and Automation (ICRA), 2010 IEEE International Conference on},
+title={Autonomous door opening and plugging in with a personal robot},
+year={2010},
+pages={729-736},
+keywords={image sensors;mobile robots;path planning;robot vision;autonomous door opening;autonomous door plugging;autonomous robotic system;high-precision hand-eye calibration;laser sensors;personal robot;plug-insertion;vision sensors;visual-differencing approach;Calibration;Control systems;Motion control;Navigation;Plugs;Robot sensing systems;Robotics and automation;Robustness;Sockets;USA Councils},
+doi={10.1109/ROBOT.2010.5509556},
+ISSN={1050-4729},
+month={May}
+}
+
+
+@inbook{fast_peg_pbd_icmc_2014,
+title = "Fast programming of peg-in-hole actions by human demonstration",
+author = "Yang Yang and Linglong Lin and Song, {Y. T.} and Bojan Nemec and Ales Ude and Buch, {Anders Glent} and Norbert Krüger and Savarimuthu, {Thiusius Rajeeth}",
+year = "2014",
+doi = "10.1109/ICMC.2014.7231702",
+isbn = "978-1-4799-2537-7",
+pages = "990--995",
+booktitle = "Proceedings of the 2014 International Conference on Mechatronics and Control (ICMC)",
+publisher = "IEEE",
+
+}
+
+@article{hybrid_1992,
+author = {Fisher, William D. and Mujtaba, M. Shahid}, 
+title = {Hybrid Position/Force Control: A Correct Formulation},
+volume = {11}, 
+number = {4}, 
+pages = {299-311}, 
+year = {1992}, 
+doi = {10.1177/027836499201100403}, 
+abstract ={
+               This article will show conclusively that "kinematic instability" is not inherent to the hybrid position/force control scheme of robot manipulators but is a result of an incomplete and inap propriate formulation. The inverse of the manipulator Jacobian matrix is identified as causing the kinematic instability of the hybrid position/force control scheme. Linear algebra is used to explain clearly the implications of mapping between vec tor spaces and to reveal why the inverse of the manipulator Jacobian matrix should not be used in hybrid position/force control. A generalized architecture for hybrid position/force control is presented that can influence both joint positions and torques. This generalized formulation also includes the control of redundant manipulators. Some sufficient conditions for kine matic stability are proposed to determine when a system may become unstable without requiring a complete system analysis. A stable hybrid position/force control scheme is given and is demonstrated using an example that was previously shown to be unstable.
+            }, 
+URL = {http://ijr.sagepub.com/content/11/4/299.abstract}, 
+eprint = {http://ijr.sagepub.com/content/11/4/299.full.pdf+html}, 
+journal = {The International Journal of Robotics Research} 
+}
+
+@inproceedings{learn_admittance_icra_1994,
+  author    = {Vijaykumar Gullapalli and
+               Andrew G. Barto and
+               Roderic A. Grupen},
+  title     = {Learning Admittance Mappings for Force-Guided Assembly},
+  booktitle = {Proceedings of the 1994 International Conference on Robotics and Automation,
+               San Diego, CA, USA, May 1994},
+  pages     = {2633--2638},
+  year      = {1994},
+  doi       = {10.1109/ROBOT.1994.351117},
+}
+
+
+@INPROCEEDINGS{peg_imcssd_2015,
+author={M. Bdiwi and A. Winkler and M. Jokesch and J. Suchy},
+booktitle={Proc. of 12th IEEE International Multi-Conference on Systems, Signals and Devices},
+title={Improved Peg-in-Hole (5-Pin Plug) Task: Intended for Charging Electric Vehicles by Robot System Automatically},
+year={2015}
+}
+
+@Inbook{Jokesch2016,
+author="Jokesch, Michael
+and Such{\'y}, Jozef
+and Winkler, Alexander
+and Fross, Andr{\'e}
+and Thomas, Ulrike",
+editor="Reis, Paulo Lu{\'i}s
+and Moreira, Paulo Ant{\'o}nio
+and Lima, U. Pedro
+and Montano, Luis
+and Mu{\~{n}}oz-Martinez, Victor",
+chapter="Generic Algorithm for Peg-In-Hole Assembly Tasks for Pin Alignments with Impedance Controlled Robots",
+title="Robot 2015: Second Iberian Robotics Conference: Advances in Robotics, Volume 2",
+year="2016",
+publisher="Springer International Publishing",
+address="Cham",
+pages="105--117",
+isbn="978-3-319-27149-1",
+doi="10.1007/978-3-319-27149-1_9",
+url="http://dx.doi.org/10.1007/978-3-319-27149-1_9"
+}
+
+@INPROCEEDINGS{intuitive_peg_isr_2013,
+author={Hyeonjun Park and Ji-Hun Bae and Jae-Han Park and Moon-Hong Baeg and Jaeheung Park},
+booktitle={Robotics (ISR), 2013 44th International Symposium on},
+title={Intuitive peg-in-hole assembly strategy with a compliant manipulator},
+year={2013},
+pages={1-5},
+doi={10.1109/ISR.2013.6695699},
+month={Oct}
+}
+
+
+
+@INPROCEEDINGS{online_gpr_icra_2014,
+author={H. Cheng and H. Chen},
+booktitle={2014 IEEE International Conference on Robotics and Automation (ICRA)},
+title={Online parameter optimization in robotic force controlled assembly processes},
+year={2014},
+pages={3465-3470},
+doi={10.1109/ICRA.2014.6907358},
+ISSN={1050-4729},
+month={May}
+}
+
+
+@INPROCEEDINGS{feed_icra_2010,
+author={B. Mayton and L. LeGrand and J. R. Smith},
+booktitle={Robotics and Automation (ICRA), 2010 IEEE International Conference on},
+title={Robot, feed thyself: Plugging in to unmodified electrical outlets by sensing emitted AC electric fields},
+year={2010},
+pages={715-722},
+doi={10.1109/ROBOT.2010.5509643},
+month={May}
+}
+
+
+@INPROCEEDINGS{pomdp_peg_icra_2014,
+author={H. Cheng and H. Chen and L. Hao and W. Li},
+booktitle={2014 IEEE International Conference on Robotics and Automation (ICRA)},
+title={Robot learning based on Partial Observable Markov Decision Process in unstructured environment},
+year={2014},
+pages={4399-4404},
+doi={10.1109/ICRA.2014.6907500},
+month={May},}
+
+
+@INPROCEEDINGS{search_strategies_icra_2001,
+author={S. R. Chhatpar and M. S. Branicky},
+booktitle={Intelligent Robots and Systems, 2001. Proceedings. 2001 IEEE/RSJ International Conference on},
+title={Search strategies for peg-in-hole assemblies with position uncertainty},
+year={2001},
+volume={3},
+pages={1465-1470 vol.3},
+doi={10.1109/IROS.2001.977187},
+}
+
+@article{sol_pdg_pbd_2014,
+author = "Fares Abu-Dakka and Bojan Nemec and Aljaz Kramberger and Anders Glent Buch and Norbert Kr{\"u}ger and Ales Ude",
+doi = "http://dx.doi.org/10.1108/IR-07-2014-0363",
+journal = "Industrial Robot",
+number = "6",
+pages = "575--584",
+publisher = "Emerald Group Publishing Ltd.",
+title = "Solving peg-in-hole tasks by human demonstration and exception strategies",
+volume = "41",
+year = "2014",
+}
+
+@INPROCEEDINGS{learn_force_c_icirs_2011,
+author={M. Kalakrishnan and L. Righetti and P. Pastor and S. Schaal},
+booktitle={2011 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+title={Learning force control policies for compliant manipulation},
+year={2011},
+pages={4639-4644},
+keywords={Cost function;Force;Joints;Noise;Robots;Torque;Trajectory},
+doi={10.1109/IROS.2011.6095096},
+ISSN={2153-0858},
+month={Sept}
+}
+
+@INPROCEEDINGS{Schaal04learningmovement,
+    author = {Stefan Schaal and Jan Peters and Jun Nakanishi and Auke Ijspeert},
+    title = {Learning movement primitives},
+    booktitle = {International Symposium on Robotics Research (ISRR2003},
+    year = {2004},
+    publisher = {Springer}
+}
+
+@INPROCEEDINGS{trans_workpiece_icra_2013,
+author={B. Nemec and F. J. Abu-Dakka and B. Ridge and A. Ude and J. A. Jorgensen and T. R. Savarimuthu and J. Jouffroy and H. G. Petersen and N. Kr\"uger},
+booktitle={Advanced Robotics (ICAR), 2013 16th International Conference on},
+title={Transfer of assembly operations to new workpiece poses by adaptation to the desired force profile},
+year={2013},
+pages={1-7},
+doi={10.1109/ICAR.2013.6766568},
+month={Nov},}	
+
+
+@INPROCEEDINGS{compliant_manip_icra_2008,
+author={Seung-kook Yun},
+booktitle={Robotics and Automation, 2008. ICRA 2008. IEEE International Conference on},
+title={Compliant manipulation for peg-in-hole: Is passive compliance a key to learn contact motion?},
+year={2008},
+pages={1647-1652},
+keywords={manipulator dynamics;compliant manipulation;contact motion;passive compliance;peg-in-hole;robot manipulator;Force control;Hardware;Humans;Learning;Manipulators;Robot sensing systems;Safety;Sampling methods;Springs;Uncertainty},
+doi={10.1109/ROBOT.2008.4543437},
+ISSN={1050-4729},
+month={May}
+}
+
+@article{rl_gradient_survey_2013,
+url = {http://dx.doi.org/10.1561/2300000021},
+year = {2013},
+volume = {2},
+journal = {Foundations and Trends in Robotics},
+title = {A Survey on Policy Search for Robotics},
+doi = {10.1561/2300000021},
+issn = {1935-8253},
+number = {1-2},
+pages = {1-142},
+author = {Marc Peter Deisenroth and Gerhard Neumann and Jan Peters}
+}
+
+
+@Article{Kober2011,
+author="Kober, Jens
+and Peters, Jan",
+title="Policy search for motor primitives in robotics",
+journal="Machine Learning",
+year="2011",
+volume="84",
+number="1",
+pages="171--203",
+issn="1573-0565",
+doi="10.1007/s10994-010-5223-6",
+url="http://dx.doi.org/10.1007/s10994-010-5223-6"
+}
+
+@article{Kormushev_MDPI_2013,
+  author = {Kormushev, Petar and Calinon, Sylvain and Caldwell, Darwin G.},
+  title = {Reinforcement Learning in Robotics: Applications and Real-World Challenges},
+  journal = {Robotics},
+  volume = {2},
+  year = {2013},
+  number = {3},
+  pages = {122--148},
+  issn = {2218-6581},
+  doi = {10.3390/robotics2030122},
+  howpublished = {http://www.mdpi.com/2218-6581/2/3/122},
+  url = {http://kormushev.com/papers/Kormushev_MDPI_2013.pdf}
+}
+
+
+@INPROCEEDINGS{dmp_grasp_iros_2011,
+author={F. Stulp and E. Theodorou and M. Kalakrishnan and P. Pastor and L. Righetti and S. Schaal},
+booktitle={2011 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+title={Learning motion primitive goals for robust manipulation},
+year={2011},
+pages={325-331},
+keywords={Cost function;Grasping;Learning;Robots;Shape;Trajectory;Uncertainty},
+doi={10.1109/IROS.2011.6094877},
+ISSN={2153-0858},
+month={Sept},}
+
+@Article{Chambrier2014,
+author="Chambrier, Guillaume de
+and Billard, Aude",
+title="Learning search policies from humans in a partially observable context",
+journal="Robotics and Biomimetics",
+year="2014",
+volume="1",
+number="1",
+pages="1--16",
+issn="2197-3768",
+doi="10.1186/s40638-014-0008-1",
+url="http://dx.doi.org/10.1186/s40638-014-0008-1"
+}
+
+
+@article{peter_nac_2008,
+  title = {Natural Actor-Critic},
+  author = {Peters, J. and Schaal, S.},
+  journal = {Neurocomputing},
+  volume = {71},
+  number = {7-9},
+  pages = {1180-1190},
+  organization = {Max-Planck-Gesellschaft},
+  school = {Biologische Kybernetik},
+  year = {2008}
+}
+
+@ARTICLE{gesture_calinon_2010,
+author={S. Calinon and F. D'halluin and E. L. Sauser and D. G. Caldwell and A. G. Billard},
+journal={IEEE Robotics Automation Magazine},
+title={Learning and Reproduction of Gestures by Imitation},
+year={2010},
+volume={17},
+number={2},
+pages={44-54},
+ISSN={1070-9932},
+month={June}
+}
+
+@phdthesis{gmr_2004,
+  author       = {Sung, H.G}, 
+  title        = {Gaussian Mixture Regression and Classification},
+  school       = {Rice University},
+  year         = 2004,
+}
+
+
+@article{DeisenrothNP2013,
+  title = {A Survey on Policy Search for Robotics, Foundations and Trends in Robotics},
+  author = {Deisenroth, MP. and Neumann, G. and Peters, J.},
+  journal = {Foundations and Trends in Robotics},
+  volume = {2},
+  number = {1-2},
+  pages = {1-142},
+  year = {2013}
+}
+
+@Book{Szepesvari:2010,
+  author =       "Szepesv{\'a}ri, Csaba",
+  title =        "Algorithms for Reinforcement Learning",
+  publisher =    "Morgan {\&} Claypool",
+  year =         "2010",
+  url = "http://www.sztaki.hu/~szcsaba/papers/RLAlgsInMDPs-lecture.pdf",
+  bib2html_rescat = "General RL",
+}
+
+@INPROCEEDINGS{Boyan95generalizationin,
+    author = {Justin A. Boyan and Andrew W. Moore},
+    title = {Generalization in Reinforcement Learning: Safely Approximating the Value Function},
+    booktitle = {Advances in Neural Information Processing Systems 7},
+    year = {1995},
+    pages = {369--376},
+    publisher = {MIT Press}
+}
+
+@ARTICLE{Atkeson97locallyweighted,
+    author = {Christopher G. Atkeson and Andrew W. Moore and Stefan Schaal},
+    title = {Locally weighted learning},
+    journal = {ARTIFICIAL INTELLIGENCE REVIEW},
+    year = {1997},
+    pages = {11--73}
+}
+
+@incollection{NIPS2008_3501,
+title = {Fitted Q-iteration by Advantage Weighted Regression},
+author = {Neumann, Gerhard and Jan R. Peters},
+booktitle = {Advances in Neural Information Processing Systems 21},
+editor = {D. Koller and D. Schuurmans and Y. Bengio and L. Bottou},
+pages = {1177--1184},
+year = {2009},
+publisher = {Curran Associates, Inc.},
+}
+
+@INPROCEEDINGS{Riedmiller05neuralfitted,
+    author = {Martin Riedmiller},
+    title = {Neural fitted Q iteration – first experiences with a data efficient neural reinforcement learning method},
+    booktitle = {In 16th European Conference on Machine Learning},
+    year = {2005},
+    pages = {317--328},
+    publisher = {Springer}
+}
+
+
+@book{sutton1998reinforcement,
+  added-at = {2012-12-29T01:24:39.000+0100},
+  author = {Sutton, R.S. and Barto, A.G.},
+  biburl = {http://www.bibsonomy.org/bibtex/2e00e2e06c604908ad882d5874e52b0aa/chsivic},
+  interhash = {9369ad4b6ab9e5aa15fb456143e9a09d},
+  intrahash = {e00e2e06c604908ad882d5874e52b0aa},
+  keywords = {imported},
+  publisher = {Cambridge Univ Press},
+  timestamp = {2012-12-29T01:25:01.000+0100},
+  title = {Reinforcement learning: An introduction},
+  volume = 116,
+  year = 1998
+}
+
+@Book{Bishop_2006,
+  author =       "Bishop, Christopher M.",
+  title =        "Pattern Recognition and Machine Learning",
+  publisher =    "Springer",
+  year =         "2006",
+  ISBN =         "978-0387-31073-2",
+  url = "http://research.microsoft.com/en-us/um/people/cmbishop/prml/",
+  bib2html_rescat = "General ML",
+}
+
+
+@article{EBurdet1999,
+abstract = {This paper explores a stepwise learning approach based on a system's decomposition into functional subsystems. Two case studies are examined: a visually guided robot that learns to track a maneuvering object, and a robot that learns to use the information from a force sensor in order to put a peg into a hole. These two applications show the features and advantages of the proposed approach: i) the subsystems naturally arise as functional components of the hardware and software; ii) these subsystems are building blocks of the robot behavior and can be combined in several ways for performing various tasks; iii) this decomposition makes it easier to check the performances and detect the cause of a malfunction; iv) only those subsystems for which a satisfactory solution is not available need to be learned; v) the strategy proposed for coordinating the optimization of all subsystems ensures an improvement at the task-level; vi) the overall system's behavior is significantly improved by the stepwise learning approach.},
+author = {Burdet, E and Nuttin, M},
+doi = {10.1023/A:1008058131402},
+issn = {1573-0409},
+journal = {Journal of Intelligent and Robotic Systems},
+number = {1},
+pages = {43--68},
+title = {{Learning Complex Tasks Using a Stepwise Approach}},
+url = {http://dx.doi.org/10.1023/A:1008058131402},
+volume = {24}
+}
+
+@INPROCEEDINGS{Gullapalli_1994,
+author={V. Gullapalli and A. G. Barto and R. A. Grupen},
+booktitle={Robotics and Automation, 1994. Proceedings., 1994 IEEE International Conference on},
+title={Learning admittance mappings for force-guided assembly},
+year={1994},
+pages={2633-2638 vol.3},
+doi={10.1109/ROBOT.1994.351117},
+month={May},}
+
+@article{Abu-Dakka2014,
+author = {Abu-Dakka, Fares J. and Nemec, Bojan and Kramberger, Alja{\v{z}} and Buch, Anders Glent and Kr{\"{u}}ger, Norbert and Ude, Ales},
+doi = {10.1108/IR-07-2014-0363},
+file = {:home/guillaume/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Abu-Dakka et al. - 2014 - Solving peg-in-hole tasks by human demonstration and exception strategies.pdf:pdf},
+issn = {0143-991X},
+journal = {Industrial Robot: An International Journal},
+number = {6},
+pages = {575--584},
+title = {{Solving peg-in-hole tasks by human demonstration and exception strategies}},
+volume = {41},
+year = {2014}
+}
+
+
+@article{de_Chambrier2014,
+  author       = {de Chambrier, Guillaume and Billard, A.},
+  title        = {Learning search polices from humans in a partially observable context},
+  journal      = {Journal of Robotics and Biomimetics},
+  volume       = {1},
+  year         = {2014},
+
+}
+
+@TECHREPORT{Bergman99recursivebayesian,
+    author = {Niclas Bergman and C Niclas Bergman},
+    title = {Recursive Bayesian estimation: Navigation and tracking applications. Thesis No 579},
+    institution = {Link\"oping University, Link\"oping Studies in Science and Technology. Doctoral dissertation},
+    year = {1999}
+}
+
+
+
+

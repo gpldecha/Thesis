@@ -187,11 +187,11 @@
 				\vfil}%
         \vbox to 1.8in{%
                 \textsc{Thesis Committee:}\\[1mm]
-   		%		\textsf{Prof. Alireza Karimi, president of the jury}\\
+   				\textsf{Prof. Dillenbourg Pierre, president of the jury}\\
                 \textsf{\@advisor, thesis advisor}\\
-             %   \textsf{Prof. Hannes Bleuler, examiner}\\
-	%			\textsf{Prof. Jochen Steil, examiner}\\
-	%			\textsf{Prof. Ron Alterovitz, examiner}\\
+                \textsf{Prof. Pedro U. Lima, examiner}\\
+				\textsf{Dr. Thrish Nanayakkara, examiner}\\
+				\textsf{Dr. Mathew Magimai Dossw, examiner}\\
                 \vfil}%
 		%\vbox to 0.5in{\thesis@volume\vfil}
 		\textsf{Lausanne, Switzerland\\

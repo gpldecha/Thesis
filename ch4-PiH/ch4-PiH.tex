@@ -618,7 +618,7 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 \end{center}
 Batch RL methods are used by a broad spectrum of research to learn policies. 
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 
-\cite{NIPS2008_3501,EGW05,Riedmiller05neuralfitted}. Although this solves the control problem it requires discretisation 
+\cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, as the 
 Q-Bellman backups, $\hat{Q}(\B_t,\U_t) \leftarrow \gamma \max_{\U_{t+1}} \hat{Q}(\U_{t+1},\B_{t+1})$, 
 require an optimisation over the action space, $\U_{t+1}$, to find the best applicable action. 
@@ -643,7 +643,7 @@ method has the advantage that no divergence can occur during the learning proces
 
 We update the Actor policy given the Critic value function through a modification of the Maximisation step in  Expectation-Maximisation (EM) 
 for Gaussian Mixture Models. We refer to this modification as Q-EM which is strongly related to a Monte-Carlo EM-based policy 
-search approach \cite[p.50]{DeisenrothNP2013}. 
+search approach \cite[p.50]{p_search_surv_2011}. 
 
 The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$.
 \begin{equation}\label{eq:disc_return}
@@ -1323,121 +1323,3 @@ We conclude by making the observation that by simply adding a binary reward func
 data provided by human demonstrations, with Fitted reinforcement learning, we can learn a better policy without 
 the need to perform expensive exploration-exploitation rollouts traditionally associated with reinforcement learning and 
 designing complicated reward functions. This is especially advantageous when only a few demonstrations are available.
-
-\FloatBarrier
-\section{Appendix}
-
-\subsection{Time to connect socket (ANOVA)}
-\label{app:anova_socket}
-% 1) Is there are a difference across groups 
-
-% 2) Is there a difference between the two sockets
-The null hypothesis is that there is no difference in 
-the time taken to connect socket A or B. The result of the one-way anova
-is given in Table \ref{tab:ch4:anova_socket}. The null hypothesis is rejected at high significant level (***)
-indicating that there is a difference between the sockets. According to the linear 
-model it takes on average 4 seconds less to connect socket B than it does for socket A.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-  \hline
-          &   F    & Pr(>F)  	     \\ \hline
-   socket & 13.9   &  0.000232 *** 
-\end{tabular}
-\caption{One way anova of the time taken to connect two sockets A and B. There is a significant difference.}
-\label{tab:ch4:anova_socket}
-\end{table}
-
-We tested whether the group order had an effect on the connection time. We fitted a linear model
-with the predictor being time and the factors being the group (One or Two), the socket type (A or B) 
-and the subject's ID (1 to 10):
-\begin{equation}
- time = \beta_0 + \beta_1\, group + \beta_2\, socket + \beta_3\, subject
-\end{equation}
-and did the corresponding anova analysis on this linear model. We found that the difference between the sockets 
-remained significant.
-
-\subsection{EM policy search}\label{app:lb}
-Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, $J(\Param)$.
-The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
-\begin{align}
-  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
-	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
-\end{align}
-
-where $\mathbb{T}$ is the set of all rollouts. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
-summation.
-
-\begin{align}
-  \log( J(\Param') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
-\end{align}
-
-We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
-zero so as to maximise the cost function.
-
-\begin{align}
- &\nabla_{\Param'}  \log( J(\Param') ) = \nonumber\\
- &\sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    & - \underbrace{ \nabla_{\Param'} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
-				    &= \sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    &= \mathbb{E}_{\pi_{\Param}(\U,\B)} \Big\{ \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
-\end{align}
-
-\begin{align}
- \nabla_{\Param'}  \log( J(\Param') ) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Param'}\log \pi_{\Param'}(\Ui,\Bi)\Big\}\\
-				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
-\end{align}
-
-The reader is referred to \cite{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.
-
-\subsection{Q-EM for GMM derivation}\label{app:grad}
-
-Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of the notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
-and by setting the derivative of Equation \ref{eq:grad_log_cost_2} to zero and solving for the parameters
-$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation update step in EM:
-
-\begin{align}
-\nabla_{\MuK} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
-			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
-\end{align}
-
-where $\alpha(z_{mk})$ is the responsibility factor, denoting the probability that data point $m$ is a member of the 
-Gaussian function $k$.
-
-\begin{equation}
- \alpha(z_{mk}) = \frac{w^{[k]} \cdot g(\Xm;\MuK,\SigK)}{\sum\limits_{j=1}^{K}w^{[j]} \cdot g(\Xm;\boldsymbol{\mu}^{[j]},\boldsymbol{\Sigma}^{[j]})}
-\end{equation}
-
-\begin{equation}
-   \SigK_{\textrm{\textbf{new}}} = \frac{\sum\limits_{m=1}^{M} Q(\Xm) \alpha(z_{mk}) (\Xm - \MuK)(\Xm - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} Q(\X^{[j]})\, \alpha(z_{jk}) }
-\end{equation}
-
-\begin{equation}
-  w^{[k]}_{\textrm{\textbf{new}}} = \frac{\sum\limits_{m=1}^{M} Q(\X^{[m]})\, \alpha(mk)}{\sum\limits_{j=1}^{M} Q(\X^{[j]})}
-\end{equation}
-
-%\subsection{M-step}\label{app:Q-EM}
-%Given a set of points $\X = (\U,\B)^{\mathrm{T}}$ and  a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
-%and by setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-%$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
-%\begin{align}
-% w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\X^{[m]})\, \alpha(z_{mk})}{\sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})} \\
-% \MuK_{\textrm{\textbf{new}}}     &= \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q^{\pi}(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q^{\pi}(\X^{[j]})} \\
-% \SigK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\Xm)\, \alpha(z_{mk})\, (\Xm - \MuK)(\Xm - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})\, \alpha(z_{jk}) }
-%\end{align}
-%$\alpha(z_{mk})$ is the responsibility factor, denoting the probability that data point $m$ is a member of the 
-%Gaussian function $k$ (see \cite[Chap. 9]{Bishop_2006}).
-
-\subsection{Unbiased estimator}\label{app:unbiased_delta}
-
-%\begin{equation}
-%  \delta^{\pi}_t = r_{t+1} + \gamma V^{\pi}(b_{t+1}) - V^{\pi}(b_t) \\
-%\end{equation}
-The temporal difference error is an unbiased estimate of the advantage function:
-\begin{align}
-  \displaystyle \mathop \mathbb{E}_{\pi_{\Param}} \{ \delta^{\pi}_t|b_t,u_t\} &=  \mathop\mathbb{E}_{\pi_{\Param}}\{ r_{t+1} + \gamma V^{\pi}(b_{t+1})|b_t,u_t\} - V^{\pi}(b_t) \nonumber \\
-									   &= Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) \nonumber \\
-									   &= A^{\pi}(b_t,u_t)
-\end{align}
