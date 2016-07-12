@@ -72,64 +72,41 @@ linear in space and time complexity as oppose to exponential.
 \end{abstract}
 
 \begin{resume}
-\lettrine[lines=2]{R}{ésonner} et prendre des décisions pour résoudre des problèmes avec une information partielle est une difficulté  à laquelle doit 
-faire face tous êtres : virtuels, synthétiques ou biologiques. Les tentatives de résolution d'un tel problème où l'information spatial est partielle 
-débouche sur à un nombre d'actions possibles exorbitant qui tous ont des probabilités différentes de succès. Ceci rend la résolution de tels problèmes 
-difficile quand des méthodes de planning traditionnelles sont employées. Les humains ont acquis une habilitées à agir dans ces situations où l'incertitude 
-est omniprésente avec l'éducation et l'auto-apprentissage. Transférer ce savoir-faire à des intelligences artificielles ou à des robots augmenteraient leurs 
-habilités à résoudre des tâches qui sont partiellement spécifiées et donc où l'incertitude règne.
+\lettrine[lines=2]{R}{aisonner} et prendre des décisions pour résoudre des problèmes avec une information partielle est une difficulté  à laquelle doit faire 
+face tous êtres : virtuels, synthétiques ou biologiques. Les tentatives de résolution d'un tel problème où l'information spatial  est partielle débouche sur à un nombre 
+d'actions possibles exorbitant qui tous ont des probabilités différentes de succès. Ceci rend la résolution de tels problèmes difficile quand des méthodes de planning traditionnelles sont employées.  
+Les humains ont acquis une habilitées à agir dans ces situations où l'incertitude est omniprésente par l'éducation et l'auto-apprentissage. Transférer ce savoir-faire à des intelligences 
+artificielles ou à des robots augmenteraient leurs habilités à résoudre des tâches qui sont partiellement spécifiées et donc où l'incertitude règne.
 
-Un grand nombre de travaux scientifiques ont mis l'accent sur le transfert du comportement humain aux robots via la programmation par démonstration.
-Cette méthode permet au robot d'apprendre à imiter les comportements humains. Des tâches contenants des éléments telles que la manipulation d'objets ou la locomotion 
-bipède ont été encodées soit par des fonctions symboliques, statistiques ou dynamiques.  Par contre, il y a moins d'exemple de transfert de comportement cognitif 
-humain de plus haut niveaux aux robots, comme les compétences en résolution de problèmes et les stratégies d'exploration.
+Un grand nombre de travaux scientifiques ont mis l'accent sur le transfer du comportement humain aux robots via la programmation par apprentissage. Cette méthode permet 
+au robot d'apprendre à imiter les comportements humains. Des tâches contenants des éléments telles que la manipulation d'objets ou la locomotion bipède ont été encodées 
+soit par des fonctions symboliques, statistiques ou dynamiques.  Par contre, il y a moins d'exemple de transfert de comportement cognitif de plus haut niveaux aux robots, comme 
+les compétences en résolution de problèmes et les stratégies d'exploration.
 
+L'objectif de ce mémoire est de créer des modèles mathématiques correspondant au raisonnement humain à l'égard de l'incertitude présente durant des tâches d'exploration dans le domaine de la navigation spatial sans information visuelle. Ces modèles de raisonnement sont transférés à un robot apprenti. Cette méthode évite un long apprentissage de notre savoir au robot. 
+Le choix de la navigation spatial sans information visuelle a été motivée par le fait qu'il existe de nombreux domaines d'application robotique où l'incertitude résultante d'une absence de perception visuelle est fréquente,  comme : l'entretien des fonds marins, l'exploration planétaire et des tâches de manipulation avec des occlusions fréquentes.
+Pour ce travail les scénarios suivants sont étudiés :  la localisation d'un objet dans une pièce et l'établissement d'une connexion  avec une prise électrique. 
+Une difficulté présente dans l'apprentissage du raisonnement humain, dans les scénarios de recherche que nous considérons, est que nos pensées et sensations (haptique et tactile) 
+sont inobservables et varient entre les personnes. Nous déduisons les sensations perçues des  humaines en observant leurs réactions cinématiques en fonction de la géométrique de l'environnement. 
+Ou encore les sujets humains utilisent un outil équipé d'un capteur de force dont les mesures sont utilisées pour déduire leurs sensations. Ces mesures sont ensuite transformées en un vecteur binaire 
+qui est générique pour toutes les tâches que nous considérons.
 
-L'objectif de ce mémoire est de créer des modèles mathématiques correspondant au raisonnement humain à l'égard de l'incertitude présente durant 
-des tâches d'exploration dans le domaine de la navigation spatial.   Nous considérons des tâches performées dans l'obscurité totale telles que 
-la localisation d'un objet dans une pièce ou encore l'établissement d'une connexion  avec une prise électrique.  Notre objectif est de transférer 
-les mécanismes du raisonnement humain à un robot apprenti pour des tâches d'exploration spatial performées sans information visuelle.
-Il existe de nombreux domaines d'application robotique où l'incertitude résultant d'une absence de perception visuelle est fréquente, 
-comme : l'entretien des fonds marins, l'exploration planétaire et des tâches de manipulation où des occlusions sont fréquentes. 
-Créer des modèles mathématiques des stratégies d'explorations humaines et de les transférer à des robots est utile dans ces domaines ; 
-elles évitent un apprentissage de notre savoir qui prendrai un temps considérable. 
+Les données ainsi obtenues sont utilisée pour modéliser les pensées humaines par une fonction de densité de probabilité que nous actualisons via une estimation bayésienne récursive; l'hypothèse est 
+que la fonction de densité de probabilité actualisée par une fonction bayésienne récursive est similaire au processus humain pour intégrer des informations en continu.
+La modélisation des processus de raisonnement des sujets humains effectuant les tâches exploratoires nous apprend une distribution conjointe des pensées et actions (vitesses de l'effecteur) 
+qui ont été enregistrées au cours de l'exécution de la démonstration. La dimensionnalité élevée de l'état de la pensé et de sa complexité exige sa simplification aux états les plus probables 
+tout en conservant l'information de l'entropie. Les résultats montrent que le rebot effectue plus effectivement ses tâches qu'avec les méthodes traditionnelles. 
+Nous considérons une deuxième tâche qui consiste à connecter une fiche à une prise électrique. Nous prenons la même approche, que nous perfectionnons en intégrant un 
+système automatique de renforcement d'apprentissage. Nous démontrons qu'une simple fonction objective des coûts de la qualité améliore significativement les capacités du robot.
 
-Une difficulté présente dans l'apprentissage du raisonnement humain, dans les scénarios de recherche que nous considérons, est que nos pensées 
-et sensations (haptique et tactile) sont inobservables et varient entre les personnes. Nous déduisons les sensations perçues des  humaines en 
-observant leurs réactions cinématiques en fonction de la géométrique de l'environnement. Ou encore les sujets humains utilisent un outil 
-équipé d'un capteur de force dont les mesures sont utilisées pour déduire leurs sensations. Ces mesures sont ensuite transformées en un 
-vecteur binaire qui est générique pour toutes les tâches que nous considérons.
-
-Comme décrit précédemment à l'aide d'un system de capture de mouvement (les sujets humains portaient des marqueurs) nous modélisons les 
-pensées humaines par une fonction de densité de probabilité que nous actualisons via une estimation bayésienne récursive. Nous 
-faisons l'hypothèse que la fonction de densité de probabilité est actualisée par une fonction bayésienne récursive et similaire au processus 
-humain pour intégrer des informations en continu.
-
-La modélisation les processus de raisonnement des sujets humains effectuant les tâches exploratoires nous apprend une distribution 
-conjointe des pensées et actions (vitesses de l'effecteur) qui ont été enregistrées au cours de l'exécution de la démonstration. 
-La dimensionnalité élevée de l'état de la pensé et de sa complexité exige que l'on comprime la compresse à un état le plus 
-simple comme l'état le plus probable et l'entropie.
-
-Nous évaluons cette méthodologie d'apprentissage des stratégies d'exploration  en une tâche consistant de trouver un objet sur une table.
-Nous démontrons que plusieurs stratégies d'exploration sont encodées dans la distribution pensé-action et nous comparons cette approche 
-avec des algorithmes d'exploration traditionnelle de navigation. Les résultats montrent que le modèle de recherche humain est le plus 
-rapide que toutes les autres méthodes.
+Les deux tâches d'exploration mentionnées ci-dessus peuvent être considérées comme des problèmes de localisation-actif où l'incertitude est uniquement présente dans la relation 
+entre la position de l'humain vis-à-vis du cadre de référence, le monde. Nous considérons maintenant un problème d'exploration où l'incertitude se trouve à la fois dans la position du robot (ou l'humain) 
+et dans des aspects de l'environnement  comme la position d'objets. Étant donné la nature non structurée de l'incertitude un histogramme est choisi pour paramétrer la distribution conjointe 
+des positions du robot et de l'environnement. Cependant, cette paramétrisation devient rapidement intenable comme le coût de résolution devient exponentiel en termes du nombre de paramètre.  
+Nous démontrons qu'en utilisant seulement les paramètres de marginales et en mémorisant les paramètres des fonctions de mesure nous pouvons reproduire la même solution que la paramétrisation de l'histogramme 
+à une complexité linéaire (espace et temps) contre une exponentielle.
 
 
-Nous considérons une deuxième tâche dans laquelle des sujets humains privés d'informations visuelles doivent démonter comment rechercher et 
-connecter une fiche à une prise électrique à un apprenti robot. Nous prenons la même approche, mais intégrons un système automatique 
-l'apprentissage de renforcement. Nous démontrons qu'une simple fonction objective des coûts de la qualité peut significativement améliorer 
-les capacités du robot sans recourir aux coûteuses explorations autonomes de la méthode traditionnel.
-
-
-Les deux tâches d'exploration mentionnées ci-dessus peuvent être considérées comme des problèmes de localisation-active où l'incertitude est 
-uniquement présente dans la relation entre la position de l'humain vis-à-vis du cadre de référence, le monde. Nous considérons maintenant un 
-problème d'exploration ou l'incertitude de se trouve à la fois dans la position du robot (ou l'humain) et dans des aspects de l'environnement  
-comme la position d'objets. Etant donné la nature non structurée de l'incertitude un histogramme est choisi pour paramétrer la distribution 
-conjointe des positions du robot et le l'environnement. Cependant, cette paramétrisation devient rapidement intenable comme le coût de résolution 
-devient exponentiel en termes du nombre de paramètre.  Nous démontrons que seulement en utilisant seulement les paramètres de marginales et en 
-mémorisant les paramètres des fonctions de mesure nous pouvons reproduire la même solution que la paramétrisation de l'histogramme à une 
-complexité linéaire (espace et temps) contre une exponentielle.
 
 \mylineskip
 

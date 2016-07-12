@@ -560,16 +560,16 @@ filtered joint by the marginal likelihood.
 \end{tikzpicture}%
 \end{center}
 
-In the above box we highlighted the parameters of the MLMF joint distribution. $\ThOs$ and $\ThAs$ are the probabilities that the object 
-and agent occupy a state whilst $\Psi_{0:t}$ and $\Alpha$ will be detail below. For ease of notation we will not always show these parameters
-as being part of the joint distribution.
+%In the above box we highlighted the parameters of the MLMF joint distribution. $\ThOs$ and $\ThAs$ are the probabilities that the object 
+%and agent occupy a state whilst $\Psi_{0:t}$ and $\Alpha$ will be detail below. For ease of notation we will not always show these parameters.
+
 The motion update, Equation \ref{eq:ch5:mlmf_motion_update}, when applied to the joint distribution results in the 
 initial marginal $P(A_0)$ and the likelihood functions being moved along the agent's axis. Equation \ref{eq:ch5:mlmf_filter_conditional}, would 
-require an expensive evaluation of Equation \ref{eq:ch5:mlmf_filter_joint} 
-at each state $(i,j)$ resulting in the evaluation of the likelihood product. We will demonstrate that MLMF only evaluates dependent 
-states $(i,j)$ (states which are affected by the likelihood). The MLFM filter is parameterised by the agent 
-and object marginals $P(A_t|u_{1_:t})$, $P(O)$ and the history of likelihood functions, Equation \ref{eq:ch5:mlmf_filter_joint}, which 
-is all the likelihood functions since $t=0$ until $t$ and we will refer to it as the \textbf{memory likelihood function}: 
+require an expensive evaluation of Equation \ref{eq:ch5:mlmf_filter_joint} at each state in the joint distribution. We will demonstrate that MLMF 
+only evaluates dependent states (states which are affected by the likelihood). The MLFM filter is parameterised by the agent 
+and object marginals $P(A_t|u_{1_:t};\mathcolor{blue}{\ThAs})$, $P(O;\mathcolor{red}{\ThOs})$ and the history of 
+likelihood functions, $P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\BPsi})$ Equation \ref{eq:memory}, which is all the 
+likelihood functions since $t=0$ until $t$ and we will refer to it as the \textbf{memory likelihood function}: 
 
 \begin{equation}
  P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\BPsi}) := \prod_{i=0}^t P(\mathcolor{dark-green}{Y_i}|A_t,O,u_{i+1:t};\mathcolor{dark-green}{l_i}) \label{eq:memory}
@@ -597,7 +597,7 @@ summation of all the applied actions since $t=0$ until $t=i$, Equation \ref{eq:c
 %are all the measurements since the start of the filtering and offsets along the agent's axis, we refer to these parameters
 %as $\Psi_{0:t} = \{(Y,l)_p\}_{p=0:t}$. 
 
-In Algorithm \ref{alg:memory-motion}, we detail how an action $u_t$ and measurement $Y_t$, result in the update of $\Psi_{0:t}$, 
+In Algorithm \ref{alg:memory-motion}, we detail how an action $u_t$ and measurement $Y_t$, result in the update from $\Psi_{0:t-t}$ to $\Psi_{0:t}$, 
 the parameters of the likelihood functions; this is an implementation of Equations \ref{eq:ch5:mlmf_motion_update}-\ref{eq:ch5:mlmf_measurement_update} 
 for the memory likelihood function.
 
@@ -625,26 +625,17 @@ $\Psi_{0:t} \gets \{\bar{\Psi}_{0:t}, (Y_t,l_t:=0)\}$
 \end{center}
 
 Figure \ref{fig:maringal_joint_example_v2} illustrates the evolution of the MLMF joint distribution, Equation  \ref{eq:ch5:mlmf_filter_joint}.
-Both $P(A_0)$ and $P(O)$ were initialised as for the Histogram-SLAM example in Figure \ref{fig:discrete_example} on page \pageref{fig:discrete_example}.
+For ease of notation we will omit at times the parameters of the probability functions.
+Both $P(A_0;\mathcolor{blue}{\ThAs})$ and $P(O;\mathcolor{red}{\ThOs})$ were initialised as for the Histogram-SLAM example in Figure \ref{fig:discrete_example} on page \pageref{fig:discrete_example}.
 Two actions $u_{1:2}=1$ are applied and three measurements $Y_{0:3} = 0$ received which are then integrated into the filter. 
-Since initialisation of the joint distribution at $t=0$ until $t=3$ the object's marginal $P(O)$ remains unchanged and the agent's 
-marginal $P(A_2|u_{1:2})$ is updated by the two actions according to the motion update, see Figure \ref{fig:maringal_joint_example_v2} \textit{Top-right}.
+Since initialisation of the joint distribution at $t=0$ until $t=3$ the object's marginal $P(O;\mathcolor{red}{\ThOs})$ remains unchanged and the agent's 
+marginal $P(A_2|u_{1:2};\mathcolor{blue}{\ThAs})$ is updated by the two actions according to the motion update, see Figure \ref{fig:maringal_joint_example_v2} \textit{Top-right}.
 The product of these two marginals (terms of Equation \ref{eq:ch5:mlmf_filter_joint} before the memory likelihood product) results in the joint
-probability distribution $P(A_2,O|u_{1:2})$ illustrated in Figure \ref{fig:maringal_joint_example_v2} \textit{Middle-right}.
+probability distribution $P(A_2,O|u_{1:2};\mathcolor{blue}{\ThAs},\mathcolor{red}{\ThOs})$ illustrated in 
+Figure \ref{fig:maringal_joint_example_v2} \textit{Middle-right}. 
 
-In the left column of Figure \ref{fig:maringal_joint_example_v2} we illustrate how the memory likelihood term, Equation \ref{eq:memory}, 
-is updated according to Algorithm \ref{alg:memory-motion}. In the \textit{Top-left}, the first likelihood function $P(Y_0|A_2,O,u_{1:2})$ 
-is illustrated. As two actions have been applied Algorithm \ref{alg:memory-motion} is applied twice which results in a $l=2$ parameter
-for the first likelihood function. We highlighted the likelihood in green to indicate that it was the first added to the 
-memory term and for easy comparison with Figure \ref{fig:discrete_example} on page \pageref{fig:discrete_example}. As for the second 
-likelihood function $P(Y_1|A_2,O,u_{2})$ only one action has been applied and the third likelihood function $P(Y_3|A_2,O)$ has not yet
-been updated by the next action $u_3$. The parameters of likelihood product, Equation \ref{eq:memory}, are: $\Psi_{0:2} = \{(0,2)_{p=0},(0,1)_{p=1},(0,0)_{p=2}\}$ and the evaluation of memory 
-likelihood is depicted in the \textit{Bottom-left} of Figure \ref{fig:maringal_joint_example_v2}. 
 
-The reader may have noticed that the amplitude of the values of the filtered joint distribution illustrated in Figure \ref{fig:maringal_joint_example_v2} have not changed
-when compared with Figure \ref{fig:discrete_example}. This is because we have not re-normalised the joint distribution by the evidence $P(Y_{0:t}|u_{1:t})$. We will show 
-in the next section how we can \textbf{recursively} compute the evidence without having to integrate the whole joint distribution which would be 
-expensive.
+
 
 %Figure \ref{fig:margina_joint_example} illustrates the evolution of the MLMF joint distribution, Equation \ref{eq:ch5:mlmf_filter_conditional}, for 
 %two actions and three measurements. 
@@ -662,13 +653,13 @@ expensive.
  \includegraphics[width=0.95\textwidth]{./ch5-MLMF/Figures/explenation/example_marginal.pdf}
  \caption{The MLMF joint distribution, Equation \ref{eq:ch5:mlmf_filter_joint}, at time $t=3$.
  Three measurements (all $Y=0$) and two actions (both $u=1$) have been integrated into the joint distribution. \textit{Left column:} The first plot
- illustrates the likelihood of the first measurement $Y_0$. We highlight it in green to indicate that it was the first applied likelihood 
+ illustrates the likelihood of the first measurement $Y_0$. We highlight the contour in light-green to indicate that it was the first applied likelihood 
  function (see the correspondence with Figure \ref{fig:discrete_example}). The first likelihood function has been moved by the 2 actions, the 
  second likelihood function has been moved by one action (the last one, $u_2=1$) and the third likelihood has had no action applied to it 
  yet. The last applied likelihood function is highlighted in pink and the product of all the likelihoods since $t=0$ until $t=3$ is depicted at the 
- bottom of the figure which is $P(Y_{0:3}|A_2,O,u_{1:2})$. \textit{Right column:} the top figure illustrates the original marginal of the object $P(O)$, which remains unchanged, 
- and the agent's marginal $P(A_2|u_{1:2})$ which has moved in accordance to the motion update function. Their product would results in 
- the joint distribution $P(A_2,O|u_{1:2})$ illustrated in the middle figure if evaluated at each state $(i,j)$. The bottom figure is the result
+ bottom of the figure which is $P(Y_{0:3}|A_2,O,u_{1:2})$. \textit{Right column:} the top figure illustrates the original marginal of the 
+ object $P(O)$, which remains unchanged, and the agent's marginal $P(A_2|u_{1:2})$ which has moved in accordance to the motion update function. 
+ Their product would results in the joint distribution $P(A_2,O|u_{1:2})$ illustrated in the middle figure if evaluated at each state $(i,j)$. The bottom figure is the result
  of multiplying $P(A_2,O|u_{1:2})$ with  $P(Y_{0:3}|A_2,O,u_{1:2})$ giving the filtered joint distribution, Equation \ref{eq:ch5:mlmf_filter_joint}.
  }
  % Two actions have been applied to the likelihood function which results in a shift
@@ -677,7 +668,19 @@ expensive.
  \label{fig:maringal_joint_example_v2}
 \end{figure}
  
-
+In the left column of Figure \ref{fig:maringal_joint_example_v2} we illustrate how the memory likelihood term, Equation \ref{eq:memory}, 
+is updated according to Algorithm \ref{alg:memory-motion}. In the \textit{Top-left}, the first likelihood function 
+$P(\mathcolor{dark-green}{Y_0}|A_2,O,u_{1:2};\mathcolor{dark-green}{l_0})$ is illustrated. As two actions have been applied Algorithm \ref{alg:memory-motion} is applied 
+twice which results in a $\mathcolor{dark-green}{l_0}=2$ parameter for the first likelihood function. We highlighted, in the Figure, the likelihood in light-green 
+to indicate that it was the first added to the memory term and for easy comparison with Figure \ref{fig:discrete_example} on page \pageref{fig:discrete_example}. As for the second 
+likelihood function $P(\mathcolor{dark-green}{Y_1}|A_2,O,u_{2};\mathcolor{dark-green}{l_1})$ only one action has been applied and the third likelihood 
+function $P(\mathcolor{dark-green}{Y_3}|A_2,O;\mathcolor{dark-green}{l_3=0})$ has not yet been updated by the next action $u_3$. The parameters of likelihood product, Equation \ref{eq:memory}, are: $\Psi_{0:2} = \{(0,2)_{p=0},(0,1)_{p=1},(0,0)_{p=2}\}$ and the evaluation of memory 
+likelihood is depicted in the \textit{Bottom-left} of Figure \ref{fig:maringal_joint_example_v2}. 
+  
+The reader may have noticed that the amplitude of the values of the filtered joint distribution illustrated in Figure \ref{fig:maringal_joint_example_v2} have not changed
+when compared with Figure \ref{fig:discrete_example}. This is because we have not re-normalised the joint distribution by the evidence $P(Y_{0:t}|u_{1:t})$. We will show 
+in the next section how we can \textbf{recursively} compute the evidence without having to integrate the whole joint distribution which would be 
+expensive.
 %\begin{figure}
 % \centering
 % \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure6_v2.pdf}
@@ -801,8 +804,11 @@ from the joint distribution.
 
 \paragraph{Marginals}
 
-There are two different types of marginals used in the MLMF filter. The first set are the initial \textbf{joint marginals} of the joint distribution, Equation \ref{eq:ch5:mlmf_filter_joint}.
-The second set of marginals are the \textbf{filtered marginals} which are updated by evaluating the joint distribution in dependent states.
+There are two different types of marginals used in the MLMF filter. The first set are the \textbf{joint marginals} of the joint distribution, Equation \ref{eq:ch5:mlmf_filter_joint}
+parameterised by $\mathcolor{blue}{\ThAs}$ and $\mathcolor{red}{\ThOs}$.
+The second set of marginals are the \textbf{filtered marginals} which are updated by evaluating the joint distribution in dependent states and 
+are parameterised by $\mathcolor{blue}{\ThA}$ and $\mathcolor{red}{\ThO}$, see the box below. At initialisation before the the first action or observation is made 
+the parameters of the filtered marginal are set equal to those of the joint distribution.
 %and the filtered marginals, which will derive. The first set of marginals are the initial beliefs and they are part of the parameterisation of the joint distribution, 
 %which is only evaluated in dependent states. 
 
@@ -812,9 +818,9 @@ The second set of marginals are the \textbf{filtered marginals} which are update
 \node [white_box] (box){%
 \begin{minipage}{0.6\textwidth}
 \textbf{joint marignals}\\
-$P(A_t|u_{1:t})$ and  $P(O)$: Equation \ref{eq:ch5:mlmf_filter_joint}\\
+$P(A_t|u_{1:t};\mathcolor{blue}{\ThAs})$ and  $P(O;\mathcolor{red}{\ThOs})$: Equation \ref{eq:ch5:mlmf_filter_joint}\\
 \textbf{filtered marignals}\\
-$P(A_t|Y_{0:t},u_{1:t})$ and $P(O|Y_{0:t})$
+$P(A_t|Y_{0:t},u_{1:t};\mathcolor{blue}{\ThA})$ and $P(O|Y_{0:t};\mathcolor{red}{\ThO})$
 \end{minipage}
 };
 \node[fancytitle, right=10pt] at (box.north west) {Marginals};
@@ -825,7 +831,7 @@ $P(A_t|Y_{0:t},u_{1:t})$ and $P(O|Y_{0:t})$
 In Histogram-SLAM both the agent and object marginals are obtained, at each time step, by marginalising the joint distribution.
 This requires storing and summing over all the parameters of the joint distribution which is expensive.
 Instead in MLMF we take advantage of the sparsity of the likelihood function and as a result we take only the dependent marginal components are taken into consideration, 
-Equation \ref{eq:marignal_mrf}. 
+Equation \ref{eq:marignal_mrf} (see Appendix \ref{appendix:marginal} for the full derivation of Equation \ref{eq:marignal_mrf}). 
 %\begin{align}
 %  &P(A_t|Y_{0:t},u_{1:t}) = \sum\limits_{O}   P(A_t,O|Y_{0:t},u_{1:t}) = \overbrace{\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t},u_{1:t})}^{P_{\cap}(A_t|Y_{0:t},u_{1:t})} + \overbrace{\sum\limits_{O} P_{\ominus}(A_t,O|Y_{0:t},u_{1:t})}^{P_{\ominus}(A_t|Y_{0:t},u_{1:t})}   \nonumber \\
 %  &P(O|Y_{0:t})   = \sum\limits_{A_t} P(A_t,O|Y_{0:t},u_{1:t}) = \sum\limits_{A_t} P_{\cap}(A_t,O|Y_{0:t},u_{1:t}) + \sum\limits_{A_t} P_{\ominus}(A_t,O|Y_{0:t},u_{1:t})\nonumber
@@ -836,14 +842,13 @@ Equation \ref{eq:marignal_mrf}.
 %As for the evidence, the marginal is evaluated only in areas of the joint distribution which are dependent and uses the previously 
 %computed evidence to normalise this region of the joint distribution during the marginalisation process, Equation \ref{eq:marignal_mrf}
 
-\begin{equation}
- P(A_t|Y_{0:t})  =  P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  \mathbf{P_{\cap}(A_t|Y_{0:t}})  \Big) \label{eq:marignal_mrf} 
-\end{equation}
-(see Appendix \ref{appendix:marginal} for the full derivation of Equation \ref{eq:marignal_mrf}).
-
+\begin{align}
+ &P(A_t|Y_{0:\mathbf{t}};\mathcolor{blue}{\ThA}) = P(A_t|Y_{0:\mathbf{t-1}};\mathcolor{blue}{\ThA}) - \hspace*{5cm} \nonumber \\
+ &\hspace*{3cm}  \Big(P_{\cap}(A_t|Y_{0:t-1}) -  \mathbf{P_{\cap}(A_t|Y_{0:t}})  \Big)  \label{eq:marignal_mrf} 
+\end{align}
 \begin{align}
  &\mathbf{P_{\cap}(A_t|Y_{0:t}};\mathcolor{dark-blue}{\Alpha},\mathcolor{dark-green}{\bar{\Psi}_{0:t}},\mathcolor{blue}{\ThAs}, \mathcolor{red}{\ThOs})  =  \nonumber \\[0.5cm]
- &\frac{ \sum\limits_{O} P(Y_t|A_{t},O) P_{\cap}(O;\mathcolor{red}{\ThOs}) P_{\cap}(A_t;\mathcolor{blue}{\ThAs})  P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\bar{\Psi}_{0:t}})}{P(Y_{0:t}|u_{1:t};\mathcolor{dark-blue}{\Alpha})} \label{eq:marignal_mrf_2} 
+ &\frac{ \sum\limits_{O} P(Y_t|A_{t},O) P_{\cap}(O;\mathcolor{red}{\ThOs}) P_{\cap}(A_t|u_{1:t};\mathcolor{blue}{\ThAs})  P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\bar{\Psi}_{0:t}})}{P(Y_{0:t}|u_{1:t};\mathcolor{dark-blue}{\Alpha})} \label{eq:marignal_mrf_2} 
 \end{align}
 
 %\begin{align}
