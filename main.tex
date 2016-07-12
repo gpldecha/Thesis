@@ -130,6 +130,15 @@
 \newcommand{\Bi}{b^{[i]}}
 \newcommand{\Xm}{x^{[m]}}
 
+\newcommand{\ThAs}{\boldsymbol{\theta}^*_a}
+\newcommand{\ThOs}{\boldsymbol{\theta}^*_o}
+
+\newcommand{\ThA}{\boldsymbol{\theta}_a}
+\newcommand{\ThO}{\boldsymbol{\theta}_o)}
+\newcommand{\BAlph}{\boldsymbol{\alpha}_{\mathbf{0:t}}}
+\newcommand{\Alpha}{\alpha_{0:t}}
+\newcommand{\BPsi}{\boldsymbol{\Psi_{0:t}}}
+
 \newcommand{\invSigK}{\boldsymbol{\Sigma}^{[k]^{-1}}}
 \newcommand{\SigK}{\boldsymbol{\Sigma}^{[k]}}
 \newcommand{\Sig}[1]{\boldsymbol{\Sigma}^{[#1]}}
@@ -159,14 +168,20 @@
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
 
-%\usepackage{hyperref}
-%\hypersetup{
-%    colorlinks,
-%    citecolor=black,
-%    filecolor=black,
-%    linkcolor=black,
-%    urlcolor=black
-%}
+\definecolor{dark-green}{RGB}{0,100,0}
+\definecolor{dark-blue}{RGB}{28,107,145}
+
+
+\usepackage{color}
+
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
 
 
 

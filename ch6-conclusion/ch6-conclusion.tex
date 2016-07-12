@@ -3,45 +3,96 @@
 This Chapter highlights the contributions, limitations and personal insights of the author in this thesis and 
 proposes possible directions for future research.
 
+
+% It is rather odd to have a summary that uses present tense. 
+% Also, make sure there is no repetition with what you said in the introduction. 
+% This summary reads more like "I did A" but it does not give us an overview. 
+% I recommend to change this to continue along the lines of your first paragraph. 
+% Remind the reader of why using demonstrations is good with respect to what you said on solving the complexity of Pomdp. I would say something like. 
+
+% This thesis offered an approach to solving POMDP with continuous action space. To tackle the sheer complexity yielded by a continuous space, 
+% etc...And then you can go on explaining the methods, but in each case highlighting what this approach brings as opposed to summarizing what has been done. 
+
+
 \section{Main Contributions}
 
 This thesis specifically addressed decision making by agents under uncertainty. 
 In the field of Robotics and Artificial Intelligence (AI), considering uncertainty in search policies is not straightforward. 
 This is due to the complexity involved in solving Partially Observable Markov Decision Processes (POMDP), 
-commonly used to describe uncertainty in tasks, which become quickly infeasible for even the simplest problems. Although there has been progress in the 
-development of POMDP solvers with demonstrated applications to robotics, these are predominantly verified in simulation where the action space is discretised.  
+commonly used to describe uncertainty in tasks, which become quickly infeasible for even the simplest problems. 
+Although there has been progress in the development of POMDP solvers with demonstrated applications to robotics, 
+these are predominantly verified in simulation where the action space is discretised.  
 
-This thesis concentrates on the learning of search policies from human teachers and their transfer to a robotic apprentice,
-and provides three major contributions to the current research which will be summarised below.
+This thesis offers an approach to solving POMDP problems with continuous actions space and high levels of uncertainty which 
+are non-Gaussian. To tackle the sheer complexity yielded by a continuous space we used human demonstrations to provide an 
+set of behaviours which are encoded in a generative model used as a policy. This thesis provides three major contributions to 
+current research which we summarise below.
 
+% This thesis concentrates on the learning of search policies from human teachers and their transfer to a robotic apprentice,
+% and provides three major contributions to the current research which will be summarised below.
+
+% Contribution 1): what does it bring:
+%
+%	- multiple existing search stratgies can be extracted by the GMM model
+%	- humans are predominantly Risk averse when compared with a myopic greedy algorithm
+%	- The human policy is better at achieving the goal than a myopic and coastal navigation algorithm
+%
 Firstly, we demonstrate a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a mixture of search strategies 
-from human teachers. We use a particle filter to represent the belief of the end-effector's position of both human teachers and the robot apprentice.
-The particle filter is compressed to a belief state composed of the most likely state and entropy. 
-A sequence of demonstrated belief states and actions is used to learn a generative joint belief-action distribution parameterised by 
-Gaussian Mixture Model (GMM). The GMM is used as an autonomous dynamical system which gives a velocity vector field when conditioned on the current
-belief state. We demonstrate that mixed behaviours, such as risk prone and adverse, are encoded by the generative model. 
+from human teachers. This method allowed to extract multiple search strategies from a group of human teachers. The behaviour
+in question was predominantly risk-averse when compared to a myopic greedy policy. Even when the human subjects where localised they 
+would keep close to salient features whilst ``en route'' to the goal. The Gaussian Mixture Model (GMM) policy of the belief-state action 
+space allowed to encode the main behaviours in a continuous POMDP policy avoiding the discretisation of actions, states and time.
+The PbD-POMDP was able to outperform both myopic and coastal navigation algorithms thus demonstrating the usefulness of the human 
+teachers' foresight and how to leverage it in a POMDP policy avoiding the costly uninformed exploration methods traditionally 
+used to solve POMDP problems.
 
-Secondly, we propose a Reinforcement Learning (RL) approach to further optimise the parameters of the GMM model
-to take into account the quality of the demonstrated behaviours. By introducing a binary cost function and using 
-approximate dynamic programming in an actor-critic framework (which we call RL-PbD-POMDP) we are able to 
-significantly improve the performance of a search strategy designed to accomplish a peg-in-hole task.
+% We use a particle filter to represent the belief of the end-effector's position of both human teachers and the robot apprentice.
+% The particle filter is compressed to a belief state composed of the most likely state and entropy. 
+% A sequence of demonstrated belief states and actions is used to learn a generative joint belief-action distribution parameterised by 
+% Gaussian Mixture Model (GMM). The GMM is used as an autonomous dynamical system which gives a velocity vector field when conditioned on the current
+% belief state. We demonstrate that mixed behaviours, such as risk prone and adverse, are encoded by the generative model. 
+
+%
+% Contribution 2): what does it bring
+%
+%	- Task encoded explicitely by a cost function (reward function).
+%	- Reinforcement learning in belief space POMDP policy.
+%	- No need for explorative rollouts
+%	- Fitted method means no need to 
+
+Secondly, we propose a Reinforcement Learning (RL) extension in which the task is explicitly described by a binary reward 
+function. By combining the reward function and the explorative-exploitative data, provided by human teachers, in 
+a fitted actor-critic RL framework a significantly improved policy can be obtained after one iteration of policy evaluation
+and improvement. This mitigates the need of time consuming rollouts which is the traditional bottleneck in RL.
+We bring a modified version of the EM algorithm (Q-EM) which weights individual data points of demonstrations by 
+either the Q or advantage function. This approach allows to take into account the quality of the demonstrations, which was not the case 
+in the PbD-POMDP approach. We demonstrated that when solely the worst two teachers' data was used our RL method, RL-PbD-POMDP,
+outperformed our previous PbD-POMDP approach in a peg-in-hole task. 
+
+%We further demonstrated that if a diverse set of data is available and
+%a fitted RL method is used there is no need to perform expensive and time consuming rollouts to estimate the gradient of the policy,
+%a method traditionally used in policy search methods.
+
+%Secondly, we propose a Reinforcement Learning (RL) approach to further optimise the parameters of the GMM model
+%to take into account the quality of the demonstrated behaviours. By introducing a binary cost function and using 
+%approximate dynamic programming in an actor-critic framework (which we call RL-PbD-POMDP) we are able to 
+%significantly improve the performance of a search strategy designed to accomplish a peg-in-hole task.
 % need to say that much fewer demonstrations are needed
 
-Thirdly, we develop a Bayesian State Space Estimator (BSSE), which we name Measurement Likelihood Memory Filter (MLMF), to solve 
-the Simultaneous Localisation and Mapping (SLAM) problem where only haptic information is available. 
-Given the nature of the searches, we consider any prior structure in the beliefs (such as Gaussianity) to be 
-ill-suited. We demonstrate that by choosing a different parameterisation of the Histogram Bayesian filter we are able 
-to overcome the inherent exponential space and time complexity. To the best of our knoweldge this is 
-the first work which considers mostly negative information in a SLAM setting.
+Thirdly, we bring a Bayesian State Space Estimator (BSSE), which we name Measurement Likelihood Memory Filter (MLMF), to solve 
+the Simultaneous Localisation and Mapping (SLAM) problem where only haptic information is available.
+This filter does not make any assumptions on the structure of the beliefs, they don't need to be Gaussian (EKF-SLAM). The MLMF is parameterised by the function parameters of the likelihood functions as oppose
+to their values as it is the case for Histogram-SLAM. We demonstrate that the MLMF  is able to overcome the inherent exponential space and 
+time complexity present in its Histogram counterpart. To the best of our knoweldge this is the first 
+work which considers mostly negative information in a SLAM setting.
 
-% In this thesis we demonstrate a continuous action and belief space POMDP framework for learning how to accomplish a task 
-% with only haptic and proprioceptive information.
 
-% We proposed an Programming by Demonstration method to learn a POMDP policy.
+%This novel approach considers storing the parameters of likelihood function instead of their values which 
+%is the case in traditional 
 
-% Proposed a Reinforcement learning to improve the POMDP policy.
-
-% We propose a method to filter the state space.
+%Given the nature of the searches, we consider any prior structure in the beliefs (such as Gaussianity) to be 
+%ill-suited. 
+%We demonstrate that by choosing a different parameterisation of the Histogram Bayesian filter 
 
 \section{Limitations and Future Work}
 
@@ -215,22 +266,30 @@ insights.
  again feasible to use simple reward functions which can result in significant 
  improvements in the policy, as shown in Chapter 4.
  
-  \item \textit{Myopic vs POMDP policies:} Across most of the discrete POMDP literature the Q-MDP myopic policy is 
- used as a benchmark. In the problems considered, Q-MDP does not fare as well in terms of reward but the difference 
- in the policies's parameters are not reported. Throughout this research we always used a myopic policy as a benchmark 
- to compare with our more sophisticated approaches. Even though myopic policies do not consider uncertainty when taking an action,
- the action will always lead to some information gain, since actuated robots are very precise. As a result the 
- uncertainty will always decrease and eventually the robot will manage to accomplish its task.
- It is not clear what difference exists between myopic and continuous policy search methods on point motion and 
- grasping tasks in which the uncertainty is considered uni-modal and Gaussian, as there has been no extensive comparison.
- This being said a lot depends on the perception capabilities of the robot. In an environment which provides enough
- sensory cues after a few time steps the robot will be localised regardless of the policy followed. 
+ % \item \textit{Myopic vs POMDP policies:} Across most of the discrete POMDP literature the Q-MDP myopic policy is 
+ %used as a benchmark, \cite{approx_pomdp_vs_mdp_2014}. In the problems considered, Q-MDP does not fare as well in terms of reward but the difference 
+ %in the policies's parameters are not reported. Throughout this research we always used a myopic policy as a benchmark 
+ %to compare with our more sophisticated approaches. Even though myopic policies do not consider uncertainty when taking an action,
+ %the action will always lead to some information gain, since actuated robots are very precise. As a result the 
+ %uncertainty will always decrease and eventually the robot will manage to accomplish its task.
+ %It is not clear what difference exists between myopic and continuous policy search methods on point motion and 
+ %grasping tasks in which the uncertainty is considered uni-modal and Gaussian, as there has been no extensive comparison.
+ %This being said a lot depends on the perception capabilities of the robot. In an environment which provides enough
+ %sensory cues after a few time steps the robot will be localised regardless of the policy followed. 
+ 
+ % Example where Q-MDP does well 		  \cite{RENQ_2010}
+ % Example in grasping where Q-MDP does well:     \cite{u_aware_grasp_ICRA_2015} ?
+ % Steefen shall example where Noise is Gaussian: \cite{}
+ 
+% I found this section hard to followy. I do not know where you take it that uncertainty on point to point motion or on grasping is Gaussian. 
+% A few references would be welcome. Do you refer to paper on uncertainty in control in humans or in robots for this type of tasks? 
+% For humans, you are perhaps referring to Todorov's nature paper, but this related to uncertainty at the goal point not all along the trajectory and 
+% not at the level of control in joint and in force. It is also not clear to me in what the fact that it would be Gaussian would make the myopic approach better or on part.
+% Uncertainty could still be very large.  Finally, the last sentence is somewhat odd. Yes, sure, you may localize yourself is there are enough and umabiguous sensory cues,
+% but your approach tackled cases where this does not happen. Do you imply that this rarely happens, and, if so, this would put into question the very motivation of your research. 
+% It is an odd way to conclude a thesis.
+ 
 \end{itemize}
-
-
-
-% The importance of the likelihood measurement function
-% 
 
 
 

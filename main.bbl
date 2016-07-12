@@ -1081,8 +1081,8 @@ R.S. Sutton and A.G. Barto.
 \newblock \emph{Reinforcement learning: An introduction}, volume 116.
 \newblock Cambridge Univ Press, 1998{\natexlab{b}}.
 
-\bibitem[Szepesvári(2010)]{RL_book_2010}
-Csaba Szepesvári.
+\bibitem[Szepesv\'ari(2010)]{RL_book_2010}
+Csaba Szepesv\'ari.
 \newblock \emph{Algorithms for Reinforcement Learning}.
 \newblock Synthesis Lectures on Artificial Intelligence and Machine Learning.
   Morgan and Claypool Publishers, 2010.
