@@ -1,0 +1,257 @@
+\documentclass[fancy,estyle,twoside,a4paper]{ethesis}
+
+%The following two packages are required to have awesome font qualities!
+\usepackage{ae,aecompl} %,placeins
+
+
+% ========== Mathematics 
+
+\usepackage{amsmath,amssymb,amstext,amsthm}
+\usepackage{blkarray}
+\numberwithin{equation}{section}
+\usepackage{mathtools}
+
+\usepackage{hyperref}
+
+\usepackage[round]{natbib}
+
+% ========== Color
+
+\usepackage{color,soul,bm}
+\usepackage{colortbl}
+\usepackage[normalem]{ulem} %to have nice underlining, for exmaple try \uwave{blahblah}
+\usepackage{graphicx}
+
+\usepackage{fancyhdr}
+\usepackage{lettrine} %Typeset dropped capitals
+
+% ========== Algorithm
+
+%\usepackage[chapter, ruled]{algorithm}
+\usepackage[ruled,vlined,linesnumbered,boxed]{algorithm2e}
+\usepackage{color}
+
+\usepackage{bibentry}
+\nobibliography*
+
+% ========== Figures
+  
+\usepackage{multirow}
+\usepackage[footnotesize,bf,hang]{caption,subfigure}
+
+%\captionsetup[algorithm]{font=small}
+\usepackage{booktabs} %Publication quality tables in LaTeX
+
+%\usepackage{mathrsfs} %cool font, see http://zelmanov.ptep-online.com/ctan/symbols-a4.pdf
+%\usepackage[table]{xcolor}
+\usepackage[titletoc,toc,page]{appendix}
+
+%\usepackage[backref,bookmarks=true, breaklinks]{hyperref} % clickable back-references from the bibliography list to citing sections
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{soul}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{multirow}
+\usepackage{tikz} % drawing tools in latex
+%\usepackage[paperwidth=25cm,paperheight=22cm,left=1cm,top=1cm]{geometry}
+\usetikzlibrary{mindmap,shadows}
+
+\RequirePackage{natbib}
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.9}
+\usepackage{placeins}
+
+
+\usepackage[utf8]{inputenc}
+\inputencoding{latin1}
+\usepackage[T1]{fontenc}
+
+
+
+\newlist{mylist}{enumerate}{5}  % Specify 5 Levels as clone of enumerate
+\setlist[mylist,1]{label={\arabic*.}}  % Roman uppercase numbers I.
+\setlist[mylist,2]{label={\Alph*.}}   % Latin uppercase letters A.
+\setlist[mylist,3]{label={\arabic*.}} % arabic numbers 1.
+\setlist[mylist,4]{label={\alph*.}}   % Latin lowercase letters a.
+\setlist[mylist,5]{label={(\roman*)}} % roman lowercase letters in ()
+
+% Information boxes
+\newcommand*{\info}[4][16.3]{%
+  \node [ annotation, #3, scale=0.65, text width = #1em,
+          inner sep = 2mm ] at (#2) {%
+  \list{$\bullet$}{\topsep=0pt\itemsep=0pt\parsep=0pt
+    \parskip=0pt\labelwidth=8pt\leftmargin=8pt
+    \itemindent=0pt\labelsep=2pt}%
+    #4
+  \endlist
+  };	
+}
+
+\usepackage[makeroom]{cancel}
+
+
+\hypersetup{colorlinks={true},
+            linkcolor={blue},
+            anchorcolor={blue},
+            citecolor={blue},
+            filecolor={blue},
+            urlcolor={blue},
+            menucolor={blue},
+            }
+
+
+	\newcommand{\gDisplayTitle}{}
+	\newcommand{\gDisplayPreamble}{}
+	\newcommand{\gDisplayTableOfContents}{}
+	\newcommand{\gDisplayIntroduction}{}
+	\newcommand{\gDisplayBackground}{}
+
+	\newcommand{\gDisplaySearch}{}
+        \newcommand{\gDisplayPegSocket}{}
+	\newcommand{\gDisplayMLMF}{}
+	\newcommand{\gDisplayConclusions}{}
+	\newcommand{\gDisplayAppendix}{}
+	\newcommand{\gDisplayBibliography}{}
+
+
+\newcommand{\tagMainFile}
+
+\DeclareMathOperator{\E}{\displaystyle \mathop{\mathbb{E}}}
+\DeclareMathOperator*{\argmin}{\arg\min}   % rbp
+\DeclareMathOperator*{\argmax}{\arg\max}   % rbp
+\DeclareMathOperator{\policy}{\pi_{\boldsymbol{\theta}}}
+\DeclareMathOperator{\BigO}{\mathcal{O}}
+\newcommand{\X}{x}
+\newcommand{\B}{b}
+\newcommand{\U}{\dot{x}}
+
+\newcommand{\Ui}{\dot{x}^{[i]}}
+\newcommand{\Bi}{b^{[i]}}
+\newcommand{\Xm}{x^{[m]}}
+
+\newcommand{\ThAs}{\boldsymbol{\theta}^*_a}
+\newcommand{\ThOs}{\boldsymbol{\theta}^*_o}
+
+\newcommand{\ThA}{\boldsymbol{\theta}_a}
+\newcommand{\ThO}{\boldsymbol{\theta}_o}
+\newcommand{\BAlph}{\boldsymbol{\alpha}_{\mathbf{0:t}}}
+\newcommand{\Alpha}{\alpha_{0:t}}
+\newcommand{\BPsi}{\boldsymbol{\Psi_{0:t}}}
+
+\newcommand{\invSigK}{\boldsymbol{\Sigma}^{[k]^{-1}}}
+\newcommand{\SigK}{\boldsymbol{\Sigma}^{[k]}}
+\newcommand{\Sig}[1]{\boldsymbol{\Sigma}^{[#1]}}
+\newcommand{\Mu}[1]{\boldsymbol{\mu}^{[#1]}}
+\newcommand{\MuK}{\boldsymbol{\mu}^{[k]}}
+\newcommand{\xb}{\dot{x}|b}
+
+\newcommand{\piK}{w^{[k]}}
+\newcommand{\Param}{\boldsymbol{\theta}}
+
+\newcommand{\V}{\ensuremath{\mathcal{V}}}
+\newcommand{\varOne}{\ensuremath{\sigma_{x}^{2}}}
+\newcommand{\varTwo}{\ensuremath{\sigma_{m}^{2}}}
+\newcommand{\stdOne}{\ensuremath{\sigma_{x}}}
+\newcommand{\stdTwo}{\ensuremath{\sigma_{m}}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\newcommand{\dependent}{\rotatebox[origin=c]{180}{$\independent$}}
+%\newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
+
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
+\newsavebox{\fmbox}
+\newenvironment{fmpage}[1]
+{\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
+
+\definecolor{dark-green}{RGB}{0,100,0}
+\definecolor{dark-blue}{RGB}{28,107,145}
+
+
+\usepackage{color}
+
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\newcommand*{\AddNote}[4]{%
+    \begin{tikzpicture}[overlay, remember picture]
+        \draw [decoration={brace,amplitude=0.5em},decorate,ultra thick,red]
+            ($(#3)!(#1.north)!($(#3)-(0,1)$)$) --  
+            ($(#3)!(#2.south)!($(#3)-(0,1)$)$)
+                node [align=center, text width=2.5cm, pos=0.5, anchor=west] {#4};
+    \end{tikzpicture}
+}%
+
+
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+
+
+
+\graphicspath{{ch1-Introduction/Figures/}}
+
+\begin{document}
+
+\input{macros}
+
+\ifdefined \gDisplayTitle
+	\title{Learning Search Strategies from Human Demonstrations}
+	\author{Guillaume de Chambrier}
+	\department{Learning Algorithms and Systems Laboratory (LASA)}
+	\college{Doctoral Program on Manufacturing Systems and Robotics}
+	\schools{School of Engineering} %
+	\advisor{Prof. Aude Billard}
+	\degreeyear{August, 2016}
+	\phdthesis
+	\maketitle
+	\emptynewpage
+\fi
+
+
+\ifdefined \gDisplayPreamble
+	\frontmatter
+	\input{ch0-Preamble}
+\fi
+
+\ifdefined \gDisplayTableOfContents
+	\tableofcontents
+	\newpage
+	\forcenewpage
+\fi
+
+\mainmatter
+
+\ifdefined  	\gDisplayIntroduction 		\input{ch1-Introduction/ch1-Introduction.tex} 	\fi
+\ifdefined  	\gDisplayBackground		\input{ch2-Background/ch2-Background.tex} 	\fi
+\ifdefined	\gDisplaySearch			\input{ch3-Search/ch3-Learning_search_behaviour_from_humans.tex}  \fi
+\ifdefined	\gDisplayPegSocket		\input{ch4-PiH/ch4-PiH.tex} 	 		\fi
+\ifdefined	\gDisplayMLMF	 		\input{ch5-MLMF/ch5-MLMF.tex}	 		\fi
+\ifdefined	\gDisplayConclusions 		\input{ch6-conclusion/ch6-conclusion.tex}  			\fi
+\ifdefined	\gDisplayAppendix 	 	\input{Appendix/appendix.tex} 	 			\fi
+	
+\backmatter
+%bib/ProspectTheory.bib
+\ifdefined \gDisplayBibliography
+	\bibliographystyle{plainnat}
+	\bibliography{bib/MLMF.bib,bib/peg_hole.bib,bib/RL.bib,bib/pomdp.bib,bib/citations.bib,bib/DT.bib,bib/spatial_navigation.bib,bib/ch3-citations.bib}
+
+
+
+	%\bibliography{bib/planning.bib,bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,imitation_learning.bib,bib/ch3-citations.bib}\fi
+\end{document}

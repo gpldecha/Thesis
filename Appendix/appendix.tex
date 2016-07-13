@@ -35,35 +35,71 @@ and did the corresponding anova analysis on this linear model. We found that the
 remained significant.
 
 \section{EM policy search}\label{app:lb}
-Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, $J(\Param)$.
-The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
+We derive step-by-step the update rules of a policy $\pi_{\Param}(\U,\B)$ parameterised by a Gaussian Mixture Model:
+
+\begin{equation}
+  \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^K  \piK\,g(\U,\B;\MuK,\SigK)
+\end{equation}
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+of the individual Gaussian functions, $g(\cdot)$. The objective of a Reinforcement Learning (RL) is 
+to have the policy maximise a reward function, $J(\Param)$ Equation \ref{eq:ch4:app:J}, defined over the policies' parameters:
+
 \begin{align}
-  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
-	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
+J(\Param)  &= \mathbb{E}_{\pi_{\Param}}\{R(\U,\B)\} \nonumber \\
+	   &= \sum\limits_{\B} d^{\pi}(\B) \sum\limits_{\U} \pi_{\Param}(\U,\B)\,R(\U,\B) \label{eq:ch4:app:J}
 \end{align}
-
-where $\mathbb{T}$ is the set of all rollouts. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
-summation.
+where $\B \sim d^{\pi}(\B)$ is the initial state distribution. The RL objective is to find a new set of parameters $\Param'$
+which maximises the above cost function $J$. Our approach follows the Monte-Carlo (MC) gradient estimate of Equation \ref{eq:ch4:app:J}
+through use of the log-likelihood ratio identity: $\nabla \log(\pi_{\Param}) = \nabla \pi_{\Param} / \pi_{\Param}$:
 
 \begin{align}
-  \log( J(\Param') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
+ \nabla_{\Param} J(\Param) &= \sum\limits_{\B} d^{\pi}(\B) \sum\limits_{\U}  \pi_{\Param}(\U,\B) \nabla_{\Param} \pi_{\Param}(\U,\B) \,R(\U,\B) \nonumber \\ 
+			   &= \mathbb{E}_{\pi_{\Param}}\{\nabla_{\Param} \log(\pi_{\Param}(\U,\B)) \,R(\U,\B)\} \label{eq:ch4:app:lJ}
 \end{align}
+This trick allows to evaluate the gradient of the parameters through Monte-Carlo trajectories generated from a the policy $\pi_{\Param}(\U,\B)$.
+Most policy search methods have at their core the above gradient estimate method. The drawback of policy gradient methods is that a learning 
+rate needs to be specified. We would rather instead use an Expectation-Maximisation (EM) approach, which does not require a learning rate, and 
+there is already a lot of theory with respect to EM and GMMs. Also updating the covariance parameters of the GMM by gradient ascent can lead 
+to problems such the covariances being no longer positive-definite and this resolution requires the addition of constraints which becomes 
+cumbersome. In contrast the EM solution for the GMM case is simple and easy to implement.
 
-We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
-zero so as to maximise the cost function.
+\begin{equation}
+  \Param^{\mathrm{new}} = \argmax\limits_{\Param} \overbrace{\sum_{i \in \mathbb{T}} \pi_{\Param}(\Ui,\Bi)\, R(\Ui,\Bi)}^{J(\Param) } \label{eq:ch4:argmax}
+\end{equation}
+
+$\mathbb{T}$ is the dataset of all episodes. The above equation can be solved through through the same approach taken in EM 
+which consists of maximising the the logarithmic lower bound of the MC approximation of the cost function $J(\Param)$. 
+
+%The policy gradient theorem \cite{Sutton00policygradient} states the the gradient is:
+%Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, .
+%The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
+%\begin{align}
+%  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
+%	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
+%\end{align}
+
+
 
 \begin{align}
- &\nabla_{\Param'}  \log( J(\Param') ) = \nonumber\\
- &\sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    & - \underbrace{ \nabla_{\Param'} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
-				    &= \sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    &= \mathbb{E}_{\pi_{\Param}(\U,\B)} \Big\{ \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
+  \log( J(\Param) )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param}(\Ui,\Bi)}{\pi_{\Param'}(\Ui,\Bi)} \, \pi_{\Param'}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+		     & \geq \underbrace{\sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param}(\Ui,\Bi)}{\pi_{\Param'}(\Ui,\Bi)}\Bigg) \, \pi_{\Param'}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\mathcal{Q}(\Param,\Param')} \label{eq:lower_bound}
 \end{align}
+The inequality is achieved through using Jensen's inequality. We maximise the lower bound, 
+$\nabla_{\Param}\mathcal{Q}(\Param,\Param') = 0$, by setting its derivative to zero. The parameter
+$\Param'$ are the old parameters used by the policy to generate the episodes through MC, which is the E-step.
+
+%We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
+%zero so as to maximise the cost function.
 
 \begin{align}
- \nabla_{\Param'}  \log( J(\Param') ) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Param'}\log \pi_{\Param'}(\Ui,\Bi)\Big\}\\
-				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
+ \nabla_{\Param}\mathcal{Q}(\Param,\Param')& = \sum_{i \in \mathbb{T}} \nabla_{\Param} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param'}(\Ui,\Bi) \, R(\Ui,\Bi) - \nonumber \\
+				    &\underbrace{\nabla_{\Param} \log\big( \pi_{\Param'}(\Ui,\Bi)\big)}_{=0} \, \pi_{\Param'}(\Ui,\Bi) \, R(\Ui,\Bi)				   
+\end{align}
+\begin{align}
+ \nabla_{\Param}\mathcal{Q}(\Param,\Param') &= \sum_{i \in \mathbb{T}} \nabla_{\Param} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param'}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
+				    &= \mathbb{E}_{\pi_{\Param'}} \Big\{ \nabla_{\Param} \log\big( \pi_{\Param}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\} \\
+				    &= \mathbb{E}_{\pi_{\Param}}\Big\{R(\Ui,\Bi)  \sum_{i=0}^{T}\nabla_{\Param'}\log \pi_{\Param'}(\Ui,\Bi)\Big\} \\
+				    &= \sum\limits_{i=1}^{N} \sum\limits_{i=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
 \end{align}
 
 The reader is referred to \cite{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.

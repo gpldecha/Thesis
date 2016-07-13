@@ -52,6 +52,15 @@
     	publisher = {MIT Press}
 }
 
+@INPROCEEDINGS{Sutton00policygradient,
+    author = {Richard S. Sutton and David Mcallester and Satinder Singh and Yishay Mansour},
+    title = {Policy gradient methods for reinforcement learning with function approximation},
+    booktitle = {In Advances in Neural Information Processing Systems 12},
+    year = {2000},
+    pages = {1057--1063},
+    publisher = {MIT Press}
+}
+
 
 % Gradient policy search
 
@@ -322,7 +331,7 @@
 %% BOOK
 
 @book{RL_book_2010,
-  	author  	= {Szepesvári, Csaba},
+  	author  	= {Szepesv\'ari, Csaba},
   	booktitle  	= {Algorithms for Reinforcement Learning},
   	publisher  	= {Morgan and Claypool Publishers},
   	series  	= {Synthesis Lectures on Artificial Intelligence and Machine Learning},

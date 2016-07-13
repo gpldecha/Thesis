@@ -1305,7 +1305,7 @@ month={Sept}
 }
 
 
-@INPROCEEDINGS{5596811,
+@INPROCEEDINGS{RENQ_2010,
 	author	 	={M. A. Wiering and T. Kooi},
 	booktitle	={The 2010 International Joint Conference on Neural Networks (IJCNN)},
 	title	 	={Region enhanced neural Q-learning for solving model-based POMDPs},

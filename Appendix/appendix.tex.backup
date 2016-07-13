@@ -35,23 +35,61 @@ and did the corresponding anova analysis on this linear model. We found that the
 remained significant.
 
 \section{EM policy search}\label{app:lb}
-Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, $J(\Param)$.
-The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
-\begin{align}
-  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
-	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
-\end{align}
+We derive step-by-step the update rules of a policy $\pi_{\Param}(\U,\B)$ parameterised by a Gaussian Mixture Model:
 
-where $\mathbb{T}$ is the set of all rollouts. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
+\begin{equation}
+  \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^K  \piK\,g(\U,\B;\MuK,\SigK)
+\end{equation}
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+of the individual Gaussian functions, $g(\cdot)$. The objective of a Reinforcement Learning (RL) is 
+to have the policy maximise a reward function, $J(\Param)$ Equation \ref{eq:ch4:app:J}, defined over the policies' parameters:
+
+\begin{align}
+J(\Param)  &= \mathbb{E}_{\pi_{\Param}}\{R(\U,\B)\} \nonumber \\
+	   &= \sum\limits_{\B} d^{\pi}(\B) \sum\limits_{\U} \pi_{\Param}(\U,\B)\,R(\U,\B) \label{eq:ch4:app:J}
+\end{align}
+where $\B \sim d^{\pi}(\B)$ is the initial state distribution. The RL objective is to find a new set of parameters $\Param'$
+which maximises the above cost function $J$. Our approach follows the Monte-Carlo (MC) gradient estimate of Equation \ref{eq:ch4:app:J}
+through use of the log-likelihood ratio identity: $\nabla \log(\pi_{\Param}) = \nabla \pi_{\Param} / \pi_{\Param}$:
+
+\begin{align}
+ \nabla_{\Param} J(\Param) &= \sum\limits_{\B} d^{\pi}(\B) \sum\limits_{\U}  \pi_{\Param}(\U,\B) \nabla_{\Param} \pi_{\Param}(\U,\B) \,R(\U,\B) \nonumber \\ 
+			   &= \mathbb{E}_{\pi_{\Param}}\{\nabla_{\Param} \log(\pi_{\Param}(\U,\B)) \,R(\U,\B)\} \label{eq:ch4:app:lJ}
+\end{align}
+This trick allows to evaluate the gradient of the parameters through Monte-Carlo trajectories generated from a the policy $\pi_{\Param}(\U,\B)$.
+Most policy search methods have at their core the above gradient estimate method. The drawback of policy gradient methods is that a learning 
+rate needs to be specified. We would rather instead use an Expectation-Maximisation (EM) approach, which does not require a learning rate, and 
+there is already a lot of theory with respect to EM and GMMs. Also updating the covariance parameters of the GMM by gradient ascent can lead 
+to problems such the covariances being no longer positive-definite and this resolution requires the addition of constraints which becomes 
+cumbersome. In contrast the EM solution for the GMM case is simple and easy to implement.
+
+\begin{equation}
+  \argmax\limits_{\Param'} J(\Param') = \argmax\limits_{\Param'} \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \label{eq:ch4:argmax}
+\end{equation}
+
+The above equation can be solved through maximising the logarithmic lower bound of the MC approximation of the cost function $J(\Param')$
+and where $\mathbb{T}$ is the set of all episodes. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
 summation.
+
+%The policy gradient theorem \cite{Sutton00policygradient} states the the gradient is:
+%Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, .
+%The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
+%\begin{align}
+%  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
+%	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
+%\end{align}
+
+
 
 \begin{align}
   \log( J(\Param') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
+		     & \geq \underbrace{\sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\mathcal{Q}(\Param')} \label{eq:lower_bound}
 \end{align}
 
-We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
-zero so as to maximise the cost function.
+We maximise the lower bound by setting its derivative to zero,  $\nabla_{\Param0}\mathcal{Q}(\Param') = 0$.
+
+%We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
+%zero so as to maximise the cost function.
 
 \begin{align}
  &\nabla_{\Param'}  \log( J(\Param') ) = \nonumber\\
@@ -201,18 +239,16 @@ we can again apply the chain rule to the right, which gives:
 			      &=  P(Y_{0:t}|A_{0:t},O) P(A_{0:t},O|u_{1:t})
 \end{align}
 The measurements $Y_{0:t}$ are independent of the actions $u_{0:t}$  given the history of the agent's random 
-variables $A_{0:t}$. Also note that the object random variable $O$ is conditionally independent of the actions:
+variables $A_{0:t}$. Next we see the relation between the thirst three terms on the right of Equation \ref{eq:ch5:joint_final}
+with $P(A_{0:t},O|u_{1:t})$. We apply the chain rule:
+
 \begin{align}
  P(A_{0:t},O|u_{1:t}) &= P(A_{0:t}|\Ccancel[red]{O},u_{1:t}) P(O|\Ccancel[red]{u_{1:t}}) \\
 		      &= P(A_0) P(O) P(A_{1:t}|u_{1:t}) 
 \end{align}
 
-
-%P(A_{0:t},O|u_{1:t}) P(Y_{0:t}|A_{0:t},O)
-
-%From Equation \ref{eq:ch5:joint_final} by multiplying the first three terms together we get
-%$P(A_{0:t},O|u_{1:t})$. We can hence clearly see the relationship with the joint distribution:
-
+The object $O$ is conditionally independent of the actions and the second of actions $A_{0:t}$ are conditional independent 
+of the object as they are dependent only on the measurements.
 
 Typically we are interested in the filtered joint distribution $P(A_t,O,Y_{0:t}|u_{1:t})$ which 
 is obtained by marginalising over $A_{0:t-1}$:
@@ -220,7 +256,7 @@ is obtained by marginalising over $A_{0:t-1}$:
   P(A_t,O,Y_{0:t}|u_{1:t}) = \sum_{A_{0:t-1}}  P(A_t,A_{0:t-1},O,Y_{0:t}|u_{1:t}) \\
 \end{equation}
 A recursion exists making it not necessary to sum over all agents random variables from the state time 
-until then end, but instead only have to consider the last time step, see the next paragraph.
+until then end, but instead we only have to consider the last time step, see the next paragraph.
 
 %  P(A_{0:t},O,Y_{0:t},u_{1:t})  &= P(A_0)P(O)\prod_{t=1}^{t} P(A_t|A_{t-1},u_{t-1}) P(Y_t|A_t,O) \\
 \paragraph{Filtering problem}\\
@@ -228,7 +264,6 @@ We derive $P(A_t,O,Y_{0:t}|u_{1:t})$, we start from the joint distribution, Equa
 \begin{equation}
    P(A_t,O,Y_{0:t}|u_{1:t})  = \sum_{A_{t-1}} P(A_t,A_{t-1},O,Y_t,Y_{0:t-1}|u_{t},u_{1:t-1}) \label{eq:br_chain} 
 \end{equation}
-
 
 \begin{tabular}{lll}
    $P(A_t,O,Y_{0:t}|u_{1:t})$ & $=\sum_{A_{t-1}}$ &  $P(Y_t|\Ccancel[red]{Y_{0:t-1}},A_t,\cancel{A_{t-1}},O,\cancel{u_{t}},\cancel{u_{1:t-1}}) $ \\
@@ -316,7 +351,7 @@ of $Y_1$ is dependent on the last action.
 %From Equation \ref{eq:ch5:rec_ex3} to \ref{eq:ch5:rec_ex4} we did the same steps as for Equation \ref{eq:ch5:rec_ex1} to \ref{eq:ch5:rec_ex2}.
 Repeating the above for $Y_{2:t}$ and $u_{3:t}$ results in:
 \begin{equation}
- P(A_t,O,Y_{0:t}|u_{1:t}) = P(O)P(A_t|u_{1:t}) \prod_{i=0}^{t} P(Y_i|A_t,O,u_{(i+1):t})
+ P(A_t,O,Y_{0:t}|u_{1:t}) = P(O)P(A_t|u_{1:t}) \prod_{i=0}^{t} P(Y_i|A_t,O,u_{i+1:t})
 \end{equation}
 If $t=3$, ($Y_{0:3}$ and $u_{1:3}$) according to the above equation we would get:
 \begin{align}
