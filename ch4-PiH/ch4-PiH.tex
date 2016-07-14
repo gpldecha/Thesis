@@ -518,7 +518,7 @@ to control the orientation to avoid jamming.
 Both the linear and angular velocity policies are parameterised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 
 \begin{equation}
- \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK	    \cdot  g(\U,\B;\MuK,\SigK) \label{eq:GMM}
+ \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) \label{eq:GMM}
 \end{equation}
 The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
 of the individual Gaussian functions, $g(.)$,
@@ -645,43 +645,44 @@ We update the Actor policy given the Critic value function through a modificatio
 for Gaussian Mixture Models. We refer to this modification as Q-EM which is strongly related to a Monte-Carlo EM-based policy 
 search approach \cite[p.50]{p_search_surv_2011}. 
 
-The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$.
+The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$,
 \begin{equation}\label{eq:disc_return}
  R(\B^{[i]},\U^{[i]}) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
 \end{equation}
+where the index $i$ stands for the $i$th episode.
 All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
-which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward}.
+which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward},
 \begin{align}\label{eq:expected_reward}
- J(\Param) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\{R(\B,\U)\} \nonumber \\
-	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{\pi_{\Param}(\U^{[i]},\B^{[i]})} \, R(\B^{[i]},\U^{[i]}) 
+ J(\Param) &= \mathbb{E}_{p_{\Param}}\{R\} \nonumber \\
+	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
 \end{align}
-
-To find the parameters which maximise the cost function, $\argmax_{\Param'} J(\Param')$, its derivative is set to zero. 
+where $\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
+To find the parameters which maximise the cost function, $\argmax_{\Param} J(\Param)$, its derivative is set to zero. 
 As this cannot be done directly, we maximise the logarithmic lower bound of the cost function which results in 
-Equation \ref{eq:grad_log_cost}.
+Equation \ref{eq:grad_log_cost}, see Appendix \ref{app:lb} for the derivation.
 
 \begin{equation} \label{eq:grad_log_cost}
-    \nabla_{\Param'}\log(J(\Param')) = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
+  \nabla_{\Param}\mathcal{Q}(\Param,\Param') = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param}\log \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi_{\Param'}}(\U^{[i]}_t,\B^{[i]}_t)
 \end{equation}
 
 Setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
 $\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
-which is weighted by $Q^{\pi}$, see Appendix \ref{app:lb} for a more complete derivation.
-We use the Critic's TD error as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi_{\Param}}$, 
-is close to the true value function $V^{\pi_{\Param}}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
+which is weighted by $Q^{\pi_{\Param'}}$.
+We use the Critic's TD error as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi}$, 
+is close to the true value function $V^{\pi}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
 (see Appendix \ref{app:unbiased_delta}).
 \begin{equation}\label{eq:advantage_f}
- A^{\pi}(b_t,u_t) = Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) = \delta^{\pi}_t
+ A^{\pi}(\U_t,\B_t) =  Q^{\pi}(\U_t,\B_t) - V^{\pi}(\B_t) = \delta^{\pi}_t
 \end{equation}
 Using the advantage function as means of policy search is popular with methods such as
 Natural Actor Critic (NAC) \cite{peter_nac_2008}.
 
-Each data point has an associated weight, $\delta \in \mathbb{R}$, where $\delta^{[m]} \geq 0$ means that the 
-state action-pair $\X^{[m]}$ leads to an increase in the value function and $\delta^{[m]} \leq 0$ leads to 
-a decrease in the value function. The likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
+Each state-action sample $j$ has an associated weight, $\delta_j \in \mathbb{R}$, where $\delta_j > 0$ means that the 
+$j$th state action-pair lead to an increase in the value function and $\delta_j < 0$ lead to 
+a decrease in the value function. The data log-likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
 the Q-EM update steps cannot allow negative weights, the TD error is rescaled to be between 0 and 1. % we already sed this
 
-The reader is referred to Appendix \ref{app:grad} for the new Maximisation update step of Q-EM for a 
+The reader is referred to Appendix \ref{app:grad} for the Maximisation update step of Q-EM for a 
 GMM parameterization of the policy.
 
 %We learn the plug-socket search policy using the Q-EM update rules for a GMM parametrisation with the 
@@ -792,7 +793,7 @@ the socket's hole, as the orientation is constant.
 The direction to search is given by the conditional, Equation \ref{eq:gmm_conditional},
 
 \begin{equation}\label{eq:gmm_conditional}
- \pi_{\Param}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \cdot g(\dot{x};\MuK_{\xb},\SigK_{\xb}) 
+ \pi_{\Param}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \; g(\dot{x};\MuK_{\xb},\SigK_{\xb}) 
  \end{equation}
 
 which is a distribution over the possible normalised velocities. The function $g(\cdot)$ is a multivariate
@@ -854,21 +855,25 @@ controller based on the believed distance to the goal,
 where the lower and upper amplitude limits are given by $\beta_1$ and $\beta_2$, $x_g$ is the position of the
 goal, and $K_p$ the proportional gain which was tuned through trials. 
 
+% $\omega_t = \mathrm{angleaxis}(\mathbf{R}^{\mathrm{T}} \mathbf{R}^r)$  $\mathbf{R}^r = I$
+
 The above procedure can control the general behaviour of the search but is insufficient for a successful implementation on a robotic system 
 such as the 7 Degree of Freedom $q\in\mathbb{R}^7$ KUKA LWR, which we illustrate in Figure \ref{fig:kuka}. 
 The GMM policy $\dot{x} = \mathbb{E}_{\alpha}\{\pi_{\Param_1}(\dot{x}|b)\}$ outputs a linear velocity and the 
-angular velocity $\omega_t = \mathrm{angleaxis}(\mathbf{R}^{\mathrm{T}} \mathbf{R}^r)$ is computed from a 
-reference orientation $\mathbf{R}^r = I$ which is constant. When the plug is to be connected to the socket, 
+angular velocity is computed from a reference orientation which is constant. When the plug is to be connected to the socket, 
 the angular velocity is the output of samples drawn from the conditional $\omega \sim \pi_{\Param_2}(\omega|\phi)$.
+From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to 
+define a linear and angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  
+the current position $x$ and orientation $R$.
 Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
-Cartesian control $u_t = [\dot{x}_t,\omega_t]^{\mathrm{T}}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
+Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
 
 \begin{equation}\label{eq:torque_control}
- \tau_t = J^{\mathrm{T}}(q_t)\left(-K u_t - D \dot{u}_t \right) + g(q)
+ \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
 \end{equation}
 
-where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices and $g(q)$ compensates for gravity. Given an applied torque there is 
-a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
+where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
+and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
 Figure \ref{fig:control_flow} illustrates the complete control flow.
 
 \begin{figure}
@@ -1084,7 +1089,7 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Fig/value_subj_5.pdf}
- \caption{Value function learned from the 15 demonstrations of teacher \#5. The value of the the most likely state is plotted.}
+ \caption{Value function learned from the 15 demonstrations of teacher \#5. The value of the most likely state is plotted.}
  \label{fig:value_function_subj_5}
 \end{figure}
  

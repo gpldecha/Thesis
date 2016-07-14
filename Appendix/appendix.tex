@@ -5,15 +5,21 @@
 
 \section{Time to connect socket (ANOVA)}
 \label{app:anova_socket}
+
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch4-PiH/Figures/time_taken_subgroup.pdf}
+ \caption{}
+\end{figure}
+
 % 1) Is there are a difference across groups 
-
 % 2) Is there a difference between the two sockets
-The null hypothesis is that there is no difference in 
-the time taken to connect socket A or B. The result of the one-way anova
-is given in Table \ref{tab:ch4:anova_socket}. The null hypothesis is rejected at high significant level (***)
-indicating that there is a difference between the sockets. According to the linear 
-model it takes on average 4 seconds less to connect socket B than it does for socket A.
-
+The null hypothesis is that there is no difference in the time taken to connect socket A or B. The result of the one-way anova
+is given in Table \ref{tab:ch4:anova_socket}. The null hypothesis is rejected at high significant level (***) indicating that 
+there is a difference between the sockets. According to the linear model it takes on average 4 seconds less to connect socket B 
+than it does for socket A.
+  
 \begin{table}[h]
 \centering
 \begin{tabular}{lcc}
@@ -33,11 +39,11 @@ and the subject's ID (1 to 10):
 \end{equation}
 and did the corresponding anova analysis on this linear model. We found that the difference between the sockets 
 remained significant.
-
+\FloatBarrier
 \section{EM policy search}\label{app:lb}
-The objective of a Reinforcement Learning (RL) is to have the policy maximise a cost function, $J(\Param)$ Equation \ref{eq:ch4:app:J}, 
-defined over the policies' parameters:
-
+The objective of policy search in Reinforcement Learning (RL) is to optimise the parameters of a policy $\pi_{\Param}$
+(which is a Gaussian Mixture Model (GMM) in our case) such to maximise a cost 
+function, $J(\Param)$ Equation \ref{eq:ch4:app:J}, defined over the parameters of the policy:
 %\begin{align}
 %J(\Param)  &= \mathbb{E}_{\pi_{\Param}}\{R(\U,\B)\} \nonumber \\
 %	   &= \sum\limits_{\B} d^{\pi}(\B) \sum\limits_{\U} \pi_{\Param}(\U,\B)\,R(\U,\B) \label{eq:ch4:app:J}
@@ -51,31 +57,42 @@ defined over the policies' parameters:
  J(\Param) = \overbrace{\sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i)}^{\mathbb{E}_{p_{\Param}}\{R\}} 
 \end{align}
 
-$\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$
-$N$ is the number of episodes and  $T^{[i]}$ is the length of the $i$th one. The reward of one episode is given, in our study, by 
-the discounted reward function:
+where $\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$ are the state-action samples of the $i$th episode. 
+The total reward of one episode is the sum of discounted rewards:
 
 \begin{equation}
  R(\tau_i) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
 \end{equation}
 
+where $\gamma \in [0,1)$ is the discount factor which dictates how much future rewards are considered important 
+at the current decision point.
 %\begin{align}
 % \nabla_{\Param} J(\Param) &= \sum\limits_{\B} d^{\pi}(\B) \sum\limits_{\U}  \pi_{\Param}(\U,\B) \nabla_{\Param} \pi_{\Param}(\U,\B) \,R(\U,\B) \nonumber \\ 
 %			   &= \mathbb{E}_{\pi_{\Param}}\{\nabla_{\Param} \log(\pi_{\Param}(\U,\B)) \,R(\U,\B)\} \label{eq:ch4:app:lJ}
 %\end{align}
 %This trick allows to evaluate the gradient of the parameters through Monte-Carlo trajectories generated from a the policy $\pi_{\Param}(\U,\B)$.
-Most policy search methods are based on doing gradient ascent on the above cost function. The drawback of policy gradient methods is that a learning 
-rate needs to be specified. We would rather instead use an Expectation-Maximisation (EM) approach, which does not require a learning rate, and 
-there is already a lot of theory with respect to EM and GMMs. Also updating the covariance parameters of the GMM by gradient ascent can lead 
+Most policy search methods are based gradient ascent on the cost function:
+\begin{equation}
+   \Param^{\mathrm{new}} =  \Param + \alpha\,\nabla_{\Param}J(\Param)
+\end{equation}
+
+The drawback of policy gradient methods is that a learning rate, $\alpha$, needs to be specified and the optimisation strongly depends 
+on the fine tuning of this value. An alternative, which avoids
+the learning rate problem, are Expectation-Maximisation (EM) methods. As our policy is a Gaussian Mixture Model (GMM) we can take advantage of 
+the already existing EM updates of the GMM which are well known. Also updating the covariance parameters of the GMM by gradient ascent can lead 
 to problems such the covariances being no longer positive-definite and this resolution requires the addition of constraints which becomes 
 cumbersome. In contrast the EM solution for the GMM case is simple and easy to implement.
+
+EM policy search methods have two phases. The first phase consists of generating a set of episodes $\boldsymbol{\tau}$ from 
+the policy, this is the E-step. The second step consists of finding a new parameter $\Param^{\mathrm{new}}$ of the policy 
+by maximising the cost function given the episodes:
 
 \begin{equation}
   \Param^{\mathrm{new}} = \argmax\limits_{\Param} J(\Param) \label{eq:ch4:argmax}
 \end{equation}
 
-The above optimisation can be solved through through the same approach taken in EM which consists of 
-maximising the the logarithmic lower bound of the above MC approximation of the cost function $J(\Param)$. 
+The above optimisation can be solved through the same approach taken in EM which consists of 
+maximising the the logarithmic lower bound of the cost function $J(\Param)$: 
 
 %The policy gradient theorem \cite{Sutton00policygradient} states the the gradient is:
 %Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, .
@@ -91,9 +108,9 @@ maximising the the logarithmic lower bound of the above MC approximation of the 
   \log( J(\Param) )  &= \log \sum\limits_{i=1}^{N} \frac{p_{\Param}(\tau_i)}{p_{\Param'}(\tau_i)} \, p_{\Param'}(\tau_i) \, R(\tau_i) \hspace*{2cm}  \nonumber \\
 		     & \hspace*{2cm} \geq \underbrace{\sum\limits_{i=1}^{N} \log\Bigg( \frac{p_{\Param}(\tau_i)}{p_{\Param'}(\tau_i)}\Bigg) \, p_{\Param'}(\tau_i) \, R(\tau_i)}_{\mathcal{Q}(\Param,\Param')} \label{eq:lower_bound}
 \end{align}
-The lower bound $\mathcal{Q}(\Param,\Param')$ is derived from Jensen's inequality. 
-The tilde of the parameter $\Param'$ denotes it was used in the E-Step by the policy to generate a set of episodes.
-The lower bound is next maximised $\nabla_{\Param}\mathcal{Q}(\Param,\Param') = 0$. 
+The parameter $\Param'$ belongs to the policy used to generate the episodes in the E-step and the parameter $\Param$ is the one 
+we are optimising for. The lower bound $\mathcal{Q}(\Param,\Param')$ is derived from Jensen's inequality. 
+The lower bound is next maximised by taking its derivative $\nabla_{\Param}\mathcal{Q}(\Param,\Param') = 0$. 
 %We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
 %zero so as to maximise the cost function.
 
@@ -104,19 +121,21 @@ The lower bound is next maximised $\nabla_{\Param}\mathcal{Q}(\Param,\Param') = 
 \begin{align}
  \nabla_{\Param}\mathcal{Q}(\Param,\Param') &= \mathbb{E}_{p_{\Param'}} \Big\{ \nabla_{\Param} \log\big( p_{\Param}(\tau_i)\big)\, R(\tau_i) \Big\} \label{eq:ch4:app:expec_Q}\\
 					    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param} \log\big( \pi_{\Param}(\Ui_t,\Bi_t)\big) \, R(\tau_i) \label{eq:ch4:app:logsum} \\
-					    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
+					    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param}\log \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi_{\Param'}}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
 \end{align}
 
 From \ref{eq:ch4:app:expec_Q} to \ref{eq:ch4:app:logsum} we used the property: $\log( \prod \pi_{\Param} ) = \sum \log(\pi_{\Param})$ and 
 the expectation vanishes as we evaluated it through sampling from the policy $\pi_{\Param'}$ (E-step). From \ref{eq:ch4:app:logsum} to \ref{eq:grad_log_cost_2} 
 we used the fact that previous discounted rewards do not dependent on future time steps. The reader is referred 
-to \cite{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.
-In the next section \ref{app:grad} we maximise \ref{eq:grad_log_cost_2} for the case when the policy is parameterised by a GMM, Equation \ref{eq:ch5:app:gmm}.
+to \cite[p. 50]{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.
+In the next section \ref{app:grad} we maximise \ref{eq:grad_log_cost_2} for the case when the policy is parameterised by a GMM.
 
 
 \section{Q-EM for GMM}\label{app:grad}
 
-We derive step-by-step the update rules of a policy $\pi_{\Param}(\U,\B)$ parameterised by a Gaussian Mixture Model:
+We derive the EM update rules of the lower bound $\mathcal{Q}(\Param,\Param')$ 
+for a policy $\pi_{\Param}(\U,\B)$ parameterised by a Gaussian Mixture Model which we call 
+Q-EM. Below we redefine the GMM function for convenience:
 
 \begin{equation} \label{eq:ch5:app:gmm}
   \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^K  \piK\,g(\U,\B;\MuK,\SigK)
@@ -125,36 +144,59 @@ We derive step-by-step the update rules of a policy $\pi_{\Param}(\U,\B)$ parame
 The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
 of the individual Gaussian functions, $g(\cdot)$. 
 
-We are seeking to maximise lower bound of the log cost function $\log(J(\Param))$ for the case when the policy  $\pi_{\Param}$ is parameterised 
-by a GMM. We redefine below the lower bound for convenience:
+Finding the new parameters of the GMM given a cost function $J(\Param)$ consists of maximising its logarithmic 
+lower bound, Equation \ref{eq:ch4:app_div_Q}:
 
-\begin{equation}
-  \nabla_{\Param}\mathcal{Q}(\Param,\Param') = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
+\begin{equation}\label{eq:ch4:app_div_Q}
+  \nabla_{\Param}\mathcal{Q}(\Param,\Param') = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param}\log \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi_{\Param'}}(\U^{[i]}_t,\B^{[i]}_t)
 \end{equation}
 
-Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of the notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
-and by setting the derivative of Equation \ref{eq:grad_log_cost_2} to zero and solving for the parameters
-$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation update step in EM:
+As the ordering of the episode samples in the above equation does not mater we concatenate all the episodes into one dataset $\mathcal{D}$ 
+and the $j$th sample in this dataset is given by $\mathbf{x}^{[j]} = [\U^{[j]},\B^{[j]}]^{\mathrm{T}}$. 
+
+\begin{equation}\label{eq:ch4:app_div_Q_simple}
+   \nabla_{\Param}\mathcal{Q}(\Param,\Param') = \sum\limits_{j=1}^{M} \nabla_{\Param}\log \pi_{\Param}(\mathbf{x}^{[j]}) \, Q^{\pi_{\Param'}}(\mathbf{x}^{[j]})
+\end{equation}
+To maximise Equation \ref{eq:ch4:app_div_Q_simple} we take the derivatives with respect to the 
+parameters $\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ of the GMM.  The reader my notice 
+that the above equation is the derivative of the log-likelihood of the dataset $\mathcal{D}$ weighted
+by $Q^{\pi_{\Param'}}$, a constant scalar value. As a consequence the result of maximisation will 
+be similar to the standard EM solution of the GMM with an additional weighting factor. For a 
+reference on the derivative of the log-likelihood of a GMM the reader is referred to \cite[p. 49]{matrix_ckb}
+or \cite[Chap. 9]{Bishop_2006}.
+
+%Setting the derivative of Equation \ref{eq:ch4:app_div_Q_simple} to zero and solving for the  
+% we get a new weighted Maximisation update step in EM
+%Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of the notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
+%and by
+
+\paragraph{Q-EM maximisation}
 
 \begin{align}
-\nabla_{\MuK} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
-			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
+    &\nabla_{\MuK} \mathcal{Q}(\MuK,\Param') =  \hspace*{5cm} \nonumber \\
+    & \hspace*{1cm} \sum\limits_{j=1}^M \underbrace{\frac{\piK\,g(\Bx^{[j]};\MuK,\SigK)}{\sum\limits_{l=1}^{M} w^{[l]}\,g(\Bx;\Mu{l},\Sig{l}) } }_{\gamma(z_{jk})} \invSigK (\Bx^{[j]} - \MuK) \, \Qpx = 0 \label{eq:ch4:app:mu_max}
 \end{align}
 
-where $\alpha(z_{mk})$ is the responsibility factor, denoting the probability that data point $m$ is a member of the 
-Gaussian function $k$.
+In \ref{eq:ch4:app:mu_max} we used the same notation and derivation as in \cite[Chap. 9.2.2]{Bishop_2006}, where $\gamma(z_{jk})$ is the responsibility factor, denoting 
+the probability that data point $\mathbf{x}^{[j]}$ belongs to  Gaussian function $k$. After rearrangement the new mean is given by Equation \ref{eq:ch4:app_new_mu}.
 
-\begin{equation}
- \alpha(z_{mk}) = \frac{w^{[k]} \cdot g(\Xm;\MuK,\SigK)}{\sum\limits_{j=1}^{K}w^{[j]} \cdot g(\Xm;\boldsymbol{\mu}^{[j]},\boldsymbol{\Sigma}^{[j]})}
-\end{equation}
+\begin{empheq}[box={\tcbhighmath[colback=blue!2,colframe=blue]}]{align}
+    \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma(z_{jk})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, \Qpx} \label{eq:ch4:app_new_mu} \\
+    & \nonumber\\
+    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma(z_{jk})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \alpha(z_{jk})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
+    & \nonumber\\
+    w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma(jk)}{\sum\limits_{j=1}^{M} \Qpx} \label{eq:ch4:app_new_pi}
+\end{empheq}
 
-\begin{equation}
-   \SigK_{\textrm{\textbf{new}}} = \frac{\sum\limits_{m=1}^{M} Q(\Xm) \alpha(z_{mk}) (\Xm - \MuK)(\Xm - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} Q(\X^{[j]})\, \alpha(z_{jk}) }
-\end{equation}
+The covariances, Equation \ref{eq:ch4:app_new_cov}, and weights, Equation \ref{eq:ch4:app_new_pi}, are derived in a similar fashion.
 
-\begin{equation}
-  w^{[k]}_{\textrm{\textbf{new}}} = \frac{\sum\limits_{m=1}^{M} Q(\X^{[m]})\, \alpha(mk)}{\sum\limits_{j=1}^{M} Q(\X^{[j]})}
-\end{equation}
+%\begin{align}
+%\nabla_{\Muk} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
+%			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
+%\end{align}
+%\begin{equation}
+% \alpha(z_{mk}) = \frac{w^{[k]} \cdot g(\Xm;\MuK,\SigK)}{\sum\limits_{j=1}^{K}w^{[j]} \cdot g(\Xm;\boldsymbol{\mu}^{[j]},\boldsymbol{\Sigma}^{[j]})}
+%\end{equation}
 
 %\subsection{M-step}\label{app:Q-EM}
 %Given a set of points $\X = (\U,\B)^{\mathrm{T}}$ and  a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$

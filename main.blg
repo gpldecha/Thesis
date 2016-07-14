@@ -5,6 +5,10 @@ The style file: plainnat.bst
 Database file #1: bib/MLMF.bib.bib
 Database file #2: bib/peg_hole.bib.bib
 Database file #3: bib/RL.bib.bib
+Repeated entry---line 365 of file bib/RL.bib.bib
+ : @book{Bishop_2006
+ :                  ,
+I'm skipping whatever remains of this entry
 Database file #4: bib/pomdp.bib.bib
 Database file #5: bib/citations.bib.bib
 Database file #6: bib/DT.bib.bib
@@ -19,45 +23,45 @@ Warning--empty publisher in Riedmiller2005
 Warning--empty publisher in SLAM_HBR
 Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
-You've used 164 entries,
+You've used 166 entries,
             2773 wiz_defined-function locations,
-            1724 strings with 41916 characters,
-and the built_in function-call counts, 91963 in all, are:
-= -- 8471
-> -- 5050
-< -- 161
-+ -- 1704
-- -- 1528
-* -- 7428
-:= -- 13472
-add.period$ -- 673
-call.type$ -- 164
-change.case$ -- 976
-chr.to.int$ -- 152
-cite$ -- 336
-duplicate$ -- 4332
-empty$ -- 7437
-format.name$ -- 1794
-if$ -- 20131
+            1736 strings with 42224 characters,
+and the built_in function-call counts, 92655 in all, are:
+= -- 8533
+> -- 5081
+< -- 163
++ -- 1715
+- -- 1537
+* -- 7471
+:= -- 13582
+add.period$ -- 682
+call.type$ -- 166
+change.case$ -- 984
+chr.to.int$ -- 154
+cite$ -- 340
+duplicate$ -- 4367
+empty$ -- 7501
+format.name$ -- 1807
+if$ -- 20278
 int.to.chr$ -- 13
 int.to.str$ -- 1
-missing$ -- 175
-newline$ -- 984
-num.names$ -- 679
-pop$ -- 2029
+missing$ -- 177
+newline$ -- 997
+num.names$ -- 687
+pop$ -- 2052
 preamble$ -- 1
-purify$ -- 828
+purify$ -- 835
 quote$ -- 0
-skip$ -- 3457
+skip$ -- 3484
 stack$ -- 0
-substring$ -- 3897
-swap$ -- 1059
+substring$ -- 3901
+swap$ -- 1062
 text.length$ -- 86
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1722
+type$ -- 1739
 warning$ -- 8
-while$ -- 747
+while$ -- 753
 width$ -- 0
-write$ -- 2468
-(There were 9 warnings)
+write$ -- 2498
+(There was 1 error message)

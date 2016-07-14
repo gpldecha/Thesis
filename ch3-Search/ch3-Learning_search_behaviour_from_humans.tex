@@ -433,16 +433,16 @@ The particles' positions were updated by applying the measured velocity obtained
 In a probability distribution framework, entropy is used to represent uncertainty. It is the expectation of a 
 random variable's total amount of unpredictability. The higher the entropy the more the uncertainty, likewise the 
 lower the entropy, the less the uncertainty. In our context, a set of weighted samples $\{w_{i},x_{i}\}^{i=1\dots N}$ replaces 
-the true probability density function of the belief, $p_u(x_t|y_{0:t},\dot{x}_{0:t})$. A reconstruction of 
+the true probability density function of the belief, $p_{\Param}(x_t|y_{0:t},\dot{x}_{0:t})$. A reconstruction of 
 the underlying probability density is achieved by fitting a Gaussian  Mixture Model (GMM), Equation \ref{eq:gmm1}, to the particles,
 
 \begin{equation}\label{eq:gmm1}
-  p_u(x_t|y_{0:t},\dot{x}_{0:t}\: ;\{\pi,\mu,\Sigma\}) = \sum\limits_{k=1}^{K} \pi_{k} \cdot \mathcal{N}(x_t\: ;\mu_{k},\Sigma_{k} )
+  p_{\Param}(x_t|y_{0:t},\dot{x}_{0:t}) = \sum\limits_{k=1}^{K} \piK\, g(x_t\: ;\MuK,\SigK )
 \end{equation}
-
-where $K$ is the number of Gaussian components,  the scalar $\pi_{k}$ represents the weight associated to mixture component $k$ 
-(indicating the component's overall contribution to the distribution) and $\sum_{k=1}^{K} \pi_{k} = 1$. The parameters $\mu_{k}$ 
-and $\Sigma_{k}$ are the mean and covariance of the normal distribution $k$. 
+where parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances of the individual multivariate Gaussian function, $g(\cdot)$ and
+$K$ is the number of Gaussian components. The scalar $\piK$ represents the weight associated to mixture component $k$ 
+(indicating the component's overall contribution to the distribution) and $\sum_{k=1}^{K} \piK = 1$. The parameters $\MuK \in \mathbb{R}^{(3\times 1)}$ 
+and $\SigK \in \mathbb{R}^{(3\times 3)}$ are the mean and covariance of the normal distribution $k$. 
 
 The main difficulty here is determining the number of parameters of the density function in a computationally efficient manner.
 We approach this problem by finding all the modes in the particle set via mean-shift hill climbing and set these as the 
@@ -466,7 +466,7 @@ via Expectation-Maximization (EM).
 Given the estimated density we can compute the upper bound of the differential entropy \cite{DiffEntropyHuber2008}, $H$,
 %which is taken to be the uncertainty $U$,
 \begin{equation}
-  H\left(  p_u(x_t|y_{0:t},\dot{x}_{0:t}\: ;\{\pi,\mu,\Sigma\}) \right) = \sum\limits_{k=1}^{K} \pi_{k} \left( -\log(\pi_{k}) + \frac{1}{2} \log((2\pi e)^{D} |\Sigma_{k}|) \right)
+  H\left(  p_{\Param}(x_t|y_{0:t},\dot{x}_{0:t}) \right) = \sum\limits_{k=1}^{K} \piK\ \left( -\log(\piK) + \frac{1}{2} \log((2\pi e)^{D} |\Sigma_{k}|) \right)
 \end{equation}
 where $e$ is the base of the natural logarithm and $D$ the dimension (being 3 in our case).
 
@@ -477,7 +477,7 @@ of the true entropy. The choice of the believed location of the robot/human end-
 Gaussian function with the highest weighted $\pi$.
 
 \begin{equation}
- \hat{x}_t = \operatorname*{arg\,max}_{x_t} p_u(x_{t}|z_{0:t}\: ;\{\pi,\mu,\Sigma\}) = \mu_{(k = \max(\pi))}
+ \hat{x}_t = \operatorname*{arg\,max}_{x_t} p_{\Param}(x_{t}|z_{0:t}) = \mu_{(k = \max(w))}
 \end{equation}
 
 Figure \ref{fig:clustering} depicts different configurations of the modes (clusters) and believed position of the end-effector (indicated by a yellow arrow).  
@@ -506,28 +506,27 @@ By normalising the velocity the amount of information to be learned was reduced.
 specific to embodiment capabilities: the robot might not be able to reproduce safely some of the velocity profiles demonstrated. 
 
 The training data set comprised a total of 20'000 tuples $(\dot{x},\hat{x},U)$, from the 150 trajectories gathered from the demonstrators. 
-The fitted GMM $p_s(\dot{x},\hat{x},U)$ had a total of 7 dimensions, 3 for direction, 3 for position and 1 scalar for uncertainty. 
+The fitted GMM $\pi_{\Param}(\dot{x},\hat{x},U)$ had a total of 7 dimensions, 3 for direction, 3 for position and 1 scalar for uncertainty. 
 The definition of the GMM is presented below in equation \ref{eq:gmm2}.
 
 \begin{equation} \label{eq:gmm2}
- p_s(\dot{x},\hat{x},U\: ; \{\pi,\mu,\Sigma\}) = \sum\limits_{k=1}^{K} \pi_{k} \cdot \mathcal{N}(\dot{x},\hat{x},U\: ;\mu_{k},\Sigma_{k} )
+ \pi_{\Param}(\dot{x},\hat{x},U) = \sum\limits_{k=1}^{K} \piK\, g(\dot{x},\hat{x},U\: ;\MuK,\SigK )
 \end{equation}
 
 \begin{equation*}
-    \mu_{k} =
+    \MuK =
     \begin{bmatrix}
       \mu_{\dot{x}} \\
       \mu_{\hat{x}} \\
       \mu_{U}
     \end{bmatrix}
-    \Sigma_{k} =
+    \SigK =
     \begin{bmatrix}
       \Sigma_{\dot{x}\dot{x}} & \Sigma_{\dot{x}\hat{x}} & \Sigma_{\dot{x}U} \\
       \Sigma_{\hat{x}\dot{x}} & \Sigma_{\hat{x}\hat{x}} & \Sigma_{\hat{x}U} \\
       \Sigma_{U\dot{x}} & \Sigma_{U\hat{x}} & \Sigma_{UU}   
     \end{bmatrix}
 \end{equation*}
-
 Given this generative representation of the humans' demonstrated searches we proceeded to 
 select the necessary parameters to correctly represent the data. This step
 is know as model selection and we used Bayesian Information Criterion (BIC) to evaluate
@@ -569,7 +568,7 @@ computed by evaluating Equation \ref{eq:IG},
 % Explain how the Information Gain is computed
 
 \begin{equation}\label{eq:IG}
- I(x_t) = \mathbb{E}_{p(y_t|x_t)}\{ H(p_u(x_t|y_{0:t},\dot{x}_{0:t}) \} - H(p_u(x_t|y_{0:t-1},\dot{x}_{0:t}))
+ I(x_t) = \mathbb{E}_{p(y_t|x_t)}\{ H(p_{\Param}(x_t|y_{0:t},\dot{x}_{0:t}) \} - H(p_{\Param}(x_t|y_{0:t-1},\dot{x}_{0:t}))
 \end{equation}
 which is essentially the difference between the entropy of a prior pdf to that of a posterior pdf.
 We set our initial pdf to be uniformly distributed and  we computed the maximum likelihood sensation for each discrete state $x_t$
@@ -588,7 +587,7 @@ $\hat{x}_t$ and $U_t$ in our case, and perform inference on the resulting condit
 GMM, Equation \ref{eq:conditional}, which is a distribution over velocities or directions.
 
 \begin{equation} \label{eq:conditional}
-  p_s(\dot{x}|\hat{x},U) = \sum\limits_{k=1}^{K} \pi^{k}_{\dot{x}|\hat{x},U} \cdot  \mathcal{N}\left(\dot{x}\: ;  \mu^{k}_{\dot{x}|\hat{x},U}, \Sigma^{k}_{\dot{x}|\hat{x},U} \right)
+  \pi_{\Param}(\dot{x}|\hat{x},U) = \sum\limits_{k=1}^{K} w^{k}_{\dot{x}|\hat{x},U} \;\;  g\left(\dot{x}\: ;  \MuK_{\dot{x}|\hat{x},U}, \SigK_{\dot{x}|\hat{x},U} \right)
 \end{equation}
 
 The new distribution is of the dimension of the output variable, the velocity (dimension 3). 
@@ -596,7 +595,7 @@ The variable $\dot{x}$ in $\dot{x}|\hat{x},U$ indicates the predictor variable a
 A common approach in statistical PbD methods using GMMs is to take the expectation of the conditional (known as Gaussian Mixture Regression), equation \ref{eq:GMR}
 
 \begin{equation} \label{eq:GMR}
- \dot{x} = \mathbb{E}\{p_s(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K}  \pi^{k}_{\dot{x}|\hat{x},U} \cdot \mu^{k}_{\dot{x}|\hat{x},U}
+ \dot{x} = \mathbb{E}\{\pi_{\Param}(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K}  w^{[k]}_{\dot{x}|\hat{x},U} \; \MuK_{\dot{x}|\hat{x},U}
 \end{equation}
 
 The problem with this expectation approach, is that it averages out opposing directions or strategies and may leave 
@@ -610,13 +609,13 @@ If the current direction agrees with the mode then the weight remains unchanged 
 disagreement a lower weight is
 calculated according to the equation below. 
 \begin{equation}  \label{eq:weight}
-  \alpha_{k}(\dot{x}) = \pi^{k}_{\dot{x}|\hat{x},U} \cdot \exp(-\cos^{-1}(<\dot{x},\mu^{k}_{\dot{x}|\hat{x},U}>))
+  \alpha_{k}(\dot{x}) = \piK_{\dot{x}|\hat{x},U} \; \exp(-\cos^{-1}(<\dot{x},\MuK_{\dot{x}|\hat{x},U}>))
 \end{equation}
 Gaussian Mixture Regression is then performed with the normalised  weights $\alpha$ instead of $\pi$
 (the initial weight obtained when conditioning).
 
 \begin{equation}\label{eq:w_expectation}
- \dot{x} = \mathbb{E}_{\alpha}\{p_s(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K} \alpha_{k}(\dot{x}) \:\mu^{k}_{\dot{x}|\hat{x},u}
+ \dot{x} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K} \alpha_{k}(\dot{x}) \:\MuK_{\dot{x}|\hat{x},u}
 \end{equation}
 % 
 %	How to control speed
@@ -819,7 +818,7 @@ arrows (red) indicate directions that reduce the level of uncertainty.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.95\textwidth]{./ch3-Search/Figures/Figure9}
+    \includegraphics[width=0.95\textwidth]{./ch3-Search/Figures/Figure9_m}
     \caption{Illustration of three different types of modes present during the
     execution of the task where the robot is being controlled by the learned GMM model.
     The white ball represents the actual position of the robot's end-effector. The blue ball represents the

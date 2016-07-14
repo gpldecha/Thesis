@@ -1,4 +1,4 @@
-\begin{thebibliography}{164}
+\begin{thebibliography}{166}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -138,6 +138,14 @@ Aude Billard, Sylvain Calinon, R{\"u}diger Dillmann, and Stefan Schaal.
 \newblock In Oussama Khatib~Prof. Bruno Siciliano~Prof., editor, \emph{Springer
   Handbook of Robotics}, pages 1371--1394. Springer, Springer,
   2008{\natexlab{b}}.
+
+\bibitem[Bishop(2006)]{Bishop_2006}
+Christopher~M. Bishop.
+\newblock \emph{Pattern Recognition and Machine Learning}.
+\newblock Springer, 2006.
+\newblock ISBN 978-0387-31073-2.
+\newblock URL
+  \url{http://research.microsoft.com/en-us/um/people/cmbishop/prml/}.
 
 \bibitem[Bou-Ammar et~al.(2010)Bou-Ammar, Voos, and Ertel]{fvi_uav_2010}
 H.~Bou-Ammar, H.~Voos, and W.~Ertel.
@@ -825,6 +833,12 @@ Jan Peters and Stefan Schaal.
 \newblock \doi{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/S0925231208000532}.
+
+\bibitem[Petersen and Pedersen(2012)]{matrix_ckb}
+K.~B. Petersen and M.~S. Pedersen.
+\newblock The matrix cookbook, nov 2012.
+\newblock URL \url{http://www2.imm.dtu.dk/pubdb/p.php?3274}.
+\newblock Version 20121115.
 
 \bibitem[Pineau et~al.(2003)Pineau, Gordon, and Thrun]{PBVI}
 Joelle Pineau, Geoffrey Gordon, and Sebastian Thrun.

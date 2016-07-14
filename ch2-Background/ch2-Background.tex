@@ -191,9 +191,9 @@ software agents.
     $X,Y,A$				 	& State, observation and action random variables where $x$, $y$ and $a$ are realisation.\\
     $p(x_t)$ 					& Short hand notation for a probability density function, $p_{X}(x_t)$.\\
     $x_{0:t}$					& $\{x_0,x_1,\cdots,x_{t-1},x_t\}$, history up to time $t$.\\
-    $p(x_t|y_{0:t},a_{0:t})$	 		& Filtered probability distribution over the state space given the action and observation history.\\
+    $p(x_t|y_{0:t},a_{1:t})$	 		& Filtered probability distribution over the state space given the action and observation history.\\
     $b_t$					& Belief state is the filtered state space distribution
-						 $b_t = p(x_t|y_{0:t},a_{0:t})$ which will be written as $b_t$ for simplicity.\\
+						 $b_t = p(x_t|y_{0:t},a_{1:t})$ which will be written as $b_t$ for simplicity.\\
     $\policy(a_t|\cdot)$ 			& Parametric probabilistic policy, $a_t \sim \pi_{\boldsymbol{\theta}}(a_t|\cdot)$, where $\boldsymbol{\theta}$ is the parameters.\\
     $u(x) \in \mathbb{R}$			& Utility function, returns the utility of being in state $x$. It can also be dependent on the action, $u(x,a)$.\\
     $\gamma \in [0,1)$				& Discount factor, the closer to one the more the later utilities are considered. When set to zero, only immediate utilities are 
@@ -357,7 +357,7 @@ Typically the parameters of the measurement likelihood function are learned a pr
   \subfigure[]{\label{fig:motion_update}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/motion_update.pdf}}
   \subfigure[]{\label{fig:measurement}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement.pdf}} 
   \subfigure[]{\label{fig:likelihood}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/likelihood.pdf}} 
-  \subfigure[]{\label{fig:measurement_update}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update.pdf}} 
+  \subfigure[]{\label{fig:measurement_update}\includegraphics[width=0.45\textwidth]{/home/guillaume/Documents/Thesis/ch2-Background/Figures/measurement_update_v2.pdf}} 
  \caption{\textbf{(a)} An agent is located to the south west of a brick wall. It is equipped with a 
   range sensor. The agent takes a forward action but skids, which results in a high increase of the uncertainty.\textbf{(b)} 
   The agent takes a measurement, $y_0$, of this distance to the wall; because his sensor is noisy his estimate is inaccurate. 
@@ -378,20 +378,20 @@ which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_
 \begin{tikzpicture}    
 \node [white_box] (box){%
      \begin{minipage}{0.9\textwidth}
-     The Bayesian filter turns a prior probability distribution over the state space, $p(x_{t-1}|y_{0:t-1},a_{0:t-1})$,
-  to a posterior $p(x_t|y_{0:t},a_{0:t})$ by incorporating both motion and measurement. Applied recursively it 
+     The Bayesian filter turns a prior probability distribution over the state space, $p(x_{t-1}|y_{0:t-1},a_{1:t-1})$,
+  to a posterior $p(x_t|y_{0:t},a_{1:t})$ by incorporating both motion and measurement. Applied recursively it 
   keep a probability distribution over the state space which considers all the past history of actions and observations. We define 
   the application of these two steps by the filter function $\tau$, which takes the current belief, the applied action 
   and measurement, and outputs the next belief, $b_{t+1}$.\\
   
   \textbf{Motion update}
 	\begin{equation}\label{eq:motion_update}
-	  p(x_t|y_{0:t-1},a_{0:t}) = \int p(x_t|x_{t-1},a_t)\, p(x_{t-1}|y_{0:t-1},a_{0:t-1})\;dx_{t-1}
+	  p(x_t|y_{0:t-1},a_{1:t}) = \int p(x_t|x_{t-1},a_t)\, p(x_{t-1}|y_{0:t-1},a_{1:t-1})\;dx_{t-1}
 	\end{equation}
       \textbf{Measurement update}
 	\begin{align}\label{eq:measurement_update}
-	  p(x_t|y_{0:t},a_{0:t})   &= \frac{1}{p(y_t|y_{0:t-1},a_{0:t})}p(y_t|x_t)\,p(x_t|y_{0:t-1},a_{0:t}) \\
-	  p(y_t|y_{0:t-1},a_{0:t}) &= \int p(y_t|x_t)\,p(x_t|y_{0:t-1},a_{0:t}) dx_t
+	  p(x_t|y_{0:t},a_{1:t})   &= \frac{1}{p(y_t|y_{0:t-1},a_{1:t})}p(y_t|x_t)\,p(x_t|y_{0:t-1},a_{1:t}) \\
+	  p(y_t|y_{0:t-1},a_{1:t}) &= \int p(y_t|x_t)\,p(x_t|y_{0:t-1},a_{1:t}) dx_t
 	\end{align}   
 	\textbf{Filter function}\\
 	\begin{equation}
