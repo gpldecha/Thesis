@@ -89,8 +89,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="176.2185"
-     inkscape:cy="70.668815"
+     inkscape:cx="172.54223"
+     inkscape:cy="63.453059"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -99,11 +99,11 @@
      guidetolerance="1"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1680"
-     inkscape:window-height="974"
-     inkscape:window-x="1680"
+     inkscape:window-width="958"
+     inkscape:window-height="1003"
+     inkscape:window-x="960"
      inkscape:window-y="24"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -762,7 +762,7 @@
          id="tspan3104"
          x="172.31305"
          y="247.36217"
-         style="font-size:13px">A</tspan></text>
+         style="font-size:13px">AA</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -774,7 +774,7 @@
          id="tspan3104-8"
          x="262.24976"
          y="326.87155"
-         style="font-size:13px">A</tspan></text>
+         style="font-size:13px">BA</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -786,7 +786,7 @@
          id="tspan3104-1"
          x="262.30688"
          y="247.36217"
-         style="font-size:13px">B</tspan></text>
+         style="font-size:13px">AB</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Serif;-inkscape-font-specification:Serif"
@@ -798,6 +798,6 @@
          id="tspan3104-1-6"
          x="172.37018"
          y="326.87155"
-         style="font-size:13px">B</tspan></text>
+         style="font-size:13px">BB</tspan></text>
   </g>
 </svg>

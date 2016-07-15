@@ -471,9 +471,11 @@ socket B and C will be used solely to evaluate the generalisation of the policy.
    \caption{\textit{Top}: Black points represent the starting position of the end-effector
    for all the demonstrations. Four trajectories are illustrated. \textit{Bottom:} 
    Time taken for the teachers to accomplish the PiH once the socket is localised. Group A and B are depicted in red 
-   and blue. The asterisk indicates that the group has changed sockets, so Group A\textsuperscript{*} means
-   that Group A is now performing the task with socket B and Group B\textsuperscript{*} means that group B is now performing 
-   the task with socket A.}
+   and blue. The second later indicates which socket is used, see Figure \ref{fig:experiment_design}.}
+   
+   %The asterisk indicates that the group has changed sockets, so Group A\textsuperscript{*} means
+   %that Group A is now performing the task with socket B and Group B\textsuperscript{*} means that group B is now performing 
+   %the task with socket A.}
   \label{fig:experiment_setup_data}
 \end{figure}
 
@@ -518,7 +520,7 @@ to control the orientation to avoid jamming.
 Both the linear and angular velocity policies are parameterised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
 
 \begin{equation}
- \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK	    \cdot  g(\U,\B;\MuK,\SigK) \label{eq:GMM}
+ \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) \label{eq:GMM}
 \end{equation}
 The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
 of the individual Gaussian functions, $g(.)$,
@@ -618,7 +620,7 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 \end{center}
 Batch RL methods are used by a broad spectrum of research to learn policies. 
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 
-\cite{NIPS2008_3501,EGW05,Riedmiller05neuralfitted}. Although this solves the control problem it requires discretisation 
+\cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, as the 
 Q-Bellman backups, $\hat{Q}(\B_t,\U_t) \leftarrow \gamma \max_{\U_{t+1}} \hat{Q}(\U_{t+1},\B_{t+1})$, 
 require an optimisation over the action space, $\U_{t+1}$, to find the best applicable action. 
@@ -643,45 +645,46 @@ method has the advantage that no divergence can occur during the learning proces
 
 We update the Actor policy given the Critic value function through a modification of the Maximisation step in  Expectation-Maximisation (EM) 
 for Gaussian Mixture Models. We refer to this modification as Q-EM which is strongly related to a Monte-Carlo EM-based policy 
-search approach \cite[p.50]{DeisenrothNP2013}. 
+search approach \cite[p.50]{p_search_surv_2011}. 
 
-The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$.
+The reward of a demonstrated trajectory (one episode) is given by the discounted return, Equation $\ref{eq:disc_return}$,
 \begin{equation}\label{eq:disc_return}
  R(\B^{[i]},\U^{[i]}) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
 \end{equation}
+where the index $i$ stands for the $i$th episode.
 All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
-which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward}.
+which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward},
 \begin{align}\label{eq:expected_reward}
- J(\Param) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\{R(\B,\U)\} \nonumber \\
-	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{\pi_{\Param}(\U^{[i]},\B^{[i]})} \, R(\B^{[i]},\U^{[i]}) 
+ J(\Param) &= \mathbb{E}_{p_{\Param}}\{R\} \nonumber \\
+	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
 \end{align}
-
-To find the parameters which maximise the cost function, $\argmax_{\Param'} J(\Param')$, its derivative is set to zero. 
+where $\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
+To find the parameters which maximise the cost function, $\argmax_{\Param} J(\Param)$, its derivative is set to zero. 
 As this cannot be done directly, we maximise the logarithmic lower bound of the cost function which results in 
-Equation \ref{eq:grad_log_cost}.
+Equation \ref{eq:grad_log_cost}, see Appendix \ref{app:lb} for the derivation.
 
 \begin{equation} \label{eq:grad_log_cost}
-    \nabla_{\Param'}\log(J(\Param')) = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t)
+  \nabla_{\Param}\mathcal{Q}(\Param,\Param') = \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param}\log \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi_{\Param'}}(\U^{[i]}_t,\B^{[i]}_t)
 \end{equation}
 
 Setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
 $\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
-which is weighted by $Q^{\pi}$, see Appendix \ref{app:lb} for a more complete derivation.
-We use the Critic's TD error as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi_{\Param}}$, 
-is close to the true value function $V^{\pi_{\Param}}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
+which is weighted by $Q^{\pi_{\Param'}}$.
+We use the Critic's TD error as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi}$, 
+is close to the true value function $V^{\pi}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
 (see Appendix \ref{app:unbiased_delta}).
 \begin{equation}\label{eq:advantage_f}
- A^{\pi}(b_t,u_t) = Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) = \delta^{\pi}_t
+ A^{\pi}(\U_t,\B_t) =  Q^{\pi}(\U_t,\B_t) - V^{\pi}(\B_t) = \delta^{\pi}_t
 \end{equation}
 Using the advantage function as means of policy search is popular with methods such as
 Natural Actor Critic (NAC) \cite{peter_nac_2008}.
 
-Each data point has an associated weight, $\delta \in \mathbb{R}$, where $\delta^{[m]} \geq 0$ means that the 
-state action-pair $\X^{[m]}$ leads to an increase in the value function and $\delta^{[m]} \leq 0$ leads to 
-a decrease in the value function. The likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
+Each state-action sample $j$ has an associated weight, $\delta_j \in \mathbb{R}$, where $\delta_j > 0$ means that the 
+$j$th state action-pair lead to an increase in the value function and $\delta_j < 0$ lead to 
+a decrease in the value function. The data log-likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
 the Q-EM update steps cannot allow negative weights, the TD error is rescaled to be between 0 and 1. % we already sed this
 
-The reader is referred to Appendix \ref{app:grad} for the new Maximisation update step of Q-EM for a 
+The reader is referred to Appendix \ref{app:grad} for the Maximisation update step of Q-EM for a 
 GMM parameterization of the policy.
 
 %We learn the plug-socket search policy using the Q-EM update rules for a GMM parametrisation with the 
@@ -792,7 +795,7 @@ the socket's hole, as the orientation is constant.
 The direction to search is given by the conditional, Equation \ref{eq:gmm_conditional},
 
 \begin{equation}\label{eq:gmm_conditional}
- \pi_{\Param}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \cdot g(\dot{x};\MuK_{\xb},\SigK_{\xb}) 
+ \pi_{\Param}(\dot{x}|b) = \sum_{k=1}^{K} w^{[k]}_{\xb} \; g(\dot{x};\MuK_{\xb},\SigK_{\xb}) 
  \end{equation}
 
 which is a distribution over the possible normalised velocities. The function $g(\cdot)$ is a multivariate
@@ -854,21 +857,25 @@ controller based on the believed distance to the goal,
 where the lower and upper amplitude limits are given by $\beta_1$ and $\beta_2$, $x_g$ is the position of the
 goal, and $K_p$ the proportional gain which was tuned through trials. 
 
+% $\omega_t = \mathrm{angleaxis}(\mathbf{R}^{\mathrm{T}} \mathbf{R}^r)$  $\mathbf{R}^r = I$
+
 The above procedure can control the general behaviour of the search but is insufficient for a successful implementation on a robotic system 
 such as the 7 Degree of Freedom $q\in\mathbb{R}^7$ KUKA LWR, which we illustrate in Figure \ref{fig:kuka}. 
 The GMM policy $\dot{x} = \mathbb{E}_{\alpha}\{\pi_{\Param_1}(\dot{x}|b)\}$ outputs a linear velocity and the 
-angular velocity $\omega_t = \mathrm{angleaxis}(\mathbf{R}^{\mathrm{T}} \mathbf{R}^r)$ is computed from a 
-reference orientation $\mathbf{R}^r = I$ which is constant. When the plug is to be connected to the socket, 
+angular velocity is computed from a reference orientation which is constant. When the plug is to be connected to the socket, 
 the angular velocity is the output of samples drawn from the conditional $\omega \sim \pi_{\Param_2}(\omega|\phi)$.
+From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to 
+define a linear and angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  
+the current position $x$ and orientation $R$.
 Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
-Cartesian control $u_t = [\dot{x}_t,\omega_t]^{\mathrm{T}}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
+Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
 
 \begin{equation}\label{eq:torque_control}
- \tau_t = J^{\mathrm{T}}(q_t)\left(-K u_t - D \dot{u}_t \right) + g(q)
+ \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
 \end{equation}
 
-where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices and $g(q)$ compensates for gravity. Given an applied torque there is 
-a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
+where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
+and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
 Figure \ref{fig:control_flow} illustrates the complete control flow.
 
 \begin{figure}
@@ -908,19 +915,22 @@ We evaluate the following three aspects of the policy learned in our Actor-Criti
 \end{enumerate}
 
 We evaluate aspects 1) and 2) purely in simulation as finding the socket requires much less precision than establishing a 
-connection and the physics of the interaction is simple. 
+connection and the physics of the interaction is simple. Aspect 3), the generalisation, is evaluated both in simulation,
+up to the point of localising the socket's edge, and on the KUKA LWR robotic platform
+for the connection phase of the task. The main reason for employing the robot is that the connection phase dynamics is 
+complex and a simulation would be unrealistic. For the robot evaluation we consider 
+the search starting already within the vicinity of the socket.
 
-We evaluate the above properties under two separate conditions. In the \textbf{first condition} we consider the period between the start 
-of the search until the socket is localised. In the \textbf{second condition} we consider the period from the point the socket is found until
-a connection has been established. In the first condition the evaluation is done in simulation whilst 
-in the second condition, when the socket is found, we perform the evaluation with a physical robot, the KUKA LWR4.
 
-This choice is motivated by the fact that the two parts of the task require different levels of precision.
-Finding the socket requires much less precision than establishing a connection. It is more informative to consider the performance of these two parts separately.
-Another aspect is that the search for the socket can be reliably evaluated in simulation since the physics of the interaction
-is simple. The connection phase is more complicated and a simulation would be unrealistic.
-For the evaluation of the connection of the plug to the socket we consider the search start point already within 
-the vicinity of the socket.
+%We evaluate the above properties under two separate conditions. In the \textbf{first condition} we consider the period between the start 
+%of the search until the socket is localised. In the \textbf{second condition} we consider the period from the point the socket is found until
+%a connection has been established. In the first condition the evaluation is done in simulation whilst 
+%in the second condition, when the socket is found, we perform the evaluation with a physical robot, the KUKA LWR4.
+
+%This choice is motivated by the fact that the two parts of the task require different levels of precision.
+%Finding the socket requires much less precision than establishing a connection. It is more informative to consider the performance of these two parts separately.
+%Another aspect is that the search for the socket can be reliably evaluated in simulation since the physics of the interaction
+%is simple. The connection phase is more complicated and a simulation would be unrealistic.
 
 \subsection{Distance taken to reach the socket's edge (Qualitative)}
 
@@ -1081,7 +1091,7 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Fig/value_subj_5.pdf}
- \caption{Value function learned from the 15 demonstrations of teacher \#5. The value of the the most likely state is plotted.}
+ \caption{Value function learned from the 15 demonstrations of teacher \#5. The value of the most likely state is plotted.}
  \label{fig:value_function_subj_5}
 \end{figure}
  
@@ -1320,121 +1330,3 @@ We conclude by making the observation that by simply adding a binary reward func
 data provided by human demonstrations, with Fitted reinforcement learning, we can learn a better policy without 
 the need to perform expensive exploration-exploitation rollouts traditionally associated with reinforcement learning and 
 designing complicated reward functions. This is especially advantageous when only a few demonstrations are available.
-
-\FloatBarrier
-\section{Appendix}
-
-\subsection{Time to connect socket (ANOVA)}
-\label{app:anova_socket}
-% 1) Is there are a difference across groups 
-
-% 2) Is there a difference between the two sockets
-The null hypothesis is that there is no difference in 
-the time taken to connect socket A or B. The result of the one-way anova
-is given in Table \ref{tab:ch4:anova_socket}. The null hypothesis is rejected at high significant level (***)
-indicating that there is a difference between the sockets. According to the linear 
-model it takes on average 4 seconds less to connect socket B than it does for socket A.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-  \hline
-          &   F    & Pr(>F)  	     \\ \hline
-   socket & 13.9   &  0.000232 *** 
-\end{tabular}
-\caption{One way anova of the time taken to connect two sockets A and B. There is a significant difference.}
-\label{tab:ch4:anova_socket}
-\end{table}
-
-We tested whether the group order had an effect on the connection time. We fitted a linear model
-with the predictor being time and the factors being the group (One or Two), the socket type (A or B) 
-and the subject's ID (1 to 10):
-\begin{equation}
- time = \beta_0 + \beta_1\, group + \beta_2\, socket + \beta_3\, subject
-\end{equation}
-and did the corresponding anova analysis on this linear model. We found that the difference between the sockets 
-remained significant.
-
-\subsection{EM policy search}\label{app:lb}
-Steps taken to make a policy $\pi_{\Param}(\U,\B)$ maximise the objective function, $J(\Param)$.
-The policy will be maximised with respect to the lower bound of the cost function $J(\Param)$:
-\begin{align}
-  J(\Param') &= \sum_{i \in \mathbb{T}} \pi_{\Param'}(\Ui,\Bi)\, R(\Ui,\Bi) \nonumber\\ 
-	   &= \sum_{i \in \mathbb{T}}  \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)
-\end{align}
-
-where $\mathbb{T}$ is the set of all rollouts. Next we take the logarithm and make use of Jensen's inequality and move the logarithm into the 
-summation.
-
-\begin{align}
-  \log( J(\Param') )  &= \log \sum_{i \in \mathbb{T}} \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)} \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-		     & \geq \sum_{i \in \mathbb{T}}\log\Bigg( \frac{\pi_{\Param'}(\Ui,\Bi)}{\pi_{\Param}(\Ui,\Bi)}\Bigg) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \label{eq:lower_bound}
-\end{align}
-
-We take the derivative of the lower bound of $\log(J(\Param'))$, Equation \ref{eq:lower_bound}, with respect to $\Param'$ and set it to 
-zero so as to maximise the cost function.
-
-\begin{align}
- &\nabla_{\Param'}  \log( J(\Param') ) = \nonumber\\
- &\sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    & - \underbrace{ \nabla_{\Param'} \log\big( \pi_{\Param}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi)}_{\color{red} =0} \nonumber \\
-				    &= \sum_{i \in \mathbb{T}} \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big) \, \pi_{\Param}(\Ui,\Bi) \, R(\Ui,\Bi) \nonumber \\
-				    &= \mathbb{E}_{\pi_{\Param}(\U,\B)} \Big\{ \nabla_{\Param'} \log\big( \pi_{\Param'}(\Ui,\Bi)\big)\, R(\Ui,\Bi) \Big\}
-\end{align}
-
-\begin{align}
- \nabla_{\Param'}  \log( J(\Param') ) &= \mathbb{E}_{\pi_{\Param}(\U,\B)}\Big\{R(\Bi,\Ui)  \sum_{t=0}^{T}\nabla_{\Param'}\log \pi_{\Param'}(\Ui,\Bi)\Big\}\\
-				    &= \sum\limits_{i=1}^{N} \sum\limits_{t=0}^{T^{[i]}} \nabla_{\Param'}\log \pi_{\Param'}(\U^{[i]}_t,\B^{[i]}_t) \, Q^{\pi}(\U^{[i]}_t,\B^{[i]}_t) \label{eq:grad_log_cost_2}
-\end{align}
-
-The reader is referred to \cite{rl_gradient_survey_2013} for more details regarding Expectation-Maximisation and policy search in reinforcement learning.
-
-\subsection{Q-EM for GMM derivation}\label{app:grad}
-
-Making the substitution $\X = (\U,\B)^{\mathrm{T}}$ (small abuse of the notation) and  insuring a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
-and by setting the derivative of Equation \ref{eq:grad_log_cost_2} to zero and solving for the parameters
-$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation update step in EM:
-
-\begin{align}
-\nabla_{\MuK} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
-			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
-\end{align}
-
-where $\alpha(z_{mk})$ is the responsibility factor, denoting the probability that data point $m$ is a member of the 
-Gaussian function $k$.
-
-\begin{equation}
- \alpha(z_{mk}) = \frac{w^{[k]} \cdot g(\Xm;\MuK,\SigK)}{\sum\limits_{j=1}^{K}w^{[j]} \cdot g(\Xm;\boldsymbol{\mu}^{[j]},\boldsymbol{\Sigma}^{[j]})}
-\end{equation}
-
-\begin{equation}
-   \SigK_{\textrm{\textbf{new}}} = \frac{\sum\limits_{m=1}^{M} Q(\Xm) \alpha(z_{mk}) (\Xm - \MuK)(\Xm - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} Q(\X^{[j]})\, \alpha(z_{jk}) }
-\end{equation}
-
-\begin{equation}
-  w^{[k]}_{\textrm{\textbf{new}}} = \frac{\sum\limits_{m=1}^{M} Q(\X^{[m]})\, \alpha(mk)}{\sum\limits_{j=1}^{M} Q(\X^{[j]})}
-\end{equation}
-
-%\subsection{M-step}\label{app:Q-EM}
-%Given a set of points $\X = (\U,\B)^{\mathrm{T}}$ and  a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
-%and by setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-%$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
-%\begin{align}
-% w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\X^{[m]})\, \alpha(z_{mk})}{\sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})} \\
-% \MuK_{\textrm{\textbf{new}}}     &= \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q^{\pi}(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q^{\pi}(\X^{[j]})} \\
-% \SigK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\Xm)\, \alpha(z_{mk})\, (\Xm - \MuK)(\Xm - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})\, \alpha(z_{jk}) }
-%\end{align}
-%$\alpha(z_{mk})$ is the responsibility factor, denoting the probability that data point $m$ is a member of the 
-%Gaussian function $k$ (see \cite[Chap. 9]{Bishop_2006}).
-
-\subsection{Unbiased estimator}\label{app:unbiased_delta}
-
-%\begin{equation}
-%  \delta^{\pi}_t = r_{t+1} + \gamma V^{\pi}(b_{t+1}) - V^{\pi}(b_t) \\
-%\end{equation}
-The temporal difference error is an unbiased estimate of the advantage function:
-\begin{align}
-  \displaystyle \mathop \mathbb{E}_{\pi_{\Param}} \{ \delta^{\pi}_t|b_t,u_t\} &=  \mathop\mathbb{E}_{\pi_{\Param}}\{ r_{t+1} + \gamma V^{\pi}(b_{t+1})|b_t,u_t\} - V^{\pi}(b_t) \nonumber \\
-									   &= Q^{\pi}(b_t,u_t) - V^{\pi}(b_t) \nonumber \\
-									   &= A^{\pi}(b_t,u_t)
-\end{align}

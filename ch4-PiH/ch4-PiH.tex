@@ -471,9 +471,11 @@ socket B and C will be used solely to evaluate the generalisation of the policy.
    \caption{\textit{Top}: Black points represent the starting position of the end-effector
    for all the demonstrations. Four trajectories are illustrated. \textit{Bottom:} 
    Time taken for the teachers to accomplish the PiH once the socket is localised. Group A and B are depicted in red 
-   and blue. The asterisk indicates that the group has changed sockets, so Group A\textsuperscript{*} means
-   that Group A is now performing the task with socket B and Group B\textsuperscript{*} means that group B is now performing 
-   the task with socket A.}
+   and blue. The second later indicates which socket is used, see Figure \ref{fig:experiment_design}.}
+   
+   %The asterisk indicates that the group has changed sockets, so Group A\textsuperscript{*} means
+   %that Group A is now performing the task with socket B and Group B\textsuperscript{*} means that group B is now performing 
+   %the task with socket A.}
   \label{fig:experiment_setup_data}
 \end{figure}
 
@@ -1243,9 +1245,9 @@ wander vertically up and down. Only when the uncertainty has been reduced does t
   % \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/peg_socket_connection.pdf}}
   \caption{Distance taken to connect plug to socket once the socket is localised. (a) \textbf{Socket A}. The human 
   Group A are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group 
-  B\textsuperscript{*} first gave demonstrations on Socket B before giving demonstrations on Socket A. Group B\textsuperscript{*}
-  is better than Group A at doing the task. This is most likely a training effect. However all policy search methods are far better
-  at connecting the plug to the socket. (b) \textbf{Socket B}. Both Groups A\textsuperscript{*} and B are similar in terms 
+  BA first gave demonstrations on Socket B before giving demonstrations on Socket A. Group BA
+  is better than Group AA at doing the task. This is most likely a training effect. However all policy search methods are far better
+  at connecting the plug to the socket. (b) \textbf{Socket B}. Both Groups AB and BB are similar in terms 
   of the distance they took to insert the plug into the socket and as was the case for (a), the search policies travel less to accomplish 
   the task.   } 
   \label{fig:real_statistics}
