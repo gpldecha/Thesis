@@ -4,6 +4,11 @@ The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 Database file #1: bib/MLMF.bib.bib
 Database file #2: bib/peg_hole.bib.bib
+I was expecting a `,' or a `}'---line 356 of file bib/peg_hole.bib.bib
+ :  
+ :  month   ={May},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Database file #3: bib/RL.bib.bib
 Repeated entry---line 365 of file bib/RL.bib.bib
  : @book{Bishop_2006
@@ -15,53 +20,56 @@ Database file #6: bib/DT.bib.bib
 Database file #7: bib/spatial_navigation.bib.bib
 Database file #8: bib/ch3-citations.bib.bib
 Warning--I didn't find a database entry for "neura_fqi_2005"
+Warning--empty publisher in Bishop_2006
 Warning--can't use both author and editor fields in Hauser_2011
 Warning--empty journal in DRQ_AAAI_2015
 Warning--can't use both author and editor fields in GeorgiosLidoris
+Warning--empty publisher in NIPS2008_3501
 Warning--can't use both author and editor fields in RL_book_sa
 Warning--empty publisher in Riedmiller2005
+Warning--empty publisher in sutton1998reinforcement
 Warning--empty publisher in SLAM_HBR
 Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
 You've used 168 entries,
             2773 wiz_defined-function locations,
-            1747 strings with 42506 characters,
-and the built_in function-call counts, 94127 in all, are:
-= -- 8674
-> -- 5150
-< -- 166
-+ -- 1738
-- -- 1558
-* -- 7574
-:= -- 13773
-add.period$ -- 691
+            1740 strings with 42504 characters,
+and the built_in function-call counts, 94041 in all, are:
+= -- 8651
+> -- 5142
+< -- 167
++ -- 1736
+- -- 1556
+* -- 7577
+:= -- 13747
+add.period$ -- 687
 call.type$ -- 168
 change.case$ -- 997
 chr.to.int$ -- 156
-cite$ -- 344
+cite$ -- 347
 duplicate$ -- 4447
-empty$ -- 7625
-format.name$ -- 1830
-if$ -- 20627
+empty$ -- 7626
+format.name$ -- 1828
+if$ -- 20604
 int.to.chr$ -- 13
 int.to.str$ -- 1
 missing$ -- 179
-newline$ -- 1009
-num.names$ -- 695
-pop$ -- 2086
+newline$ -- 1007
+num.names$ -- 693
+pop$ -- 2092
 preamble$ -- 1
 purify$ -- 846
 quote$ -- 0
-skip$ -- 3555
+skip$ -- 3557
 stack$ -- 0
-substring$ -- 3976
-swap$ -- 1097
-text.length$ -- 89
+substring$ -- 3972
+swap$ -- 1100
+text.length$ -- 90
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 1761
-warning$ -- 8
-while$ -- 764
+warning$ -- 11
+while$ -- 762
 width$ -- 0
-write$ -- 2529
-(There was 1 error message)
+write$ -- 2520
+(There were 2 error messages)

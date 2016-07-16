@@ -1149,17 +1149,12 @@ month={Dec}
 }
 
 @InProceedings{sis_pomdp_2002,
-  author =       "Aberdeen, Douglas and Baxter, Jonathan",
-  title =        "Scaling Internal-State Policy-Gradient Methods for POMDPs",
-  booktitle =    "Proceedings of the Nineteenth International Conference on Machine Learning (ICML 2002)",
-  editor = "Sammut, Claude and Hoffman, Achim",
-  year =         "2002",
-  ISBN =         "1-55860-873-7",
-  publisher = "Morgan Kauffman",
-  address =   "San Francisco, CA, USA",
-  pages =     "3--10",
-  url = "http://users.rsise.anu.edu.au/~daa/files/papers/gradIstate-icml.pdf",
-  bib2html_rescat = "Learning Methods, Partial Observability",
+  author 	=    "Aberdeen, Douglas and Baxter, Jonathan",
+  title 	=    "Scaling Internal-State Policy-Gradient Methods for POMDPs",
+  booktitle 	=    "Nineteenth International Conference on Machine Learning (ICML)",
+  year 		=    "2002",
+  pages 	=    "3--10",
+  url 		= "http://users.rsise.anu.edu.au/~daa/files/papers/gradIstate-icml.pdf"
 }
 
 
@@ -1243,14 +1238,6 @@ month={Dec}
 }
 
 
-@INPROCEEDINGS{Sutton00policygradient,
-    author = {Richard S. Sutton and David Mcallester and Satinder Singh and Yishay Mansour},
-    title = {Policy gradient methods for reinforcement learning with function approximation},
-    booktitle = {In Advances in Neural Information Processing Systems 12},
-    year = {2000},
-    pages = {1057--1063},
-    publisher = {MIT Press}
-}
 
 
 @INPROCEEDINGS{Boyan95generalizationin,
