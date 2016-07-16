@@ -13,7 +13,6 @@
  \item $H_o$:
 \end{enumerate}
 
-
 \begin{figure}
  \centering
  \includegraphics[width=\textwidth]{./ch4-PiH/Figures/time_taken_subgroup.pdf}
@@ -22,6 +21,17 @@
  for socket A when compared with socket B. \textbf{Bottom}: time taken to localise the socket. For the second
  search, AB and BA, it seams that the subjects are faster indicating learning during the experiment.
  }
+\end{figure}
+
+\begin{figure}
+   \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/QQplot.pdf}
+   \caption{}
+\end{figure}
+
+
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Group_Socket.pdf}
+   \caption{}
 \end{figure}
 
 % 1) Is there are a difference across groups 
@@ -185,18 +195,18 @@ or \cite[Chap. 9]{Bishop_2006}.
 
 \begin{align}
     &\nabla_{\MuK} \mathcal{Q}(\MuK,\Param') =  \hspace*{5cm} \nonumber \\
-    & \hspace*{1cm} \sum\limits_{j=1}^M \underbrace{\frac{\piK\,g(\Bx^{[j]};\MuK,\SigK)}{\sum\limits_{l=1}^{M} w^{[l]}\,g(\Bx;\Mu{l},\Sig{l}) } }_{\gamma(z_{jk})} \invSigK (\Bx^{[j]} - \MuK) \, \Qpx = 0 \label{eq:ch4:app:mu_max}
+    & \hspace*{1cm} \sum\limits_{j=1}^M \underbrace{\frac{\piK\,g(\Bx^{[j]};\MuK,\SigK)}{\sum\limits_{l=1}^{M} w^{[l]}\,g(\Bx;\Mu{l},\Sig{l}) } }_{\gamma_k(\Bx^{[j]})} \invSigK (\Bx^{[j]} - \MuK) \, \Qpx = 0 \label{eq:ch4:app:mu_max}
 \end{align}
 
-In \ref{eq:ch4:app:mu_max} we used the same notation and derivation as in \cite[Chap. 9.2.2]{Bishop_2006}, where $\gamma(z_{jk})$ is the responsibility factor, denoting 
+In \ref{eq:ch4:app:mu_max} we used the same notation and derivation as in \cite[Chap. 9.2.2]{Bishop_2006}, where $\gamma_k(\Bx^{[j]})$ is the responsibility factor, denoting 
 the probability that data point $\mathbf{x}^{[j]}$ belongs to  Gaussian function $k$. After rearrangement the new mean is given by Equation \ref{eq:ch4:app_new_mu}.
 
 \begin{empheq}[box={\tcbhighmath[colback=blue!2,colframe=blue]}]{align}
-    \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma(z_{jk})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, \Qpx} \label{eq:ch4:app_new_mu} \\
+    \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx} \label{eq:ch4:app_new_mu} \\
     & \nonumber\\
-    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma(z_{jk})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \alpha(z_{jk})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
+    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma_k(\Bx^{[j]})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
     & \nonumber\\
-    w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma(jk)}{\sum\limits_{j=1}^{M} \Qpx} \label{eq:ch4:app_new_pi}
+    w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma_k(\Bx^{[j]})}{\sum\limits_{j=1}^{M} \Qpx} \label{eq:ch4:app_new_pi}
 \end{empheq}
 
 The covariances, Equation \ref{eq:ch4:app_new_cov}, and weights, Equation \ref{eq:ch4:app_new_pi}, are derived in a similar fashion.

@@ -4,72 +4,110 @@ The top-level auxiliary file: main.aux
 The style file: plainnat.bst
 Database file #1: bib/MLMF.bib.bib
 Database file #2: bib/peg_hole.bib.bib
-I was expecting a `,' or a `}'---line 356 of file bib/peg_hole.bib.bib
+I was expecting a `,' or a `}'---line 9 of file bib/peg_hole.bib.bib
+ :  
+ :  doi    = {10.1109/ROBOT.2010.5509556},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 40 of file bib/peg_hole.bib.bib
+ :    
+ :    doi       = {10.1109/ROBOT.1994.351117},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 326 of file bib/peg_hole.bib.bib
  :  
  :  month   ={May},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #3: bib/RL.bib.bib
-Repeated entry---line 365 of file bib/RL.bib.bib
- : @book{Bishop_2006
- :                  ,
+I was expecting a `,' or a `}'---line 60 of file bib/RL.bib.bib
+ :     
+ :     year = {2000},
+(Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #4: bib/pomdp.bib.bib
+I was expecting a `,' or a `}'---line 121 of file bib/pomdp.bib.bib
+ : 
+ : editor = {S. Becker and S. Thrun and K. Obermayer},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 708 of file bib/pomdp.bib.bib
+ :  
+ :  month={May},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Database file #5: bib/citations.bib.bib
 Database file #6: bib/DT.bib.bib
 Database file #7: bib/spatial_navigation.bib.bib
 Database file #8: bib/ch3-citations.bib.bib
+Warning--I didn't find a database entry for "ActingUncertainty_1996"
 Warning--I didn't find a database entry for "neura_fqi_2005"
+Warning--I didn't find a database entry for "BillardCDS08"
+Warning--empty publisher in barberBRML2012
+Warning--empty publisher in Baron-Cohen
+Warning--empty publisher in Billard08chapter
 Warning--empty publisher in Bishop_2006
-Warning--can't use both author and editor fields in Hauser_2011
+Warning--empty publisher in mc_update_ppomdps
+Warning--empty publisher in Hauser_2011
 Warning--empty journal in DRQ_AAAI_2015
+Warning--empty publisher in heli_2004
+Warning--empty publisher in Leslie_TOMM
 Warning--can't use both author and editor fields in GeorgiosLidoris
 Warning--empty publisher in NIPS2008_3501
 Warning--can't use both author and editor fields in RL_book_sa
+Warning--empty publisher in RL_book_sa
 Warning--empty publisher in Riedmiller2005
+Warning--empty publisher in EPCA_2003
+Warning--empty year in EPCA_2003
+Warning--empty year in EPCA_2003
+Warning--empty publisher in NIPS2002_2319
+Warning--empty publisher in Towards_a_ToM_2010
+Warning--empty year in Sutton00policygradient
+Warning--empty year in Sutton00policygradient
 Warning--empty publisher in sutton1998reinforcement
 Warning--empty publisher in SLAM_HBR
 Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
-You've used 168 entries,
+Warning--empty publisher in fast_peg_pbd_icmc_2014
+You've used 166 entries,
             2773 wiz_defined-function locations,
-            1740 strings with 42504 characters,
-and the built_in function-call counts, 94041 in all, are:
-= -- 8651
-> -- 5142
-< -- 167
-+ -- 1736
-- -- 1556
-* -- 7577
-:= -- 13747
-add.period$ -- 687
-call.type$ -- 168
-change.case$ -- 997
-chr.to.int$ -- 156
-cite$ -- 347
-duplicate$ -- 4447
-empty$ -- 7626
-format.name$ -- 1828
-if$ -- 20604
-int.to.chr$ -- 13
+            1627 strings with 37552 characters,
+and the built_in function-call counts, 90218 in all, are:
+= -- 8202
+> -- 4826
+< -- 172
++ -- 1634
+- -- 1459
+* -- 7219
+:= -- 13082
+add.period$ -- 627
+call.type$ -- 166
+change.case$ -- 966
+chr.to.int$ -- 157
+cite$ -- 358
+duplicate$ -- 4354
+empty$ -- 7474
+format.name$ -- 1729
+if$ -- 19754
+int.to.chr$ -- 10
 int.to.str$ -- 1
-missing$ -- 179
-newline$ -- 1007
-num.names$ -- 693
-pop$ -- 2092
+missing$ -- 177
+newline$ -- 954
+num.names$ -- 667
+pop$ -- 2106
 preamble$ -- 1
-purify$ -- 846
+purify$ -- 817
 quote$ -- 0
-skip$ -- 3557
+skip$ -- 3469
 stack$ -- 0
-substring$ -- 3972
-swap$ -- 1100
-text.length$ -- 90
+substring$ -- 3806
+swap$ -- 1058
+text.length$ -- 94
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1761
-warning$ -- 11
-while$ -- 762
+type$ -- 1739
+warning$ -- 26
+while$ -- 737
 width$ -- 0
-write$ -- 2520
-(There were 2 error messages)
+write$ -- 2377
+(There were 6 error messages)

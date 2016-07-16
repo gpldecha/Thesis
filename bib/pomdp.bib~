@@ -4,109 +4,74 @@
 
 
 @article{psace_mdp_1987,
- author = {Papadimitriou, Christos and Tsitsiklis, John N.},
- title = {The Complexity of Markov Decision Processes},
- journal = {Math. Oper. Res.},
- issue_date = {August 1, 1987},
- volume = {12},
- number = {3},
- month = aug,
- year = {1987},
- issn = {0364-765X},
- pages = {441--450},
- numpages = {10},
- url = {http://dx.doi.org/10.1287/moor.12.3.441},
- doi = {10.1287/moor.12.3.441},
- acmid = {35581},
- publisher = {INFORMS}
+ 	author 		= {Papadimitriou, Christos and Tsitsiklis, John N.},
+ 	title 		= {The Complexity of Markov Decision Processes},
+ 	journal 	= {Math. Oper. Res.},
+ 	volume 		= {12},
+ 	number 		= {3},
+ 	month 		= aug,
+ 	year 		= {1987},
+ 	pages 		= {441--450},
+	doi 		= {http://dx.doi.org/10.1287/moor.12.3.441},
 }
 
 @INPROCEEDINGS{acting_uncer_1996,
-	author={A. R. Cassandra and L. P. Kaelbling and J. A. Kurien},
-	booktitle={Intelligent Robots and Systems '96, IROS 96, Proceedings of the 1996 IEEE/RSJ International Conference on},
-	title={Acting under uncertainty: discrete Bayesian models for mobile-robot navigation},
-	year={1996},
-	volume={2},
-	pages={963-972 vol.2},
-	month={Nov}
+	author		={A. R. Cassandra and L. P. Kaelbling and J. A. Kurien},
+	booktitle	={International Conference on Intelligent Robots and Systems (IROS) },
+	title		={Acting under uncertainty: discrete Bayesian models for mobile-robot navigation},
+	year		={1996},
+	volume		={2},
+	pages		={963-972 vol.2},
+	month		={Nov}
 }
 
 % Q-MDP
 @inproceedings{Littman95,
-        Author = {Michael L. Littman and Anthony R. Cassandra and Leslie Pack Kaelbling},
-        Booktitle = {International Conference on Machine Learning (ICML)},
-        Publisher = {Morgan Kaufmann},
-        Title = {Learning Policies for Partially Observable Environments: Scaling Up},
-        Year = {1995},
-url={http://people.csail.mit.edu/lpk/papers/ml95.ps}
+        Author 		= {Michael L. Littman and Anthony R. Cassandra and Leslie Pack Kaelbling},
+        Booktitle 	= {International Conference on Machine Learning (ICML)},
+        Title 		= {Learning Policies for Partially Observable Environments: Scaling Up},
+        Year 		= {1995},
 }
 
-
 @article{Sondik_1973,
-author={Richard D. Smallwood, Edward J. Sondik},
- title = {The Optimal Control of Partially Observable Markov Processes over a Finite Horizon},
- journal = {Oper. Res.},
- issue_date = {October 1973},
- volume = {21},
- number = {5},
- month = oct,
- year = {1973},
- issn = {0030-364X},
- pages = {1071--1088},
- numpages = {18},
+	author={Richard D. Smallwood, Edward J. Sondik},
+ 	title = {The Optimal Control of Partially Observable Markov Processes over a Finite Horizon},
+ 	journal = {Oper. Res.},
+ 	volume = {21},
+ 	number = {5},
+ 	month = oct,
+ 	year = {1973},
+ 	pages = {1071--1088},
  url = {http://dx.doi.org/10.1287/opre.21.5.1071},
- doi = {10.1287/opre.21.5.1071},
- acmid = {2744951},
- publisher = {INFORMS},
- address = {Institute for Operations Research and the Management Sciences (INFORMS), Linthicum, Maryland, USA}
 }
 
 @article{Kaelbling_1998,
  author = {Kaelbling, Leslie Pack and Littman, Michael L. and Cassandra, Anthony R.},
  title = {Planning and Acting in Partially Observable Stochastic Domains},
  journal = {Artif. Intell.},
- issue_date = {May, 1998},
  volume = {101},
  number = {1-2},
  month = may,
  year = {1998},
- issn = {0004-3702},
  pages = {99--134},
- numpages = {36},
  url = {http://dx.doi.org/10.1016/S0004-3702(98)00023-X},
- doi = {10.1016/S0004-3702(98)00023-X},
- acmid = {1643301},
- publisher = {Elsevier Science Publishers Ltd.},
- address = {Essex, UK},
- keywords = {Partially observable Markov decision processes, Planning, Uncertainty},
 } 
 
 
-@INPROCEEDINGS{ActingUncertainty_1996,
-author={A. R. Cassandra and L. P. Kaelbling and J. A. Kurien},
-booktitle={Intelligent Robots and Systems '96, IROS 96, Proceedings of the 1996 IEEE/RSJ International Conference on},
-title={Acting under uncertainty: discrete Bayesian models for mobile-robot navigation},
-year={1996},
-volume={2},
-pages={963-972 vol.2},
-month={Nov}
-}
-
 @INPROCEEDINGS{810011,
 author={D. Nikovski and I. Nourbakhsh},
-booktitle={Computational Intelligence in Robotics and Automation, 1999. CIRA '99. Proceedings. 1999 IEEE International Symposium on},
+booktitle={International Symposium on Computational Intelligence in Robotics and Automation (CIRA)},
 title={Learning discrete Bayesian models for autonomous agent navigation},
 year={1999},
 pages={137-143},
-keywords={Bayes methods;Markov processes;decision theory;learning (artificial intelligence);mobile robots;navigation;path planning;Baum-Welch algorithm;Markov decision processes;autonomous agent;best-first model;discrete Bayesian models;mobile robots;navigation;path planning;Algorithm design and analysis;Autonomous agents;Bayesian methods;Impedance;Merging;Mobile robots;Navigation;Probability distribution;Robot sensing systems;Strips},
-doi={10.1109/CIRA.1999.810011},
-month={},}
+doi={10.1109/CIRA.1999.810011}
+}
 
 
 @ARTICLE{Kaelbling98planningand,
     author = {Leslie Pack Kaelbling and Michael L. Littman and Anthony R. Cassandra},
     title = {Planning and acting in partially observable stochastic domains},
-    journal = {ARTIFICIAL INTELLIGENCE},
+    journal = {Journal of Artificial Intelligence},
     year = {1998},
     volume = {101},
     pages = {99--134}
@@ -116,7 +81,8 @@ month={},}
 @INPROCEEDINGS{Roy99coastalnavigation,
     author = {Nicholas Roy and Sebastian Thrun},
     title = {Coastal Navigation with Mobile Robots},
-    booktitle = {In Advances in Neural Processing Systems 12},
+    booktitle = {Advances in Neural Processing Systems (NIPS)},
+    volume = {12},
     year = {1999},
     pages = {1043--1049}
 }
@@ -139,15 +105,10 @@ month={},}
 % Belief space compression
 
 @article{belief_compression_2005,
-    abstract = {{Human beings take for granted their ability to move around and interact with each other in a wide range of environments.  These same environments are tremendous sources of uncertainty for mobile robots. Not only does navigation introduce positional  uncertainty, but systems that try to interact with human beings are faced with the tremendously noisy and ambiguous  behaviours that humans exhibit. More recent planners have been developed that to handle the non-deterministic and unexpected  outcomes of actions. For example, a number of probabilistic planners model the real world as a Markov process.  However, most such planners assume that the true state of the world can always be determined accurately, an assumption that  is . In an world without enough structure, tracking the current position of a robot is hard; the sensors cannot reliably track the  environment as the robot moves.  The Partially Observable Markov Decision Process (POMDP) constitutes a particular planning methodology th...}},
     author = {Roy, Nicholas},
-    citeulike-article-id = {7081914},
-    citeulike-linkout-0 = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180},
-    journal = {Journal of Artificial Intelligence Research},
-    posted-at = {2011-12-18 04:09:06},
-    priority = {2},
+     journal = {Journal of Artificial Intelligence Research},
     title = {{Finding Approximate POMDP solutions Through Belief Compression}},
-    url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180},
+    doi    = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180},
     volume = {23},
     year = {2005}
 }
@@ -155,7 +116,8 @@ month={},}
 @incollection{EPCA_2003,
 title = {Exponential Family PCA for Belief Compression in POMDPs},
 author = {Nicholas Roy and Gordon, Geoffrey J},
-booktitle = {Advances in Neural Information Processing Systems 15},
+booktitle = {Advances in Neural Information Processing Systems (NIPS)},
+volume = {15}
 editor = {S. Becker and S. Thrun and K. Obermayer},
 pages = {1667--1674},
 year = {2003},
@@ -165,22 +127,13 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
 
 
 @article{bs_compression_2010,
-    abstract = {{Partially observable Markov decision process (POMDP) is a commonly adopted mathematical framework for solving planning problems in stochastic environments. However, computing the optimal policy of POMDP for large-scale problems is known to be intractable, where the high dimensionality of the underlying belief space is one of the major causes. In this paper, we propose a hybrid approach that integrates two different approaches for reducing the dimensionality of the belief space: 1) belief compression and 2) value-directed compression. In particular, a novel orthogonal nonnegative matrix factorization is derived for the belief compression, which is then integrated in a value-directed framework for computing the policy. In addition, with the conjecture that a properly partitioned belief space can have its per-cluster intrinsic dimension further reduced, we propose to apply a  k -means-like clustering technique to partition the belief space to form a set of sub-POMDPs before applying the dimension reduction techniques to each of them. We have evaluated the proposed belief compression and clustering approaches based on a set of benchmark problems and demonstrated their effectiveness in reducing the cost for computing policies, with the quality of the policies being retained.}},
-    author = {Li, Xin and Cheung, William K. and Liu, Jiming},
-    citeulike-article-id = {7081915},
-    citeulike-linkout-0 = {http://dx.doi.org/10.1109/tsmcb.2009.2021573},
-    citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5184876},
-    doi = {10.1109/tsmcb.2009.2021573},
-    issn = {1083-4419},
+     author = {Li, Xin and Cheung, William K. and Liu, Jiming},
     journal = {IEEE Transactions on Systems, Man, and Cybernetics, Part B (Cybernetics)},
-    keywords = {mdp, pca, statistics},
     month = feb,
     number = {1},
     pages = {125--136},
-    posted-at = {2010-04-26 01:17:53},
-    priority = {2},
-    title = {{Improving POMDP Tractability via Belief Compression and Clustering}},
-    url = {http://dx.doi.org/10.1109/tsmcb.2009.2021573},
+     title = {{Improving POMDP Tractability via Belief Compression and Clustering}},
+    doi = {http://dx.doi.org/10.1109/tsmcb.2009.2021573},
     volume = {40},
     year = {2010}
 }
@@ -198,12 +151,9 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
 } 
 
 @InProceedings{Veiga14aaai,
-  author =       {Tiago S. Veiga and Matthijs T. J. Spaan and Pedro
-                  U. Lima},
-  title =        {Point-based {POMDP} Solving with Factored Value
-                  Function Approximation},
-  booktitle =    {Proceedings of the Twenty-Eighth AAAI Conference on
-                  Artificial Intelligence},
+  author =       {Tiago S. Veiga and Matthijs T. J. Spaan and Pedro U. Lima},
+  title =        {Point-based {POMDP} Solving with Factored Value Function Approximation},
+  booktitle =    {Proceedings of the Twenty-Eighth AAAI Conference on Artificial Intelligence},
   year =         2014,
   pages =        {2512--2518}
 }
@@ -211,8 +161,7 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
 @INPROCEEDINGS{HSV,
  author = {Smith, Trey and Simmons, Reid},
  title = {Heuristic Search Value Iteration for POMDPs},
- booktitle = {Proceedings of the 20th Conference on Uncertainty in Artificial Intelligence},
- series = {UAI '04},
+ booktitle = {Conference on Uncertainty in Artificial Intelligence (UAI)},
  year = {2004},
  pages = {520--527},
  publisher = {AUAI Press},
@@ -224,9 +173,6 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
   title     = {{IJCAI} 2007, Proceedings of the 20th International Joint Conference
                on Artificial Intelligence, Hyderabad, India, January 6-12, 2007},
   year      = {2007},
-  timestamp = {Fri, 19 Dec 2008 17:01:54 +0100},
-  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/ijcai/2007},
-  bibsource = {dblp computer science bibliography, http://dblp.org}
 }
 
 @INPROCEEDINGS{SARSOP,
@@ -244,9 +190,6 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
   volume    = {abs/1207.1412},
   year      = {2012},
   url       = {http://arxiv.org/abs/1207.1412},
-  timestamp = {Wed, 10 Oct 2012 21:28:54 +0200},
-  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/corr/abs-1207-1412},
-  bibsource = {dblp computer science bibliography, http://dblp.org}
 }
 
 
@@ -255,7 +198,6 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
 AUTHOR = "Y.Z. Du and D. Hsu and H. Kurniawati and W.S. Lee and S.C.W. Ong and S.W. Png",
 TITLE = "A POMDP Approach to Robot Motion Planning under Uncertainty",
 BOOKTITLE = "Int. Conf. on Automated Planning and Scheduling, Workshop on Solving Real-World POMDP Problems",
-URL = "papers/icaps10_pomdpApsInRobotics.pdf",
 YEAR = "2010"
 }
 
@@ -264,7 +206,7 @@ YEAR = "2010"
 @ARTICLE{continusou_PBVI,
     author = {Josep M. Porta and Nikos Vlassis and Matthijs T. J. Spaan and Pascal Poupart},
     title = {Point-Based Value Iteration for Continuous POMDPs},
-    journal = {JOURNAL OF MACHINE LEARNING RESEARCH},
+    journal = {Jounral of Machine Learning Research},
     year = {2006},
     volume = {7},
     pages = {2329--2367}
@@ -278,13 +220,8 @@ YEAR = "2010"
  number = {1},
  month = aug,
  year = {2005},
- issn = {1076-9757},
  pages = {195--220},
- numpages = {26},
- url = {http://dl.acm.org/citation.cfm?id=1622519.1622525},
- acmid = {1622525},
- publisher = {AI Access Foundation},
- address = {USA},
+ url = {http://dl.acm.org/citation.cfm?id=1622519.1622525}
 } 
 
 
@@ -292,17 +229,13 @@ YEAR = "2010"
  author = {He, Ruijie and Brunskill, Emma and Roy, Nicholas},
  title = {Efficient Planning Under Uncertainty with Macro-actions},
  journal = {J. Artif. Int. Res.},
- issue_date = {January 2011},
  volume = {40},
  number = {1},
  month = jan,
  year = {2011},
  issn = {1076-9757},
  pages = {523--570},
- numpages = {48},
  url = {http://dl.acm.org/citation.cfm?id=2016945.2016959},
- acmid = {2016959},
- publisher = {AI Access Foundation},
  address = {USA}
 } 
 
@@ -319,10 +252,6 @@ YEAR = "2010"
 @inproceedings{hsu:what,
     author = {Hsu, David and Lee, Wee S. and Rong, Nan},
     booktitle = {NIPS'07},
-    citeulike-article-id = {9709602},
-    keywords = {pomdp, reinforcement\_learning},
-    posted-at = {2011-08-26 10:08:35},
-    priority = {2},
     title = {{What makes some POMDP problems easy to approximate?}},
     year = {2007}
 }
@@ -334,7 +263,8 @@ YEAR = "2010"
 @incollection{PF_gradient_pomdp_2008,
     Title = {Particle Filter-based Policy Gradient in POMDPs},
     Url = {http://books.nips.cc/papers/files/nips21/NIPS2008_0628.pdf},
-    Booktitle = {Advances in Neural Information Processing Systems 21},
+    Booktitle = {Advances in Neural Information Processing Systems (NIPS)},
+    volume = {21},
     Author = {Pierre-arnaud Coquelin and Romain Deguest and Rémi Munos},
     Editor = {D. Koller and D. Schuurmans and Y. Bengio and L. Bottou},
     Year = {2008},
@@ -359,23 +289,19 @@ volume={42},
 number={6},
 pages={1291-1307},
 doi={10.1109/TSMCC.2012.2218595},
-ISSN={1094-6977},
 month={Nov}}
 
 @article{REINFORCE,
 year={1992},
-issn={0885-6125},
 journal={Machine Learning},
 volume={8},
 number={3-4},
-doi={10.1007/BF00992696},
 title={Simple statistical gradient-following algorithms for connectionist reinforcement learning},
-url={http://dx.doi.org/10.1007/BF00992696},
+doi={http://dx.doi.org/10.1007/BF00992696},
 publisher={Kluwer Academic Publishers},
-keywords={Reinforcement learning; connectionist networks; gradient descent; mathematical analysis},
 author={Williams, RonaldJ.},
 pages={229-256},
-language={English}
+
 }
 
 
@@ -385,23 +311,19 @@ language={English}
   title =		 "Reinforcement learning of motor skills with policy gradients",
   booktitle =		 "Neural Networks",
   key =			 "reinforcement learning, policy gradient methods, natural gradients, natural actor-critic, motor skills, motor primitives",
-  URL =			 "http://www-clmc.usc.edu/publications/P/peters-NN2008.pdf",
   number =		 "4",
   pages =		 "682-97",
-  ISBN/ISSN =		 "0893-6080 (Print)",
-  crossref =		 "p10271"
 }
 
 % Next best touch
 
 @INPROCEEDINGS{next_best_touch,
 author={Hebert, P. and Howard, T. and Hudson, N. and Ma, J. and Burdick, J.W.},
-booktitle={Robotics and Automation (ICRA), 2013 IEEE International Conference on},
+booktitle={International Conference on Robotics and Automation (ICRA)},
 title={The next best touch for model-based localization},
 year={2013},
 month={May},
 pages={99-106},
-keywords={dexterous manipulators;image sensors;mobile robots;parameter estimation;pose estimation;robot vision;touch (physiological);ARM-S;DARPA autonomous robotic manipulation software robot;autonomous robot;contact method;information gain metric;model class estimation;model parameter estimation;model-based localization;next best touch;next sensing action;object localization;object pose uncertainty;tactile method;Computational modeling;Entropy;Equations;Gain measurement;Mathematical model;Robots;Trajectory},
 doi={10.1109/ICRA.2013.6630562},
 ISSN={1050-4729}
 }
@@ -412,7 +334,6 @@ ISSN={1050-4729}
  author = {Thrun, Sebastian and Burgard, Wolfram and Fox, Dieter},
  title = {Probabilistic Robotics (Intelligent Robotics and Autonomous Agents)},
  year = {2005},
- isbn = {0262201623},
  publisher = {The MIT Press},
 } 
 
@@ -434,14 +355,12 @@ ISSN={1050-4729}
 
 @INPROCEEDINGS{Quadrator_2008,
 author={Ruijie He and Prentice, S. and Roy, N.},
-booktitle={Robotics and Automation, 2008. ICRA 2008. IEEE International Conference on},
+booktitle={International Conference on Robotics and Automation (ICRA)},
 title={Planning in information space for a quadrotor helicopter in a GPS-denied environment},
 year={2008},
 month={May},
 pages={1814-1820},
-keywords={Kalman filters;helicopters;path planning;GPS-denied environment;belief roadmap algorithm;global positioning;information space;localization degree;motion planning;probabilistic roadmap algorithm;quadrotor helicopter;unscented Kalman filter;Global Positioning System;Helicopters;Helium;Intelligent sensors;Land vehicles;Motion planning;Remotely operated vehicles;Space vehicles;Trajectory;Unmanned aerial vehicles},
-doi={10.1109/ROBOT.2008.4543471},
-ISSN={1050-4729}
+doi={10.1109/ROBOT.2008.4543471}
 }
 
 @Article{BelRoadMap_2009,
@@ -460,29 +379,22 @@ ISSN={1050-4729}
  author = {Van Den Berg, Jur and Abbeel, Pieter and Goldberg, Ken},
  title = {LQG-MP: Optimized Path Planning for Robots with Motion Uncertainty and Imperfect State Information},
  journal = {Int. J. Rob. Res.},
- issue_date = {June      2011},
  volume = {30},
  number = {7},
  month = jun,
  year = {2011},
- issn = {0278-3649},
  pages = {895--913},
- numpages = {19},
- url = {http://dx.doi.org/10.1177/0278364911406562},
- doi = {10.1177/0278364911406562},
- acmid = {2000211},
- publisher = {Sage Publications, Inc.},
- address = {Thousand Oaks, CA, USA},
- keywords = {Planning, control, uncertainty},
+ doi = {http://dx.doi.org/10.1177/0278364911406562}
+
 } 
 
 @INPROCEEDINGS{Needle_2014,
 author={Wen Sun and R. Alterovitz},
-booktitle={Intelligent Robots and Systems (IROS 2014), 2014 IEEE/RSJ International Conference on},
+booktitle={International Conference on Intelligent Robots and Systems (IROS)},
 title={Motion planning under uncertainty for medical needle steering using optimization in belief space},
 year={2014},
 pages={1775-1781},
-doi={10.1109/IROS.2014.6942795},
+doi={http://dx.doi.org/10.1109/IROS.2014.6942795},
 month={Sept}
 }
 
@@ -490,35 +402,23 @@ month={Sept}
 
 @article{Bayesian_explor_exploit_2009,
 year={2009},
-issn={0929-5593},
 journal={Autonomous Robots},
 volume={27},
 number={2},
-doi={10.1007/s10514-009-9130-2},
+doi={http://dx.doi.org/10.1007/s10514-009-9130-2},
 title={A Bayesian exploration-exploitation approach for optimal online sensing and planning with a visually guided mobile robot},
-url={http://dx.doi.org/10.1007/s10514-009-9130-2},
 publisher={Springer US},
-keywords={Bayesian optimization; Online path planning; Sequential experimental design; Attention and gaze planning; Active vision; Dynamic sensor networks; Active learning; Policy search; Active SLAM; Model predictive control; Reinforcement learning},
 author={Martinez-Cantin, Ruben and de Freitas, Nando and Brochu, Eric and Castellanos, José and Doucet, Arnaud},
-pages={93-103},
-language={English}
 }
 
 
 @inproceedings{p_search_pomdp_1998,
  author = {Hansen, Eric A.},
  title = {Solving POMDPs by Searching in Policy Space},
- booktitle = {Proceedings of the Fourteenth Conference on Uncertainty in Artificial Intelligence},
- series = {UAI'98},
+ booktitle = {Fourteenth Conference on Uncertainty in Artificial Intelligence (UAI)},
  year = {1998},
- isbn = {1-55860-555-X},
- location = {Madison, Wisconsin},
  pages = {211--219},
- numpages = {9},
  url = {http://dl.acm.org/citation.cfm?id=2074094.2074119},
- acmid = {2074119},
- publisher = {Morgan Kaufmann Publishers Inc.},
- address = {San Francisco, CA, USA},
 } 
 
 
@@ -533,28 +433,21 @@ language={English}
 @INPROCEEDINGS{MCVI,
     author = {Haoyu Bai and David Hsu and Wee Sun Lee and Vien A. Ngo},
     title = {Monte Carlo Value Iteration for Continuous-State POMDPs},
-    booktitle = {WORKSHOP ON THE ALGORITHMIC FOUNDATIONS OF ROBOTICS},
+    booktitle = {Workshop on the algorithmic foundations of robotics},
     year = {2010},
-    publisher = {}
 }
 
 
 % Sample based POMDP policy
 
 @inproceedings{Rand_belief_space_replanning,
-  added-at = {2011-09-11T00:00:00.000+0200},
   author = {Hauser, Kris},
   booktitle = {WAFR},
-  crossref = {conf/wafr/2010},
-  editor = {Hsu, David and Isler, Volkan and Latombe, Jean-Claude and Lin, Ming C.},
-  ee = {http://dx.doi.org/10.1007/978-3-642-17452-0_12},
-  isbn = {978-3-642-17451-3},
   pages = {193-209},
-  publisher = {Springer},
-  series = {Springer Tracts in Advanced Robotics},
   title = {Randomized Belief-Space Replanning in Partially-Observable Continuous Spaces.},
   volume = 68,
-  year = 2010
+  year = 2010,
+  doi = {http://dx.doi.org/10.1007/978-3-642-17452-0_12}
 }
 
 
@@ -569,43 +462,24 @@ language={English}
 }
 
 
-
 % Reward functions
 
 @INPROCEEDINGS{Mihaylova02activesensing,
     author = {L. Mihaylova and T. Lefebvre and H. Bruyninckx and K. Gadeyne and J. De Schutter},
     title = {Active Sensing for Robotics - A Survey},
-    booktitle = {in Proc. 5 th Int’l Conf. On Numerical Methods and Applications},
+    booktitle = {International Conferrence On Numerical Methods and Applications},
     year = {2002},
     pages = {316--324}
 }
 
 
-% deChambrierBillard2014
-
-@article{deChambrierBillard2014,
-year={2014},
-journal={Robotics and Biomimetics},
-volume={1},
-number={1},
-title={Learning search polices from humans in a partially observable context},
-publisher={Springer Berlin Heidelberg},
-author={Chambrier, Guillaumede and Billard, Aude}
-}
 
 @proceedings{PbD_Sylvain_static_representation,
     author = {Calinon, S. and Guenter, F. and Billard, A.},
-    citeulike-article-id = {1222185},
-    citeulike-linkout-0 = {http://dx.doi.org/10.1109/robot.2006.1642154},
-    citeulike-linkout-1 = {http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1642154},
-    doi = {10.1109/robot.2006.1642154},
-    journal = {Robotics and Automation, 2006. ICRA 2006. Proceedings 2006 IEEE International Conference on},
-    keywords = {algorithms, learning-by-demo},
+   journal = {International Conference on Robotics and Automation (ICRA)},
     pages = {2978--2983},
-    posted-at = {2009-03-27 15:55:39},
-    priority = {5},
     title = {{On learning the statistical representation of a task and generalizing it to various contexts}},
-    url = {http://dx.doi.org/10.1109/robot.2006.1642154},
+    doi = {http://dx.doi.org/10.1109/robot.2006.1642154},
     year = {2006}
 }
 
@@ -616,343 +490,269 @@ author={Chambrier, Guillaumede and Billard, Aude}
 @INPROCEEDINGS{Gordon95stablefunction,
     author = {Geoffrey J. Gordon},
     title = {Stable Function Approximation in Dynamic Programming},
-    booktitle = {IN MACHINE LEARNING: PROCEEDINGS OF THE TWELFTH INTERNATIONAL CONFERENCE},
+    booktitle = {International Conference In Machine Learning},
+    volume = {12},
     year = {1995},
     publisher = {Morgan Kaufmann}
 }
 
 @TechReport{Ellsberg_paradox,
   author={Daniel Ellsberg},
-  title={{Risk, Ambiguity and the Savage Axioms}},
+  title={Risk, Ambiguity and the Savage Axioms},
   year=2000,
   month=Dec,
   institution={David K. Levine},
-  type={Levine's Working Paper Archive},
   url={http://ideas.repec.org/p/cla/levarc/7605.html},
   number={7605},
-  abstract={No abstract is available for this item.},
-  keywords={},
+
 }
 
 
-@article{MACHINA01051987,
-author = {MACHINA, MARK J.}, 
-title = {Decision-Making in the Presence of Risk},
-volume = {236}, 
-number = {4801}, 
-pages = {537-543}, 
-year = {1987}, 
-doi = {10.1126/science.236.4801.537}, 
-abstract ={Proposed in the 18th century by Cramer and Bernoulli and formally axiomatized in the 20th century by von Neumann and Morgenstern and others, the expected utility model has long been the dominant framework for the analysis of decision-making under risk. A growing body of experimental evidence, however, indicates that individuals systematically violate the key behavioral assumption of this model, the so-called independence axiom. This has led to the development and analysis of nonexpected utility models of decision-making. Although recent work in this area has shown that the analytical results of expected utility theory are more robust than previously supposed, other important issues remain unresolved.}, 
-URL = {http://www.sciencemag.org/content/236/4801/537.abstract}, 
-eprint = {http://www.sciencemag.org/content/236/4801/537.full.pdf}, 
-journal = {Science} 
-}
 
 @incollection{Billard08chapter,
-author="A. Billard and S. Calinon and R. Dillmann and S. Schaal",
-title="Robot Programming by Demonstration",
-booktitle="Handbook of Robotics",
-editor="B. Siciliano and O. Khatib",
-publisher="Springer",
-address="Secaucus, NJ, USA",
-year="2008",
-pages="1371--1394"
+	author="A. Billard and S. Calinon and R. Dillmann and S. Schaal",
+	title="Robot Programming by Demonstration",
+	booktitle="Handbook of Robotics",
+	year="2008",
+	pages="1371--1394"
 }
 
 @inproceedings{rai2013learning,
-  title={Learning from failed demonstrations in unreliable systems},
-  author={Rai, Akshara and De Chambrier, Guillaume and Billard, Aude},
-  booktitle={Humanoid Robots (Humanoids), 2013 13th IEEE-RAS International Conference on},
-  pages={410--416},
-  year={2013},
-  organization={IEEE}
+  	title={Learning from failed demonstrations in unreliable systems},
+  	author={Rai, Akshara and De Chambrier, Guillaume and Billard, Aude},
+  	booktitle={International Conference on Humanoid Robots (Humanoids)},
+  	pages={410--416},
+  	year={2013}
 }
 
 
 % Active Exploration and planning 
 
 @INPROCEEDINGS{active_RSS_07,
-    AUTHOR    = {R. Martinez-Cantin and N. de Freitas and A. Doucet and J. Castellanos},
-    TITLE     = {Active Policy Learning for Robot Planning and Exploration under Uncertainty},
-    BOOKTITLE = {Proceedings of Robotics: Science and Systems},
-    YEAR      = {2007},
-    ADDRESS   = {Atlanta, GA, USA},
-    MONTH     = {June},
-    DOI       = {10.15607/RSS.2007.III.041} 
+    	AUTHOR    = {R. Martinez-Cantin and N. de Freitas and A. Doucet and J. Castellanos},
+    	TITLE     = {Active Policy Learning for Robot Planning and Exploration under Uncertainty},
+    	BOOKTITLE = {Proceedings of Robotics: Science and Systems},
+    	YEAR      = {2007},
+    	MONTH     = {June},
+    	DOI       = {10.15607/RSS.2007.III.041} 
 }
 
 ﻿@Article{Martinez-Cantin2009,
-author="Martinez-Cantin, Ruben
-and Freitas, Nando
-and Brochu, Eric
-and Castellanos, Jos{\'e}
-and Doucet, Arnaud",
-title="A Bayesian exploration-exploitation approach for optimal online sensing and planning with a visually guided mobile robot",
-journal="Autonomous Robots",
-year="2009",
-volume="27",
-number="2",
-pages="93--103",
-issn="1573-7527",
-doi="10.1007/s10514-009-9130-2",
-url="http://dx.doi.org/10.1007/s10514-009-9130-2"
+	author="Martinez-Cantin, Ruben and Freitas,  Nando and Brochu, Eric and Castellanos, Jos{\'e} and Doucet, Arnaud",
+	title="A Bayesian exploration-exploitation approach for optimal online sensing and planning with a visually guided mobile robot",
+	journal="Autonomous Robots",
+	year="2009",
+	volume="27",
+	number="2",
+	pages="93--103",
+	doi="http://dx.doi.org/10.1007/s10514-009-9130-2"
 }
-
-
 
 
 % Continuous POMDP
 
 
 @incollection{mc_update_ppomdps,
-year={2011},
-booktitle={Robotics Research},
-volume={66},
-series={Springer Tracts in Advanced Robotics},
-editor={Kaneko, Makoto and Nakamura, Yoshihiko},
-title={A Monte Carlo Update for Parametric POMDPs},
-doi={http://dx.doi.org/10.1007/978-3-642-14743-2_19},
-publisher={Springer Berlin Heidelberg},
-author={Brooks, Alex and Williams, Stefan},
-pages={213-223}
+	author	={Brooks, Alex and Williams, Stefan},
+	title={A Monte Carlo Update for Parametric POMDPs},
+	year={2011},
+	booktitle={Robotics Research},
+	volume={66},
+	pages={213-223},
+	doi={http://dx.doi.org/10.1007/978-3-642-14743-2_19}
 }
 
 @INPROCEEDINGS{Erez10ascalable,
-    author = {Tom Erez and William D. Smart},
-    title = {A Scalable Method for Solving High-Dimensional Continuous POMDPs Using Local Approximation},
-    booktitle = {Conf. on Uncertainty in Artificial Intelligence},
-    year = {2010}
+    	author = {Tom Erez and William D. Smart},
+    	title = {A Scalable Method for Solving High-Dimensional Continuous POMDPs Using Local Approximation},
+    	booktitle = {Conf. on Uncertainty in Artificial Intelligence},
+    	year = {2010}
 }
 
 @incollection{MCVI_CS_POMDPs,
-year={2011},
-isbn={978-3-642-17451-3},
-booktitle={Algorithmic Foundations of Robotics IX},
-volume={68},
-series={Springer Tracts in Advanced Robotics},
-editor={Hsu, David and Isler, Volkan and Latombe, Jean-Claude and Lin, MingC.},
-doi={10.1007/978-3-642-17452-0_11},
-title={Monte Carlo Value Iteration for Continuous-State POMDPs},
-url={http://dx.doi.org/10.1007/978-3-642-17452-0_11},
-publisher={Springer Berlin Heidelberg},
-author={Bai, Haoyu and Hsu, David and Lee, WeeSun and Ngo, VienA.},
-pages={175-191},
-language={English}
+	author={Bai, Haoyu and Hsu, David and Lee, WeeSun and Ngo, VienA.},
+	year={2011},
+	booktitle={Algorithmic Foundations of Robotics IX},
+	volume={68},
+	title={Monte Carlo Value Iteration for Continuous-State POMDPs},
+	doi={http://dx.doi.org/10.1007/978-3-642-17452-0_11}
 }
 
 @incollection{NIPS2011_4477,
-title = {Monte Carlo Value Iteration with Macro-Actions},
-author = {Zhan Lim and Lee Sun and Daniel J. Hsu},
-booktitle = {Advances in Neural Information Processing Systems 24},
-editor = {J. Shawe-Taylor and R. S. Zemel and P. L. Bartlett and F. Pereira and K. Q. Weinberger},
-pages = {1287--1295},
-year = {2011},
-publisher = {Curran Associates, Inc.},
-url = {http://papers.nips.cc/paper/4477-monte-carlo-value-iteration-with-macro-actions.pdf}
+	title = {Monte Carlo Value Iteration with Macro-Actions},
+	author = {Zhan Lim and Lee Sun and Daniel J. Hsu},
+	booktitle = {Advances in Neural Information Processing Systems (NIPS)},
+	volume    = {24},
+	pages = {1287--1295},
+	year = {2011},
+	url = {http://papers.nips.cc/paper/4477-monte-carlo-value-iteration-with-macro-actions.pdf}
 }
 
 @inproceedings{solving_continous_pomdps_2013,
-    Publisher = {JMLR Workshop and Conference Proceedings},
-    Author = {Sebastian Brechtel and Tobias Gindele and R\"udiger Dillmann},
-    url = {http://jmlr.org/proceedings/papers/v28/brechtel13.pdf},
-    Booktitle = {Proceedings of the 30th International Conference on Machine Learning (ICML-13)},
-    Title = {Solving Continuous POMDPs: Value Iteration with Incremental Learning of an Efficient Space Representation},
-    Month = may,
-    Volume = {28},
-    Editor = {Sanjoy Dasgupta and David Mcallester},
-    Year = {2013},
-    Pages = {370-378},
+    	Publisher = {JMLR Workshop and Conference Proceedings},
+    	Author = {Sebastian Brechtel and Tobias Gindele and R\"udiger Dillmann},
+    	url = {http://jmlr.org/proceedings/papers/v28/brechtel13.pdf},
+    	Booktitle = {International Conference on Machine Learning (ICML)},
+    	Title = {Solving Continuous POMDPs: Value Iteration with Incremental Learning of an Efficient Space Representation},
+    	Month = may,
+    	Volume = {28},
+    	Year = {2013},
+    	Pages = {370-378},
 } 
 
 @InProceedings{Spaan05icra,
-  author =       {Matthijs T. J. Spaan and Nikos Vlassis},
-  title =        {Planning with continuous actions in partially
-                  observable environments},
-  booktitle =    {Proceedings of the IEEE International Conference on
-                  Robotics and Automation},
-  pages =        {3469--3474},
-  year =         2005,
-  address =      {Barcelona, Spain}
+  	author =       {Matthijs T. J. Spaan and Nikos Vlassis},
+  	title =        {Planning with continuous actions in partially observable environments},
+  	booktitle =    {International Conference on Robotics and Automation (ICRA)},
+  	pages =        {3469--3474},
+  	year =         2005
 }
 
 
 @ARTICLE{PBVI_C_2006,
-    author = {Josep M. Porta and Nikos Vlassis and Matthijs T. J. Spaan and Pascal Poupart},
-    title = {Point-Based Value Iteration for Continuous POMDPs},
-    journal = {Journal of machine learning research},
-    year = {2006},
-    volume = {7},
-    pages = {2329--2367}
+    	author 	= {Josep M. Porta and Nikos Vlassis and Matthijs T. J. Spaan and Pascal Poupart},
+    	title 	= {Point-Based Value Iteration for Continuous POMDPs},
+    	journal 	= {Journal of machine learning research},
+    	year 	= {2006},
+    	volume 	= {7},
+    	pages 	= {2329--2367}
 }
 
 @InProceedings{MC-POMDP,
-  author =       "Thrun, Sebastian",
-  title =        "Monte Carlo {POMDP}s",
-  booktitle =    "Advances in Neural Information Processing Systems (NIPS 1999)",
-  year =         "2000",
-  ISBN =         "0-262-19450-3",
-  editor =    "Solla, Sara A. and Leen, Todd K. and M{\"u}ller, Klaus-Robert ",
-  publisher = "MIT Press",
-  pages =     "1064--1070",
-  url = "http://robots.stanford.edu/papers/thrun.mcpomdp.pdf",
-  bib2html_rescat = "Partial Observability",
+  	author =       "Thrun, Sebastian",
+  	title =        "Monte Carlo {POMDP}s",
+  	booktitle =    "Advances in Neural Information Processing Systems (NIPS)",
+  	year =         "2000",
+  	pages =     "1064--1070",
 }
 
 @INPROCEEDINGS{Porta05robotplanning,
-    author = {Josep M. Porta and Matthijs T. J. Spaan and Nikos Vlassis},
-    title = {Robot planning in partially observable continuous domains},
-    booktitle = {In Robotics: Science and Systems I},
-    year = {2005},
-    pages = {217--224}
+    	author = {Josep M. Porta and Matthijs T. J. Spaan and Nikos Vlassis},
+    	title = {Robot planning in partially observable continuous domains},
+    	booktitle = {Robotics Science and Systems I (RSS)},
+    	year = {2005},
+    	pages = {217--224}
 }
 
 
 @article{PPOMDP_2006,
-title = "Parametric \{POMDPs\} for planning in continuous state spaces ",
-journal = "Robotics and Autonomous Systems ",
-volume = "54",
-number = "11",
-pages = "887 - 897",
-year = "2006",
-note = "Planning Under Uncertainty in Robotics ",
-issn = "0921-8890",
-doi = "http://dx.doi.org/10.1016/j.robot.2006.05.007",
-url = "http://www.sciencedirect.com/science/article/pii/S0921889006000960",
-author = "Alex Brooks and Alexei Makarenko and Stefan Williams and Hugh Durrant-Whyte",
+	author = "Alex Brooks and Alexei Makarenko and Stefan Williams and Hugh Durrant-Whyte",
+	title = "Parametric \{POMDPs\} for planning in continuous state spaces ",
+	journal = "Robotics and Autonomous Systems (RAS)",
+	volume = "54",
+	number = "11",
+	pages = "887 - 897",
+	year = "2006",
+	doi = "http://dx.doi.org/10.1016/j.robot.2006.05.007"
 }
 
 
 %% Belief space planning
 
 @inproceedings{bsp_rss_2010a,
-    author = {Robert Platt and Russell Tedrake and Leslie Kaelbling and Tom\'{a}s Lozano-P\'{e}rez},
-    title = {Belief space planning assuming maximum likelihood observations}, 
-    booktitle = {Robotics Science and Systems Conference (RSS)},
-    year = {2010},
-    keywords={Belief Space Planning},
-    url = {http://groups.csail.mit.edu/robotics-center/public_papers/Platt10.pdf}
+    	author 	= {Robert Platt and Russell Tedrake and Leslie Kaelbling and Tom\'{a}s Lozano-P\'{e}rez},
+    	title 	= {Belief space planning assuming maximum likelihood observations}, 
+    	booktitle 	= {Robotics Science and Systems Conference (RSS)},
+    	year 	= {2010},
+    	url  	= {http://groups.csail.mit.edu/robotics-center/public_papers/Platt10.pdf}
 }
 
-
 @article{plan_cont_bel_space_2015,
-author = {Indelman, Vadim and Carlone, Luca and Dellaert, Frank}, 
-title = {Planning in the continuous domain: A generalized belief space approach for autonomous navigation in unknown environments},
-volume = {34}, 
-number = {7}, 
-pages = {849-882}, 
-year = {2015}, 
-doi = {10.1177/0278364914561102}, 
-URL = {http://ijr.sagepub.com/content/34/7/849.abstract}, 
-eprint = {http://ijr.sagepub.com/content/34/7/849.full.pdf+html}, 
-journal = {The International Journal of Robotics Research} 
+	author = {Indelman, Vadim and Carlone, Luca and Dellaert, Frank}, 
+	title = {Planning in the continuous domain: A generalized belief space approach for autonomous navigation in unknown environments},
+	volume = {34}, 
+	number = {7}, 
+	pages = {849-882}, 
+	year = {2015}, 
+	doi = {http://dx.doi.org/10.1177/0278364914561102}, 
+	journal = {International Journal of Robotics Research (IJRR)} 
 }
 
 @article{bel_roadmap_2009,
-author  = {Prentice, Samuel and Roy, Nicholas}, 
-title   = {The Belief Roadmap: Efficient Planning in Belief Space by Factoring the Covariance},
-volume  = {28}, 
-number  = {11-12}, 
-pages   = {1448-1465}, 
-year    = {2009}, 
-doi     = {10.1177/0278364909341659},
-url     = {http://ijr.sagepub.com/content/28/11-12/1448.abstract}, 
-journal = {The International Journal of Robotics Research} 
+	author  = {Prentice, Samuel and Roy, Nicholas}, 
+	title   = {The Belief Roadmap: Efficient Planning in Belief Space by Factoring the Covariance},
+	volume  = {28}, 
+	number  = {11-12}, 
+	pages   = {1448-1465}, 
+	year    = {2009}, 
+	doi     = {http://dx.doi.org/10.1177/0278364909341659},
+	journal = {International Journal of Robotics Research (IJRR)} 
 }
 
 @INPROCEEDINGS{FIRM_2011,
-author={Ali-akbar Agha-mohammadi and Suman Chakravorty and Nancy M. Amato},
-booktitle={International Conference on Intelligent Robots and Systems (IROS) 2011},
-title={FIRM: Feedback controller-based information-state roadmap - A framework for motion planning under uncertainty},
-year={2011},
-pages={4284-4291},
-doi={10.1109/IROS.2011.6095010},
-month={Sept}
+	author={Ali-akbar Agha-mohammadi and Suman Chakravorty and Nancy M. Amato},
+	booktitle={International Conference on Intelligent Robots and Systems (IROS)},
+	title={FIRM: Feedback controller-based information-state roadmap - A framework for motion planning under uncertainty},
+	year={2011},
+	pages={4284-4291},
+	month={Sept},
+	doi={http://dx.doi.org/10.1109/IROS.2011.6095010},
 }
 
 @INPROCEEDINGS{rob_online_bs_icra_2014,
-author={Ali-akbar Agha-mohammadi and S. Agarwal and A. Mahadevan and S. Chakravorty and D. Tomkins and J. Denny and N. M. Amato},
-booktitle={International Conference on Robotics and Automation (ICRA) 2014},
-title={Robust online belief space planning in changing environments: Application to physical mobile robots},
-year={2014},
-pages={149-156},
-doi={10.1109/ICRA.2014.6906602},
-month={May}
+	author={Ali-akbar Agha-mohammadi and S. Agarwal and A. Mahadevan and S. Chakravorty and D. Tomkins and J. Denny and N. M. Amato},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={Robust online belief space planning in changing environments: Application to physical mobile robots},
+	year={2014},
+	pages={149-156},
+	month={May},
+	doi={http://dx.doi.org/10.1109/ICRA.2014.6906602}
 }
 
 @INPROCEEDINGS{non_gauss_bel_plan_2012,
-author={R. Platt and L. Kaelbling and T. Lozano-Perez and R. Tedrake},
-booktitle={Robotics and Automation (ICRA), 2012 IEEE International Conference on},
-title={Non-Gaussian belief space planning: Correctness and complexity},
-year={2012},
-pages={4711-4717},
-keywords={Gaussian distribution;computational complexity;manipulators;optimisation;planning (artificial intelligence);Gaussian distribution;belief-space plan;complex information-gathering operations;computational complexity;nongaussian belief space planning;nonlinear optimization problem;partially observable control problem;probability distributions space;Algorithm design and analysis;Equations;Gaussian distribution;Measurement by laser beam;Planning;Robots;Trajectory},
-doi={10.1109/ICRA.2012.6225223},
-ISSN={1050-4729},
-month={May}
+	author={R. Platt and L. Kaelbling and T. Lozano-Perez and R. Tedrake},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={Non-Gaussian belief space planning: Correctness and complexity},
+	year={2012},
+	pages={4711-4717}
+	month={May},
+	doi={10.1109/ICRA.2012.6225223}
 }
 
 @article{int_motion_planning_2013,
- author = {Kaelbling, Leslie Pack and Lozano-P{\'e}rez, Tom\'{a}s},
- title = {Integrated Task and Motion Planning in Belief Space},
- journal = {Int. J. Rob. Res.},
- issue_date = {August-September 2013},
- volume = {32},
- number = {9-10},
- month = aug,
- year = {2013},
- issn = {0278-3649},
- pages = {1194--1227},
- numpages = {34},
- url = {http://dx.doi.org/10.1177/0278364913484072},
- doi = {10.1177/0278364913484072},
- acmid = {2528323},
- publisher = {Sage Publications, Inc.},
- address = {Thousand Oaks, CA, USA},
- keywords = {belief space, manipulation planning, mobile manipulation, planning under uncertainty, symbolic task planning},
+ 	author = {Kaelbling, Leslie Pack and Lozano-P{\'e}rez, Tom\'{a}s},
+ 	title = {Integrated Task and Motion Planning in Belief Space},
+ 	journal = {Int. J. Rob. Res.},
+ 	volume = {32},
+ 	number = {9-10},
+ 	month = aug,
+ 	year = {2013},
+ 	pages = {1194--1227},
+ 	doi = {http://dx.doi.org/10.1177/0278364913484072}
 } 
-
-
 
 %% Local Search
 
 @article{van_den_Berg_2012,
-author = {van den Berg, Jur and Patil, Sachin and Alterovitz, Ron}, 
-title = {Motion planning under uncertainty using iterative local optimization in belief space},
-volume = {31}, 
-number = {11}, 
-pages = {1263-1278}, 
-year = {2012}, 
-doi = {10.1177/0278364912456319}, 
-URL = {http://ijr.sagepub.com/content/31/11/1263.abstract}, 
-eprint = {http://ijr.sagepub.com/content/31/11/1263.full.pdf+html}, 
-journal = {The International Journal of Robotics Research} 
+	author = {van den Berg, Jur and Patil, Sachin and Alterovitz, Ron}, 
+	title = {Motion planning under uncertainty using iterative local optimization in belief space},
+	volume = {31}, 
+	number = {11}, 
+	pages = {1263-1278}, 
+	year = {2012}, 
+	journal = {International Journal of Robotics Research (IJRR)},
+	doi = {http://dx.doi.org/10.1177/0278364912456319}
 }
-
 
 %  Heuristic
 
 @INPROCEEDINGS{where_look_2012,
-author={J. Nunez-Varela and B. Ravindran and J. L. Wyatt},
-booktitle={Robotics and Automation (ICRA), 2012 IEEE International Conference on},
-title={Where do i look now? Gaze allocation during visually guided manipulation},
-year={2012},
-pages={4444-4449},
-keywords={manipulators;body motor systems;common baselines;handling actions;multiple motor systems;physical actions;random gaze allocation;reward-based coordination mechanism;robot oculomotor system;round robin gaze allocation;variable duration;visually guided manipulation;Cameras;Containers;Robot kinematics;Robot vision systems;Uncertainty;Visualization},
-doi={10.1109/ICRA.2012.6225226},
-ISSN={1050-4729},
-month={May},}
+	author={J. Nunez-Varela and B. Ravindran and J. L. Wyatt},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={Where do i look now? Gaze allocation during visually guided manipulation},
+	year={2012},
+	pages={4444-4449},
+	month={May},
+	doi={http://dx.doi.org/10.1109/ICRA.2012.6225226},
+}
 
 @inproceedings{qmdp_ijcnn_2014,
-  author    = {Yong Lin and
-               Xingjia Lu and
-               Fillia Makedon},
-  title     = {Approximate planning in POMDPs via {MDP} heuristic},
-  booktitle = {International Joint Conference on Neural Networks (2014)},
-  pages     = {1304--1309},
-  year      = {2014},
-  url       = {http://dx.doi.org/10.1109/IJCNN.2014.6889576},
-  doi       = {10.1109/IJCNN.2014.6889576},
+  	author    = {Yong Lin and Xingjia Lu and Fillia Makedon},
+  	title     = {Approximate planning in POMDPs via {MDP} heuristic},
+  	booktitle = {International Joint Conference on Neural Networks (2014)},
+  	pages     = {1304--1309},
+  	year      = {2014},
+  	doi       = {http://dx.doi.org/10.1109/IJCNN.2014.6889576},
 }
 
 @inproceedings{dense_entropy_icra_2014,
@@ -961,233 +761,190 @@ month={May},}
   	booktitle = {International Conference on Robotics and Automation (ICRA)},
   	pages     = {6083-6089},
   	year      = {2014},
-  	doi       = {10.1109/ICRA.2014.6907755},
+  	doi       = {http://dx.doi.org/10.1109/ICRA.2014.6907755},
 }
 
 @INPROCEEDINGS{Uncer_reduction_heuristic_2015,
 	author={Q. Zhang and I. Rekleitis and G. Dudek},
-	booktitle={Computer and Robot Vision (CRV), 2015 12th Conference on},
+	booktitle={Conference on Computer and Robot Vision (CRV)},
 	title={Uncertainty Reduction via Heuristic Search Planning on Hybrid Metric/Topological Map},
 	year={2015},
 	pages={222-229},
-	doi={10.1109/CRV.2015.36},
-	month={June}
+	month={June},
+	doi={http://dx.doi.org/10.1109/CRV.2015.36}
 }
 
 
 @INPROCEEDINGS{seq_info_gain_iros_2013,
-author={C. Zito and M. S. Kopicki and R. Stolkin and C. Borst and F. Schmidt and M. A. Roa and J. L. Wyatt},
-booktitle={Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ International Conference on},
-title={Sequential trajectory re-planning with tactile information gain for dexterous grasping under object-pose uncertainty},
-year={2013},
-pages={4013-4020},
-ISSN={2153-0858},
-month={Nov},}
-
+	author 		={C. Zito and M. S. Kopicki and R. Stolkin and C. Borst and F. Schmidt and M. A. Roa and J. L. Wyatt},
+	booktitle	={International Conference on Intelligent Robots and Systems (IROS)},
+	title		={Sequential trajectory re-planning with tactile information gain for dexterous grasping under object-pose uncertainty},
+	year		={2013},
+	pages		={4013-4020},
+	month		={Nov}
+}
 
 @article{Efficient_touch_2012,
-  author    = {Shervin Javdani and
-               Matthew Klingensmith and
-               Drew Bagnell and
-               Nancy S. Pollard and
-               Siddhartha S. Srinivasa},
-  title     = {Efficient Touch Based Localization through Submodularity},
-  journal   = {CoRR},
-  volume    = {abs/1208.6067},
-  year      = {2012},
-  url       = {http://arxiv.org/abs/1208.6067},
-  timestamp = {Fri, 04 Jan 2013 11:19:37 +0100},
-  biburl    = {http://dblp2.uni-trier.de/rec/bib/journals/corr/abs-1208-6067},
-  bibsource = {dblp computer science bibliography, http://dblp.org}
+  	author    = {Shervin Javdani and Matthew Klingensmith and Drew Bagnell and Nancy S. Pollard and Siddhartha S. Srinivasa},
+  	title     = {Efficient Touch Based Localization through Submodularity},
+  	journal   = {CoRR},
+  	year      = {2012}
 }
 
 @INPROCEEDINGS{uav_inspec_ICRA_2012,
-author={G. A. Hollinger and B. Englot and F. Hover and U. Mitra and G. S. Sukhatme},
-booktitle={Robotics and Automation (ICRA), 2012 IEEE International Conference on},
-title={Uncertainty-driven view planning for underwater inspection},
-year={2012},
-pages={4884-4891},
-ISSN={1050-4729},
-month={May}
+	author		={G. A. Hollinger and B. Englot and F. Hover and U. Mitra and G. S. Sukhatme},
+	booktitle	={International Conference on Robotics and Automation (ICRA)},
+	title		={Uncertainty-driven view planning for underwater inspection},
+	year		={2012},
+	pages		={4884-4891},
+	month		={May}
 }
 
 ﻿@Inbook{Hauser_2011,
-author="Hauser, Kris",
-editor="Hsu, David and Isler, Volkan and Latombe, Jean-Claude and Lin, Ming C.",
-chapter="Randomized Belief-Space Replanning in Partially-Observable Continuous Spaces",
-title="Algorithmic Foundations of Robotics IX: Selected Contributions of the Ninth International Workshop on the Algorithmic Foundations of Robotics",
-year="2011",
-publisher="Springer Berlin Heidelberg",
-address="Berlin, Heidelberg",
-pages="193--209",
-isbn="978-3-642-17452-0",
-doi="10.1007/978-3-642-17452-0_12",
-url="http://dx.doi.org/10.1007/978-3-642-17452-0_12"
+	author="Hauser, Kris",
+	chapter="Randomized Belief-Space Replanning in Partially-Observable Continuous Spaces",
+	title="Algorithmic Foundations of Robotics IX: Selected Contributions of the Ninth International Workshop on the Algorithmic Foundations of Robotics",
+	year="2011",
+	pages="193--209",
+	doi="http://dx.doi.org/10.1007/978-3-642-17452-0_12"
 }
 
 % Grasping
 
 
 @INPROCEEDINGS{Hsiao_RSS_10,
-    AUTHOR    = {K. Hsiao AND L. Kaelbling AND T. Lozano-Perez},
-    TITLE     = {Task-Driven Tactile Exploration},
-    BOOKTITLE = {Proceedings of Robotics: Science and Systems},
-    YEAR      = {2010},
-    ADDRESS   = {Zaragoza, Spain},
-    MONTH     = {June},
-    DOI       = {10.15607/RSS.2010.VI.029} }
+    	AUTHOR    = {K. Hsiao AND L. Kaelbling AND T. Lozano-Perez},
+    	TITLE     = {Task-Driven Tactile Exploration},
+    	BOOKTITLE = {Robotics Science and Systems (RSS)},
+    	YEAR      = {2010},
+    	ADDRESS   = {Zaragoza, Spain},
+    	MONTH     = {June},
+    	DOI       = {http://dx.doi.org/10.15607/RSS.2010.VI.029} 
+}
 
 
 
 @INPROCEEDINGS{pomdp_iros_tous_2015,
-author={N. A. Vien and M. Toussaint},
-booktitle={Intelligent Robots and Systems (IROS), 2015 IEEE/RSJ International Conference on},
-title={POMDP manipulation via trajectory optimization},
-year={2015},
-pages={242-249},
-month={Sept}
+	author={N. A. Vien and M. Toussaint},
+	booktitle={International Conference on Intelligent Robots and Systems (IROS)},
+	title={POMDP manipulation via trajectory optimization},
+	year={2015},
+	pages={242-249},
+	month={Sept}
 }
 
 @INPROCEEDINGS{pomdp_uns_env_ICRA_2014,
-author={H. Cheng and H. Chen and L. Hao and W. Li},
-booktitle={Robotics and Automation (ICRA), 2014 IEEE International Conference on},
-title={Robot learning based on Partial Observable Markov Decision Process in unstructured environment},
-year={2014},
-pages={4399-4404},
-doi={10.1109/ICRA.2014.6907500},
-month={May}
+	author={H. Cheng and H. Chen and L. Hao and W. Li},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={Robot learning based on Partial Observable Markov Decision Process in unstructured environment},
+	year={2014},
+	pages={4399-4404},
+	month={May},
+	doi={http://dx.doi.org/10.1109/ICRA.2014.6907500}
 }
 
 @INPROCEEDINGS{seq_traj_replan_iros_2013,
-author={C. Zito and M. S. Kopicki and R. Stolkin and C. Borst and F. Schmidt and M. A. Roa and J. L. Wyatt},
-booktitle={Intelligent Robots and Systems (IROS), 2013 IEEE/RSJ International Conference on},
-title={Sequential trajectory re-planning with tactile information gain for dexterous grasping under object-pose uncertainty},
-year={2013},
-pages={4013-4020},
-keywords={dexterous manipulators;tactile sensors;trajectory control;belief updating;dexterous grasping;grasp configuration;hierarchical probabilistic roadmap planning;high DoF manipulators;high degree of freedom manipulators;information gain planning;nonGaussian pose uncertainty;object-pose uncertainty;reach-to-grasp trajectories;sequential trajectory replanning;tactile information gain;tactile sensors;Grasping;Manipulators;Planning;Robot sensing systems;Trajectory;Uncertainty},
-doi={10.1109/IROS.2013.6696930},
-ISSN={2153-0858},
-month={Nov}
+	author={C. Zito and M. S. Kopicki and R. Stolkin and C. Borst and F. Schmidt and M. A. Roa and J. L. Wyatt},
+	booktitle={International Conference on Intelligent Robots and Systems (IROS)},
+	title={Sequential trajectory re-planning with tactile information gain for dexterous grasping under object-pose uncertainty},
+	year={2013},
+	pages={4013-4020},
+	month={Nov},
+	doi={http://dx.doi.org/10.1109/IROS.2013.6696930}
 }
 
 @INPROCEEDINGS{learn_grasp_un_icra_2011,
-author={F. Stulp and E. Theodorou and J. Buchli and S. Schaal},
-booktitle={Robotics and Automation (ICRA), 2011 IEEE International Conference on},
-title={Learning to grasp under uncertainty},
-year={2011},
-pages={5703-5708},
-keywords={Boolean algebra;end effectors;learning (artificial intelligence);mobile robots;path planning;pose estimation;probability;state estimation;cost function;dynamic movement primitives;grasp planning;manipulation strategies;motion planning;object position;path integrals;probabilistic model free reinforcement learning algorithm policy improvement;robot learning;robust motion primitives;state estimation uncertainty distribution;Grasping;Planning;Robots;Robustness;State estimation;Trajectory;Uncertainty},
-doi={10.1109/ICRA.2011.5979644},
-ISSN={1050-4729},
-month={May}
+	author={F. Stulp and E. Theodorou and J. Buchli and S. Schaal},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={Learning to grasp under uncertainty},
+	year={2011},
+	pages={5703-5708},
+	month={May},
+	doi={http://dx.doi.org/10.1109/ICRA.2011.5979644}
 }
 
 
 @INPROCEEDINGS{u_aware_grasp_ICRA_2015,
-author={D. Chen and G. von Wichert},
-booktitle={Robotics and Automation (ICRA), 2015 IEEE International Conference on},
-title={An uncertainty-aware precision grasping process for objects with unknown dimensions},
-year={2015},
-pages={4312-4317},
-keywords={actuators;closed loop systems;manipulators;planning;uncertain systems;actuation uncertainties;assembly tasks;closed loop control;dynamic process;grasp planning stage;manipulation tasks;object pose;packaging tasks;perceptual uncertainties;uncertainty-aware precision grasping process;unintended finger-object contacts;Grasping;Grippers;Predictive models;Robots;Robustness;Trajectory;Uncertainty},
-doi={10.1109/ICRA.2015.7139794},
-month={May}
+	author={D. Chen and G. von Wichert},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={An uncertainty-aware precision grasping process for objects with unknown dimensions},
+	year={2015},
+	pages={4312-4317},
+	month={May},
+	doi={http://dx.doi.org/10.1109/ICRA.2015.7139794}
 }
-
 
 @article{Li_2015,
-title = "Dexterous grasping under shape uncertainty ",
-journal = "Robotics and Autonomous Systems ",
-volume = "75, Part B",
-pages = "352 - 364",
-year = "2016",
-issn = "0921-8890",
-doi = "http://dx.doi.org/10.1016/j.robot.2015.09.008",
-url = "http://www.sciencedirect.com/science/article/pii/S0921889015001967",
-author = "Miao Li and Kaiyu Hang and Danica Kragic and Aude Billard",
+	author = "Miao Li and Kaiyu Hang and Danica Kragic and Aude Billard",
+	title = "Dexterous grasping under shape uncertainty ",
+	journal = "Robotics and Autonomous Systems (RAS)",
+	volume = "75, Part B",
+	pages = "352 - 364",
+	year = "2016",
+	doi = "http://dx.doi.org/10.1016/j.robot.2015.09.008",
+
 }
 
-
 @InProceedings{stachniss05robotics,
-  TITLE =	 {Information Gain-based Exploration Using Rao-Blackwellized Particle Filters},
-  AUTHOR =	 {Stachniss, C. and Grisetti, G. and Burgard, W.},
-  BOOKTITLE =	 {Proc.~of Robotics: Science and Systems (RSS)},
-  ADDRESS =      {Cambridge, MA, USA},
-  YEAR =	 {2005}
+  	TITLE =	 {Information Gain-based Exploration Using Rao-Blackwellized Particle Filters},
+  	AUTHOR =	 {Stachniss, C. and Grisetti, G. and Burgard, W.},
+  	BOOKTITLE =	 {Robotics Science and Systems (RSS)},
+  	YEAR =	 {2005}
 }
 
 
 % 	Under Water Vehicles
 
 @INPROCEEDINGS{un_water_inspection_icra_2012,
-author={G. A. Hollinger and B. Englot and F. Hover and U. Mitra and G. S. Sukhatme},
-booktitle={Robotics and Automation (ICRA), 2012 IEEE International Conference on},
-title={Uncertainty-driven view planning for underwater inspection},
-year={2012},
-pages={4884-4891},
-doi={10.1109/ICRA.2012.6224726},
-ISSN={1050-4729},
-month={May},}
-
-
+	author={G. A. Hollinger and B. Englot and F. Hover and U. Mitra and G. S. Sukhatme},
+	booktitle={International Conference on Robotics and Automation (ICRA)},
+	title={Uncertainty-driven view planning for underwater inspection},
+	year={2012},
+	pages={4884-4891},
+	month={May},
+	doi={http://dx.doi.org/10.1109/ICRA.2012.6224726},
+}
 
 % Policy Search
 
-
 @ARTICLE{dmp_seq_2012,
-author={F. Stulp and E. A. Theodorou and S. Schaal},
-journal={IEEE Transactions on Robotics},
-title={Reinforcement Learning With Sequences of Motion Primitives for Robust Manipulation},
-year={2012},
-volume={28},
-number={6},
-pages={1360-1370},
-keywords={control engineering computing;learning (artificial intelligence);manipulators;motion control;trajectory control;PI2 algorithm;manipulation tasks;motion primitive sequences;movement trajectory;path integrals;physical contact events;pick-and-place tasks;policy improvement;reinforcement learning;robust manipulation;Adaptive systems;Grasping;Learning;Learning systems;Manipulators;Learning and adaptive systems;manipulation planning;reinforcement learning},
-doi={10.1109/TRO.2012.2210294},
-ISSN={1552-3098},
-month={Dec}
+	author={F. Stulp and E. A. Theodorou and S. Schaal},
+	journal={IEEE Transactions on Robotics},
+	title={Reinforcement Learning With Sequences of Motion Primitives for Robust Manipulation},
+	year={2012},
+	volume={28},
+	number={6},
+	pages={1360-1370},
+	month={Dec},
+	doi={http://dx.doi.org/10.1109/TRO.2012.2210294}
 }
 
 @InProceedings{sis_pomdp_2002,
-  author 	=    "Aberdeen, Douglas and Baxter, Jonathan",
-  title 	=    "Scaling Internal-State Policy-Gradient Methods for POMDPs",
-  booktitle 	=    "Nineteenth International Conference on Machine Learning (ICML)",
-  year 		=    "2002",
-  pages 	=    "3--10",
-  url 		= "http://users.rsise.anu.edu.au/~daa/files/papers/gradIstate-icml.pdf"
+  	author 	=    "Aberdeen, Douglas and Baxter, Jonathan",
+  	title 	=    "Scaling Internal-State Policy-Gradient Methods for POMDPs",
+  	booktitle 	=    "International Conference on Machine Learning (ICML)",
+  	year 		=    "2002",
+  	pages 	=    "3-10",
+  	url 		= "http://users.rsise.anu.edu.au/~daa/files/papers/gradIstate-icml.pdf"
 }
 
 
 @inproceedings{Sol_POMDP_Policy_space_1998,
- author = {Hansen, Eric A.},
- title = {Solving POMDPs by Searching in Policy Space},
- booktitle = {Proceedings of the Fourteenth Conference on Uncertainty in Artificial Intelligence},
- series = {UAI'98},
- year = {1998},
- isbn = {1-55860-555-X},
- location = {Madison, Wisconsin},
- pages = {211--219},
- numpages = {9},
- url = {http://dl.acm.org/citation.cfm?id=2074094.2074119},
- acmid = {2074119},
- publisher = {Morgan Kaufmann Publishers Inc.},
- address = {San Francisco, CA, USA},
+ 	author = {Hansen, Eric A.},
+ 	title = {Solving POMDPs by Searching in Policy Space},
+ 	booktitle = {Conference on Uncertainty in Artificial Intelligence (UAI)},
+ 	year = {1998},
+ 	pages = {211--219}
 } 
 
 @inproceedings{Pegasus_2000,
- author = {Ng, Andrew Y. and Jordan, Michael},
- title = {PEGASUS: A Policy Search Method for Large MDPs and POMDPs},
- booktitle = {Proceedings of the Sixteenth Conference on Uncertainty in Artificial Intelligence},
- series = {UAI'00},
- year = {2000},
- isbn = {1-55860-709-9},
- location = {Stanford, California},
- pages = {406--415},
- numpages = {10},
- url = {http://dl.acm.org/citation.cfm?id=2073946.2073994},
- acmid = {2073994},
- publisher = {Morgan Kaufmann Publishers Inc.},
- address = {San Francisco, CA, USA},
+ 	author = {Ng, Andrew Y. and Jordan, Michael},
+ 	title = {PEGASUS: A Policy Search Method for Large MDPs and POMDPs},
+ 	booktitle = {Conference on Uncertainty in Artificial Intelligence (UAI)},
+ 	series = {UAI'00},
+ 	year = {2000},
+  	pages = {406--415},
+ 	url = {http://dl.acm.org/citation.cfm?id=2073946.2073994},
 } 
 
 
@@ -1196,34 +953,21 @@ month={Dec}
 @article{DRQ_AAAI_2015,
 	author = {Matthew Hausknecht and Peter Stone},
 	title = {Deep Recurrent Q-Learning for Partially Observable MDPs},
-	conference = {AAAI Fall Symposium Series},
 	year = {2015},
-	keywords = {Deep Reinforcement Learning; LSTM; Deep Networks; Reinforcement Learning; Atari; Deep Q-Learning},
-	abstract = {Deep Reinforcement Learning has yielded proficient controllers for complex tasks. However, these controllers have limited memory and rely on being able to perceive the complete game screen at each decision point. To address these shortcomings, this article investigates the effects of adding recurrency to a Deep Q-Network (DQN) by replacing the first post-convolutional fully-connected layer with a recurrent LSTM. The resulting Deep Recurrent Q-Network (DRQN), although capable of seeing only a single frame at each timestep, successfully integrates information through time and replicates DQN's performance on standard Atari games and partially observed equivalents featuring flickering game screens. Additionally, when trained with partial observations and evaluated with incrementally more complete observations, DRQN's performance scales as a function of observability. Conversely, when trained with full observations and evaluated with partial observations, DRQN's performance degrades less than DQN's. Thus, given the same length of history, recurrency is a viable alternative to stacking a history of frames in the DQN's input layer and while recurrency confers no systematic advantage when learning to play the game, the recurrent net can better adapt at evaluation time if the quality of observations changes.},
 	url = {https://www.aaai.org/ocs/index.php/FSS/FSS15/paper/view/11673}
 }
 
-
-
 @article{mnih-dqn-2015,
-	Author = {Mnih, Volodymyr and Kavukcuoglu, Koray and Silver, David and Rusu, Andrei A. and Veness, Joel and Bellemare, Marc G. and Graves, Alex and Riedmiller, Martin and Fidjeland, Andreas K. and 	Ostrovski, Georg and Petersen, Stig and Beattie, Charles and Sadik, Amir and Antonoglou, Ioannis and King, Helen and Kumaran, Dharshan and Wierstra, Daan and Legg, Shane and Hassabis, Demis},
-	Date = {2015/02/26/print},
-	Date-Added = {2015-03-03 15:43:42 +0000},
-	Date-Modified = {2015-03-03 15:43:42 +0000},
-	Day = {26},
-	Isbn = {0028-0836},
+	Author = {Mnih, Volodymyr et al.},
 	Journal = {Nature},
-	L3 = {10.1038/nature14236; http://www.nature.com/nature/journal/v518/n7540/abs/nature14236.html#supplementary-information},
-	M3 = {Letter},
 	Month = {02},
 	Number = {7540},
 	Pages = {529--533},
 	Publisher = {Nature Publishing Group, a division of Macmillan Publishers Limited. All Rights Reserved.},
 	Title = {Human-level control through deep reinforcement learning},
-	Ty = {JOUR},
-	Url = {http://dx.doi.org/10.1038/nature14236},
 	Volume = {518},
-	Year = {2015}
+	Year = {2015},
+	doi = {http://dx.doi.org/10.1038/nature14236}
 }
 
 @inbook{RL_book_sa, 
@@ -1232,7 +976,6 @@ month={Dec}
 	chapter = {Game Theory and Multi-agent Reinforcement Learning}, 
 	pages 	= {441-470}, 
 	editor	= {Wiering, M. and van Otterlo, M.}, 
-	publisher = {Springer}, 
 	year = {2012}, 
 	url = {http://www.springer.com/engineering/computational+intelligence+and+complexity/book/978-3-642-27644-6}
 }
@@ -1241,44 +984,41 @@ month={Dec}
 
 
 @INPROCEEDINGS{Boyan95generalizationin,
-    author = {Justin A. Boyan and Andrew W. Moore},
-    title = {Generalization in Reinforcement Learning: Safely Approximating the Value Function},
-    booktitle = {Advances in Neural Information Processing Systems 7},
-    year = {1995},
-    pages = {369--376},
-    publisher = {MIT Press}
+    	author 	= {Justin A. Boyan and Andrew W. Moore},
+    	title 	= {Generalization in Reinforcement Learning: Safely Approximating the Value Function},
+    	booktitle 	= {Advances in Neural Information Processing Systems (NIPS)},
+    	volume 	= {7},
+    	year 	= {1995},
+    	pages 	= {369--376}    
 }
 
 @INPROCEEDINGS{approx_rl_overview_2011,
-author={L. Busoniu and D. Ernst and B. De Schutter and R. Babuska},
-booktitle={2011 IEEE Symposium on Adaptive Dynamic Programming and Reinforcement Learning (ADPRL)},
-title={Approximate reinforcement learning: An overview},
-year={2011},
-pages={1-8},
-doi={10.1109/ADPRL.2011.5967353},
-ISSN={2325-1824},
-month={April},}
-
-@incollection{NIPS2002_2319,
-title = {Exponential Family PCA for Belief Compression in POMDPs},
-author = {Nicholas Roy and Gordon, Geoffrey J},
-booktitle = {Advances in Neural Information Processing Systems 15},
-editor = {S. Becker and S. Thrun and K. Obermayer},
-pages = {1667--1674},
-year = {2003},
-publisher = {MIT Press},
-url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}
+	author={L. Busoniu and D. Ernst and B. De Schutter and R. Babuska},
+	booktitle={Symposium on Adaptive Dynamic Programming and Reinforcement Learning (ADPRL)},
+	title={Approximate reinforcement learning: An overview},
+	year={2011},
+	pages={1-8},
+	month={April},
+	doi={10.1109/ADPRL.2011.5967353}
 }
 
+@incollection{NIPS2002_2319,
+	title = {Exponential Family PCA for Belief Compression in POMDPs},
+	author = {Nicholas Roy and Gordon, Geoffrey J},
+	booktitle = {Advances in Neural Information Processing Systems 15},
+	pages = {1667--1674},
+	year = {2003},
+	url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}
+}
 
 @INPROCEEDINGS{pomdp_toussain_iros_2015,
-author={N. A. Vien and M. Toussaint},
-booktitle={Intelligent Robots and Systems (IROS), 2015 IEEE/RSJ International Conference on},
-title={POMDP manipulation via trajectory optimization},
-year={2015},
-pages={242-249},
-doi={10.1109/IROS.2015.7353381},
-month={Sept}
+	author={N. A. Vien and M. Toussaint},
+	booktitle={International Conference on Intelligent Robots and Systems (IROS)},
+	title={POMDP manipulation via trajectory optimization},
+	year={2015},
+	pages={242-249},
+	month={Sept},
+	doi={10.1109/IROS.2015.7353381}
 }
 
 
