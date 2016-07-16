@@ -253,9 +253,25 @@ controller which performs obstacle avoidance are learned from human demonstratio
 by learning the relation between sensor input and control output. In \cite{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain} the objective function of a path planner is learned from human demonstrations. 
 The objective function is a weighted sum of features corresponding to raw sensor measurements. This is another example where the partial information of the state is 
 taken into account at the perception-action level, with the difference that instead of a policy being learned the objective function from which it is generated is learned. 
-In \cite{Nicolescu01learningand}, the authors learn how to combine low level pre-acquired action 
-primitives to achieve more complex tasks from human demonstrations, but 
-they do not consider the effect of uncertainty.
+
+% Uncertainty is in the dynamics
+Uncertainty is not restricted to state estimations but can also present in dynamical interaction with an environment in which 
+unforeseen and perceptual uncertainties can arise such as in manipulation tasks. When solely tracking a Cartesian trajectory 
+position uncertainties (poor visual estimation of the target) can lead to the failure of the task or a dangerous accumulation 
+of contact forces. In \cite{online_pre_sensor_2011} the authors learn, via imitation learning, an initial 
+Dynamic Movement Primitive (DMP) Cartesian policy and separately a target a force profile. By using sensor feedback they 
+modify the target trajectory such to replicate the force profile thus achieve a robustness to pose uncertainty. Another possibility
+is to vary the stiffness parameters of an impedance controller \cite{Klas_icra_2012} based on the position uncertainty, 
+if the position uncertainty is high then the robot will be more compliant. In \cite{MedinaSH13} the authors introduce a 
+risk-sensitive control framework which depending on the uncertainty will make a trade-off between gains the position and force errors 
+of an impedance controller. The task (Cartesian position and velocity) which is tracked by the controller is learned from demonstrations and encoded in 
+a model.
+
+%In \cite{Nicolescu01learningand}, the authors learn how to combine low level pre-acquired action 
+%primitives to achieve more complex tasks from human demonstrations, but 
+%they do not consider the effect of uncertainty.
+
+
 
 Much work has been undertaken in learning reactive-behaviour, history dependent behaviour and combining multiple behaviour primitives to achieve
 complex behaviour. However very few have studied the effect of uncertainty in the decision process and 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{166}
+\begin{thebibliography}{168}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -625,6 +625,14 @@ P.~Kormushev, S.~Calinon, R.~Saegusa, and G.~Metta.
 K.~Kronander.
 \newblock Control and learning of compliant manipulation skills, 2015.
 
+\bibitem[Kronander and Billard(2012)]{Klas_icra_2012}
+K.~Kronander and A.~Billard.
+\newblock Online learning of varying stiffness through physical human-robot
+  interaction.
+\newblock In \emph{Robotics and Automation (ICRA), 2012 IEEE International
+  Conference on}, pages 1842--1849, May 2012.
+\newblock \doi{10.1109/ICRA.2012.6224877}.
+
 \bibitem[Kurniawati et~al.(2008)Kurniawati, Hsu, and Lee]{SARSOP}
 Hanna Kurniawati, David Hsu, and Wee~Sun Lee.
 \newblock Sarsop: Efficient point-based pomdp planning by approximating
@@ -689,6 +697,11 @@ Michael~L. Littman, Anthony~R. Cassandra, and Leslie~Pack Kaelbling.
 \newblock In \emph{International Conference on Machine Learning (ICML)}. Morgan
   Kaufmann, 1995.
 \newblock URL \url{http://people.csail.mit.edu/lpk/papers/ml95.ps}.
+
+\bibitem[Medina et~al.(2013)Medina, Sieber, and Hirche]{MedinaSH13}
+Jose~Ramon Medina, Dominik Sieber, and Sandra Hirche.
+\newblock Risk-sensitive interaction control in uncertain manipulation tasks.
+\newblock In \emph{ICRA}, pages 502--507. IEEE, 2013.
 
 \bibitem[Meeussen et~al.(2010)Meeussen, Wise, Glaser, Chitta, McGann, Mihelich,
   Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski, Konolige,
@@ -769,12 +782,6 @@ Andrew~Y. Ng and Michael Jordan.
 \newblock ISBN 1-55860-709-9.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=2073946.2073994}.
 
-\bibitem[Nicolescu and Mataric(2001)]{Nicolescu01learningand}
-Monica~N. Nicolescu and Maja~J. Mataric.
-\newblock Learning and interacting in human-robot domains.
-\newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part A:
-  Systems and Humans}, 31\penalty0 (5):\penalty0 419--430, September 2001.
-
 \bibitem[Now\'{e} et~al.(2012)Now\'{e}, Vrancx, and De~Hauwere]{RL_book_sa}
 A.~Now\'{e}, P.~Vrancx, and Y-M. De~Hauwere.
 \newblock \emph{Reinforcement Learning: State-of-the-Art}, chapter Game Theory
@@ -818,6 +825,14 @@ Achille Pasqualotto, Mary~Jane Spiller, Ashok~S. Jansari, and Michael~J.
 \newblock \doi{http://dx.doi.org/10.1016/j.bbr.2012.08.042}.
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/S0166432812005682}.
+
+\bibitem[Pastor et~al.(2011)Pastor, Righetti, Kalakrishnan, and
+  Schaal]{online_pre_sensor_2011}
+P.~Pastor, L.~Righetti, M.~Kalakrishnan, and S.~Schaal.
+\newblock Online movement adaptation based on previous sensor experiences.
+\newblock In \emph{2011 IEEE/RSJ International Conference on Intelligent Robots
+  and Systems}, pages 365--371, Sept 2011.
+\newblock \doi{10.1109/IROS.2011.6095059}.
 
 \bibitem[Peters and Schaal(2008{\natexlab{a}})]{peter_nac_2008}
 J.~Peters and S.~Schaal.

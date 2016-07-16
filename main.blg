@@ -23,45 +23,45 @@ Warning--empty publisher in Riedmiller2005
 Warning--empty publisher in SLAM_HBR
 Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
-You've used 166 entries,
+You've used 168 entries,
             2773 wiz_defined-function locations,
-            1736 strings with 42224 characters,
-and the built_in function-call counts, 92655 in all, are:
-= -- 8533
-> -- 5081
-< -- 163
-+ -- 1715
-- -- 1537
-* -- 7471
-:= -- 13582
-add.period$ -- 682
-call.type$ -- 166
-change.case$ -- 984
-chr.to.int$ -- 154
-cite$ -- 340
-duplicate$ -- 4367
-empty$ -- 7501
-format.name$ -- 1807
-if$ -- 20278
+            1747 strings with 42506 characters,
+and the built_in function-call counts, 94127 in all, are:
+= -- 8674
+> -- 5150
+< -- 166
++ -- 1738
+- -- 1558
+* -- 7574
+:= -- 13773
+add.period$ -- 691
+call.type$ -- 168
+change.case$ -- 997
+chr.to.int$ -- 156
+cite$ -- 344
+duplicate$ -- 4447
+empty$ -- 7625
+format.name$ -- 1830
+if$ -- 20627
 int.to.chr$ -- 13
 int.to.str$ -- 1
-missing$ -- 177
-newline$ -- 997
-num.names$ -- 687
-pop$ -- 2052
+missing$ -- 179
+newline$ -- 1009
+num.names$ -- 695
+pop$ -- 2086
 preamble$ -- 1
-purify$ -- 835
+purify$ -- 846
 quote$ -- 0
-skip$ -- 3484
+skip$ -- 3555
 stack$ -- 0
-substring$ -- 3901
-swap$ -- 1062
-text.length$ -- 86
+substring$ -- 3976
+swap$ -- 1097
+text.length$ -- 89
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1739
+type$ -- 1761
 warning$ -- 8
-while$ -- 753
+while$ -- 764
 width$ -- 0
-write$ -- 2498
+write$ -- 2529
 (There was 1 error message)
