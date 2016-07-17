@@ -61,7 +61,7 @@
 \BOOKMARK [1][-]{section.5.3}{Bayesian State Space Estimation}{chapter.5}% 61
 \BOOKMARK [1][-]{section.5.4}{Measurement Likelihood Memory Filter}{chapter.5}% 62
 \BOOKMARK [2][-]{subsection.5.4.1}{MLMF parametrisation}{section.5.4}% 63
-\BOOKMARK [2][-]{subsection.5.4.2}{Computation of evidence and marginals}{section.5.4}% 64
+\BOOKMARK [2][-]{subsection.5.4.2}{Evidence and marginals}{section.5.4}% 64
 \BOOKMARK [2][-]{subsection.5.4.3}{MLMF-SLAM Algorithm}{section.5.4}% 65
 \BOOKMARK [2][-]{subsection.5.4.4}{Space \046 time complexity}{section.5.4}% 66
 \BOOKMARK [2][-]{subsection.5.4.5}{Scalable extension to multiple objects}{section.5.4}% 67
@@ -74,7 +74,7 @@
 \BOOKMARK [1][-]{section.6.1}{Main Contributions}{chapter.6}% 74
 \BOOKMARK [1][-]{section.6.2}{Limitations and Future Work}{chapter.6}% 75
 \BOOKMARK [1][-]{section.6.3}{Final Words}{chapter.6}% 76
-\BOOKMARK [0][-]{section*.114}{Appendices}{}% 77
+\BOOKMARK [0][-]{section*.115}{Appendices}{}% 77
 \BOOKMARK [0][-]{Appendix.1.A}{Appendix Peg in hole}{}% 78
 \BOOKMARK [1][-]{section.1.A.1}{Time to connect socket \(ANOVA\)}{Appendix.1.A}% 79
 \BOOKMARK [1][-]{section.1.A.2}{EM policy search}{Appendix.1.A}% 80
@@ -86,4 +86,4 @@
 \BOOKMARK [1][-]{section.1.B.3}{Recursion example}{Appendix.1.B}% 86
 \BOOKMARK [1][-]{section.1.B.4}{Derivation of the evidence}{Appendix.1.B}% 87
 \BOOKMARK [1][-]{section.1.B.5}{Derivation of the marginal}{Appendix.1.B}% 88
-\BOOKMARK [0][-]{chapter*.120}{References}{}% 89
+\BOOKMARK [0][-]{chapter*.121}{References}{}% 89

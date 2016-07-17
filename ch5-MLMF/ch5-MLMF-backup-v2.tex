@@ -801,22 +801,42 @@ from the joint distribution.
 
 \subsubsection{Marginals}
 
-There are two different sets of marginals used in the MLMF filter. The first set are the \textbf{joint marginals} of the joint distribution, Equation \ref{eq:ch5:mlmf_filter_conditional}
-parameterised by $\mathcolor{blue}{\ThAs}$ and $\mathcolor{red}{\ThOs}$. The second set of marginals are the \textbf{filtered marginals} which are updated by evaluating the joint distribution in dependent states and 
-are parameterised by $\mathcolor{blue}{\ThA}$ and $\mathcolor{red}{\ThO}$. At initialisation before the the first action or observation is made 
+There are two different sets of marginals used in the MLMF filter. The first set are the \textbf{joint marginals} of the joint distribution, Equation \ref{eq:ch5:mlmf_filter_joint}
+parameterised by $\mathcolor{blue}{\ThAs}$ and $\mathcolor{red}{\ThOs}$.
+The second set of marginals are the \textbf{filtered marginals} which are updated by evaluating the joint distribution in dependent states and 
+are parameterised by $\mathcolor{blue}{\ThA}$ and $\mathcolor{red}{\ThO}$, see the box below. At initialisation before the the first action or observation is made 
 the parameters of the filtered marginal are set equal to those of the joint distribution.
+%and the filtered marginals, which will derive. The first set of marginals are the initial beliefs and they are part of the parameterisation of the joint distribution, 
+%which is only evaluated in dependent states. 
+
+
+\begin{center}
+\begin{tikzpicture}    
+\node [white_box] (box){%
+\begin{minipage}{0.6\textwidth}
+\textbf{joint marignals}\\
+$P(A_t|u_{1:t};\mathcolor{blue}{\ThAs})$ and  $P(O;\mathcolor{red}{\ThOs})$: Equation \ref{eq:ch5:mlmf_filter_joint}\\
+\textbf{filtered marignals}\\
+$P(A_t|Y_{0:t},u_{1:t};\mathcolor{blue}{\ThA})$ and $P(O|Y_{0:t};\mathcolor{red}{\ThO})$
+\end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Marginals};
+\end{tikzpicture}%
+\end{center}
 
 In Histogram-SLAM both the agent and object marginals are obtained, at each time step, by marginalising the joint distribution.
 This requires storing and summing over all the parameters of the joint distribution which is expensive.
 Instead the MLMF takes advantage of the sparsity of the likelihood function which results in only the dependent elements of the marginal being affected, 
 Equation \ref{eq:marignal_mrf} (see Appendix \ref{appendix:marginal} for the full derivation of Equation \ref{eq:marignal_mrf}). 
 
-\begin{equation}
- P(O|Y_{0:\mathbf{t}};\mathcolor{red}{\ThO}) = P(O|Y_{0:\mathbf{t-1}};\mathcolor{red}{\ThO}) - \Big(P_{\cap}(O|Y_{0:t-1}) -  \mathbf{P_{\cap}(O|Y_{0:t})}  \Big)   \label{eq:marignal_mrf}  
-\end{equation}
 \begin{align}
- &\mathbf{P_{\cap}(O|Y_{0:t}};\mathcolor{blue}{\ThAs},\mathcolor{red}{\ThOs},\mathcolor{dark-green}{\BPsi},\mathcolor{dark-blue}{\BAlph})  = \sum\limits_{A_t} \mathbf{P_{\cap}(A_t,O|Y_{0:t},u_{1:t}};\mathcolor{blue}{\ThAs},\mathcolor{red}{\ThOs},\mathcolor{dark-green}{\BPsi},\mathcolor{dark-blue}{\BAlph}) \nonumber \\[0.5cm]
- &\hspace*{2cm} =\frac{ \sum\limits_{A_t} P_{\cap}(O;\mathcolor{red}{\ThOs}) P_{\cap}(A_t|u_{1:t};\mathcolor{blue}{\ThAs})  P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\BPsi})}{P(Y_{0:t}|u_{1:t};\mathcolor{dark-blue}{\BAlph})} \label{eq:marignal_mrf_2} 
+ &P(A_t|Y_{0:\mathbf{t}};\mathcolor{blue}{\ThA}) = P(A_t|Y_{0:\mathbf{t-1}};\mathcolor{blue}{\ThA}) - \hspace*{6cm} \nonumber \\
+ &\hspace*{3cm}  \Big(P_{\cap}(A_t|Y_{0:t-1}) -  \mathbf{P_{\cap}(A_t|Y_{0:t}})  \Big)  \label{eq:marignal_mrf} 
+\end{align}
+\begin{align}
+ &\mathbf{P_{\cap}(A_t|Y_{0:t}};\mathcolor{blue}{\ThAs},\mathcolor{red}{\ThOs},\mathcolor{dark-green}{\BPsi},\mathcolor{dark-blue}{\BAlph})  = \nonumber \\[0.5cm]
+ &\hspace*{1cm} \sum\limits_{O} \mathbf{P_{\cap}(A_t,O|Y_{0:t}};\mathcolor{blue}{\ThAs},\mathcolor{red}{\ThOs},\mathcolor{dark-green}{\BPsi},\mathcolor{dark-blue}{\BAlph}) = \nonumber \\
+ &\hspace*{1cm} \frac{ \sum\limits_{O} P_{\cap}(O;\mathcolor{red}{\ThOs}) P_{\cap}(A_t|u_{1:t};\mathcolor{blue}{\ThAs})  P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\BPsi})}{P(Y_{0:t}|u_{1:t};\mathcolor{dark-blue}{\BAlph})} \label{eq:marignal_mrf_2} 
 \end{align}
 
 \begin{figure}
@@ -830,14 +850,15 @@ $P(A_t|Y_{0:t-1})$, $P(O|Y_{0:t-1})$ leading to $P(A_t|Y_{0:t})$, $P(O|Y_{0:t})$
 \label{fig:ch5:marginal_update}
 \end{figure}
 
-Equation \ref{eq:marignal_mrf} is recursive, $P(O|Y_{0:\mathbf{t}};\mathcolor{red}{\ThO})$ is computed in terms of $P(O|Y_{0:\mathbf{t-1}};\mathcolor{red}{\ThO})$. 
-Figure \ref{fig:ch5:marginal_update} illustrates a measurement update of the MLMF.  The illustrated marginals (\textit{Bottom row}) are 
-(on the \textbf{left}) the \textbf{joint marginals} $P(A_t|u_{1:t};\mathcolor{blue}{\ThAs})$, $P(O;\mathcolor{red}{\ThOs})$ and (on the \textbf{right}) the \textbf{filtered marginals} $P(A_t|Y_{0:t},u_{1:t};\mathcolor{blue}{\ThA})$, $P(O|Y_{0:t};\mathcolor{red}{\ThO})$. 
+In Equation \ref{eq:marignal_mrf_2} we explicitly show the relation between the parameters $\ThAs$, $\ThOs$, $\Psi_{0:t}$, $\Alpha$ and the joint
+distribution. Equation \ref{eq:marignal_mrf} is recursive, $P(A_t,|Y_{0:\mathbf{t}})$ is computed in terms of $P(A_t|Y_{0:\mathbf{t-1}})$. 
+Figure \ref{fig:ch5:marginal_update} illustrates a measurement update of the MLMF.
+The illustrated marginals (\textit{Bottom row}) are the \textbf{filtered marginals} $P(A_t|Y_{0:t},u_{1:t})$, $P(O|Y_{0:t})$. The shape 
+of the \textbf{joint marginals} $P(A_t|u_{1:t})$, $P(O)$
+(not shown here, see Figure \ref{fig:maringal_joint_example_v2}) remain unchanged by measurements during the filtering process. They are the parameters of the joint distribution used to 
+update the filtered marginals.
 
-
-The shape of the \textbf{joint marginals} remain unchanged by measurements during the filtering process, they are the parameters of the joint distribution used to update the filtered marginals. 
 Table \ref{tab:mlmf_parameters} summarises the functions and parameters of the MLMF for two random variables, an agent and object.
-
 \begin{table}[h]
 \centering
 \fbox{
@@ -858,8 +879,7 @@ state space $\boldsymbol{\theta} \in \mathbb{R}^N$, $\boldsymbol{\theta}^{(s)}$ 
 \FloatBarrier
 \subsection{MLMF-SLAM Algorithm}
 
-In Algorithm \ref{alg:mrf-slam} we detail the motion-measurement update  and initialisation steps of the MLMF
-(the parameters of $P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t})$ and the corresponding marginals are not shown).
+In Algorithm \ref{alg:mrf-slam} we detail the motion-measurement update  and initialisation steps of the MLMF.
 At initialisation the parameters of the filtered marginals are set equal to the marginals of the MLMF joint distribution.
 In the motion step the agent's marginals of the filtered and joint distribution are updated in 
 accordance with the motion model. The offsets $l_{0:t}$ of the memory likelihood function get the current action added 
@@ -892,22 +912,22 @@ Next we evaluate both space and time complexity of the MLMF filter.
 \Input{\\
        \textbf{measurements}\\
 	$\mathbf{Y_t}$, $\mathbf{u_t}$\\
-       \textbf{joint parameters}:\\
-       $P(A_{t-1}|u_{1:t-1};\ThAs)$ $P(O;\ThOs)$, $\Psi_{0:t-1}$, $\alpha_{0:t-1}$ \\
+       \textbf{joint distribution parameters}:\\
+       $P(A_{t-1}|u_{1:t-1})$ $P(O)$, $\Psi_{0:t-1}$, $\alpha_{0:t-1}$ \\
        \textbf{filtered marginals}:\\
-       $P(A_{t-1}|Y_{0:t-1},u_{1:t-1};\ThA)$, $P(O|Y_{0:t-1};\ThO)$}
+       $P(A_{t-1}|Y_{0:t-1},u_{1:t-1})$, $P(O|Y_{0:t-1})$}
 \Output{\\
        \textbf{joint parameters}:\\
-        $P(A_t|u_{1:t};\ThAs)$, $\Psi_{0:t}$, $\alpha_{0:t}$\\
+        $P(A_t|u_{1:t})$, $\Psi_{0:t}$, $\alpha_{0:t}$\\
        \textbf{filtered marginals}:\\
-	$P(A_t|Y_{0:t},u_{1:t};\ThA)$, $P(O|Y_{0:t};\ThO)$}
+	$P(A_t|Y_{0:t},u_{1:t})$, $P(O|Y_{0:t})$}
 \nonl\hrulefill	
 \BlankLine
 \nonl\textbf{initialisation}\\
 \vspace*{-0.5cm}
 \nonl\begin{align}
-P(A_0;\ThA) &:= P(A_0;\ThAs) \hspace*{6.5cm} \nonumber \\
-P(O;\ThO) &:= P(O;\ThOs)\nonumber \\
+P(A_0;\theta_a) &:= P(A_0;\theta^*_a) \hspace*{6.5cm} \nonumber \\
+P(O;\theta_o) &:= P(O;\theta^*_a)\nonumber \\
 \Psi_0 &:= \{\}\nonumber\\
 \alpha_0 &:= 0 \nonumber
 \end{align}
@@ -917,9 +937,9 @@ P(O;\ThO) &:= P(O;\ThOs)\nonumber \\
 \nonl\textbf{motion update}\\
 \vspace*{-0.5cm}
 \nonl\begin{align}
-P(A_t|u_{1:t};\ThAs)  	 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_t})  P(A_{t-1}|u_{1:t-1};\ThAs) \nonumber \\
-P(A_t|Y_{0:t-1},u_{1:t};\ThA) 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_t})  P(A_{t-1}|Y_{0:t-1},u_{1:t-1};\ThA) \nonumber \\
-\bar{\Psi}_{0:t} 	 &\gets \Psi_{0:t-1}(\mathbf{u_t}): \mathrm{ Algorithm\;\; \ref{alg:ch5:motion_memory}\;\; \textit{(motion update)}} \nonumber
+P(A_t|u_{1:t})  	 &= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_t})  P(A_{t-1}|u_{1:t-1}) \nonumber \\
+P(A_t|Y_{0:t-1},u_{1:t}) &= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_t})  P(A_{t-1}|Y_{0:t-1},u_{1:t-1}) \nonumber \\
+\bar{\Psi}_{0:t} 	 &\gets \Psi_{0:t-1}: \mathrm{ Algorithm\;\; \ref{alg:ch5:motion_memory}\;\; \textit{(motion update)}} \nonumber
 \end{align}
 \vspace*{-1cm}
 \BlankLine
@@ -927,10 +947,10 @@ P(A_t|Y_{0:t-1},u_{1:t};\ThA) 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_
 \nonl\textbf{measurement update}
 \nonl\begin{align}
  &\alpha_{0:t}       = \alpha_{0:t-1} + \sum\limits_{A_t}\sum\limits_{O} \Big(P(\mathbf{Y_t}|A_t,O) - 1\Big)P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t}) \nonumber \\
- &P(Y_{0:t}|u_{1:t};\BAlph) = 1 + \alpha_{0:t} \nonumber\\
- &P(A_t|Y_{0:t};\ThA)     = P(A_t|Y_{0:t-1};\ThA) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:\mathbf{t}}) \Big) \nonumber \\
- &P(O|Y_{0:t};\ThO)       = P(O|Y_{0:t-1};\ThO) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:\mathbf{t}})\Big) \nonumber \\    
- &\Psi_{0:t} \gets \bar{\Psi}_{0:t}(\mathbf{Y_t}): \mathrm{Algorithm\;\; \ref{alg:ch5:motion_memory}\;\; \textit{(measurement update)}} \nonumber
+ &P(Y_{0:t}|u_{1:t}) = 1 + \alpha_{0:t} \nonumber\\
+ &P(A_t|Y_{0:t})     = P(A_t|Y_{0:t-1}) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:\mathbf{t}}) \Big) \nonumber \\
+ &P(O|Y_{0:t})       = P(O|Y_{0:t-1}) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:\mathbf{t}})\Big) \nonumber \\    
+ &\Psi_{0:t} \gets \bar{\Psi}_{0:t}: \mathrm{Algorithm\;\; \ref{alg:ch5:motion_memory}\;\; \textit{(measurement update)}} \nonumber
  \end{align}
 \caption{MLMF-SLAM}
 \end{algorithm} 
@@ -988,26 +1008,38 @@ random variables, $\BigO(N\,M)$.
 For Histogram-SLAM, the computational cost is equivalent to that of the space complexity, $\BigO(N^M)$,
 since every state in the joint distribution has to be summed to obtain all the marginals.
 
-For MLMF-SLAM, every state in the joint distribution's state space which has been changed by the likelihood function 
-has to be summed, see Figure \ref{fig:ch5:marginal_update} on page \pageref{fig:ch5:marginal_update}. As a result the computational complexity is directly 
-related to the number of dependent states $|A \cap O|$. In Figure \ref{fig:ch5:marginal_update}, this corresponds to states where $i = j$ and there are $N$ out 
-of a total $N^2$ states for that joint distribution. Figure \ref{fig:3bel_lik_profile} \textit{Left}
+For MLMF-SLAM, every state in the joint distribution's state space which has been changed by the measurement likelihood function 
+has to be summed, see Figure \ref{fig:ch5:marginal_update} on page \pageref{fig:ch5:marginal_update}. As a result the computational complexity is directly related to the number 
+of dependent states $|A \cap O|$. In Figure \ref{fig:ch5:marginal_update}, this corresponds to states where $i = j$ and there are $N$ out of a total $N^2$ states
+in the joint distribution. Figure \ref{fig:3bel_lik_profile} \textit{left}
 illustrates a joint distribution with $N^3$ states. The dependent states $|A \cap O^{(1)} \cap O^{(2)}|$ are those which 
 are within the blue and red planes (where the likelihood evaluates to zero) and comprise $N^2$ states each, 
-giving a total of $2\,N^2 - N$ dependent states (negative is to remove the states we count twice at the intersection of the blue and red plane). 
+giving a total of $2\,N^2$ dependent states. The overall likelihood is given by 
+Equation \ref{eq:ch5:overall_likelihood}:
+
+\begin{equation}
+ P(Y_t|A_t,O^{(1)},O^{(2)}) = P(Y_t|A_t,O^{(1)})\, P(Y_t|A_t,O^{(2)}) \label{eq:ch5:overall_likelihood}
+\end{equation}
 
 The likelihood term $P(Y_t|A_t,O^{(1)})$ evaluates states to zero which satisfy $i=j$ $\forall k$, as 
 the measurement of object $O^{(1)}$ is independent of object $O^{(2)}$. With 3 objects, the joint distribution would be
-${P(A_t=i,O^{(1)}=j,O^{(2)}=k,O^{(l)}=l)}$ then the likelihood $P(Y_t|A_t,O^{(1)})$  evaluated to 
+$P(A_t=i,O^{(1)}=j,O^{(2)}=k,O^{(l)}=l)$ then the likelihood $P(Y_t|A_t,O^{(1)})$  evaluated to 
 zero for $i=j$ $\forall k,l$ which would mean $N^3$ dependent states.
 In general, for $M$ random variables the computational cost is $(M-1) N^{M-1}$ which gives $\BigO(N^{M-1})$ as opposed to the Histogram-SLAM's $\BigO(N^M)$. 
 The computation complexity in this setup is still exponential but to the order $M-1$ as opposed to $M$ which nevertheless 
 quickly limits the scalability as more objects are added. 
 
-Computing the value of a dependent state $(i,j,k)$ in the joint distribution required evaluating Equation \ref{eq:ch5:mlmf_filter_conditional} which
-contains a product of $N$ likelihood functions, in the worst case scenario. However the likelihood functions are not overlapping and binary. As a result the complete product
-does not have to be evaluated since only one likelihood function will effect the state $(i,j,k)$. Thus evaluating Equation \ref{eq:ch5:mlmf_filter_conditional}
-yields a cost of $\BigO(1)$ and \textbf{not} $\BigO(N)$.
+Computing the value of a dependent state $(i,j)$ in the joint distribution required evaluating Equation \ref{eq:ch5:mlmf_filter_joint} which
+contains a product of $t$ likelihood functions. However the likelihood functions are not overlapping and binary. As a result the complete product
+does not have to be evaluated since only one likelihood function will effect the state $(i,j)$. Thus evaluating Equation \ref{eq:ch5:mlmf_filter_joint}
+yields a cost of $\BigO(1)$ and \textbf{not} $\BigO(t)$.
+
+%\paragraph{Evaluation of a state in the joint distribution}
+%In Figure \ref{fig:3bel_lik_profile} (right) we show three different points in the joint distribution to be evaluated. 
+%The memory of applied measurement functions is searched to see if any have effected the values at the three chosen the states. 
+%The memory functions are sorted according to their offset from the axis $i=j$. For the yellow point the cost is 
+%of $\BigO(1)$ since we only have to check the first (last) element in the list. For the green and blue point the 
+%search is $\BigO(\log(n))$, where $n$ is the number of stored memory functions (there can be no more than $N$, the total number of states). 
 
 \subsection{Scalable extension to multiple objects}\label{subsec:scalabe_extension}
 
@@ -1020,12 +1052,27 @@ the joint distribution (Equation \ref{eq:pair_wise_joint}) as a product of agent
 
 The measurement variable $Y_t$, is the vector of all agent-object 
 measurements, $Y_t = \left[Y^{(1)}_t,\dots,Y^{(M-1)}_t\right]^{\mathrm{T}}$. Each agent-object joint distribution has its own parametrisation of the agent's marginal,
-$A^{(1)}_t,\dots,A^{(M-1)}_t$ which combine to give the overall marginal of the agent $A_t$. The computation of each object marginal $P(O^{(i)}|Y^{(i)}_{0:t})$ is independent of the other objects. This is evident from the marginalisation 
+$A^{(1)}_t,\dots,A^{(M-1)}_t$ which combine to give the overall marginal of the agent $A_t$.
+
+%\begin{figure}
+%\centering
+%  \includegraphics[width=0.5\textwidth]{./ch5-MLMF/Figures/Figure9.pdf}
+%  \caption{\textbf{Scalable filter} Each agent-object joint distribution pair is modelled independently. For clarity we have left 
+%  out the action random variable $u$ which is linked to every agent node.
+%  Two joint distributions $P(A^{(1)},O^{(1)}|Y^{(1)}_{0:t})$   and $P(A^{(2)},O^{(2)}|Y^{(2)}_{0:t})$ parametrise the graphical model. 
+%  The dashed undirected lines represent a wanted dependency, if present $O^{(1)}$ and $O^{(2)}$ are to be dependent through $A$. In
+%  the standard setting there will be no exchange of information between the individual joints. However we demonstrate later on how
+%  we perform a one time transfer of information when one of the objects is sensed.}
+%  \label{fig:scalable_mlmf_dae}
+%\end{figure}
+
+The computation of each object marginal $P(O^{(i)}|Y^{(i)}_{0:t})$ is independent of the other objects. This is evident from the marginalisation 
 see Equation \ref{eq:marg_indep}-\ref{eq:marg_indep_prod}.
 
 \begin{align}
- P(O^{(i)}|Y^{(i)}_{0:t},u_{1:t}) &= \sum\limits_{A^{(i)}_t} P(A^{(i)}_t,O^{(i)}|Y^{(i)}_{0:t},u_{1:t}) \label{eq:marg_indep} \\
- P(A_t|Y_{0:t},u_{1:t},u_{1:t})   &=\prod\limits_{i=1}^{M-1} \ P(A^{(i)}_t|Y^{(i)}_{0:t},u_{1:t}) \label{eq:marg_indep_prod}  
+ P(O^{(i)}|Y^{(i)}_{0:t}) &= \sum\limits_{A^{(i)}_t} P(A^{(i)}_t,O^{(i)}|Y^{(i)}_{0:t}) \label{eq:marg_indep} \\
+ P(A_t|Y_{0:t},u_{1:t})           &= \prod\limits_{i=1}^{M-1} \left(\sum\limits_{O^{(i)}} P(A^{(i)}_t,O^{(i)}|Y^{(i)}_{0:t},u_{1:t})\right)  \\
+	                  &= \prod\limits_{i=1}^{M-1} \ P(A^{(i)}_t|Y^{(i)}_{0:t},u_{1:t}) \label{eq:marg_indep_prod}
 \end{align}
 
 The independence assumption will create an unwanted effect with respect to agent's marginal $P(A_t|Y_{0:t},u_{1:t})$. 
@@ -1085,15 +1132,16 @@ measurement $Y^{(i)}_t$.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.9\textwidth]{./ch5-MLMF/Figures/pao_prior_post_v2.pdf}
-  \caption{\textbf{Transfer of information (joint distributions)} 
-  \textit{Top:}  Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior sensing, $Y_t^{(2)}=1$, see Figure \ref{fig:independence_object}
-  (\textit{Top right}) for the corresponding marginals. The red and green lines across the joint distributions 
-   correspond to the region in which the likelihood functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions.
+  \fbox{\includegraphics[width=0.9\textwidth]{./ch5-MLMF/Figures/pao_prior_post.pdf}}
+  \caption{\textbf{Transfer of information between joint distributions} 
+  \textit{Top:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$.
+  \textit{Middle Left and Right:} Joint distributions of 
+   $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior sensing, $Y_t^{(2)}=1$. The red and green lines across the joint distributions 
+   correspond to the region in which the measurement functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions.
   The dotted blue lines are to ease the comparison ofthe joint distributions prior and post sensing.
   \textit{Bottom right:}  After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the green line becomes an infeasible
   solution to the agent and object locations. At this point the marginals $P(A^{(1)}_t|u_{1:t}) \not= P(A^{(2)}_t|u_{1:t})$ are no longer equal 
-  (see the blue marginals \textit{Top}). \textit{Bottom left:} The constraint imposed by the likelihood function of the second object
+  (see the blue marginals \textit{Middle left}). \textit{Bottom left:} The constraint imposed by the measurement likelihood function of the second object
   (green line) is transferred to the joint distribution of the first object according to Algorithm \ref{alg:scalabe-mrf-slam}.
   This results in a change in the joint distribution  $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints 
   imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.}
@@ -1120,12 +1168,10 @@ Table \ref{tab:time_space_summary} summarises the time and space complexity for 
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure11_v3.pdf}
-  \caption{\textbf{Transfer of information (marginals)} \textit{Top left:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$.
-  \textit{Top right:} Marginals prior the agent entering in contact with the green object, see Figure \ref{fig:transfer_information} (\textit{Top}) for an illustrate of the joint distributions.
-  \textit{Bottom left:} resulting marginals after setting the agent marginals of each 
+  \fbox{\includegraphics[width=\textwidth]{./ch5-MLMF/Figures/Figure11_v2.pdf}}
+  \caption{\textbf{Independence \& Objects} \textit{Left:} resulting marginals after setting the agent marginals of each 
   joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref{alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. 
-  \textit{Bottom Right:} resulting marginals in which the objects have no influence on one another.
+  \textit{Right:} resulting marginals in which the objects have no influence on one another.
   Note that a transfer of information has caused a change in the marginal $O^{(1)}$.}
   \label{fig:independence_object}
 \end{figure}
