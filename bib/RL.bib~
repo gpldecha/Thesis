@@ -219,7 +219,7 @@
 @Inbook{Riedmiller2005,
 	author="Riedmiller, Martin",
 	title="Neural Fitted Q Iteration - First Experiences with a Data Efficient Neural Reinforcement Learning Method",
-	bookTitle="European Conference on Machine Learning, Porto",
+	bookTitle="European Conference on Machine Learning",
 	year="2005",
 	pages="317--328",
 	doi="10.1007/11564096_32",
@@ -356,11 +356,6 @@
     url          = "http://www2.imm.dtu.dk/pubdb/p.php?3274"
 }
  
-@book{Bishop_2006,
- 	author = {Bishop, Christopher M.},
- 	title = {Pattern Recognition and Machine Learning (Information Science and Statistics)},
- 	year = {2006},
-} 
 
 
 

@@ -6,7 +6,7 @@
 	year 		= {2010},
 	pages 		= {729-736},
 	month 		= {May}	
-	doi 	 	= {10.1109/ROBOT.2010.5509556},
+	doi 	 	= {10.1109/ROBOT.2010.5509556}
 }
 
 
@@ -36,8 +36,8 @@
   	booktitle = {International Conference on Robotics and Automation (ICRA)},
   	pages     = {2633--2638},
   	year      = {1994},
-  	month     = {may}
-  	doi       = {10.1109/ROBOT.1994.351117},
+  	month     = {may},
+  	doi       = {10.1109/ROBOT.1994.351117}
 }
 
 @INPROCEEDINGS{peg_imcssd_2015,
@@ -322,9 +322,9 @@
 	title 		={Learning admittance mappings for force-guided assembly},
 	year 		={1994},
 	pages		={2633-2638},
-	volume 		={3}
+	volume 		={3},
 	month 		={May},
-	doi 		={http://dx.doi.org/10.1109/ROBOT.1994.351117},
+	doi 		={http://dx.doi.org/10.1109/ROBOT.1994.351117}
 }
 
 @article{Abu-Dakka2014,

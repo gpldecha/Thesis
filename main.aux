@@ -23,7 +23,7 @@
 \@writefile{loa}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}}
 \citation{decision_un_2013}
-\citation{ActingUncertainty_1996}
+\citation{acting_uncer_1996}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Examples of the decision making under uncertainty in both robotics and everyday life situations. (a) European Space Agency (ESA), remote orbital peg in hole task. (b)-(c) ESA, simulated exploration of a cave on Mars in the dark. (d)-(e) MIT DAC team, Atlas robot doing valve task, \url  {http://drc.mit.edu/}. Other pictures include underwater exploration and industrial peg-in-hole assembly.\relax }}{2}{figure.caption.4}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:ch1-example}{{1.1}{2}{Examples of the decision making under uncertainty in both robotics and everyday life situations. (a) European Space Agency (ESA), remote orbital peg in hole task. (b)-(c) ESA, simulated exploration of a cave on Mars in the dark. (d)-(e) MIT DAC team, Atlas robot doing valve task, \url {http://drc.mit.edu/}. Other pictures include underwater exploration and industrial peg-in-hole assembly.\relax }{figure.caption.4}{}}
@@ -117,6 +117,7 @@
 \citation{FSVI}
 \citation{SARSOP}
 \citation{POMDP_approach_2010}
+\citation{Veiga14aaai}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Literature review}{23}{section.2.3}}
 \newlabel{sec:lit_rev}{{2.3}{23}{Literature review}{section.2.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Value Iteration}{23}{subsection.2.3.1}}
@@ -132,7 +133,7 @@
 \citation{MC-POMDP}
 \citation{Tree_batch_2005}
 \citation{mc_update_ppomdps}
-\citation{neura_fqi_2005}
+\citation{Riedmiller2005}
 \citation{DRQ_AAAI_2015}
 \citation{mnih-dqn-2015}
 \citation{Roy99coastalnavigation}
@@ -211,9 +212,9 @@
 \newlabel{fig:mind_summary}{{2.8}{39}{Summary of the aspects of the reviewed methods. Local refers to the optimality of the solution, on/off-line refers to if the solution is computed on the stop (on-line) or many simulations are required to obtain the solution (off-line).\relax }{figure.caption.28}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Three steps in learning a POMDP policy from human demonstrations: First gather the belief-action dataset, second compress the beliefs and third learn a generative policy.\relax }}{40}{figure.caption.29}}
 \newlabel{fig:belief-pipeline}{{2.9}{40}{Three steps in learning a POMDP policy from human demonstrations: First gather the belief-action dataset, second compress the beliefs and third learn a generative policy.\relax }{figure.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces \textbf  {Demonstrations:} An apprentice is looking at a human teacher who is searching for the alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf  {Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs is compressed to a fixed parametrisation. \textbf  {Learn policy:} A generative policy, $\policy  (g(b),a)$ is learned from the actions and compressed beliefs and can be executed according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next belief state.\relax }}{41}{figure.caption.30}}
-\newlabel{fig:human_search}{{2.10}{41}{\textbf {Demonstrations:} An apprentice is looking at a human teacher who is searching for the alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf {Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs is compressed to a fixed parametrisation. \textbf {Learn policy:} A generative policy, $\policy (g(b),a)$ is learned from the actions and compressed beliefs and can be executed according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next belief state.\relax }{figure.caption.30}{}}
 \citation{Biomechanics_2009}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces \textbf  {Demonstrations:} An apprentice is looking at a human teacher who is searching for the alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf  {Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs is compressed to a fixed parametrisation. \textbf  {Learn policy:} A generative policy, $\policy  (g(b),a)$ is learned from the actions and compressed beliefs and can be executed according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next belief state.\relax }}{42}{figure.caption.30}}
+\newlabel{fig:human_search}{{2.10}{42}{\textbf {Demonstrations:} An apprentice is looking at a human teacher who is searching for the alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf {Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs is compressed to a fixed parametrisation. \textbf {Learn policy:} A generative policy, $\policy (g(b),a)$ is learned from the actions and compressed beliefs and can be executed according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next belief state.\relax }{figure.caption.30}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Control architecture of the apprentice robot. The control loop should run between 10-100Hz. Given an applied action, the world returns an observation which is integrated by the State Estimator (SE) to give the current belief. The belief is the compressed and given as input to the policy.\relax }}{42}{figure.caption.31}}
 \newlabel{fig:control_architecture}{{2.11}{42}{Control architecture of the apprentice robot. The control loop should run between 10-100Hz. Given an applied action, the world returns an observation which is integrated by the State Estimator (SE) to give the current belief. The belief is the compressed and given as input to the policy.\relax }{figure.caption.31}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Learning to reason with uncertainty as humans}{43}{chapter.3}}
@@ -278,7 +279,7 @@
 \citation{DiffEntropyHuber2008}
 \@writefile{toc}{\contentsline {subsubsection}{Uncertainty}{56}{section*.41}}
 \newlabel{eq:gmm1}{{3.4.4}{56}{Uncertainty}{equation.3.4.4}{}}
-\citation{BillardCDS08}
+\citation{Billard08chapter}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Representation of the estimated density function. \textit  {Top Left and Right:} Initial starting point, all Gaussian functions are uniformly distributed with uniform priors. The red cluster always has the highest likelihood which is taken to be the believed location of the robot's/human's end-effector. \textit  {Bottom Left:} Contact with the table has been established, the robot location differers from his belief. \textit  {Bottom Right:} Contact has been made with a corner, the clusters reflect that the robot could be at any corner (note that weights are not depicted, only cluster assignment).\relax }}{57}{figure.caption.42}}
 \newlabel{fig:clustering}{{3.5}{57}{Representation of the estimated density function. \textit {Top Left and Right:} Initial starting point, all Gaussian functions are uniformly distributed with uniform priors. The red cluster always has the highest likelihood which is taken to be the believed location of the robot's/human's end-effector. \textit {Bottom Left:} Contact with the table has been established, the robot location differers from his belief. \textit {Bottom Right:} Contact has been made with a corner, the clusters reflect that the robot could be at any corner (note that weights are not depicted, only cluster assignment).\relax }{figure.caption.42}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Policies}{57}{section.3.5}}
@@ -539,8 +540,8 @@
 \newlabel{sec:Discrete}{{5.3}{124}{Histogram-SLAM}{section*.89}{}}
 \newlabel{eq:agent_marginal}{{5.3.5}{124}{Histogram-SLAM}{equation.5.3.5}{}}
 \newlabel{eq:ch5:discrete_likelihoood}{{5.3.6}{124}{Histogram-SLAM}{equation.5.3.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces \textbf  {Top}: \textit  {Left:} Initialisation of the agent and object joint distribution. \textit  {Right:} Marginals of the agent and object parameterised by $\bm  {\theta }_a$ and $\bm  {\theta }_o$, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref  {eq:agent_marginal}. The probability of the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \textbf  {Bottom}: 1D world Likelihood $P(Y_t|A_t,O)$, the white regions $A \cap O$ will leave the joint distribution unchanged whilst the black regions will evaluate the joint distribution to zero. \textit  {Left:} No contact detected with the object, the current measurement is $Y_t = \leavevmode {\color  {red}0}$, both the agent and object cannot be in the same state. \textit  {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \leavevmode {\color  {red}1}$. The agent receives only two measurement possibilities, contact or no contact. \relax }}{125}{figure.caption.90}}
-\newlabel{fig:histogram_joint}{{5.6}{125}{\textbf {Top}: \textit {Left:} Initialisation of the agent and object joint distribution. \textit {Right:} Marginals of the agent and object parameterised by $\ThA $ and $\ThO $, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref {eq:agent_marginal}. The probability of the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \textbf {Bottom}: 1D world Likelihood $P(Y_t|A_t,O)$, the white regions $A \cap O$ will leave the joint distribution unchanged whilst the black regions will evaluate the joint distribution to zero. \textit {Left:} No contact detected with the object, the current measurement is $Y_t = \textcolor {red}0$, both the agent and object cannot be in the same state. \textit {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \textcolor {red}1$. The agent receives only two measurement possibilities, contact or no contact. \relax }{figure.caption.90}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces \textbf  {Top}: \textit  {Left:} Initialisation of the agent and object joint distribution. \textit  {Right:} Marginals of the agent and object parameterised by $\bm  {\theta }_a$ and $\bm  {\theta }_o$, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref  {eq:agent_marginal}. The probability of the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \textbf  {Bottom}: Likelihood $P(Y_t|A_t,O)$, the white regions $A \cap O$ will leave the joint distribution unchanged whilst the black regions will evaluate the joint distribution to zero. \textit  {Left:} No contact detected with the object, the current measurement is $Y_t = \leavevmode {\color  {red}0}$, both the agent and object cannot be in the same state. \textit  {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \leavevmode {\color  {red}1}$. The agent receives only two measurement possibilities, contact or no contact. \relax }}{125}{figure.caption.90}}
+\newlabel{fig:histogram_joint}{{5.6}{125}{\textbf {Top}: \textit {Left:} Initialisation of the agent and object joint distribution. \textit {Right:} Marginals of the agent and object parameterised by $\ThA $ and $\ThO $, giving the probability of their location. The marginal of each random variable is obtained from Equation \ref {eq:agent_marginal}. The probability of the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. \textbf {Bottom}: Likelihood $P(Y_t|A_t,O)$, the white regions $A \cap O$ will leave the joint distribution unchanged whilst the black regions will evaluate the joint distribution to zero. \textit {Left:} No contact detected with the object, the current measurement is $Y_t = \textcolor {red}0$, both the agent and object cannot be in the same state. \textit {Right:} The agent entered into contact with the object and received a haptic feedback $Y_t = \textcolor {red}1$. The agent receives only two measurement possibilities, contact or no contact. \relax }{figure.caption.90}{}}
 \newlabel{eq:ch5:disc_prod_AO}{{5.3.7}{126}{Histogram-SLAM}{equation.5.3.7}{}}
 \newlabel{eq:ch5:disc_motion}{{5.3.8}{126}{Histogram-SLAM}{equation.5.3.8}{}}
 \newlabel{eq:ch5:disc_measurement}{{5.3.9}{126}{Histogram-SLAM}{equation.5.3.9}{}}
@@ -598,8 +599,8 @@
 \@writefile{loa}{\contentsline {algocf}{\numberline {4}{\ignorespaces Scalable-MLMF: Measurement Update\relax }}{143}{algocf.4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces \textbf  {Transfer of information (joint distributions)} \textit  {Top:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior sensing, $Y_t^{(2)}=1$, see Figure \ref  {fig:independence_object} (\textit  {Top right}) for the corresponding marginals. The red and green lines across the joint distributions correspond to the region in which the likelihood functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted blue lines are to ease the comparison ofthe joint distributions prior and post sensing. \textit  {Bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the green line becomes an infeasible solution to the agent and object locations. At this point the marginals $P(A^{(1)}_t|u_{1:t}) \not = P(A^{(2)}_t|u_{1:t})$ are no longer equal (see the blue marginals \textit  {Top}). \textit  {Bottom left:} The constraint imposed by the likelihood function of the second object (green line) is transferred to the joint distribution of the first object according to Algorithm \ref  {alg:scalabe-mrf-slam}. This results in a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }}{144}{figure.caption.102}}
 \newlabel{fig:transfer_information}{{5.13}{144}{\textbf {Transfer of information (joint distributions)} \textit {Top:} Joint distributions of $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$ and $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$ prior sensing, $Y_t^{(2)}=1$, see Figure \ref {fig:independence_object} (\textit {Top right}) for the corresponding marginals. The red and green lines across the joint distributions correspond to the region in which the likelihood functions $P(Y^{(1)}_{t}|A^{(1)}_t,O^{(1)})$ and $P(Y^{(2)}_{t}|A^{(2)}_t,O^{(2)})$ will change the joint distributions. The dotted blue lines are to ease the comparison ofthe joint distributions prior and post sensing. \textit {Bottom right:} After the agent has sensed $O^{(2)}$, all the probability mass which was not overlapping the green line becomes an infeasible solution to the agent and object locations. At this point the marginals $P(A^{(1)}_t|u_{1:t}) \not = P(A^{(2)}_t|u_{1:t})$ are no longer equal (see the blue marginals \textit {Top}). \textit {Bottom left:} The constraint imposed by the likelihood function of the second object (green line) is transferred to the joint distribution of the first object according to Algorithm \ref {alg:scalabe-mrf-slam}. This results in a change in the joint distribution $P(A^{(1)}_t,O^{(1)}|Y^{(1)})$, which satisfies the constraints imposed by the agent's marginal from the joint distribution $P(A^{(2)}_t,O^{(2)}|Y^{(2)})$.\relax }{figure.caption.102}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \textbf  {Transfer of information (marginals)} \textit  {Top left:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$. \textit  {Top right:} Marginals prior the agent entering in contact with the green object, see Figure \ref  {fig:transfer_information} (\textit  {Top}) for an illustrate of the joint distributions. \textit  {Bottom left:} resulting marginals after setting the agent marginals of each joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref  {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit  {Bottom Right:} resulting marginals in which the objects have no influence on one another. Note that a transfer of information has caused a change in the marginal $O^{(1)}$.\relax }}{145}{figure.caption.103}}
-\newlabel{fig:independence_object}{{5.14}{145}{\textbf {Transfer of information (marginals)} \textit {Top left:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$. \textit {Top right:} Marginals prior the agent entering in contact with the green object, see Figure \ref {fig:transfer_information} (\textit {Top}) for an illustrate of the joint distributions. \textit {Bottom left:} resulting marginals after setting the agent marginals of each joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit {Bottom Right:} resulting marginals in which the objects have no influence on one another. Note that a transfer of information has caused a change in the marginal $O^{(1)}$.\relax }{figure.caption.103}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \textbf  {Transfer of information (marginals)} \textit  {Top left:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$. \textit  {Top right:} Marginals prior the agent entering in contact with the green object, see Figure \ref  {fig:transfer_information} (\textit  {Top}) for an illustrate of the joint distributions. The black arrow indicates the heading of the agent. \textit  {Bottom left:} resulting marginals after setting the agent marginals of each joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref  {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit  {Bottom right:} resulting marginals in which the objects have no influence on one another. Note that a transfer of information has caused a change in the marginal $O^{(1)}$.\relax }}{145}{figure.caption.103}}
+\newlabel{fig:independence_object}{{5.14}{145}{\textbf {Transfer of information (marginals)} \textit {Top left:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$. \textit {Top right:} Marginals prior the agent entering in contact with the green object, see Figure \ref {fig:transfer_information} (\textit {Top}) for an illustrate of the joint distributions. The black arrow indicates the heading of the agent. \textit {Bottom left:} resulting marginals after setting the agent marginals of each joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref {alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. \textit {Bottom right:} resulting marginals in which the objects have no influence on one another. Note that a transfer of information has caused a change in the marginal $O^{(1)}$.\relax }{figure.caption.103}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces \textbf  {Time and space complexity summary} For both MLMF and scalabe-MLMF the worst case scenario is reported for the space complexity.\relax }}{145}{table.caption.104}}
 \newlabel{tab:time_space_summary}{{5.2}{145}{\textbf {Time and space complexity summary} For both MLMF and scalabe-MLMF the worst case scenario is reported for the space complexity.\relax }{table.caption.104}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.5}Evaluation}{145}{section.5.5}}
@@ -644,36 +645,37 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Time to connect socket (ANOVA)}{163}{section.1.A.1}}
-\newlabel{app:anova_socket}{{A.1}{163}{Time to connect socket (ANOVA)}{section.1.A.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces One way anova of the time taken to connect two sockets A and B. There is a significant difference.\relax }}{163}{table.caption.119}}
-\newlabel{tab:ch4:anova_socket}{{A.1}{163}{One way anova of the time taken to connect two sockets A and B. There is a significant difference.\relax }{table.caption.119}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Time to connect socket}{163}{section.1.A.1}}
+\newlabel{app:anova_socket}{{A.1}{163}{Time to connect socket}{section.1.A.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Time taken to find and connect the plug to the power socket. \textbf  {Top:} Time taken to connect the plug to the socket once the socket is localised. For most subjects the median value of the taken time is higher for socket A when compared with socket B. \textbf  {Bottom}: time taken to localise the socket. For the second search, AB and BA, it seams that the subjects are faster indicating learning during the experiment. \relax }}{164}{figure.caption.116}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces \relax }}{164}{figure.caption.117}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces \relax }}{165}{figure.caption.118}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}EM policy search}{165}{section.1.A.2}}
-\newlabel{app:lb}{{A.2}{165}{EM policy search}{section.1.A.2}{}}
-\newlabel{eq:ch4:app:J}{{A.2.1}{165}{EM policy search}{equation.1.A.2.1}{}}
+\newlabel{figuretimesubject}{{A.1}{164}{Time taken to find and connect the plug to the power socket. \textbf {Top:} Time taken to connect the plug to the socket once the socket is localised. For most subjects the median value of the taken time is higher for socket A when compared with socket B. \textbf {Bottom}: time taken to localise the socket. For the second search, AB and BA, it seams that the subjects are faster indicating learning during the experiment. \relax }{figure.caption.116}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Q-Q plots of time taken for four experiment conditions. The above p-values are from the Shapiro-Wilk test.\relax }}{165}{figure.caption.117}}
+\newlabel{QQplot}{{A.2}{165}{Q-Q plots of time taken for four experiment conditions. The above p-values are from the Shapiro-Wilk test.\relax }{figure.caption.117}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces Time taken to connect the sockets. For both groups, socket A always takes significantly longer time to connect, For Group A p<0.0001 and for Group B p=0.0002.\relax }}{165}{figure.caption.118}}
+\newlabel{figuretimesubgroup}{{A.3}{165}{Time taken to connect the sockets. For both groups, socket A always takes significantly longer time to connect, For Group A p<0.0001 and for Group B p=0.0002.\relax }{figure.caption.118}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}EM policy search}{166}{section.1.A.2}}
+\newlabel{app:lb}{{A.2}{166}{EM policy search}{section.1.A.2}{}}
+\newlabel{eq:ch4:app:J}{{A.2.1}{166}{EM policy search}{equation.1.A.2.1}{}}
 \newlabel{eq:ch4:argmax}{{A.2.4}{166}{EM policy search}{equation.1.A.2.4}{}}
-\newlabel{eq:lower_bound}{{A.2.5}{166}{EM policy search}{equation.1.A.2.5}{}}
 \citation{rl_gradient_survey_2013}
-\citation{matrix_ckb}
-\citation{Bishop_2006}
+\newlabel{eq:lower_bound}{{A.2.5}{167}{EM policy search}{equation.1.A.2.5}{}}
 \newlabel{eq:ch4:app:expec_Q}{{A.2.7}{167}{EM policy search}{equation.1.A.2.7}{}}
 \newlabel{eq:ch4:app:logsum}{{A.2.8}{167}{EM policy search}{equation.1.A.2.8}{}}
 \newlabel{eq:grad_log_cost_2}{{A.2.9}{167}{EM policy search}{equation.1.A.2.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {A.3}Q-EM for GMM}{167}{section.1.A.3}}
 \newlabel{app:grad}{{A.3}{167}{Q-EM for GMM}{section.1.A.3}{}}
 \newlabel{eq:ch5:app:gmm}{{A.3.1}{167}{Q-EM for GMM}{equation.1.A.3.1}{}}
-\newlabel{eq:ch4:app_div_Q}{{A.3.2}{167}{Q-EM for GMM}{equation.1.A.3.2}{}}
-\newlabel{eq:ch4:app_div_Q_simple}{{A.3.3}{167}{Q-EM for GMM}{equation.1.A.3.3}{}}
+\citation{matrix_ckb}
 \citation{Bishop_2006}
+\citation{Bishop_2006}
+\newlabel{eq:ch4:app_div_Q}{{A.3.2}{168}{Q-EM for GMM}{equation.1.A.3.2}{}}
+\newlabel{eq:ch4:app_div_Q_simple}{{A.3.3}{168}{Q-EM for GMM}{equation.1.A.3.3}{}}
 \newlabel{eq:ch4:app:mu_max}{{A.3.4}{168}{Q-EM for GMM}{equation.1.A.3.4}{}}
-\newlabel{eq:ch4:app_new_mu}{{A.3.5}{168}{Q-EM for GMM}{equation.1.A.3.5}{}}
-\newlabel{eq:ch4:app_new_cov}{{A.3.6}{168}{Q-EM for GMM}{equation.1.A.3.6}{}}
-\newlabel{eq:ch4:app_new_pi}{{A.3.7}{168}{Q-EM for GMM}{equation.1.A.3.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.4}Unbiased estimator}{168}{section.1.A.4}}
-\newlabel{app:unbiased_delta}{{A.4}{168}{Unbiased estimator}{section.1.A.4}{}}
+\newlabel{eq:ch4:app_new_mu}{{A.3.5}{169}{Q-EM for GMM}{equation.1.A.3.5}{}}
+\newlabel{eq:ch4:app_new_cov}{{A.3.6}{169}{Q-EM for GMM}{equation.1.A.3.6}{}}
+\newlabel{eq:ch4:app_new_pi}{{A.3.7}{169}{Q-EM for GMM}{equation.1.A.3.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.4}Unbiased estimator}{169}{section.1.A.4}}
+\newlabel{app:unbiased_delta}{{A.4}{169}{Unbiased estimator}{section.1.A.4}{}}
 \@writefile{toc}{\contentsline {chapter}{Appendix \numberline {B}Non-parametric Bayesian State Space Estimator}{171}{Appendix.1.B}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -721,7 +723,7 @@
 \bibcite{Bake_Saxe_Tene_2011}{{10}{2011}{{Bake et~al.}}{{Bake, Tenenbaum, and Saxe}}}
 \bibcite{barberBRML2012}{{11}{2012}{{Barber}}{{}}}
 \bibcite{Baron-Cohen}{{12}{1995}{{Baron-Cohen}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{References}{179}{chapter*.121}}
+\@writefile{toc}{\contentsline {chapter}{References}{179}{chapter*.120}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -832,8 +834,8 @@
 \bibcite{Ross08onlineplanning}{{117}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
 \bibcite{CostalNavigation1999}{{118}{1999}{{Roy et~al.}}{{Roy, Burgard, Fox, and Thrun}}}
 \bibcite{belief_compression_2005}{{119}{2005}{{Roy}}{{}}}
-\bibcite{EPCA_2003}{{120}{}{{Roy and Gordon}}{{}}}
-\bibcite{NIPS2002_2319}{{121}{2003}{{Roy and Gordon}}{{}}}
+\bibcite{EPCA_2003}{{120}{2003{a}}{{Roy and Gordon}}{{}}}
+\bibcite{NIPS2002_2319}{{121}{2003{b}}{{Roy and Gordon}}{{}}}
 \bibcite{Roy99coastalnavigation}{{122}{1999}{{Roy and Thrun}}{{}}}
 \bibcite{ToM_humanoid}{{123}{2002}{{Scassellati}}{{}}}
 \bibcite{Schaal04learningmovement}{{124}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
@@ -850,7 +852,7 @@
 \bibcite{Needle_2014}{{135}{2014}{{Sun and Alterovitz}}{{}}}
 \bibcite{gmr_2004}{{136}{2004}{{Sung}}{{}}}
 \bibcite{sutton98a}{{137}{1998{a}}{{Sutton and Barto}}{{}}}
-\bibcite{Sutton00policygradient}{{138}{}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
+\bibcite{Sutton00policygradient}{{138}{2000}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
 \bibcite{sutton1998reinforcement}{{139}{1998{b}}{{Sutton and Barto}}{{}}}
 \bibcite{RL_book_2010}{{140}{2010}{{Szepesv\'ari}}{{}}}
 \bibcite{MC-POMDP}{{141}{2000}{{Thrun}}{{}}}
@@ -863,19 +865,20 @@
 \bibcite{dense_entropy_icra_2014}{{148}{2014}{{Vallve and Andrade{-}Cetto}}{{}}}
 \bibcite{LQG_MP_2011}{{149}{2011}{{Van Den~Berg et~al.}}{{Van Den~Berg, Abbeel, and Goldberg}}}
 \bibcite{van_den_Berg_2012}{{150}{2012}{{van~den Berg et~al.}}{{van~den Berg, Patil, and Alterovitz}}}
-\bibcite{FSVI}{{151}{2007}{{Veloso}}{{}}}
-\bibcite{pomdp_iros_tous_2015}{{152}{2015{a}}{{Vien and Toussaint}}{{}}}
-\bibcite{pomdp_toussain_iros_2015}{{153}{2015{b}}{{Vien and Toussaint}}{{}}}
-\bibcite{eNAC_2003}{{154}{2003}{{Vijayakumar et~al.}}{{Vijayakumar, Shibata, and Schaal}}}
-\bibcite{VonNeumann1944}{{155}{1990}{{Von~Neumann and Morgenstern}}{{}}}
-\bibcite{Wang2016}{{156}{2016}{{Wang et~al.}}{{Wang, Uchibe, and Doya}}}
-\bibcite{Wang_2007}{{157}{2007}{{Wang}}{{}}}
-\bibcite{updating_egocentric_human_navigation_2000}{{158}{2000}{{Wang and Spelke}}{{}}}
-\bibcite{RL_state_art_2012}{{159}{2012}{{Wiering and van Otterio}}{{}}}
-\bibcite{reinforce_1992}{{160}{1992}{{Williams}}{{}}}
-\bibcite{Biomechanics_2009}{{161}{2009}{{Winter}}{{}}}
-\bibcite{what_det_our_nav_ability_2010}{{162}{2010}{{Wolbers and Hegarty}}{{}}}
-\bibcite{spatial_updating_2008}{{163}{2008}{{Wolbers et~al.}}{{Wolbers, Hegarty, Buchel, and Loomis}}}
-\bibcite{fast_peg_pbd_icmc_2014}{{164}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and Savarimuthu}}}
-\bibcite{ACML_variance_2015}{{165}{2015}{{Zhao et~al.}}{{Zhao, Niu, Xie, Yang, and Sugiyama}}}
-\bibcite{seq_traj_replan_iros_2013}{{166}{2013}{{Zito et~al.}}{{Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and Wyatt}}}
+\bibcite{Veiga14aaai}{{151}{2014}{{Veiga et~al.}}{{Veiga, Spaan, and Lima}}}
+\bibcite{FSVI}{{152}{2007}{{Veloso}}{{}}}
+\bibcite{pomdp_iros_tous_2015}{{153}{2015{a}}{{Vien and Toussaint}}{{}}}
+\bibcite{pomdp_toussain_iros_2015}{{154}{2015{b}}{{Vien and Toussaint}}{{}}}
+\bibcite{eNAC_2003}{{155}{2003}{{Vijayakumar et~al.}}{{Vijayakumar, Shibata, and Schaal}}}
+\bibcite{VonNeumann1944}{{156}{1990}{{Von~Neumann and Morgenstern}}{{}}}
+\bibcite{Wang2016}{{157}{2016}{{Wang et~al.}}{{Wang, Uchibe, and Doya}}}
+\bibcite{Wang_2007}{{158}{2007}{{Wang}}{{}}}
+\bibcite{updating_egocentric_human_navigation_2000}{{159}{2000}{{Wang and Spelke}}{{}}}
+\bibcite{RL_state_art_2012}{{160}{2012}{{Wiering and van Otterio}}{{}}}
+\bibcite{reinforce_1992}{{161}{1992}{{Williams}}{{}}}
+\bibcite{Biomechanics_2009}{{162}{2009}{{Winter}}{{}}}
+\bibcite{what_det_our_nav_ability_2010}{{163}{2010}{{Wolbers and Hegarty}}{{}}}
+\bibcite{spatial_updating_2008}{{164}{2008}{{Wolbers et~al.}}{{Wolbers, Hegarty, Buchel, and Loomis}}}
+\bibcite{fast_peg_pbd_icmc_2014}{{165}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and Savarimuthu}}}
+\bibcite{ACML_variance_2015}{{166}{2015}{{Zhao et~al.}}{{Zhao, Niu, Xie, Yang, and Sugiyama}}}
+\bibcite{seq_traj_replan_iros_2013}{{167}{2013}{{Zito et~al.}}{{Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and Wyatt}}}

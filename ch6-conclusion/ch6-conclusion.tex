@@ -23,7 +23,7 @@ commonly used to describe uncertainty in tasks, which become quickly infeasible 
 Although there has been progress in the development of POMDP solvers with demonstrated applications to robotics, 
 these are predominantly verified in simulation where the action space is discretised.  
 
-This thesis offers an approach to solving POMDP problems with continuous actions space and high levels of uncertainty which 
+This thesis offers an approach to solving POMDP problems with continuous action space and high levels of uncertainty which 
 are non-Gaussian. To tackle the sheer complexity yielded by a continuous space we used human demonstrations to provide an 
 set of behaviours which are encoded in a generative model used as a policy. This thesis provides three major contributions to 
 current research which we summarise below.
@@ -64,10 +64,10 @@ Secondly, we propose a Reinforcement Learning (RL) extension in which the task i
 function. By combining the reward function and the explorative-exploitative data, provided by human teachers, in 
 a fitted actor-critic RL framework a significantly improved policy can be obtained after one iteration of policy evaluation
 and improvement. This mitigates the need of time consuming rollouts which is the traditional bottleneck in RL.
-We bring a modified version of the EM algorithm (Q-EM) which weights individual data points of demonstrations by 
+We bring a modified version of the EM algorithm (Q-EM) which weights individual demonstration data points by 
 either the Q or advantage function. This approach allows to take into account the quality of the demonstrations, which was not the case 
-in the PbD-POMDP approach. We demonstrated that when solely the worst two teachers' data was used our RL method, RL-PbD-POMDP,
-outperformed our previous PbD-POMDP approach in a peg-in-hole task. 
+in the PbD-POMDP approach. We demonstrated that when solely the worst two teachers' data was used, our RL method, RL-PbD-POMDP,
+outperformed our previous PbD-POMDP approach at a peg-in-hole task. 
 
 %We further demonstrated that if a diverse set of data is available and
 %a fitted RL method is used there is no need to perform expensive and time consuming rollouts to estimate the gradient of the policy,

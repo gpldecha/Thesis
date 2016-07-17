@@ -3,36 +3,84 @@
 
 \chapter{Peg in hole}
 
-\section{Time to connect socket (ANOVA)}
+\section{Time to connect socket (Analysis)}
 \label{app:anova_socket}
+
+
+We aim to test if there is any significant difference in time taken to connect socket A and B. We hypothesised that socket A requires longer time than socket B. 
+
+
+Data from two groups of 5 subjects where collected according the the experiment protocol.
+All subjects had time to familiarise themselves with the task and accomplished multiple training rounds 
+before the start of the experiment.
+In Figure \ref{figuretimesubgroup} (\textit{Top row}) we plot the time taken for each subject to connect the plug 
+to the socket, once the socket was localised.
+ 
+Before applying a statistical test to compare the time taken to connect the plug to the sockets for the 
+two groups, we tested the normality of the time-distribution of each experiment condition (AA, AB, BA, BB).
+
+We applied Shapiro-Wilk test of normality in R and used Q-Q plots to compare the shapes 
+of distributions (Figure \ref{QQplot}) with normality. None of the time-distributions of the experimental conditions
+are normal (p< 0.0001). Therefore, we chose a non-parametric test to compare the 
+distributions. Since socket A and B were performed by related samples we applied the
+Wilcoxon signed-rank test (a paired difference test). This test assesses whether the population mean rank differs 
+between the two sockets (A and B) given that a subject performed both experiments one after the other.
+
+Socket A took significantly longer time than socket B and this result was observed in the two 
+groups (group A p<0.0001, group B p=0.0002, Wilcoxon signed-rank test, Figure \ref{figuretimesubgroup}).   
+
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch4-PiH/Figures/time_taken_subgroup.pdf}
+ \caption{Time taken to find and connect the plug to the power socket. \textbf{Top:} 
+ Time taken to connect the plug to the socket once the socket is localised. For most subjects the median value of the taken time is higher 
+ for socket A when compared with socket B. \textbf{Bottom}: time taken to localise the socket. For the second
+ search, AB and BA, it seams that the subjects are faster indicating learning during the experiment.
+ }
+ \label{figuretimesubject}
+\end{figure}
+
+\begin{figure}	
+   \centering
+   \includegraphics[width=0.9\textwidth]{./ch4-PiH/Figures/QQplot.pdf}
+   \caption{Q-Q plots of time taken for four experiment conditions. The above p-values are from the Shapiro-Wilk test.}
+   \label{QQplot}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Group_Socket.pdf}
+   \caption{Box plot of time taken for two sockets by two groups. \textbf{Left}: times of group 1 subjects took to perform socket A and B;\textbf{Right}: times of group 2 subjects took to perform socket B and A. }
+   \label{figuretimesubgroup}
+\end{figure}
+
 % 1) Is there are a difference across groups 
-
 % 2) Is there a difference between the two sockets
-The null hypothesis is that there is no difference in the time taken to connect socket A or B. The result of the one-way anova
-is given in Table \ref{tab:ch4:anova_socket}. The null hypothesis is rejected at high significant level (***) indicating that 
-there is a difference between the sockets. According to the linear model it takes on average 4 seconds less to connect socket B 
-than it does for socket A.
-
-\begin{table}[h]
-\centering
-\begin{tabular}{lcc}
-  \hline
-          &   F    & Pr(>F)  	     \\ \hline
-   socket & 13.9   &  0.000232 *** 
-\end{tabular}
-\caption{One way anova of the time taken to connect two sockets A and B. There is a significant difference.}
-\label{tab:ch4:anova_socket}
-\end{table}
-
-We tested whether the group order had an effect on the connection time. We fitted a linear model
-with the predictor being time and the factors being the group (One or Two), the socket type (A or B) 
-and the subject's ID (1 to 10):
-\begin{equation}
- time = \beta_0 + \beta_1\, group + \beta_2\, socket + \beta_3\, subject
-\end{equation}
-and did the corresponding anova analysis on this linear model. We found that the difference between the sockets 
-remained significant.
-
+%The null hypothesis is that there is no difference in the time taken to connect socket A or B. The result of the one-way anova
+%is given in Table \ref{tab:ch4:anova_socket}. The null hypothesis is rejected at high significant level (***) indicating that 
+%there is a difference between the sockets. According to the linear model it takes on average 4 seconds less to connect socket B 
+%than it does for socket A.
+%\begin{table}[h]
+%\centering
+%\begin{tabular}{lcc}
+%  \hline
+%          &   F    & Pr(>F)  	     \\ \hline
+%   socket & 13.9   &  0.000232 *** 
+%\end{tabular}
+%\caption{One way anova of the time taken to connect two sockets A and B. There is a significant difference.}
+%\label{tab:ch4:anova_socket}
+%\end{table}
+%We tested whether the group order had an effect on the connection time. We fitted a linear model
+%with the predictor being time and the factors being the group (One or Two), the socket type (A or B) 
+%and the subject's ID (1 to 10):
+%\begin{equation}
+% time = \beta_0 + \beta_1\, group + \beta_2\, socket + \beta_3\, subject
+%\end{equation}
+%and did the corresponding anova analysis on this linear model. We found that the difference between the sockets 
+%remained significant.
+\FloatBarrier
 \section{EM policy search}\label{app:lb}
 The objective of policy search in Reinforcement Learning (RL) is to optimise the parameters of a policy $\pi_{\Param}$
 (which is a Gaussian Mixture Model (GMM) in our case) such to maximise a cost 
@@ -167,18 +215,18 @@ or \cite[Chap. 9]{Bishop_2006}.
 
 \begin{align}
     &\nabla_{\MuK} \mathcal{Q}(\MuK,\Param') =  \hspace*{5cm} \nonumber \\
-    & \hspace*{1cm} \sum\limits_{j=1}^M \underbrace{\frac{\piK\,g(\Bx^{[j]};\MuK,\SigK)}{\sum\limits_{l=1}^{M} w^{[l]}\,g(\Bx;\Mu{l},\Sig{l}) } }_{\gamma(z_{jk})} \invSigK (\Bx^{[j]} - \MuK) \, \Qpx = 0 \label{eq:ch4:app:mu_max}
+    & \hspace*{1cm} \sum\limits_{j=1}^M \underbrace{\frac{\piK\,g(\Bx^{[j]};\MuK,\SigK)}{\sum\limits_{l=1}^{M} w^{[l]}\,g(\Bx;\Mu{l},\Sig{l}) } }_{\gamma_k(\Bx^{[j]})} \invSigK (\Bx^{[j]} - \MuK) \, \Qpx = 0 \label{eq:ch4:app:mu_max}
 \end{align}
 
-In \ref{eq:ch4:app:mu_max} we used the same notation and derivation as in \cite[Chap. 9.2.2]{Bishop_2006}, where $\gamma(z_{jk})$ is the responsibility factor, denoting 
+In \ref{eq:ch4:app:mu_max} we used the same notation and derivation as in \cite[Chap. 9.2.2]{Bishop_2006}, where $\gamma_k(\Bx^{[j]})$ is the responsibility factor, denoting 
 the probability that data point $\mathbf{x}^{[j]}$ belongs to  Gaussian function $k$. After rearrangement the new mean is given by Equation \ref{eq:ch4:app_new_mu}.
 
 \begin{empheq}[box={\tcbhighmath[colback=blue!2,colframe=blue]}]{align}
-    \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma(z_{jk})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, \Qpx} \label{eq:ch4:app_new_mu} \\
+    \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx} \label{eq:ch4:app_new_mu} \\
     & \nonumber\\
-    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma(z_{jk})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \alpha(z_{jk})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
+    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma_k(\Bx^{[j]})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
     & \nonumber\\
-    w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma(jk)}{\sum\limits_{j=1}^{M} \Qpx} \label{eq:ch4:app_new_pi}
+    w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma_k(\Bx^{[j]})}{\sum\limits_{j=1}^{M} \Qpx} \label{eq:ch4:app_new_pi}
 \end{empheq}
 
 The covariances, Equation \ref{eq:ch4:app_new_cov}, and weights, Equation \ref{eq:ch4:app_new_pi}, are derived in a similar fashion.

@@ -117,7 +117,7 @@ doi={10.1109/CIRA.1999.810011}
 title = {Exponential Family PCA for Belief Compression in POMDPs},
 author = {Nicholas Roy and Gordon, Geoffrey J},
 booktitle = {Advances in Neural Information Processing Systems (NIPS)},
-volume = {15}
+volume = {15},
 editor = {S. Becker and S. Thrun and K. Obermayer},
 pages = {1667--1674},
 year = {2003},
@@ -154,6 +154,7 @@ url = {http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compre
   author =       {Tiago S. Veiga and Matthijs T. J. Spaan and Pedro U. Lima},
   title =        {Point-based {POMDP} Solving with Factored Value Function Approximation},
   booktitle =    {Proceedings of the Twenty-Eighth AAAI Conference on Artificial Intelligence},
+  volume    =     {28},
   year =         2014,
   pages =        {2512--2518}
 }
@@ -704,7 +705,7 @@ author={Martinez-Cantin, Ruben and de Freitas, Nando and Brochu, Eric and Castel
 	booktitle={International Conference on Robotics and Automation (ICRA)},
 	title={Non-Gaussian belief space planning: Correctness and complexity},
 	year={2012},
-	pages={4711-4717}
+	pages={4711-4717},
 	month={May},
 	doi={10.1109/ICRA.2012.6225223}
 }
@@ -958,7 +959,7 @@ author={Martinez-Cantin, Ruben and de Freitas, Nando and Brochu, Eric and Castel
 }
 
 @article{mnih-dqn-2015,
-	Author = {Mnih, Volodymyr et al.},
+	Author = {Mnih, Volodymyr},
 	Journal = {Nature},
 	Month = {02},
 	Number = {7540},

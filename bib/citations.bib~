@@ -492,15 +492,25 @@
   timestamp = {2013.01.03}
 }
 
+
+@incollection{Billard08chapter,
+author="A. Billard and S. Calinon and R. Dillmann and S. Schaal",
+title="Robot Programming by Demonstration",
+booktitle="Handbook of Robotics",
+editor="B. Siciliano and O. Khatib",
+publisher="Springer",
+address="Secaucus, NJ, USA",
+year="2008",
+pages="1371--1394"
+}
+
 @ARTICLE{SylvainFlorentAude2007,
   author = {Sylvain Calinon, Florent Guenter, Aude Billard},
   title = {On Learning, Representing and Generalizing a Task in a Humanoid Robot},
   journal = {IEEE Transactions on Systems, Man and Cybernetics},
   year = {2007},
   volume = {37},
-  pages = {286-298},
-  owner = {guillaume},
-  timestamp = {2013.01.03}
+  pages = {286-298}
 }
 
 @ARTICLE{Mori_Howa_Vija_2011,
@@ -674,11 +684,10 @@ year = {2015}
 
 @INPROCEEDINGS{No_falls_2015,
 author={C. G. Atkeson and B. P. W. Babu and N. Banerjee and D. Berenson and C. P. Bove and X. Cui and M. DeDonato and R. Du and S. Feng and P. Franklin and M. Gennert and J. P. Graff and P. He and A. Jaeger and J. Kim and K. Knoedler and L. Li and C. Liu and X. Long and T. Padir and F. Polido and G. G. Tighe and X. Xinjilefu},
-booktitle={Humanoid Robots (Humanoids), 2015 IEEE-RAS 15th International Conference on},
+booktitle={International Conference on Humanoid Robots (Humanoids)},
 title={No falls, no resets: Reliable humanoid behavior in the DARPA robotics challenge},
 year={2015},
 pages={623-630},
-keywords={humanoid robots;manipulator dynamics;multi-robot systems;DARPA Robotics Challenge;catastrophic failure detection;human supervisor;operator interface;physical human intervention;reliable humanoid behavior;remote intervention;safety features;safety methods;team WPI-CMU approach;Foot;Force;Legged locomotion;Safety;Trajectory},
 doi={10.1109/HUMANOIDS.2015.7363436},
 month={Nov}
 }

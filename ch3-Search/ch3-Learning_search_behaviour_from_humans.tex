@@ -255,15 +255,15 @@ The objective function is a weighted sum of features corresponding to raw sensor
 taken into account at the perception-action level, with the difference that instead of a policy being learned the objective function from which it is generated is learned. 
 
 % Uncertainty is in the dynamics
-Uncertainty is not restricted to state estimations but can also present in dynamical interaction with an environment in which 
+Uncertainty is not restricted to state estimations but can also present in dynamical interaction with the environment in which 
 unforeseen and perceptual uncertainties can arise such as in manipulation tasks. When solely tracking a Cartesian trajectory 
 position uncertainties (poor visual estimation of the target) can lead to the failure of the task or a dangerous accumulation 
 of contact forces. In \cite{online_pre_sensor_2011} the authors learn, via imitation learning, an initial 
 Dynamic Movement Primitive (DMP) Cartesian policy and separately a target a force profile. By using sensor feedback they 
-modify the target trajectory such to replicate the force profile thus achieve a robustness to pose uncertainty. Another possibility
+modify the target trajectory such to replicate the force profile thus achieving robustness to pose uncertainty. Another possibility
 is to vary the stiffness parameters of an impedance controller \cite{Klas_icra_2012} based on the position uncertainty, 
 if the position uncertainty is high then the robot will be more compliant. In \cite{MedinaSH13} the authors introduce a 
-risk-sensitive control framework which depending on the uncertainty will make a trade-off between gains the position and force errors 
+risk-sensitive control framework which depending on the uncertainty will make a trade-off between the position and force errors parameter gains
 of an impedance controller. The task (Cartesian position and velocity) which is tracked by the controller is learned from demonstrations and encoded in 
 a model.
 
@@ -515,7 +515,7 @@ During the experiments, the recorded trajectories show that different actions ar
 (for a particular position and uncertainty different velocities are present). That is multiple actions are possible given a specific belief. 
 This results in a one-to-many mapping which is not a valid function, eliminating any regression technique which directly learns a non-linear function. 
 To accommodate this fact we use a GMM to model the human's demonstrated searches, $\{(x,\dot{x},U)\}$. 
-Using statistical models to encode control policies in robotics is quite common, see \cite{BillardCDS08}. 
+Using statistical models to encode control policies in robotics is quite common, see \cite{Billard08chapter}. 
 
 % explain how much data we have vs the number of gaussian components
 By normalising the velocity the amount of information to be learned was reduced. We also took into consideration that velocity is more 

@@ -646,7 +646,9 @@ Since it is essentially using a myopic policy to generate its samples, these wil
 It uses aspects from both HSVI and FSVI. It keeps upper and lower bounds on the value function and also uses the MDP solution to generate samples. 
 The key idea of SARSOP is to sample belief points which will contain the optimal set of samples necessary to achieve an optimal policy.  
 Both SARSOP and HSVI2 are considered state of the art in PBVI value approximation techniques. See \cite{POMDP_approach_2010} for a review and comparison of both techniques on problems 
-with thousands of states including simulation examples in grasping, tracking and UAV navigation. 
+with thousands of states including simulation examples in grasping, tracking and UAV navigation. Other more recent approaches, \cite{Veiga14aaai}, consider factorising the POMDP 
+according to the different observations (independence assumption) and making use of linear function approximation methods to 
+address the curse of dimensionality effecting the parameters of the POMDP ($\alpha$-vectors).
 
 These methods are well suited to addressing problems which are easily expressed in a discrete state space. All considered problems are simulation based and 
 no physical interaction problems are considered. Besides the belief set generation problem, interest has also been poised on porting the PBVI to a continuous state space.
@@ -706,7 +708,7 @@ An alternative approach is to represented the history of the previous states or 
 as a standard MDP. In this way the partial observability is directly encoded in the state representation. The motivation is that in contrast to 
 POMDPs there has been fare more research focused on MDPs and much work has been done on the application of non-linear function 
 approximators for representing the value function in combination with reinforcement learning optimisation techniques to solving them.
-A successful example was the usage of a multi-layer perceptron as a Q-value function approximator, Neural Fitted Q-Iteration (NFQ) \cite{neura_fqi_2005}.
+A successful example was the usage of a multi-layer perceptron as a Q-value function approximator, Neural Fitted Q-Iteration (NFQ) \cite{Riedmiller2005}.
 This approach was successfully applied to the standard RL benchmarking problems (carte pole, acrobat, mountain care), but no partially observable
 setting was considered. Later in \cite{DRQ_AAAI_2015} the authors applied a Deep Recurrent Q-Network (DRQN) (extension to the work in \cite{mnih-dqn-2015}) to capture the history of states 
 in a game of Pong where the state space was occluded half the time. By introducing a long term memory component the POMDP in effect is turned into a MDP and the authors apply an optimisation approach similar to FQI. 

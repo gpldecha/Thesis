@@ -345,12 +345,13 @@ with this parameterisation.
 
 \begin{figure}
  \centering
- \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/hist_SLAM_likelihood.pdf}
+ \hspace*{-0.8cm}
+ \includegraphics[width=1.2\textwidth]{./ch5-MLMF/Figures/explenation/hist_SLAM_likelihood.pdf}
  \caption{\textbf{Top}: \textit{Left:} Initialisation of the agent and object joint distribution. 
  \textit{Right:} Marginals of the agent and object parameterised by $\ThA$ and $\ThO$, giving the probability of their location. The marginal of each 
  random variable is obtained from Equation \ref{eq:agent_marginal}. The probability of
  the agent and object being in state $s=6$ is given by summing the blue and red highlighted parameters in the joint distribution. 
- \textbf{Bottom}: 1D world Likelihood $P(Y_t|A_t,O)$, the white regions $A \cap O$ will leave the joint distribution unchanged whilst
+ \textbf{Bottom}: Likelihood $P(Y_t|A_t,O)$, the white regions $A \cap O$ will leave the joint distribution unchanged whilst
  the black regions will evaluate the joint distribution to zero. \textit{Left:} No contact detected with the object, the current measurement 
  is $Y_t = \textcolor{red}0$, both the agent and object cannot be in the same state. \textit{Right:} The agent 
  entered into contact with the object and received a haptic feedback $Y_t = \textcolor{red}1$. The agent receives 
@@ -535,7 +536,7 @@ for a step-by-step derivation.
 %and object marginals $P(A_t|u_{1_:t};\mathcolor{blue}{\ThAs})$, $P(O;\mathcolor{red}{\ThOs})$ and the history of 
 %likelihood functions, $P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\BPsi})$ Equation \ref{eq:memory}, which is 
 %the product of all the likelihood functions since $t=0$ until $t$ and we will refer to it as the \textbf{memory likelihood function}: 
-The MLFM filter, Equation \ref{eq:ch5:mlmf_filter_conditional}, is parameterised by the agent and object 
+The MLFM filter is parameterised by the agent and object 
 \textbf{joint marginals} $P(A_t|u_{1_:t};\mathcolor{blue}{\ThAs})$, $P(O;\mathcolor{red}{\ThOs})$, the \textbf{filtered marginals}  
 $P(A_t|Y_{0:t},u_{1:t};\mathcolor{blue}{\ThA})$ ($u_{1:t}$ not shown in the above box), $P(O|Y_{0:\mathbf{t}};\mathcolor{red}{\ThO})$, 
 the evidence $P(Y_{0:t}|u_{1:t};\mathcolor{dark-blue}{\BAlph})$ and the history of likelihood functions, $P(Y_{0:t}|A_t,O,u_{1:t};\mathcolor{dark-green}{\BPsi})$ Equation \ref{eq:memory}, which is 
@@ -734,7 +735,7 @@ from the joint distribution.
 
 There are two different sets of marginals used in the MLMF filter. The first set are the \textbf{joint marginals} of the joint distribution, Equation \ref{eq:ch5:mlmf_filter_conditional}
 parameterised by $\mathcolor{blue}{\ThAs}$ and $\mathcolor{red}{\ThOs}$. The second set of marginals are the \textbf{filtered marginals} which are updated by evaluating the joint distribution in dependent states and 
-are parameterised by $\mathcolor{blue}{\ThA}$ and $\mathcolor{red}{\ThO}$. At initialisation before the the first action or observation is made 
+are parameterised by $\mathcolor{blue}{\ThA}$ and $\mathcolor{red}{\ThO}$. At initialisation before the first action or observation is made 
 the parameters of the filtered marginal are set equal to those of the joint distribution.
 
 In Histogram-SLAM both the agent and object marginals are obtained, at each time step, by marginalising the joint distribution.
@@ -1037,8 +1038,8 @@ occupy the same region and are identical. When the agent senses $O^{(2)}$ the li
 likelihood function $P(Y^{(2)}_t|A^{(2)}_t,O^{(2)})$ becomes a hard constraint implying that both the agent and $O^{(2)}$ have to satisfy this constraint.
 
 Figure \ref{fig:independence_object} shows marginals resulting from the joint distributions in Figure \ref{fig:transfer_information}. The marginals in
-the \textit{Left} plot are the result after updating the marginals $A^{(i)}$. The \textit{Right} plot shows the result for the case where the objects
-remain independent. 
+the \textit{Bottom left} plot are the result after updating the marginals $A^{(i)}$. The \textit{Bottom right} plot shows the result for the case where 
+the objects remain independent. 
 
 The result of introducing a dependency between the objects through the agent's marginals in the event of a sensing and treating them
 independently gives the same solution as the histogram filter in this particular case. However as each individual marginal $A^{(i)}_t$ diverges 
@@ -1053,10 +1054,11 @@ Table \ref{tab:time_space_summary} summarises the time and space complexity for 
   \centering
   \includegraphics[width=0.8\textwidth]{./ch5-MLMF/Figures/Figure11_v3.pdf}
   \caption{\textbf{Transfer of information (marginals)} \textit{Top left:} Initial beliefs of the agent and object's location. The agent moves to the left until it senses object $O^{(2)}$.
-  \textit{Top right:} Marginals prior the agent entering in contact with the green object, see Figure \ref{fig:transfer_information} (\textit{Top}) for an illustrate of the joint distributions.
+  \textit{Top right:} Marginals prior the agent entering in contact with the green object, 
+  see Figure \ref{fig:transfer_information} (\textit{Top}) for an illustrate of the joint distributions. The black arrow indicates the heading of the agent.
   \textit{Bottom left:} resulting marginals after setting the agent marginals of each 
   joint distribution equal $A^{(1)}_t = A^{(2)}_t$ according to Algorithm \ref{alg:scalabe-mrf-slam}. The object marginal $P(O^{(2)}|Y_{0:t})$ is recomputed. 
-  \textit{Bottom Right:} resulting marginals in which the objects have no influence on one another.
+  \textit{Bottom right:} resulting marginals in which the objects have no influence on one another.
   Note that a transfer of information has caused a change in the marginal $O^{(1)}$.}
   \label{fig:independence_object}
 \end{figure}

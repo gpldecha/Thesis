@@ -1,4 +1,4 @@
-\begin{thebibliography}{166}
+\begin{thebibliography}{167}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -380,6 +380,7 @@ Vijaykumar Gullapalli, Andrew~G. Barto, and Roderic~A. Grupen.
 \newblock Learning admittance mappings for force-guided assembly.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 2633--2638, may 1994.
+\newblock \doi{10.1109/ROBOT.1994.351117}.
 
 \bibitem[Hamner et~al.(2006)Hamner, Singh, and Scherer]{Hamner_2006_5810}
 Bradley Hamner, Sanjiv Singh, and Sebastian Scherer.
@@ -659,6 +660,7 @@ W.~Meeussen, M.~Wise, S.~Glaser, S.~Chitta, C.~McGann, P.~Mihelich,
 \newblock Autonomous door opening and plugging in with a personal robot.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 729--736, May 2010.
+\newblock \doi{10.1109/ROBOT.2010.5509556}.
 
 \bibitem[Miller(1956)]{cogprints730}
 George Miller.
@@ -810,7 +812,8 @@ Christian Plagemann, Kristian Kersting, Patrick Pfaff, and Wolfram Burgard.
 R.~Platt, L.~Kaelbling, T.~Lozano-Perez, and R.~Tedrake.
 \newblock Non-gaussian belief space planning: Correctness and complexity.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
-  pages 4711--4717, 2012.
+  pages 4711--4717, May 2012.
+\newblock \doi{10.1109/ICRA.2012.6225223}.
 
 \bibitem[Platt et~al.(2010)Platt, Tedrake, Kaelbling, and
   Lozano-P\'{e}rez]{bsp_rss_2010a}
@@ -890,17 +893,20 @@ Nicholas Roy.
 \newblock
   \doi{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180}.
 
-\bibitem[Roy and Gordon()]{EPCA_2003}
+\bibitem[Roy and Gordon(2003{\natexlab{a}})]{EPCA_2003}
 Nicholas Roy and Geoffrey~J Gordon.
 \newblock Exponential family pca for belief compression in pomdps.
-\newblock In \emph{Advances in Neural Information Processing Systems (NIPS)},
-  volume~15.
+\newblock In S.~Becker, S.~Thrun, and K.~Obermayer, editors, \emph{Advances in
+  Neural Information Processing Systems (NIPS)}, volume~15, pages 1667--1674.
+  MIT Press, 2003{\natexlab{a}}.
+\newblock URL
+  \url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}.
 
-\bibitem[Roy and Gordon(2003)]{NIPS2002_2319}
+\bibitem[Roy and Gordon(2003{\natexlab{b}})]{NIPS2002_2319}
 Nicholas Roy and Geoffrey~J Gordon.
 \newblock Exponential family pca for belief compression in pomdps.
 \newblock In \emph{Advances in Neural Information Processing Systems 15}, pages
-  1667--1674. 2003.
+  1667--1674. 2003{\natexlab{b}}.
 \newblock URL
   \url{http://papers.nips.cc/paper/2319-exponential-family-pca-for-belief-compression-in-pomdps.pdf}.
 
@@ -1015,13 +1021,13 @@ Richard~S. Sutton and Andrew~G. Barto.
 \newblock URL
   \url{http://www.cs.ualberta.ca/\%7Esutton/book/ebook/the-book.html}.
 
-\bibitem[Sutton et~al.()Sutton, Mcallester, Singh, and
+\bibitem[Sutton et~al.(2000)Sutton, Mcallester, Singh, and
   Mansour]{Sutton00policygradient}
 Richard~S. Sutton, David Mcallester, Satinder Singh, and Yishay Mansour.
 \newblock Policy gradient methods for reinforcement learning with function
   approximation.
 \newblock In \emph{Advances in Neural Information Processing Systems (NIPS)},
-  volume~12.
+  volume~12, pages 1057--1063. MIT Press, 2000.
 
 \bibitem[Sutton and Barto(1998{\natexlab{b}})]{sutton1998reinforcement}
 R.S. Sutton and A.G. Barto.
@@ -1106,6 +1112,13 @@ Jur van~den Berg, Sachin Patil, and Ron Alterovitz.
 \newblock \emph{International Journal of Robotics Research (IJRR)}, 31\penalty0
   (11):\penalty0 1263--1278, 2012.
 \newblock \doi{http://dx.doi.org/10.1177/0278364912456319}.
+
+\bibitem[Veiga et~al.(2014)Veiga, Spaan, and Lima]{Veiga14aaai}
+Tiago~S. Veiga, Matthijs T.~J. Spaan, and Pedro~U. Lima.
+\newblock Point-based {POMDP} solving with factored value function
+  approximation.
+\newblock In \emph{Conference on Artificial Intelligence (AAAI)}, volume~28,
+  pages 2512--2518, 2014.
 
 \bibitem[Veloso(2007)]{FSVI}
 Manuela~M. Veloso, editor.
