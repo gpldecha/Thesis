@@ -14,22 +14,24 @@ Human beings have acquired the ability of acting under uncertainty through educa
 Transferring our know-how to artificial agents and robots will make it faster for them to learn and even improve upon us in
 tasks in which incomplete knowledge is available, which is the objective of this thesis.
 
-A large body of scientific work has focused on transferring behaviour from humans to robots via Programming by Demonstration frameworks which focus on learning how to imitate human behaviour. Tasks such as ``pick and place'', hitting motions, and bipedal locomotion have been encoded 
-through either symbolic, statistical or dynamical system representations. In contrast there has been less focus on transferring higher cognitive behaviour such as
-problem solving skills and search strategies from humans to robots.
+A large body of scientific work has focused on transferring behaviour from humans to robots via Programming by Demonstration 
+frameworks which focus on learning how to imitate human behaviour. Tasks such as ``pick and place'', hitting motions, and bipedal 
+locomotion have been encoded through either symbolic, statistical or dynamical system representations. In contrast there has been 
+less focus on transferring higher cognitive behaviour such as problem solving skills and search strategies from humans to robots.
 
 This thesis aims to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
-We consider for instance tasks such as localising  an object in a room or connection a plug to a power socket in the dark, 
-or any such situation with total suppression of visual information, and transfer this reasoning mechanisms to a robot apprentice. 
-There are many robotic application domains in which uncertainty resulting from a lack of visual perception is common, such as in underwater 
+We consider for instance tasks such as localising  an object in a room or connecting a plug to a power socket in the dark, 
+as well as any situation where the subject has no visual information and must rely on tactile and proprioceptive information only. 
+We then transfer the human-inferred reasoning mechanisms to a robot apprentice. 
+There are many robotic application domains in which uncertainty resulting from a lack of visual perception is common, such as underwater 
 maintenance, planetary exploration and occluded manipulation tasks. Learning human search models and transferring them to robots is useful
 in such domains and learning a search strategy from scratch would prove intractable.
 
 A difficulty in learning humans reasoning mechanisms, in the search scenarios we consider, is that
-the humans beliefs and sensations (haptic and tactile) are unobservable and they vary within and
-across subjects. We infer the human sensations from either the kinematic relationship between them
-and a known geometric description of the environment or the human subjects use a tool equipped with
-a sensor (force-torque sensor) whose measurements are used to infer the human sensations. The actual
+the humans beliefs and sensations (haptic and tactile) are unobservable and that they vary within and
+across subjects. We infer the human sensations from either assuming kinematic relationship between tactile 
+information and known geometric description of the environment or by equipping the human subject with a 
+tool mounted with a force-torque sensor, whose measurements are used to infer the human sensations. The actual
 sensations, which are a function of either the sensor tool or kinematic-environment measurements, are
 transformed to a binary feature vector which encodes whether contact are present between features
 such as surfaces, edges and corners of the environment.

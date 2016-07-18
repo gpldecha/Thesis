@@ -32,7 +32,7 @@ It would be advantageous to leverage human decision and action abilities for tas
  \includegraphics[width=\textwidth]{./ch1-Introduction/Figures/examples2.pdf}
  \caption{Examples of the decision making under uncertainty in both robotics and everyday life situations. (a) European Space Agency (ESA), remote orbital peg in hole task. (b)-(c) 
  ESA, simulated exploration of a cave on Mars in the dark. (d)-(e) MIT DAC team, Atlas robot doing valve task, \url{http://drc.mit.edu/}. Other pictures include underwater 
- exploration and industrial peg-in-hole assembly.}
+ exploration and industrial peg-in-hole assembly. Bottom-right, a robot equipped with allegro-hands carries out a peg-in-hole assembly ask (Robot Cognition \& Control Lab, KITECH)}
  \label{fig:ch1-example}
 \end{figure}
 
@@ -99,6 +99,8 @@ In this thesis we address both mapping and planning problems under extreme level
 
 In this thesis we bring to light three contributions:
 
+% What was the motivation to develop this technique? Does this come from shortcomings observed from other techniques used in 1.2.1 and 1.2.2?
+
 \begin{enumerate}
  \item[\ref{sub:contr1}] \hyperref[sub:contr1]{Learning to reason with uncertainty as humans.}\\
  The first contribution is the transfer of human behaviour to robots, by learning a policy extracted from 
@@ -108,8 +110,10 @@ In this thesis we bring to light three contributions:
  We added a cost function which we demonstrate can be used to refine and improve an original policy solely learned from human demonstrations
  without any additional simulation or rollouts, in a Reinforcement Learning framework in belief space. 
  \item[\ref{sub:contr3}] \hyperref[sub:contr3]{Non-parametric Bayesian state space filter.}\\
- The third contribution is a non-parametric Bayesian state space filter which is efficient under sparse sensory information 
-and high levels of uncertainty.
+  The previous two contributions are part of a localisation problem where the position of the human or robot is unknown.
+  The third contribution addresses the problem when the map of the environment is also unknown and only sparse sensory information is available
+  making traditional mapping and localisation methods inapplicable. We developed a non-parametric Bayesian state space filter which can efficiently
+  handle non-Gaussian joint distributions. 
 \end{enumerate}
 
 Throughout this thesis we consider case studies in which vision is not available, leaving only tactile and 

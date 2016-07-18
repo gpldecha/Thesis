@@ -484,15 +484,13 @@ applied likelihood and removing the value of the zeroed parameters from the marg
 
 \FloatBarrier
 \section{Measurement Likelihood Memory Filter}\label{ch5:MLMF}
-
-The likelihood function $P(Y_t|A_t,O)$ is the cause of the dependence between the random variables. If both the agent and object 
-were completely independent, no additional parameters would be required to represent the joint distribution other than the marginals 
-$P(A_t|Y_{0:t},u_{1:t};\ThA)$ and $P(O|Y_{0:t};\ThO)$ giving a total of $N M$ parameters (where $N$ is the number of states and $M$ is the number of random variables). 
-At the other extreme if every single point in the domain of the random variables was dependent this would require the totality 
-of $N^M$ parameters as previously stated in the case of the histogram filter. We propose a method in which we do not model the joint
-distribution explicitly but rather only compute its impact on the marginals. 
-
-\subsection{MLMF parametrisation}
+%The likelihood function $P(Y_t|A_t,O)$ is the cause of the dependence between the random variables. If both the agent and object 
+%were completely independent, no additional parameters would be required to represent the joint distribution other than the marginals 
+%$P(A_t|Y_{0:t},u_{1:t};\ThA)$ and $P(O|Y_{0:t};\ThO)$ giving a total of $N M$ parameters (where $N$ is the number of states and $M$ is the number of random variables). 
+%At the other extreme if every single point in the domain of the random variables was dependent this would require the totality 
+%of $N^M$ parameters as previously stated in the case of the histogram filter. We propose a method in which we do not model the joint
+%distribution explicitly but rather only compute its impact on the marginals. 
+%\subsection{MLMF parametrisation}
 
 MLMF keeps a  \textbf{function parameterisation} of the joint distribution instead of a \textbf{value parameterisation} as it is the case 
 for Histogram-SLAM. At initialisation the joint distribution is represented by the product of marginals, Equation \ref{eq:ch5:prod_AO}, which 
@@ -754,11 +752,12 @@ Equation \ref{eq:marignal_mrf} (see Appendix \ref{appendix:marginal} for the ful
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{./ch5-MLMF/Figures/explenation/marginal_cal_example_v2.pdf}
-\caption{Filtered Marginals. Illustration of the agent and object marginal update, Equation \ref{eq:marignal_mrf}. The joint 
+\caption{Filtered marginals. Illustration of the agent and object marginal update, Equation \ref{eq:marignal_mrf}. The joint 
 distribution parameters which are independent $A \ominus O$ are pale and the dependent areas $A \cap O$, where $P(Y_t<1|A_t,O)$, are bright. MLMF only
 evaluates the joint distribution in dependent states. For each state $s$ of the marginals $1,\dots,10$ the difference 
 of the marginals inside the dependent area, before and after the measurement likelihood is applied, is evaluated and removed from the marginals 
-$P(A_t|Y_{0:t-1})$, $P(O|Y_{0:t-1})$ leading to $P(A_t|Y_{0:t})$, $P(O|Y_{0:t})$ (we did not show $u_{1:t}$ for ease of notation). }
+$P(A_t|Y_{0:t-1},u_{1:t};\ThA)$, $P(O|Y_{0:t-1};\ThO)$ leading to $P(A_t|Y_{0:t},u_{1:t};\ThA)$, $P(O|Y_{0:t};\ThO)$ (we did not show $u_{1:t}$ in the figure for ease of notation). 
+\textit{Bottom-left}: joint marginals $P(A_t|u_{1:t};\ThAs)$ and $P(O;\ThOs)$ remain unchanged by measurements.}
 \label{fig:ch5:marginal_update}
 \end{figure}
 
@@ -872,16 +871,18 @@ P(A_t|Y_{0:t-1},u_{1:t};\ThA) 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_
 
 \subsection{Space \& time complexity}\label{ch5:space_time_complexity_MLMF}
 
-For discussion purposes we consider the case of three beliefs, namely that of the agent and two other objects $O^{(1)}$ and $O^{(2)}$ which we
-subsequently generalise. As stated previously $M$ stands for the number of filtered random variables including the agent. 
+For discussion purposes we consider the case of three beliefs, namely that of the agent and two other objects $O^{(1)}$ and $O^{(2)}$, we
+subsequently generalise. As stated previously $M$ stands for the number of filtered random variables including the agent and
 $N$ is the number of discrete states in the world. In the following section, we compare the space and time complexity 
 of MLMF-SLAM with Histogram-SLAM.
 
 
 \subsubsection{Space complexity}
 
-Figure \ref{fig:3bel_lik_profile} \textit{left} illustrates the volume occupied by the joint distribution
-for a space with $N$ states. Histogram-SLAM would require $N^3$ parameters for the joint distribution $P(A,O^{(1)},O^{(2)})$ and $N^{M}$ parameters for $M$ random variables. 
+Figure \ref{fig:3bel_lik_profile} \textit{Left} illustrates the volume occupied by the joint distribution
+for a space with $N$ states. Histogram-SLAM would require $N^3$ parameters for the joint distribution 
+$P(A,O^{(1)},O^{(2)};\boldsymbol{\theta})$ and $3\,N$ parameters to store the marginals. In general 
+for $M$ random variables $N^{M} + M\, N$ parameters are necessary, give a space complexity of $\BigO(N^M)$. 
 
 For MLMF-SLAM, each random variable requires two sets of parameters, $\boldsymbol{\theta}$ and $\boldsymbol{\theta}^*$ 
 (see Table \ref{tab:mlmf_parameters}). Given
@@ -923,22 +924,22 @@ since every state in the joint distribution has to be summed to obtain all the m
 For MLMF-SLAM, every state in the joint distribution's state space which has been changed by the likelihood function 
 has to be summed, see Figure \ref{fig:ch5:marginal_update} on page \pageref{fig:ch5:marginal_update}. As a result the computational complexity is directly 
 related to the number of dependent states $|A \cap O|$. In Figure \ref{fig:ch5:marginal_update}, this corresponds to states where $i = j$ and there are $N$ out 
-of a total $N^2$ states for that joint distribution. Figure \ref{fig:3bel_lik_profile} \textit{Left}
+of a total $N^2$ states for that joint distribution. Figure \ref{fig:3bel_lik_profile} (\textit{Left})
 illustrates a joint distribution with $N^3$ states. The dependent states $|A \cap O^{(1)} \cap O^{(2)}|$ are those which 
 are within the blue and red planes (where the likelihood evaluates to zero) and comprise $N^2$ states each, 
 giving a total of $2\,N^2 - N$ dependent states (negative is to remove the states we count twice at the intersection of the blue and red plane). 
 
-The likelihood term $P(Y_t|A_t,O^{(1)})$ evaluates states to zero which satisfy $i=j$ $\forall k$, as 
+The likelihood term $P(Y_t|A_t,O^{(1)})$ evaluates states to zero which satisfy ${(i=j,\forall k)}$, as 
 the measurement of object $O^{(1)}$ is independent of object $O^{(2)}$. With 3 objects, the joint distribution would be
 ${P(A_t=i,O^{(1)}=j,O^{(2)}=k,O^{(l)}=l)}$ then the likelihood $P(Y_t|A_t,O^{(1)})$  evaluated to 
-zero for $i=j$ $\forall k,l$ which would mean $N^3$ dependent states.
+zero for ${(i=j,\forall k,\forall l)}$ which would mean $N^3$ dependent states.
 In general, for $M$ random variables the computational cost is $(M-1) N^{M-1}$ which gives $\BigO(N^{M-1})$ as opposed to the Histogram-SLAM's $\BigO(N^M)$. 
 The computation complexity in this setup is still exponential but to the order $M-1$ as opposed to $M$ which nevertheless 
 quickly limits the scalability as more objects are added. 
 
-Computing the value of a dependent state $(i,j,k)$ in the joint distribution required evaluating Equation \ref{eq:ch5:mlmf_filter_conditional} which
+Computing the value of a dependent state ${(i,j,k)}$ in the joint distribution required evaluating Equation \ref{eq:ch5:mlmf_filter_conditional} which
 contains a product of $N$ likelihood functions, in the worst case scenario. However the likelihood functions are not overlapping and binary. As a result the complete product
-does not have to be evaluated since only one likelihood function will effect the state $(i,j,k)$. Thus evaluating Equation \ref{eq:ch5:mlmf_filter_conditional}
+does not have to be evaluated since only one likelihood function will effect the state ${(i,j,k)}$. Thus evaluating Equation \ref{eq:ch5:mlmf_filter_conditional}
 yields a cost of $\BigO(1)$ and \textbf{not} $\BigO(N)$.
 
 \subsection{Scalable extension to multiple objects}\label{subsec:scalabe_extension}
@@ -957,7 +958,7 @@ see Equation \ref{eq:marg_indep}-\ref{eq:marg_indep_prod}.
 
 \begin{align}
  P(O^{(i)}|Y^{(i)}_{0:t},u_{1:t}) &= \sum\limits_{A^{(i)}_t} P(A^{(i)}_t,O^{(i)}|Y^{(i)}_{0:t},u_{1:t}) \label{eq:marg_indep} \\
- P(A_t|Y_{0:t},u_{1:t},u_{1:t})   &=\prod\limits_{i=1}^{M-1} \ P(A^{(i)}_t|Y^{(i)}_{0:t},u_{1:t}) \label{eq:marg_indep_prod}  
+ P(A_t|Y_{0:t},u_{1:t})   &=\prod\limits_{i=1}^{M-1} \ P(A^{(i)}_t|Y^{(i)}_{0:t},u_{1:t}) \label{eq:marg_indep_prod}  
 \end{align}
 
 The independence assumption will create an unwanted effect with respect to agent's marginal $P(A_t|Y_{0:t},u_{1:t})$. 

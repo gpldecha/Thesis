@@ -5,116 +5,115 @@
 \contentsline {subsection}{\numberline {1.2.2}Reinforcement learning in belief space}{5}{subsection.1.2.2}
 \contentsline {subsection}{\numberline {1.2.3}Non-parametric Bayesian state space filter}{6}{subsection.1.2.3}
 \contentsline {section}{\numberline {1.3}Thesis outline}{6}{section.1.3}
-\contentsline {chapter}{\numberline {2}Background}{9}{chapter.2}
-\contentsline {section}{\numberline {2.1}Decisions under uncertainty}{10}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Decision theory}{11}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Sequential decision making}{13}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}POMDP}{17}{subsection.2.2.1}
-\contentsline {section}{\numberline {2.3}Literature review}{23}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Value Iteration}{23}{subsection.2.3.1}
-\contentsline {subsubsection}{Point-base Value Iteration}{25}{section*.14}
-\contentsline {subsubsection}{Approximate Value Iteration}{26}{section*.15}
-\contentsline {subsubsection}{Latent Value Iteration}{28}{section*.16}
-\contentsline {subsubsection}{Summary: Value Iteration}{28}{section*.17}
-\contentsline {subsection}{\numberline {2.3.2}Policy search}{29}{subsection.2.3.2}
-\contentsline {subsubsection}{Gradient: policy search}{29}{section*.18}
-\contentsline {subsubsection}{Expectation-Maximisation: policy search}{30}{section*.19}
-\contentsline {subsubsection}{Actor-critic: policy search}{31}{section*.20}
-\contentsline {subsubsection}{Summary: policy search}{31}{section*.21}
-\contentsline {subsection}{\numberline {2.3.3}Planning}{32}{subsection.2.3.3}
-\contentsline {subsubsection}{Belief space road maps}{32}{section*.22}
-\contentsline {subsubsection}{Optimal control}{32}{section*.23}
-\contentsline {subsubsection}{Summary: planning}{33}{section*.24}
-\contentsline {subsection}{\numberline {2.3.4}Heuristics}{34}{subsection.2.3.4}
-\contentsline {subsubsection}{Myopic \& Q-MDP}{34}{section*.25}
-\contentsline {subsubsection}{Information gain}{35}{section*.26}
-\contentsline {subsubsection}{Summary: heuristic}{36}{section*.27}
-\contentsline {subsection}{\numberline {2.3.5}Summary: literature}{37}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}Approach}{38}{section.2.4}
-\contentsline {chapter}{\numberline {3}Learning to reason with uncertainty as humans}{43}{chapter.3}
-\contentsline {section}{\numberline {3.1}Outline}{45}{section.3.1}
-\contentsline {section}{\numberline {3.2}Background}{45}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Spatial navigation}{46}{subsection.3.2.1}
-\contentsline {subsubsection}{Spatial cognition and memory}{47}{section*.33}
-\contentsline {subsubsection}{Summary: spatial cognition}{47}{section*.34}
-\contentsline {subsection}{\numberline {3.2.2}Human beliefs}{48}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Programming by demonstration \& uncertainty}{49}{subsection.3.2.3}
-\contentsline {section}{\numberline {3.3}Experiment: table search}{50}{section.3.3}
-\contentsline {section}{\numberline {3.4}Formulation}{53}{section.3.4}
-\contentsline {subsubsection}{Belief model}{53}{section*.37}
-\contentsline {subsubsection}{Sensing model}{54}{section*.38}
-\contentsline {subsubsection}{Motion model}{55}{section*.40}
-\contentsline {subsubsection}{Uncertainty}{56}{section*.41}
-\contentsline {section}{\numberline {3.5}Policies}{57}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Modelling human search strategies}{57}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Coastal Navigation}{59}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Control}{59}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}Results and discussion}{61}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Search \& behaviour analysis}{62}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}GMM \& Coastal Navigation policy analysis}{67}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Distance efficiency \& Uncertainty}{70}{subsection.3.6.3}
-\contentsline {section}{\numberline {3.7}Conclusions}{73}{section.3.7}
-\contentsline {chapter}{\numberline {4}Peg in hole}{75}{chapter.4}
-\contentsline {section}{\numberline {4.1}Outline}{76}{section.4.1}
-\contentsline {section}{\numberline {4.2}Background}{77}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Peg-in-hole}{77}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Actor-Critic \& Fitted Reinforcement Learning}{80}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Experiment methods}{82}{section.4.3}
-\contentsline {subsubsection}{Belief state}{83}{section*.59}
-\contentsline {subsection}{\numberline {4.3.1}Participants and experiment protocol}{85}{subsection.4.3.1}
-\contentsline {section}{\numberline {4.4}Learning Actor and Critic}{86}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Actor \& Critic}{88}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Fitted policy evaluation and improvement}{89}{subsection.4.4.2}
-\contentsline {section}{\numberline {4.5}Control architecture}{94}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Robot Implementation}{95}{subsection.4.5.1}
-\contentsline {section}{\numberline {4.6}Results}{99}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Distance taken to reach the socket's edge (Qualitative)}{99}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}Distance taken to reach the socket's edge (Quantitative)}{102}{subsection.4.6.2}
-\contentsline {subsection}{\numberline {4.6.3}Importance of data}{104}{subsection.4.6.3}
-\contentsline {subsection}{\numberline {4.6.4}Generalisation}{107}{subsection.4.6.4}
-\contentsline {subsection}{\numberline {4.6.5}Distance taken to connect the plug to the socket}{109}{subsection.4.6.5}
-\contentsline {section}{\numberline {4.7}Discussion \& Conclusion}{112}{section.4.7}
-\contentsline {chapter}{\numberline {5}Non-parametric Bayesian State Space Estimator}{115}{chapter.5}
-\contentsline {section}{\numberline {5.1}Outline}{118}{section.5.1}
-\contentsline {section}{\numberline {5.2}Background}{118}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}SLAM}{118}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Active-SLAM \& Exploration}{119}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Bayesian State Space Estimation}{120}{section.5.3}
-\contentsline {subsubsection}{EKF-SLAM}{122}{section*.87}
-\contentsline {subsubsection}{Histogram-SLAM}{124}{section*.89}
-\contentsline {section}{\numberline {5.4}Measurement Likelihood Memory Filter}{129}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}MLMF parametrisation}{129}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Evidence and marginals}{133}{subsection.5.4.2}
-\contentsline {subsubsection}{Evidence}{133}{section*.95}
-\contentsline {subsubsection}{Marginals}{135}{section*.96}
-\contentsline {subsection}{\numberline {5.4.3}MLMF-SLAM Algorithm}{137}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}Space \& time complexity}{140}{subsection.5.4.4}
-\contentsline {subsubsection}{Space complexity}{140}{section*.99}
-\contentsline {subsubsection}{Time complexity}{140}{section*.101}
-\contentsline {subsection}{\numberline {5.4.5}Scalable extension to multiple objects}{142}{subsection.5.4.5}
-\contentsline {section}{\numberline {5.5}Evaluation}{145}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Evaluation of time complexity}{146}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Evaluation of the independence assumption}{146}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.5.3}Evaluation of memory}{148}{subsection.5.5.3}
-\contentsline {section}{\numberline {5.6}Conclusion}{152}{section.5.6}
-\contentsline {chapter}{\numberline {6}Conclusion and summary}{155}{chapter.6}
-\contentsline {section}{\numberline {6.1}Main Contributions}{155}{section.6.1}
-\contentsline {section}{\numberline {6.2}Limitations and Future Work}{156}{section.6.2}
-\contentsline {subsubsection}{Gaussian Mixture Controller}{156}{section*.110}
-\contentsline {subsubsection}{Belief compression}{158}{section*.112}
-\contentsline {subsubsection}{Policy representation}{158}{section*.113}
-\contentsline {subsubsection}{MLMF}{159}{section*.114}
-\contentsline {section}{\numberline {6.3}Final Words}{159}{section.6.3}
-\contentsline {chapter}{Appendices}{161}{section*.115}
-\contentsline {chapter}{Appendix \numberline {A}Peg in hole}{163}{Appendix.1.A}
-\contentsline {section}{\numberline {A.1}Time to connect socket}{163}{section.1.A.1}
-\contentsline {section}{\numberline {A.2}EM policy search}{166}{section.1.A.2}
-\contentsline {section}{\numberline {A.3}Q-EM for GMM}{167}{section.1.A.3}
-\contentsline {section}{\numberline {A.4}Unbiased estimator}{169}{section.1.A.4}
-\contentsline {chapter}{Appendix \numberline {B}Non-parametric Bayesian State Space Estimator}{171}{Appendix.1.B}
-\contentsline {section}{\numberline {B.1}Probabilities}{171}{section.1.B.1}
-\contentsline {section}{\numberline {B.2}Bayesian filtering recursion}{171}{section.1.B.2}
-\contentsline {section}{\numberline {B.3}Recursion example}{174}{section.1.B.3}
-\contentsline {section}{\numberline {B.4}Derivation of the evidence}{175}{section.1.B.4}
-\contentsline {section}{\numberline {B.5}Derivation of the marginal}{176}{section.1.B.5}
-\contentsline {chapter}{References}{179}{chapter*.120}
+\contentsline {chapter}{\numberline {2}Background}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Decisions under uncertainty}{12}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Decision theory}{13}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Sequential decision making}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}POMDP}{19}{subsection.2.2.1}
+\contentsline {section}{\numberline {2.3}Literature review}{25}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Value Iteration}{25}{subsection.2.3.1}
+\contentsline {subsubsection}{Point-base Value Iteration}{27}{section*.14}
+\contentsline {subsubsection}{Approximate Value Iteration}{28}{section*.15}
+\contentsline {subsubsection}{Latent Value Iteration}{30}{section*.16}
+\contentsline {subsubsection}{Summary: Value Iteration}{30}{section*.17}
+\contentsline {subsection}{\numberline {2.3.2}Policy search}{31}{subsection.2.3.2}
+\contentsline {subsubsection}{Gradient: policy search}{31}{section*.18}
+\contentsline {subsubsection}{Expectation-Maximisation: policy search}{32}{section*.19}
+\contentsline {subsubsection}{Actor-critic: policy search}{33}{section*.20}
+\contentsline {subsubsection}{Summary: policy search}{33}{section*.21}
+\contentsline {subsection}{\numberline {2.3.3}Planning}{34}{subsection.2.3.3}
+\contentsline {subsubsection}{Belief space road maps}{34}{section*.22}
+\contentsline {subsubsection}{Optimal control}{34}{section*.23}
+\contentsline {subsubsection}{Summary: planning}{35}{section*.24}
+\contentsline {subsection}{\numberline {2.3.4}Heuristics}{36}{subsection.2.3.4}
+\contentsline {subsubsection}{Myopic \& Q-MDP}{36}{section*.25}
+\contentsline {subsubsection}{Information gain}{37}{section*.26}
+\contentsline {subsubsection}{Summary: heuristic}{38}{section*.27}
+\contentsline {subsection}{\numberline {2.3.5}Summary: literature}{39}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}Approach}{40}{section.2.4}
+\contentsline {chapter}{\numberline {3}Learning to reason with uncertainty as humans}{45}{chapter.3}
+\contentsline {section}{\numberline {3.1}Outline}{47}{section.3.1}
+\contentsline {section}{\numberline {3.2}Background}{47}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Spatial navigation}{48}{subsection.3.2.1}
+\contentsline {subsubsection}{Spatial cognition and memory}{49}{section*.33}
+\contentsline {subsubsection}{Summary: spatial cognition}{49}{section*.34}
+\contentsline {subsection}{\numberline {3.2.2}Human beliefs}{50}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Programming by demonstration \& uncertainty}{51}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Experiment: table search}{52}{section.3.3}
+\contentsline {section}{\numberline {3.4}Formulation}{55}{section.3.4}
+\contentsline {subsubsection}{Belief model}{55}{section*.37}
+\contentsline {subsubsection}{Sensing model}{56}{section*.38}
+\contentsline {subsubsection}{Motion model}{57}{section*.40}
+\contentsline {subsubsection}{Uncertainty}{58}{section*.41}
+\contentsline {section}{\numberline {3.5}Policies}{59}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Modelling human search strategies}{59}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Coastal Navigation}{61}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Control}{61}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Results and discussion}{63}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Search \& behaviour analysis}{64}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}GMM \& Coastal Navigation policy analysis}{69}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Distance efficiency \& Uncertainty}{72}{subsection.3.6.3}
+\contentsline {section}{\numberline {3.7}Conclusions}{75}{section.3.7}
+\contentsline {chapter}{\numberline {4}Peg in hole}{77}{chapter.4}
+\contentsline {section}{\numberline {4.1}Outline}{78}{section.4.1}
+\contentsline {section}{\numberline {4.2}Background}{79}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Peg-in-hole}{79}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Actor-Critic \& Fitted Reinforcement Learning}{82}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Experiment methods}{84}{section.4.3}
+\contentsline {subsubsection}{Belief state}{85}{section*.59}
+\contentsline {subsection}{\numberline {4.3.1}Participants and experiment protocol}{87}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Learning Actor and Critic}{88}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Actor \& Critic}{90}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Fitted policy evaluation and improvement}{91}{subsection.4.4.2}
+\contentsline {section}{\numberline {4.5}Control architecture}{96}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Robot Implementation}{97}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}Results}{101}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Distance taken to reach the socket's edge (Qualitative)}{101}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Distance taken to reach the socket's edge (Quantitative)}{104}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Importance of data}{106}{subsection.4.6.3}
+\contentsline {subsection}{\numberline {4.6.4}Generalisation}{109}{subsection.4.6.4}
+\contentsline {subsection}{\numberline {4.6.5}Distance taken to connect the plug to the socket}{111}{subsection.4.6.5}
+\contentsline {section}{\numberline {4.7}Discussion \& Conclusion}{114}{section.4.7}
+\contentsline {chapter}{\numberline {5}Non-parametric Bayesian State Space Estimator}{117}{chapter.5}
+\contentsline {section}{\numberline {5.1}Outline}{120}{section.5.1}
+\contentsline {section}{\numberline {5.2}Background}{120}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}SLAM}{120}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Active-SLAM \& Exploration}{121}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Bayesian State Space Estimation}{122}{section.5.3}
+\contentsline {subsubsection}{EKF-SLAM}{124}{section*.87}
+\contentsline {subsubsection}{Histogram-SLAM}{126}{section*.89}
+\contentsline {section}{\numberline {5.4}Measurement Likelihood Memory Filter}{131}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Evidence and marginals}{135}{subsection.5.4.1}
+\contentsline {subsubsection}{Evidence}{135}{section*.95}
+\contentsline {subsubsection}{Marginals}{137}{section*.96}
+\contentsline {subsection}{\numberline {5.4.2}MLMF-SLAM Algorithm}{139}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Space \& time complexity}{142}{subsection.5.4.3}
+\contentsline {subsubsection}{Space complexity}{142}{section*.99}
+\contentsline {subsubsection}{Time complexity}{142}{section*.101}
+\contentsline {subsection}{\numberline {5.4.4}Scalable extension to multiple objects}{144}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Evaluation}{147}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Evaluation of time complexity}{148}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Evaluation of the independence assumption}{148}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}Evaluation of memory}{150}{subsection.5.5.3}
+\contentsline {section}{\numberline {5.6}Conclusion}{154}{section.5.6}
+\contentsline {chapter}{\numberline {6}Conclusion and summary}{157}{chapter.6}
+\contentsline {section}{\numberline {6.1}Main Contributions}{157}{section.6.1}
+\contentsline {section}{\numberline {6.2}Limitations and Future Work}{158}{section.6.2}
+\contentsline {subsubsection}{Gaussian Mixture Controller}{158}{section*.110}
+\contentsline {subsubsection}{Belief compression}{160}{section*.112}
+\contentsline {subsubsection}{Policy representation}{160}{section*.113}
+\contentsline {subsubsection}{MLMF}{161}{section*.114}
+\contentsline {section}{\numberline {6.3}Final Words}{161}{section.6.3}
+\contentsline {chapter}{Appendices}{163}{section*.115}
+\contentsline {chapter}{Appendix \numberline {A}Peg in hole}{165}{Appendix.1.A}
+\contentsline {section}{\numberline {A.1}Time to connect socket}{165}{section.1.A.1}
+\contentsline {section}{\numberline {A.2}EM policy search}{168}{section.1.A.2}
+\contentsline {section}{\numberline {A.3}Q-EM for GMM}{169}{section.1.A.3}
+\contentsline {section}{\numberline {A.4}Unbiased estimator}{171}{section.1.A.4}
+\contentsline {chapter}{Appendix \numberline {B}Non-parametric Bayesian State Space Estimator}{173}{Appendix.1.B}
+\contentsline {section}{\numberline {B.1}Probabilities}{173}{section.1.B.1}
+\contentsline {section}{\numberline {B.2}Bayesian filtering recursion}{173}{section.1.B.2}
+\contentsline {section}{\numberline {B.3}Recursion example}{176}{section.1.B.3}
+\contentsline {section}{\numberline {B.4}Derivation of the evidence}{177}{section.1.B.4}
+\contentsline {section}{\numberline {B.5}Derivation of the marginal}{178}{section.1.B.5}
+\contentsline {chapter}{References}{181}{chapter*.120}
