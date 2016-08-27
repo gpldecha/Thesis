@@ -32,9 +32,10 @@ individual teachers a good search strategy can be extracted.
 
 To overcome the above mentioned limitations, we introduce a binary cost function as a means of ranking the human teachers' demonstrations.
 To this end, we combine our PbD-POMDP approach with an Actor-Critic Reinforcement Learning (RL) framework which 
-is close to Fitted-Value Iteration(FVI) and other Experience replay methods. This new method we refer to as RL-PbD-POMDP. 
+is close to Fitted-Value Iteration (FVI) and other Experience replay methods. We refer to this new method as RL-PbD-POMDP. 
 Our objective is to avoid the noisy explorative rollouts, a weakness common to all RL approaches, and only rely on 
-the data provided by the human teachers. Autonomous exploration in RL can be seen to have three problem areas.
+the data provided by the human teachers. Autonomous random exploration has two limiting factors for the application of RL
+to robotic systems.
 
 Firstly it is time consuming and is typically only applicable where an exhaustive exploration 
 of the entire state or parameter space is feasible, such as in the inverted pendulum or mountain cart type problems. 
@@ -42,12 +43,12 @@ The universal exploration method, used throughout RL, is state independent (some
 which results in an entire exploration of the state space. This
 is neither practical nor feasible for the type of search problems we are considering. Secondly in this search 
 problem as we are using a physical robotic system the exploration cannot be random as this would be dangerous.
-Finally it is imperative that both the PbD-POMDP and RL-PbD-POMDP receive the same information. This would enable a fair comparison 
-between the two algorithms and support our hypothesis that the RL-PbD-POMDP provides an improved policy 
-with only human demonstrations as input.
+%Finally it is imperative that both the PbD-POMDP and RL-PbD-POMDP receive the same information. This would enable a fair comparison 
+%between the two algorithms and support our hypothesis that the RL-PbD-POMDP provides an improved policy 
+%with only human demonstrations as input.
 
 %We chose a search and Peg-In-Hole (PiH) task
-We analyse our RL-PbD-POMDP approach on a power-socket Peg-in-Hole (PiH) search task. In this task, human teachers must demonstrate 
+We analyse our RL-PbD-POMDP approach on a power-socket Peg-in-Hole (PiH) search task and compare it to PbD-POMDP. In this task, human teachers must demonstrate 
 to a robot apprentice how to search for and connect a plug to a power socket, see Figure \ref{fig:experiment_setup} (\textit{Left}). 
 The first part of the task, the search for the socket, is similar to the table wooden-block setup in the previous chapter. 
 However the connection of the plug to the power socket, the PiH component, requires a higher level of precision.
@@ -86,7 +87,7 @@ In Figure \ref{fig:experiment_setup} (\textit{Right}) the robot reproduces the b
   We detail the representation of the Actor and the Critic and how they are learned in a Fitted Policy Evaluation 
   framework.
   \item \hyperref[ch4:control_architecture]{\ref{ch4:control_architecture} Control architecture}\\
-  The learned behaviour is demonstrated on a 7 Degree of Freedom (DoF) articulated robot, named KUKA LWR4. 
+  The learned behaviour is transferred to a 7 Degree of Freedom (DoF) articulated robot, named KUKA LWR4. 
   We detail the hybrid position-force controller and dynamical field modulation heuristic which is used in 
   combination with the learned behaviour policy from the human teachers.
   \item \hyperref[ch4:results]{\ref{ch4:results}  	 Results}\\
@@ -112,8 +113,7 @@ examples including the assembly of vehicular transmission components \cite{searc
 valves \cite{online_gpr_icra_2014}. To be successful, the estimated
 position of the robot's end-effector and workpiece must be precise. Typically, the clearance between peg and plug 
 is very small leaving little room for error. As a result, variations in the assembly's components 
-in combination with position uncertainty can result in either jamming during the insertion process or in failure for 
-the plug finding the hole. This created a need for adaptive search and insertion policies for PiH, which has been driving research 
+in combination with position uncertainty can result in either jamming during the insertion process or in failure (hole not found). This created a need for adaptive search and insertion policies for PiH, which has been driving research 
 in this area. 
 
 From the literature, we identified the different components in PiH solutions. 
@@ -228,8 +228,8 @@ is large compared with the state space, \cite{ACML_variance_2015}.
 This results from the large variance of the policies' gradient, making the stochastic gradient ascent learning slow. 
 In Chapter 3, the learned PbD-POMDP policy has over 80 Gaussian functions, each of dimension 7, and we expect the 
 number of parameters of this RL policy to be of the same order. So instead we opt for an Actor-critic (AC) approach 
-which has been reported and proven \cite{rl_ac_surv_2012} and with this approach the variance of the gradient update in 
-AC methods has a smaller variance compared with actor methods (policy gradient). This results in a faster learning of 
+which has been reported and proven \cite{rl_ac_surv_2012} to be more efficient, as the variance of the gradient of the 
+policy's parameters have a smaller variance compared with actor methods (policy gradient). This results in a faster learning of 
 the policy. 
 
 Actor-critic \cite[Chap. 6.6]{sutton98a} is an RL approach in which the policy (actor) and critic (value function) 
@@ -264,7 +264,7 @@ Retaining all the data makes it in practice easy to apply function approximators
 to RL problems. A successful example was Neural Fitted Q-Iteration (NFQI) \cite{Riedmiller2005} which 
 uses a multi-layer perceptron to represent the Q-function for the cart-pole and mountain car problems and 
 shows rapid convergence to optimal policies. It has since been used in many extensions, \cite{NAC_2008}, \cite{rl_gmm_2010}.
-This has lead to the application of more sophisticated regression methods such the increasingly popular Deep Learning methods 
+This has lead to the application of more sophisticated regression methods such as the increasingly popular Deep Learning methods 
 which are known as Deep Fitted Q-iteration (DFQ) \cite{Lange_riedmiller_2010} (used to learn visual control policies) 
 and with recent work including learning to play ATRI and ping-pong games \cite{mnih-dqn-2015}, \cite{DRQ_AAAI_2015} (reviewed
 in Chapter 2).
@@ -360,41 +360,40 @@ computed and compressed.
 % Before explaining the measurement model we detail what measurement $\tilde{y}_t$ is.
 %This step essentially consists of applying a convolution kernel to the PMF where the covariance 
 %is proportional to the measured velocity.
-For the task at hand, the belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{0:t})$,  
+For the task at hand, the belief probability density function,  $p(x_t|y_{0:t},\dot{x}_{1:t})$,  
 is a Point Mass Filter (PMF) \cite[p.87]{Bergman99recursivebayesian}, which is a  Bayesian filter.
 It is parametrised by a set of grid cells containing valid probabilities 
-and is recursively updated by the application of a \textbf{motion}, $p(x_t|x_{t-1},\dot{x}_t)$ 
-and \textbf{measurement}, $p(y_t|x_t)$ model. The motion model updates the position of the probability density function 
+and is recursively updated by the application of a \textbf{motion} $p(x_t|x_{t-1},\dot{x}_t)$ 
+and \textbf{measurement} $p(y_t|x_t)$ model. The motion model updates the position of the probability density function 
 and subsequently increases the uncertainty of the position.  The measurement model indicates areas 
 of the state space from which a measurement $\tilde{y}_t$ could have originated. 
 In Figure \ref{fig:PMF} (\textit{Bottom-right}) we illustrate the likelihood when an edge is sensed.
 
-A PMF is chosen to represent the believed location of the plug as the sensing 
-the sensing likelihoods are non-gaussian and lead to multi-modal distributions.  
+A PMF is chosen to represent the believed location of the plug as the sensing likelihoods are non-gaussian and lead to multi-modal distributions.  
 A PMF is able to capture such non-gaussianity whilst remaining fully deterministic 
 (which is not the case for a particle filter).
 
 \begin{figure*}
  \centering
    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/PMF/pmf_likelihood_v2.pdf}
-   \caption{\textit{Left:} Point Mass Filter (PMF) update of a particular human demonstration. (1) Initial uniform distribution spread over the starting 
+   \caption{\textit{Top box:} Point Mass Filter (PMF) update of a particular human demonstration. (1) Initial uniform distribution spread over the starting 
    region. Each grid cell represents a hypothetical position of the plug. The orientation is assumed to be known. (2) First contact, the distribution 
    is spread across the surface of the wall. The red trace is the trajectory history. (3) motion noise increases the uncertainty. (4) The plug is in contact with a socket edge.
-   \textit{Right}: \textbf{World model}: The plug is modelled by its three plug tips and the wall and sockets are fitted with bounding boxes.
-   \textbf{Likelihood}: The plug enters in contact with the left edge of the socket. As a result, the value of the likelihood in all the regions, $x_t$, close the left edge take 
+   \textit{Bottom box}: \textbf{World model}: The plug is modelled by its three plug tips and the wall and sockets are fitted with bounding boxes.
+    \textbf{Likelihood}: The plug enters in contact with the left edge of the socket. As a result, thmotioe value of the likelihood in all the regions, $x_t$, close the left edge take 
    a value of one (red points)  whilst the others have a value zero (blue points) and areas around the socket's central 
    ring have a value of one. }
   \label{fig:PMF}
 \end{figure*}
 
-The probability density function $p(x_t|y_{0:t},\dot{x}_{0:t})$ is high dimensional and thus it is 
-impractical to directly learn a statistical policy $\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{0:t}) \rightarrow \dot{x}_t$
+The probability density function $p(x_t|y_{0:t},\dot{x}_{1:t})$ is high dimensional and thus it is 
+impractical to directly learn a statistical policy $\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{1:t}) \rightarrow \dot{x}_t$
 without some form of compression. One possibility would be E-PCA \cite{NIPS2002_2319} which extracts a set of 
-representative basis functions which are aslo probability distributions. Although elegant this method 
+representative basis features. Although elegant this method 
 requires a discretisation of the belief space which is computationally expensive. Instead we choose to 
-compress the pdf to a belief space vector composed of the maximum a posteriori, $\hat{x}^{\mathrm{MAP}}_t = \argmax_{x_t} p(x_t|y_{0:t},\dot{x}_{0:t}) \in \mathbb{R}^3$, and the differentiation entropy, 
-$U = H\{p(x_t|y_{0:t},\dot{x}_{0:t})\} \in \mathbb{R}$. All pdfs in our recorded data set $D$ are transformed to 
-a belief space feature vector, $b_t = [\hat{x}^{\mathrm{MAP}}_t,U]^{\mathrm{T}}$. 
+compress the pdf to a belief space vector composed of the maximum a posteriori, $\hat{x}^{\mathrm{MAP}}_t = \argmax_{x_t} p(x_t|y_{0:t},\dot{x}_{1:t}) \in \mathbb{R}^3$, and the differentiation entropy, 
+$U = H\{p(x_t|y_{0:t},\dot{x}_{1:t})\} \in \mathbb{R}$. All pdfs in our recorded data set $D$ are transformed to 
+a belief space feature vector, $b_t = [\hat{x}^{\mathrm{MAP}}_t,U_t]^{\mathrm{T}}$. 
 
 Each participant's demonstration results in a dataset $D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}$, 
 where the upper index $[i]$ references the ith search trajectory (also one execution of the task or one episode) and 
@@ -462,7 +461,7 @@ In Appendix \ref{app:anova_socket} we report the results of a non-parametric sta
 the sockets and we find that it takes 4 seconds more to connect socket A than socket B. This is somewhat expected as 
 socket B has a funnel which can help to contain the subject to within the vicinity of the holes.
 
-As connecting to socket A is more difficult we will \textbf{using only these demonstrations} as training data to learn a policy. Both
+As connecting socket A is more difficult we will be \textbf{using only these demonstrations} as training data to learn a policy. Both
 socket B and C will be used solely to evaluate the generalisation of the policy.
 
 \begin{figure}
@@ -471,7 +470,7 @@ socket B and C will be used solely to evaluate the generalisation of the policy.
    \caption{\textit{Top}: Black points represent the starting position of the end-effector
    for all the demonstrations. Four trajectories are illustrated. \textit{Bottom:} 
    Time taken for the teachers to accomplish the PiH once the socket is localised. Group A and B are depicted in red 
-   and blue. The second later indicates which socket is used, see Figure \ref{fig:experiment_design}.}
+   and blue. The second letter indicates which socket is used, see Figure \ref{fig:experiment_design}.}
    
    %The asterisk indicates that the group has changed sockets, so Group A\textsuperscript{*} means
    %that Group A is now performing the task with socket B and Group B\textsuperscript{*} means that group B is now performing 
@@ -494,12 +493,12 @@ socket B and C will be used solely to evaluate the generalisation of the policy.
 \section{Learning Actor and Critic}\label{ch4:learning-value-actor}
 
 In our approach we learn two data driven policies. The first policy maps from belief space 
-to linear velocity $\pi_{\Param_1} : b_t \mapsto \dot{x}_t$ and the second from 
-angular sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi_t \mapsto \omega_t$.
+to linear velocity $\pi_{\Param_1} : b \mapsto \dot{x}$ and the second from 
+angular sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi \mapsto \omega$.
 We chose to learn the belief policy $\pi_{\Param_1}$ in a Actor-Critic RL framework 
 and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
 in \cite[Chap. 5]{Kronander2015}, which proved to be efficient in overcoming jamming during the PiH. 
-A POMDP solver's objective is to find a policy (Actor), $\pi_{\Param_1}: b \mapsto u$, which maximises 
+A POMDP solver's objective is to find a policy (Actor), $\pi_{\Param_1}: b \mapsto \dot{x}$, which maximises 
 the value function (Critic) $V^{\pi_{\Param_1}} : b \mapsto \mathbb{R}$ for an initial belief, $b_{0}$. The value function
 is the expected reward over an infinite time horizon.
 \begin{equation}\label{eq:value_function}
@@ -535,7 +534,7 @@ where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in
 %There are three steps to learning and use for control a GMM model.  Firstly a generative model is learned through 
 %Expectation-Maximisation (EM) which maximised the likelihood
 
-A generative model of the angular velocity and wrench $\pi_{\Param_2}(\omega,\theta)$ and a generative model 
+A generative model of the angular velocity and wrench $\pi_{\Param_2}(\omega,\phi)$ and a generative model 
 of the linear velocity and belief state $\pi_{\Param_1}(\dot{x},b)$ are learned. 
 In both cases we use the Bayesian Information Criterion to determine the number of Gaussian functions.
 In the next section, we will show how the parameters of $\pi_{\Param_1}$ can be adapted by the value function of the Critic.
@@ -611,7 +610,7 @@ $||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges.
 \Input{$\epsilon$, $\{(\B^{[i]}_t,r^{[i]},\B^{[i]}_{t+1})\}_{i=1,\cdots,M}$}
 \Output{$\hat{V}^{\pi}_{k}(\B_t)$}
 \BlankLine
-\While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| < \epsilon$}{
+\While{$||\hat{V}^{\pi}_{k+1}(\B) - \hat{V}^{\pi}_{k}(\B)|| > \epsilon$}{
   $\hat{V}^{\pi}_{k+1}(\B_t)$ = Regress($\B$, $r_t + \gamma \hat{V}^{\pi}_k(\B_{t+1}))$
 }
 \caption{Fitted Policy Evaluation}
@@ -622,7 +621,7 @@ Batch RL methods are used by a broad spectrum of research to learn policies.
 Most of them have focused on learning the Q-value function directly (Fitted Q-Iteration) 
 \cite{NIPS2008_3501,EGW05,Riedmiller2005}. Although this solves the control problem it requires discretisation 
 of the action space or assumes quantifiable actions, as the 
-Q-Bellman backups, $\hat{Q}(\B_t,\U_t) \leftarrow \gamma \max_{\U_{t+1}} \hat{Q}(\U_{t+1},\B_{t+1})$, 
+Q-Bellman backups, ${\hat{Q}(\B_t,\U_t) \leftarrow \gamma \max_{\U_{t+1}} \hat{Q}(\U_{t+1},\B_{t+1})}$, 
 require an optimisation over the action space, $\U_{t+1}$, to find the best applicable action. 
 Given the dimensionality and continuity of our problem we opt for an on-policy evaluation method
 which requires multiple \textit{policy evaluation} and \textit{policy improvement} iterations to achieve an optimal policy.
@@ -652,7 +651,7 @@ The reward of a demonstrated trajectory (one episode) is given by the discounted
  R(\B^{[i]},\U^{[i]}) = \sum_{t=0}^{\mathrm{T^{[i]}}} \gamma^t \, r(\B^{[i]}_t,\U^{[i]}_t)
 \end{equation}
 where the index $i$ stands for the $i$th episode.
-All policy gradient approaches seek to find a set of parameters, $\Param$, of the Actor,
+All policy gradient approaches seek to find a set of actor parameters $\Param$
 which will maximise the expected reward, equivalent to maximising Equation \ref{eq:expected_reward},
 \begin{align}\label{eq:expected_reward}
  J(\Param) &= \mathbb{E}_{p_{\Param}}\{R\} \nonumber \\
@@ -669,7 +668,8 @@ Equation \ref{eq:grad_log_cost}, see Appendix \ref{app:lb} for the derivation.
 
 Setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
 $\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ leads to a Maximisation update step of EM
-which is weighted by $Q^{\pi_{\Param'}}$.
+which is weighted by $Q^{\pi_{\Param'}}$. The parameters $\Param'$ are those used to generate a set of rollouts whilst $\Param$ are the new 
+parameters being estimated.
 We use the Critic's TD error as a substitute for $Q^{\pi}$. Assuming that our estimated value function, $\hat{V}^{\pi}$, 
 is close to the true value function $V^{\pi}$, the TD error $\delta^{\pi}$ is an unbiased estimate of the advantage function, Equation \ref{eq:advantage_f} 
 (see Appendix \ref{app:unbiased_delta}).
@@ -769,7 +769,7 @@ When policy improvement via Q-EM is applied the Gaussian functions of the GMM wi
 \end{figure}
 
 In Figure \ref{fig:best_worst_traj} we illustrate the best and worst trajectories in terms of the accumulated value function.
-We can see that the five best trajectories (red) tend to be aligned with the socket (star position in front of socket), 
+We can see that the best trajectories (red) tend to be aligned with the socket (star position in front of socket), 
 whilst the worst trajectories are towards the edges of the wall and tend to follow spiralling movements. 
 
 \begin{figure}
@@ -784,8 +784,8 @@ whilst the worst trajectories are towards the edges of the wall and tend to foll
 
 
 We learned two policies, one solely from the original human demonstrations which we call GMM and the second which 
-is the result of one iteration of fitted policy evaluation and improvement which we call Q-EM. In the section \ref{ch4:results}
-we compare the GMM and Q-EM policies with the improvements which can be achieved within the RL-PbD-POMDP framework.
+is the result of one iteration of fitted policy evaluation and improvement which we call Q-EM. We first detail 
+the robot control architecture in the next section before we compare the GMM and Q-EM policies in the section \ref{ch4:results}.
 
 \section{Control architecture}\label{ch4:control_architecture}
 
@@ -1037,7 +1037,7 @@ the end-effector being closer to an informative feature and results in a much fa
 
 From \textbf{Experiment 3}, Figure \ref{fig:three_searches_exp3}, it is clear that all three search policies travel 
 less to find the socket's edge compared with the teachers' demonstrations. 
-All search policies are better than the human teachers with the exception of group B\textsuperscript{*}, 
+All search policies are better than the human teachers with the exception of group BA, 
 which is performing the task with socket A. The Q-EM policy remains the best. 
 
 \begin{figure}
