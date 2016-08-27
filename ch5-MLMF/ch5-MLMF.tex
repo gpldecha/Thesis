@@ -374,10 +374,10 @@ P(Y_t=1|A_t,O) =
 %
 
 Figure \ref{fig:histogram_joint} (\textit{Bottom left}), illustrates the likelihood of Equation \ref{eq:ch5:discrete_likelihoood} 
-in the case when a no contact measurement $Y_t=0$ is present in a 1D world. When there is no measurement (\textit{Bottom right}) all the parameters of the 
+in the case when a no contact measurement $Y_t=0$ is present in a 1D world. When there is no measurement all the parameters of the 
 joint distribution which are in the black regions become zero, which we refer to as the \textbf{dependent states} $A \cap O$ of the joint 
 distribution. The white states are the \textbf{independent states} $A \ominus O$, they are not changed by the likelihood function.
-Both likelihoods are sparse in the sense that there is only a small  region which gets affected by the likelihood.
+The likelihood  function is sparse in the sense that there is only a small  region which gets affected by the likelihood.
 The values of the joint distribution in those states, $P_{\cap}(A_t,O|Y_{0:t},u_{1:t})$, will be unchanged 
 $P_{\ominus}(A_t,O|\mathbf{Y_{0:t}},u_{1:t}) \propto P_{\ominus}(A_t,O|\mathbf{Y_{0:t-1}},u_{1:t})$. 
 When the object is detected (\textit{Bottom right}) the likelihood constrains all non-zero values of the joint 
@@ -411,7 +411,7 @@ update:
 For the derivation of these  two steps, the reader is referred to Appendix \ref{appendix:bayes_recursion}.
 Figure \ref{fig:discrete_example} illustrates the evolution of the joint distribution in a 1D example. 
 The agent and object's true positions (unobservable) are in state 6 and 1. The agent moves four steps towards state 10. At each time 
-step, as the agent fails to sense the object, the likelihood function  $P(Y_t=0|A_t,O)$ (Figure \ref{fig:histogram_joint}, \textit{Bottom right})
+step, as the agent fails to sense the object, the likelihood function  $P(Y_t=0|A_t,O)$ (Figure \ref{fig:histogram_joint}, \textit{Bottom left})
 is applied. As the agent moves towards the right, the motion model shifts the joint distribution towards state 10 along the agent's 
 dimension, $i$ (note that state 1 and 10 are wrapped).
 
@@ -603,7 +603,7 @@ Figure \ref{fig:maringal_joint_example_v2} \textit{Middle-right}.
 \begin{figure}
  \centering
  \includegraphics[width=0.95\textwidth]{./ch5-MLMF/Figures/explenation/example_marginal.pdf}
- \caption{Un-normalised MLMF joint distribution, numerator of Equation \ref{eq:ch5:mlmf_filter_conditional}, at time $t=3$.
+ \caption{Un-normalised MLMF joint distribution, numerator of Equation \ref{eq:ch5:mlmf_filter_conditional}, at time $t=2$.
  Three measurements (all $Y=0$) and two actions (both $u=1$) have been integrated into the joint distribution, for simplicity we do not consider any motion noise. \textit{Left column:} The first plot
  illustrates the likelihood of the first measurement $Y_0$. We highlight the contour in light-green to indicate that it was the first applied likelihood 
  function (see the correspondence with Figure \ref{fig:discrete_example}). The first likelihood function has been moved by the 2 actions, the 

@@ -1082,8 +1082,6 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
     \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/subject5.pdf}
-%    \subfigure[]{\includegraphics[width=0.45\textwidth]{./Figures/Results1/experiment4/value_subj_5.pdf}}
-%    \subfigure[]{\includegraphics[width=0.445\textwidth]{./Figures/Results1/experiment4/experiment4.pdf}}
     \caption{Demonstrations of teacher \# 5. The teacher demonstrates a preference}
     \label{fig:subj_5_traj}
  \end{figure}
@@ -1210,15 +1208,14 @@ the trajectories of each of the search methods for socket A. The GMM reproduces 
 first localising itself at the top of the socket before trying to attempt to make a connection. The Q-EM algorithm exhibits less variation
 than the GMM and tends to pass via the bottom of the socket to establish a connection. The Greedy method in contrast is much more  
 stochastic since it does not take into consideration the variance of the uncertainty but tries instead to directly establish a connection.
-Figure \ref{fig:real_statistics} (c) shows that for socket A both the Greedy and Q-EM are better than the GMM and the Q-EM has less
-variance in comparison to the Greedy searches.  All three search methods are vastly superior, when compared to the human's performance 
+All three search methods are vastly superior, when compared to the human's performance 
 see Figure \ref{fig:real_statistics}.  In Figure \ref{fig:real_pictures} illustrates a typical rollout of the GMM search policy for both 
 socket A and C. Once a contact is made with the socket's edge the policy tends to stay close to informative features and tends to 
 wander vertically up and down. Only when the uncertainty has been reduced does the GMM policy try to go towards the socket's connector. 
 
 \begin{figure}
  \centering
-    \subfigure[]{\includegraphics[width=\textwidth]{./ch4-PiH/Figures/Results2/socket_connection_A.pdf}}
+    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Results2/socket_connection_A.pdf}
     \caption{%(a) All three sockets have the same connector interface, but have different structures. Both 
    % socket A and B have an edge around the center whilst the surface of socket C is featureless and more elevated than the other two. 
     25 search trajectories for each of the three search policies for socket A. }
@@ -1263,7 +1260,8 @@ wander vertically up and down. Only when the uncertainty has been reduced does t
 The GMM and Q-EM policies are able to generalise to both socket B and C, as the geometric shape and connector interface of the 
 two sockets are similar to socket A. The local force modulation of the policy's vector field, which is not learned, allows the 
 end-effector to surmount edges and obstacles whilst trying to maintain a constant contact force in the x-axis. This modulation makes it possible for the plug to get on top of socket C.
-Figure \ref{fig:real_statistics} (c) illustrates the statistics of the distance taken to establish a connection for all three sockets. 
+
+Figure \ref{fig:real_statistics2} illustrates the statistics of the distance taken to establish a connection for all three sockets. 
 The interesting point is that both the GMM and Q-EM algorithms perform better than the Greedy approach for socket C. Socket C has no informative 
 features on its surface and as a result myopic policies such as the Greedy policy will perform poorly. However for socket A 
 and B, the Greedy policy performs better as both of these sockets have edges around their connector point allowing for easy localisation. 
@@ -1297,36 +1295,36 @@ The first policy, called Q-EM, was learned in an Actor-Critic RL framework in wh
 the belief space. This was then used to weight training datapoints in the M-step update of Expectation-Maximisation (EM). The second 
 policy, called GMM, was learned using the standard EM algorithm, and considered all training data points equally,
 following in the footsteps of our initial approach \cite{Chambrier2014}. Both the Q-EM and GMM policies were trained 
-with data solely from the demonstrations of the search with socket A.
+with data solely from the human demonstrations of the search with socket A.
 
-We evaluated 4 different aspects of the learned policies. Firstly, we evaluated which of three policies, Q-EM, GMM and a Greedy policy, 
-took the least distance to find the socket. We concluded that across three different Experiments the Q-EM algorithm always performed
+Four different aspects of the learned policies have been evaluated. Firstly, which of three policies, Q-EM, GMM and a Greedy policy, 
+took the least distance to find the socket. Across three different experiments it was shown that the Q-EM algorithm always performs
 the best. It was clear that the Q-EM policy was less random and more consistent than the GMM policy as it tried to enter in 
 contact with the wall at the same height as the socket thus increasing the chances of finding the socket.
 
-Secondly, we tested the importance of the data provided by the human teachers. We took the worst two teachers and trained an
-individual GMM and Q-EM policy for each of them. We found that the performance of the Q-EM was better than the GMM in terms 
+Secondly, the importance of the data provided by the human teachers was tested. The data from the two worst teachers was used to 
+train an individual GMM and Q-EM policy for each of them. It was found that the performance of the Q-EM was better than the GMM in terms 
 of distance travelled to find the socket. When qualitatively evaluating the trajectories of the GMM with respect to the 
 Q-EM for the worst teacher, it is clear that the Q-EM policy managed to extract a search pattern, which was not the case 
-for the GMM policy. We also tried to learn a Q-EM policy from the data provided by a Greedy policy with explorative noise 
-and we found no improvement. From these results we conclude that the exploration and exploitation aspects of the trajectories 
+for the GMM policy. A Q-EM policy was also learned from the data provided by a Greedy policy with explorative noise 
+and no improvement was found. From these results we conclude that the exploration and exploitation aspects of the trajectories 
 provided by the human teachers is necessary.
 
-Thirdly, we tested whether the two policies (GMM and Q-EM) were able to generalise to a different socket location. Under a specific condition,
-which we called \textit{Fixed}, both policies were significantly better than the Greedy policy. However for the \textit{Center}
-and \textit{Left} initial conditions the Greedy policy performed better. For the initial conditions in which the Greedy policy 
-enters in contact with the wall at an early stage, it also performs better than the GMM and Q-EM. The reason for this is that  
+Thirdly, the two policies (GMM and Q-EM) were tested to see whether they were able to generalise to a different socket location. 
+Under a specific condition, called \textit{Fixed}, both policies were significantly better than the Greedy policy. However for the \textit{Center}
+and \textit{Left} initial conditions the Greedy policy performed better. When the Greedy policy 
+enters in contact with the wall at an early stage, it performs better than the GMM and Q-EM. The reason for this is that  
 the actions taken by the Greedy policy in this setting will always result in a decrease of entropy when the location
 of the socket is close to a corner, as opposed to being in the center of the wall.
 
-Fourthly, we evaluated all three policies on the KUKA LWR4 robot and found that all the policies did better than the human 
-teachers. For socket A, on which both the GMM and Q-EM policies were trained, there is no clear distinction between 
+Fourthly, all three policies were evaluted on the KUKA LWR robot and all performed better than the human 
+teachers. For socket A there is no clear distinction between 
 the Q-EM and Greedy policy. On socket B, which was novel, the Greedy policy performed better than the statistical controllers, 
 which we hypothesize was a result of a funnel which would make it easier for a myopic policy. For socket C, both the 
 GMM and Q-EM policies performed better than the Greedy, as socket C has no features on its surface, this being a disadvantage 
 for a myopic policy.
 
-We conclude by making the observation that by simply adding a binary reward function in combination with 
-data provided by human demonstrations, with Fitted reinforcement learning, we can learn a better policy without 
+We conclude that by simply adding a binary reward function in combination with 
+data provided by human demonstrations, using fitted reinforcement learning, better policy can be learned without 
 the need to perform expensive exploration-exploitation rollouts traditionally associated with reinforcement learning and 
 designing complicated reward functions. This is especially advantageous when only a few demonstrations are available.
