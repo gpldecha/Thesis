@@ -29,60 +29,61 @@
 \BOOKMARK [2][-]{subsection.3.5.1}{Modelling human search strategies}{section.3.5}% 29
 \BOOKMARK [2][-]{subsection.3.5.2}{Coastal Navigation}{section.3.5}% 30
 \BOOKMARK [2][-]{subsection.3.5.3}{Control}{section.3.5}% 31
-\BOOKMARK [1][-]{section.3.6}{Results and discussion}{chapter.3}% 32
-\BOOKMARK [2][-]{subsection.3.6.1}{Search \046 behaviour analysis}{section.3.6}% 33
-\BOOKMARK [2][-]{subsection.3.6.2}{GMM \046 Coastal Navigation policy analysis}{section.3.6}% 34
-\BOOKMARK [2][-]{subsection.3.6.3}{Distance efficiency \046 Uncertainty}{section.3.6}% 35
-\BOOKMARK [1][-]{section.3.7}{Conclusions}{chapter.3}% 36
-\BOOKMARK [0][-]{chapter.4}{Peg in hole}{}% 37
-\BOOKMARK [1][-]{section.4.1}{Outline}{chapter.4}% 38
-\BOOKMARK [1][-]{section.4.2}{Background}{chapter.4}% 39
-\BOOKMARK [2][-]{subsection.4.2.1}{Peg-in-hole}{section.4.2}% 40
-\BOOKMARK [2][-]{subsection.4.2.2}{Actor-Critic \046 Fitted Reinforcement Learning}{section.4.2}% 41
-\BOOKMARK [1][-]{section.4.3}{Experiment methods}{chapter.4}% 42
-\BOOKMARK [2][-]{subsection.4.3.1}{Participants and experiment protocol}{section.4.3}% 43
-\BOOKMARK [1][-]{section.4.4}{Learning Actor and Critic}{chapter.4}% 44
-\BOOKMARK [2][-]{subsection.4.4.1}{Actor \046 Critic}{section.4.4}% 45
-\BOOKMARK [2][-]{subsection.4.4.2}{Fitted policy evaluation and improvement}{section.4.4}% 46
-\BOOKMARK [1][-]{section.4.5}{Control architecture}{chapter.4}% 47
-\BOOKMARK [2][-]{subsection.4.5.1}{Robot Implementation}{section.4.5}% 48
-\BOOKMARK [1][-]{section.4.6}{Results}{chapter.4}% 49
-\BOOKMARK [2][-]{subsection.4.6.1}{Distance taken to reach the socket's edge \(Qualitative\)}{section.4.6}% 50
-\BOOKMARK [2][-]{subsection.4.6.2}{Distance taken to reach the socket's edge \(Quantitative\)}{section.4.6}% 51
-\BOOKMARK [2][-]{subsection.4.6.3}{Importance of data}{section.4.6}% 52
-\BOOKMARK [2][-]{subsection.4.6.4}{Generalisation}{section.4.6}% 53
-\BOOKMARK [2][-]{subsection.4.6.5}{Distance taken to connect the plug to the socket}{section.4.6}% 54
-\BOOKMARK [1][-]{section.4.7}{Discussion \046 Conclusion}{chapter.4}% 55
-\BOOKMARK [0][-]{chapter.5}{Non-parametric Bayesian State Space Estimator}{}% 56
-\BOOKMARK [1][-]{section.5.1}{Outline}{chapter.5}% 57
-\BOOKMARK [1][-]{section.5.2}{Background}{chapter.5}% 58
-\BOOKMARK [2][-]{subsection.5.2.1}{SLAM}{section.5.2}% 59
-\BOOKMARK [2][-]{subsection.5.2.2}{Active-SLAM \046 Exploration}{section.5.2}% 60
-\BOOKMARK [1][-]{section.5.3}{Bayesian State Space Estimation}{chapter.5}% 61
-\BOOKMARK [1][-]{section.5.4}{Measurement Likelihood Memory Filter}{chapter.5}% 62
-\BOOKMARK [2][-]{subsection.5.4.1}{Evidence and marginals}{section.5.4}% 63
-\BOOKMARK [2][-]{subsection.5.4.2}{MLMF-SLAM Algorithm}{section.5.4}% 64
-\BOOKMARK [2][-]{subsection.5.4.3}{Space \046 time complexity}{section.5.4}% 65
-\BOOKMARK [2][-]{subsection.5.4.4}{Scalable extension to multiple objects}{section.5.4}% 66
-\BOOKMARK [1][-]{section.5.5}{Evaluation}{chapter.5}% 67
-\BOOKMARK [2][-]{subsection.5.5.1}{Evaluation of time complexity}{section.5.5}% 68
-\BOOKMARK [2][-]{subsection.5.5.2}{Evaluation of the independence assumption}{section.5.5}% 69
-\BOOKMARK [2][-]{subsection.5.5.3}{Evaluation of memory}{section.5.5}% 70
-\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 71
-\BOOKMARK [0][-]{chapter.6}{Conclusion and summary}{}% 72
-\BOOKMARK [1][-]{section.6.1}{Main Contributions}{chapter.6}% 73
-\BOOKMARK [1][-]{section.6.2}{Limitations and Future Work}{chapter.6}% 74
-\BOOKMARK [1][-]{section.6.3}{Final Words}{chapter.6}% 75
-\BOOKMARK [0][-]{section*.115}{Appendices}{}% 76
-\BOOKMARK [0][-]{Appendix.1.A}{Appendix Peg in hole}{}% 77
-\BOOKMARK [1][-]{section.1.A.1}{Time to connect socket}{Appendix.1.A}% 78
-\BOOKMARK [1][-]{section.1.A.2}{EM policy search}{Appendix.1.A}% 79
-\BOOKMARK [1][-]{section.1.A.3}{Q-EM for GMM}{Appendix.1.A}% 80
-\BOOKMARK [1][-]{section.1.A.4}{Unbiased estimator}{Appendix.1.A}% 81
-\BOOKMARK [0][-]{Appendix.1.B}{Appendix Non-parametric Bayesian State Space Estimator}{}% 82
-\BOOKMARK [1][-]{section.1.B.1}{Probabilities}{Appendix.1.B}% 83
-\BOOKMARK [1][-]{section.1.B.2}{Bayesian filtering recursion}{Appendix.1.B}% 84
-\BOOKMARK [1][-]{section.1.B.3}{Recursion example}{Appendix.1.B}% 85
-\BOOKMARK [1][-]{section.1.B.4}{Derivation of the evidence}{Appendix.1.B}% 86
-\BOOKMARK [1][-]{section.1.B.5}{Derivation of the marginal}{Appendix.1.B}% 87
-\BOOKMARK [0][-]{chapter*.120}{References}{}% 88
+\BOOKMARK [2][-]{subsection.3.5.4}{Robot implementation}{section.3.5}% 32
+\BOOKMARK [1][-]{section.3.6}{Results and discussion}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.6.1}{Search \046 behaviour analysis}{section.3.6}% 34
+\BOOKMARK [2][-]{subsection.3.6.2}{GMM \046 Coastal Navigation policy analysis}{section.3.6}% 35
+\BOOKMARK [2][-]{subsection.3.6.3}{Distance efficiency \046 Uncertainty}{section.3.6}% 36
+\BOOKMARK [1][-]{section.3.7}{Conclusions}{chapter.3}% 37
+\BOOKMARK [0][-]{chapter.4}{Peg in hole}{}% 38
+\BOOKMARK [1][-]{section.4.1}{Outline}{chapter.4}% 39
+\BOOKMARK [1][-]{section.4.2}{Background}{chapter.4}% 40
+\BOOKMARK [2][-]{subsection.4.2.1}{Peg-in-hole}{section.4.2}% 41
+\BOOKMARK [2][-]{subsection.4.2.2}{Actor-Critic \046 Fitted Reinforcement Learning}{section.4.2}% 42
+\BOOKMARK [1][-]{section.4.3}{Experiment methods}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.3.1}{Participants and experiment protocol}{section.4.3}% 44
+\BOOKMARK [1][-]{section.4.4}{Learning Actor and Critic}{chapter.4}% 45
+\BOOKMARK [2][-]{subsection.4.4.1}{Actor \046 Critic}{section.4.4}% 46
+\BOOKMARK [2][-]{subsection.4.4.2}{Fitted policy evaluation and improvement}{section.4.4}% 47
+\BOOKMARK [1][-]{section.4.5}{Control architecture}{chapter.4}% 48
+\BOOKMARK [2][-]{subsection.4.5.1}{Robot Implementation}{section.4.5}% 49
+\BOOKMARK [1][-]{section.4.6}{Results}{chapter.4}% 50
+\BOOKMARK [2][-]{subsection.4.6.1}{Distance taken to reach the socket's edge \(Qualitative\)}{section.4.6}% 51
+\BOOKMARK [2][-]{subsection.4.6.2}{Distance taken to reach the socket's edge \(Quantitative\)}{section.4.6}% 52
+\BOOKMARK [2][-]{subsection.4.6.3}{Importance of data}{section.4.6}% 53
+\BOOKMARK [2][-]{subsection.4.6.4}{Generalisation}{section.4.6}% 54
+\BOOKMARK [2][-]{subsection.4.6.5}{Distance taken to connect the plug to the socket}{section.4.6}% 55
+\BOOKMARK [1][-]{section.4.7}{Discussion \046 Conclusion}{chapter.4}% 56
+\BOOKMARK [0][-]{chapter.5}{Non-parametric Bayesian State Space Estimator}{}% 57
+\BOOKMARK [1][-]{section.5.1}{Outline}{chapter.5}% 58
+\BOOKMARK [1][-]{section.5.2}{Background}{chapter.5}% 59
+\BOOKMARK [2][-]{subsection.5.2.1}{SLAM}{section.5.2}% 60
+\BOOKMARK [2][-]{subsection.5.2.2}{Active-SLAM \046 Exploration}{section.5.2}% 61
+\BOOKMARK [1][-]{section.5.3}{Bayesian State Space Estimation}{chapter.5}% 62
+\BOOKMARK [1][-]{section.5.4}{Measurement Likelihood Memory Filter}{chapter.5}% 63
+\BOOKMARK [2][-]{subsection.5.4.1}{Evidence and marginals}{section.5.4}% 64
+\BOOKMARK [2][-]{subsection.5.4.2}{MLMF-SLAM Algorithm}{section.5.4}% 65
+\BOOKMARK [2][-]{subsection.5.4.3}{Space \046 time complexity}{section.5.4}% 66
+\BOOKMARK [2][-]{subsection.5.4.4}{Scalable extension to multiple objects}{section.5.4}% 67
+\BOOKMARK [1][-]{section.5.5}{Evaluation}{chapter.5}% 68
+\BOOKMARK [2][-]{subsection.5.5.1}{Evaluation of time complexity}{section.5.5}% 69
+\BOOKMARK [2][-]{subsection.5.5.2}{Evaluation of the independence assumption}{section.5.5}% 70
+\BOOKMARK [2][-]{subsection.5.5.3}{Evaluation of memory}{section.5.5}% 71
+\BOOKMARK [1][-]{section.5.6}{Conclusion}{chapter.5}% 72
+\BOOKMARK [0][-]{chapter.6}{Conclusion and summary}{}% 73
+\BOOKMARK [1][-]{section.6.1}{Main Contributions}{chapter.6}% 74
+\BOOKMARK [1][-]{section.6.2}{Limitations and Future Work}{chapter.6}% 75
+\BOOKMARK [1][-]{section.6.3}{Final Words}{chapter.6}% 76
+\BOOKMARK [0][-]{section*.116}{Appendices}{}% 77
+\BOOKMARK [0][-]{Appendix.1.A}{Appendix Peg in hole}{}% 78
+\BOOKMARK [1][-]{section.1.A.1}{Time to connect socket}{Appendix.1.A}% 79
+\BOOKMARK [1][-]{section.1.A.2}{EM policy search}{Appendix.1.A}% 80
+\BOOKMARK [1][-]{section.1.A.3}{Q-EM for GMM}{Appendix.1.A}% 81
+\BOOKMARK [1][-]{section.1.A.4}{Unbiased estimator}{Appendix.1.A}% 82
+\BOOKMARK [0][-]{Appendix.1.B}{Appendix Non-parametric Bayesian State Space Estimator}{}% 83
+\BOOKMARK [1][-]{section.1.B.1}{Probabilities}{Appendix.1.B}% 84
+\BOOKMARK [1][-]{section.1.B.2}{Bayesian filtering recursion}{Appendix.1.B}% 85
+\BOOKMARK [1][-]{section.1.B.3}{Recursion example}{Appendix.1.B}% 86
+\BOOKMARK [1][-]{section.1.B.4}{Derivation of the evidence}{Appendix.1.B}% 87
+\BOOKMARK [1][-]{section.1.B.5}{Derivation of the marginal}{Appendix.1.B}% 88
+\BOOKMARK [0][-]{chapter*.121}{References}{}% 89

@@ -1,4 +1,4 @@
-\begin{thebibliography}{167}
+\begin{thebibliography}{169}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -720,6 +720,13 @@ Andrew~Y. Ng and Michael Jordan.
   UAI'00, pages 406--415, 2000.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=2073946.2073994}.
 
+\bibitem[North(1968)]{North68atutorial}
+D.~Warner North.
+\newblock A tutorial introduction to decision theory.
+\newblock \emph{IEEE Transactions on Systems Science and Cybernetics},
+  4:\penalty0 200--210, 1968.
+\newblock \doi{10.1109/tssc.1968.300114}.
+
 \bibitem[Now\'{e} et~al.(2012)Now\'{e}, Vrancx, and De~Hauwere]{RL_book_sa}
 A.~Now\'{e}, P.~Vrancx, and Y-M. De~Hauwere.
 \newblock \emph{Reinforcement Learning: State-of-the-Art}, chapter Game Theory
@@ -985,6 +992,12 @@ B.J. Stankiewicz, G.E. Legge, J.S. Mansfield, and E.J. Schlicht.
 \newblock \emph{Journal of Experimental Psychology: Human Perception and
   Performance.(under review)}, 32\penalty0 (3):\penalty0 688--704, 2006.
 
+\bibitem[Steele and Stefansson(2015)]{sep-decision-theory}
+Katie Steele and H.~Orri Stefansson.
+\newblock Decision theory.
+\newblock In Edward~N. Zalta, editor, \emph{The Stanford Encyclopedia of
+  Philosophy}. Winter 2015 edition, 2015.
+
 \bibitem[Stulp et~al.(2011)Stulp, Theodorou, Kalakrishnan, Pastor, Righetti,
   and Schaal]{dmp_iros_2011}
 F.~Stulp, E.~Theodorou, M.~Kalakrishnan, P.~Pastor, L.~Righetti, and S.~Schaal.
@@ -1144,8 +1157,8 @@ Sethu Vijayakumar, Tomohiro Shibata, and Stefan Schaal.
 \newblock Reinforcement learning for humanoid robotics.
 \newblock In \emph{Autonomous Robot}, page 2002, 2003.
 
-\bibitem[Von~Neumann and Morgenstern(1990)]{VonNeumann1944}
-John Von~Neumann and O.~Morgenstern.
+\bibitem[von Neumann and Morgenstern(1990)]{VonNeumann1944}
+John von Neumann and O.~Morgenstern.
 \newblock \emph{The theory of games and economic behavior}.
 \newblock Princeton, 3 edition, 1990.
 

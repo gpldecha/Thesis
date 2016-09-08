@@ -27,9 +27,9 @@ in this thesis.\\[0.05cm]
  and acting under uncertainty and provides for a good introduction to the topics which will follow.  
  \item \textbf{Section} \ref{sec:sqp},  mathematically formalises the sequential decision problem under uncertainty and is linked with Decision Theory. We derive from first principal 
  the Bellman optimal equation which is one of the most important result to date in sequential decision processes.
- \item \textbf{Section} \ref{sec:lit_rev}, provides an in depth literature review with the latest results in AI \& robotics in the subject 
+ \item \textbf{Section} \ref{sec:lit_rev}, provides an in depth literature review with the latest results in AI and robotics in the subject 
 of planning and acting under uncertainty. We draw attention to the different approaches to solving this problem whilst pointing out
-their advantages and weaknesses. We summaries what has been achieved so fare and what are the open problems.
+their advantages and weaknesses. We summarise what has been achieved so fare and what are the open problems.
  \item \textbf{Section} \ref{sec:approach}, the core approach taken by this thesis is detailed. We outline how we teach a robotic apprentice 
  to act under uncertainty.
 \end{itemize}
@@ -47,12 +47,12 @@ actions which will result in the most preferable outcome. There are two key attr
 problem difficult: \textbf{stochastic actions} and \textbf{latent states}. 
 
 Stochastic actions when applied in the same state will not always result in the same outcome. This type of uncertainty 
-can arise from many sources. For instance, the outcome of chaotic systems will always lead to different results when the same action is applied
+can arise from many sources. For instance, the outcome of random systems will always lead to different results when the same action is applied
 to the same initial conditions, such as the throwing of a dice or the flipping of a coin. In outdoor robotics the terrain might lead to slippage, causing 
-the robot to skid, or in an underwater environment currents might drastically offset the position of an UAV. In articulated robots, the friction in the joints 
+the robot to skid, or in an underwater environment currents might drastically offset the position of an AUV. In articulated robots, the friction in the joints 
 can result in an error in the end-effector position (especially true for cable driven robots).
 
-The second source of uncertainty is when the state space cannot be determined. This arises when the sensors are not able to 
+The second source of uncertainty is when the state space cannot be accurately estimated. This arises when the sensors are not able to 
 provide sufficient information to reliably estimate the state. In robotics this uncertainty can arise from inadequate or noisy sensors. 
 In poor environmental conditions such as humidity, lack of light or smoke the robot can experience difficulties in 
 ascertaining its position and thus in planning how to achieve a given objective.
@@ -80,7 +80,7 @@ be \textbf{rational beliefs}. As for desires, they are linked to our disposition
 example if I want to switch off my alarm clock I have to look for it in the last area I believed it to be in. 
 These two attributes, beliefs and desires, are used to frame a decision problem. Early work in decision theory assumed 
 that the problem was well grounded and focused on finding what \textbf{rational actions} need to be taken given our beliefs 
-in order to achieve our desires. 
+in order to achieve our desires. For a detailed review on Decision Theory the reader is referred to \cite{sep-decision-theory,North68atutorial}
 
 \begin{figure}
  \centering
@@ -129,7 +129,7 @@ was the logarithm of the monetary outcome $x \in X$ weighted by its probability 
 %the person will be \textbf{risk-averse}, when linear \textbf{risk-neural} and convex \textbf{risk-seeking}. 
 %This was the first introduction of a utility function. 
 
-It is later in 1944 that von Neumann and Morgenstern (\cite{VonNeumann1944}) axiomised Bernoulli's utility function 
+It is later in 1944 that von Neumann and Morgenstern (vNM)\citep{VonNeumann1944} axiomised Bernoulli's utility function 
 and proved that if a decision maker has a preference over a set of lotteries\footnote{the term lottery refers 
 to a probability distribution in the original text.} which satisfy four axioms
 (completeness, transitivity, continuity, independence) then there exists a utility function whose expectation 
@@ -142,7 +142,7 @@ to be \textbf{rational} otherwise they are \textbf{irrational}.
 
 
 This is the theoretical basis of most economic theory. It is a \textbf{normative} model of how people should behave given uncertainty. It is also the basis of most 
-if not all decision making, cogitative architectures and control policies in AI and robotics (to the best of the author's knowledge).
+if not all decision making, cognitive architectures and control policies in AI and robotics (to the best of the author's knowledge).
 
 An aspect to keep in mind regarding the vNM model is that it is normative; it states what should be a rational decision. 
 As a result it is not always consistent with human behaviour. There is great debate regarding 
@@ -154,7 +154,7 @@ in most decisions we are faced with, the quantification and rationality of our b
 and limitations of our working memory will come into play in the final decision.
 
 Nevertheless vNM agents are predominantly used in AI and robotics as a means of implementing 
-decision making processes or in control policies. In psychology and cogitative science vNM agents
+decision making processes or in control policies. In psychology and cognitive science vNM agents
 are a used for comparing human behaviour against an optimal strategy (by optimal we mean it is rational in 
 the vNM sense). It is important to remember the origins and assumptions underlying the models that 
 are used to represent control policies or cognitive architectures implemented into robotic systems or 
@@ -380,7 +380,7 @@ which we formalise below in Equation \ref{eq:motion_update}-\ref{eq:measurement_
      \begin{minipage}{0.9\textwidth}
      The Bayesian filter turns a prior probability distribution over the state space, $p(x_{t-1}|y_{0:t-1},a_{1:t-1})$,
   to a posterior $p(x_t|y_{0:t},a_{1:t})$ by incorporating both motion and measurement. Applied recursively it 
-  keep a probability distribution over the state space which considers all the past history of actions and observations. We define 
+  keeps a probability distribution over the state space which considers all the past history of actions and observations. We define 
   the application of these two steps by the filter function $\tau$, which takes the current belief, the applied action 
   and measurement, and outputs the next belief, $b_{t+1}$.\\
   
@@ -459,7 +459,7 @@ and we get the corresponding belief Bellman Equation, \ref{eq:belief_bellman}.
 However, using this equation in this form is problematic, as we are summing over the space of beliefs (which is high dimensional 
 and infinite for the continuous case) and the transition function is a probability distribution over beliefs. 
 The key to overcome this problem is to realise that if we know what the current measurement and applied action are, 
-there is only one valid possible belief, $b_{t+1}$, and
+there is only one resulting belief, $b_{t+1}$, and
 the summation over beliefs vanishes. This can be seen by substituting the belief transition function,
 Equation \ref{eq:belief_state_transformation}, into the Bellman equation Equation \ref{eq:belief_bellman}.
 \begin{equation}\label{eq:belief_state_transformation}
@@ -493,7 +493,7 @@ found in \cite[Chap. 15]{Thrun_2005} and \cite{Kaelbling_1998}.
 In summary there are two problems in solving a POMDP:
 \begin{itemize}
  \item \textbf{curse of dimensionality}: A discrete state space of size $N$ will result in a belief space of dimension $N-1$. The discretization
- choice will greatly impact the computational cost of Value Iteration.
+ choice will greatly impact the computational cost of value iteration.
  \item \textbf{curse of history}: The space and computational complexity in the worst case is exponential with respect to the planning 
  horizon, $T$, \cite{POMDP_approach_2010}.
 \end{itemize}
@@ -523,9 +523,9 @@ and the developments of approximate POMDP algorithms and their applications.
 
 \section{Literature review}\label{sec:lit_rev}
 
-We review the latest methods on \textit{Acting under uncertainty}. This is an extremely dense and spread out area of research, 
-no doubt because of its importance. If uncertainty is not considered adequately, the control policy risks being suboptimal or lead to drastic failure. 
-We will focus the review four subsections in the following order: 
+We review the latest methods on \textit{acting under uncertainty}. This is an extremely dense and spread out area of research, 
+no doubt because of its importance. If uncertainty is not considered by a policy, it risks to result in failure or wast considerable
+resources during its execution. The review is organised in four subsections:
 
 \begin{itemize}
  \item \ref{lit:VI} 		\hyperref[lit:VI]{Value Iteration (VI)}
@@ -534,7 +534,8 @@ We will focus the review four subsections in the following order:
  \item \ref{lit:heuristics} 	\hyperref[lit:heuristics]{Heuristics}
 \end{itemize}
 
-with an emphasis on robotic applications. In Figure \ref{fig:mindmap} we illustrate graphically these four topics which their associated sub-fields.
+with an emphasis on robotic applications. In Figure \ref{fig:mindmap} we illustrate graphically these
+four topics with their associated sub-fields.
 
 \begin{figure} 
 \centering
@@ -631,28 +632,29 @@ This intractability, in which only problems with a few states could be solved ha
 
 \subsubsection{Point-base Value Iteration}
 
-The first breakthrough of the application of VI in belief space to a robotic application was Point-Base Value Iteration (PBVI) \cite{PBVI}. It allowed VI to be applied to a robotic 
-navigation problem consisting of 626 states in a hospital patient search task. The key insight to scale VI was to only consider a subset of belief 
-states which were reachable and relevant to the problem. This is achieved by smart sampling techniques and only performing VI backups on beliefs states which are relevant. 
-From this point most research has focused on determining efficient strategies to sample belief points and on which to apply VI. Heuristic Search Value Iteration (HSVI1) (\cite{HSV}) 
-and HSVI2 (\cite{HSVI2}) use forward search heuristics to find relevant beliefs by keeping a lower and upper bound on the current estimated value function. The belief tree 
+The first breakthrough of the application of Value Iteration (VI) in belief space to a robotic application was Point-Base Value Iteration (PBVI) \citep{PBVI}. 
+It allowed VI to be applied to a robotic navigation problem consisting of 626 states in a hospital patient search task. The key insight to scale VI was to only 
+consider a subset of belief states which were reachable and relevant to the problem. This is achieved by smart sampling techniques and only performing VI 
+backups on beliefs states which are relevant. From this point most research has focused on determining efficient strategies to sample belief points and on which to apply VI. 
+Heuristic Search Value Iteration (HSVI1) \citep{HSV} and HSVI2 \citep{HSVI2} use forward search heuristics to find relevant beliefs by keeping a lower and upper bound on the current estimated value function. The belief tree 
 is expanded by choosing an action and observation with relation to the potential future effect on the value of the bounds, which are being minimised. HSVI has a comparable performance with respect to classical PBVI except in the
 game of tag (a benchmark problem), in which it fairs significantly better. 
-A method developed after HSVI, named Forward Search Value Iteration (FSVI) (\cite{FSVI}) takes an alternative approach to keeping an upper and lower bound on the 
+A method developed after HSVI, named Forward Search Value Iteration (FSVI) \citep{FSVI} takes an alternative approach to keeping an upper and lower bound on the 
 value function, as in HSVI, since doing so results in a drastic increase in the computation time necessary to find a solution. Instead FSVI assumes that the state 
 space is fully observable and first solves the MDP for this case. The MDP is then used to generate a set of belief points for the PBVI solver. This is achieved by 
-taking the Most Likely State (MLS) and to follow the MDP policy accordingly. It is orders of magnitude faster than HSVI and results in comparable polices. FSVI fairs badly however when information gathering actions are necessary. 
-Since it is essentially using a myopic policy to generate its samples, these will be insufficient to find the global optimal policy when the solution requires information gathering actions. The very last sampling generation technique to date, which is considered to be the most efficient, is SARSOP (\cite{SARSOP}).
-It uses aspects from both HSVI and FSVI. It keeps upper and lower bounds on the value function and also uses the MDP solution to generate samples. 
+taking the Most Likely State (MLS) and to follow the MDP policy accordingly. It is orders of magnitude faster than HSVI and results in comparable polices. FSVI fairs 
+badly however when information gathering actions are necessary. Since it is essentially using a myopic policy to generate its samples, these will be insufficient to 
+find the global optimal policy when the solution requires information gathering actions. The very last sampling generation technique to date, which is considered to be the most efficient, 
+is SARSOP \citep{SARSOP}. It uses aspects from both HSVI and FSVI. It keeps upper and lower bounds on the value function and also uses the MDP solution to generate samples. 
 The key idea of SARSOP is to sample belief points which will contain the optimal set of samples necessary to achieve an optimal policy.  
-Both SARSOP and HSVI2 are considered state of the art in PBVI value approximation techniques. See \cite{POMDP_approach_2010} for a review and comparison of both techniques on problems 
+Both SARSOP and HSVI2 are considered state-of-the-art in PBVI value approximation techniques. See \cite{POMDP_approach_2010} for a review and comparison of both techniques on problems 
 with thousands of states including simulation examples in grasping, tracking and UAV navigation. Other more recent approaches, \cite{Veiga14aaai}, consider factorising the POMDP 
 according to the different observations (independence assumption) and making use of linear function approximation methods to 
 address the curse of dimensionality effecting the parameters of the POMDP ($\alpha$-vectors).
 
 These methods are well suited to addressing problems which are easily expressed in a discrete state space. All considered problems are simulation based and 
 no physical interaction problems are considered. Besides the belief set generation problem, interest has also been poised on porting the PBVI to a continuous state space.
-An example of a continuous action space PBVI method is Perseus \cite{Spaan05icra}, in which the authors replace the maximisation over the action by sampling the actions from a 
+An example of a continuous action space PBVI method is Perseus \citep{Spaan05icra}, in which the authors replace the maximisation over the action by sampling the actions from a 
 parametric continuous representation. In \cite{PBVI_C_2006} the state space, transition and observation model are represented by Gaussian Mixtures and the authors consider a particle set or Gaussian mixture representation of the belief. 
 The authors show that a continuous representation of the state space preserves the PWLC property of the value function. They extend their method to continuous action and observations 
 through sampling instead of discretising. Results are shown in a 1D continuous corridor setting. In a 
@@ -660,16 +662,16 @@ more recent approach \cite{solving_continous_pomdps_2013} a discrete state prese
 techniques to solve the continuous integrals present in the Bellman equation. The explicit learning of the state representation leads to an increased performance
 when compared to the other continuous state PBVI methods. 
 
-PBVI techniques have come fare since their first application to robotic navigation back in 2003 and have lead to a rapid increase of interest. 
+PBVI techniques have come far since their first application to robotic navigation back in 2003 and have lead to a rapid increase of interest. 
 Initially only a few hundred states could be considered and now problems with over tens of thousand of states are being solved in seconds (very problem specific of course). 
 Most of the research has focused on how to gather a good set of sample beliefs efficiently. Later efforts focused on adapting PBVI 
 to continuous state spaces more suited to robotic applications. The main approach consists of using sampling techniques to overcome 
 the maximisation over the actions (when considering continuous actions) or to choose a suitable parametric representation of the transition, observation 
-and utility model so that the Bellman equation can be solved in closed form. Most evaluations of have focused on simulated and simplified robotic 
+and utility model so that the Bellman equation can be solved in closed form. Most evaluations have focused on simulated and simplified robotic 
 navigation problems in 1D and 2D. We have not discussed online POMDP-solvers since they are also based on VI and sampling techniques and thus share 
 a lot of similarities with PBVI. We refer the reader to \cite{Ross08onlineplanning} for a detailed review. In summary, trying to preserver the PWLC property 
 of the value functions leads to complicated VI methods which are difficult to port to fully continuous state, action and observation space. Efforts which 
-have attempted to do this have not yet be shown to scale. As a result of this difficulty, of making this transition to a fully continuous space, approximate value 
+have attempted to do this have not yet been shown to scale. As a result of this difficulty, in making this transition to a fully continuous space, approximate value 
 iteration methods have been explored as an alternative. In approximate value iteration the PWLC property of the value function is dropped and is 
 represented by a regression function.
 
@@ -693,10 +695,10 @@ A very first successful example of this approach is Monte Carlo POMDP (MC-POMDP)
 state, action and observation version of the Heaven \& Hell benchmark problem was solved successfully with a working 
 implementation on a non-simulated mobile base.  
 The belief was represented by a particle filter and the policy by a Q-value function, whose functional form was 
-a non-parametric regressor (k-nearest neighbour) of the particle filter. The distance metric was the sample KL divergence
+a non-parametric regressor (k-nearest neighbour) of the particle filter. The distance metric was the sample KL-divergence
 between two particle sets. The POMDP was solved through Reinforcement Learning (interaction with the environment) and 
 approximated dynamic programming also known as experience replay, batch RL or Fitted Q-Iteration (FQI) \cite{Tree_batch_2005}. 
-Although highly computationally demanding the method was successful. 
+Although computationally demanding the method was successful. 
 
 This inspired many similar approaches such as \cite{mc_update_ppomdps} where the belief state filter was an 
 Extended Kalman Filter (EKF), the value function was also non-parametric and the POMDP was solved via FQI. 
@@ -704,11 +706,11 @@ When compared with Perseus in a discretized 2D localisation task both approaches
 policies but the authors method achieved it far faster than Perseus, a PBVI method. 
 
 % 2) A very large state space and do away with 
-An alternative approach is to represented the history of the previous states or observations in an augmented state space and the treat the problem 
+An alternative approach is to represent the history of the previous states or observations in an augmented state space and the treat the problem 
 as a standard MDP. In this way the partial observability is directly encoded in the state representation. The motivation is that in contrast to 
-POMDPs there has been fare more research focused on MDPs and much work has been done on the application of non-linear function 
+POMDPs there has been far more research focused on MDPs and much work has been done on the application of non-linear function 
 approximators for representing the value function in combination with reinforcement learning optimisation techniques to solving them.
-A successful example was the usage of a multi-layer perceptron as a Q-value function approximator, Neural Fitted Q-Iteration (NFQ) \cite{Riedmiller2005}.
+A successful example is the usage of a multi-layer perceptron as a Q-value function approximator, Neural Fitted Q-Iteration (NFQ) \cite{Riedmiller2005}.
 This approach was successfully applied to the standard RL benchmarking problems (carte pole, acrobat, mountain care), but no partially observable
 setting was considered. Later in \cite{DRQ_AAAI_2015} the authors applied a Deep Recurrent Q-Network (DRQN) (extension to the work in \cite{mnih-dqn-2015}) to capture the history of states 
 in a game of Pong where the state space was occluded half the time. By introducing a long term memory component the POMDP in effect is turned into a MDP and the authors apply an optimisation approach similar to FQI. 
@@ -744,13 +746,13 @@ Belief compression as a means of reducing the curse of dimensionality is an inte
 caveat is that it requires discretising the belief to a fixed grid, collecting many samples and learning an 
 appropriate set of belief-basis eigenvectors. As such, the larger the state space, the larger the dimensionality and thus more
 samples are required to find a suitable set of basis belief-eigenvectors. Surprisingly, belief space compression 
-methods have not had wide attention although they shown promising results.
+methods have not had wide attention although they have shown promising results.
 
 
 \subsubsection{Summary: Value Iteration}
 
 Value Iteration seeks to find an optimal policy directly through applying the Bellman equation to a belief-MDP (POMDP)
-and most of the research has focused on finding ways to alleviated the curse of dimensionality so that VI remains tractable 
+and most of the research has focused on finding ways to alleviate the curse of dimensionality so that VI remains tractable 
 in belief space. The first approach, PBVI, considers a relevant subset of the belief space. Because 
 of the complexity involved in keeping the PWLC property of the value function which restricts its use in large state 
 spaces, alternative approaches discard this property in favour of approximating the value function through machine learning
@@ -765,17 +767,20 @@ actions directly and are termed policy search methods.
 
 \subsection{Policy search}\label{lit:policy_search}
 
-The approaches seen so far use a value function to encode the problem. When the optimal value function is solved, a policy can be derived from it by taking an action which maximises the value function at each time step, a process known as making the policy greedy with respect to the value function. This requires learning a high dimensional value function of the belief space and the resulting policies are not necessarily 
+The approaches seen so far use a value function to encode the problem. When the optimal value function is solved, a policy 
+can be derived from it by taking an action which maximises the value function at each time step, a process known as making 
+the policy greedy with respect to the value function. This requires learning a high dimensional value function of the belief 
+space and the resulting policies are not necessarily 
 smooth, as small changes in the value function can lead to drastic changes in the policy. Even small 
-approximation errors in the value function can lead to very bad greedy policies \cite{gpomdp_2000}. 
+approximation errors in the value function can lead to very bad greedy policies \citep{gpomdp_2000}. 
 There is no doubt that deriving a policy from a generic value function for highly continuous policy, such as in the case 
 of controlling an articulated robotic arm, is not easy. 
 
 This has lead to an alternate approach in which a policy is learned directly without a value function. An 
-initial policy is defined in terms of a paramaterized function, $\policy$, and the utility is a function of the 
+initial policy is defined in terms of a parameterized function, $\policy$, and the utility is a function of the 
 policy parameters, $u(\boldsymbol{\theta})$. The optimal policy is found by searching for the parameters $\boldsymbol{\theta}$ which 
 will maximise the utility function. This is can be accomplished through various optimisation methods: gradient descent, gradient free, 
-expectation-maximisation, etc...
+and expectation-maximisation.
 
 % Policy Iteration
 % Early work include the application of policy iteration to a finite state controller \cite{p_search_pomdp_1998}. A finite state controller
@@ -794,17 +799,17 @@ and as a result the gradient can be estimated by Monte Carlo methods. Applicatio
 to a partially observable setting lead to Gradient POMDP, GPOMDP \cite{gpomdp_2000} in which the authors developed 
 a conjugate stochastic gradient ascent algorithm to optimise a policy as a function of the current observations.
 To be optimal, the whole history should be considered or some sort of memory (compressed history) should be introduced. 
-In an extension to this method \cite{sis_pomdp_2002}, the authors used a HMM to represent the POMDP which they 
-learned the parameters in conjunction with those of the policy. These are early examples of policy search approaches 
-which are able to fair well on the early POMDP benchmark problems (Heaven \& Hell). 
+In an extension to this method \cite{sis_pomdp_2002}, the authors used a HMM to parameterise models of the POMDP  which they 
+learned in conjunction with the parameters of the policy. These are early examples of policy search approaches 
+which are able to fair well on the early POMDP benchmark problems such as ``Heaven \& Hell''. 
 The main difficulty is to reduce the bias and variance of the gradient estimate which preoccupies most gradient based approaches. 
 Optimising the utility function via stochastic gradient ascent typically needs thousands of gradient estimates such that in expectation terms the parameters are maximising the cost function. 
-An approach which mitigates this problem, coined Pegasus \cite{Pegasus_2000}, removes the stochasticity from the optimisation 
+An approach which mitigates this problem, coined Pegasus \citep{Pegasus_2000}, removes the stochasticity from the optimisation 
 by setting the seed of the random number generator constant. A policy evaluation becomes deterministic and by repeating this process many times (different random seeds) the stochasticity
 is present between the different evaluations and not within them. The end result is the same as stochastic gradient ascent 
 (if repeated sufficient times) but is far easier to optimise individual non-stochastic problems. This policy search 
 method was used to learn a set of controllers for a radio controlled helicopter \cite{heli_2004}, which is considered to 
-be one of the very first successful applications of RL to a MDP/POMDP problem. Recent approaches to gradient based methods
+be one of the very successful applications of RL to a MDP/POMDP problem. Recent approaches to gradient based methods
 include grasping objects under Gaussian position uncertainty \cite{dmp_iros_2011}, \cite{dmp_seq_2012}.
 
 \subsubsection{Expectation-Maximisation: policy search}
@@ -828,7 +833,7 @@ survey highlighting differences and advantages of policy search vs actor-critic 
 For problems in which the state and action space are continuous, policy search is preferred to pure value iteration based methods, 
 which is the case for articulated robotics. In this case, the policies are only guaranteed to be \textbf{locally optimal} as oppose 
 to the VI methods which can find \textbf{global optimal} policies. However if the parameters of the policy are initialised 
-such that it is in the vicinity of the global optimum of the utility function, then the local optimal will be global. 
+such that it is in the vicinity of the global optimum of the utility function, then the local optimum will be global. 
 A lot resides on the initialisation and dimensionality of the parameter space of the policy. 
 In terms of using them to solve POMDPs, most examples, at least for robotic applications, act according to the Most Likely State (MLS) or 
 are a function of a history of observations. In such a way the partial observability is \textbf{implicitly} encoded into the policy as 
@@ -853,7 +858,8 @@ of re-usability. These are the \textbf{planning} methods.
 
 \subsection{Planning}\label{lit:Planning}
 
-Belief space planners leverage the power of traditional planning and optimal control techniques such as: A*, D*, RRT, Dijkstra and LQR to the belief state space. 
+Belief space planners leverage the power of traditional planning and optimal control techniques such as: A-star, (A*) Rapidly exploring Random Tree (RRT), Dijkstra and 
+Linear-Quadratic Regulator (LQR) to the belief state space. 
 In most of the following techniques (with a few exceptions), a fundamental assumption made is that the motion and measurement models are Gaussian 
 and as a result, a point in the belief space can be represented by the first and second moment: the mean and covariance. An important distinction with VI and Policy search methods is that planners
 do not solve for a policy. These are online methods in the sense that they have to re-compute a set of 
@@ -871,14 +877,14 @@ quadrotor helicopter \cite{Quadrator_2008} and indoor navigation (\cite{FIRM_201
 
 \subsubsection{Optimal control}
 
-Another main approach is based on optimal control theory, from which Linear Quadratic Controllers (LQG) have been adapted to a belief state space. 
+Another main approach is based on optimal control theory, from which LQR have been adapted to a belief state space. 
 In this setting the dynamics are considered linear (or linearizable) and the motion and measurement processes are Gaussian. The main difficulty of 
 applying LQG to a belief space is that future observations are unknown, which implies that an expensive marginalisation of the observations has to be done. 
 In \cite{bsp_rss_2010a} the authors assume instead that at each time step the measurement obtained would be the \textbf{maximum-likelihood observation}. 
 This assumption removes the stochasticity from the belief update (since the observations are considered known) and receding horizon optimisation techniques 
 can be applied. These optimisation methods require a nominal trajectory which is generally generated 
 assuming a fully observable state space with standard planning algorithms like RRT \cite{LQG_MP_2011}, and subsequently refined by 
-dynamical programming methods until a local optimal solution in attained. In \cite{Erez10ascalable}, the authors parametrized the belief by a mixture of two Gaussians to to tackle unilateral constraints
+dynamic programming methods until a local optimal solution in attained. In \cite{Erez10ascalable}, the authors parametrized the belief by a mixture of two Gaussians to to tackle unilateral constraints
 and applied their planner to a 16 dimensional attention allocation problem. The optimisation method used was Differential Dynamic Programming (DDP) and maximum likelihood 
 observations were assumed. For implementations based on this approach, when the planned belief trajectory deviates from the observed belief, replanning takes place. 
 In recent improvements, \cite{van_den_Berg_2012},  the assumption of maximum-likelihood observation was removed successfully
@@ -888,7 +894,7 @@ without entering into contact with vital organs.
 
 Most optimal control methods assume that the belief space can be parametrized by a single Gaussian function, which can be 
 restrictive. There have been a few approaches which consider \textbf{non-Gaussian} belief state spaces.
-In \cite{non_gauss_bel_plan_2012} the authors introduce a non-Gaussian belief. The approach initially finds the Most Likely State (MLS) 
+In \cite{non_gauss_bel_plan_2012} the authors introduced a non-Gaussian belief. The approach initially finds the Most Likely State (MLS) 
 and then samples a set of hypothesis states from the belief. The cost function, with respect to the ML and sampled hypothesis, results in a sequence of actions which will seek to generate measurements
 which will prove or disprove the hypothetical states with respect to 
 the ML state whilst also trying to reach the goal. Recent work \cite{seq_traj_replan_iros_2013} incorporates this optimisation method into a grasping problem under non-Gaussian pose
@@ -896,35 +902,15 @@ uncertainty. The method in question is able to perform well with only a few draw
 the stability of the grasp was not evaluated.  
 
 \subsubsection{Summary: planning}
-
+\sloppy
 Most advances in planning methods in belief space have been in optimal control and were able to show 
-applicability to high-dimensional belief state spaces in a variety of applications. To be fast these methods have to make assumptions with respect to the shape of the belief (Gaussian) and the type of future observations which are available. These can 
+applicability to high-dimensional belief state spaces in a variety of applications. To be fast, these methods have to make assumptions with respect to the shape of the belief (Gaussian) and the type of future observations which are available. These can 
 be restrictive but in many applications (such as those which use vision) the uncertainty of objects in the world are 
 often parametrized by Gaussians. The main difference between optimal control approaches and policy search 
-methods is that the computational burden is shifted to online resolution of actions as oppose to constructing a policy offline through repeated 
+methods is that the computational burden is shifted to online resolution of actions as opposed to constructing a policy offline through repeated 
 interactions with the environment which can be very time consuming. The advantage of planning methods is that they 
 are more flexible than parametric policies in the sense that they are more generic. They solve the objective function online and
 can be used in different environments, as oppose to a policy which would have to be re-learned.
-
-%The computational complexity
-%of the algorithm is dominated by the number of samples used. Receding horizon control approach. Given belief, first 
-%find most likely state. Generate a set of plausible locations (very likely). Choose u such that set of observations 
-%generated by paths from state point x are as different as possible. Confirm or disprove as many of the hyopthesis states 
-%or not.
-%Typical binary reward present used so fare is replaced by a cost-to-go objective function. In which the final uncertainty is explicitly
-%penalized and a cost is incurred at every step.
-%Based on linear quadratic controller LQG-MP with Gaussian models of uncertainty, linear dynamics and quadratic cost function.
-% talk about the type of uncertainty which is considered and dyanmics; 
-%A nominal path is first generated assuming full observability using for instance RRT methods.
-%The dynamic function should be at least locally linear.
-%linear control policy over the belief space that is valid in the vicinity of the nominal trajectory.
-%find locally optimal feedback policies.
-%Assume maximum-likelihood observations to make the belief propagation deterministic.
-%Can solve via differential dynamic programming (DDP).
-%First approximate the belief dynamics using an extended Kalman Filter (EKF), the value function is approximated using a 
-%a quadratic function that is locally valid in the vicinity of the nominal trajectory.
-%Since the measurement term is unknown in advance the belief dynamics are stochastic.
-% Do value iteration backwards in time to find a locally optimal control policy
 
 \subsection{Heuristics}\label{lit:heuristics}
 
@@ -932,9 +918,9 @@ The methods discussed so far can be considered computationally expensive and/or 
 of belief which can be used (typically a uni-modal Gaussian). If the problem domain is more complex or 
 an expensive optimisation problem is not necessarily required, simple heuristic methods can achieve a satisfying solution 
 and in some cases the equivalent of a full blown POMDP solver. Heuristic methods for dealing with uncertainty are widespread in robotics
-due to the high dimensionality and continuity of the state space. We consider here two heuristic approaches,
+due to the high dimensionality and continuous state space. We consider here two heuristic approaches,
 myopic and information gain. Myopic ignores most of the variance in the uncertainty and considers only the 
-Most Likely State (MLS) whist information gain considers actions in terms of their uncertainty reduction.
+Most Likely State (MLS) whilst information gain considers actions in terms of their uncertainty reduction.
 
 \subsubsection{Myopic \& Q-MDP}
 
@@ -967,19 +953,21 @@ The next heuristic approach, which we call \textbf{information gain}, is based o
 
 \subsubsection{Information gain}
 
-Information gain is the decrease or increase of uncertainty resulting from the application of an action. It is obtained by forward simulating the belief and computing the difference between the current entropy and resulting entropy of the simulated action. The vast majority of applications consider a set of marco/parametrised actions.
+Information gain is the decrease or increase of uncertainty resulting from the application of an action. It is obtained by computing the difference between 
+the entropy of a forward simulated belief (through the virtual application of actions) and the entropy of the initial belief before the application of actions.
+The vast majority of applications consider a set of marco/parametrised actions.
 In this set there are typically goal orientation actions which will act as if the state space was fully observable (MLS move) and information gathering actions, 
 whose goal is to reduce the amount of uncertainty such that the goal orientated actions have a higher chance to succeed. The cost function which is optimised 
 is typically a compromise between the distance/time taken to reach the goal and the amount of information gained 
 while executing the task. An early example considered path planning problem for a robot in the National museum of American history \cite{CostalNavigation1999}. An information gain map was first computed 
 off-line in which a map cell gave an estimate of how much information would be acquired at this location. This was incorporated into an objective function 
 which optimised the information gain along a route with respect to the time taken to reach the goal. The path was 
-given by solving the objective function using dynamic programming. In this case no explicit actions where defined, but the uncertainty was taken into account by 
+given by solving the objective function using dynamic programming. In this case no explicit actions were defined, but the uncertainty was taken into account by 
 weighting informative regions more than open space. The result was trajectories which stayed close to walls.
 Information gain methods are often used in SLAM applications because of the extremely high dimensionality of the belief space which is of the map and robot position. In \cite{stachniss05robotics} a mobile robot is exploring 
 and building a map of an office floor and a set of macro actions are available. A portion of the actions are exploratory and 
 lead the robot to unexplored areas which results in an increase of uncertainty in the overall map whilst the other actions brings the robot back to already
-explored areas resulting in an improved estimate of the map. For each action the information gain is computed and incorporated in an cost function. A one time step look head 
+explored areas resulting in an improved estimate of the map. For each action, the information gain is computed and incorporated in an cost function. A one time step look head 
 is done for each action, which potentially implies an expensive forward simulation, and the action giving the maximum information gain is chosen. This approach
 has been shown to be effective for large state space problems, notably in Active SLAM navigation \cite{dense_entropy_icra_2014}.
 
@@ -998,27 +986,7 @@ information gain maps and ''best fields of view`` were the predominant methods f
 due to the computational limitations of the time and POMDP solvers could only handle a few states before the arrival of PBVI methods.  Since more 
 sensory information is available and used in robotic systems it is again computationally expensive to compute optimal policies. In many cases 
 spending large computational resources does not result in policies which are obviously superior to simple and intuitive heuristics. Lately many 
-DARPA\footnote{https://www.youtube.com/watch?v=9Oav3JajR7Q} teams when faces with state uncertainty resort to information gain heuristics, for instance. 
-
-
-
-% Generic planning under uncertainty (not directly using a policy representation)
-% Choose action which maximised the information gain, generate a candidate set of actions, position and orientation and forward simulate 
-%their result. Multiple feasible hand postures are coupled with a manipulator trajectory generator. Similar to the best view problem.
-%Information gain is typically expensive, used in SLAM exploration settings (more about this in Chapter 5).
-% Sequence of information gather actions
-%Present three greeey approaches for selecting uncertainty reducing actions based on submodularity. Given 
-%an object mesh, we model the random set realization as a set of sampled particles. Each action corresponds
-%to an end-effector trajectory which stops when the object is touched. The cost is the time it would take to run 
-%the entire trajectory. Show that greedy action selection with proper metric works well for information gathering actions. 
-%Develop Hypothesis pruning and weighted hypothesis pruning (WHP) and show them them be submodular. Naively reduce 
-%uncertainty without considering the underlying task. Only holds for stationary objects.
-% In DARPA many teams first took uncertainty reduction actions before attempting to accomplish the task and to prepare meal with a microwave 
-% information gain slam
-%Grasping Condider known, partially known or unknown objects.
-% Uncertainty in shape perception GP is used as a constraint into a contact-level grasp synthesis algorithm.
-% Explicitly incorporate shape uncertainties as constraints in grasp planning.  Takes both shape and contact uncertainty into consideration
-% 
+DARPA\footnote{https://www.youtube.com/watch?v=9Oav3JajR7Q} teams when confronted with state uncertainty resort to information gain heuristics, for instance. 
 
 \subsection{Summary: literature}
 
@@ -1027,7 +995,7 @@ In the literature we characterised four approaches of how artificial agents have
 % What has been achieved so fare in the litterature ?
 When control algorithms were first being applied to mobile robotics uncertainty was handled with heuristics: 
 MLS, Q-MDP and other techniques not fully discussed such as \textit{next best view} methods. Practically speaking 
-the computational resources at the time were too limited and it was unfeasible to solve optimally for a POMDP problem. 
+the computational resources at the time were too limited and it was practically infeasible to solve optimally for a POMDP problem. 
 Also it is not clear at what time the robotic community started to apply results from operational research to robotics
 in the case of partial observability.
 Certainly it is not until the advent of the first point-based value iteration methods that there was a shift of interest 
@@ -1036,14 +1004,14 @@ When evaluated against heuristics methods it was clear that in some scenarios (H
 the POMDP solvers did far better. Value Iteration methods have not been widely used in cases where the action space 
 is continuous. There have been efforts to adapt them to continuous actions space, however there is yet no concrete evidence 
 that these methods scale. If the robotic domain requires continuous actions then either policy search or optimal control 
-methods are preferred. Policy search methods were first considered since they are part of the markov decision process 
+methods are preferred. Policy search methods were first considered since they are part of the Markov decision process 
 family which is within the POMDP framework.
 
 Policy search methods consider the uncertainty implicitly. These methods work 
 well when there is relatively few control parameters and behaviour to be learned are either reflexes (like in the case of 
 the autonomous helicopter) or primitive actions such as picking up an object. The uncertainty considered 
 in the reviewed literature on policy search methods is predominantly characterised by a Gaussian function. It is not clear 
-how well policy search methods would scale to situations in which there is a lot of uncertainty and so fare there has not 
+how well policy search methods would scale to situations in which there is a lot of uncertainty and so far there has not 
 been a lot of emphasis on comparing policy search methods with heuristics. 
 
 Optimal control methods came later, after policy search, and have recently started to gain traction since the adaptation 
@@ -1170,7 +1138,7 @@ tasks which have the following problem specific attributes:
 In our approach, the robot apprentice observes the human teacher demonstrate a search task. As the human teacher searches, he makes contact with 
 various aspects of the environment trying to localise himself whilst looking for the object in question. During the demonstration the apprentice 
 infers the humans beliefs by observing his actions and stores them into a dataset $D = \{(b,a)\}$. Given this belief-action dataset we learn a 
-generative distribution $\policy(b,a)$ of the behaviour exhibited during the search which is then transfer to the robot apprentice.  In Figure
+generative distribution $\policy(b,a)$ of the behaviour exhibited during the search which is then transferred to the robot apprentice.  In Figure
 \ref{fig:belief-pipeline} we illustrate the PbD-POMDP data pipeline.
 
 \begin{figure}
@@ -1190,7 +1158,7 @@ concept but there are a few caveats which make this task not as straight forward
  is that the apprentice can infer the observations of the teacher by examining the teachers relation with the environment and secondly the initial uncertainty of the 
  teacher is assumed to be known. From these two assumptions, the sequence of belief states can be inferred via a Bayesian filter. This implies that  the mental 
  belief state of the human teacher is in fact known given the assumptions. We give more details in Chapter 3 on the validity of these assumptions
- and discuss their relation to Bayesian Theory of Mind (BoTM).
+ and discuss their relation to Bayesian Theory of Mind (BToM).
  
  \item \textbf{Learning a policy as a function of non-parametric beliefs:} Given that we are considering high levels of uncertainty and the 
  observations are sparse, in the form of contacts, no parametrisation of the belief in terms of a Gaussian function would be adequate. In this thesis all the considered beliefs will be from the non-parametric 
@@ -1206,8 +1174,7 @@ concept but there are a few caveats which make this task not as straight forward
  alarm clock's button and his pair of socks. The apprentice assumes the structure of the original beliefs the human teacher has with respect to his 
  position and that of the alarm clock and socks, these are represented by the red, yellow and blue density functions. \textbf{Compression:} Given the data set of beliefs and actions obtained from the demonstrations, the beliefs 
  is compressed to a fixed parametrisation. \textbf{Learn policy:} A generative policy, $\policy(g(b),a)$ is learned from the actions and compressed beliefs and can be executed 
- according the schematic on the right. SE represents any Bayesian state space estimator, which takes as input, the current observation, belief and action and outputs the next 
- belief state.}
+ according to the schematic on the right. }
  \label{fig:human_search}
 \end{figure}
 

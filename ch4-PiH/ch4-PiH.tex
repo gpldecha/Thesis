@@ -9,7 +9,7 @@ The approach is satisfactory if the objective is to reproduce the same distribut
 the teachers. However for learning an optimal or approximate optimal policy with a unique behaviour the 
 PbD-POMDP approach will not necessarily result in an efficient policy. For the GMM we model
 both the good and the bad search strategies exhibited by the human teachers. If the task is difficult and many possible solutions exist, such 
-as in the previously discussed blindfolded search task in Chapter 3, many demonstrations will be required for search patters to
+as in the previously discussed blindfolded search task in Chapter 3, many demonstrations will be required for search patterns to
 emerge and be encoded in the GMM. Otherwise the GMM needs to be combined with another policy as previously shown (Hybrid GMM-Greedy 
 policy). 
 
@@ -18,12 +18,12 @@ policy).
 % Obviously, any task < no? The consistency requirement is also somewhat contradictory with the fact that you were embedding different 
 % styles of search across demonstrations.
 
-GMM does not discriminate between behaviours, as the Expectation-Maximisation (EM) algorithm used to 
+GMM does not discriminate between behaviours, as the \sloppy Expectation-Maximisation (EM) algorithm used to 
 learn the GMM policy ignores the quality of the demonstrated data. The EM algorithm does not contain a cost or 
 reward function, encoding the objective of the task, which is common practice in Planning and Reinforcement Learning (RL). 
 In the case of a difficult task where there are mostly bad demonstrations, the GMM search policy will reproduce suboptimal behaviour.
-Additionally there may be no single good teacher, however by combining different demonstrated components from 
-individual teachers a good search strategy can be extracted.
+Additionally there may be no single teacher who demonstrates satisfactory behaviour (in terms of achieving the task), however by combining 
+different demonstrated components from individual teachers a good search strategy can be extracted.
 
 
 %teachers are not good at the task individually and maybe only a few demonstrations are the best, whilst the majority are bad.
@@ -116,12 +116,10 @@ is very small leaving little room for error. As a result, variations in the asse
 in combination with position uncertainty can result in either jamming during the insertion process or in failure (hole not found). This created a need for adaptive search and insertion policies for PiH, which has been driving research 
 in this area. 
 
-From the literature, we identified the different components in PiH solutions. 
-
-All approaches use to some extent a vision system to estimate the position of the workpiece. 
+From the literature, we identified the different components in PiH solutions. All approaches use to some extent a vision system to estimate the position of the workpiece. 
 For instance in \cite{peg_personal_icra_2010} a PR2 is equipped with a checkerboard to facilitate pose 
 estimation  of the plug with respect to a power outlet whose position is extracted through a vision 
-processing pipeline. An initial connection is attempted by visual servoing which is successful 10\% of the 
+processing pipeline. An initial connection is attempted by ``visual servoing'' which is successful 10\% of the 
 time. Given an estimate of the workpiece's position, a common approach is to follow either a blind increasing spiral 
 Cartesian trajectory or parametrised policies which guarantee that all positions on the workpiece have been visited.
 In \cite{peg_personal_icra_2010}, if the PR2 initially fails to connect the plug to the socket
@@ -157,7 +155,7 @@ encodes the recorded Cartesian end-effector pose. In \cite{trans_workpiece_icra_
 is encoded separately by a regressor parameterised by radial basis functions. Successive refinements of the DMP policy are achieved through 
 using force feedback to adapt the parameters of an admittance controller. This results in the policy having
 similar force profiles to the human teachers. Further applications based on this method have been 
-performed \cite{sol_pdg_pbd_2014} with the incorporation of a disturbance rejection policy. Reproducing exactly 
+performed by \cite{sol_pdg_pbd_2014} with the incorporation of a disturbance rejection policy. Reproducing exactly 
 the same force torque profile for the full trajectory which is encoded in a time dependent dynamical system might be unnecessary as the force torque profile is 
 predominantly useful during the final stage of the PiH task, where the insertion can cause jamming. 
 The force torque information can be used to rectify this problem \cite[Chap. 5]{Kronander2015}. A 
@@ -168,7 +166,7 @@ Reinforcement learning has also been used in combination with DMP to learn PiH p
 an DMP policy is initialised with kinesthetic demonstrations of opening a door and picking up a pen. The recorded Cartesian 
 trajectories are encoded in a parameterised DMP policy and augmented with a F/T regressor profile. A reward function is designed, 
 encoding desirable properties of the F/T profile such as smoothness and continuity. After 110 trials the policy
-was found to be a 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input (sensed position, previous position and force) 
+was found to be 100\% successful. In \cite{learn_admittance_icra_1994} a 18 dimensional input (sensed position, previous position and force) 
 and a 6 dimensional output (linear and angular velocity) neural network is learned by associative reinforcement learning. 
 During the learning process the plug is randomly positioned within the vicinity of the hole. After a 100 executions and 
 updates, the policy was shown to be successful and was able to generalise across different geometries and clearances.

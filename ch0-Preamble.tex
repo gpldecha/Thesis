@@ -6,67 +6,58 @@
 \graphicspath{{figures/ch0/}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+\vspace*{-2cm}
 \lettrine[lines=2]{D}{ecision} making and planning with partial state information is a problem faced 
-by all forms of intelligent entities being either virtual, synthetic or biological. The formulation of 
-a problem under partial state information leads to an exorbitant set of choices with associated 
-probabilistic outcomes making its resolution difficult when using traditional planning methods. 
+by all forms of intelligent entities. The formulation of a problem under partial state information leads to an 
+exorbitant set of choices with associated probabilistic outcomes making its resolution difficult when using traditional planning methods. 
 Human beings have acquired the ability of acting under uncertainty through education and self-learning. 
 Transferring our know-how to artificial agents and robots will make it faster for them to learn and even improve upon us in
 tasks in which incomplete knowledge is available, which is the objective of this thesis.
 
-A large body of scientific work has focused on transferring behaviour from humans to robots via Programming by Demonstration 
-frameworks which focus on learning how to imitate human behaviour. Tasks such as ``pick and place'', hitting motions, and bipedal 
-locomotion have been encoded through either symbolic, statistical or dynamical system representations. In contrast there has been 
-less focus on transferring higher cognitive behaviour such as problem solving skills and search strategies from humans to robots.
+We model how humans reason with respect to their beliefs and transfer this knowledge in the form of a parameterised policy, following a Programming by Demonstration
+framework, to a robot apprentice for two spatial navigation tasks: the first task consists of localising a wooden block on a table and for the second task a power socket must 
+be found and connected. In both tasks the human teacher and robot apprentice only rely on haptic and tactile information. 
+We model the human and robot's beliefs by a probability density function which we update through recursive Bayesian state space estimation. To model the reasoning processes of human subjects performing the search tasks we learn a generative joint distribution over beliefs and actions 
+(end-effector velocities) which were recorded during the executions of the task. For the first search task the direct mapping from belief to actions is learned 
+whilst for the second task we incorporate a cost function used to adapt the policy parameters in a Reinforcement Learning framework and show a considerable improvement
+over solely learning the behaviour with respect to the distance taken to accomplish the task.
 
-This thesis aims to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
-We consider for instance tasks such as localising  an object in a room or connecting a plug to a power socket in the dark, 
-as well as any situation where the subject has no visual information and must rely on tactile and proprioceptive information only. 
-We then transfer the human-inferred reasoning mechanisms to a robot apprentice. 
-There are many robotic application domains in which uncertainty resulting from a lack of visual perception is common, such as underwater 
-maintenance, planetary exploration and occluded manipulation tasks. Learning human search models and transferring them to robots is useful
-in such domains and learning a search strategy from scratch would prove intractable.
-
-A difficulty in learning humans reasoning mechanisms, in the search scenarios we consider, is that
-the humans beliefs and sensations (haptic and tactile) are unobservable and that they vary within and
-across subjects. We infer the human sensations from either assuming kinematic relationship between tactile 
-information and known geometric description of the environment or by equipping the human subject with a 
-tool mounted with a force-torque sensor, whose measurements are used to infer the human sensations. The actual
-sensations, which are a function of either the sensor tool or kinematic-environment measurements, are
-transformed to a binary feature vector which encodes whether contact are present between features
-such as surfaces, edges and corners of the environment.
-
-We model the human's beliefs by a probability density function which we update through recursive Bayesian 
-state space estimation using motion estimates, acquired through a tracking system (the human subjects wore markers), 
-and the sensation estimates were obtained as described above. We make the assumption that the probability 
-density function, representing the human's belief, is updated by a Bayesian recursion and that this process is similar to the way in 
-which humans integrate information.
-
-To model the reasoning processes of human subjects performing the search tasks we learn a generative joint distribution over beliefs
-and actions (end-effector velocities) which were recorded during the executions of the task. 
-The high dimensionality of the belief and its varying complexity  during the searches required that we compress the 
-belief to its most likely state and entropy. 
-
-We evaluate this methodology of learning search strategies in a task consisting of finding an object on a table. 
-We demonstrate that multiple search strategies are encoded in the joint belief-action distribution and 
-we compare this approach with greedy myopic and coastal navigation search algorithms. The results show that the human learned 
-search model is the fastest of all methods.
-
-We consider in a second setting a task in which human subjects have to demonstrate how 
-to search for and connect a plug to a power socket to a robot apprentice deprived of visual information. 
-We take the same approach but incorporate the learning of the policy into a reinforcement learning framework 
-and demonstrate that by defining a simple cost function the quality of the final learned policy can be significantly
-improved without the need of performing exploratory rollouts which are costly and typically necessary in RL.
-
-Both search tasks above can be considered as active localisation in the sense that uncertainty
-originates from the position of the human or robot in the world. We now consider search setting
-in which both the position of the robot and and aspects of environment are uncertain. Given the
-unstructured nature of the belief a histogram parametrisation of the joint distribution over the
-robot and the environment is necessary. However, naively doing so becomes quickly intractable as
-the computational cost is exponential in terms of the parametrisation. We demonstrate that by
-only parametrising the marginals and by memorising the parameters of the measurement likelihood
+Both search tasks above can be considered as active localisation as the uncertainty
+originates only from the position of the agent in the world. We consider searches
+in which both the position of the robot and features of the environment are uncertain. Given the
+unstructured nature of the belief a histogram parametrisation of the joint distribution of the robots position
+and features is necessary. However, naively doing so becomes quickly intractable as
+the space and time complexity is exponential. We demonstrate that by only parametrising the marginals and by memorising the parameters of the measurement likelihood
 functions we can recover the exact same solution as the naive parametrisations at a cost which is
-linear in space and time complexity as oppose to exponential.
+linear in space and time complexity.
+
+%We make the assumption that the probability density function, representing the human's belief, is updated by a Bayesian recursion and 
+%that this process is similar to the way in which humans integrate information.
+%There are many robotic application domains in which uncertainty resulting from a lack of visual perception is common, such as underwater maintenance, planetary 
+% exploration and occluded manipulation tasks. Learning human search models and transferring them to robots is useful in such domains 
+% and learning a search strategy from scratch would prove intractable.
+
+%A difficulty in learning humans reasoning mechanisms, in the search scenarios we consider, is that
+%the humans beliefs and sensations (haptic and tactile) are unobservable and that they vary within and
+%across subjects. We infer the human sensations from either assuming kinematic relationship between tactile 
+%information and known geometric description of the environment or by equipping the human subject with a 
+%tool mounted with a force-torque sensor, whose measurements are used to infer the human sensations. The actual
+%sensations, which are a function of either the sensor tool or kinematic-environment measurements, are
+%transformed to a binary feature vector which encodes whether contact are present between features
+%such as surfaces, edges and corners of the environment.
+
+%We evaluate this methodology of learning search strategies in a task consisting of finding an object on a table. 
+%We demonstrate that multiple search strategies are encoded in the joint belief-action distribution and 
+%we compare this approach with greedy myopic and coastal navigation search algorithms. The results show that the human learned 
+%search model is the fastest of all methods.
+
+%We consider in a second setting a task in which human subjects have to demonstrate how 
+%to search for and connect a plug to a power socket to a robot apprentice deprived of visual information. 
+%We take the same approach but incorporate the learning of the policy into a reinforcement learning framework 
+%and demonstrate that by defining a simple cost function the quality of the final learned policy can be significantly
+%improved without the need of performing exploratory rollouts which are costly and typically necessary in RL.
+
+
 
 \mylineskip
 
@@ -74,33 +65,21 @@ linear in space and time complexity as oppose to exponential.
 \end{abstract}
 
 \begin{resume}
-\lettrine[lines=2]{R}{aisonner} et prendre des décisions pour résoudre des problèmes avec une information partielle est une difficulté  à laquelle doit faire face tout être: virtuels, synthétiques ou biologiques. Les tentatives de résolution de problèmes dont l'information spatiale est partielle débouchent sur un nombre exorbitant d'actions possibles ayant chacune une probabilité de réussite propre. Ceci rend la résolution de tels problèmes difficile lors de l'emploi des méthodes de planning traditionnelles.
+\vspace*{-2cm}
+\lettrine[lines=2]{R}{aisonner} et prendre des décisions pour résoudre des problèmes avec une information partielle est une difficulté  à laquelle doit faire face tout être intelligent. 
+Les tentatives de résolution de problèmes dont l'information spatiale est partielle débouchent sur un nombre exorbitant d'actions possibles ayant chacune une probabilité de 
+réussite propre. Ceci rend la résolution de tels problèmes difficile lors de l'emploi des méthodes de planning traditionnelles.
 
-Par l'éducation et de l'auto-apprentissage, l'être humain a su acquérir la capacité d'agir dans les situations où l'incertitude est omniprésente. Les intelligences artificielles ou les robots auraient à bénéficier de cette capacité afin de résoudre de manière optimale des tâches qui sont partiellement spécifiées et donc où l'incertitude règne.
-
-Un grand nombre de travaux scientifiques ont mis l'accent sur le transfert du comportement humain aux robots via la programmation par apprentissage. Cette méthode permet au robot d'apprendre à imiter les comportements humains. Des tâches contenants des éléments telles que la manipulation d'objets ou la locomotion bipède ont été encodées par des fonctions symboliques, statistiques ou dynamiques.  Cependant, des exemples de transfert de comportement cognitif de plus haut niveaux aux robots sont plus rares, ainsi que les compétences en résolution de problèmes et les stratégies d'exploration.
-
-L'objectif de ce mémoire est de créer des modèles mathématiques correspondant au raisonnement humain à l'égard de l'incertitude présente durant des tâches d'exploration dans le domaine de la navigation spatial à l'aide du touché, c'est-à-dire sans information visuelle. Ces modèles de raisonnement sont transférés à un robot apprenti. Cette méthode évite un long apprentissage de notre savoir au robot.
-
-Le choix de la navigation spatial au touché a été motivé par le fait qu'il existe de nombreux domaines d'application robotique où l'incertitude résultante d'une absence de perception visuelle est fréquente. L'entretien des fonds marins, l'exploration planétaire et des tâches de manipulation avec des occlusions fréquentes en sont quelques exemples.
-
-Pour ce travail les scénarios suivants sont étudiés: la localisation d'un objet dans une pièce et l'établissement d'une connexion  avec une prise électrique. 
-
-Une difficulté présente dans l'apprentissage du raisonnement humain, dans les scénarios de recherche que nous considérons, réside dans le fait que les pensées et sensations (haptique et tactile) humaines sont inobservables et varient entre les personnes. Lors d'expérimentations, les sensations perçues par les sujets en fonction de la géométrique de leur environnement ont pu être déduites par l'observation de leurs relation cinématiques. Pour d'autres prises de données les sujets ont été équipés d'un capteur de force de façon à déduire leurs sensations. Pour toutes les tâches considérées ces mesures sont transformées en un vecteur binaire générique.
-
-Les données ainsi obtenues sont utilisée pour modéliser les pensées humaines via une fonction de densité de probabilité. Celle-ci est actualisée au travers d'une estimation bayésienne récursive; qui est similaire au processus humain d'intégration d'information en continu.
-
-La modélisation des processus de raisonnement des sujets humains effectuant les tâches exploratoires nous apprend une distribution conjointe des pensées et actions (vitesses de l'effecteur). La dimensionnalité élevée de l'état de la pensé et de sa complexité exige sa simplification aux états les plus probables tout en conservant l'information de l'entropie. Une méthode réalisée à partir de ces modèles et transmise à un robot lui a permis d'effectuer ces tâches de manière plus efficace qu'avec une méthode traditionnelle. 
-
-Nous considérons une deuxième tâche qui consiste à connecter une fiche à une prise électrique. Nous prenons la même approche, que nous perfectionnons en intégrant un système  de renforcement de l'apprentissage. Nous démontrons qu'une simple fonction objective des coûts de la qualité améliore significativement les capacités du robot.
-
-Les deux tâches d'exploration mentionnées ci-dessus peuvent être considérées comme des problèmes de localisation-actif où l'incertitude est uniquement présente dans la relation entre la position de l'humain vis-à-vis du cadre de référence, le monde. Nous considérons maintenant un problème d'exploration où l'incertitude se trouve à la fois dans la position du robot (ou l'humain) et dans des aspects de l'environnement  comme la position d'objets. Étant donné la nature non structurée de l'incertitude un histogramme est choisi pour paramétrer la distribution conjointe des positions du robot et de l'environnement. Cependant, cette stratégie devient rapidement intenable; le coût de résolution devenant exponentiel en fonction du grand nombre de paramètres. 
-
-Nous démontrons qu'en appliquant les probabilités marginales aux paramètres des mesures, nous pouvons reproduire la solution identique de l'histogramme avec une complexité linéaire au lieu d'exponentielle.
+L'objectif de ce mémoire est de créer des modèles mathématiques correspondant au raisonnement humain à l'égard de l'incertitude présente durant des tâches d'exploration dans le domaine de la navigation spatial 
+à l'aide du touché, c'est-à-dire sans information visuelle. Ces modèles de raisonnement sont transférés à un robot apprenti. Cette méthode évite un long apprentissage de notre savoir au robot.
 
 
-
-
+Les deux tâches d'exploration mentionnées ci-dessus peuvent être considérées comme des problèmes de localisation-actif où l'incertitude est uniquement présente dans la relation entre la position de l'humain 
+vis-à-vis du cadre de référence, le monde. Nous considérons maintenant un problème d'exploration où l'incertitude se trouve à la fois dans la position du robot (ou l'humain) et dans des aspects de l'environnement  
+comme la position d'objets. Étant donné la nature non structurée de l'incertitude un histogramme est choisi pour paramétrer la distribution conjointe des positions du robot et de l'environnement. Cependant, cette 
+stratégie devient rapidement intenable; le coût de résolution devenant exponentiel en fonction du grand nombre de paramètres. 
+Nous démontrons qu'en appliquant les probabilités marginales aux paramètres des mesures, nous pouvons reproduire la solution identique de l'histogramme avec une complexité 
+linéaire au lieu d'exponentielle.
 
 \mylineskip
 

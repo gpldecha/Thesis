@@ -191,7 +191,7 @@
                 \textsf{\@advisor, thesis advisor}\\
                 \textsf{Prof. Pedro U. Lima, examiner}\\
 				\textsf{Dr. Thrish Nanayakkara, examiner}\\
-				\textsf{Dr. Mathew Magimai Dossw, examiner}\\
+				\textsf{Dr. Mathew Magimai Doss, examiner}\\
                 \vfil}%
 		%\vbox to 0.5in{\thesis@volume\vfil}
 		\textsf{Lausanne, Switzerland\\
