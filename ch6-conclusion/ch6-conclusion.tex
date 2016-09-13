@@ -38,9 +38,9 @@ current research which we summarise below.
 %	- The human policy is better at achieving the goal than a myopic and coastal navigation algorithm
 %
 
-Firstly, we demonstrate a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a mixture of search strategies 
+First, we demonstrated a Programming by Demonstration POMDP framework (PbD-POMDP) to learn a mixture of search strategies 
 from human teachers. This method allowed to extract multiple search strategies from a group of human teachers. The behaviour
-in question was predominantly risk-averse when compared to a myopic greedy policy. Even when the human subjects where localised they 
+in question was predominantly risk-averse when compared to a myopic greedy policy. Even when the human subjects were localised they 
 would keep close to salient features whilst ``en route'' to the goal. The Gaussian Mixture Model (GMM) policy of the belief-state action 
 space allowed to encode the main behaviours in a continuous POMDP policy avoiding the discretisation of actions, states and time.
 The PbD-POMDP was able to outperform both myopic and coastal navigation algorithms thus demonstrating the usefulness of the human 
@@ -61,11 +61,11 @@ used to solve POMDP problems.
 %	- No need for explorative rollouts
 %	- Fitted method means no need to 
 
-Secondly, we propose a Reinforcement Learning (RL) extension in which the task is explicitly described by a binary reward 
-function. By combining the reward function and the explorative-exploitative data, provided by human teachers, in 
+Second, we proposed a Reinforcement Learning (RL) extension in which the task is explicitly described by a binary reward 
+function. We demonstrated that by combining the reward function and the explorative-exploitative data, provided by human teachers, in 
 a fitted actor-critic RL framework a significantly improved policy can be obtained after one iteration of policy evaluation
 and improvement. This mitigates the need of time consuming rollouts which is the traditional bottleneck in RL.
-We bring a modified version of the EM algorithm (Q-EM) which weights individual demonstration data points by 
+We utilised a modified version of the EM algorithm (Q-EM) which weights individual demonstration data points by 
 either the Q or advantage function. This approach allows to take into account the quality of the demonstrations, which was not the case 
 in the PbD-POMDP approach. We demonstrated that when solely the worst two teachers' data was used, our RL method, RL-PbD-POMDP,
 outperformed our previous PbD-POMDP approach at a peg-in-hole task. 
@@ -80,12 +80,13 @@ outperformed our previous PbD-POMDP approach at a peg-in-hole task.
 %significantly improve the performance of a search strategy designed to accomplish a peg-in-hole task.
 % need to say that much fewer demonstrations are needed
 
-Thirdly, we bring a Bayesian State Space Estimator (BSSE), which we name Measurement Likelihood Memory Filter (MLMF), to solve 
+Third, we developed a Bayesian State Space Estimator (BSSE), which we name Measurement Likelihood Memory Filter (MLMF), to solve 
 the Simultaneous Localisation and Mapping (SLAM) problem where only haptic information is available.
-This filter does not make any assumptions on the structure of the beliefs, they don't need to be Gaussian (EKF-SLAM). The MLMF is parameterised by the function parameters of the likelihood functions as oppose
-to their values as it is the case for Histogram-SLAM. We demonstrate that the MLMF  is able to overcome the inherent exponential space and 
-time complexity present in its Histogram counterpart. To the best of our knoweldge this is the first 
-work which considers mostly negative information in a SLAM setting.
+This filter does not make any assumptions on the structure of the marginal distributions, they do not need to be Gaussian (EKF-SLAM). 
+The MLMF is parameterised by the function parameters of the likelihood functions as oppose
+to their values as it is the case for Histogram-SLAM. We demonstrated that the MLMF  is able to overcome the inherent exponential space and 
+time complexity present in its Histogram counterpart. To the best of our knowledge this is the first 
+work which considers ``negative information'' (the absence of positive observation of landmarks) in a SLAM setting.
 
 
 %This novel approach considers storing the parameters of likelihood function instead of their values which 
@@ -233,9 +234,9 @@ insights.
 
  \item \textit{Humans can be poor teachers:}  Programming by Demonstration (PbD), traditionally requires an expert 
  teacher to provide a set of demonstrations in the form of state-velocity pairs which are used to learn 
- a policy represented by a regressor function. If the teacher is rarely successful at his task, learning a policy
- directly from his behaviour will yield a policy on par with the teachers performance.
- One of the original questions posed by PbD is \textit{what to imitate ?}, \cite{Billard08chapter}.
+ a policy represented by a regressor function. If the teacher is rarely successful at her/his task, learning a policy
+ directly from her/his behaviour will yield a policy on par with the teachers performance.
+ One of the original questions posed by PbD is \textit{what to imitate ?} \citep{Billard08chapter}.
  By introducing a simple binary cost function, as shown in Chapter 4, we were able to improve the quality of the policy.
  All regression based PbD methods can use the Reinforcement Learning (RL) approach used in Chapter 4, with no additional 
  rollouts being necessary.
@@ -243,7 +244,7 @@ insights.
  \item \textit{Reinforcement Learning can be easy (continuous state and action space):} 
  RL is notable for needing lengthy simulations and episodes to be successful, which typically result in 
  a complete exploration of the entire state (or parameter) space for tasks
- such as the inverted-pendulum or mountain cart.  This is infeasible for learning a  complicated continuous state 
+ such as the inverted-pendulum or mountain cart.  This is type of optimisation through random search is not feasible for learning a complicated continuous state 
  and action space policy with a long time horizon.
  
  In using RL during both my PhD and Master Thesis, there was always some magic required

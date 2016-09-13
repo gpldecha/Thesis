@@ -226,18 +226,18 @@ is large compared with the state space, \cite{ACML_variance_2015}.
 This results from the large variance of the policies' gradient, making the stochastic gradient ascent learning slow. 
 In Chapter 3, the learned PbD-POMDP policy has over 80 Gaussian functions, each of dimension 7, and we expect the 
 number of parameters of this RL policy to be of the same order. So instead we opt for an Actor-critic (AC) approach 
-which has been reported and proven \cite{rl_ac_surv_2012} to be more efficient, as the variance of the gradient of the 
-policy's parameters have a smaller variance compared with actor methods (policy gradient). This results in a faster learning of 
-the policy. 
+which has been reported and proven to be more efficient in terms of the number of episodes necessary to achieve 
+convergence \citep{rl_ac_surv_2012}, as the variance of the gradient of the policy's parameters have a smaller 
+variance compared with actor methods (policy gradient). This results in a faster learning of the policy. 
 
-Actor-critic \cite[Chap. 6.6]{sutton98a} is an RL approach in which the policy (actor) and critic (value function) 
+Actor-critic \cite[Chap. 6.6]{sutton98a} is an RL approach in which the actor (policy) and critic (value function) 
 have separate parameterization and can be represented by different functions, for instance the value function could be a 
 decision tree and the policy a neural network. The advantage of an AC is that the policy can be chosen such 
 that it is computationally efficient in evaluating actions and the value function does not necessarily have to have
 the same input space as the policy.  %The parameters of both the actor 
 %and critic are learned via gradient ascent on the Temporal Different (TD) error. 
 
-The policy gradient theorem \cite{Sutton00policygradient} states that if the regressor functions of both the
+The policy gradient theorem \citep{Sutton00policygradient} states that if the regressor functions of both the
 actor and critic share the same basis functions (also called \textit{compatible} features) and their parameters are linear, 
 then an unbiased estimate of the policies' gradient can be obtained. The drawback of this 
 approach is that both the value function and policy have to be defined over the state-action space.  
@@ -329,7 +329,7 @@ it easier to connect, and \textit{socket C} has a flat elevated surface. See Fig
 \end{figure}
 
 The human teacher holds the plug which is attached to a cylindrical handle with 
-an ATI 6 axis force torque sensor (Nano25 \footnote{http://www.ati-ia.com/products/ft/sensors.aspx}) 
+an ATI 6 axis force torque sensor (Nano25\footnote{http://www.ati-ia.com/products/ft/sensors.aspx}) 
 to provide \textbf{raw} wrench $\phi \in \mathbb{R}^6$ measurements. We define the \textbf{actual} measurement 
 to be a function of the raw wrench, $\tilde{y}_t = h(\phi_t)$, which is a binary feature vector. The feature vector encodes whether a contact is present 
 and the direction in which it occurs, which is discretized to the four cardinalities.
@@ -367,8 +367,8 @@ and subsequently increases the uncertainty of the position.  The measurement mod
 of the state space from which a measurement $\tilde{y}_t$ could have originated. 
 In Figure \ref{fig:PMF} (\textit{Bottom-right}) we illustrate the likelihood when an edge is sensed.
 
-A PMF is chosen to represent the believed location of the plug as the sensing likelihoods are non-gaussian and lead to multi-modal distributions.  
-A PMF is able to capture such non-gaussianity whilst remaining fully deterministic 
+A PMF is chosen to represent the believed location of the plug as the sensing likelihoods are non-Gaussian and lead to multi-modal distributions.  
+A PMF is able to capture such non-Gaussianity whilst remaining fully deterministic 
 (which is not the case for a particle filter).
 
 \begin{figure*}
@@ -389,12 +389,14 @@ impractical to directly learn a statistical policy $\pi_{\theta} : p(x_t|y_{0:t}
 without some form of compression. One possibility would be E-PCA \cite{NIPS2002_2319} which extracts a set of 
 representative basis features. Although elegant this method 
 requires a discretisation of the belief space which is computationally expensive. Instead we choose to 
-compress the pdf to a belief space vector composed of the maximum a posteriori, $\hat{x}^{\mathrm{MAP}}_t = \argmax_{x_t} p(x_t|y_{0:t},\dot{x}_{1:t}) \in \mathbb{R}^3$, and the differentiation entropy, 
-$U = H\{p(x_t|y_{0:t},\dot{x}_{1:t})\} \in \mathbb{R}$. All pdfs in our recorded data set $D$ are transformed to 
-a belief space feature vector, $b_t = [\hat{x}^{\mathrm{MAP}}_t,U_t]^{\mathrm{T}}$. 
+compress the pdf to a belief space vector composed of the maximum a posteriori (most likely state), as in Chapter 3 page \pageref{ch3:formulation}. 
 
-Each participant's demonstration results in a dataset $D=\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}$, 
-where the upper index $[i]$ references the ith search trajectory (also one execution of the task or one episode) and 
+%$\hat{x}^{\mathrm{MAP}}_t = \argmax_{x_t} p(x_t|y_{0:t},\dot{x}_{1:t}) \in \mathbb{R}^3$, and the differentiation entropy, 
+%$U = H\{p(x_t|y_{0:t},\dot{x}_{1:t})\} \in \mathbb{R}$. All pdfs in our recorded data set $D$ are transformed to 
+%a belief space feature vector, $b_t = [\hat{x}^{\mathrm{MAP}}_t,U_t]^{\mathrm{T}}$. 
+
+Each participant's demonstration results in a dataset ${\mathcal{D} =\{\dot{x}^{[i]}_{1:T},\omega^{[i]}_{1:T},\phi^{[i]}_{1:T},b^{[i]}_{1:T}\}}$, 
+where the upper index $[i]$ references the $i$th search trajectory (also one execution of the task or one episode) and 
 subscript $1:T$ denotes the time steps during the trajectory from initialisation $t=1$ until the end $t=T$. 
 %The data consisted of the plug's linear velocity, $\dot{x} \in \mathbb{R}^3$, 
 %angular velocity $\omega \in \mathbb{R}^3$, the sensed wrench $\phi \in \mathbb{R}^6$ (force-torque),
@@ -419,7 +421,7 @@ The next section describes in detail the protocol for the search task:
 
 \begin{enumerate}
  \item Participant signs a form of consent before starting the experiment.
- \item Each participant is given the opportunity to familiarise himself with the environment and become 
+ \item Each participant is given the opportunity to familiarise themselves with the environment and become 
  comfortable in wearing the sensor deprivation apparatus.
  During this time the participant is allowed to practice connecting the plug to the socket whilst standing within its vicinity.  
  \item Once the participant feels sufficiently ready to carry out the task to the best of his ability, the experimenter 
@@ -492,7 +494,7 @@ socket B and C will be used solely to evaluate the generalisation of the policy.
 
 In our approach we learn two data driven policies. The first policy maps from belief space 
 to linear velocity $\pi_{\Param_1} : b \mapsto \dot{x}$ and the second from 
-angular sensed wrench to angular velocity, $ \pi_{\Param_2} : \phi \mapsto \omega$.
+wrench to angular velocity, $ \pi_{\Param_2} : \phi \mapsto \omega$.
 We chose to learn the belief policy $\pi_{\Param_1}$ in a Actor-Critic RL framework 
 and the wrench policy $\pi_{\Param_2}$ directly from the demonstrated data as was done 
 in \cite[Chap. 5]{Kronander2015}, which proved to be efficient in overcoming jamming during the PiH. 
@@ -514,26 +516,26 @@ to control the orientation to avoid jamming.
 %Two control policies are learned; The first $\pi_{\Param_1}: b \mapsto \U$, maps belief state $b$ to linear velocity, 
 %$\U$ and the second, $\pi_{\Param_2}: \phi \mapsto \omega$ , sensed wrench, $\phi$, to angular velocity, $\omega$.
 %These actors/policies are parametrised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
-Both the linear and angular velocity policies are parameterised by a Gaussian Mixture Model (GMM), Equation \ref{eq:GMM}.
-
-\begin{equation}
- \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) \label{eq:GMM}
-\end{equation}
-The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
-of the individual Gaussian functions, $g(.)$,
-\begin{center}
-$\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
-$\SigK =  \begin{bmatrix} 
-	  \SigK_{\U\U} & \SigK_{\U\B} \\
-	  \SigK_{\B\U} & \SigK_{\B\B}
-	  \end{bmatrix}$
-\end{center}
-where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in \mathbb{R}^{4}$.
+%Both the linear and angular velocity policies are parameterised by a Gaussian Mixture Model (GMM), 
+%\begin{equation}
+% \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) \label{eq:GMM}
+%\end{equation}
+%The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+%of the individual Gaussian functions, $g(\cdot)$,
+%\begin{center}
+%$\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
+%\SigK =  \begin{bmatrix} 
+%	  \SigK_{\U\U} & \SigK_{\U\B} \\
+%	  \SigK_{\B\U} & \SigK_{\B\B}
+%	  \end{bmatrix}$
+%\end{center}
+%where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in \mathbb{R}^{4}$.
 %There are three steps to learning and use for control a GMM model.  Firstly a generative model is learned through 
 %Expectation-Maximisation (EM) which maximised the likelihood
 
 A generative model of the angular velocity and wrench $\pi_{\Param_2}(\omega,\phi)$ and a generative model 
 of the linear velocity and belief state $\pi_{\Param_1}(\dot{x},b)$ are learned. 
+The structure of $\pi_{\Param_1}$ is the same as in Chapter 3 Section \ref{chap3:policies} on page \pageref{chap3:policies} 
 In both cases we use the Bayesian Information Criterion to determine the number of Gaussian functions.
 In the next section, we will show how the parameters of $\pi_{\Param_1}$ can be adapted by the value function of the Critic.
 
@@ -569,8 +571,8 @@ the performance of the current policy. It is the expected future reward given th
 belief state and policy.
 In our method a reward of $r=0$ is received at each time step
 until the goal (plug-socket connection) is achieved, where a reward of 100 is given, $r_{T}=100$.
-Given the continuous nature and dimensionality of the belief space we use Locally Weighted Regression \cite{Atkeson97locallyweighted}
-(LWR) as a function approximator of the value function, $V^{\pi}(b)$. LWR is a memory-based non-parametric function 
+Given the continuous nature and dimensionality of the belief space we use Locally Weighted Regression (LWR) \citep{Atkeson97locallyweighted}
+as a function approximator of the value function, $V^{\pi}(b)$. LWR is a memory-based non-parametric function 
 approximator. It keeps a set of input-target pairs $\{(\B,r)\}$ as parameters. When a value, $\B$, is 
 queried, a set of $p$ neighbouring points are chosen from the input space and are 
 weighted according to a distance metric. The predicted output is given by a weighted 
@@ -587,17 +589,15 @@ A new value is queried according to Equation \ref{eq:lwr_predict},
 where $B = (\B_1,\dots,\B_p)^{\mathrm{T}} \in \mathbb{R}^{(D\, \times\, p)}$, $W \in \mathbb{R}^{(p\, \times\, p)}$ is
 a diagonal matrix, $\mathbf{r} = (r_1,\cdots,r_p)^{\mathrm{T}} \in \mathbb{R}^{(p\, \times\, 1)}$
 
-%We chose this method because it is a safe regressor to use when estimating a value 
-%function \cite{Boyan95generalizationin} and is very flexible since it is non-parameteric.
 
-\subsection{Fitted policy evaluation and improvement}\label{sec:fpe}
+\subsection{Fitted Policy Iteration}\label{sec:fpe}
 
 \paragraph{Policy evaluation}\\
 
-To learn the value function we make use of batch reinforcement learning \cite{EGW05}, also known as Experience replay.
+To learn the value function we make use of batch reinforcement learning \citep{EGW05}, also known as Experience replay.
 This is an offline method which applies multiple sweeps of the Bellman backup operator 
 over a dataset of tuples $\{(\Bi_t,\Ui_t,r^{[i]}_{t},\Bi_{t+1})\}_{i=1,\cdots,M}$ until the Bellman residual,
-$||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||$, converges. 
+${||V^{\pi}_{k+1}(\B) - V^{\pi}_{k}(\B)||}$, converges. 
 
 \begin{center}
 \begin{minipage}{.65\linewidth}
@@ -623,7 +623,7 @@ Q-Bellman backups, ${\hat{Q}(\B_t,\U_t) \leftarrow \gamma \max_{\U_{t+1}} \hat{Q
 require an optimisation over the action space, $\U_{t+1}$, to find the best applicable action. 
 Given the dimensionality and continuity of our problem we opt for an on-policy evaluation method
 which requires multiple \textit{policy evaluation} and \textit{policy improvement} iterations to achieve an optimal policy.
-In order for the RL-PbD-POMDP and PbD-POMDP to be comparable we will only be performing one iteration of policy evaluation
+In order for the RL-PbD-POMDP and PbD-POMDP to be comparable, we will only be performing one iteration of policy evaluation
 and improvement, hence Algorithm \ref{alg:fpe} is applied only once to the dataset.
 % Need to make clear we only do one iteration
 
@@ -656,7 +656,7 @@ which will maximise the expected reward, equivalent to maximising Equation \ref{
 	  &= \sum\limits_{i=1}^{N}   \underbrace{\left( \prod_{t=0}^{T^{[i]}} \pi_{\Param}(\U^{[i]}_t,\B^{[i]}_t) \right)}_{p_{\Param}(\tau_i)} \, R(\tau_i) 
 \end{align}
 where $\tau_i = \{(\U_0,\B_0),\cdots,(\U_T^{[i]},\B_T^{[i]}) \}$ are the state-action samples of the $i$th episode.
-To find the parameters which maximise the cost function, $\argmax_{\Param} J(\Param)$, its derivative is set to zero. 
+To find the parameters which maximise the cost function, $\argmaxA\limits_{\Param} J(\Param)$, its derivative is set to zero. 
 As this cannot be done directly, we maximise the logarithmic lower bound of the cost function which results in 
 Equation \ref{eq:grad_log_cost}, see Appendix \ref{app:lb} for the derivation.
 
@@ -677,31 +677,13 @@ is close to the true value function $V^{\pi}$, the TD error $\delta^{\pi}$ is an
 Using the advantage function as means of policy search is popular with methods such as
 Natural Actor Critic (NAC) \cite{peter_nac_2008}.
 
-Each state-action sample $j$ has an associated weight, $\delta_j \in \mathbb{R}$, where $\delta_j > 0$ means that the 
-$j$th state action-pair lead to an increase in the value function and $\delta_j < 0$ lead to 
+Each state-action sample has an associated weight, $\delta^{\pi}_t \in \mathbb{R}$, where $\delta^{\pi}_t > 0$ means that the 
+state action-pair lead to an increase in the value function and $\delta^{\pi}_t < 0$ lead to 
 a decrease in the value function. The data log-likelihood is re-weighted accordingly, giving more importance to data points which lead to a gain. Since 
 the Q-EM update steps cannot allow negative weights, the TD error is rescaled to be between 0 and 1. % we already sed this
 
 The reader is referred to Appendix \ref{app:grad} for the Maximisation update step of Q-EM for a 
 GMM parameterization of the policy.
-
-%We learn the plug-socket search policy using the Q-EM update rules for a GMM parametrisation with the 
-%data set, $D_1 = \big\{\U^{[i]}_{1:T},\B^{[i]}_{1:T},\delta^{[i]}_{1:T}\}^{i=1\dots N}$ and learn a second policy for inserting the 
-%final steps of connecting the plug to socket with data set $D_2 = \{\omega^{[i]}_{1:T},\phi^{[i]}_{1:T}\}^{i=1\dots N}$. 
-%In Figure \ref{fig:data_flow} we illustrate the data flow and the policies which are learned. Note that we also learn a belief space 
-%policy directly from the demonstrations, $\pi_{\Param_3}(\U,\B)$, which we will refer to as the GMM policy and we will use it to compare 
-%with the policy corrected by the Critic, which we call the Q-EM policy.
-%\begin{figure}[h]
-%  \centering
-%  \includegraphics{Figures/data_flow_2.pdf}
-%  \caption{Data flow and policies learned. The original data consists of five variables which are recorded during the demonstrations given 
-%  by the human teachers. The probability density function of the believed location of the end effector is compressed to a belief state, which 
-%  is the most likely state and entropy. The value function is learned via fitted policy iteration and each data point has a temporal difference 
-%  error. An actor policy is learned via Q-EM, $\pi_{\Param_1}(\U,\B)$ , a regular policy is learned via the standard EM approach, $\pi_{\Param_3}(\U,\B)$
-%  and a plug insertion policy is learned $\pi_{\Param_2}(\U,\B)$.}
-%  \label{fig:data_flow}
-%\end{figure}
-
 
 %\subsection{Fitted policy evaluation and improvement}
 \paragraph{2D example fitted policy evaluation and improvement}\\
@@ -733,7 +715,7 @@ rollouts (closer to the optimal path) than the trajectories generated by the pol
  \setlength\fboxsep{0pt}
   \setlength\fboxrule{0.25pt}
   \includegraphics[width=\textwidth]{./ch4-PiH/Figures/fpe_example.pdf}
- \caption{Fitted policy evaluation \& improvement example. 
+ \caption{Fitted policy evaluation and improvement example. 
   \textit{Top-left:} The goal of the task is to reach the goal state. The first teacher (blue) demonstrates 
   five trajectories which contours the obstacle in front of the goal. The second teacher (red) demonstrates 
   5 trajectories which initially deviate from the goal before passing between the two obstacles. 
@@ -743,7 +725,7 @@ rollouts (closer to the optimal path) than the trajectories generated by the pol
   Value function after fitted policy evaluation terminated, the reward function 
   is binary, $r=1$ at the goal and zero otherwise, and a discount factor $\gamma = 0.99$ is used.
   \textit{Bottom-right} \textit{Policy Improvement:} the GMM is learned with the Q-EM algorithm in which 
-  each data point's weight proportional to the advantage function.
+  each data point's weight is proportional to the advantage function.
  }
   \label{fig:fpe_example}
 \end{figure}
@@ -807,16 +789,18 @@ In autonomous dynamical systems control, the velocity is obtained from
 the expectation of the conditional, Equation \ref{eq:gmm_conditional}. However, the expectation which is a weighted 
 linear combination of the modes, could result in unobserved behaviour or no movement if the velocities cancel out. 
 As a result we use a modified version of the expectation operator which favours the current
-direction, Equation \ref{eq:alpha_eq} - \ref{eq:alpha_expectation}.
+direction, the same steps in Chapter 3 Section \ref{sub:ch3:control} on page \pageref{sub:ch3:control} are taken to 
+generate a control signal for the robot.
 
-\begin{align}
- \alpha(\dot{x}) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<\dot{x},\MuK_{\xb}>)) \label{eq:alpha_eq}\\
- \dot{x} &= \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|b)\} = \sum_{k=1}^K \alpha_k(\dot{x}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
-\end{align}
+%Equation \ref{eq:alpha_eq} - \ref{eq:alpha_expectation}.
+%\begin{align}
+% \alpha(\dot{x}) &= w^{[k]}_{\xb} \cdot \exp(-\cos^{-1}(<\dot{x},\MuK_{\xb}>)) \label{eq:alpha_eq}\\
+% \dot{x} &= \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|b)\} = \sum_{k=1}^K \alpha_k(\dot{x}) \cdot \MuK_{\xb} \label{eq:alpha_expectation}
+%\end{align}
 
-When the applied velocity mode is no longer present another direction is sampled. For example, when the robot enters in contact 
-with a feature, greatly reducing the uncertainty, the current mode changes and a new search direction is computed. 
-Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM, both learned from teachers demonstrations.
+%When the applied velocity mode is no longer present another direction is sampled. For example, when the robot enters in contact 
+%with a feature, greatly reducing the uncertainty, the current mode changes and a new search direction is computed. 
+%Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM, both learned from teachers demonstrations.
 
 \begin{figure}
    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/policy_vf.pdf}
@@ -832,55 +816,47 @@ Figure \ref{fig:policy_vf} illustrates the policy vector field for GMM and Q-EM,
 
 \subsection{Robot Implementation}
 
-The GMM policy $\dot{\underbar{x}} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|b)\}$ outputs a linear velocity which is normalised, $\dot{\underbar{x}} \in \mathbb{R}^{(3 \times 1)}$. 
+The GMM policy outputs a linear velocity which is normalised, $\underline{\dot{x}} \in \mathbb{R}^{(3 \times 1)}$. 
 The amplitude of the velocity is computed separately and modulated according to sensed forces on the end-effector.
 This search task is haptic and the end-effector of the robot is always in contact with the environment. To make the robot
 compliant with the environment we use an impedance controller in combination with a hybrid position-force controller. A hybrid controller
-targets a sensed force $F_x$, in the $x$-axis, of 3N. The $y$ and $z$ velocity components of the direction vector are given by 
-Equation \ref{eq:alpha_expectation}. This is insufficient for the robot to reliably surmount the edges of the socket,
+targets a sensed force $F_x$, in the $x$-axis, of 3 Newtons (N) . The $y$ and $z$ velocity components of the direction vector are given by 
+Equation \ref{eq:w_expectation} on page \pageref{eq:w_expectation}. This is insufficient for the robot to reliably surmount the edges of the socket,
 hence the vector field of the GMM is modulated in $y$ and $z$-axis, Equation \ref{eq:modulation}.
 
 \begin{equation}
-  \dot{\underbar{x}} = R_y(c(F_z) \cdot \pi/2) \cdot R_z(c(F_y) \cdot \pi/2) \cdot \dot{\underbar{x}} \label{eq:modulation}
+  \underline{\dot{x}} = R_y(c(F_z) \cdot \pi/2) \cdot R_z(c(F_y) \cdot \pi/2) \cdot \underline{\dot{x}} \label{eq:modulation}
 \end{equation}
 
 where $R_y$ and $R_z$ are $(3 \times 3)$ rotation matrices around the $y$ and $z$-axis, and $c(F) \in [-1,1]$ is a truncated scaling function of the sensed 
 force.  When a force $F_z$ of 5N is sensed, a rotation of $R_y(\pi/2)$ is applied to the original direction resulting in the robot
-getting over the edge. The direction velocity is always normalised up to this point. The amplitude of the velocity is a proportional
-controller based on the believed distance to the goal,
-\begin{align}
-  \nu     &= \max(\min(\beta_1,K_p (x_g - \hat{x}),\beta_2)\label{eq:prop_speed}\\ \nonumber
-  \dot{x} &= \nu \dot{\underbar{x}}
-\end{align}
-where the lower and upper amplitude limits are given by $\beta_1$ and $\beta_2$, $x_g$ is the position of the
-goal, and $K_p$ the proportional gain which was tuned through trials. 
-
-% $\omega_t = \mathrm{angleaxis}(\mathbf{R}^{\mathrm{T}} \mathbf{R}^r)$  $\mathbf{R}^r = I$
+getting over the edge. The direction velocity is always normalised up to this point. The amplitude of the velocity is a computed 
+as in Chapter 3 Equation \ref{eq:ch3:amplitude} on page \pageref{eq:ch3:amplitude}. 
 
 The above procedure can control the general behaviour of the search but is insufficient for a successful implementation on a robotic system 
 such as the 7 Degree of Freedom $q\in\mathbb{R}^7$ KUKA LWR, which we illustrate in Figure \ref{fig:kuka}. 
-The GMM policy $\dot{x} = \mathbb{E}_{\alpha}\{\pi_{\Param_1}(\dot{x}|b)\}$ outputs a linear velocity and the 
-angular velocity is computed from a reference orientation which is constant. When the plug is to be connected to the socket, 
-the angular velocity is the output of samples drawn from the conditional $\omega \sim \pi_{\Param_2}(\omega|\phi)$.
-From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to 
-define a linear and angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  
-the current position $x$ and orientation $R$.
-Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
-Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
+The belief policy's outputs a linear velocity and the angular velocity is computed from a reference orientation which is constant. 
+When the plug is to be connected to the socket, the angular velocity is the output of samples drawn from the conditional 
+$\omega \sim \pi_{\Param_2}(\omega|\phi)$. The steps to convert Cartesian velocities to 
+torques to control the KUKA LWR are also the same as in Chapter 3. Figure \ref{fig:control_flow} illustrates the complete control flow.
 
-\begin{equation}\label{eq:torque_control}
- \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
-\end{equation}
 
-where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
-and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
-Figure \ref{fig:control_flow} illustrates the complete control flow.
+%From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ 
+%and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to define a linear and 
+%angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  the current position $x$ and orientation $R$.
+%Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
+%Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
+%\begin{equation}\label{eq:torque_control}
+% \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
+%\end{equation}
+%where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
+%and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
 
 \begin{figure}
  \centering
  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/kuka.pdf}
  \caption{The KUKA LWR is a 7 Degree Of Freedom (DoF) robot, we illustrate in red each joint, which is controlled at a rate of 1kHz via an ethernet cable. The KUKA API provides a command interface to the 
- stiffness, damping, position and torque variables of each joint.}
+ stiffness, damping, position and torque variables of each joint. The tool is a peg holder equipped with an ATI force/torque sensor.}
  \label{fig:kuka}
 \end{figure}
 
@@ -888,7 +864,7 @@ Figure \ref{fig:control_flow} illustrates the complete control flow.
   \centering
   \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/control_flow_final.pdf}
   \caption{Control architecture. The PMF (belief) receives a measured velocity, $\dot{\tilde{x}}$, and 
-  a sensor measurement $\tilde{y}$ and is updated via Bayes rule. The belief is compressed and used by both the GMM policy and the proportional speed controller, Equation \ref{eq:prop_speed}.}
+  a sensor measurement $\tilde{y}$ and is updated via Bayes rule. The belief is compressed and used by both the GMM policy and the proportional speed controller (see Chapter 3).}
   \label{fig:control_flow}
 \end{figure}
 
@@ -1000,8 +976,7 @@ movements and little displacement. As a result the Greedy policy spends more tim
 
 In Figure \ref{fig:first_contact} (\textit{Top-left}), we illustrate the distribution of the first contact with the wall 
 during Experiment 1 for the \textit{Center} initial conditions. The distribution of the first contact of the Greedy method is uniform across 
-the entire $y$-axis of the wall. 
-It does not take into account the variance of the uncertainty. In contrast, the GMM policy remains centred with respect to the starting position and the Q-EM is even closer to the socket and 
+the entire $y$-axis of the wall. In contrast, the GMM policy remains centred with respect to the starting position and the Q-EM is even closer to the socket and 
 there is much less variance in the location of the first contact.
 
 \begin{figure}
@@ -1021,7 +996,8 @@ to reach the socket for all three experiments. In \textbf{Experiment 1}, for the
 the Q-EM policy travels far less than the other search policies. Considering that the initial position of the search is 
 0.45 [m] away from the wall, the Q-EM policy finds the socket very quickly once contact has been established with the wall. 
 For the \textit{Right} and \textit{Left} starting conditions both the GMM and Q-EM policies travel less distance to reach the socket, with a 
-smaller variance when compared with the Greedy search policy.
+smaller variance when compared with the Greedy search policy. The Q-Greedy search policy was learned solely from demonstrations given by 
+Greedy policy with state independent white noise as means of exploration.
 
 In \textbf{Experiment 2}, Figure \ref{fig:three_searches}, the Q-EM search policy is the most efficient. For \textit{Case 1} 
 of Experiment 2, the initial most likely state is fixed to the left and the true position is facing the socket. 
@@ -1033,7 +1009,7 @@ true state is facing the left edge and the believed position is facing the right
 socket than for \textit{Case 1}, Figure \ref{fig:three_searches} (b). This improvement over \textit{Case 1} is due to the true location of 
 the end-effector being closer to an informative feature and results in a much faster localisation.
 
-From \textbf{Experiment 3}, Figure \ref{fig:three_searches_exp3}, it is clear that all three search policies travel 
+From \textbf{Experiment 3}, Figure \ref{fig:three_searches_exp3}, all four search policies travel 
 less to find the socket's edge compared with the teachers' demonstrations. 
 All search policies are better than the human teachers with the exception of group BA, 
 which is performing the task with socket A. The Q-EM policy remains the best. 
@@ -1044,7 +1020,7 @@ which is performing the task with socket A. The Q-EM policy remains the best.
   \caption{Distance travelled until the socket's edge is reached. a) Three groups correspond to the initial conditions: Center, Left and Right
    depicted in Figure \ref{fig:box_exp_sim}, \textit{top left}. The Q-EM method is always better than the other methods, in terms of distance. b)
    Results of the two initial conditions depicted in Figure \ref{fig:box_exp_sim}, \textit{top middle}, both the true position and most likely state are
-   fixed. The Q-EM method always improves on the GMM. }
+   fixed. The Q-EM method always improves on the GMM. The Q-Greedy policy was learned from data provided by rollouts of a stochastic Greedy policy.}
    \label{fig:three_searches}
 \end{figure}
 \begin{figure}
@@ -1060,7 +1036,7 @@ We have shown that under three different experimental settings the Q-EM algorith
 to localise the socket. The GMM policy learned solely from the data provided by the human teachers also performs well in comparison to  
 the human teachers and Greedy policy. We made, however a critical assumption in order to be able to use our (RL-)PbD-POMDP approach. 
 This \textbf{assumption} is that a human teacher is proficient in accomplishing the task. If a teacher is not able to accomplish 
-the task in a repetitive and consistent way so that a search patter can be encoded by the GMM, the learned policy will perform poorly.
+the task in a repetitive and consistent way so that a search patterns can be encoded by the GMM, the learned policy will perform poorly.
 Next we evaluate the validity of this assumption and the importance of the training data provided by the human teachers.
 % 
 \subsection{Importance of data}
@@ -1071,7 +1047,7 @@ demonstrations. In this way we can evaluate whether it is possible to learn a su
 a few bad demonstrations (15 training trajectories for each policy). Our second evaluation consists of using a noisy 
 explorative Greedy policy as a teacher to gather demonstrations which can then be used to learn a new policy, which we call Q-Greedy. 
 
-Figure \ref{fig:subj_5_traj} illustrates 6 trajectories of teacher \# 5. The human teacher preferred to
+Figure \ref{fig:subj_5_traj} illustrates 6 trajectories of Teacher \# 5. The human teacher preferred to
 localise himself at the top of the wall before either proceeding to a corner or going directly towards the socket. Once localised, the teacher 
 would reposition himself in front of the socket and try to achieve an insertion. This behaviour was not expected 
 since by losing contact with the wall, the human teacher no longer had sensory feedback necessary 
@@ -1080,14 +1056,14 @@ to maintain an accurate position estimate.
 \begin{figure}
  \centering
     \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Fig/subject5.pdf}
-    \caption{Demonstrations of teacher \# 5. The teacher demonstrates a preference}
+    \caption{Demonstrations of Teacher \# 5. The teacher demonstrates a preference}
     \label{fig:subj_5_traj}
  \end{figure}
  
 \begin{figure}
  \centering
  \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Fig/value_subj_5.pdf}
- \caption{Value function learned from the 15 demonstrations of teacher \#5. The value of the most likely state is plotted.}
+ \caption{Value function learned from the 15 demonstrations of Teacher \#5. The value of the most likely state is plotted.}
  \label{fig:value_function_subj_5}
 \end{figure}
  
@@ -1102,7 +1078,7 @@ to maintain an accurate position estimate.
     of the Q-EM parameters this effect is reduced and moved closer towards the wall.  We can also see from the two plots of the Q-EM parameters 
     that they then follow the paths encoded by the value function.    
     \textit{Right column}: Rollouts of the policies learned from teacher \#5. We can see that trajectories from the GMM policy have not really 
-    encoded a specific search patter, whilst the Q-EM policy gives many more consistent trajectories which replicate to some extent 
+    encoded a specific search patterns, whilst the Q-EM policy gives many more consistent trajectories which replicate to some extent 
     the pattern of making a jump (no contact with the wall) from the top right corner to the socket's edge.}
     \label{fig:gmm_exp4}
 \end{figure}
@@ -1134,8 +1110,8 @@ a simple exploration technique. We performed a maximum of 150 searches, which te
 learn a value function and GMM policy which we refer to as Q-Greedy. Figure \ref{fig:three_searches} illustrates the statistical results 
 of the Q-Greedy policy for Experiment 1 and 3, showing that there is no difference between two policies. 
 Our exploration method is probably too simplistic to discover meaningful search patterns and we could probably devise better 
-search strategies which would result in a good policy. However we have shown that human behaviour does already have a usable trade-off 
-between exploration and exploitation which can be used to learn a new policy through our RL-PbD-POMDP framework.
+search strategies which would result in a good policy. However we have shown that human behaviour encompasses both
+exploration and exploitation behaviour which can be used to learn a new policy through our RL-PbD-POMDP framework.
 
 \subsection{Generalisation}
 
@@ -1236,8 +1212,6 @@ wander vertically up and down. Only when the uncertainty has been reduced does t
 \begin{figure}
  \centering
    \includegraphics[width=\textwidth]{./ch4-PiH/Figures/Results2/real_exp_socketAB.pdf}
-  % \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/real_exp_socketB.pdf}}
-  % \subfigure[]{\includegraphics[width=0.3\textwidth]{./ch4-PiH/Figures/Results2/peg_socket_connection.pdf}}
   \caption{Distance taken to connect plug to socket once the socket is localised. (a) \textbf{Socket A}. The human 
   Group A are the set of teachers who first started with socket A. They had no previous training on another socket beforehand. Group 
   BA first gave demonstrations on Socket B before giving demonstrations on Socket A. Group BA
@@ -1272,7 +1246,7 @@ that the PMF probability density representation of the belief is more accurate t
 Also, the motion noise parameter was fixed to be proportional to the velocity and the robot moves at gentle pace ($\sim1$ cm/s) as 
 opposed to some of the human teachers. In actuality, humans are far less precise than the KUKA which has sub-millimetre accuracy.
 
-\section{Discussion \& Conclusion}\label{ch4:conclusion}
+\section{Discussion and Conclusion}\label{ch4:conclusion}
 % Recapulate what we did 
 %
 % We learned a 
@@ -1320,7 +1294,7 @@ teachers. For socket A there is no clear distinction between
 the Q-EM and Greedy policy. On socket B, which was novel, the Greedy policy performed better than the statistical controllers, 
 which we hypothesize was a result of a funnel which would make it easier for a myopic policy. For socket C, both the 
 GMM and Q-EM policies performed better than the Greedy, as socket C has no features on its surface, this being a disadvantage 
-for a myopic policy.
+for a policies which do not actively minimise uncertainty.
 
 We conclude that by simply adding a binary reward function in combination with 
 data provided by human demonstrations, using fitted reinforcement learning, better policy can be learned without 

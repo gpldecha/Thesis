@@ -10,7 +10,6 @@ Database file #5: bib/citations.bib.bib
 Database file #6: bib/DT.bib.bib
 Database file #7: bib/spatial_navigation.bib.bib
 Database file #8: bib/ch3-citations.bib.bib
-Warning--empty publisher in barberBRML2012
 Warning--empty publisher in Baron-Cohen
 Warning--empty publisher in Billard08chapter
 Warning--empty publisher in Bishop_2006
@@ -32,45 +31,45 @@ Warning--empty publisher in SLAM_HBR
 Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
 Warning--empty publisher in fast_peg_pbd_icmc_2014
-You've used 169 entries,
+You've used 168 entries,
             2773 wiz_defined-function locations,
-            1648 strings with 38177 characters,
-and the built_in function-call counts, 92292 in all, are:
-= -- 8426
-> -- 4902
-< -- 178
-+ -- 1660
-- -- 1481
-* -- 7371
-:= -- 13370
-add.period$ -- 644
-call.type$ -- 169
-change.case$ -- 982
-chr.to.int$ -- 159
-cite$ -- 360
-duplicate$ -- 4455
-empty$ -- 7644
-format.name$ -- 1756
-if$ -- 20231
+            1644 strings with 38098 characters,
+and the built_in function-call counts, 91999 in all, are:
+= -- 8405
+> -- 4892
+< -- 177
++ -- 1656
+- -- 1478
+* -- 7354
+:= -- 13323
+add.period$ -- 641
+call.type$ -- 168
+change.case$ -- 979
+chr.to.int$ -- 158
+cite$ -- 357
+duplicate$ -- 4435
+empty$ -- 7612
+format.name$ -- 1752
+if$ -- 20171
 int.to.chr$ -- 11
 int.to.str$ -- 1
-missing$ -- 180
-newline$ -- 974
-num.names$ -- 683
-pop$ -- 2123
+missing$ -- 178
+newline$ -- 969
+num.names$ -- 679
+pop$ -- 2110
 preamble$ -- 1
-purify$ -- 829
+purify$ -- 826
 quote$ -- 0
-skip$ -- 3562
+skip$ -- 3550
 stack$ -- 0
-substring$ -- 3957
-swap$ -- 1099
+substring$ -- 3955
+swap$ -- 1098
 text.length$ -- 98
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1772
-warning$ -- 22
-while$ -- 759
+type$ -- 1766
+warning$ -- 21
+while$ -- 756
 width$ -- 0
-write$ -- 2433
-(There were 22 warnings)
+write$ -- 2422
+(There were 21 warnings)

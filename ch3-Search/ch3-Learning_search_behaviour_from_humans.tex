@@ -354,14 +354,24 @@ We seek to learn this mapping, ${f : p(x_{t}|y_{0:t},\dot{x}_{1:t}) \mapsto \dot
 each demonstration we record the following variables:
 
 \begin{itemize}
- \item $\dot{x}_t \in \mathbb{R}^{3}$, normalised Cartesian velocity of the hand.
- \item $\hat{x}_t = \argmaxA\limits_{x_t} p(x_{t}|y_{0:t},\dot{x}_{1:t})$, the most likely position of the
-end-effector.
+ \item $\dot{x} \in \mathbb{R}^{3}$, normalised Cartesian velocity of the hand.
+ \item $\hat{x} = \argmaxA\limits_{x_t} p(x_{t}|y_{0:t},\dot{x}_{1:t})$, end-effector's most likely position.
  \item $U \in \mathbb{R}$, entropy $H\left(p(x_{t}|y_{0:t},\dot{x}_{1:t})\right)$.
 \end{itemize}
-A statistical controller was learned from the tuple dataset: $\{(\dot{x},\hat{x},U)\}$ recorded during the search 
-trials of the human subjects. Having described the experiment we proceed to give an in-depth description 
+We define the belief state to be the compressed vector $b \in \mathbb{R}^4$
+
+\begin{equation}
+ b = \begin{bmatrix}
+       \hat{x} \\[0.3em]
+       U       \\[0.3em]
+     \end{bmatrix}
+\end{equation}
+
+
+A statistical controller was learned from the tuple dataset: $\mathcal{D} = \{\dot{x}^{[i]}_{1:T},b^{[i]}_{1:T}\}$, where the upper index $[i]$
+referenced the $i$th search trajectory, recorded during the search trials of the human subjects. Having described the experiment we proceed to give an in-depth description 
 of the mathematical representation of the belief, sensing and motion models and the uncertainty. 
+
 
 
 \subsubsection{Belief model}
@@ -512,38 +522,30 @@ Figure \ref{fig:clustering} depicts different configurations of the modes (clust
 During the experiments, the recorded trajectories show that different actions are present for the same belief and uncertainty making the data multi-modal
 (for a particular position and uncertainty different velocities are present). That is multiple actions are possible given a specific belief. 
 This results in a one-to-many mapping which is not a valid function, eliminating any regression technique which directly learns a non-linear function. 
-To accommodate this fact we use a GMM to model the human's demonstrated searches, $\{(x,\dot{x},U)\}$. 
-Using statistical models to encode control policies in robotics is quite common, see \cite{Billard08chapter}. 
+To accommodate this fact we use a GMM to model the human's demonstrated searches. Using statistical models to encode control policies in robotics is quite common, see \cite{Billard08chapter}. 
 
 % explain how much data we have vs the number of gaussian components
 By normalising the velocity the amount of information to be learned was reduced. We also took into consideration that velocity is more 
 specific to embodiment capabilities: the robot might not be able to reproduce safely some of the velocity profiles demonstrated. 
 
-The training data set comprised a total of 20'000 tuples $(\dot{x},\hat{x},U)$, from the 150 trajectories gathered from the demonstrators. 
-The fitted GMM $\pi_{\Param}(\dot{x},\hat{x},U)$ had a total of 7 dimensions, 3 for direction, 3 for position and 1 scalar for uncertainty. 
-The definition of the GMM is presented below in equation \ref{eq:gmm2}.
+The training data set comprised a total of 20'000 tuples $(\U,\B)$, from the 150 trajectories gathered from the demonstrators. 
+The learned GMM $\pi_{\Param}(\U,\B)$ had a total of 7 dimensions, $\U \in \mathbb{R}^3$ and $\B \in \mathbb{R}^4$. 
+The definition of the GMM is presented below in Equation \ref{eq:gmm2}.
 
 \begin{equation} \label{eq:gmm2}
- \pi_{\Param}(\dot{x},\hat{x},U) = \sum\limits_{k=1}^{K} \piK\, g(\dot{x},\hat{x},U\: ;\MuK,\SigK )
+ \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) 
 \end{equation}
-
-\begin{equation*}
-    \MuK =
-    \begin{bmatrix}
-      \mu_{\dot{x}} \\
-      \mu_{\hat{x}} \\
-      \mu_{U}
-    \end{bmatrix}
-    \SigK =
-    \begin{bmatrix}
-      \Sigma_{\dot{x}\dot{x}} & \Sigma_{\dot{x}\hat{x}} & \Sigma_{\dot{x}U} \\
-      \Sigma_{\hat{x}\dot{x}} & \Sigma_{\hat{x}\hat{x}} & \Sigma_{\hat{x}U} \\
-      \Sigma_{U\dot{x}} & \Sigma_{U\hat{x}} & \Sigma_{UU}   
-    \end{bmatrix}
-\end{equation*}
-Given this generative representation of the humans' demonstrated searches we proceeded to 
-select the necessary parameters to correctly represent the data. This step
-is know as model selection and we used Bayesian Information Criterion (BIC) to evaluate
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances 
+of the individual Gaussian functions, $g(.)$,
+\begin{center}
+$\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
+$\SigK =  \begin{bmatrix} 
+	  \SigK_{\U\U} & \SigK_{\U\B} \\
+	  \SigK_{\B\U} & \SigK_{\B\B}
+	  \end{bmatrix}$
+\end{center}
+where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in \mathbb{R}^{4}$. Given this generative representation of the humans' demonstrated searches we proceeded to 
+select the necessary parameters to correctly represent the data. This step is know as model selection and we used Bayesian Information Criterion (BIC) to evaluate
 each set of parameters which were optimised via Expectation-Maximisation (EM). 
 
 A total of 82 Gaussian functions were used in the final model, 67 for trajectories on the table and 15 for those in the air. In Figure
@@ -595,21 +597,21 @@ We do not show the values above the table since they provided much less informat
 The optimization of the objective function is accomplished by running the Dijkstra's algorithm. This algorithm, given a cost map, 
 computes the shortest path to a specific target from all the states. This results in a policy.
 
-\subsection{Control}
+\subsection{Control}\label{sub:ch3:control}
 The standard approach to control with a GMM is to condition on the state,
 $\hat{x}_t$ and $U_t$ in our case, and perform inference on the resulting conditional
 GMM, Equation \ref{eq:conditional}, which is a distribution over velocities or directions.
 
 \begin{equation} \label{eq:conditional}
-  \pi_{\Param}(\dot{x}|\hat{x},U) = \sum\limits_{k=1}^{K} w^{[k]}_{\dot{x}|\hat{x},U} \;\;  g\left(\dot{x}\: ;  \MuK_{\dot{x}|\hat{x},U}, \SigK_{\dot{x}|\hat{x},U} \right)
+  \pi_{\Param}(\U|\B) = \sum\limits_{k=1}^{K} w^{[k]}_{\U|\B} \;\;  g\left(\U\: ;  \MuK_{\U|\B}, \SigK_{\U|\B} \right)
 \end{equation}
 
 The new distribution is of the dimension of the output variable, the velocity (3 dimensions). 
-The variable $\dot{x}$ in $\dot{x}|\hat{x},U$ indicates the predictor variable and the variables $\hat{x},U$ have been conditioned.
+The variable $\U$ in $\U|\B$ indicates the predictor variable and the variables $\B$ has been conditioned.
 A common approach in statistical PbD methods using GMMs is to take the expectation of the conditional (known as Gaussian Mixture Regression), Equation \ref{eq:GMR}
 
 \begin{equation} \label{eq:GMR}
- \dot{x} = \mathbb{E}\{\pi_{\Param}(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K}  w^{[k]}_{\dot{x}|\hat{x},U} \; \MuK_{\dot{x}|\hat{x},U}
+ \dot{x} = \mathbb{E}\{\pi_{\Param}(\dot{x}|\B)\} = \sum\limits_{k=1}^{K}  w^{[k]}_{\dot{x}|\B} \; \MuK_{\U|\B}
 \end{equation}
 
 The problem with this expectation approach, is that it averages out opposing directions or strategies and may result in 
@@ -623,19 +625,19 @@ If the current direction agrees with the mode then the weight remains unchanged 
 disagreement a lower weight is
 calculated according to the equation below. 
 \begin{equation}  \label{eq:weight}
-  \alpha_{k}(\dot{x}) = \piK_{\dot{x}|\hat{x},U} \; \exp(-\cos^{-1}(<\dot{x},\MuK_{\dot{x}|\hat{x},U}>))
+  \alpha_{k}(\U) = \piK_{\U|\B} \; \exp(-\cos^{-1}(<\U,\MuK_{\U|\B}>))
 \end{equation}
 Gaussian Mixture Regression is then performed with the normalised  weights $\alpha$ instead of $wi$
 (the initial weight obtained when conditioning).
 
 \begin{equation}\label{eq:w_expectation}
- \underline{\dot{x}} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K} \alpha_{k}(\dot{x}) \:\MuK_{\dot{x}|\hat{x},u}
+ \underline{\U} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\U|\B)\} = \sum\limits_{k=1}^{K} \alpha_{k}(\U) \:\MuK_{\U|\B}
 \end{equation}
 % 
 %	How to control speed
 %
 The final output of Equation \ref{eq:w_expectation} gives the desired direction
-($\dot{x}$ is re-normalised and is denoted as $\underline{\dot{x}}$). In the case when the mode suddenly disappears
+($\U$ is re-normalised and is denoted as $\underline{\dot{x}}$). In the case when the mode suddenly disappears
 (because of sudden change of the level of uncertainty caused by the appearance or disappearance of a feature)
 another present mode is selected at random. For example, when the robot has reached a corner, the level of uncertainty for this feature drops to zero.
 A new mode, and hence new direction of motion, will then  be computed.
@@ -645,7 +647,7 @@ of the end-effector when in contact with the table. This behaviour is not learne
 the embodiment of the robot and unrelated to the search strategy. The 
 amplitude of the velocity is computed by a proportional controller based on the
 believed distance to the goal,
-\begin{align}
+\begin{align} \label{eq:ch3:amplitude}
      \nu &= \max(\min(\beta_{1},K_{p}(x_{\mathrm{g}} - \hat{x}),\beta_{2}) \\ \nonumber
  \dot{x} &=  \nu\,\underline{\dot{x}}
 \end{align}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{169}
+\begin{thebibliography}{168}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -82,11 +82,6 @@ Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
 Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
 \newblock Bayesian theory of mind: Modeling joint belief-desire attribution.
 \newblock \emph{Journal of Cognitive Science}, 2011.
-
-\bibitem[Barber(2012)]{barberBRML2012}
-D.~Barber.
-\newblock \emph{{Bayesian Reasoning and Machine Learning}}.
-\newblock 2012.
 
 \bibitem[Baron-Cohen(1995)]{Baron-Cohen}
 Simon Baron-Cohen.
