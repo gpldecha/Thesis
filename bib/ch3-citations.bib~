@@ -1,0 +1,239 @@
+% This file was created with JabRef 2.9.2.
+% Encoding: UTF-8
+
+@ARTICLE{Arul_Mask_Clap_2002,
+ 	author 	= {Arulampalam, M.S. and Maskell, S. and Gordon, N. and Clapp, T.},
+ 	title 	= {A tutorial on particle filters for online nonlinear/non-Gaussian Bayesian tracking},
+ 	journal = {Transactions on Signal Processing},
+  	year 	= {2002},
+  	month 	= {February},
+  	volume 	= {50},
+  	number 	= {2},
+  	pages 	= {174--188},
+ 	url 	= {http://dx.doi.org/10.1109/78.978374}
+}
+
+@ARTICLE{Nicolescu01learningand,
+  	author 	= {Monica N. Nicolescu and Maja J. Mataric},
+  	title 	= {Learning and Interacting in Human-Robot Domains},
+  	journal = {IEEE Transactions on Systems, Man, and Cybernetics, Part A: Systems and Humans},
+  	year 	= {2001},
+  	month 	= {September},
+  	volume  = {31},
+  	number  = {5},
+  	pages   = {419--430},
+ 	url     = {http://dx.doi.org/10.1109/3468.952716}
+}
+
+
+@ARTICLE{Kaelbling98planningand,
+  	author 	= {Leslie Pack Kaelbling and Michael L. Littman and Anthony R. Cassandra},
+  	title 	= {Planning and acting in partially observable stochastic domains},
+  	journal = {Artificial intelligence},
+  	year 	= {1998},
+  	month 	= {May},
+  	volume 	= {101},
+  	number 	= {1},
+  	pages 	= {99--134},
+ 	url 	= {http://dx.doi.org/10.1016/S0004-3702(98)00023-X}
+}
+
+@ARTICLE{Kasper2001153,
+  	author 	= {Michael Kasper and Gernot Fricke and Katja Steuernagel and Ewald von Puttkamer},
+  	title 	= {A behavior-based mobile robot architecture for Learning from Demonstration},
+  	journal = {Robotics and Autonomous Systems},
+  	year  	= {2001},
+  	month 	= {February},
+  	volume 	= {34},
+  	number 	= {2},
+  	pages 	= {153--164},
+	url 	= {http://www.sciencedirect.com/science/article/pii/S0921889000001196}
+}
+
+@ARTICLE{ShaniPK13,
+  	author 	= {Shani, Guy and Pineau, Joelle and Kaplow, Robert},
+  	title 	= {A survey of point-based POMDP solvers.},
+  	journal	= {Autonomous Agents and Multi-Agent Systems},
+  	year	= {2013},
+  	month 	= {July},
+  	volume 	= {27},
+  	number 	= {1},
+  	pages 	= {1--51},
+  	url	= {http://dx.doi.org/10.1007/s10458-012-9200-2}
+
+}
+
+@ARTICLE{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain,
+  	author 	= {Silver, David and Bagnell, J. Andrew and Stentz, Anthony},
+  	title 	= {Learning from Demonstration for Autonomous Navigation in Complex Unstructured Terrain},
+  	journal = {IJRR},
+  	year 	= {2010},
+  	month 	= {October},
+  	volume 	= {29},
+  	number 	= {12},
+  	pages 	= {1565--1592},
+ 	url 	= {http://dx.doi.org/10.1177/0278364910369715}
+}
+
+@ARTICLE{Hamner_2006_5810,
+  	author 	= {Bradley Hamner and Sanjiv Singh and Sebastian Scherer},
+  	title 	= {Learning Obstacle Avoidance Parameters from Operator Behavior},
+  	journal = {Field Robotics},
+  	year 	= {2006},
+  	month 	= {December},
+  	volume 	= {23},
+  	number 	= {11/12},
+  	pages 	= {1037--1058},
+ 	url 	= {http://dx.doi.org/10.1002/rob.20171}
+}
+
+
+%
+% Article within conference proceedings
+%
+%@Inproceedings{xjon,
+%	author    = {X Jones}, 
+%	title     = {Zeolites and synthetic mechanisms},
+%	booktitle = {Proceedings of the First National Conference on Porous Sieves: 27-30 June 1996; Baltimore},
+%	year      = {1996},
+%	  editor  = {Y Smith}, 
+%	  pages   = {16-27},
+%	  organization  = {Stoneham: Butterworth-Heinemann}
+%}	
+
+@INPROCEEDINGS{deChambrierBillard2013,
+  	author 		= {de Chambrier, G. and Billard, A.},
+  	title 		= {Learning search behaviour from humans},
+  	booktitle	= {International Conference on Robotics and Biomimetics (ROBIO)},
+  	year		= {2013},
+  	editor 		= {},
+  	pages 		= {573--580},
+}
+
+@INPROCEEDINGS{PBVI_2003,
+  	author 		= {Pineau, Joelle and Gordon, Geoff and Thrun, Sebastian},
+  	title 		= {Point-based value iteration: an anytime algorithm for POMDPs},
+  	booktitle 	= {IJCAI},
+  	year 		= {2003},
+  	pages 		= {1025--1030},
+ 	url 		= {http://dl.acm.org/citation.cfm?id=1630659.1630806}
+}
+
+
+@INPROCEEDINGS{Herb_Burd_Huds_Jet_2012,
+  	author 		= {Hebert, P. and Howard, T. and Hudson, N. and Ma, J. and Burdick, J.W.},
+  	title 		= {The next best touch for model-based localization},
+  	booktitle 	= {International Conference Robotics and Automation (ICRA)},
+  	year 		= {2013},
+  	month 		= {May},
+  	pages 		= {99--106},
+    	url 		= {http://dx.doi.org/10.1109/icra.2013.6630562}
+}
+
+@INPROCEEDINGS{Hsiao-RSS-10,
+  	author 		= {K. Hsiao AND L. Kaelbling AND T. Lozano-Perez},
+  	title 		= {Task-Driven Tactile Exploration},
+  	booktitle 	= {Robotics Science and Systems (RSS)},
+  	year 		= {2010},
+  	month 		= {June},
+  	url 		= {http://dblp.uni-trier.de/db/conf/rss/rss2010.html#HsiaoKL10}  	
+}
+
+@INPROCEEDINGS{DiffEntropyHuber2008,
+  	author 		= {Huber, M.F. and Bailey, Tim and Durrant-Whyte, H. and Hanebeck, U.D.},
+  	title 		= {On entropy approximation for Gaussian mixture random vectors},
+  	booktitle 	= {Multisensor Fusion and Integration},
+  	year 		= {2008},
+  	pages 		= {181--188},
+    	url 		= {http://dx.doi.org/10.1109/mfi.2008.4648062}
+}
+
+@INPROCEEDINGS{Kurniawati08sarsop,
+  	author 		= {Hanna Kurniawati and David Hsu and Wee Sun Lee},
+  	title 		= {SARSOP: Efficient point-based POMDP planning by approximating optimally reachable belief spaces},
+  	booktitle 	= {Robotics Science and Systems (RSS)},
+  	year 		= {2008},
+  	url 		= {http://dblp.uni-trier.de/db/conf/rss/rss2008.html#KurniawatiHL08}
+}
+
+@INPROCEEDINGS{CostalNavigation1999,
+  	author 		= {Roy, N. and Burgard, W. and Fox, D. and Thrun, S.},
+  	title 		= {Coastal navigation-mobile robot navigation with uncertainty in dynamic environments},
+  	booktitle 	= {International Conference on Robotics and Automation (ICRA)},
+  	year 		= {1999},
+  	month 		= {May},
+  	pages 		= {35--40}
+}
+
+@INPROCEEDINGS{Shani_2007,
+  	author 		= {Shani, Guy and Brafman, Ronen I. and Shimony, Solomon E.},
+  	title 		= {Forward Search Value Iteration for POMDPs},
+  	booktitle 	= {International Joint Conference on Artificial Intelligence (IJCAI)},
+  	year 		= {2007},
+  	url       	= {http://ijcai.org/Proceedings/07/Papers/421.pdf}
+}
+
+@INPROCEEDINGS{HSV_2004,
+  	author 		= {Smith, Trey and Simmons, Reid},
+  	title 		= {Heuristic Search Value Iteration for POMDPs},
+  	booktitle 	= {Conference on Uncertainty in Artificial Intelligence (UAI)},
+  	year 		= {2004},
+   	pages 		= {520--527},
+ 	url 		= {http://dl.acm.org/citation.cfm?id=1036843.1036906}
+  }
+
+@INPROCEEDINGS{Roy_Pineau_Thrun_2000,
+  	author 		= {Nicholas Roy and Joelle Pineau and Sebastian Thrun},
+  	title 		= {Spoken Dialogue Management Using Probabilistic Reasoning},
+  	booktitle 	= {Annual Meeting of the Association for Computational Linguistics},
+  	year 		= {2000},
+  	pages 		= {93--100},
+ 	url 		= {http://dx.doi.org/10.3115/1075218.1075231}  	
+}
+
+@InProceedings{Thrun_1999,
+  	author         = {S. Thrun},
+  	title          = {Monte Carlo {POMDP}s},
+  	booktitle      = {Advances in Neural Information Processing Systems (NIPS)},
+  	pages          = {1064--1070},
+	volume 	       = {12},
+  	year           = {2000},
+	url 	       = {http://papers.nips.cc/paper/1772-monte-carlo-pomdps.pdf}
+}
+
+
+@BOOK{GeorgiosLidoris,
+  	author 		= {Lidoris, Georgios},
+  	title 		= {State Estimation, Planning, and Behavior Selection Under Uncertainty for Autonomous Robotic Exploration in Dynamic Environments},
+  	publisher 	= {kassel university press GmbH},
+  	year 		= {2011},
+  	editor 		= {kassel university press},
+  	address 	= {Kassel University}
+}
+
+@BOOK{sutton98reinforcement,
+  	author 		= {Richard S. Sutton and Andrew G. Barto},
+  	title 		= {Reinforcement Learning: An Introduction},
+  	publisher 	= {MIT Press},
+  	year 		= {1998},
+  	address 	= {Cambridge, MA}
+}
+
+@BOOK{Thrun_Burgard_Fox_2005,
+  author = {Thrun, Sebastian and Burgard, Wolfram and Fox, Dieter},
+  title = {Probabilistic Robotics (Intelligent Robotics and Autonomous Agents)},
+  publisher = {The MIT Press},
+  year = {2005},
+  editor = {Cambridge, MA},
+  address = {Cambridge, MA}
+}
+
+
+@PHDTHESIS{Smith_2007_5970,
+  author = {Trey Smith},
+  title = {Probabilistic Planning for Robotic Exploration},
+  school = {Robotics Institute, Carnegie Mellon University},
+  year = {2007},
+  address = {Pittsburgh, PA},
+  month = {July}
+}

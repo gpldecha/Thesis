@@ -6,95 +6,80 @@
 \graphicspath{{figures/ch0/}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+\vspace*{-2cm}
 \lettrine[lines=2]{D}{ecision} making and planning with partial state information is a problem faced 
-by all forms of intelligent entities being either virtual, synthetic or biological. The formulation of 
-a problem under partial state information leads to an exorbitant set of choices with associated 
-probabilistic outcomes making its resolution difficult when using traditional planning methods. 
+by all forms of intelligent entities. The formulation of a problem under partial state information leads to an 
+exorbitant set of choices with associated probabilistic outcomes making its resolution difficult when using traditional planning methods. 
 Human beings have acquired the ability of acting under uncertainty through education and self-learning. 
 Transferring our know-how to artificial agents and robots will make it faster for them to learn and even improve upon us in
 tasks in which incomplete knowledge is available, which is the objective of this thesis.
 
-This thesis aims to model how humans reason with respect to their beliefs and the role uncertainty plays during spatial navigation search tasks. 
-We consider for instance tasks such as localising  an object in a room or connecting a plug to a power socket in the dark, 
-as well as any situation where the subject has no visual information and must rely on tactile and proprioceptive information only. 
-We then transfer the human-inferred reasoning mechanisms to a robot apprentice. 
-There are many robotic application domains in which uncertainty resulting from a lack of visual perception is common, such as underwater 
-maintenance, planetary exploration and occluded manipulation tasks. Learning human search models and transferring them to robots is useful
-in such domains and learning a search strategy from scratch would prove intractable.
+We model how humans reason with respect to their beliefs and transfer this knowledge in the form of a parameterised policy, following a Programming by Demonstration
+framework, to a robot apprentice for two spatial navigation tasks: the first task consists of localising a wooden block on a table and for the second task a power socket must 
+be found and connected. In both tasks the human teacher and robot apprentice only rely on haptic and tactile information. 
+We model the human and robot's beliefs by a probability density function which we update through recursive Bayesian state space estimation. To model the reasoning processes of human subjects performing the search tasks we learn a generative joint distribution over beliefs and actions 
+(end-effector velocities) which were recorded during the executions of the task. For the first search task the direct mapping from belief to actions is learned 
+whilst for the second task we incorporate a cost function used to adapt the policy parameters in a Reinforcement Learning framework and show a considerable improvement
+over solely learning the behaviour with respect to the distance taken to accomplish the task.
 
-A difficulty in learning humans reasoning mechanisms, in the search scenarios we consider, is that
-the humans beliefs and sensations (haptic and tactile) are unobservable and that they vary within and
-across subjects. We infer the human sensations from either assuming kinematic relationship between tactile 
-information and known geometric description of the environment or by equipping the human subject with a 
-tool mounted with a force-torque sensor, whose measurements are used to infer the human sensations. The actual
-sensations, which are a function of either the sensor tool or kinematic-environment measurements, are
-transformed to a binary feature vector which encodes whether contact are present between features
-such as surfaces, edges and corners of the environment.
-
-We model the human's beliefs by a probability density function which we update through recursive Bayesian 
-state space estimation using motion estimates, acquired through a tracking system (the human subjects wore markers), 
-and the sensation estimates were obtained as described above. We make the assumption that the probability 
-density function, representing the human's belief, is updated by a Bayesian recursion and that this process is similar to the way in 
-which humans integrate information.
-
-To model the reasoning processes of human subjects performing the search tasks we learn a generative joint distribution over beliefs
-and actions (end-effector velocities) which were recorded during the executions of the task. 
-The high dimensionality of the belief and its varying complexity  during the searches required that we compress the 
-belief to its most likely state and entropy. 
-
-We evaluate this methodology of learning search strategies in a task consisting of finding an object on a table. 
-We demonstrate that multiple search strategies are encoded in the joint belief-action distribution and 
-we compare this approach with greedy myopic and coastal navigation search algorithms. The results show that the human learned 
-search model is the fastest of all methods.
-
-We consider in a second setting a task in which human subjects have to demonstrate how 
-to search for and connect a plug to a power socket to a robot apprentice deprived of visual information. 
-We take the same approach but incorporate the learning of the policy into a reinforcement learning framework 
-and demonstrate that by defining a simple cost function the quality of the final learned policy can be significantly
-improved without the need of performing exploratory rollouts which are costly and typically necessary in RL.
-
-Both search tasks above can be considered as active localisation in the sense that uncertainty
-originates from the position of the human or robot in the world. We now consider search setting
-in which both the position of the robot and and aspects of environment are uncertain. Given the
-unstructured nature of the belief a histogram parametrisation of the joint distribution over the
-robot and the environment is necessary. However, naively doing so becomes quickly intractable as
-the computational cost is exponential in terms of the parametrisation. We demonstrate that by
-only parametrising the marginals and by memorising the parameters of the measurement likelihood
+Both search tasks above can be considered as active localisation as the uncertainty
+originates only from the position of the agent in the world. We consider searches
+in which both the position of the robot and features of the environment are uncertain. Given the
+unstructured nature of the belief a histogram parametrisation of the joint distribution of the robots position
+and features is necessary. However, naively doing so becomes quickly intractable as
+the space and time complexity is exponential. We demonstrate that by only parametrising the marginals and by memorising the parameters of the measurement likelihood
 functions we can recover the exact same solution as the naive parametrisations at a cost which is
-linear in space and time complexity as oppose to exponential.
+linear in space and time complexity.
 
-\mylineskip
+%We make the assumption that the probability density function, representing the human's belief, is updated by a Bayesian recursion and 
+%that this process is similar to the way in which humans integrate information.
+%There are many robotic application domains in which uncertainty resulting from a lack of visual perception is common, such as underwater maintenance, planetary 
+% exploration and occluded manipulation tasks. Learning human search models and transferring them to robots is useful in such domains 
+% and learning a search strategy from scratch would prove intractable.
+
+%A difficulty in learning humans reasoning mechanisms, in the search scenarios we consider, is that
+%the humans beliefs and sensations (haptic and tactile) are unobservable and that they vary within and
+%across subjects. We infer the human sensations from either assuming kinematic relationship between tactile 
+%information and known geometric description of the environment or by equipping the human subject with a 
+%tool mounted with a force-torque sensor, whose measurements are used to infer the human sensations. The actual
+%sensations, which are a function of either the sensor tool or kinematic-environment measurements, are
+%transformed to a binary feature vector which encodes whether contact are present between features
+%such as surfaces, edges and corners of the environment.
+
+%We evaluate this methodology of learning search strategies in a task consisting of finding an object on a table. 
+%We demonstrate that multiple search strategies are encoded in the joint belief-action distribution and 
+%we compare this approach with greedy myopic and coastal navigation search algorithms. The results show that the human learned 
+%search model is the fastest of all methods.
+
+%We consider in a second setting a task in which human subjects have to demonstrate how 
+%to search for and connect a plug to a power socket to a robot apprentice deprived of visual information. 
+%We take the same approach but incorporate the learning of the policy into a reinforcement learning framework 
+%and demonstrate that by defining a simple cost function the quality of the final learned policy can be significantly
+%improved without the need of performing exploratory rollouts which are costly and typically necessary in RL.
+
+% Le raisonnement et la pensée cognitive de localisation de sujets humain ont permis la réalisation d'un modèle ayant, à l'aide de fonctions paramétrées suivant un cadre de programmation par démonstration, été reproduit (introduit)
+% chez un robot. Celui-ci, en apprenant de son modèle et ne disposant que d'informations haptique et tactile, avait deux tâches à accomplir. Ces mêmes tâches avaient été données à réaliser, dans les mêmes conditions, aux sujets humain. 
+% La première tâche consistait à localiser un morceau de bois sur une table. La deuxième était de trouver une prise électrique, puis de la brancher. 
+
+\mylineskip 
 
 \noindent\textsc{\textbf{Keywords:}} Programming by Demonstration, POMDP, Reinforcement Learning, State Space Estimation (SSE)
 \end{abstract}
 
 \begin{resume}
-\lettrine[lines=2]{R}{aisonner} et prendre des décisions pour résoudre des problèmes avec une information partielle est une difficulté  à laquelle doit faire face tout être: virtuels, synthétiques ou biologiques. Les tentatives de résolution de problèmes dont l'information spatiale est partielle débouchent sur un nombre exorbitant d'actions possibles ayant chacune une probabilité de réussite propre. Ceci rend la résolution de tels problèmes difficile lors de l'emploi des méthodes de planning traditionnelles.
+\vspace*{-2cm}
+\lettrine[lines=2]{R}{aisonner} et prendre des décisions afin de résoudre des problèmes avec une information partielle est une difficulté à laquelle doit faire face tout être intelligent.
+Les tentatives de résolution de problèmes spatiale dont l'information est partielle débouchent sur un nombre exorbitant d'actions possibles ayant chacune une probabilité de réussite propre. Ceci rend la résolution de tels problèmes difficile lors de l'emploi des méthodes de planning traditionnelles.
+L'objectif de ce mémoire est de créer des modèles mathématiques correspondant au raisonnement humain à l'égard de l'incertitude présente durant des tâches d'exploration dans le domaine de la navigation spatial et de transférer ces modèles de raisonnement à un robot.
 
-Par l'éducation et de l'auto-apprentissage, l'être humain a su acquérir la capacité d'agir dans les situations où l'incertitude est omniprésente. Les intelligences artificielles ou les robots auraient à bénéficier de cette capacité afin de résoudre de manière optimale des tâches qui sont partiellement spécifiées et donc où l'incertitude règne.
+Nous modélisons les raisonnements cognitifs de localisation de sujets humains à l'aide d'une fonction de contrôle paramétrique dans un cadre de ``Programmation par Démonstration''. Cette modélisation est ensuite transférée à un robot apprenti afin que celui-ci réalise deux tâches de localisations.
+La première tâche consiste à localiser un bloc de bois posé sur une table. La seconde consiste à localiser une prise électrique, puis de la brancher à une prise murale.
+Durant l'accomplissement de ces deux tâches, l'humain et le robot apprenti ne disposent que d'informations haptique et tactile.
+Nous représentons les pensées cognitives de localisation de l'humain et du robot par une fonction probabilistique, mise à jour par un processus bayésien. Les résonnements humains sont modélisés par une distribution générative conjointe des pensées et actions (differential de l'effecteur) qui ont été enregistrées durant l'exécution des deux tâches. La première tâche a permis d'établir la relation entre pensée et action par une distribution conjointe, quant à la deuxième nous incorporant une fonction objective utilisée afin d'adapter les paramètres de la fonction de contrôle dans un cadre de renforcement d'apprentissage qui résulte en une amélioration considérable en matière de la distance parcourue pour l'accomplissement de la tâche.
 
-Un grand nombre de travaux scientifiques ont mis l'accent sur le transfert du comportement humain aux robots via la programmation par apprentissage. Cette méthode permet au robot d'apprendre à imiter les comportements humains. Des tâches contenants des éléments telles que la manipulation d'objets ou la locomotion bipède ont été encodées par des fonctions symboliques, statistiques ou dynamiques.  Cependant, des exemples de transfert de comportement cognitif de plus haut niveaux aux robots sont plus rares, ainsi que les compétences en résolution de problèmes et les stratégies d'exploration.
-
-L'objectif de ce mémoire est de créer des modèles mathématiques correspondant au raisonnement humain à l'égard de l'incertitude présente durant des tâches d'exploration dans le domaine de la navigation spatial à l'aide du touché, c'est-à-dire sans information visuelle. Ces modèles de raisonnement sont transférés à un robot apprenti. Cette méthode évite un long apprentissage de notre savoir au robot.
-
-Le choix de la navigation spatial au touché a été motivé par le fait qu'il existe de nombreux domaines d'application robotique où l'incertitude résultante d'une absence de perception visuelle est fréquente. L'entretien des fonds marins, l'exploration planétaire et des tâches de manipulation avec des occlusions fréquentes en sont quelques exemples.
-
-Pour ce travail les scénarios suivants sont étudiés: la localisation d'un objet dans une pièce et l'établissement d'une connexion  avec une prise électrique. 
-
-Une difficulté présente dans l'apprentissage du raisonnement humain, dans les scénarios de recherche que nous considérons, réside dans le fait que les pensées et sensations (haptique et tactile) humaines sont inobservables et varient entre les personnes. Lors d'expérimentations, les sensations perçues par les sujets en fonction de la géométrique de leur environnement ont pu être déduites par l'observation de leurs relation cinématiques. Pour d'autres prises de données les sujets ont été équipés d'un capteur de force de façon à déduire leurs sensations. Pour toutes les tâches considérées ces mesures sont transformées en un vecteur binaire générique.
-
-Les données ainsi obtenues sont utilisée pour modéliser les pensées humaines via une fonction de densité de probabilité. Celle-ci est actualisée au travers d'une estimation bayésienne récursive; qui est similaire au processus humain d'intégration d'information en continu.
-
-La modélisation des processus de raisonnement des sujets humains effectuant les tâches exploratoires nous apprend une distribution conjointe des pensées et actions (vitesses de l'effecteur). La dimensionnalité élevée de l'état de la pensé et de sa complexité exige sa simplification aux états les plus probables tout en conservant l'information de l'entropie. Une méthode réalisée à partir de ces modèles et transmise à un robot lui a permis d'effectuer ces tâches de manière plus efficace qu'avec une méthode traditionnelle. 
-
-Nous considérons une deuxième tâche qui consiste à connecter une fiche à une prise électrique. Nous prenons la même approche, que nous perfectionnons en intégrant un système  de renforcement de l'apprentissage. Nous démontrons qu'une simple fonction objective des coûts de la qualité améliore significativement les capacités du robot.
-
-Les deux tâches d'exploration mentionnées ci-dessus peuvent être considérées comme des problèmes de localisation-actif où l'incertitude est uniquement présente dans la relation entre la position de l'humain vis-à-vis du cadre de référence, le monde. Nous considérons maintenant un problème d'exploration où l'incertitude se trouve à la fois dans la position du robot (ou l'humain) et dans des aspects de l'environnement  comme la position d'objets. Étant donné la nature non structurée de l'incertitude un histogramme est choisi pour paramétrer la distribution conjointe des positions du robot et de l'environnement. Cependant, cette stratégie devient rapidement intenable; le coût de résolution devenant exponentiel en fonction du grand nombre de paramètres. 
-
-Nous démontrons qu'en appliquant les probabilités marginales aux paramètres des mesures, nous pouvons reproduire la solution identique de l'histogramme avec une complexité linéaire au lieu d'exponentielle.
-
-
-
+Les deux tâches d'exploration mentionnées ci-dessus peuvent être considérées comme des problèmes de localisation-actif où l'incertitude est uniquement présente dans la relation entre la position de l'humain vis-à-vis du cadre de référence, le monde. Nous considérons maintenant un problème d'exploration où l'incertitude se trouve à la fois dans la position du robot (ou l'humain) et dans des aspects de l'environnement comme la position d'objets. Étant donné la nature non structurée de l'incertitude, un histogramme est choisi pour paramétrer la distribution conjointe des positions du robot et de l'environnement. Cependant, cette stratégie devient rapidement intenable; le coût de résolution devenant exponentiel en fonction du grand nombre de paramètres.
+Nous démontrons qu'en appliquant les probabilités marginales aux paramètres des mesures, nous pouvons reproduire la solution identique de l'histogramme avec une complexité
+linéaire au lieu d'exponentielle.
 
 
 \mylineskip
@@ -104,9 +89,144 @@ Nous démontrons qu'en appliquant les probabilités marginales aux paramètres des 
 %
 
 
-%\begin{dedication}
-%\emph{Dedication\\ here}
-%\end{dedication}
-%\forcenewpage
-%\chapter*{Acknowledgments}
-%Acknowledgements here
+\begin{dedication}
+\emph{\`{A} mon épouse bien aimée, amie et complice Jing \\pour son amour inconditionnel }\\[1cm]
+\emph{\`{A} mes parents et famille \\pour leur soutien continu }
+\end{dedication}
+
+
+
+
+\forcenewpage
+\chapter*{Acknowledgments}
+
+% Acknowledge Aude
+
+I am grateful to my advisor Prof. Aude Billard for giving me the opportunity of undertaking
+a PhD under her supervision. I  appreciate her oversight and valuable lessons regarding 
+research and scientific questions. I am thankful for the inspiring discussions we had
+and the time she spent reading, correcting and providing valuable feedback to my papers.
+
+% Acknowledge committee
+ 
+I would like to acknowledge all my thesis examiners, Prof. Pedro U. Lima (IST), 
+Dr. Thrish Nanayakkara (KCL) and Dr. Mathew Magimai Doss (IDIAP) for taking time 
+to provide valuable comments and suggestions (including latex commands) on the earlier version of 
+this manuscript. Many thanks also to Prof. Dillenbourg Pierre (EPFL) who served as president
+of my thesis committee.
+
+I am thankful for the technical advice that Prof. Pedro U. Lima gave me through our frequent email exchanges during 
+my second year. I am very grateful to Dr. Dimitri Ognibene with whom I have had many scientific discussions, for 
+his advice and moral support which was of great help throughout my thesis; without his support I would have 
+struggled far more. I would also like to extend a special thanks to Dr. J. Michael Herrmann who supervised me during 
+my Master's thesis and provided great advice regarding family and research.
+
+During my time at LASA I have met a wide spectrum of personalities which I wish to acknowledge here. First and foremost 
+my office mates: Klas Kronander and Aj Tanwani who left us such to reach his full potential 
+(do you still jump up and down in front of the blackboard ?). Thank you Klas for your supportive words throughout our time in the lab,
+they always managed to motivate me when I as in doubt. Aj, I am grateful of the time we spent together in our office, I know you are doing great and keep it up! 
+
+One of the very first person I met in the lab was Ashwini Shukla, who was tasked to demonstrate the capabilities of the iCube's skin.
+I am grateful for the laughs and good moments we spend together such as our trips with Miao Li to the swimming pool (which were mainly for gossiping and not swimming). 
+My thanks extend to Miao Li, I enjoyed the way you think and view the world although I hope your geographic knowledge improves. 
+
+For the old guard, I appreciate the discussion and gossip talk I had with Sahar El-Khour. I use to explain my research 
+to you and you were helpful and supportive. Basilio Noris, thank you for passing onto me your pride and joy ``MLDemos''. You have no idea how much fun I had
+with it during my teaching duties. I thank you also for helping me debug code during my first year, you remain to me a legendary coder.
+Seyed Mohammad, during my time in the lab you always had a smile on your face and I never saw you in a bad mood which was very uplifting. 
+You gave my good advice reading an effect to be wary of. I commend you sir for your wisdom. Lucia Ureche, you motivate me and some of 
+the lads to go to the gym. I specially enjoyed our indoor cycling sessions and later our midday salad expeditions. Nicolas Sommer, thanks 
+for the BBQ's you organised at your home and the other various events  (sorry I never came to your movie nights) and you were a great Teaching Assistant (TA) for the 
+course (but do you just show up?). Thanks for the good time to all China town members. Bidan Huang, we had a great time at ROBIO 
+in China and I am glad to have tasted the hot pot with cow lungs and other various non-prime meat cuts. Snake will have to be for next time. Hang Yin, you hail from the same
+city in China (Shenyang) as my relatives so we should at least be blood brothers. Although you have a reserved personality we
+managed to meet up in Shenyang and had an enjoyable time. Ravin Luis, thanks for your knowledge and insight regarding grasping. I was very happy
+when you told me you enjoyed the lecture I gave on reinforcement learning. Luka Lukic, you could have been a ``bouncer'' and you had a great 
+sense of humour, I appreciate the time we spent together. 
+
+In terms of the ``newer'' arrivals in the lab they proved to be equally or even more diverse in terms of personality.  Mahdi Khoramshahi, thanks 
+for providing the music to my random lyrics, I am sure we will still get the opportunity to sing about kippahs. Nadia, you are a lot of fun, helpful and down to earth. You really helped me a lot 
+when I first starting to use the KUKA and you stayed many evenings. I am eternally grateful for your help. We spend great time together and we both enjoyed being 
+TAs which made us ``complice''. Just try to no be broke all the time. Seyed Sina, you work way too much but I am gald you are engaged. You are always 
+ready to help whenever and for whatever. I appreciate the time we spent together and the many political conversations we had.  
+Nili Krausz, you were quite at first but then revealed yourself to be the definition of ``chatterbox''. Hope you manage to publish your novel and 
+that I get that promised kippah. I was (still) reserved, but I did enjoy having you in the lab as it induced a lot of dynamism.
+Iason Batzianoulis, I enjoyed the conversations we had regarding Europe and politics in general. I am partially glad I 
+was exempt from your 3-4h experiment.  João Abrantes, you were very fun and a legendary TA and Tinder tutor. I enjoyed the discussions we had and the course we took together. I can 
+only hope to get as ripped as you in the future. Ajung, we spent long hours together in ``the dungeon'' late in the evening. I am glad that you managed to use my code and got to 
+do your experiment. You were always positive and smiling although your google calendar schedule would give anybody else nightmares. 
+Laura Cohen, when you joined the lab you brought some aspects of Paris with you. We had great times during the labs long marathon 
+of weekly Friday BBQs. When I lost my motivation your suggestion of ``Kaamelott'' really cheered me up. Jode Ramon, your 
+relaxed Spanish personality was comforting and I enjoyed the belief-space planning conversations we had. I owe you a bottle 
+of Rosé any day. Mustafa Suphi, we first met when we both gave presentations in LASA before joining. I am 
+glad you joined as you are eager to talk politics which I do as well. It was captivating as we have different political orientations 
+which made our discussions even more interesting. I learned a lot from you and wish you all the best. Felix Duvallet, your joining of the lab 
+and de facto introduction of github was long overdue. I am grateful for your help in introducing me to travis. I was also very uplifted when you 
+told me ``good'' when my journal got rejected which I immediately understood as words of support. I also appreciate the tips you gave me 
+in scientific writing. Denys Lamotte, we got to know each other as TAs. When I manage to find you we did good work together both for the course
+and in town. Joel Rey, you are one of the wisest amongst us. I enjoyed being a TA with you.
+
+Puckett Ashley, thank you for giving me website design advice you are a talented artist.
+
+To all the newbies: Murali, Wissam and Kevin, Godspeed! You are all of reputable character. 
+
+
+% Special thanks to Pedro Lima for giving me advice on technical aspects during my first year (done)
+
+% [special acknowledge to Doss, Micheal Herrmann] (done)
+
+% Dimitri Ognibene helped and reviewd my project inspired and gave me ideas. (done)
+
+% [Old guard] Klas (done), Ashwini, Miaou, Shahar, Basilio, Mohammed, Lucia., Nicola 
+% [Chinese] (done), Bidan Huang  Hang, 
+
+% 
+
+% Jordi Bautista, Joel Rey, Luka Lukic   
+
+
+
+
+
+%
+
+%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

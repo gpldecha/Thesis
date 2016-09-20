@@ -18,8 +18,8 @@ In Artificial Intelligence (AI) and robotics, the ability to reason whilst takin
 There has been noticeable success in artificial agents beating humans at board games such as backgammon 
 (TD-Backgammon), chess (Deep blue) and now recently go (AlphaGo). The gap between robotic autonomous systems and humans  starts to diverge however when the action space is continuous and 
 uncertainty is non-negligible. Although there are recent examples of robots coping with such conditions such as opening doors (pose  of the handle's position and shape uncertainty of the handle),
-walking downstairs (state transition uncertainty)(Asimo), and turning valves (DARPA Robotic challenge, DAC \cite{DARPA_2015}), 
-repetition and reproducibility of such behaviour is hard. This was highlighted in the results of the 2015 DAC in which issues 
+walking downstairs (state transition uncertainty)(Asimo), and turning valves (DARPA Robotic challenge, DRC \cite{DARPA_2015}), 
+repetition and reproducibility of such behaviour is hard. This was highlighted in the results of the 2015 DRC in which issues 
 (perception, control, software engineering, etc...) resulted in many robots
 losing balance and falling. \footnote{\url{http://www.cs.cmu.edu/~cga/drc/}} 
 
@@ -77,8 +77,8 @@ As both humans and animals are far better at navigation than robots, especially 
 (PbD) framework \citep{Billard08chapter}, which we coin PbD-POMDP. PbD examples include the transfer of kinematic task constraints, 
 stiffness and impedance constraints and motion primitives, to name only a few. As for the mapping problem, it has been studied 
 and solved within a certain set of constraining assumptions which do not hold when ``negative information'' is present (the absence of a positive 
-sighting of a landmark, a term used in the Simultaneous Localisation and Mapping literature), in the case for haptic and tactile search tasks. For the mapping problem we develop a Bayesian filter which is non-parametric and has no explicit 
-representation of a joint distribution and is not restricted to non-negative information.
+sighting of a landmark, a term used in the Simultaneous Localisation and Mapping literature), in the case for haptic and tactile search tasks. For the mapping problem we develop a 
+Bayesian filter which is non-parametric and has no explicit parameterisation of a joint distribution values.
 
 In this thesis we address both mapping and planning problems under levels of uncertainty in which no assumption of prior structure, 
 such as Gaussianity, can be assumed. 
@@ -130,7 +130,7 @@ uncertainty constraints.
 
 A Markov Decision Process (MDP) allows the formulation of a decision problem in terms of states, actions, a discount factor 
 and a cost function. Given this formulation and a suitable optimisation method (dynamic programming, temporal difference, etc..) 
-a set of optimal decision rules are returned, known as a policy. The benefit of this approach 
+optimal actions are inferred for each state which are encoded in a policy. The benefit of this approach 
 is that the policy is non-myopic and sequences of complicated actions can be synthesised to achieve a goal which 
 an opportunistic policy would fail to achieve. A Partially Observable Markov Decision Process (POMDP) is 
 a generalisation of a MDP to a hidden state space in which the state is only observable 
@@ -156,7 +156,7 @@ similarly to humans.
 Learning to search and act as humans and thus reproduce their exploratory behaviour is beneficial in POMDP tasks, since
 traditional approaches are infeasible. The drawback of the PbD-POMDP approach is that the goal of the task is 
 implicitly encoded in the demonstrations performed by the teacher. To be successful, it is usually required 
-that the teacher is be an expert, with a few notable exceptions, \citep{rai2013learning}. As a result the quality of 
+that the teacher is an expert, with a few notable exceptions, \citep{rai2013learning}. As a result the quality of 
 the learned behaviour depends on the skill and embodiment constraints of the human. Since we are solely learning 
 a PbD-POMDP statistical controller, both good and bad demonstrations are mixed in together. By introducing a cost function 
 representing the task, we can explicitly obtain a quality metric of the provided demonstrations. In this way we can estimate the 
@@ -164,7 +164,7 @@ parameters of our generative model to optimise the cost function.
 
 Reinforcement learning (RL) is a framework which allows, through repeated interaction with the environment, to 
 learn an optimal policy for a task. There are many variants of RL, but all rely on simple exploration strategies to find the optimal 
-behaviour. These explorative strategies prohibit the application of RL to large and continuous POMDP settings in which the policy 
+behaviour. These explorative strategies prohibit the application of RL to large and continuous POMDPs in which the policy 
 is comprised of many parameters. In our previous contribution we showed that it is feasible to learn and extract 
 multiple search strategies from human demonstrations and in a sense we have already solved the exploration/exploitation dilemma 
 which plagues reinforcement learning applications. 
@@ -208,7 +208,7 @@ time complexity. This filter is well suited to tasks in which the landmarks are 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{./ch1-Introduction/Figures/roadmap.pdf}
-  \caption{Roadmap of the Thesis with key points. }
+  \caption{Roadmap of the Thesis with. Three contributions are partitioned in the 3rd, 4th and 5th chapters.}
   \label{fig:rmap_thesis}
 \end{figure}
 

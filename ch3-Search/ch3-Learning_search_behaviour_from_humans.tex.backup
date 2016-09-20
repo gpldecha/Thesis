@@ -89,7 +89,7 @@ qualitatively evaluate the differences between the GMM policy learned from human
 we evaluate the distance taken to find the goal for a set of four search policies, including the GMM.
 
 \end{itemize}
-
+\clearpage
 \section{Background}\label{ch3:background}
 
 %\subsection{Acting under partial observability}
@@ -354,13 +354,22 @@ We seek to learn this mapping, ${f : p(x_{t}|y_{0:t},\dot{x}_{1:t}) \mapsto \dot
 each demonstration we record the following variables:
 
 \begin{itemize}
- \item $\dot{x}_t \in \mathbb{R}^{3}$, normalised Cartesian velocity of the hand.
- \item $\hat{x}_t = \argmaxA\limits_{x_t} p(x_{t}|y_{0:t},\dot{x}_{1:t})$, the most likely position of the
-end-effector.
+ \item $\dot{x} \in \mathbb{R}^{3}$, normalised Cartesian velocity of the hand.
+ \item $\hat{x} = \argmaxA\limits_{x_t} p(x_{t}|y_{0:t},\dot{x}_{1:t})$, end-effector's most likely position.
  \item $U \in \mathbb{R}$, entropy $H\left(p(x_{t}|y_{0:t},\dot{x}_{1:t})\right)$.
 \end{itemize}
-A statistical controller was learned from the tuple dataset: $\{(\dot{x},\hat{x},U)\}$ recorded during the search 
-trials of the human subjects. Having described the experiment we proceed to give an in-depth description 
+We define the belief state to be the compressed vector $b \in \mathbb{R}^4$,
+
+\begin{equation}
+ b = \begin{bmatrix}
+       \hat{x} \\[0.3em]
+       U       \\[0.3em]
+     \end{bmatrix}
+\end{equation}
+
+
+A statistical controller was learned from a dataset of $N$ demonstrations: ${\mathcal{D} = \{(\dot{x}^{[i]}_{1:T},b^{[i]}_{1:T})\}_{i=1:N}}$, where the upper index $[i]$
+referenced the $i$th search trajectory, recorded during the search trials of the human subjects. Having described the experiment we proceed to give an in-depth description 
 of the mathematical representation of the belief, sensing and motion models and the uncertainty. 
 
 
@@ -451,9 +460,9 @@ the true probability density function of the belief, $p_{\Param}(x_t|y_{0:t},\do
 the underlying probability density is achieved by fitting a Gaussian  Mixture Model (GMM), Equation \ref{eq:gmm1}, to the particles,
 
 \begin{equation}\label{eq:gmm1}
-  p_{\Param}(x_t|y_{0:t},\dot{x}_{1:t}) = \sum\limits_{k=1}^{K} \piK\, g(x_t\: ;\MuK,\SigK )
+  p_{\Param_H}(x_t|y_{0:t},\dot{x}_{1:t}) = \sum\limits_{k=1}^{K} \piK\, g(x_t\: ;\MuK,\SigK )
 \end{equation}
-where parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1,\dots,K}$, are the weights, means and covariances of the individual multivariate Gaussian function, $g(\cdot)$ and
+where parameters $\Param_H = \{w^{[k]},\MuK,\SigK\}_{1:K}$, are the weights, means and covariances of the individual multivariate Gaussian function, $g(\cdot)$ and
 $K$ is the number of Gaussian components. The scalar $\piK$ represents the weight associated to mixture component $k$ 
 (indicating the component's overall contribution to the distribution) and $\sum_{k=1}^{K} \piK = 1$. The parameters $\MuK \in \mathbb{R}^{(3\times 1)}$ 
 and $\SigK \in \mathbb{R}^{(3\times 3)}$ are the mean and covariance of the normal distribution $k$. 
@@ -469,7 +478,7 @@ via Expectation-Maximization (EM).
 \begin{figure}
  \centering
    \includegraphics[width=0.95\textwidth]{./ch3-Search/Figures/Figure3}
-  \caption{Representation of the estimated density function $p_{\Param}(x_t|y_{0:t},\dot{x}_{1:t})$. \textit{Top Left and Right:} Initial starting point, 
+  \caption{Representation of the estimated density function $p_{\Param_H}(x_t|y_{0:t},\dot{x}_{1:t})$. \textit{Top Left and Right:} Initial starting point, 
   all Gaussian functions are uniformly distributed with uniform priors. The red cluster always has the highest likelihood which is taken
   to be the believed location of the robot's/human's end-effector. \textit{Bottom Left:} Contact with the table has been established, the robot location differers
   from his belief. \textit{Bottom Right:} Contact has been made with a corner, the clusters reflect that the robot could be at any corner (note that weights are not 
@@ -477,10 +486,10 @@ via Expectation-Maximization (EM).
   \label{fig:clustering}
 \end{figure}
 
-Given the estimated density we can compute the upper bound of the differential entropy \cite{DiffEntropyHuber2008}, $H$,
+Given the estimated density we can compute the upper bound of the differential entropy $H(\cdot)$ \citep{DiffEntropyHuber2008},
 %which is taken to be the uncertainty $U$,
 \begin{equation}
-  H\left(  p_{\Param}(x_t|y_{0:t},\dot{x}_{1:t}) \right) = \sum\limits_{k=1}^{K} \piK\ \left( -\log(\piK) + \frac{1}{2} \log((2\pi e)^{D} |\Sigma_{k}|) \right)
+  H\left(  p_{\Param_H}(x_t|y_{0:t},\dot{x}_{1:t}) \right) = \sum\limits_{k=1}^{K} \piK\ \left( -\log(\piK) + \frac{1}{2} \log((2\pi e)^{D} |\Sigma_{k}|) \right)
 \end{equation}
 where $e$ is the base of the natural logarithm and $D$ the dimension (being 3 in our case).
 
@@ -491,7 +500,7 @@ of the true entropy. The choice of the believed location of the robot/human end-
 Gaussian function with the highest weighted $w$.
 
 \begin{equation}
- \hat{x}_t = \operatorname*{arg\,max}_{x_t} p_{\Param}(x_{t}|y_{0:t},\dot{x}_{1:t}) = \mu_{(k = \max(w))}
+ \hat{x}_t = \operatorname*{arg\,max}_{x_t} p_{\Param_H}(x_{t}|y_{0:t},\dot{x}_{1:t}) = \Mu{\argmaxA\limits_{k}(w^{[k]})}
 \end{equation}
 
 Figure \ref{fig:clustering} depicts different configurations of the modes (clusters) and believed position of the end-effector (indicated by a yellow arrow).  
@@ -512,38 +521,30 @@ Figure \ref{fig:clustering} depicts different configurations of the modes (clust
 During the experiments, the recorded trajectories show that different actions are present for the same belief and uncertainty making the data multi-modal
 (for a particular position and uncertainty different velocities are present). That is multiple actions are possible given a specific belief. 
 This results in a one-to-many mapping which is not a valid function, eliminating any regression technique which directly learns a non-linear function. 
-To accommodate this fact we use a GMM to model the human's demonstrated searches, $\{(x,\dot{x},U)\}$. 
-Using statistical models to encode control policies in robotics is quite common, see \cite{Billard08chapter}. 
+To accommodate this fact we use a GMM to model the human's demonstrated searches. Using statistical models to encode control policies in robotics is quite common, see \cite{Billard08chapter}. 
 
 % explain how much data we have vs the number of gaussian components
 By normalising the velocity the amount of information to be learned was reduced. We also took into consideration that velocity is more 
 specific to embodiment capabilities: the robot might not be able to reproduce safely some of the velocity profiles demonstrated. 
 
-The training data set comprised a total of 20'000 tuples $(\dot{x},\hat{x},U)$, from the 150 trajectories gathered from the demonstrators. 
-The fitted GMM $\pi_{\Param}(\dot{x},\hat{x},U)$ had a total of 7 dimensions, 3 for direction, 3 for position and 1 scalar for uncertainty. 
-The definition of the GMM is presented below in equation \ref{eq:gmm2}.
+The training data set comprised a total of 20'000 tuples $(\U,\B)$, from the 150 trajectories gathered from the demonstrators. 
+The learned GMM $\pi_{\Param}(\U,\B)$ had a total of 7 dimensions, $\U \in \mathbb{R}^3$ and $\B \in \mathbb{R}^4$. 
+The definition of the GMM is presented below in Equation \ref{eq:gmm2}.
 
 \begin{equation} \label{eq:gmm2}
- \pi_{\Param}(\dot{x},\hat{x},U) = \sum\limits_{k=1}^{K} \piK\, g(\dot{x},\hat{x},U\: ;\MuK,\SigK )
+ \pi_{\Param}(\U,\B) = \sum\limits_{k=1}^{K} \piK \, g(\U,\B;\MuK,\SigK) 
 \end{equation}
-
-\begin{equation*}
-    \MuK =
-    \begin{bmatrix}
-      \mu_{\dot{x}} \\
-      \mu_{\hat{x}} \\
-      \mu_{U}
-    \end{bmatrix}
-    \SigK =
-    \begin{bmatrix}
-      \Sigma_{\dot{x}\dot{x}} & \Sigma_{\dot{x}\hat{x}} & \Sigma_{\dot{x}U} \\
-      \Sigma_{\hat{x}\dot{x}} & \Sigma_{\hat{x}\hat{x}} & \Sigma_{\hat{x}U} \\
-      \Sigma_{U\dot{x}} & \Sigma_{U\hat{x}} & \Sigma_{UU}   
-    \end{bmatrix}
-\end{equation*}
-Given this generative representation of the humans' demonstrated searches we proceeded to 
-select the necessary parameters to correctly represent the data. This step
-is know as model selection and we used Bayesian Information Criterion (BIC) to evaluate
+The parameters $\Param = \{w^{[k]},\MuK,\SigK\}_{1:K}$, are the weights, means and covariances 
+of the individual Gaussian functions, $g(.)$,
+\begin{center}
+$\MuK =  \begin{bmatrix} \MuK_{\U} \\ \MuK_{\B} \end{bmatrix}$, 
+$\SigK =  \begin{bmatrix} 
+	  \SigK_{\U\U} & \SigK_{\U\B} \\
+	  \SigK_{\B\U} & \SigK_{\B\B}
+	  \end{bmatrix}$
+\end{center}
+where $\sum_{k} w^{[k]} = 1$, $\MuK_{\U} \in \mathbb{R}^{3}$ and  $\MuK_{\B} \in \mathbb{R}^{4}$. Given this generative representation of the humans' demonstrated searches we proceeded to 
+select the necessary parameters to correctly represent the data. This step is know as model selection and we used Bayesian Information Criterion (BIC) to evaluate
 each set of parameters which were optimised via Expectation-Maximisation (EM). 
 
 A total of 82 Gaussian functions were used in the final model, 67 for trajectories on the table and 15 for those in the air. In Figure
@@ -555,34 +556,34 @@ dimensional GMM to give a sense of the size of the model.
   \includegraphics[width=0.95\textwidth]{./ch3-Search/Figures/Figure4}
   \caption{\textit{Left: } Resulting search GMM, a total of 67 Gaussian mixture components are present. We note the many overlapping Gaussians: this results
 from the level of uncertainty over the different choices taken. For example humans follow along the edge of the table in different directions and might
-leave the edge once they are confident with respect to their location. \textit{Right:} Information Gain map of the table environment, dark regions indicate 
+leave the edge once they are confident with respect to their location. \textit{Right:} Information Gain map ($I(x)$ Equation \ref{eq:IG}) of the table environment, dark regions indicate 
 high information gain as oppose to lighter ones. Not surprisingly, the highest are the corners, followed by the edges.}
   \label{fig:gmm}
 \end{figure}
 
 \subsection{Coastal Navigation}\label{chap3:costal_policy}
 
-Coastal navigation \cite{CostalNavigation1999} is a path planning method in which the objective function, 
+Coastal navigation \citep{CostalNavigation1999} is a path planning method in which the objective function, 
 Equation \ref{eq:objective_function}, is composed of two terms.
 
 \begin{equation}\label{eq:objective_function}
- f(x_{0:T}) = \sum\limits_{t=0}^{T} \lambda_1 \cdot c(x_t) + \lambda_2 \cdot I(x_t)
+ f(x_{0:T}) = \sum\limits_{t=0}^{T} \lambda_1 \, c(x_t) + \lambda_2 \, I(x_t)
 \end{equation}
 
-The first term, $c(x_t)$, is the traditional ``cost to go'' which penalizes every step taken so as to ensure that the
+The first term $c(x_t)$ is the traditional ``cost to go'' which penalizes every step taken so as to ensure that the
 optimal path is the shortest. The value was simply set to 1 for all discrete states in our case. The second term, $I(x_t)$, 
-is the information gain of a state. The information gain, $I$, of a particular state is related to how much 
+is the information gain of a state. The information gain of a particular state is related to how much 
 the entropy of a probability density function (pdf), being the location's uncertainty in our case, can be reduced. The two $\lambda$'s are scalars which weigh the influence 
 of each term. There is no constraint that they must sum to one.
 
-In our table environment we discretised the state space, $\mathbb{R}^3$, into bins so as to have a resolution of approximately, $1 cm^3$, giving us a total of a 125'000
-states. The action space was discretised to 6 actions, two for each dimension meaning that all motion is parallel to the axis. For each state, $x_t$, an $I(x_t)$ value is
+In our table environment we discretised the state space, $\mathbb{R}^3$, into bins so as to have a resolution of approximately, $1\, cm^3$, giving us a total of a 125'000
+states. The action space was discretised to 6 actions, two for each dimension meaning that all motion is parallel to the axis. For each state $x$ an $I(x)$ value is
 computed by evaluating Equation \ref{eq:IG},
 
 % Explain how the Information Gain is computed
 
 \begin{equation}\label{eq:IG}
- I(x_t) = \mathbb{E}_{p(y_t|x_t)}\{ H(p_{\Param}(x_t|y_{0:t},\dot{x}_{1:t}) \} - H(p_{\Param}(x_t|y_{0:t-1},\dot{x}_{1:t}))
+ I(x) = \mathbb{E}_{p(y_t|x_t)}\{ H(p_{\Param_H}(x_t|y_{0:t},\dot{x}_{1:t}) \} - H(p_{\Param_H}(x_t|y_{0:t-1},\dot{x}_{1:t}))
 \end{equation}
 which is essentially the difference between the entropy of a prior pdf to that of a posterior pdf.
 We set our initial pdf to be uniformly distributed and  we computed the maximum likelihood sensation for each discrete state $x_t$
@@ -595,21 +596,20 @@ We do not show the values above the table since they provided much less informat
 The optimization of the objective function is accomplished by running the Dijkstra's algorithm. This algorithm, given a cost map, 
 computes the shortest path to a specific target from all the states. This results in a policy.
 
-\subsection{Control}
-The standard approach to control with a GMM is to condition on the state,
-$\hat{x}_t$ and $U_t$ in our case, and perform inference on the resulting conditional
+\subsection{Control}\label{sub:ch3:control}
+The standard approach to control with a GMM is to condition on the belief state $b$ and perform inference on the resulting conditional
 GMM, Equation \ref{eq:conditional}, which is a distribution over velocities or directions.
 
 \begin{equation} \label{eq:conditional}
-  \pi_{\Param}(\dot{x}|\hat{x},U) = \sum\limits_{k=1}^{K} w^{[k]}_{\dot{x}|\hat{x},U} \;\;  g\left(\dot{x}\: ;  \MuK_{\dot{x}|\hat{x},U}, \SigK_{\dot{x}|\hat{x},U} \right)
+  \pi_{\Param}(\U|\B) = \sum\limits_{k=1}^{K} w^{[k]}_{\U|\B} \;\;  g\left(\U\: ;  \MuK_{\U|\B}, \SigK_{\U|\B} \right)
 \end{equation}
 
 The new distribution is of the dimension of the output variable, the velocity (3 dimensions). 
-The variable $\dot{x}$ in $\dot{x}|\hat{x},U$ indicates the predictor variable and the variables $\hat{x},U$ have been conditioned.
+The variable $\U$ in $\U|\B$ indicates the predictor variable and the variables $\B$ has been conditioned.
 A common approach in statistical PbD methods using GMMs is to take the expectation of the conditional (known as Gaussian Mixture Regression), Equation \ref{eq:GMR}
 
 \begin{equation} \label{eq:GMR}
- \dot{x} = \mathbb{E}\{\pi_{\Param}(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K}  w^{[k]}_{\dot{x}|\hat{x},U} \; \MuK_{\dot{x}|\hat{x},U}
+ \dot{x} = \mathbb{E}\{\pi_{\Param}(\dot{x}|\B)\} = \sum\limits_{k=1}^{K}  w^{[k]}_{\dot{x}|\B} \; \MuK_{\U|\B}
 \end{equation}
 
 The problem with this expectation approach, is that it averages out opposing directions or strategies and may result in 
@@ -623,19 +623,19 @@ If the current direction agrees with the mode then the weight remains unchanged 
 disagreement a lower weight is
 calculated according to the equation below. 
 \begin{equation}  \label{eq:weight}
-  \alpha_{k}(\dot{x}) = \piK_{\dot{x}|\hat{x},U} \; \exp(-\cos^{-1}(<\dot{x},\MuK_{\dot{x}|\hat{x},U}>))
+  \alpha_{k}(\U) = \piK_{\U|\B} \; \exp(-\cos^{-1}(<\U,\MuK_{\U|\B}>))
 \end{equation}
 Gaussian Mixture Regression is then performed with the normalised  weights $\alpha$ instead of $wi$
 (the initial weight obtained when conditioning).
 
 \begin{equation}\label{eq:w_expectation}
- \underline{\dot{x}} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|\hat{x},U)\} = \sum\limits_{k=1}^{K} \alpha_{k}(\dot{x}) \:\MuK_{\dot{x}|\hat{x},u}
+ \underline{\U} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\U|\B)\} = \sum\limits_{k=1}^{K} \alpha_{k}(\U) \:\MuK_{\U|\B}
 \end{equation}
 % 
 %	How to control speed
 %
 The final output of Equation \ref{eq:w_expectation} gives the desired direction
-($\dot{x}$ is re-normalised and is denoted as $\underline{\dot{x}}$). In the case when the mode suddenly disappears
+($\U$ is re-normalised and is denoted as $\underline{\dot{x}}$). In the case when the mode suddenly disappears
 (because of sudden change of the level of uncertainty caused by the appearance or disappearance of a feature)
 another present mode is selected at random. For example, when the robot has reached a corner, the level of uncertainty for this feature drops to zero.
 A new mode, and hence new direction of motion, will then  be computed.
@@ -645,7 +645,7 @@ of the end-effector when in contact with the table. This behaviour is not learne
 the embodiment of the robot and unrelated to the search strategy. The 
 amplitude of the velocity is computed by a proportional controller based on the
 believed distance to the goal,
-\begin{align}
+\begin{align} \label{eq:ch3:amplitude}
      \nu &= \max(\min(\beta_{1},K_{p}(x_{\mathrm{g}} - \hat{x}),\beta_{2}) \\ \nonumber
  \dot{x} &=  \nu\,\underline{\dot{x}}
 \end{align}
@@ -658,6 +658,41 @@ trials.
 %
 
 \begin{figure}
+ \centering
+ \includegraphics[width=\textwidth]{./ch3-Search/Figures/robots}
+ \caption{\textit{Left:} The WAM is cable driven robot with 7 Degrees of Freedom (DOF) and is controlled by directly sending torque commands. The measurements 
+ of the robot are computed according to Equation \ref{eq:sensingfunction} on page \pageref{eq:sensingfunction}, the point of reference is taken to be the 
+ robots end-effector.
+ \textit{Right}: The KUKA LWR is as the WAM a 7 (DoF) robot. Both robots are controlled via an ethernet cable at a 1kHz communication rate. The KUKA API 
+ provides a command interface to the stiffness, damping, position and torque variables of each joint in contrast to the WAM for which our own impedance 
+ controller was developed. In our setup the end-effector of the WAM is a haptic device from which we computed sensations $y$, by treating it as a point mass with respect
+ to the model of the world. The KUKA is equipped with the Allegro hand from which we compute sensations from each finger tip, also by considering geometric distances 
+ with features in the environment.}
+ \label{fig:ch3:wam:kuka}
+\end{figure}
+
+\subsection{Robot implementation}
+
+The above procedure can control the general behaviour of the search but is insufficient for a successful implementation on a robotic system 
+such as the 7 Degree of Freedom $q\in\mathbb{R}^7$ ($q$ is a vector of joint positions) WAM or KUKA LWR robot, which we illustrate in Figure \ref{fig:ch3:wam:kuka}. 
+The GMM policy $\underline{\dot{x}} = \mathbb{E}_{\alpha}\{\pi_{\Param}(\dot{x}|b)\}$ outputs a linear velocity and the 
+angular velocity is computed from a reference orientation which is constant. 
+From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to 
+define a linear and angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  
+the current position $x$ and orientation $R$ of the robot's end-effector.
+Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
+Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:ch3:torque_control},
+
+\begin{equation}\label{eq:ch3:torque_control}
+ \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
+\end{equation}
+
+where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
+and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the 
+measured Cartesian end-effector velocity used in the motion model of the particle filter. 
+Figure \ref{fig:ch3:control_flow} illustrates the complete control flow.
+
+\begin{figure}
 \centering
   \includegraphics[width=0.8\textwidth]{./ch3-Search/Figures/Control_schematics}
   \caption{Overview of the decision loop. At the top a strategy is chosen given an initial belief
@@ -668,54 +703,8 @@ a low level impedance controller which sends out the required torques. The
 resulting sensation, encoded through the Multinomial distribution over
   the environment features, and actual displacement are sent back to update the
 belief.}
-  \label{fig:flow_chart}
+  \label{fig:ch3:control_flow}
 \end{figure}
-
-\subsection{Robot implementation}
-
-
-%
-%	Impedance controller
-%
-As mentioned previously, compliance is the other important aspect when having the robot duplicate the search strategies. 
-Collisions with the environment occur as a result of the uncertainty. To avoid risks of breaking the table or the robot sensors we have an impedance controller
-at the lowest level which outputs appropriate joint torques $\tau$. 
-
-
-The above procedure can control the general behaviour of the search but is insufficient for a successful implementation on a robotic system 
-such as the 7 Degree of Freedom $q\in\mathbb{R}^7$ KUKA LWR, which we illustrate in Figure \ref{fig:kuka}. 
-The GMM policy $\dot{x} = \mathbb{E}_{\alpha}\{\pi_{\Param_1}(\dot{x}|b)\}$ outputs a linear velocity and the 
-angular velocity is computed from a reference orientation which is constant. When the plug is to be connected to the socket, 
-the angular velocity is the output of samples drawn from the conditional $\omega \sim \pi_{\Param_2}(\omega|\phi)$.
-From both linear and angular velocities a reference position $x^r \in \mathbb{R}^{(3 \times 1)}$ and orientation $R^r \in \mathbb{R}^{(3 \times 3)}$ are computed and used to 
-define a linear and angular error $x_e = x^r - x$, $\psi_e = \mathrm{angleaxis}(R^{\mathrm{T}}R^r)$ by using the  
-the current position $x$ and orientation $R$.
-Given the kinematic chain of the robot, the inverse of the Jacobian $J(q) \in \mathbb{R}^{6\times 7}$ is used in an impedance control to transform the 
-Cartesian error $c_e = [x_e,\psi_e]^{\mathrm{T}} \in \mathbb{R}^{6 \times 1}$ to torque commands $\tau_t \in \mathbb{R}^7$, Equation \ref{eq:torque_control},
-
-\begin{equation}\label{eq:torque_control}
- \tau_t = J^{\mathrm{T}}(q_t)\left(-K c_e - D \dot{c}_e \right) + g(q_t)
-\end{equation}
-
-where $K,D \in \mathbb{R}^{6\times6}$ are diagonal stiffness and damping matrices whose values were set experimentally 
-and $g(q_t)$ compensates for gravity. Given an applied torque there is a resulting joint velocity $\dot{q}_t$ from which we can compute the measured Cartesian end-effector velocity used in the motion model of the PMF.
-Figure \ref{fig:control_flow} illustrates the complete control flow.
-
-\begin{figure}
- \centering
- \includegraphics[width=\textwidth]{./ch3-Search/Figures/robots}
- \caption{\textit{Left:} \textit{Right}: The KUKA LWR is a 7 Degree Of Freedom (DoF) robot, we illustrate in red each joint, which is controlled at a rate of 1kHz via an ethernet cable. The KUKA API provides a command interface to the 
- stiffness, damping, position and torque variables of each joint.}
- \label{fig:kuka}
-\end{figure}
-
-
-
-
-The overall control loop is depicted in Figure \ref{fig:flow_chart}.
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %																	   %
 %				Results and Discussion  										   %
@@ -777,7 +766,7 @@ the search. The Coastal navigation algorithm finds the optimal path to the goal 
 consists of a trade-off between time taken to reach the goal and the minimisation of the uncertainty.
 
 It can be seen that the human demonstrations have a much wider spread than those of the search algorithms. 
-We suggest that this is due to human behaviours being optimal with respect to their own criteria as opposed to the algorithms 
+We speculate that this is due to human behaviours being optimal with respect to their own criteria as opposed to the algorithms 
 which usually tend to only maximise a single objective function. The trajectories of the Greedy and GMM methods represented by their 
 expected features demonstrate two distinctive behaviours (in terms of expected sensation), risk-prone for the Greedy and risk-adverse
 for the GMM.
@@ -803,7 +792,7 @@ Greedy search policies and finally Coastal and Greedy.
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{./ch3-Search/Figures/Figure7} 
+  \includegraphics[width=\textwidth]{./ch3-Search/Figures/risk-averse-dist-features} 
  \caption{Risk of searches. Illustration of risk-prone and risk-averse searches in terms of a Risk factor (\textit{left}) and expected sensation (\textit{right}).
  \textit{Left:} Each trajectory was reduced to a single scalar, which we call the Risk factor, quantifying the risk of a trajectory. The Risk factor 
  is inversely proportional to the sum of the information gain of a particular trajectory. The colour paired dots (risk averse) and squares (risk prone) 
@@ -843,9 +832,8 @@ It is clear that multiple searches occur which is reflected in the plot of the e
 search strategies generated by the GMM for this initial condition produced risk-averse trajectories.
 
 
-We conclude that there is a strong inclination towards inferring that indeed multiple search strategies do 
-arise in the human searches since they were extracted and encoded in the GMM model. From the risk distribution, humans have a 
-tendency to be risk-averse.
+We conclude that there is evidence of multiple search strategies present in the human searches since they were extracted and encoded in the GMM model. 
+From the risk distribution, humans have a tendency to be risk-averse.
 
 \begin{figure}
  \centering
@@ -903,7 +891,7 @@ This approach could potentially lead to unnecessary travel cost which could othe
   \caption{Illustration of the vector field for the Coastal and GMM policy. \textit{Top Left} Coastal policy, there is only one possible direction for every 
   state at any time, the values of $\lambda_2$ in the cost function were set experimentally. \textit{Others:} The GMM policy for three different levels of
   uncertainty. For each point multiple actions are possible which is reflected by the number of arrows (only the first three most likely actions). As 
-  the uncertainty decreases the policy becomes less multi-model, but remains around the edges and corners. Note that once certain
+  the uncertainty decreases the policy becomes less multi-modal, but remains around the edges and corners. Note that once certain
   of being close to an edge there is a possibility to go either straight to the goal or stay close to the edge and corners.}
   \label{fig:vectorfield}
 \end{figure}
@@ -1019,7 +1007,7 @@ and their polices take the true end-effector location to an even more feature de
 region. In this situation the GMM policy is the clear winner with respect to the distance taken to reach
 the goal. 
 
-In experiment \#2, both Greedy and Coastal policies perform equally well and will usually perform faster than the GMM model if the true 
+In experiment \#2, both Greedy and Coastal policies perform equally well, and usually perform faster than the GMM model if the true 
 and believed locations of the end-effector remain on the surface of the table. Otherwise if this is not the 
 case, they will both reduce the uncertainty in a very inefficient way as the modes will often change during the search. 
 This leads to the believed position (most likely state, $\hat{x}_t$) varying greatly, resulting in an increased time before the uncertainty 
@@ -1044,7 +1032,7 @@ The results show which methods actively minimise the uncertainty and which metho
 For all the reported experiments the GMM (learned from human searches) reaches a lower expected uncertainty than all other search algorithms. 
 For the Uniform and \#1 search experiment, all methods reach the same final uncertainty level. However, for the \#2 and \#4 experiments, 
 the GMM reaches the goal with significantly lower uncertainty. It is inferred that the GMM model actively minimises the uncertainty 
-which is also reflected in the distance it takes reach the goal in comparison with the other methods.
+which is also reflected in the distance it takes to reach the goal in comparison with the other methods.
 
 While  the Greedy (\#2) and Coastal (\#4) are faster than the GMM method, Table \ref{tab:mean-var-distance}, both have a far higher level 
 of uncertainty at the arrival which leads to the assumption that chance has a non-negligible effect on their success. 
@@ -1083,7 +1071,7 @@ of a Markov Decision Process in a partially observable situation where the state
 (the problem has been partially addressed in \cite{Bake_Saxe_Tene_2011} for discrete states and actions). 
 
 A drawback of the PbD-POMDP approach is that the quality of the learned policy is dependent on the abilities 
-of the human teacher. If the teacher is good (on average) then the transferred policy will be adequate, if however
+of the human teacher. If the teacher is consistent and goal directed (on average) then the transferred policy will be adequate, if however
 the human is suboptimal at performing the task, then the resulting policy will be poor. An autonomous way of
 evaluating the quality of the demonstrations whilst learning a policy is necessary. In the next chapter, ``Chapter 4'', we 
 demonstrate that by introducing a cost function and using a Reinforcement Learning approach we can account

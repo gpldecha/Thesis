@@ -589,6 +589,13 @@ P(A_t|Y_{0:t-1},u_{1:t};\ThA) 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_
 
 \section{Scalabe-MLMF Algorithm}\label{app:scalable-mlmf}
 
+To address exponential time complexity a an independence assumption was introduced between the objects. This leads to a new filtering algorithm in 
+which each agent-object joint distribution pair $P(A^{(i)}_t,O^{(i)}|Y^{(i)}_{0:t},u_{1:t})$ is filtered independently of one another until 
+a positive contact has been sensed. Then the exchange of information of one joint distribution to another is achieved through the agent's marginals $A^{(i)}$ according to Algorithm \ref{alg:scalabe-mrf-slam}.
+The measurement update is the same as previously described in Algorithm \ref{alg:mrf-slam} in the case of no positive measurements of the objects. If the agent
+senses an object, all of the agent marginals of the remaining joint distributions are set to the marginal of the joint distribution pair belonging to the positive 
+measurement $Y^{(i)}_t$. 
+
 \begin{center}
 \begin{minipage}{\linewidth}
 

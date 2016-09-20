@@ -20,14 +20,14 @@ Fares Abu-Dakka, Bojan Nemec, Aljaz Kramberger, Anders~Glent Buch, Norbert
 \newblock Solving peg-in-hole tasks by human demonstration and exception
   strategies.
 \newblock \emph{Industrial Robot}, 41\penalty0 (6):\penalty0 575--584, 2014.
-\newblock \doi{http://dx.doi.org/10.1108/IR-07-2014-0363}.
+\newblock URL \url{http://dx.doi.org/10.1108/IR-07-2014-0363}.
 
 \bibitem[Agostini and Celaya(2010)]{rl_gmm_2010}
 A.~Agostini and E.~Celaya.
 \newblock Reinforcement learning with a gaussian mixture model.
 \newblock In \emph{The 2010 International Joint Conference on Neural Networks
   (IJCNN)}, pages 1--8, July 2010.
-\newblock \doi{10.1109/IJCNN.2010.5596306}.
+\newblock URL \url{http://dx.doi.org/10.1109/IJCNN.2010.5596306}.
 
 \bibitem[akbar Agha-mohammadi et~al.(2011)akbar Agha-mohammadi, Chakravorty,
   and Amato]{FIRM_2011}
@@ -36,7 +36,7 @@ Ali akbar Agha-mohammadi, Suman Chakravorty, and Nancy~M. Amato.
   framework for motion planning under uncertainty.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 4284--4291, Sept 2011.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2011.6095010}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2011.6095010}.
 
 \bibitem[akbar Agha-mohammadi et~al.(2014)akbar Agha-mohammadi, Agarwal,
   Mahadevan, Chakravorty, Tomkins, Denny, and Amato]{rob_online_bs_icra_2014}
@@ -46,15 +46,16 @@ Ali akbar Agha-mohammadi, S.~Agarwal, A.~Mahadevan, S.~Chakravorty, D.~Tomkins,
   Application to physical mobile robots.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 149--156, May 2014.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2014.6906602}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2014.6906602}.
 
 \bibitem[Arulampalam et~al.(2002{\natexlab{a}})Arulampalam, Maskell, Gordon,
   and Clapp]{Arul_Mask_Clap_2002}
 M.S. Arulampalam, S.~Maskell, N.~Gordon, and T.~Clapp.
 \newblock A tutorial on particle filters for online nonlinear/non-gaussian
   bayesian tracking.
-\newblock \emph{IEEE Transactions on Signal Processing}, 50\penalty0
-  (2):\penalty0 174--188, February 2002{\natexlab{a}}.
+\newblock \emph{Transactions on Signal Processing}, 50\penalty0 (2):\penalty0
+  174--188, February 2002{\natexlab{a}}.
+\newblock URL \url{http://dx.doi.org/10.1109/78.978374}.
 
 \bibitem[Arulampalam et~al.(2002{\natexlab{b}})Arulampalam, Maskell, Gordon,
   and Clapp]{PF_tutorial_2002}
@@ -63,25 +64,28 @@ M.S. Arulampalam, S.~Maskell, N.~Gordon, and T.~Clapp.
   bayesian tracking.
 \newblock \emph{Transactions on Signal Processing}, 50\penalty0 (2):\penalty0
   174--188, Feb 2002{\natexlab{b}}.
-\newblock ISSN 1053-587X.
-\newblock \doi{10.1109/78.978374}.
+\newblock URL \url{http://dx.doi.org/10.1109/78.978374}.
 
 \bibitem[Atkeson et~al.(1997)Atkeson, Moore, and
   Schaal]{Atkeson97locallyweighted}
 Christopher~G. Atkeson, Andrew~W. Moore, and Stefan Schaal.
 \newblock Locally weighted learning.
-\newblock \emph{ARTIFICIAL INTELLIGENCE REVIEW}, pages 11--73, 1997.
-\newblock \doi{http://dx.doi.org/10.1023/A:1006559212014}.
+\newblock \emph{Artificial Inteligence}, pages 11--73, 1997.
+\newblock URL \url{http://dx.doi.org/10.1023/A:1006559212014}.
 
-\bibitem[Bake et~al.(2006)Bake, Tenenbaum, and Saxe]{Bake_Tene_Saxe_2006}
-Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
+\bibitem[Baker et~al.(2006)Baker, Tenenbaum, and Saxe]{Bake_Tene_Saxe_2006}
+Chris Baker, Joshua. Tenenbaum, and Rebecca Saxe.
 \newblock Bayesian models of human action understanding.
-\newblock \emph{NIPS}, 2006.
+\newblock In \emph{Advances in Neural Information Processing Systems (NIPS)},
+  volume~18, pages 99--106. 2006.
+\newblock URL
+  \url{http://papers.nips.cc/paper/2815-bayesian-models-of-human-action-understanding.pdf}.
 
-\bibitem[Bake et~al.(2011)Bake, Tenenbaum, and Saxe]{Bake_Saxe_Tene_2011}
-Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
+\bibitem[Baker et~al.(2011)Baker, Tenenbaum, and Saxe]{Bake_Saxe_Tene_2011}
+Chris Baker, Joshua. Tenenbaum, and Rebecca Saxe.
 \newblock Bayesian theory of mind: Modeling joint belief-desire attribution.
-\newblock \emph{Journal of Cognitive Science}, 2011.
+\newblock In \emph{Journal of Cognitive Science}, 2011.
+\newblock URL \url{https://mindmodeling.org/cogsci2011/}.
 
 \bibitem[Baron-Cohen(1995)]{Baron-Cohen}
 Simon Baron-Cohen.
@@ -111,7 +115,8 @@ Niclas Bergman and C~Niclas Bergman.
 \bibitem[Bernoulli(1954)]{Bernoulli1954}
 D.~Bernoulli.
 \newblock {Exposition of a New Theory on the Measurement of Risk (1748)}.
-\newblock \emph{Econometrica}, 22\penalty0 (1):\penalty0 23--36, 1954.
+\newblock \emph{Econometrica}, 22\penalty0 (1):\penalty0 23--36, Jan 1954.
+\newblock URL \url{http://dx.doi.org/10.2307/1909829}.
 
 \bibitem[Billard and Grollman(2013)]{Billard_schol_2013}
 A.~Billard and D.~Grollman.
@@ -136,7 +141,7 @@ H.~Bou-Ammar, H.~Voos, and W.~Ertel.
 \newblock Controller design for quadrotor uavs using reinforcement learning.
 \newblock In \emph{International Conference on Control Applications}, pages
   2130--2135, Sept 2010.
-\newblock \doi{10.1109/CCA.2010.5611206}.
+\newblock URL \url{http://dx.doi.org/10.1109/CCA.2010.5611206}.
 
 \bibitem[Boyan and Moore(1995)]{Safe_val_function_1995}
 Justin~A. Boyan and Andrew~W. Moore.
@@ -159,17 +164,14 @@ Sebastian Brechtel, Tobias Gindele, and R\"udiger Dillmann.
 Alex Brooks and Stefan Williams.
 \newblock A monte carlo update for parametric pomdps.
 \newblock In \emph{Robotics Research}, volume~66, pages 213--223. 2011.
-\newblock \doi{http://dx.doi.org/10.1007/978-3-642-14743-2_19}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-14743-2_19}.
 
 \bibitem[Burgess(2006)]{spatial_memory_how_ego_allo_combine_2006}
 Neil Burgess.
 \newblock Spatial memory: how egocentric and allocentric combine.
-\newblock \emph{Trends in Cognitive Sciences}, 10\penalty0 (12):\penalty0 551
-  -- 557, 2006.
-\newblock ISSN 1364-6613.
-\newblock \doi{http://dx.doi.org/10.1016/j.tics.2006.10.005}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S1364661306002713}.
+\newblock \emph{Trends in Cognitive Sciences}, 10\penalty0 (12):\penalty0
+  551--557, 2006.
+\newblock URL \url{http://dx.doi.org/10.1016/j.tics.2006.10.005}.
 
 \bibitem[Busoniu et~al.(2011)Busoniu, Ernst, Schutter, and
   Babuska]{approx_rl_overview_2011}
@@ -177,15 +179,15 @@ L.~Busoniu, D.~Ernst, B.~De Schutter, and R.~Babuska.
 \newblock Approximate reinforcement learning: An overview.
 \newblock In \emph{Symposium on Adaptive Dynamic Programming and Reinforcement
   Learning (ADPRL)}, pages 1--8, April 2011.
-\newblock \doi{10.1109/ADPRL.2011.5967353}.
+\newblock URL \url{http://dx.doi.org/10.1109/ADPRL.2011.5967353}.
 
 \bibitem[Butterfield et~al.(2009)Butterfield, Jenkins, Sobel, and
   Schwertfeger]{MRF_ToM}
 J.~Butterfield, O.~C. Jenkins, D.~Sobel, and J.~Schwertfeger.
 \newblock Modeling aspects of {T}heory of {M}ind with {M}arkov {R}andom
   {F}ields.
-\newblock \emph{International Journal of Social Robotics}, 1\penalty0
-  (1):\penalty0 41--51, January 2009.
+\newblock \emph{Journal of Social Robotics}, 1\penalty0 (1):\penalty0 41--51,
+  January 2009.
 
 \bibitem[Calinon et~al.(2010)Calinon, D'halluin, Sauser, Caldwell, and
   Billard]{gesture_calinon_2010}
@@ -193,7 +195,7 @@ S.~Calinon, F.~D'halluin, E.~L. Sauser, D.~G. Caldwell, and A.~G. Billard.
 \newblock Learning and reproduction of gestures by imitation.
 \newblock \emph{IEEE Robotics Automation Magazine}, 17\penalty0 (2):\penalty0
   44--54, jun 2010.
-\newblock \doi{http://dx.doi.org/10.1109/MRA.2010.936947}.
+\newblock URL \url{http://dx.doi.org/10.1109/MRA.2010.936947}.
 
 \bibitem[Carlone et~al.(2010)Carlone, Du, Ng, Bona, and
   Indri]{KL_SLAM_exploration_PF}
@@ -202,7 +204,7 @@ L.~Carlone, Jingjing Du, M.K. Ng, B.~Bona, and M.~Indri.
   exploration with particle filters.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 287--293, Oct 2010.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2010.5652164}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2010.5652164}.
 
 \bibitem[Carrillo et~al.(2012)Carrillo, Reid, and
   Castellanos]{Active_SLAM_Uncertainty_compar}
@@ -210,7 +212,7 @@ H.~Carrillo, I~Reid, and J.A Castellanos.
 \newblock On the comparison of uncertainty criteria for active slam.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 2080--2087, May 2012.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2012.6224890}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2012.6224890}.
 
 \bibitem[Cassandra et~al.(1996)Cassandra, Kaelbling, and
   Kurien]{acting_uncer_1996}
@@ -226,7 +228,7 @@ Guillaume~de Chambrier and Aude Billard.
   context.
 \newblock \emph{Robotics and Biomimetics}, 1\penalty0 (1):\penalty0 1--16,
   2014.
-\newblock \doi{http://dx.doi.org/10.1186/s40638-014-0008-1}.
+\newblock URL \url{http://dx.doi.org/10.1186/s40638-014-0008-1}.
 
 \bibitem[Chen and von Wichert(2015)]{u_aware_grasp_ICRA_2015}
 D.~Chen and G.~von Wichert.
@@ -234,30 +236,30 @@ D.~Chen and G.~von Wichert.
   unknown dimensions.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 4312--4317, May 2015.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2015.7139794}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2015.7139794}.
 
 \bibitem[Cheng and Chen(2014)]{online_gpr_icra_2014}
 H.~Cheng and H.~Chen.
 \newblock Online parameter optimization in robotic force controlled assembly
   processes.
-\newblock In \emph{2014 IEEE International Conference on Robotics and
-  Automation (ICRA)}, pages 3465--3470, may 2014.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2014.6907358}.
+\newblock In \emph{International Conference on Robotics and Automation (ICRA)},
+  pages 3465--3470, may 2014.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2014.6907358}.
 
 \bibitem[Chhatpar and Branicky(2001)]{search_strategies_icra_2001}
 S.~R. Chhatpar and M.~S. Branicky.
 \newblock Search strategies for peg-in-hole assemblies with position
   uncertainty.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
-  (ICRA)}, volume~3, pages 1465--1470 vol.3, 2001.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2001.977187}.
+  (ICRA)}, volume~3, pages 1465--1470, 2001.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2001.977187}.
 
 \bibitem[de~Chambrier and Billard(2013)]{deChambrier2013}
 G.~de~Chambrier and A.~Billard.
 \newblock Learning search behaviour from humans.
-\newblock In \emph{Robotics and Biomimetics (ROBIO), 2013 IEEE International
-  Conference on}, pages 573--580, Dec 2013.
-\newblock \doi{http://dx.doi.org/10.1109/ROBIO.2013.6739521}.
+\newblock In \emph{International Conference on Robotics and Biomimetics
+  (ROBIO)}, pages 573--580, Dec 2013.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBIO.2013.6739521}.
 
 \bibitem[Deisenroth et~al.(2011)Deisenroth, Neumann, and
   Peters]{p_search_surv_2011}
@@ -265,7 +267,6 @@ Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
 \newblock A survey on policy search for robotics.
 \newblock \emph{Foundations and Trends in Robotics}, 2\penalty0 (1-2):\penalty0
   1--142, 2011.
-\newblock \doi{10.1561/2300000021}.
 \newblock URL \url{http://dx.doi.org/10.1561/2300000021}.
 
 \bibitem[Deisenroth et~al.(2013)Deisenroth, Neumann, and
@@ -274,7 +275,7 @@ Marc~Peter Deisenroth, Gerhard Neumann, and Jan Peters.
 \newblock A survey on policy search for robotics.
 \newblock \emph{Foundations and Trends in Robotics}, 2\penalty0 (1-2):\penalty0
   1--142, 2013.
-\newblock \doi{http://dx.doi.org/10.1561/2300000021}.
+\newblock URL \url{http://dx.doi.org/10.1561/2300000021}.
 
 \bibitem[Devin and Alami(2016)]{ToM_HRI_2106}
 Sandra Devin and Rachid Alami.
@@ -282,7 +283,7 @@ Sandra Devin and Rachid Alami.
   execution.
 \newblock In \emph{International Conference on Human Robot Interation (HRI)},
   pages 319--326, 2016.
-\newblock \doi{http://dx.doi.org/10.1109/HRI.2016.7451768}.
+\newblock URL \url{http://dx.doi.org/10.1109/HRI.2016.7451768}.
 
 \bibitem[Du et~al.(2010)Du, Hsu, Kurniawati, Lee, Ong, and
   Png]{POMDP_approach_2010}
@@ -296,8 +297,7 @@ H.~Durrant-Whyte and Tim Bailey.
 \newblock Simultaneous localization and mapping: part i.
 \newblock \emph{Robotics Automation Magazine}, 13\penalty0 (2):\penalty0
   99--110, June 2006.
-\newblock ISSN 1070-9932.
-\newblock \doi{10.1109/MRA.2006.1638022}.
+\newblock URL \url{http://dx.doi.org/10.1109/MRA.2006.1638022}.
 
 \bibitem[Erez and Smart(2010)]{Erez10ascalable}
 Tom Erez and William~D. Smart.
@@ -323,15 +323,14 @@ William~D. Fisher and M.~Shahid Mujtaba.
 \newblock Hybrid position/force control: A correct formulation.
 \newblock \emph{The International Journal of Robotics Research (IJRR)},
   11\penalty0 (4):\penalty0 299--311, 1992.
-\newblock \doi{10.1177/027836499201100403}.
+\newblock URL \url{http://dx.doi.org/10.1177/027836499201100403}.
 
 \bibitem[Gonz{\'{a}}lez{-}Ba{\~{n}}os and
   Latombe(2002)]{Navigation_strategires_for_exploring_indoor_environments}
 H{\'{e}}ctor~H. Gonz{\'{a}}lez{-}Ba{\~{n}}os and Jean{-}Claude Latombe.
 \newblock Navigation strategies for exploring indoor environments.
-\newblock \emph{I. J. Robotic Research}, 21\penalty0 (10-11):\penalty0
-  829--848, 2002.
-\newblock \doi{http://dx.doi.org/10.1177/0278364902021010834}.
+\newblock \emph{IJRR}, 21\penalty0 (10-11):\penalty0 829--848, 2002.
+\newblock URL \url{http://dx.doi.org/10.1177/0278364902021010834}.
 
 \bibitem[Gordon(1995)]{stable_FA_gordon_1995}
 Geoffrey~J. Gordon.
@@ -346,8 +345,7 @@ G.~Grisetti, R.~Kummerle, C.~Stachniss, and W.~Burgard.
 \newblock A tutorial on graph-based slam.
 \newblock \emph{Intelligent Transportation Systems Magazine}, 2\penalty0
   (4):\penalty0 31--43, winter 2010.
-\newblock ISSN 1939-1390.
-\newblock \doi{10.1109/MITS.2010.939925}.
+\newblock URL \url{http://dx.doi.org/10.1109/MITS.2010.939925}.
 
 \bibitem[Grondman et~al.(2012{\natexlab{a}})Grondman, Busoniu, Lopes, and
   Babuska]{ac_survey_2012}
@@ -357,7 +355,7 @@ I.~Grondman, L.~Busoniu, G.~A.~D. Lopes, and R.~Babuska.
 \newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C
   (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov
   2012{\natexlab{a}}.
-\newblock \doi{10.1109/TSMCC.2012.2218595}.
+\newblock URL \url{http://dx.doi.org/10.1109/TSMCC.2012.2218595}.
 
 \bibitem[Grondman et~al.(2012{\natexlab{b}})Grondman, Busoniu, Lopes, and
   Babuska]{rl_ac_surv_2012}
@@ -367,7 +365,7 @@ I.~Grondman, L.~Busoniu, G.~A.~D. Lopes, and R.~Babuska.
 \newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C
   (Applications and Reviews)}, 42\penalty0 (6):\penalty0 1291--1307, Nov
   2012{\natexlab{b}}.
-\newblock \doi{10.1109/TSMCC.2012.2218595}.
+\newblock URL \url{http://dx.doi.org/10.1109/TSMCC.2012.2218595}.
 
 \bibitem[Gullapalli et~al.(1994)Gullapalli, Barto, and
   Grupen]{learn_admittance_icra_1994}
@@ -375,13 +373,14 @@ Vijaykumar Gullapalli, Andrew~G. Barto, and Roderic~A. Grupen.
 \newblock Learning admittance mappings for force-guided assembly.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 2633--2638, may 1994.
-\newblock \doi{10.1109/ROBOT.1994.351117}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.1994.351117}.
 
 \bibitem[Hamner et~al.(2006)Hamner, Singh, and Scherer]{Hamner_2006_5810}
 Bradley Hamner, Sanjiv Singh, and Sebastian Scherer.
 \newblock Learning obstacle avoidance parameters from operator behavior.
 \newblock \emph{Field Robotics}, 23\penalty0 (11/12):\penalty0 1037--1058,
   December 2006.
+\newblock URL \url{http://dx.doi.org/10.1002/rob.20171}.
 
 \bibitem[Hauser(2011)]{Hauser_2011}
 Kris Hauser.
@@ -390,7 +389,7 @@ Kris Hauser.
   Robotics}, chapter Randomized Belief-Space Replanning in Partially-Observable
   Continuous Spaces, pages 193--209.
 \newblock 2011.
-\newblock \doi{http://dx.doi.org/10.1007/978-3-642-17452-0_12}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-17452-0_12}.
 
 \bibitem[Hausknecht and Stone(2015)]{DRQ_AAAI_2015}
 Matthew Hausknecht and Peter Stone.
@@ -405,7 +404,7 @@ Ruijie He, S.~Prentice, and N.~Roy.
   gps-denied environment.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 1814--1820, May 2008.
-\newblock \doi{10.1109/ROBOT.2008.4543471}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.2008.4543471}.
 
 \bibitem[Hebert et~al.(2013)Hebert, Howard, Hudson, Ma, and
   Burdick]{next_best_touch}
@@ -413,7 +412,7 @@ P.~Hebert, T.~Howard, N.~Hudson, J.~Ma, and J.W. Burdick.
 \newblock The next best touch for model-based localization.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 99--106, May 2013.
-\newblock \doi{10.1109/ICRA.2013.6630562}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2013.6630562}.
 
 \bibitem[Hoffman et~al.(2005)Hoffman, Spranger, Gohring, and
   Jungel]{negative_info_markov_localisation}
@@ -422,7 +421,7 @@ J.~Hoffman, M.~Spranger, D.~Gohring, and M.~Jungel.
   localization.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 2947--2952, Aug 2005.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2005.1545087}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2005.1545087}.
 
 \bibitem[Hoffmann et~al.(2006)Hoffmann, Spranger, Gohring, Jungel, and
   Burkhard]{NegInfoFurtherStudies}
@@ -431,7 +430,7 @@ J.~Hoffmann, M.~Spranger, D.~Gohring, M.~Jungel, and Hans-Dieter Burkhard.
   localization.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 62--67, May 2006.
-\newblock \doi{http://dx.doi.org/10.1109/ROBOT.2006.1641162}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.2006.1641162}.
 
 \bibitem[Hollinger et~al.(2012)Hollinger, Englot, Hover, Mitra, and
   Sukhatme]{un_water_inspection_icra_2012}
@@ -439,28 +438,29 @@ G.~A. Hollinger, B.~Englot, F.~Hover, U.~Mitra, and G.~S. Sukhatme.
 \newblock Uncertainty-driven view planning for underwater inspection.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 4884--4891, May 2012.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2012.6224726}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2012.6224726}.
 
 \bibitem[Hsiao et~al.(2010)Hsiao, Kaelbling, and Lozano-Perez]{Hsiao_RSS_10}
 K.~Hsiao, L.~Kaelbling, and T.~Lozano-Perez.
 \newblock Task-driven tactile exploration.
 \newblock In \emph{Robotics Science and Systems (RSS)}, Zaragoza, Spain, June
   2010.
-\newblock \doi{http://dx.doi.org/10.15607/RSS.2010.VI.029}.
+\newblock URL \url{http://dx.doi.org/10.15607/RSS.2010.VI.029}.
 
 \bibitem[Huang and Gupta(2008)]{RRT-SLAM}
 Yifeng Huang and K.~Gupta.
 \newblock Rrt-slam for motion planning with motion and map uncertainty for
   robot exploration.
-\newblock In \emph{Intelligent Robots and Systems, 2008. IROS 2008. IEEE/RSJ
-  International Conference on}, pages 1077--1082, Sept 2008.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2008.4651183}.
+\newblock In \emph{International Conference on Intelligent Robots and Systems
+  (IROS)}, pages 1077--1082, Sept 2008.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2008.4651183}.
 
 \bibitem[Huber et~al.(2008)Huber, Bailey, Durrant-Whyte, and
   Hanebeck]{DiffEntropyHuber2008}
 M.F. Huber, Tim Bailey, H.~Durrant-Whyte, and U.D. Hanebeck.
 \newblock On entropy approximation for gaussian mixture random vectors.
 \newblock In \emph{Multisensor Fusion and Integration}, pages 181--188, 2008.
+\newblock URL \url{http://dx.doi.org/10.1109/mfi.2008.4648062}.
 
 \bibitem[Iachini et~al.(2014)Iachini, Ruggiero, and Ruotolo]{Iachini2014}
 Tina Iachini, Gennaro Ruggiero, and Francesco Ruotolo.
@@ -468,10 +468,7 @@ Tina Iachini, Gennaro Ruggiero, and Francesco Ruotolo.
   in small and large scale spaces?
 \newblock \emph{Behavioural Brain Research}, 273\penalty0 (0):\penalty0 73 --
   81, 2014.
-\newblock ISSN 0166-4328.
-\newblock \doi{http://dx.doi.org/10.1016/j.bbr.2014.07.032}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S0166432814004811}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.bbr.2014.07.032}.
 
 \bibitem[Javdani et~al.(2012)Javdani, Klingensmith, Bagnell, Pollard, and
   Srinivasa]{Efficient_touch_2012}
@@ -485,16 +482,14 @@ Matthew Johnson and et. al.
 \newblock Team ihmc's lessons learned from the darpa robotics challenge trials.
 \newblock \emph{Journal of Field Robotics}, 32\penalty0 (2):\penalty0 192--208,
   2015.
-\newblock ISSN 1556-4967.
-\newblock \doi{10.1002/rob.21571}.
 \newblock URL \url{http://dx.doi.org/10.1002/rob.21571}.
 
 \bibitem[Kaelbling et~al.(1998)Kaelbling, Littman, and
   Cassandra]{Kaelbling_1998}
 Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
 \newblock Planning and acting in partially observable stochastic domains.
-\newblock \emph{Artif. Intell.}, 101\penalty0 (1-2):\penalty0 99--134, May
-  1998.
+\newblock \emph{Artificial Intelligence}, 101\penalty0 (1-2):\penalty0 99--134,
+  May 1998.
 \newblock URL \url{http://dx.doi.org/10.1016/S0004-3702(98)00023-X}.
 
 \bibitem[Kalakrishnan et~al.(2011)Kalakrishnan, Righetti, Pastor, and
@@ -503,7 +498,7 @@ M.~Kalakrishnan, L.~Righetti, P.~Pastor, and S.~Schaal.
 \newblock Learning force control policies for compliant manipulation.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (ICRA)}, pages 4639--4644, Sept 2011.
-\newblock \doi{10.1109/IROS.2011.6095096}.
+\newblock \doi{http://dx.doi.org/10.1109/IROS.2011.6095096}.
 
 \bibitem[Kasper et~al.(2001)Kasper, Fricke, Steuernagel, and von
   Puttkamer]{Kasper2001153}
@@ -512,6 +507,8 @@ Michael Kasper, Gernot Fricke, Katja Steuernagel, and Ewald von Puttkamer.
   demonstration.
 \newblock \emph{Robotics and Autonomous Systems}, 34\penalty0 (2):\penalty0
   153--164, February 2001.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0921889000001196}.
 
 \bibitem[Kavraki et~al.(1996)Kavraki, Svestka, Latombe, and Overmars]{PRM_1996}
 L.E. Kavraki, P.~Svestka, J.-C. Latombe, and M.H. Overmars.
@@ -519,7 +516,7 @@ L.E. Kavraki, P.~Svestka, J.-C. Latombe, and M.H. Overmars.
   configuration spaces.
 \newblock \emph{Robotics and Automation, IEEE Transactions on}, 12\penalty0
   (4):\penalty0 566--580, Aug 1996.
-\newblock \doi{http://dx.doi.org/10.1109/70.508439}.
+\newblock URL \url{http://dx.doi.org/10.1109/70.508439}.
 
 \bibitem[Kim et~al.(2004)Kim, Jordan, Sastry, and Ng]{heli_2004}
 H.~J. Kim, Michael~I. Jordan, Shankar Sastry, and Andrew~Y. Ng.
@@ -534,7 +531,7 @@ J.~Kober and J.~Peters.
 \newblock Learning motor primitives for robotics.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 2112--2118, May 2009.
-\newblock \doi{10.1109/ROBOT.2009.5152577}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.2009.5152577}.
 
 \bibitem[Kober et~al.(2013)Kober, Bagnell, and Peters]{RL_robots_surv_2013}
 J.~Kober, J.~Andrew~(Drew) Bagnell, and J.~Peters.
@@ -554,7 +551,7 @@ Seung kook Yun.
   to learn contact motion?
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 1647--1652, May 2008.
-\newblock \doi{10.1109/ROBOT.2008.4543437}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.2008.4543437}.
 
 \bibitem[Kormushev et~al.(2010{\natexlab{a}})Kormushev, Calinon, and
   Caldwell]{pancake_2010}
@@ -570,7 +567,7 @@ P.~Kormushev, S.~Calinon, R.~Saegusa, and G.~Metta.
 \newblock Learning the skill of archery by a humanoid robot icub.
 \newblock In \emph{International Conference on Humanoid Robots (Humanoids)},
   pages 417--423, Dec 2010{\natexlab{b}}.
-\newblock \doi{10.1109/ICHR.2010.5686841}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICHR.2010.5686841}.
 
 \bibitem[Kronander(2015)]{Kronander2015}
 K.~Kronander.
@@ -582,7 +579,7 @@ K.~Kronander and A.~Billard.
   interaction.
 \newblock In \emph{Robotics and Automation (ICRA), 2012 IEEE International
   Conference on}, pages 1842--1849, May 2012.
-\newblock \doi{10.1109/ICRA.2012.6224877}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2012.6224877}.
 
 \bibitem[Kurniawati et~al.(2008)Kurniawati, Hsu, and Lee]{SARSOP}
 Hanna Kurniawati, David Hsu, and Wee~Sun Lee.
@@ -614,14 +611,14 @@ Miao Li, Kaiyu Hang, Danica Kragic, and Aude Billard.
 \newblock Dexterous grasping under shape uncertainty.
 \newblock \emph{Robotics and Autonomous Systems (RAS)}, 75, Part B:\penalty0
   352 -- 364, 2016.
-\newblock \doi{http://dx.doi.org/10.1016/j.robot.2015.09.008}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.robot.2015.09.008}.
 
 \bibitem[Li et~al.(2010)Li, Cheung, and Liu]{bs_compression_2010}
 Xin Li, William~K. Cheung, and Jiming Liu.
 \newblock {Improving POMDP Tractability via Belief Compression and Clustering}.
 \newblock \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part B
   (Cybernetics)}, 40\penalty0 (1):\penalty0 125--136, February 2010.
-\newblock \doi{http://dx.doi.org/10.1109/tsmcb.2009.2021573}.
+\newblock URL \url{http://dx.doi.org/10.1109/tsmcb.2009.2021573}.
 
 \bibitem[Lidoris(2011)]{GeorgiosLidoris}
 Georgios Lidoris.
@@ -634,7 +631,7 @@ Yong Lin, Xingjia Lu, and Fillia Makedon.
 \newblock Approximate planning in pomdps via {MDP} heuristic.
 \newblock In \emph{International Joint Conference on Neural Networks (2014)},
   pages 1304--1309, 2014.
-\newblock \doi{http://dx.doi.org/10.1109/IJCNN.2014.6889576}.
+\newblock URL \url{http://dx.doi.org/10.1109/IJCNN.2014.6889576}.
 
 \bibitem[Littman et~al.(1995)Littman, Cassandra, and Kaelbling]{Littman95}
 Michael~L. Littman, Anthony~R. Cassandra, and Leslie~Pack Kaelbling.
@@ -655,7 +652,7 @@ W.~Meeussen, M.~Wise, S.~Glaser, S.~Chitta, C.~McGann, P.~Mihelich,
 \newblock Autonomous door opening and plugging in with a personal robot.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 729--736, May 2010.
-\newblock \doi{10.1109/ROBOT.2010.5509556}.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.2010.5509556}.
 
 \bibitem[Miller(1956)]{cogprints730}
 George Miller.
@@ -667,15 +664,15 @@ George Miller.
 Volodymyr Mnih.
 \newblock Human-level control through deep reinforcement learning.
 \newblock \emph{Nature}, 518\penalty0 (7540):\penalty0 529--533, 02 2015.
-\newblock \doi{http://dx.doi.org/10.1038/nature14236}.
+\newblock URL \url{http://dx.doi.org/10.1038/nature14236}.
 
 \bibitem[Montemerlo and Thrun(2003)]{DataAssociation2003}
 M.~Montemerlo and S.~Thrun.
 \newblock Simultaneous localization and mapping with unknown data association
   using fastslam.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
-  volume~2, pages 1985--1991 vol.2, Sept 2003.
-\newblock \doi{10.1109/ROBOT.2003.1241885}.
+  volume~2, pages 1985--1991, Sept 2003.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBOT.2003.1241885}.
 
 \bibitem[Montemerlo et~al.(2003)Montemerlo, Thrun, Koller, and
   Wegbreit]{FastSLAM}
@@ -684,6 +681,7 @@ Michael Montemerlo, Sebastian Thrun, Daphne Koller, and Ben Wegbreit.
   simultaneous localization and mapping that provably converges.
 \newblock In \emph{International Conference on Artificial Intelligence
   (IJCAI)}, pages 1151--1156, 2003.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=1630659.1630824}.
 
 \bibitem[Nemec et~al.(2013)Nemec, Abu-Dakka, Ridge, Ude, Jorgensen,
   Savarimuthu, Jouffroy, Petersen, and Kr\"uger]{trans_workpiece_icra_2013}
@@ -691,9 +689,9 @@ B.~Nemec, F.~J. Abu-Dakka, B.~Ridge, A.~Ude, J.~A. Jorgensen, T.~R.
   Savarimuthu, J.~Jouffroy, H.~G. Petersen, and N.~Kr\"uger.
 \newblock Transfer of assembly operations to new workpiece poses by adaptation
   to the desired force profile.
-\newblock In \emph{16th International Conference on Advanced Robotics (ICAR)},
-  pages 1--7, Nov 2013.
-\newblock \doi{http://dx.doi.org/10.1109/ICAR.2013.6766568}.
+\newblock In \emph{International Conference on Advanced Robotics (ICAR)}, pages
+  1--7, Nov 2013.
+\newblock URL \url{http://dx.doi.org/10.1109/ICAR.2013.6766568}.
 
 \bibitem[Neumann and Peters(2009{\natexlab{a}})]{fqi_nips_peter_2009}
 G.~Neumann and J.~Peters.
@@ -720,7 +718,7 @@ D.~Warner North.
 \newblock A tutorial introduction to decision theory.
 \newblock \emph{IEEE Transactions on Systems Science and Cybernetics},
   4:\penalty0 200--210, 1968.
-\newblock \doi{10.1109/tssc.1968.300114}.
+\newblock URL \url{http://dx.doi.org/10.1109/tssc.1968.300114}.
 
 \bibitem[Now\'{e} et~al.(2012)Now\'{e}, Vrancx, and De~Hauwere]{RL_book_sa}
 A.~Now\'{e}, P.~Vrancx, and Y-M. De~Hauwere.
@@ -737,14 +735,14 @@ J.~Nunez-Varela, B.~Ravindran, and J.~L. Wyatt.
   manipulation.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 4444--4449, May 2012.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2012.6225226}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2012.6225226}.
 
 \bibitem[Ormoneit and Glynn(2002)]{kernel_rl_ormoneit_2002}
 D.~Ormoneit and P.~Glynn.
 \newblock Kernel-based reinforcement learning in average-cost problems.
 \newblock \emph{IEEE Transactions on Automatic Control}, 47\penalty0
   (10):\penalty0 1624--1636, Oct 2002.
-\newblock \doi{10.1109/TAC.2002.803530}.
+\newblock URL \url{http://dx.doi.org/10.1109/TAC.2002.803530}.
 
 \bibitem[Park et~al.(2013)Park, Bae, Park, Baeg, and
   Park]{intuitive_peg_isr_2013}
@@ -752,7 +750,7 @@ Hyeonjun Park, Ji-Hun Bae, Jae-Han Park, Moon-Hong Baeg, and Jaeheung Park.
 \newblock Intuitive peg-in-hole assembly strategy with a compliant manipulator.
 \newblock In \emph{International Symposium on Robotics (ISR)}, pages 1--5, Oct
   2013.
-\newblock \doi{http://dx.doi.org/10.1109/ISR.2013.6695699}.
+\newblock URL \url{http://dx.doi.org/10.1109/ISR.2013.6695699}.
 
 \bibitem[Pasqualotto et~al.(2013)Pasqualotto, Spiller, Jansari, and
   Proulx]{Pasqualotto2013175}
@@ -761,10 +759,7 @@ Achille Pasqualotto, Mary~Jane Spiller, Ashok~S. Jansari, and Michael~J.
 \newblock Visual experience facilitates allocentric spatial representation.
 \newblock \emph{Behavioural Brain Research}, 236\penalty0 (0):\penalty0 175 --
   179, 2013.
-\newblock ISSN 0166-4328.
-\newblock \doi{http://dx.doi.org/10.1016/j.bbr.2012.08.042}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S0166432812005682}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.bbr.2012.08.042}.
 
 \bibitem[Pastor et~al.(2011)Pastor, Righetti, Kalakrishnan, and
   Schaal]{online_pre_sensor_2011}
@@ -772,23 +767,21 @@ P.~Pastor, L.~Righetti, M.~Kalakrishnan, and S.~Schaal.
 \newblock Online movement adaptation based on previous sensor experiences.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 365--371, Sept 2011.
-\newblock \doi{10.1109/IROS.2011.6095059}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2011.6095059}.
 
 \bibitem[Peters and Schaal(2008{\natexlab{a}})]{peter_nac_2008}
 J.~Peters and S.~Schaal.
 \newblock Natural actor-critic.
 \newblock \emph{Neurocomputing}, 71\penalty0 (7-9):\penalty0 1180--1190, mar
   2008{\natexlab{a}}.
-\newblock \doi{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
 
 \bibitem[Peters and Schaal(2008{\natexlab{b}})]{NAC_2008}
 Jan Peters and Stefan Schaal.
 \newblock Natural actor-critic.
 \newblock \emph{European Symposium on Artificial Neural Networks}, 71\penalty0
   (7-9):\penalty0 1180--1190, 2008{\natexlab{b}}.
-\newblock \doi{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S0925231208000532}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.neucom.2007.11.026}.
 
 \bibitem[Petersen and Pedersen(2012)]{matrix_ckb}
 K.~B. Petersen and M.~S. Pedersen.
@@ -807,7 +800,8 @@ Joelle Pineau, Geoffrey Gordon, and Sebastian Thrun.
 Christian Plagemann, Kristian Kersting, Patrick Pfaff, and Wolfram Burgard.
 \newblock Gaussian beam processes: A nonparametric bayesian measurement model
   for range finders.
-\newblock In \emph{In Proc. of Robotics: Science and Systems (RSS)}, 2007.
+\newblock In \emph{Robotics Science and Systems (RSS)}, June 2007.
+\newblock URL \url{http://dx.doi.org/10.15607/RSS.2007.III.018}.
 
 \bibitem[Platt et~al.(2012)Platt, Kaelbling, Lozano-Perez, and
   Tedrake]{non_gauss_bel_plan_2012}
@@ -815,7 +809,7 @@ R.~Platt, L.~Kaelbling, T.~Lozano-Perez, and R.~Tedrake.
 \newblock Non-gaussian belief space planning: Correctness and complexity.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 4711--4717, May 2012.
-\newblock \doi{10.1109/ICRA.2012.6225223}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2012.6225223}.
 
 \bibitem[Platt et~al.(2010)Platt, Tedrake, Kaelbling, and
   Lozano-P\'{e}rez]{bsp_rss_2010a}
@@ -843,7 +837,7 @@ S.~Prentice and N.~Roy.
 Kerstin Preuschoff, Peter~NC Mohr, and Ming Hsu.
 \newblock Decision making under uncertainty.
 \newblock \emph{Frontiers in Neuroscience}, 7\penalty0 (218), 2013.
-\newblock \doi{10.3389/fnins.2013.00218}.
+\newblock URL \url{http://dx.doi.org/10.3389/fnins.2013.00218}.
 
 \bibitem[Rai et~al.(2013)Rai, De~Chambrier, and Billard]{rai2013learning}
 Akshara Rai, Guillaume De~Chambrier, and Aude Billard.
@@ -864,13 +858,13 @@ Edward J.~Sondik Richard D.~Smallwood.
 Hilary Richardson, Chris Bake, Joshua. Tenenbaum, and Rebecca Saxe.
 \newblock The development of joint belief-desire inferences.
 \newblock \emph{Cognitive Science Socitety}, 2012.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=648205.749450}.
 
 \bibitem[Riedmiller(2005)]{Riedmiller2005}
 Martin Riedmiller.
 \newblock \emph{Neural Fitted Q Iteration - First Experiences with a Data
   Efficient Neural Reinforcement Learning Method}, pages 317--328.
 \newblock 2005.
-\newblock \doi{10.1007/11564096_32}.
 \newblock URL \url{http://dx.doi.org/10.1007/11564096_32}.
 
 \bibitem[Ross et~al.(2008)Ross, Pineau, Paquet, and
@@ -885,15 +879,15 @@ St{\'e}phane Ross, Joelle Pineau, S{\'e}bastien Paquet, and Brahim Chaib-draa.
 N.~Roy, W.~Burgard, D.~Fox, and S.~Thrun.
 \newblock Coastal navigation-mobile robot navigation with uncertainty in
   dynamic environments.
-\newblock In \emph{IEEE International Conference on Robotics and Automation},
-  pages 35--40, 1999.
+\newblock In \emph{International Conference on Robotics and Automation (ICRA)},
+  pages 35--40, May 1999.
 
 \bibitem[Roy(2005)]{belief_compression_2005}
 Nicholas Roy.
 \newblock {Finding Approximate POMDP solutions Through Belief Compression}.
 \newblock \emph{Journal of Artificial Intelligence Research}, 23, 2005.
-\newblock
-  \doi{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180}.
+\newblock URL
+  \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.35.6180}.
 
 \bibitem[Roy and Gordon(2003{\natexlab{a}})]{EPCA_2003}
 Nicholas Roy and Geoffrey~J Gordon.
@@ -922,7 +916,7 @@ Nicholas Roy and Sebastian Thrun.
 Brian Scassellati.
 \newblock Theory of mind for a humanoid robot.
 \newblock \emph{Auton. Robots}, 12\penalty0 (1):\penalty0 13--24, January 2002.
-\newblock \doi{http://dx.doi.org/10.1023/A:1013298507114}.
+\newblock URL \url{http://dx.doi.org/10.1023/A:1013298507114}.
 
 \bibitem[Schaal et~al.(2004)Schaal, Peters, Nakanishi, and
   Ijspeert]{Schaal04learningmovement}
@@ -930,8 +924,7 @@ Stefan Schaal, Jan Peters, Jun Nakanishi, and Auke Ijspeert.
 \newblock Learning movement primitives.
 \newblock In \emph{11th International Symposium on Robotics Research (ISRR)},
   2004.
-\newblock \doi{http://dx.doi.org/10.1007/11008941_60}.
-\newblock URL \url{http://www-clmc.usc.edu/publications/S/schaal-ISRR2003.pdf}.
+\newblock URL \url{http://dx.doi.org/10.1007/11008941_60}.
 
 \bibitem[Shachter(1998)]{BayesBall}
 Ross~D. Shachter.
@@ -947,6 +940,7 @@ David Silver, J.~Andrew Bagnell, and Anthony Stentz.
 \newblock Learning from demonstration for autonomous navigation in complex
   unstructured terrain.
 \newblock \emph{IJRR}, 29\penalty0 (12):\penalty0 1565--1592, October 2010.
+\newblock URL \url{http://dx.doi.org/10.1177/0278364910369715}.
 
 \bibitem[Smith and Simmons(2004)]{HSV}
 Trey Smith and Reid Simmons.
@@ -964,7 +958,7 @@ Trey Smith and Reid~G. Simmons.
 Beate Sodian and Susanne Kristen.
 \newblock Theory of mind.
 \newblock In \emph{Towards a Theory of Thinking}, pages 189--201. 2010.
-\newblock \doi{http://dx.doi.org/10.1007/978-3-642-03129-8_13}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-03129-8_13}.
 
 \bibitem[Spaan and Vlassis(2005)]{Spaan05icra}
 Matthijs T.~J. Spaan and Nikos Vlassis.
@@ -999,7 +993,7 @@ F.~Stulp, E.~Theodorou, M.~Kalakrishnan, P.~Pastor, L.~Righetti, and S.~Schaal.
 \newblock Learning motion primitive goals for robust manipulation.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 325--331, Sept 2011.
-\newblock \doi{10.1109/IROS.2011.6094877}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2011.6094877}.
 
 \bibitem[Stulp et~al.(2012)Stulp, Theodorou, and Schaal]{dmp_seq_2012}
 F.~Stulp, E.~A. Theodorou, and S.~Schaal.
@@ -1007,7 +1001,7 @@ F.~Stulp, E.~A. Theodorou, and S.~Schaal.
   manipulation.
 \newblock \emph{IEEE Transactions on Robotics}, 28\penalty0 (6):\penalty0
   1360--1370, Dec 2012.
-\newblock \doi{http://dx.doi.org/10.1109/TRO.2012.2210294}.
+\newblock URL \url{http://dx.doi.org/10.1109/TRO.2012.2210294}.
 
 \bibitem[Sun and Alterovitz(2014)]{Needle_2014}
 Wen Sun and R.~Alterovitz.
@@ -1015,7 +1009,7 @@ Wen Sun and R.~Alterovitz.
   optimization in belief space.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 1775--1781, Sept 2014.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2014.6942795}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2014.6942795}.
 
 \bibitem[Sung(2004)]{gmr_2004}
 H.G Sung.
@@ -1073,7 +1067,7 @@ Sebastian Thrun and Arno B\"{u}.
 Sebastian Thrun and John~J. Leonard.
 \newblock Simultaneous localization and mapping.
 \newblock In \emph{Springer Handbook of Robotics}, pages 871--889. 2008.
-\newblock \doi{http://dx.doi.org/10.1007/978-3-540-30301-5_38}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-30301-5_38}.
 
 \bibitem[Thrun et~al.(2005{\natexlab{a}})Thrun, Burgard, and Fox]{Thrun_2005}
 Sebastian Thrun, Wolfram Burgard, and Dieter Fox.
@@ -1094,14 +1088,14 @@ R.~Valencia, J.V. Miro, G.~Dissanayake, and J.~Andrade-Cetto.
 \newblock Active pose slam.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 1885--1891, Oct 2012.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2012.6385637}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2012.6385637}.
 
 \bibitem[Vallve and Andrade{-}Cetto(2014)]{dense_entropy_icra_2014}
 Joan Vallve and Juan Andrade{-}Cetto.
 \newblock Dense entropy decrease estimation for mobile robot exploration.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 6083--6089, 2014.
-\newblock \doi{http://dx.doi.org/10.1109/ICRA.2014.6907755}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICRA.2014.6907755}.
 
 \bibitem[Van Den~Berg et~al.(2011)Van Den~Berg, Abbeel, and
   Goldberg]{LQG_MP_2011}
@@ -1110,7 +1104,7 @@ Jur Van Den~Berg, Pieter Abbeel, and Ken Goldberg.
   and imperfect state information.
 \newblock \emph{Int. J. Rob. Res.}, 30\penalty0 (7):\penalty0 895--913, June
   2011.
-\newblock \doi{http://dx.doi.org/10.1177/0278364911406562}.
+\newblock URL \url{http://dx.doi.org/10.1177/0278364911406562}.
 
 \bibitem[van~den Berg et~al.(2012)van~den Berg, Patil, and
   Alterovitz]{van_den_Berg_2012}
@@ -1119,7 +1113,7 @@ Jur van~den Berg, Sachin Patil, and Ron Alterovitz.
   in belief space.
 \newblock \emph{International Journal of Robotics Research (IJRR)}, 31\penalty0
   (11):\penalty0 1263--1278, 2012.
-\newblock \doi{http://dx.doi.org/10.1177/0278364912456319}.
+\newblock URL \url{http://dx.doi.org/10.1177/0278364912456319}.
 
 \bibitem[Veiga et~al.(2014)Veiga, Spaan, and Lima]{Veiga14aaai}
 Tiago~S. Veiga, Matthijs T.~J. Spaan, and Pedro~U. Lima.
@@ -1145,7 +1139,7 @@ N.~A. Vien and M.~Toussaint.
 \newblock Pomdp manipulation via trajectory optimization.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 242--249, Sept 2015{\natexlab{b}}.
-\newblock \doi{10.1109/IROS.2015.7353381}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2015.7353381}.
 
 \bibitem[Vijayakumar et~al.(2003)Vijayakumar, Shibata, and Schaal]{eNAC_2003}
 Sethu Vijayakumar, Tomohiro Shibata, and Stefan Schaal.
@@ -1163,7 +1157,6 @@ Jiexin Wang, Eiji Uchibe, and Kenji Doya.
   and balancing of a two-wheeled smartphone robot.
 \newblock \emph{Artificial Life and Robotics}, 21\penalty0 (1):\penalty0
   125--131, 2016.
-\newblock \doi{10.1007/s10015-015-0260-7}.
 \newblock URL \url{http://dx.doi.org/10.1007/s10015-015-0260-7}.
 
 \bibitem[Wang(2007)]{Wang_2007}
@@ -1187,7 +1180,7 @@ Ronald~J. Williams.
 \newblock Simple statistical gradient-following algorithms for connectionist
   reinforcement learning.
 \newblock \emph{Machine Learning}, 8\penalty0 (3):\penalty0 229--256, 1992.
-\newblock \doi{http://dx.doi.org/10.1007/BF00992696}.
+\newblock URL \url{http://dx.doi.org/10.1007/BF00992696}.
 
 \bibitem[Winter(2009)]{Biomechanics_2009}
 David~A. Winter.
@@ -1199,10 +1192,7 @@ Thomas Wolbers and Mary Hegarty.
 \newblock What determines our navigational abilities?
 \newblock \emph{Trends in Cognitive Sciences}, 14\penalty0 (3):\penalty0 138 --
   146, 2010.
-\newblock ISSN 1364-6613.
-\newblock \doi{http://dx.doi.org/10.1016/j.tics.2010.01.001}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S1364661310000021}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.tics.2010.01.001}.
 
 \bibitem[Wolbers et~al.(2008)Wolbers, Hegarty, Buchel, and
   Loomis]{spatial_updating_2008}
@@ -1210,10 +1200,7 @@ Thomas Wolbers, Mary Hegarty, Christian Buchel, and Jack~M Loomis.
 \newblock Spatial updating: how the brain keeps track of changing object
   locations during observer motion.
 \newblock \emph{Nature Neuroscience}, 1124\penalty0 (1), 2008.
-\newblock ISSN 1097-6256.
-\newblock \doi{http://dx.doi.org/10.1038/nn.2189}.
-\newblock URL
-  \url{http://www.nature.com/neuro/journal/v11/n10/suppinfo/nn.2189_S1.html}.
+\newblock URL \url{http://dx.doi.org/10.1038/nn.2189}.
 
 \bibitem[Yang et~al.(2014)Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and
   Savarimuthu]{fast_peg_pbd_icmc_2014}
@@ -1222,7 +1209,7 @@ Yang Yang, Linglong Lin, {Y. T.} Song, Bojan Nemec, Ales Ude, {Anders Glent}
 \newblock \emph{Fast programming of peg-in-hole actions by human
   demonstration}, pages 990--995.
 \newblock 2014.
-\newblock \doi{10.1109/ICMC.2014.7231702}.
+\newblock URL \url{http://dx.doi.org/10.1109/ICMC.2014.7231702}.
 
 \bibitem[Zhao et~al.(2015)Zhao, Niu, Xie, Yang, and
   Sugiyama]{ACML_variance_2015}
@@ -1241,6 +1228,6 @@ C.~Zito, M.~S. Kopicki, R.~Stolkin, C.~Borst, F.~Schmidt, M.~A. Roa, and J.~L.
   dexterous grasping under object-pose uncertainty.
 \newblock In \emph{International Conference on Intelligent Robots and Systems
   (IROS)}, pages 4013--4020, Nov 2013.
-\newblock \doi{http://dx.doi.org/10.1109/IROS.2013.6696930}.
+\newblock URL \url{http://dx.doi.org/10.1109/IROS.2013.6696930}.
 
 \end{thebibliography}

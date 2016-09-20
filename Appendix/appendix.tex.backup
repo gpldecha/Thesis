@@ -3,7 +3,7 @@
 
 \chapter{Peg in hole}
 
-\section{Time to connect socket (Analysis)}
+\section{Time to connect socket}
 \label{app:anova_socket}
 
 
@@ -27,7 +27,7 @@ Wilcoxon signed-rank test (a paired difference test). This test assesses whether
 between the two sockets (A and B) given that a subject performed both experiments one after the other.
 
 Socket A took significantly longer time than socket B and this result was observed in the two 
-groups (group A p<0.0001, group B p=0.0002, Wilcoxon signed-rank test, Figure \ref{figuretimesubgroup}).   
+groups (Group A p<0.0001, Group B p=0.0002, Wilcoxon signed-rank test, Figure \ref{figuretimesubgroup}).   
 
 
 \begin{figure}
@@ -52,9 +52,16 @@ groups (group A p<0.0001, group B p=0.0002, Wilcoxon signed-rank test, Figure \r
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{./ch4-PiH/Figures/Group_Socket.pdf}
-   \caption{Box plot of time taken for two sockets by two groups. \textbf{Left}: times of group 1 subjects took to perform socket A and B;\textbf{Right}: times of group 2 subjects took to perform socket B and A. }
+   \caption{Time taken to connect the sockets. For both groups, socket A always takes significantly longer time to connect, For Group A 
+   p<0.0001 and for Group B p=0.0002.}
    \label{figuretimesubgroup}
 \end{figure}
+
+In summary, we observe that there is a significant effect of order. Starting with socket B greatly reduced the time 
+taken for socket A (p=0.02). Regardless of the socket type between groups, the first socket always takes longer.
+For AA vs BA, AA is significantly longer (p=0.02, Wilcoxon rank sum test). For socket B, BB vs AB, BB takes significantly
+longer time (p<0.0001).
+
 
 % 1) Is there are a difference across groups 
 % 2) Is there a difference between the two sockets
@@ -224,32 +231,13 @@ the probability that data point $\mathbf{x}^{[j]}$ belongs to  Gaussian function
 \begin{empheq}[box={\tcbhighmath[colback=blue!2,colframe=blue]}]{align}
     \MuK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx \, \Bx^{[j]} }{\sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx} \label{eq:ch4:app_new_mu} \\
     & \nonumber\\
-    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma_k(\Bx^{[j]})\, \Qpx (\Bx^{[j]} - \MuK)(\Bx^{[j]} - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
+    \SigK_{\textrm{\textbf{new}}}   &= \frac{\sum\limits_{j=1}^{M}  \gamma_k(\Bx^{[j]})\, \Qpx (\Bx^{[j]} - \MuK_{\textrm{\textbf{new}}})(\Bx^{[j]} - \MuK_{\textrm{\textbf{new}}})^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} \gamma_k(\Bx^{[j]})\, \Qpx } \label{eq:ch4:app_new_cov}  \\
     & \nonumber\\
     w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{j=1}^{M} \Qpx \, \gamma_k(\Bx^{[j]})}{\sum\limits_{j=1}^{M} \Qpx} \label{eq:ch4:app_new_pi}
 \end{empheq}
 
 The covariances, Equation \ref{eq:ch4:app_new_cov}, and weights, Equation \ref{eq:ch4:app_new_pi}, are derived in a similar fashion.
 
-%\begin{align}
-%\nabla_{\Muk} \log J(\Param) =& \sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \invSigK (\Xm - \MuK) = 0 \nonumber \\
-%			 \MuK_{\textrm{\textbf{new}}} =& \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q(\X^{[j]})}
-%\end{align}
-%\begin{equation}
-% \alpha(z_{mk}) = \frac{w^{[k]} \cdot g(\Xm;\MuK,\SigK)}{\sum\limits_{j=1}^{K}w^{[j]} \cdot g(\Xm;\boldsymbol{\mu}^{[j]},\boldsymbol{\Sigma}^{[j]})}
-%\end{equation}
-
-%\subsection{M-step}\label{app:Q-EM}
-%Given a set of points $\X = (\U,\B)^{\mathrm{T}}$ and  a positive Q-function, $Q^{\pi}(\X^{[m]}) \geq 0$
-%and by setting the derivative of Equation \ref{eq:grad_log_cost} to zero and solving for the parameters
-%$\Param=\{w,\boldsymbol{\mu},\boldsymbol{\Sigma}\}$ we get a new weighted Maximisation updates in EM:
-%\begin{align}
-% w^{[k]}_{\textrm{\textbf{new}}} &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\X^{[m]})\, \alpha(z_{mk})}{\sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})} \\
-% \MuK_{\textrm{\textbf{new}}}     &= \frac{\sum\limits_{m=1}^{M} \alpha(z_{mk})\, Q^{\pi}(\Xm)\, \Xm }{\sum\limits_{j=1}^{M} \alpha(z_{jk})\, Q^{\pi}(\X^{[j]})} \\
-% \SigK_{\textrm{\textbf{new}}}    &= \frac{\sum\limits_{m=1}^{M} Q^{\pi}(\Xm)\, \alpha(z_{mk})\, (\Xm - \MuK)(\Xm - \MuK)^{\mathrm{T}} }{ \sum\limits_{j=1}^{M} Q^{\pi}(\X^{[j]})\, \alpha(z_{jk}) }
-%\end{align}
-%$\alpha(z_{mk})$ is the responsibility factor, denoting the probability that data point $m$ is a member of the 
-%Gaussian function $k$ (see \cite[Chap. 9]{Bishop_2006}).
 
 \section{Unbiased estimator}\label{app:unbiased_delta}
 
@@ -266,31 +254,6 @@ The temporal difference error is an unbiased estimate of the advantage function:
 
 \chapter{Non-parametric Bayesian State Space Estimator}\label{ch5:appendix}
 
-%\subsection{EKF-SLAM models}
-%\paragraph{Motion update}
-%\begin{align}
-%  \bar{\mu}_t      &= f(\mu_{t-1},u_t)\\
-%  \bar{\Sigma}_{t} &= F \Sigma_{t-1} F^{\mathrm{T}} + Q
-%\end{align}
-%Where $F = \left[\frac{\partial f(\mu_{t-1},u_t)}{\partial \mu_{t-1} } \right]$ is the Jacobian of the dynamic model with respect to the Gaussian mean. The 
-%bar notation on the mean and covariance is to indicate that no sensing information has been used to update their estimates.
-%\paragraph{Measurement update}
-%\begin{align}
-%   K    &= \bar{\Sigma}_{t} H (H \bar{\Sigma}_{t} H + R)^{-1} \\
-%  \mu_t &= \bar{\mu}_t + K \cdot (Y_t - \hat{Y}_t)\\
-%  \Sigma_t &= (I - KH) \bar{\Sigma}_{t}
-%\end{align}
-%Where $H = \left[\frac{\partial h(\mu_A,\mu_O;\beta)}{\partial \mu_A\mu_O}\right]$ is the Jacobian of the measurement function (Equation \ref{eq:ekf-measurement_function})  
-%with respect to the mean of the joint distribution. 
-
-%\subsection{Bayesian joint to filter}\label{appendix:bayes_joint}
-%\begin{align}
-%&P(A_t,O,Y_{0:t},u_{1:t})\\
-%&= P(O) \left( \sum_{A_{0:t-1}}  P(A_0) \prod_{t=0}^{t} P(A_t|A_{t-1},u_{t}) P(Y_t|A_t,O) \right)  P(Y_t|A_t,O) \\
-%&= P(O) \left( \sum_{A_{0:t-1}} P(A_{0:t},Y_{0:t-1},u_{1:t}) \right)  \\
-%&= P(O) P(A_t,Y_{0:t},u_{1:t}) \\
-%&= P(A_t,O,Y_{0:t},u_{1:t})
-%\end{align}
 
 \section{Probabilities}
 
@@ -524,90 +487,6 @@ For the evidence $P(Y_{0:t}|u_{1:t})$ we consider the summation of all the deriv
 \end{equation}
 
 
-%\begin{align}
-% \alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
-%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(Y_0|A_0,O) \cdot P(A_0,O) \\
-%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(A_0,O,Y_0)
-%\end{align}
-
-%\begin{align}
-% P(Y_0) = \sum\limits_{A_t} \sum\limits_O P(A_0,O) = 1\\
-% \sum\limits_{A_t} \sum\limits_O P(A_t,O|Y_{0:t-1}) = 1
-%\end{align}
-
- %\begin{align}
- % \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O)  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_0,O)}^{=1} \label{eq:ch5:less1_1}\\
- % \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) &\leq 1 \label{eq:ch5:less1_2} \\
- % P(Y_0) &\leq 1 \\
- %  P(Y_0) &= 1 - \alpha_0 \label{eq:marginal_likelihood_equal_I}
-%\end{align}
-
-%\begin{align}
-%\alpha_0 &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - \sum\limits_{A_t}\sum\limits_{O} P(Y_0|A_0,O) \cdot P(A_0,O) \\
-%       &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(Y_0|A_0,O) \cdot P(A_0,O) \\
-%        &= \sum\limits_{A_t}\sum\limits_{O} P(A_0,O) - P(A_0,O,Y_0)
-%\end{align}
-
-
-
- 
-%\begin{align}
-%   P(Y_{0:t})         &= P(Y_t|Y_{0:t-1}) P(Y_{0:{ t-1}})\\
-%   P(Y_{t}|Y_{0:t-1}) &= \sum\limits_{A_t} \sum\limits_O P(A_t,O,Y_t|Y_{0:t-1}) \\
-%              &= \sum\limits_{A_t} \sum\limits_O P(Y_t|A_t,O) P(A_t,O|Y_{0:t-1}) 
-%\end{align}
-
- 
- 
- %\begin{align}
- % I\_tmp &= \sum\limits_{A_t}\sum\limits_{O} (1 - P(Y_t|A_t,O)) P(A_t,O,Y_{0:t-1})\\
- %        &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t-1}) - P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1})\\
- %        &= \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t-1}) - P(A_t,O,Y_{0:t})\\
- % Is     &= Is + I\_tmp \\
- % PYs   &= 1 - Is
- %\end{align}
-
- 
- 
-%\begin{align}
-% &P(Y_{0:t}) = \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot P(A_t,O,Y_{0:t-1}) 
-%		  &= \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O)\cdot \Big(P_{\ominus}(A_t,O,{\color{red}Y_{0:t-1}}|u_{1:t}) + P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t})\Big)\\
-%		  &= \sum\limits_{A_t}\sum\limits_{O} P_{\ominus}(A_t,O,{\color{red}Y_{0:t}}|u_{1:t}) + P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t}) \label{eq:marginal_likelihood_memory_last}
-%\end{align}
-
-%In Equation \ref{eq:ch5:less1_1}, we use the fact that after applying the measurement likelihood function, which lies in the interval $0 \leq P(Y_t|A_t,O) \leq 1$, 
-%to the joint distribution, its sum will always be smaller or equal to $1$.
-%From Equation \ref{eq:ch5:less1_1} to \ref{eq:ch5:less1_2} we use the fact that $P(A_t,O|Y_{0:t-1})$ is a probability density and must sum to 1.
-
-%\begin{align}
-%  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1})  &\overbrace{\leq \sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} \label{eq:ch5:less1_1}\\
-%  \sum\limits_{A_t}\sum\limits_{O} P(Y_t|A_t,O) \cdot P(A_t,O|Y_{0:t-1}) &\leq 1 \label{eq:ch5:less1_2} \\
-%  P(Y_t|Y_{0:t-1}) &\leq 1 \\
-%  P(Y_t|Y_{0:t-1}) + \alpha &= 1 \label{eq:marginal_likelihood_equal_I}
-%\end{align}
-%We equate Equation \ref{eq:marginal_likelihood_equal_I} with \ref{eq:marginal_likelihood_memory_last} and find a solution for the marginal likelihood which
-%only depends on areas of the joint distribution which are dependent.
-		   
-%\begin{align}		  
-% &\overbrace{\sum\limits_{A_t}\sum\limits_{O} P(A_t,O|Y_{0:t-1})}^{=1} - \alpha  = \sum\limits_{A_t}\sum\limits_{O} P(A_t,O,Y_{0:t}) + P(Y_t|A_t,O)P(A_t,O,Y_{0:t-1})
-%\end{align}
-
-%\begin{align}   
-%   \alpha &= \sum\limits_{A_t}\sum\limits_{O}  \overbrace{P_{\ominus}(A_t,O|Y_{0:t-1}) + P_{\cap}(A_t,O|Y_{0:t-1})}^{P(A_t,O|Y_{0:t-1})}\nonumber\\ %
-%	  & - P_{\ominus}(A_t,O,Y_{0:t}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O,Y_{0:t-1}) \\
-%    \alpha &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) - P(Y_t|A_t,O)\cdot P_{\cap}(A_t,O|Y_{0:t-1}) \\
-%	   &= \sum\limits_{A_t}\sum\limits_{O} P_{\cap}(A_t,O|Y_{0:t-1}) (1 - P(Y_t|A_t,O)) \label{eq:marginal_likelihood_equal_I2}
-%\end{align}
-
-%The last line, Equation \ref{eq:marginal_likelihood_equal_I2}, when substituted back into line \ref{eq:marginal_likelihood_equal_I}, tells us that the 
-%normalisation factor or marginal likelihood is $1$ minus the difference in the area of dependence a priori to the application of 
-%the measurement function, Equation \ref{eq:marginal_liklihood_final}.
-
-%\begin{equation}\label{eq:marginal_liklihood_final}
-% P(Y_t|Y_{0:t}) = 1 - \alpha
-%\end{equation}
-
-
 \section{Derivation of the marginal}\label{appendix:marginal}
 
 The marginal of a random variable is the marginalisation or integration over all other random variables, $P(A_t,|Y_{0:t}) = \sum\limits_{O} P(A_t,O|Y_{0:t})$. Below 
@@ -632,6 +511,125 @@ an observation, $P_{\ominus}(A_t|Y_{0:t-1}) = P_{\ominus}(A_t|Y_{0:t})$, and bef
 Equation \ref{eq:dependence2} states that only elements of the marginals which are dependent will change by the difference
 before and after a measurement update.
 
+\section{MLMF motion and measurement update}\label{appendix:ch5:mlmf_update}
+
+In Algorithm \ref{alg:mrf-slam} we detail the motion-measurement update  and initialisation steps of the MLMF
+(the parameters of $P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t})$ and the corresponding marginals are not shown).
+At initialisation the parameters of the filtered marginals are set equal to the marginals of the MLMF joint distribution.
+In the motion step the agent's marginals of the filtered and joint distribution are updated in 
+accordance with the motion model. The offsets $l_{0:t}$ of the memory likelihood function get the current action added 
+to them. In the measurement step the evidence is computed, the filtered marginals are updated by only carrying out 
+the marginalisation in the dependent states of the joint distribution. Finally the current measurement $Y_t$ is added
+to the memory likelihood's parameters with $l_t=0$.
+This formulation is advantageous as the joint distribution is only evaluated inside the dependent regions 
+$A\cap O$ of the joint distribution. All the parameters $\Psi_{0:t}$ of the memory likelihood function
+$P(Y_{0:t}|A_t,O,u_{1:t};\Psi_{0:t})$ are retained. We keep track of the normalisation factor, the evidence 
+$P(Y_{0:t}|u_{1:t};\alpha_{0:t})$ which is a scalar quantity. 
+With these parameters it is possible to reconstruct the joint distribution, however the MLMF-SLAM algorithm only
+makes changes to the filter marginals, see Figure \ref{fig:ch5:marginal_update}. 
+We evaluate this formulation of the joint distribution with the standard histogram filter in the case of the 1D filtering scenario
+illustrated in Figure \ref{fig:discrete_example} on page \pageref{fig:discrete_example} and we find them to be identical. Having respected the formulation of Bayes rule, we
+assert that Algorithm \ref{alg:mrf-slam} is a Bayesian Optimal Filter\footnote{An optimal Bayesian solution is an exact solution to the recursive problem of calculating the exact posterior density 
+\cite{PF_tutorial_2002}}.
+
+\begin{center}
+\begin{minipage}{\linewidth}
+\begin{algorithm}[H]
+\label{alg:mrf-slam}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+\Input{\\
+       \textbf{measurements}\\
+	$\mathbf{Y_t}$, $\mathbf{u_t}$\\
+       \textbf{joint parameters}:\\
+       $P(A_{t-1}|u_{1:t-1};\ThAs)$ $P(O;\ThOs)$, $\Psi_{0:t-1}$, $\alpha_{0:t-1}$ \\
+       \textbf{filtered marginals}:\\
+       $P(A_{t-1}|Y_{0:t-1},u_{1:t-1};\ThA)$, $P(O|Y_{0:t-1};\ThO)$}
+\Output{\\
+       \textbf{joint parameters}:\\
+        $P(A_t|u_{1:t};\ThAs)$, $\Psi_{0:t}$, $\alpha_{0:t}$\\
+       \textbf{filtered marginals}:\\
+	$P(A_t|Y_{0:t},u_{1:t};\ThA)$, $P(O|Y_{0:t};\ThO)$}
+\nonl\hrulefill	
+\BlankLine
+\nonl\textbf{initialisation}\\
+\vspace*{-0.5cm}
+\nonl\begin{align}
+P(A_0;\ThA) &:= P(A_0;\ThAs) \hspace*{6.5cm} \nonumber \\
+P(O;\ThO) &:= P(O;\ThOs)\nonumber \\
+\Psi_0 &:= \{\}\nonumber\\
+\alpha_0 &:= 0 \nonumber
+\end{align}
+\vspace*{-1cm}
+\BlankLine
+\nonl\hrulefill	\\
+\nonl\textbf{motion update}\\
+\vspace*{-0.5cm}
+\nonl\begin{align}
+P(A_t|u_{1:t};\ThAs)  	 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_t})  P(A_{t-1}|u_{1:t-1};\ThAs) \nonumber \\
+P(A_t|Y_{0:t-1},u_{1:t};\ThA) 	&= \sum\limits_{A_{t-1}} P(A_t|A_{t-1},\mathbf{u_t})  P(A_{t-1}|Y_{0:t-1},u_{1:t-1};\ThA) \nonumber \\
+\bar{\Psi}_{0:t} 	 &\gets \Psi_{0:t-1}(\mathbf{u_t}): \mathrm{ Algorithm\;\; \ref{alg:ch5:motion_memory}\;\; \textit{(motion update)}} \nonumber
+\end{align}
+\vspace*{-1cm}
+\BlankLine
+\nonl\hrulefill	\\
+\nonl\textbf{measurement update}
+\nonl\begin{align}
+ &\alpha_{0:t}       = \alpha_{0:t-1} + \sum\limits_{A_t}\sum\limits_{O} \Big(P(\mathbf{Y_t}|A_t,O) - 1\Big)P_{\cap}(A_t,O,Y_{0:t-1}|u_{1:t}) \nonumber \\
+ &P(Y_{0:t}|u_{1:t};\BAlph) = 1 + \alpha_{0:t} \nonumber\\
+ &P(A_t|Y_{0:t};\ThA)     = P(A_t|Y_{0:t-1};\ThA) - \Big(P_{\cap}(A_t|Y_{0:t-1}) -  P_{\cap}(A_t|Y_{0:\mathbf{t}}) \Big) \nonumber \\
+ &P(O|Y_{0:t};\ThO)       = P(O|Y_{0:t-1};\ThO) -  \Big(  P_{\cap}(O_t|Y_{0:t-1}) -  P_{\cap}(O_t|Y_{0:\mathbf{t}})\Big) \nonumber \\    
+ &\Psi_{0:t} \gets \bar{\Psi}_{0:t}(\mathbf{Y_t}): \mathrm{Algorithm\;\; \ref{alg:ch5:motion_memory}\;\; \textit{(measurement update)}} \nonumber
+ \end{align}
+\caption{MLMF-SLAM}
+\end{algorithm} 
+\end{minipage}
+\end{center}
+
+
+\section{Scalabe-MLMF Algorithm}\label{app:scalable-mlmf}
+
+To address exponential time complexity a an independence assumption was introduced between the objects. 
+
+The exchange of information of one joint distribution to another is achieved through the agent's marginals $A^{(i)}$ according to Algorithm \ref{alg:scalabe-mrf-slam}.
+The measurement update is the same as previously described in Algorithm \ref{alg:mrf-slam} in the case of no positive measurements of the objects. If the agent
+senses an object, all of the agent marginals of the remaining joint distributions are set to the marginal of the joint distribution pair belonging to the positive 
+measurement $Y^{(i)}_t$. 
+
+\begin{center}
+\begin{minipage}{\linewidth}
+
+\begin{algorithm}[H]
+\label{alg:scalabe-mrf-slam}
+\SetKwComment{Comment}{$\triangleright$\ }{}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+\Input{$P(A^{(i)}_t|u_{1:t})$, $P(A^{(i)}_t|Y^{(i)}_{0:t-1},u_{1:t})$\\$P(O^{(i)})$, $P(O^{(i)}|Y^{(i)}_{0:t-1},u_{1:t})$\\ $Y^{(i)}_t$\\$i=1,\cdots,M$}
+\BlankLine
+
+\Comment{If object $i$ has been sensed by the agent}
+\eIf{$Y^{(i)}_t == 1$}{
+% \Comment*[r]{measurement update Algo. \ref{alg:mrf-slam} }
+$P(O^{(i)}|Y^{(i)}_{0:t})   \gets P(O^{(i)}|Y^{(i)}_{0:t-1})$  \Comment*[r]{measurement update Algo. \ref{alg:mrf-slam}} 
+$P(A^{(i)}_t|Y^{(i)}_{0:t},u_{1:t}) \gets P(A^{(i)}_t|Y^{(i)}_{0:t-1},u_{1:t})$\\
+
+
+\ForAll{$j\in(1,\dots M-1) \setminus i$}
+{
+$P(A^{(j)}_t|Y_{0:t},u_{1:t}) = P(A^{(i)}_t|Y_{0:t},u_{1:t})$ \\
+$P(A^{(j)}_t|u_{1:t}) = P(A^{(i)}_t|u_{1:t})$\\
+$P(O^{(j)}|Y^{(i)}_{0:t}) \leftarrow \sum\limits_{A^{(j)}} P(A^{(j)}_t,O^{(j)}|Y^{(i)}_{0:t})$
+}
+}{
+
+\ForAll{$i\in(1,\dots M)$}{
+  measurement update Algo. \ref{alg:mrf-slam}
+}
+}
+\caption{Scalable-MLMF: Measurement Update}
+\end{algorithm} 
+\end{minipage}
+\end{center}
  
 \end{appendices}
 
