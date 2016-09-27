@@ -7,22 +7,20 @@ provided by the teachers. With this, we showed that our Reinforcement Learning e
 yield improved policies even when provided with a limited number of demonstrations taken from the worst teachers.
 
 Both tasks from the previous two chapters (search for wooden block on a table and peg-in-hole) fall into 
-the category of goal oriented active-localisation. In general, the localisation problem consists of estimating 
+the category of goal oriented \textit{active-localisation}. In general, the localisation problem consists of estimating 
 position parameters given noisy observations whereas active-localisation refers to a policy which actively takes actions to 
 acquire information to decrease the uncertainty of the position estimate. In localisation, the model 
 of the world also known as the map is considered prior knowledge. This assumption constrains localisation 
 to an environment in which schematics exist and can be used 
-as the world model such as in the case of offices and buildings. If the map is not known a priori, then Simultaneous Localisation And Mapping (\textbf{SLAM}) algorithms have to be used instead
-of localisation. Typically, the map consists of a set of features also known as landmarks which can be identified by sensors, 
+as the world model such as in the case of offices and buildings. If the map is not known a priori, then Simultaneous Localisation And Mapping (SLAM) 
+algorithms have to be used instead of localisation, known as \textit{active-}SLAM. Typically, the map consists of a set of features also known as landmarks which can be identified by sensors, 
 and SLAM algorithms maintain a filtered joint probability distribution over both the agent's and features' position which is updated in accordance with a generic 
 Bayesian State Space Filter (BSSF) (see Figure \ref{fig:baysian_filter} on page \pageref{fig:baysian_filter}).
 
 In this chapter, we consider an agent tasked with searching for a set of objects on a \textit{Table} world (see Figure \ref{fig:Figure1}), 
 in which exteroceptive feedback is extremely limited. The agent can only sense an object after making physical 
 contact with it (bumping into it). The agent's uncertainty of its location and that of the object are encoded by probability distributions $P(\cdot)$, which 
-at initialisation are known as the agent's prior beliefs.
-
-Figure \ref{fig:Figure1} illustrates a particular instance of the agent's beliefs. The agent is currently located in the 
+at initialisation are known as the agent's prior beliefs. Figure \ref{fig:Figure1} illustrates a particular instance of the agent's beliefs. The agent is currently located in the 
 bottom  table and has only a limited knowledge of its location, somewhere near the right edge of the table. 
 
 \begin{figure}
@@ -36,24 +34,27 @@ bottom  table and has only a limited knowledge of its location, somewhere near t
 \end{figure}
 \vspace*{0.6cm}
 
+
+
 %	2) Current draw back of all SLAM methodologies 
 As the agent explores the world, it integrates all sensing information at each time step and updates its prior beliefs to posteriors
 (the result of the prior belief after integrating motion and sensory information).
-All current SLAM methods are limited in that they consider only uncertainty induced by sensing inaccuracy inherent in 
-the sensor and motion models. In our setting as the sensory information is strictly haptic, we can confidently assume no measurement noise. 
-In the search task illustrated in Figure \ref{fig:Figure1}, the beliefs and sparse measurement information available to the agent are 
-the source of the uncertainty which is, the absence of positive object measurements. 
-This is known as \textbf{negative information} \cite[p.313]{Thrun_Burgard_Fox_2005} \cite{Thrun02particlefilters,negative_info_markov_localisation}. 
-Thus SLAM methodologies which use the \textbf{Gaussian error} between the predicted and estimated position of features, such as in the case 
+In the search task illustrated in Figure \ref{fig:Figure1}, the beliefs and sparse measurement information (haptic) available to the agent are 
+the source of the uncertainty which is, the absence of positive object measurements. In this setting as the sensory information is strictly haptic, 
+we can confidently assume no measurement noise. 
+This is known as \textit{negative information} \citep[p.313]{Thrun_Burgard_Fox_2005} \citep{Thrun02particlefilters,negative_info_markov_localisation}. 
+To the authors knoweldge, current SLAM methods are limited to non-negative information in that they consider only uncertainty induced by sensing inaccuracy inherent in 
+the sensor and motion models (see the three main paradigms of SLAM \cite[Chap. 10-13]{Thrun_Burgard_Fox_2005}). 
+Thus SLAM methodologies which use the \textit{Gaussian error} between the predicted and estimated position of features, such as in the case 
 of EKF-SLAM and Graph-SLAM, will not perform well in this setting. 
 
 {\quote \textit{The EKF SLAM algorithm, [...], can only process positive sightings of landmarks. It cannot process negative information
 that arises from the absence of landmarks. } -Probabilistic Robotics \cite[p.313]{Thrun_Burgard_Fox_2005}-}\\[0.01cm]
 
-In addition to the negative sensing information, the original beliefs depicted in Figure \ref{fig:Figure1} are \textbf{non-Gaussian}
-and \textbf{multi-modal}. We make \textbf{no assumption} regarding the form of the beliefs. This implies that the joint distribution 
+In addition to the negative sensing information, the original beliefs depicted in Figure \ref{fig:Figure1} are \textit{non-Gaussian}
+and \textit{multi-modal}. We make \textbf{no assumption} regarding the form of the beliefs. This implies that the joint distribution 
 can no longer be parameterised by a Multivariate Gaussian. 
-This is an assumption made in many SLAM algorithms, notably EKF-SLAM, and allows for a closed form solution to the state estimation problem. Without the 
+This is a necessary assumption for EKF-SLAM and its derived methods which allows for a closed form solution to the state estimation problem. Without the 
 Gaussian assumption EKF-SLAM methods have no closed form solution to the filtering problem. 
 Using standard non-parametric methods such as Kernel Density, Gaussian Process, Histogram to represent or estimate the joint distribution becomes
 unrealistic after a few dimensions or additional map features. 
@@ -85,16 +86,17 @@ single representation of the marginals. Figure \ref{fig:ch5_assmuptions} summari
 
 An accurate estimate of the agent's belief space is a necessary precondition before planning or reasoning can be carried out.
 In a wide range of Artificial Intelligence (AI) applications the agent's beliefs are discrete. This non-parametric representation
-is the most unconstraining but comes at a cost. The parameterisation of the belief's joint distribution grows at the rate of a double exponential.
+is the most unconstraining but comes at a cost. The parameterisation of the belief's joint distribution grows at an exponential rate
+(see section \ref{ch5:space_time_complexity_MLMF} on page \pageref{ch5:space_time_complexity_MLMF} for a details).
 We propose a Bayesian state estimator which delivers the same filtered beliefs as a traditional filter but without explicitly parametrising the 
 joint distribution. Through memorising all the parameters of the measurement likelihood functions and by taking advantage of 
 their sparsity (only a few states in the joint distribution are changed at any given time), we achieve a filter which grows linearly as opposed to exponentially 
 in both time and space complexity. We refer to our novel filter as the Measurement Likelihood Memory Filter (MLMF). 
 It keeps track of the history of measurement likelihood functions, referred to as the memory, which 
 have been applied on the joint distribution.
-The MLMF filter efficiently processes negative information. To the best of the author's knowledge there has been little
-research on the integration of negative information in a SLAM setting. Previous work considered the case of active localisation \citep{NegInfoFurtherStudies}.
-The incorporation of negative information is useful in many contexts especially in Bayesian Theory of Mind, \cite{Bake_Saxe_Tene_2011},
+The MLMF filter efficiently processes negative information. To the best of the author's knowledge there has not been any research on 
+negative information in an \textit{active}-SLAM setting. By contrast there has been work considered with negative information in \textit{active-}localisation (only agents position is unknown, map is known)\citep{NegInfoFurtherStudies}.
+The incorporation of negative information is useful in many contexts especially in Bayesian Theory of Mind \citep{Bake_Saxe_Tene_2011}
 where the reasoning process of a human is inferred from a Bayesian Network and in our own work \cite{deChambrier2013} where we model the 
 search behaviour of an intentionally blinded human. In such a setting much negative information is present and an efficient belief filter is required. 
 Our MLMF is thus applicable to the SLAM and AI community in general and to the cognitive community which models human or agent behaviours through 
@@ -138,8 +140,8 @@ Estimating the location or state parameters of a mobile agent whilst simultaneou
 regarded as one of the most important problems to be solved for agents to achieve true autonomy. It is a necessary precondition for 
 any agent to have an estimation of the world at its disposal which accurately encompasses all knowledge and related uncertainties. 
 There has been much research surrounding the field of Simultaneous Localisation And Mapping (SLAM) which branches out into a wide variety of sub-fields 
-dealing with problems from building accurate noise models of the agent sensors \cite{Plagemann07gaussianbeam}, to determining which environmental 
-feature caused a particular measurement, also known as the data association problem \cite{DataAssociation2003} and many more. 
+dealing with problems from building accurate noise models of the agent sensors \citep{Plagemann07gaussianbeam} to determining which environmental 
+feature caused a particular measurement, also known as the data association problem \citep{DataAssociation2003} and many more. 
 
 % Why does SLAM Work
 
@@ -150,16 +152,16 @@ all previously located landmarks have their uncertainty reduced since the uncert
 % The three main pillar of SLAM algorithm and their respective draw backs
 
 There are three main paradigms to solving the SLAM problem. The first is EKF-SLAM (Extendend-Kalman Filter) \cite{SLAM_part1}.
-EKF-SLAM models the full state, being the agent's parameters and environmental features, by a Multivariate Gaussian distribution. 
+EKF-SLAM models the full state, being the agent's position parameters and environmental features, by a Multivariate Gaussian distribution. 
 The uncertainty of each individual feature is parametrised by a mean (expected position of the feature) and covariance 
 (the level of uncertainty of the position of the feature).
 
-The second approach is Graph-SLAM \cite{TutGraphSLAM}. Graph-SLAM estimates the full path of the agent and considers every measurement to 
+The second approach is Graph-SLAM, \cite{TutGraphSLAM}. Graph-SLAM estimates the full path of the agent and considers every measurement to 
 be a constraint on the agent's path. It is parameterised by the canonical Multivariate Gaussian. At each time step a new row and column 
 is added to the precision matrix which encodes landmarks which have been observed as constraints on the robot's position.
 At predetermined times, a nonlinear sparse optimisation is solved to minimise all the accumulated constraints on the robot's path.
 
-The third method is FastSLAM \cite{FastSLAM}. FastSLAM exploits the fact that if we know the agent's position with 
+The third method is FastSLAM, \cite{FastSLAM}. FastSLAM exploits the fact that if we know the agent's position with 
 certainty all landmarks become independent. It models the distribution of the agent's position by a particle filter. Each particle
 has its own copy of the map and updates all landmarks independently which is the strength of this method. 
 However, if many particles are required each must have its own copy of the map. 
@@ -177,14 +179,14 @@ of the agent's position.
 
 Most approaches use a two-level representation of the map in an exploration setting. At the lower level
 there is the chosen (landmark-based) SLAM filter and at the higher level a coarser representation of the world.
-Such representations can be occupancy grids \cite{Thrun_grid_based_1996} which encode either occupied and free space
-or a topological representation \cite{Kollar_2008_Exploration_SLAM}.
+Such representations can be occupancy grids \citep{Thrun_grid_based_1996} which encode either occupied and free space
+or a topological representation, \cite{Kollar_2008_Exploration_SLAM}.
 
 Early and current approaches to selecting candidate exploratory locations are based on evaluating 
-Next-best-view \cite{Navigation_strategires_for_exploring_indoor_environments} locations. Next-best-view points are 
+\textit{Next-best-view} locations, \cite{Navigation_strategires_for_exploring_indoor_environments}. Next-best-view points are 
 sampled around \textit{free edges} which are at the horizon of the known map (\textit{frontier} regions). 
-In such a setting only target points are generated, not the full trajectory. Probabilistic Road Map (PRM) \cite{PRM_1996}
-based methods have been used as planners to reach desired target locations, such as in \cite{RRT-SLAM}, where a Rapidly
+In such a setting only target points are generated, not the full trajectory. Probabilistic Road Map (PRM) \citep{PRM_1996}
+methods have been used as planners to reach desired target locations, such as in \cite{RRT-SLAM}, where a Rapidly
 Exploring Random Trees (RRT) is combined with FastSLAM. In \cite{ActivePosSLAM}, paths to \textit{frontier} regions are computed
 via PRM  on a occupancy grid map and at the lower level they use Pose-SLAM (synonym for Graph-SLAM).
 
@@ -193,12 +195,12 @@ An alternative approach taken to generating candidate locations is the specifica
 reduce the costly evaluation of actions, especially in the case of FastSLAM, which requires propagating the filter 
 forward in time so as to infer the information gain of each action.
 
-The last approach is to solve the planning problem through formulating it as  Partially Observable Markov Decision Process (POMDP) \cite{Ross08onlineplanning}. 
+The last approach is to solve the planning problem through formulating it as  Partially Observable Markov Decision Process (POMDP) \citep{Ross08onlineplanning}. 
 However all methods take an approximation of the POMDP and consider a one time step planning horizon \cite[p.37]{GeorgiosLidoris}.
 
 There are many ways of generating actions or paths, however their utility is nearly all exclusively based on the \textit{information gain}, 
 which is the estimated reduction of entropy a particular action or path would achieve. A few utilities use f-measures such as the Kullback-Leibler divergence. 
-Evaluation of different utility metrics are presented in \cite{Active_SLAM_Uncertainty_compar,KL_SLAM_exploration_PF}.
+Evaluation of different utility metrics are presented in \cite{Active_SLAM_Uncertainty_compar}.
 
 
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{168}
+\begin{thebibliography}{167}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -196,15 +196,6 @@ S.~Calinon, F.~D'halluin, E.~L. Sauser, D.~G. Caldwell, and A.~G. Billard.
 \newblock \emph{IEEE Robotics Automation Magazine}, 17\penalty0 (2):\penalty0
   44--54, jun 2010.
 \newblock URL \url{http://dx.doi.org/10.1109/MRA.2010.936947}.
-
-\bibitem[Carlone et~al.(2010)Carlone, Du, Ng, Bona, and
-  Indri]{KL_SLAM_exploration_PF}
-L.~Carlone, Jingjing Du, M.K. Ng, B.~Bona, and M.~Indri.
-\newblock An application of kullback-leibler divergence to active slam and
-  exploration with particle filters.
-\newblock In \emph{International Conference on Intelligent Robots and Systems
-  (IROS)}, pages 287--293, Oct 2010.
-\newblock URL \url{http://dx.doi.org/10.1109/IROS.2010.5652164}.
 
 \bibitem[Carrillo et~al.(2012)Carrillo, Reid, and
   Castellanos]{Active_SLAM_Uncertainty_compar}

@@ -78,7 +78,7 @@
 \contentsline {chapter}{\numberline {5}Non-parametric Bayesian State Space Estimator}{121}{chapter.5}
 \contentsline {section}{\numberline {5.1}Outline}{124}{section.5.1}
 \contentsline {section}{\numberline {5.2}Background}{124}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}SLAM}{124}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.1}SLAM}{125}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Active-SLAM \& Exploration}{125}{subsection.5.2.2}
 \contentsline {section}{\numberline {5.3}Bayesian State Space Estimation}{126}{section.5.3}
 \contentsline {subsubsection}{EKF-SLAM}{128}{section*.88}
