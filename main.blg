@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: plainnat.bst
@@ -16,12 +16,9 @@ Warning--empty publisher in Billard08chapter
 Warning--empty publisher in Bishop_2006
 Warning--empty publisher in mc_update_ppomdps
 Warning--empty publisher in Hauser_2011
-Warning--empty journal in DRQ_AAAI_2015
 Warning--empty publisher in heli_2004
 Warning--empty publisher in Leslie_TOMM
-Warning--can't use both author and editor fields in GeorgiosLidoris
 Warning--empty publisher in NIPS2008_3501
-Warning--can't use both author and editor fields in RL_book_sa
 Warning--empty publisher in RL_book_sa
 Warning--empty publisher in Riedmiller2005
 Warning--empty publisher in NIPS2002_2319
@@ -29,48 +26,47 @@ Warning--empty publisher in Towards_a_ToM_2010
 Warning--empty publisher in sep-decision-theory
 Warning--empty publisher in sutton1998reinforcement
 Warning--empty publisher in SLAM_HBR
-Warning--can't use both author and editor fields in Thrun_Burgard_Fox_2005
 Warning--empty publisher in Biomechanics_2009
 Warning--empty publisher in fast_peg_pbd_icmc_2014
-You've used 167 entries,
+You've used 164 entries,
             2773 wiz_defined-function locations,
-            1627 strings with 37859 characters,
-and the built_in function-call counts, 91491 in all, are:
-= -- 8391
-> -- 4844
-< -- 178
-+ -- 1640
-- -- 1463
-* -- 7316
-:= -- 13219
-add.period$ -- 629
-call.type$ -- 167
-change.case$ -- 971
-chr.to.int$ -- 157
-cite$ -- 356
-duplicate$ -- 4418
-empty$ -- 7575
-format.name$ -- 1736
-if$ -- 20019
-int.to.chr$ -- 11
+            1609 strings with 37644 characters,
+and the built_in function-call counts, 89785 in all, are:
+= -- 8349
+> -- 4630
+< -- 177
++ -- 1566
+- -- 1394
+* -- 7158
+:= -- 12923
+add.period$ -- 619
+call.type$ -- 164
+change.case$ -- 940
+chr.to.int$ -- 156
+cite$ -- 346
+duplicate$ -- 4351
+empty$ -- 7465
+format.name$ -- 1662
+if$ -- 19598
+int.to.chr$ -- 9
 int.to.str$ -- 1
-missing$ -- 177
-newline$ -- 954
-num.names$ -- 675
-pop$ -- 2108
+missing$ -- 174
+newline$ -- 938
+num.names$ -- 663
+pop$ -- 2035
 preamble$ -- 1
-purify$ -- 819
+purify$ -- 790
 quote$ -- 0
-skip$ -- 3527
+skip$ -- 3464
 stack$ -- 0
-substring$ -- 3998
-swap$ -- 1098
-text.length$ -- 99
+substring$ -- 4128
+swap$ -- 1081
+text.length$ -- 100
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1755
-warning$ -- 22
-while$ -- 776
+type$ -- 1727
+warning$ -- 18
+while$ -- 805
 width$ -- 0
-write$ -- 2391
-(There were 22 warnings)
+write$ -- 2353
+(There were 18 warnings)

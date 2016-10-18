@@ -488,7 +488,7 @@ Most early techniques for solving POMDPs used value iteration. The preference fo
 burden, is that since the utility function uses a linear operator (the expectation) and that the Bellman backup operation 
 (applying the Bellman equation to the current value function) preservers the linearity, the value function after each 
 updates is Piece Wise Linear and Convex (PWLC). A good text on the implementation of exact value iteration for POMDPs can be 
-found in \cite[Chap. 15]{Thrun_2005} and \cite{Kaelbling_1998}.
+found in \cite[Chap. 15]{Thrun_Burgard_Fox_2005} and \cite{Kaelbling_1998}.
 
 In summary there are two problems in solving a POMDP:
 \begin{itemize}
@@ -609,7 +609,7 @@ four topics with their associated sub-fields.
 
 The POMDP formulation introduced previously is the main theoretical starting point of policies which
 consider uncertainty optimally. However solving an exact POMDP through dynamic programming (value iteration) is 
-computationally intractable and an exact solution only exists for discrete state, action and observation space \cite[Chap. 15]{Thrun_2005}. 
+computationally intractable and an exact solution only exists for discrete state, action and observation space \cite[Chap. 15]{Thrun_Burgard_Fox_2005}. 
 This intractability, in which only problems with a few states could be solved has inhibited the application of the POMDP framework to robotics. 
 
 \subsubsection{Point-based Value Iteration}
@@ -920,7 +920,7 @@ regions which have high uncertainty (exploration) and when the uncertainty is su
 
 
 
-An improvement is to consider the variance in the uncertainty and not just the MLS. Such an approach is a called Q-MDP \cite{Littman95}, \cite{RL_book_sa} in which the underlying MDP is first solved assuming the state space to be fully observable. Then an action is taken which maximises the expected MDP value function weighted by the belief. This approach only considers uncertainty for one time step but it has been shown to be efficient in some domains \cite[Chap. 16]{Thrun_2005}. 
+An improvement is to consider the variance in the uncertainty and not just the MLS. Such an approach is a called Q-MDP \cite{Littman95}, \cite{RL_book_sa} in which the underlying MDP is first solved assuming the state space to be fully observable. Then an action is taken which maximises the expected MDP value function weighted by the belief. This approach only considers uncertainty for one time step but it has been shown to be efficient in some domains \cite[Chap. 16]{Thrun_Burgard_Fox_2005}. 
 The negative aspect of this approach is that no information gathering actions emerge and the method will fail in problems where this is necessary (Heaven \& Hell benchmark problem for instance). Most PBVI based research compare their algorithms against a Q-MDP agent and PBVI always fairs better. 
 For a comparison of different heuristics such as Q-MDP and MLS consult \cite{acting_uncer_1996} and for a more recent comparison \cite{qmdp_ijcnn_2014}. 
 A recent application of this method include gaze allocation problems \cite{where_look_2012} where the uncertainty originates from the limited field of view.  

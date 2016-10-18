@@ -1,0 +1,16 @@
+Thesis:
+
+I noticed that the citations in your thesis are in various formats. Sometimes you have full first name, sometimes only initials. It would be best to correct this.  In some places in the document, you refer to your own work as Chambrier in place of deChambrier. Which one is correct? Choose one and stick to it everywhere. 
+
+It would be important to also clarify which part of the thesis was published elsewhere and add this in the introduction chapter as well as at the beginning of each chapter where this applies. If your RA paper is close to be accepted, then, you can also list there. But, I need to read the review and also the decision letter you got. What does it say? Minor or major revisions? What is the deadline for resubmitting?
+
+
+Your CV has typos. On my pdf version, some l and i are missing.
+
+You do not have the name of the prof. who advised you for your Master.
+
+For teaching, you were also a TA for the advanced ML course, no? You can also add supervision of MSc students (A. Ray, someone else?)
+
+You have a list of oral presentation and list there your publications, including a journal one. These are not oral presentations. Also, it is a little odd to see an oral presentation as deChambrier et al. How many people contributed to this oral presentation? If you want to refer to talks you gave, you simply list the place and time, and possibly title of the talk. If you refer to your publication list, then, use the standard scientific reference format.
+
+You can/should also list your co-publication with Ray and you can mention this supervision of students. 

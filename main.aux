@@ -16,6 +16,7 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand\tcolorbox@label[2]{}
 \citation{DARPA_2015}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -104,14 +105,14 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{23}{figure.caption.13}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{23}{figure.caption.13}}
 \citation{Sondik_1973}
-\citation{Thrun_2005}
+\citation{Thrun_Burgard_Fox_2005}
 \citation{Kaelbling_1998}
 \newlabel{eq:belief_bellman}{{2.2.15}{24}{POMDP}{equation.2.2.15}{}}
 \newlabel{eq:belief_state_transformation}{{2.2.16}{24}{POMDP}{equation.2.2.16}{}}
 \newlabel{eq:max_component}{{2.2.17}{24}{POMDP}{equation.2.2.17}{}}
 \newlabel{eq:final_belief_bellman}{{2.2.18}{24}{POMDP}{equation.2.2.18}{}}
 \citation{POMDP_approach_2010}
-\citation{Thrun_2005}
+\citation{Thrun_Burgard_Fox_2005}
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Literature review}{25}{section.2.3}}
 \newlabel{sec:lit_rev}{{2.3}{25}{Literature review}{section.2.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Value Iteration}{25}{subsection.2.3.1}}
@@ -190,7 +191,7 @@
 \@writefile{toc}{\contentsline {subsubsection}{Myopic \& Q-MDP}{36}{section*.26}}
 \citation{Littman95}
 \citation{RL_book_sa}
-\citation{Thrun_2005}
+\citation{Thrun_Burgard_Fox_2005}
 \citation{acting_uncer_1996}
 \citation{qmdp_ijcnn_2014}
 \citation{where_look_2012}
@@ -369,7 +370,7 @@
 \citation{online_gpr_icra_2014}
 \citation{ACML_variance_2015}
 \citation{rl_ac_surv_2012}
-\citation{sutton98a}
+\citation{sutton98reinforcement}
 \citation{Sutton00policygradient}
 \citation{Safe_val_function_1995}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Actor-Critic \& Fitted Reinforcement Learning}{86}{subsection.4.2.2}}
@@ -496,7 +497,7 @@
 \newlabel{fig:Figure1}{{5.1}{122}{\textit {Table Environment} Table World (delimited by the black rectangle), viewed from above, and the agent's beliefs. There are three different probability density functions present on the table. The blue represents the believed location of the agent, the red and green probability distributions are associated with object 1 and 2. The white shapes in each figure represent the true location of each associated object or agent.\relax }{figure.caption.85}{}}
 \citation{NegInfoFurtherStudies}
 \citation{Bake_Saxe_Tene_2011}
-\citation{deChambrier2013}
+\citation{Chambrier2014}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Assumptions and attributes which have to be fulfilled by our Bayesian State Space Filter. \relax }}{123}{figure.caption.86}}
 \newlabel{fig:ch5_assmuptions}{{5.2}{123}{Assumptions and attributes which have to be fulfilled by our Bayesian State Space Filter. \relax }{figure.caption.86}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Outline}{124}{section.5.1}}
@@ -654,7 +655,6 @@
 \@writefile{toc}{\contentsline {section}{\numberline {A.3}Q-EM for GMM}{167}{section.1.A.3}}
 \newlabel{app:grad}{{A.3}{167}{Q-EM for GMM}{section.1.A.3}{}}
 \newlabel{eq:ch5:app:gmm}{{A.3.1}{167}{Q-EM for GMM}{equation.1.A.3.1}{}}
-\citation{matrix_ckb}
 \citation{Bishop_2006}
 \citation{Bishop_2006}
 \newlabel{eq:ch4:app_div_Q}{{A.3.2}{168}{Q-EM for GMM}{equation.1.A.3.2}{}}
@@ -714,169 +714,165 @@
 \bibcite{rl_gmm_2010}{{3}{2010}{{Agostini and Celaya}}{{}}}
 \bibcite{FIRM_2011}{{4}{2011}{{akbar Agha-mohammadi et~al.}}{{akbar Agha-mohammadi, Chakravorty, and Amato}}}
 \bibcite{rob_online_bs_icra_2014}{{5}{2014}{{akbar Agha-mohammadi et~al.}}{{akbar Agha-mohammadi, Agarwal, Mahadevan, Chakravorty, Tomkins, Denny, and Amato}}}
-\bibcite{Arul_Mask_Clap_2002}{{6}{2002{a}}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
-\bibcite{PF_tutorial_2002}{{7}{2002{b}}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
-\bibcite{Atkeson97locallyweighted}{{8}{1997}{{Atkeson et~al.}}{{Atkeson, Moore, and Schaal}}}
-\bibcite{Bake_Tene_Saxe_2006}{{9}{2006}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
-\bibcite{Bake_Saxe_Tene_2011}{{10}{2011}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
+\bibcite{PF_tutorial_2002}{{6}{2002}{{Arulampalam et~al.}}{{Arulampalam, Maskell, Gordon, and Clapp}}}
+\bibcite{Atkeson97locallyweighted}{{7}{1997}{{Atkeson et~al.}}{{Atkeson, Moore, and Schaal}}}
+\bibcite{Bake_Tene_Saxe_2006}{{8}{2006}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
+\bibcite{Bake_Saxe_Tene_2011}{{9}{2011}{{Baker et~al.}}{{Baker, Tenenbaum, and Saxe}}}
+\bibcite{Baron-Cohen}{{10}{1995}{{Baron-Cohen}}{{}}}
 \@writefile{toc}{\contentsline {chapter}{References}{181}{chapter*.120}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\bibcite{Baron-Cohen}{{11}{1995}{{Baron-Cohen}}{{}}}
-\bibcite{gpomdp_2000}{{12}{2000}{{Baxter and Bartlett}}{{}}}
-\bibcite{peg_imcssd_2015}{{13}{2015}{{Bdiwi et~al.}}{{Bdiwi, Winkler, Jokesch, and Suchy}}}
-\bibcite{Bergman99recursivebayesian}{{14}{1999}{{Bergman and Bergman}}{{}}}
-\bibcite{Bernoulli1954}{{15}{1954}{{Bernoulli}}{{}}}
-\bibcite{Billard_schol_2013}{{16}{2013}{{Billard and Grollman}}{{}}}
-\bibcite{Billard08chapter}{{17}{2008}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
-\bibcite{Bishop_2006}{{18}{2006}{{Bishop}}{{}}}
-\bibcite{fvi_uav_2010}{{19}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
-\bibcite{Safe_val_function_1995}{{20}{1995}{{Boyan and Moore}}{{}}}
-\bibcite{solving_continous_pomdps_2013}{{21}{2013}{{Brechtel et~al.}}{{Brechtel, Gindele, and Dillmann}}}
-\bibcite{mc_update_ppomdps}{{22}{2011}{{Brooks and Williams}}{{}}}
-\bibcite{spatial_memory_how_ego_allo_combine_2006}{{23}{2006}{{Burgess}}{{}}}
-\bibcite{approx_rl_overview_2011}{{24}{2011}{{Busoniu et~al.}}{{Busoniu, Ernst, Schutter, and Babuska}}}
-\bibcite{MRF_ToM}{{25}{2009}{{Butterfield et~al.}}{{Butterfield, Jenkins, Sobel, and Schwertfeger}}}
-\bibcite{gesture_calinon_2010}{{26}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
-\bibcite{Active_SLAM_Uncertainty_compar}{{27}{2012}{{Carrillo et~al.}}{{Carrillo, Reid, and Castellanos}}}
-\bibcite{acting_uncer_1996}{{28}{1996}{{Cassandra et~al.}}{{Cassandra, Kaelbling, and Kurien}}}
-\bibcite{Chambrier2014}{{29}{2014}{{Chambrier and Billard}}{{}}}
-\bibcite{u_aware_grasp_ICRA_2015}{{30}{2015}{{Chen and von Wichert}}{{}}}
-\bibcite{online_gpr_icra_2014}{{31}{2014}{{Cheng and Chen}}{{}}}
-\bibcite{search_strategies_icra_2001}{{32}{2001}{{Chhatpar and Branicky}}{{}}}
-\bibcite{deChambrier2013}{{33}{2013}{{de~Chambrier and Billard}}{{}}}
-\bibcite{p_search_surv_2011}{{34}{2011}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{rl_gradient_survey_2013}{{35}{2013}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
-\bibcite{ToM_HRI_2106}{{36}{2016}{{Devin and Alami}}{{}}}
-\bibcite{POMDP_approach_2010}{{37}{2010}{{Du et~al.}}{{Du, Hsu, Kurniawati, Lee, Ong, and Png}}}
-\bibcite{SLAM_part1}{{38}{2006}{{Durrant-Whyte and Bailey}}{{}}}
-\bibcite{Erez10ascalable}{{39}{2010}{{Erez and Smart}}{{}}}
-\bibcite{EGW05}{{40}{2005{a}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
-\bibcite{Tree_batch_2005}{{41}{2005{b}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
-\bibcite{hybrid_1992}{{42}{1992}{{Fisher and Mujtaba}}{{}}}
-\bibcite{Navigation_strategires_for_exploring_indoor_environments}{{43}{2002}{{Gonz{\'{a}}lez{-}Ba{\~{n}}os and Latombe}}{{}}}
-\bibcite{stable_FA_gordon_1995}{{44}{1995}{{Gordon}}{{}}}
-\bibcite{TutGraphSLAM}{{45}{2010}{{Grisetti et~al.}}{{Grisetti, Kummerle, Stachniss, and Burgard}}}
-\bibcite{ac_survey_2012}{{46}{2012{a}}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
-\bibcite{rl_ac_surv_2012}{{47}{2012{b}}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
-\bibcite{learn_admittance_icra_1994}{{48}{1994}{{Gullapalli et~al.}}{{Gullapalli, Barto, and Grupen}}}
-\bibcite{Hamner_2006_5810}{{49}{2006}{{Hamner et~al.}}{{Hamner, Singh, and Scherer}}}
-\bibcite{Hauser_2011}{{50}{2011}{{Hauser}}{{}}}
-\bibcite{DRQ_AAAI_2015}{{51}{2015}{{Hausknecht and Stone}}{{}}}
-\bibcite{Quadrator_2008}{{52}{2008}{{He et~al.}}{{He, Prentice, and Roy}}}
-\bibcite{next_best_touch}{{53}{2013}{{Hebert et~al.}}{{Hebert, Howard, Hudson, Ma, and Burdick}}}
-\bibcite{negative_info_markov_localisation}{{54}{2005}{{Hoffman et~al.}}{{Hoffman, Spranger, Gohring, and Jungel}}}
-\bibcite{NegInfoFurtherStudies}{{55}{2006}{{Hoffmann et~al.}}{{Hoffmann, Spranger, Gohring, Jungel, and Burkhard}}}
-\bibcite{un_water_inspection_icra_2012}{{56}{2012}{{Hollinger et~al.}}{{Hollinger, Englot, Hover, Mitra, and Sukhatme}}}
-\bibcite{Hsiao_RSS_10}{{57}{2010}{{Hsiao et~al.}}{{Hsiao, Kaelbling, and Lozano-Perez}}}
-\bibcite{RRT-SLAM}{{58}{2008}{{Huang and Gupta}}{{}}}
-\bibcite{DiffEntropyHuber2008}{{59}{2008}{{Huber et~al.}}{{Huber, Bailey, Durrant-Whyte, and Hanebeck}}}
-\bibcite{Iachini2014}{{60}{2014}{{Iachini et~al.}}{{Iachini, Ruggiero, and Ruotolo}}}
-\bibcite{Efficient_touch_2012}{{61}{2012}{{Javdani et~al.}}{{Javdani, Klingensmith, Bagnell, Pollard, and Srinivasa}}}
-\bibcite{DARPA_2015}{{62}{2015}{{Johnson and et. al}}{{}}}
-\bibcite{Kaelbling_1998}{{63}{1998}{{Kaelbling et~al.}}{{Kaelbling, Littman, and Cassandra}}}
-\bibcite{learn_force_c_icirs_2011}{{64}{2011}{{Kalakrishnan et~al.}}{{Kalakrishnan, Righetti, Pastor, and Schaal}}}
-\bibcite{Kasper2001153}{{65}{2001}{{Kasper et~al.}}{{Kasper, Fricke, Steuernagel, and von Puttkamer}}}
-\bibcite{PRM_1996}{{66}{1996}{{Kavraki et~al.}}{{Kavraki, Svestka, Latombe, and Overmars}}}
-\bibcite{heli_2004}{{67}{2004}{{Kim et~al.}}{{Kim, Jordan, Sastry, and Ng}}}
-\bibcite{PoWER_2009}{{68}{2009}{{Kober and Peters}}{{}}}
-\bibcite{RL_robots_surv_2013}{{69}{2013}{{Kober et~al.}}{{Kober, Bagnell, and Peters}}}
-\bibcite{Kollar_2008_Exploration_SLAM}{{70}{2008}{{Kollar and Roy}}{{}}}
-\bibcite{compliant_manip_icra_2008}{{71}{2008}{{kook Yun}}{{}}}
-\bibcite{pancake_2010}{{72}{2010{a}}{{Kormushev et~al.}}{{Kormushev, Calinon, and Caldwell}}}
-\bibcite{archery_2010}{{73}{2010{b}}{{Kormushev et~al.}}{{Kormushev, Calinon, Saegusa, and Metta}}}
-\bibcite{Kronander2015}{{74}{2015}{{Kronander}}{{}}}
-\bibcite{Klas_icra_2012}{{75}{2012}{{Kronander and Billard}}{{}}}
-\bibcite{SARSOP}{{76}{2008}{{Kurniawati et~al.}}{{Kurniawati, Hsu, and Lee}}}
-\bibcite{Lange_riedmiller_2010}{{77}{2010}{{Lange and Riedmiller}}{{}}}
-\bibcite{human_stsm_2015}{{78}{2015}{{Lavenexa et~al.}}{{Lavenexa, Boujonb, Ndarugendamwob, and Lavenexa}}}
-\bibcite{Leslie_TOMM}{{79}{1994}{{Leslie}}{{}}}
-\bibcite{Li_2015}{{80}{2016}{{Li et~al.}}{{Li, Hang, Kragic, and Billard}}}
-\bibcite{bs_compression_2010}{{81}{2010}{{Li et~al.}}{{Li, Cheung, and Liu}}}
-\bibcite{GeorgiosLidoris}{{82}{2011}{{Lidoris}}{{}}}
-\bibcite{qmdp_ijcnn_2014}{{83}{2014}{{Lin et~al.}}{{Lin, Lu, and Makedon}}}
-\bibcite{Littman95}{{84}{1995}{{Littman et~al.}}{{Littman, Cassandra, and Kaelbling}}}
-\bibcite{MedinaSH13}{{85}{2013}{{Medina et~al.}}{{Medina, Sieber, and Hirche}}}
-\bibcite{peg_personal_icra_2010}{{86}{2010}{{Meeussen et~al.}}{{Meeussen, Wise, Glaser, Chitta, McGann, Mihelich, Marder-Eppstein, Muja, Eruhimov, Foote, Hsu, Rusu, Marthi, Bradski, Konolige, Gerkey, and Berger}}}
-\bibcite{cogprints730}{{87}{1956}{{Miller}}{{}}}
-\bibcite{mnih-dqn-2015}{{88}{2015}{{Mnih}}{{}}}
-\bibcite{DataAssociation2003}{{89}{2003}{{Montemerlo and Thrun}}{{}}}
-\bibcite{FastSLAM}{{90}{2003}{{Montemerlo et~al.}}{{Montemerlo, Thrun, Koller, and Wegbreit}}}
-\bibcite{trans_workpiece_icra_2013}{{91}{2013}{{Nemec et~al.}}{{Nemec, Abu-Dakka, Ridge, Ude, Jorgensen, Savarimuthu, Jouffroy, Petersen, and Kr\"uger}}}
-\bibcite{fqi_nips_peter_2009}{{92}{2009{a}}{{Neumann and Peters}}{{}}}
-\bibcite{NIPS2008_3501}{{93}{2009{b}}{{Neumann and Peters}}{{}}}
-\bibcite{Pegasus_2000}{{94}{2000}{{Ng and Jordan}}{{}}}
-\bibcite{North68atutorial}{{95}{1968}{{North}}{{}}}
-\bibcite{RL_book_sa}{{96}{2012}{{Now\'{e} et~al.}}{{Now\'{e}, Vrancx, and De~Hauwere}}}
-\bibcite{where_look_2012}{{97}{2012}{{Nunez-Varela et~al.}}{{Nunez-Varela, Ravindran, and Wyatt}}}
-\bibcite{kernel_rl_ormoneit_2002}{{98}{2002}{{Ormoneit and Glynn}}{{}}}
-\bibcite{intuitive_peg_isr_2013}{{99}{2013}{{Park et~al.}}{{Park, Bae, Park, Baeg, and Park}}}
-\bibcite{Pasqualotto2013175}{{100}{2013}{{Pasqualotto et~al.}}{{Pasqualotto, Spiller, Jansari, and Proulx}}}
-\bibcite{online_pre_sensor_2011}{{101}{2011}{{Pastor et~al.}}{{Pastor, Righetti, Kalakrishnan, and Schaal}}}
-\bibcite{peter_nac_2008}{{102}{2008{a}}{{Peters and Schaal}}{{}}}
-\bibcite{NAC_2008}{{103}{2008{b}}{{Peters and Schaal}}{{}}}
-\bibcite{matrix_ckb}{{104}{2012}{{Petersen and Pedersen}}{{}}}
-\bibcite{PBVI}{{105}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
-\bibcite{Plagemann07gaussianbeam}{{106}{2007}{{Plagemann et~al.}}{{Plagemann, Kersting, Pfaff, and Burgard}}}
-\bibcite{non_gauss_bel_plan_2012}{{107}{2012}{{Platt et~al.}}{{Platt, Kaelbling, Lozano-Perez, and Tedrake}}}
-\bibcite{bsp_rss_2010a}{{108}{2010}{{Platt et~al.}}{{Platt, Tedrake, Kaelbling, and Lozano-P\'{e}rez}}}
-\bibcite{PBVI_C_2006}{{109}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
-\bibcite{BelRoadMap_2009}{{110}{2009}{{Prentice and Roy}}{{}}}
-\bibcite{decision_un_2013}{{111}{2013}{{Preuschoff et~al.}}{{Preuschoff, Mohr, and Hsu}}}
-\bibcite{rai2013learning}{{112}{2013}{{Rai et~al.}}{{Rai, De~Chambrier, and Billard}}}
-\bibcite{Sondik_1973}{{113}{1973}{{Richard D.~Smallwood}}{{}}}
-\bibcite{Richardson1_Baker1_Tenenbaum1_Saxe1_2012}{{114}{2012}{{Richardson et~al.}}{{Richardson, Bake, Tenenbaum, and Saxe}}}
-\bibcite{Riedmiller2005}{{115}{2005}{{Riedmiller}}{{}}}
-\bibcite{Ross08onlineplanning}{{116}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
-\bibcite{CostalNavigation1999}{{117}{1999}{{Roy et~al.}}{{Roy, Burgard, Fox, and Thrun}}}
-\bibcite{belief_compression_2005}{{118}{2005}{{Roy}}{{}}}
-\bibcite{EPCA_2003}{{119}{2003{a}}{{Roy and Gordon}}{{}}}
-\bibcite{NIPS2002_2319}{{120}{2003{b}}{{Roy and Gordon}}{{}}}
-\bibcite{Roy99coastalnavigation}{{121}{1999}{{Roy and Thrun}}{{}}}
-\bibcite{ToM_humanoid}{{122}{2002}{{Scassellati}}{{}}}
-\bibcite{Schaal04learningmovement}{{123}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
-\bibcite{BayesBall}{{124}{1998}{{Shachter}}{{}}}
-\bibcite{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain}{{125}{2010}{{Silver et~al.}}{{Silver, Bagnell, and Stentz}}}
-\bibcite{HSV}{{126}{2004}{{Smith and Simmons}}{{}}}
-\bibcite{HSVI2}{{127}{2012}{{Smith and Simmons}}{{}}}
-\bibcite{Towards_a_ToM_2010}{{128}{2010}{{Sodian and Kristen}}{{}}}
-\bibcite{Spaan05icra}{{129}{2005}{{Spaan and Vlassis}}{{}}}
-\bibcite{stachniss05robotics}{{130}{2005}{{Stachniss et~al.}}{{Stachniss, Grisetti, and Burgard}}}
-\bibcite{stankiewicz2006lost}{{131}{2006}{{Stankiewicz et~al.}}{{Stankiewicz, Legge, Mansfield, and Schlicht}}}
-\bibcite{sep-decision-theory}{{132}{2015}{{Steele and Stefansson}}{{}}}
-\bibcite{dmp_iros_2011}{{133}{2011}{{Stulp et~al.}}{{Stulp, Theodorou, Kalakrishnan, Pastor, Righetti, and Schaal}}}
-\bibcite{dmp_seq_2012}{{134}{2012}{{Stulp et~al.}}{{Stulp, Theodorou, and Schaal}}}
-\bibcite{Needle_2014}{{135}{2014}{{Sun and Alterovitz}}{{}}}
-\bibcite{gmr_2004}{{136}{2004}{{Sung}}{{}}}
-\bibcite{sutton98a}{{137}{1998{a}}{{Sutton and Barto}}{{}}}
-\bibcite{Sutton00policygradient}{{138}{2000}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
-\bibcite{sutton1998reinforcement}{{139}{1998{b}}{{Sutton and Barto}}{{}}}
-\bibcite{RL_book_2010}{{140}{2010}{{Szepesv\'ari}}{{}}}
-\bibcite{MC-POMDP}{{141}{2000}{{Thrun}}{{}}}
-\bibcite{Thrun02particlefilters}{{142}{2002}{{Thrun}}{{}}}
-\bibcite{Thrun_grid_based_1996}{{143}{1996}{{Thrun and B\"{u}}}{{}}}
-\bibcite{SLAM_HBR}{{144}{2008}{{Thrun and Leonard}}{{}}}
-\bibcite{Thrun_2005}{{145}{2005{a}}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{Thrun_Burgard_Fox_2005}{{146}{2005{b}}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
-\bibcite{ActivePosSLAM}{{147}{2012}{{Valencia et~al.}}{{Valencia, Miro, Dissanayake, and Andrade-Cetto}}}
-\bibcite{dense_entropy_icra_2014}{{148}{2014}{{Vallve and Andrade{-}Cetto}}{{}}}
-\bibcite{LQG_MP_2011}{{149}{2011}{{Van Den~Berg et~al.}}{{Van Den~Berg, Abbeel, and Goldberg}}}
-\bibcite{van_den_Berg_2012}{{150}{2012}{{van~den Berg et~al.}}{{van~den Berg, Patil, and Alterovitz}}}
-\bibcite{Veiga14aaai}{{151}{2014}{{Veiga et~al.}}{{Veiga, Spaan, and Lima}}}
-\bibcite{FSVI}{{152}{2007}{{Veloso}}{{}}}
-\bibcite{pomdp_iros_tous_2015}{{153}{2015{a}}{{Vien and Toussaint}}{{}}}
-\bibcite{pomdp_toussain_iros_2015}{{154}{2015{b}}{{Vien and Toussaint}}{{}}}
-\bibcite{eNAC_2003}{{155}{2003}{{Vijayakumar et~al.}}{{Vijayakumar, Shibata, and Schaal}}}
-\bibcite{VonNeumann1944}{{156}{1990}{{von Neumann and Morgenstern}}{{}}}
-\bibcite{Wang2016}{{157}{2016}{{Wang et~al.}}{{Wang, Uchibe, and Doya}}}
-\bibcite{Wang_2007}{{158}{2007}{{Wang}}{{}}}
-\bibcite{updating_egocentric_human_navigation_2000}{{159}{2000}{{Wang and Spelke}}{{}}}
-\bibcite{RL_state_art_2012}{{160}{2012}{{Wiering and van Otterio}}{{}}}
-\bibcite{reinforce_1992}{{161}{1992}{{Williams}}{{}}}
-\bibcite{Biomechanics_2009}{{162}{2009}{{Winter}}{{}}}
-\bibcite{what_det_our_nav_ability_2010}{{163}{2010}{{Wolbers and Hegarty}}{{}}}
-\bibcite{spatial_updating_2008}{{164}{2008}{{Wolbers et~al.}}{{Wolbers, Hegarty, Buchel, and Loomis}}}
-\bibcite{fast_peg_pbd_icmc_2014}{{165}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and Savarimuthu}}}
-\bibcite{ACML_variance_2015}{{166}{2015}{{Zhao et~al.}}{{Zhao, Niu, Xie, Yang, and Sugiyama}}}
-\bibcite{seq_traj_replan_iros_2013}{{167}{2013}{{Zito et~al.}}{{Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and Wyatt}}}
+\bibcite{gpomdp_2000}{{11}{2000}{{Baxter and Bartlett}}{{}}}
+\bibcite{peg_imcssd_2015}{{12}{2015}{{Bdiwi et~al.}}{{Bdiwi, Winkler, Jokesch, and Suchy}}}
+\bibcite{Bergman99recursivebayesian}{{13}{1999}{{Bergman and Bergman}}{{}}}
+\bibcite{Bernoulli1954}{{14}{1954}{{Bernoulli}}{{}}}
+\bibcite{Billard_schol_2013}{{15}{2013}{{Billard and Grollman}}{{}}}
+\bibcite{Billard08chapter}{{16}{2008}{{Billard et~al.}}{{Billard, Calinon, Dillmann, and Schaal}}}
+\bibcite{Bishop_2006}{{17}{2006}{{Bishop}}{{}}}
+\bibcite{fvi_uav_2010}{{18}{2010}{{Bou-Ammar et~al.}}{{Bou-Ammar, Voos, and Ertel}}}
+\bibcite{Safe_val_function_1995}{{19}{1995}{{Boyan and Moore}}{{}}}
+\bibcite{solving_continous_pomdps_2013}{{20}{2013}{{Brechtel et~al.}}{{Brechtel, Gindele, and Dillmann}}}
+\bibcite{mc_update_ppomdps}{{21}{2011}{{Brooks and Williams}}{{}}}
+\bibcite{spatial_memory_how_ego_allo_combine_2006}{{22}{2006}{{Burgess}}{{}}}
+\bibcite{approx_rl_overview_2011}{{23}{2011}{{Busoniu et~al.}}{{Busoniu, Ernst, {de Schutter}, and Babuska}}}
+\bibcite{MRF_ToM}{{24}{2009}{{Butterfield et~al.}}{{Butterfield, Jenkins, Sobel, and Schwertfeger}}}
+\bibcite{gesture_calinon_2010}{{25}{2010}{{Calinon et~al.}}{{Calinon, D'halluin, Sauser, Caldwell, and Billard}}}
+\bibcite{Active_SLAM_Uncertainty_compar}{{26}{2012}{{Carrillo et~al.}}{{Carrillo, Reid, and Castellanos}}}
+\bibcite{acting_uncer_1996}{{27}{1996}{{Cassandra et~al.}}{{Cassandra, Kaelbling, and Kurien}}}
+\bibcite{u_aware_grasp_ICRA_2015}{{28}{2015}{{Chen and {von Wichert}}}{{}}}
+\bibcite{online_gpr_icra_2014}{{29}{2014}{{Cheng and Chen}}{{}}}
+\bibcite{Chambrier2014}{{30}{2014}{{de~Chambrier and Billard}}{{}}}
+\bibcite{p_search_surv_2011}{{31}{2011}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{rl_gradient_survey_2013}{{32}{2013}{{Deisenroth et~al.}}{{Deisenroth, Neumann, and Peters}}}
+\bibcite{ToM_HRI_2106}{{33}{2016}{{Devin and Alami}}{{}}}
+\bibcite{SLAM_part1}{{34}{2006}{{Durrant-Whyte and Bailey}}{{}}}
+\bibcite{Erez10ascalable}{{35}{2010}{{Erez and Smart}}{{}}}
+\bibcite{EGW05}{{36}{2005{a}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
+\bibcite{Tree_batch_2005}{{37}{2005{b}}{{Ernst et~al.}}{{Ernst, Geurts, and Wehenkel}}}
+\bibcite{hybrid_1992}{{38}{1992}{{Fisher and Mujtaba}}{{}}}
+\bibcite{Navigation_strategires_for_exploring_indoor_environments}{{39}{2002}{{Gonz{\'{a}}lez{-}Ba{\~{n}}os and Latombe}}{{}}}
+\bibcite{stable_FA_gordon_1995}{{40}{1995}{{Gordon}}{{}}}
+\bibcite{TutGraphSLAM}{{41}{2010}{{Grisetti et~al.}}{{Grisetti, Kummerle, Stachniss, and Burgard}}}
+\bibcite{rl_ac_surv_2012}{{42}{2012{a}}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
+\bibcite{ac_survey_2012}{{43}{2012{b}}{{Grondman et~al.}}{{Grondman, Busoniu, Lopes, and Babuska}}}
+\bibcite{learn_admittance_icra_1994}{{44}{1994}{{Gullapalli et~al.}}{{Gullapalli, Barto, and Grupen}}}
+\bibcite{Hamner_2006_5810}{{45}{2006}{{Hamner et~al.}}{{Hamner, Singh, and Scherer}}}
+\bibcite{Hauser_2011}{{46}{2011}{{Hauser}}{{}}}
+\bibcite{DRQ_AAAI_2015}{{47}{2015}{{Hausknecht and Stone}}{{}}}
+\bibcite{Quadrator_2008}{{48}{2008}{{He et~al.}}{{He, Prentice, and Roy}}}
+\bibcite{next_best_touch}{{49}{2013}{{Hebert et~al.}}{{Hebert, Howard, Hudson, Ma, and Burdick}}}
+\bibcite{negative_info_markov_localisation}{{50}{2005}{{Hoffman et~al.}}{{Hoffman, Spranger, Gohring, and J\"{u}ngel}}}
+\bibcite{NegInfoFurtherStudies}{{51}{2006}{{Hoffmann et~al.}}{{Hoffmann, Spranger, Gohring, J\"{u}ngel, and Burkhard}}}
+\bibcite{un_water_inspection_icra_2012}{{52}{2012}{{Hollinger et~al.}}{{Hollinger, Englot, Hover, Mitra, and Sukhatme}}}
+\bibcite{Hsiao_RSS_10}{{53}{2010}{{Hsiao et~al.}}{{Hsiao, Kaelbling, and Lozano-P{\'e}rez}}}
+\bibcite{RRT-SLAM}{{54}{2008}{{Huang and Gupta}}{{}}}
+\bibcite{DiffEntropyHuber2008}{{55}{2008}{{Huber et~al.}}{{Huber, Bailey, Durrant-Whyte, and Hanebeck}}}
+\bibcite{Iachini2014}{{56}{2014}{{Iachini et~al.}}{{Iachini, Ruggiero, and Ruotolo}}}
+\bibcite{Efficient_touch_2012}{{57}{2013}{{Javdani et~al.}}{{Javdani, Klingensmith, Bagnell, Pollard, and Srinivasa}}}
+\bibcite{DARPA_2015}{{58}{2015}{{Johnson and et. al}}{{}}}
+\bibcite{Kaelbling_1998}{{59}{1998}{{Kaelbling et~al.}}{{Kaelbling, Littman, and Cassandra}}}
+\bibcite{learn_force_c_icirs_2011}{{60}{2011}{{Kalakrishnan et~al.}}{{Kalakrishnan, Righetti, Pastor, and Schaal}}}
+\bibcite{Kasper2001153}{{61}{2001}{{Kasper et~al.}}{{Kasper, Fricke, Steuernagel, and {von Puttkamer}}}}
+\bibcite{PRM_1996}{{62}{1996}{{Kavraki et~al.}}{{Kavraki, Svestka, Latombe, and Overmars}}}
+\bibcite{heli_2004}{{63}{2004}{{Kim et~al.}}{{Kim, Jordan, Sastry, and Ng}}}
+\bibcite{PoWER_2009}{{64}{2009}{{Kober and Peters}}{{}}}
+\bibcite{RL_robots_surv_2013}{{65}{2013}{{Kober et~al.}}{{Kober, Bagnell, and Peters}}}
+\bibcite{Kollar_2008_Exploration_SLAM}{{66}{2008}{{Kollar and Roy}}{{}}}
+\bibcite{compliant_manip_icra_2008}{{67}{2008}{{kook Yun}}{{}}}
+\bibcite{pancake_2010}{{68}{2010{a}}{{Kormushev et~al.}}{{Kormushev, Calinon, and Caldwell}}}
+\bibcite{archery_2010}{{69}{2010{b}}{{Kormushev et~al.}}{{Kormushev, Calinon, Saegusa, and Metta}}}
+\bibcite{Kronander2015}{{70}{2015}{{Kronander}}{{}}}
+\bibcite{Klas_icra_2012}{{71}{2012}{{Kronander and Billard}}{{}}}
+\bibcite{SARSOP}{{72}{2008}{{Kurniawati et~al.}}{{Kurniawati, Hsu, and Lee}}}
+\bibcite{Lange_riedmiller_2010}{{73}{2010}{{Lange and Riedmiller}}{{}}}
+\bibcite{human_stsm_2015}{{74}{2015}{{Lavenexa et~al.}}{{Lavenexa, Boujonb, Ndarugendamwob, and Lavenexa}}}
+\bibcite{Leslie_TOMM}{{75}{1994}{{Leslie}}{{}}}
+\bibcite{Li_2015}{{76}{2016}{{Li et~al.}}{{Li, Hang, Kragic, and Billard}}}
+\bibcite{bs_compression_2010}{{77}{2010}{{Li et~al.}}{{Li, Cheung, and Liu}}}
+\bibcite{GeorgiosLidoris}{{78}{2011}{{Lidoris}}{{}}}
+\bibcite{qmdp_ijcnn_2014}{{79}{2014}{{Lin et~al.}}{{Lin, Lu, and Makedon}}}
+\bibcite{Littman95}{{80}{1995}{{Littman et~al.}}{{Littman, Cassandra, and Kaelbling}}}
+\bibcite{Arul_Mask_Clap_2002}{{81}{2002}{{{M. Sanjeev} et~al.}}{{{M. Sanjeev}, Maskell, Gordon, and Clapp}}}
+\bibcite{MedinaSH13}{{82}{2013}{{Medina et~al.}}{{Medina, Sieber, and Hirche}}}
+\bibcite{peg_personal_icra_2010}{{83}{2010}{{Meeussen et~al.}}{{Meeussen, Wise, Glaser, Chitta, and et. al}}}
+\bibcite{cogprints730}{{84}{1956}{{Miller}}{{}}}
+\bibcite{mnih-dqn-2015}{{85}{2015}{{Mnih}}{{}}}
+\bibcite{DataAssociation2003}{{86}{2003}{{Montemerlo and Thrun}}{{}}}
+\bibcite{FastSLAM}{{87}{2003}{{Montemerlo et~al.}}{{Montemerlo, Thrun, Koller, and Wegbreit}}}
+\bibcite{trans_workpiece_icra_2013}{{88}{2013}{{Nemec et~al.}}{{Nemec, Abu-Dakka, Ridge, and et. al}}}
+\bibcite{NIPS2008_3501}{{89}{2009{a}}{{Neumann and Peters}}{{}}}
+\bibcite{fqi_nips_peter_2009}{{90}{2009{b}}{{Neumann and Peters}}{{}}}
+\bibcite{Pegasus_2000}{{91}{2000}{{Ng and Jordan}}{{}}}
+\bibcite{North68atutorial}{{92}{1968}{{North}}{{}}}
+\bibcite{RL_book_sa}{{93}{2012}{{Now\'{e} et~al.}}{{Now\'{e}, Vrancx, and De~Hauwere}}}
+\bibcite{where_look_2012}{{94}{2012}{{Nunez-Varela et~al.}}{{Nunez-Varela, Ravindran, and Wyatt}}}
+\bibcite{kernel_rl_ormoneit_2002}{{95}{2002}{{Ormoneit and Glynn}}{{}}}
+\bibcite{intuitive_peg_isr_2013}{{96}{2013}{{Park et~al.}}{{Park, Bae, Park, Baeg, and Park}}}
+\bibcite{Pasqualotto2013175}{{97}{2013}{{Pasqualotto et~al.}}{{Pasqualotto, Spiller, Jansari, and Proulx}}}
+\bibcite{online_pre_sensor_2011}{{98}{2011}{{Pastor et~al.}}{{Pastor, Righetti, Kalakrishnan, and Schaal}}}
+\bibcite{NAC_2008}{{99}{2008{a}}{{Peters and Schaal}}{{}}}
+\bibcite{peter_nac_2008}{{100}{2008{b}}{{Peters and Schaal}}{{}}}
+\bibcite{PBVI}{{101}{2003}{{Pineau et~al.}}{{Pineau, Gordon, and Thrun}}}
+\bibcite{Plagemann07gaussianbeam}{{102}{2007}{{Plagemann et~al.}}{{Plagemann, Kersting, Pfaff, and Burgard}}}
+\bibcite{bsp_rss_2010a}{{103}{2010}{{Platt et~al.}}{{Platt, Tedrake, Kaelbling, and Lozano-P\'{e}rez}}}
+\bibcite{non_gauss_bel_plan_2012}{{104}{2012}{{Platt et~al.}}{{Platt, Kaelbling, Lozano-Perez, and Tedrake}}}
+\bibcite{PBVI_C_2006}{{105}{2006}{{Porta et~al.}}{{Porta, Vlassis, Spaan, and Poupart}}}
+\bibcite{BelRoadMap_2009}{{106}{2009}{{Prentice and Roy}}{{}}}
+\bibcite{decision_un_2013}{{107}{2013}{{Preuschoff et~al.}}{{Preuschoff, Mohr, and Hsu}}}
+\bibcite{rai2013learning}{{108}{2013}{{Rai et~al.}}{{Rai, de~Chambrier, and Billard}}}
+\bibcite{Richardson1_Baker1_Tenenbaum1_Saxe1_2012}{{109}{2012}{{Richardson et~al.}}{{Richardson, Bake, Tenenbaum, and Saxe}}}
+\bibcite{Riedmiller2005}{{110}{2005}{{Riedmiller}}{{}}}
+\bibcite{Ross08onlineplanning}{{111}{2008}{{Ross et~al.}}{{Ross, Pineau, Paquet, and Chaib-draa}}}
+\bibcite{belief_compression_2005}{{112}{2005}{{Roy}}{{}}}
+\bibcite{EPCA_2003}{{113}{2003{a}}{{Roy and Gordon}}{{}}}
+\bibcite{NIPS2002_2319}{{114}{2003{b}}{{Roy and Gordon}}{{}}}
+\bibcite{Roy99coastalnavigation}{{115}{1999}{{Roy and Thrun}}{{}}}
+\bibcite{CostalNavigation1999}{{116}{1999}{{Roy et~al.}}{{Roy, Burgard, Fox, and Thrun}}}
+\bibcite{ToM_humanoid}{{117}{2002}{{Scassellati}}{{}}}
+\bibcite{Schaal04learningmovement}{{118}{2004}{{Schaal et~al.}}{{Schaal, Peters, Nakanishi, and Ijspeert}}}
+\bibcite{BayesBall}{{119}{1998}{{Shachter}}{{}}}
+\bibcite{search_strategies_icra_2001}{{120}{2001}{{Siddharth and Branicky}}{{}}}
+\bibcite{LfD_Autonomous_Navigation_in_Complex_Unstructured_Terrain}{{121}{2010}{{Silver et~al.}}{{Silver, Bagnell, and Stentz}}}
+\bibcite{Sondik_1973}{{122}{1973}{{Smallwood and Sondik}}{{}}}
+\bibcite{HSV}{{123}{2004}{{Smith and Simmons}}{{}}}
+\bibcite{HSVI2}{{124}{2005}{{Smith and Simmons}}{{}}}
+\bibcite{Towards_a_ToM_2010}{{125}{2010}{{Sodian and Kristen}}{{}}}
+\bibcite{Spaan05icra}{{126}{2005}{{Spaan and Vlassis}}{{}}}
+\bibcite{stachniss05robotics}{{127}{2005}{{Stachniss et~al.}}{{Stachniss, Grisetti, and Burgard}}}
+\bibcite{stankiewicz2006lost}{{128}{2006}{{Stankiewicz et~al.}}{{Stankiewicz, Legge, Mansfield, and Schlicht}}}
+\bibcite{sep-decision-theory}{{129}{2015}{{Steele and Stefansson}}{{}}}
+\bibcite{dmp_iros_2011}{{130}{2011}{{Stulp et~al.}}{{Stulp, Theodorou, Kalakrishnan, Pastor, Righetti, and Schaal}}}
+\bibcite{dmp_seq_2012}{{131}{2012}{{Stulp et~al.}}{{Stulp, Theodorou, and Schaal}}}
+\bibcite{Needle_2014}{{132}{2014}{{Sun and Alterovitz}}{{}}}
+\bibcite{gmr_2004}{{133}{2004}{{Sung}}{{}}}
+\bibcite{sutton1998reinforcement}{{134}{1998{a}}{{Sutton and Barto}}{{}}}
+\bibcite{Sutton00policygradient}{{135}{2000}{{Sutton et~al.}}{{Sutton, Mcallester, Singh, and Mansour}}}
+\bibcite{sutton98reinforcement}{{136}{1998{b}}{{Sutton and Barto}}{{}}}
+\bibcite{RL_book_2010}{{137}{2010}{{Szepesv\'ari}}{{}}}
+\bibcite{MC-POMDP}{{138}{2000}{{Thrun}}{{}}}
+\bibcite{Thrun02particlefilters}{{139}{2002}{{Thrun}}{{}}}
+\bibcite{Thrun_grid_based_1996}{{140}{1996}{{Thrun and B\"{u}}}{{}}}
+\bibcite{SLAM_HBR}{{141}{2008}{{Thrun and Leonard}}{{}}}
+\bibcite{Thrun_Burgard_Fox_2005}{{142}{2005}{{Thrun et~al.}}{{Thrun, Burgard, and Fox}}}
+\bibcite{ActivePosSLAM}{{143}{2012}{{Valencia et~al.}}{{Valencia, Miro, Dissanayake, and Andrade-Cetto}}}
+\bibcite{dense_entropy_icra_2014}{{144}{2014}{{Vallve and Andrade{-}Cetto}}{{}}}
+\bibcite{LQG_MP_2011}{{145}{2011}{{Van Den~Berg et~al.}}{{Van Den~Berg, Abbeel, and Goldberg}}}
+\bibcite{van_den_Berg_2012}{{146}{2012}{{van~den Berg et~al.}}{{van~den Berg, Patil, and Alterovitz}}}
+\bibcite{Veiga14aaai}{{147}{2014}{{Veiga et~al.}}{{Veiga, Spaan, and Lima}}}
+\bibcite{FSVI}{{148}{2007}{{Veloso}}{{}}}
+\bibcite{pomdp_iros_tous_2015}{{149}{2015{a}}{{Vien and Toussaint}}{{}}}
+\bibcite{pomdp_toussain_iros_2015}{{150}{2015{b}}{{Vien and Toussaint}}{{}}}
+\bibcite{eNAC_2003}{{151}{2003}{{Vijayakumar et~al.}}{{Vijayakumar, Shibata, and Schaal}}}
+\bibcite{VonNeumann1944}{{152}{1990}{{von Neumann and Morgenstern}}{{}}}
+\bibcite{Wang_2007}{{153}{2007}{{Wang}}{{}}}
+\bibcite{Wang2016}{{154}{2016}{{Wang et~al.}}{{Wang, Uchibe, and Doya}}}
+\bibcite{updating_egocentric_human_navigation_2000}{{155}{2000}{{Wang and Spelke}}{{}}}
+\bibcite{RL_state_art_2012}{{156}{2012}{{Wiering and van Otterio}}{{}}}
+\bibcite{reinforce_1992}{{157}{1992}{{Williams}}{{}}}
+\bibcite{Biomechanics_2009}{{158}{2009}{{Winter}}{{}}}
+\bibcite{what_det_our_nav_ability_2010}{{159}{2010}{{Wolbers and Hegarty}}{{}}}
+\bibcite{spatial_updating_2008}{{160}{2008}{{Wolbers et~al.}}{{Wolbers, Hegarty, Buchel, and Loomis}}}
+\bibcite{fast_peg_pbd_icmc_2014}{{161}{2014}{{Yang et~al.}}{{Yang, Lin, Song, Nemec, Ude, Buch, Kruger, and Savarimuthu}}}
+\bibcite{ACML_variance_2015}{{162}{2015}{{Zhao et~al.}}{{Zhao, Niu, Xie, Yang, and Sugiyama}}}
+\bibcite{seq_traj_replan_iros_2013}{{163}{2013}{{Zito et~al.}}{{Zito, Kopicki, Stolkin, Borst, Schmidt, Roa, and Wyatt}}}
