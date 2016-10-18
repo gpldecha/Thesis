@@ -204,10 +204,10 @@ This results from the large variance of the policies' gradient, making the stoch
 In Chapter 3, the learned PbD-POMDP policy has over 80 Gaussian functions, each of dimension 7, and we expect the 
 number of parameters of this RL policy to be of the same order. So instead we opt for an Actor-critic (AC) approach 
 which has been reported and proven to be more efficient in terms of the number of episodes necessary to achieve 
-convergence \citep{rl_ac_surv_2012}, as the variance of the gradient of the policy's parameters have a smaller 
+convergence \citep{ac_survey_2012}, as the variance of the gradient of the policy's parameters have a smaller 
 variance compared with actor methods (policy gradient). This results in a faster learning of the policy. 
 
-Actor-critic \cite[Chap. 6.6]{sutton98reinforcement} is an RL approach in which the actor (policy) and critic (value function) 
+Actor-critic \cite[Chap. 6.6]{sutton1998reinforcement} is an RL approach in which the actor (policy) and critic (value function) 
 have separate parameterization and can be represented by different functions, for instance the value function could be a 
 decision tree and the policy a neural network. The advantage of an AC is that the policy can be chosen such 
 that it is computationally efficient in evaluating actions and the value function does not necessarily have to have
@@ -363,7 +363,7 @@ A PMF is able to capture such non-Gaussianity whilst remaining fully determinist
 
 The probability density function $p(x_t|y_{0:t},\dot{x}_{1:t})$ is high dimensional and thus it is 
 impractical to directly learn a statistical policy $\pi_{\theta} : p(x_t|y_{0:t},\dot{x}_{1:t}) \rightarrow \dot{x}_t$
-without some form of compression. One possibility would be E-PCA \citep{NIPS2002_2319} which extracts a set of 
+without some form of compression. One possibility would be E-PCA \citep{EPCA_2003} which extracts a set of 
 representative basis features. Although elegant this method 
 requires a discretisation of the belief space which is computationally expensive. Instead we choose to 
 compress the pdf to a belief space vector composed of the maximum a posteriori (most likely state), as in Chapter 3 page \pageref{ch3:formulation}. 

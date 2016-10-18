@@ -21,52 +21,50 @@ Warning--empty publisher in Leslie_TOMM
 Warning--empty publisher in NIPS2008_3501
 Warning--empty publisher in RL_book_sa
 Warning--empty publisher in Riedmiller2005
-Warning--empty publisher in NIPS2002_2319
 Warning--empty publisher in Towards_a_ToM_2010
 Warning--empty publisher in sep-decision-theory
-Warning--empty publisher in sutton1998reinforcement
 Warning--empty publisher in SLAM_HBR
 Warning--empty publisher in Biomechanics_2009
 Warning--empty publisher in fast_peg_pbd_icmc_2014
-You've used 164 entries,
+You've used 161 entries,
             2773 wiz_defined-function locations,
-            1609 strings with 37644 characters,
-and the built_in function-call counts, 89785 in all, are:
-= -- 8349
-> -- 4630
-< -- 177
-+ -- 1566
-- -- 1394
-* -- 7158
-:= -- 12923
-add.period$ -- 619
-call.type$ -- 164
-change.case$ -- 940
+            1600 strings with 37377 characters,
+and the built_in function-call counts, 88149 in all, are:
+= -- 8195
+> -- 4549
+< -- 172
++ -- 1536
+- -- 1370
+* -- 7011
+:= -- 12688
+add.period$ -- 606
+call.type$ -- 161
+change.case$ -- 924
 chr.to.int$ -- 156
-cite$ -- 346
-duplicate$ -- 4351
-empty$ -- 7465
-format.name$ -- 1662
-if$ -- 19598
-int.to.chr$ -- 9
+cite$ -- 338
+duplicate$ -- 4275
+empty$ -- 7334
+format.name$ -- 1631
+if$ -- 19247
+int.to.chr$ -- 6
 int.to.str$ -- 1
-missing$ -- 174
-newline$ -- 938
-num.names$ -- 663
-pop$ -- 2035
+missing$ -- 170
+newline$ -- 920
+num.names$ -- 651
+pop$ -- 2000
 preamble$ -- 1
-purify$ -- 790
+purify$ -- 776
 quote$ -- 0
-skip$ -- 3464
+skip$ -- 3411
 stack$ -- 0
-substring$ -- 4128
-swap$ -- 1081
-text.length$ -- 100
+substring$ -- 4051
+swap$ -- 1058
+text.length$ -- 97
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 1727
-warning$ -- 18
-while$ -- 805
+type$ -- 1699
+warning$ -- 16
+while$ -- 791
 width$ -- 0
-write$ -- 2353
-(There were 18 warnings)
+write$ -- 2308
+(There were 16 warnings)
