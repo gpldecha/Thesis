@@ -1,4 +1,4 @@
-\begin{thebibliography}{161}
+\begin{thebibliography}{164}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -221,6 +221,13 @@ Hongtai Cheng and Heping Chen.
   pages 3465--3470, may 2014.
 \newblock URL \url{http://dx.doi.org/10.1109/ICRA.2014.6907358}.
 
+\bibitem[de~Chambrier and Billard(2013)]{deChambrierBillard2013}
+Guillaume de~Chambrier and Aude Billard.
+\newblock Learning search behaviour from humans.
+\newblock In \emph{International Conference on Robotics and Biomimetics
+  (ROBIO)}, pages 573--580, 2013.
+\newblock URL \url{http://dx.doi.org/10.1109/ROBIO.2013.6739521}.
+
 \bibitem[de~Chambrier and Billard(2014)]{Chambrier2014}
 Guillaume de~Chambrier and Aude Billard.
 \newblock Learning search policies from humans in a partially observable
@@ -228,6 +235,17 @@ Guillaume de~Chambrier and Aude Billard.
 \newblock \emph{Robotics and Biomimetics}, 1\penalty0 (1):\penalty0 1--16,
   2014.
 \newblock URL \url{http://dx.doi.org/10.1186/s40638-014-0008-1}.
+
+\bibitem[de~Chambrier and Billard(2016{\natexlab{a}})]{FPI_Chambrier2016}
+Guillaume de~Chambrier and Aude Billard.
+\newblock Fitted policy iteration for a pomdp peg-in-hole search task.
+\newblock \emph{Robotics and Autonomous Systems}, 2016{\natexlab{a}}.
+
+\bibitem[de~Chambrier and Billard(2016{\natexlab{b}})]{MLMF_Chambrier2016}
+Guillaume de~Chambrier and Aude Billard.
+\newblock Non-parametric bayesian state space estimator for negative
+  information.
+\newblock \emph{Frontiers in Robotics and AI}, 2016{\natexlab{b}}.
 
 \bibitem[Deisenroth et~al.(2011)Deisenroth, Neumann, and
   Peters]{p_search_surv_2011}
@@ -296,7 +314,7 @@ William Fisher and Shahid Mujtaba.
 
 \bibitem[Gonz{\'{a}}lez{-}Ba{\~{n}}os and
   Latombe(2002)]{Navigation_strategires_for_exploring_indoor_environments}
-H{\'{e}}ctor~H. Gonz{\'{a}}lez{-}Ba{\~{n}}os and Jean{-}Claude Latombe.
+H{\'{e}}ctor Gonz{\'{a}}lez{-}Ba{\~{n}}os and Jean{-}Claude Latombe.
 \newblock Navigation strategies for exploring indoor environments.
 \newblock \emph{International Journal of Robotics Research (IJRR)}, 21\penalty0
   (10-11):\penalty0 829--848, 2002.
@@ -328,7 +346,7 @@ Ivo Grondman, Lucian Busoniu, Gabriel Lopes, and Robert Babuska.
 
 \bibitem[Gullapalli et~al.(1994)Gullapalli, Barto, and
   Grupen]{learn_admittance_icra_1994}
-Vijaykumar Gullapalli, Andrew~G. Barto, and Roderic~A. Grupen.
+Vijaykumar Gullapalli, Andrew Barto, and Roderic Grupen.
 \newblock Learning admittance mappings for force-guided assembly.
 \newblock In \emph{International Conference on Robotics and Automation (ICRA)},
   pages 2633--2638, may 1994.
@@ -482,7 +500,7 @@ Lydia~E. Kavraki, Petr Svestka, Jean-Claude Latombe, and Mark~H. Overmars.
 \newblock URL \url{http://dx.doi.org/10.1109/70.508439}.
 
 \bibitem[Kim et~al.(2004)Kim, Jordan, Sastry, and Ng]{heli_2004}
-H.~J. Kim, Michael Jordan, Shankar Sastry, and Andrew Ng.
+Jin Kim, Michael Jordan, Shankar Sastry, and Andrew Ng.
 \newblock Autonomous helicopter flight via reinforcement learning.
 \newblock In \emph{Advances in Neural Information Processing Systems (NIPS)},
   volume~16, pages 799--806. 2004.
@@ -806,6 +824,7 @@ Akshara Rai, Guillaume de~Chambrier, and Aude Billard.
 \newblock Learning from failed demonstrations in unreliable systems.
 \newblock In \emph{International Conference on Humanoid Robots (Humanoids)},
   pages 410--416, 2013.
+\newblock URL \url{http://dx.doi.org/10.1109/HUMANOIDS.2013.7030007}.
 
 \bibitem[Richardson et~al.(2012)Richardson, Bake, Tenenbaum, and
   Saxe]{Richardson1_Baker1_Tenenbaum1_Saxe1_2012}

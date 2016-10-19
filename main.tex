@@ -3,6 +3,7 @@
 %The following two packages are required to have awesome font qualities!
 \usepackage{ae,aecompl} %,placeins
 
+\usepackage[final]{pdfpages}
 
 % ========== Mathematics 
 
@@ -261,11 +262,15 @@
 	\bibliography{bib/MLMF.bib,bib/peg_hole.bib,bib/RL.bib,bib/pomdp.bib,bib/DT.bib,bib/spatial_navigation.bib,bib/ch3-citations.bib,bib/citations.bib}
 
 
-\begin{center}	
-\hspace*{-3cm}
-\vspace*{-2cm}
-\includegraphics[width=1.5\textwidth]{CV.pdf}
-\end{center}
+\includepdf[pages=1]{Guillaume_Resume.pdf}
+\includepdf[pages=2]{Guillaume_Resume.pdf}
+
+	
+%\begin{center}	
+%\hspace*{-3cm}
+%\vspace*{-2cm}
+%\includegraphics[width=1.5\textwidth]{CV.pdf}
+%\end{center}
 	
 	%\bibliography{bib/planning.bib,bib/MLMF.bib,bib/peg_hole.bib,bib/search_human_blind.bib,bib/RL.bib,bib/pomdp.bib,bib/cpomdp.bib,bib/citations.bib,bib/DT.bib,bib/ToM.bib,bib/spatial_navigation.bib,imitation_learning.bib,bib/ch3-citations.bib}\fi
 \end{document}

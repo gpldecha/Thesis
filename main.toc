@@ -67,7 +67,7 @@
 \contentsline {subsection}{\numberline {4.4.1}Actor \& Critic}{94}{subsection.4.4.1}
 \contentsline {subsection}{\numberline {4.4.2}Fitted Policy Iteration}{95}{subsection.4.4.2}
 \contentsline {section}{\numberline {4.5}Control architecture}{100}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Robot Implementation}{102}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.1}Robot Implementation}{101}{subsection.4.5.1}
 \contentsline {section}{\numberline {4.6}Results}{104}{section.4.6}
 \contentsline {subsection}{\numberline {4.6.1}Distance taken to reach the socket's edge (Qualitative)}{104}{subsection.4.6.1}
 \contentsline {subsection}{\numberline {4.6.2}Distance taken to reach the socket's edge (Quantitative)}{107}{subsection.4.6.2}
